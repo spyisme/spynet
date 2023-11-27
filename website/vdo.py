@@ -73,6 +73,7 @@ def get_mpd(video_id: str) -> str:
 vdo = Blueprint('vdo', __name__)
 used_tokens = set()  # Set to store used tokens
 
+
 @vdo.route('/vdocipher', methods=['GET', 'POST'])
 def index():
     mytoken = request.args.get('token')
@@ -266,6 +267,12 @@ import threading
 storj_lock = threading.Lock()
 storj_lock2 = threading.Lock()
 
+
+used_mpd = set()  # Set to store used tokens
+ 
+
+
+
 def storj():
     if storj_lock.acquire(blocking=False) and storj_lock2.acquire(blocking=False):
 
@@ -307,6 +314,10 @@ def storj():
                         else:
                             return None
                     cmd = cmds_queue[0]
+                    mpd = cmd.txt.split(" ")[1]
+                    if mpd in used_mpd:
+                            return "failed"
+                    used_mpd.add(mpd)
                     video_name = extract_save_name(cmd)
                     teacher = extract_teacher_name(cmd)
                     teacher_mapping = {"nasser-El-Batal": "chem","moSalama" : "mosalama"}
@@ -346,6 +357,7 @@ def storj():
                         run_command("cls")
                         run_command("echo Running!")
                         senddiscrdmsg("exiting... safe to start new video<@709799648143081483>")
+
                         del cmds_queue[0]
                     else : 
                         print("Wrong cmd")
@@ -401,6 +413,10 @@ def storjsingle(command):
                 else:
                     return None
             cmd = command
+            mpd = cmd.txt.split(" ")[1]
+            if mpd in used_mpd:
+                    return "failed"      
+            used_mpd.add(mpd)
             video_name = extract_save_name(cmd)
             teacher = extract_teacher_name(cmd)
             teacher_mapping = {"nasser-El-Batal": "chem","moSalama" : "mosalama"}
