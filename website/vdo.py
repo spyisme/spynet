@@ -394,7 +394,7 @@ def startstorjflask():
 
 
 
-@vdo.route("/list")
+@vdo.route("/rawlist")
 def storjlist():
         return f"{cmds_queue}"
 
