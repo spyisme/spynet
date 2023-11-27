@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="https://spysnet.com/static/snn.png">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Commands List</title>
 
@@ -70,8 +72,8 @@
 <body>
     <h1>Commands List</h1>
     <div class="action-buttons">
-        <button onclick="downloadAll()">Download All</button>
-        <button onclick="addCommand()">Add</button>
+        <button onclick="downloadall()">Download All</button>
+        <button onclick="addnew()">Add</button>
     </div>
     <ul>
         {% for command in cmds_queue %}
@@ -125,7 +127,7 @@
                 window.location.href = "/downloadall";
             }
         }
-        function downloadall() {
+        function addnew() {
             window.location.href = "/storj2";
         }
     </script>
