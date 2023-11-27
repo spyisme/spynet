@@ -314,7 +314,7 @@ def storj():
                         else:
                             return None
                     cmd = cmds_queue[0]
-                    mpd = cmd.txt.split(" ")[1]
+                    mpd = cmd.split(" ")[1]
                     if mpd in used_mpd:
                             return "failed"
                     used_mpd.add(mpd)
@@ -413,7 +413,7 @@ def storjsingle(command):
                 else:
                     return None
             cmd = command
-            mpd = cmd.txt.split(" ")[1]
+            mpd = cmd.split(" ")[1]
             if mpd in used_mpd:
                     return "failed"      
             used_mpd.add(mpd)
@@ -471,7 +471,16 @@ def storjsingle(command):
 
 
 
+@vdo.route("/locks")
+def lock_status():
+    storj_lock_acquired = storj_lock.acquire(blocking=False)
+    storj_lock2_acquired = storj_lock2.acquire(blocking=False)
 
+    # Release the locks immediately after checking the status
+    storj_lock.release()
+    storj_lock2.release()
+
+    return f'{"Ready to use" if storj_lock_acquired else "Locked"}'
 
 
 
