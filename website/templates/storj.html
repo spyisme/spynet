@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storj Form</title>
+</head>
+<body>
+    <h1>Storj Upload</h1>
+    <form method="post" action="{{ url_for('vdo.storjflask2') }}">
+        <label for="userinput">Enter Storj Command:</label>
+        <input type="text" id="userinput" name="userinput" required>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

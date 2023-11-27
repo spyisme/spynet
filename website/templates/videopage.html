@@ -1,0 +1,159 @@
+<html><head>
+  <title>{{teachername}}</title>
+  <link rel="icon" type="image/x-icon" href="/static/snn.png">
+  <meta name="description" content="All">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Mobile viewport support -->
+  <style>
+      /* Reset some default styles */
+      body, ul {
+          margin: 0;
+          padding: 0;
+      }
+
+      /* Global Styles */
+      body {
+          font-family: Arial, sans-serif;
+          background-color: #f0f0f0;
+          overflow: auto;
+          color: #fff; /* Default text color */
+      }
+
+      /* Dark Mode */
+      @media (prefers-color-scheme: dark) {
+          body {
+              background-color: #1a1a1a;
+              color: #fff; /* Text color in dark mode */
+            overflow: auto;
+            font-family: Arial, sans-serif;
+
+          }
+
+          .nav {
+              background-color: #1a1a1a; /* Dark background color for the navigation */
+              color: #fff;
+          }
+
+          ul {
+              background-color: #1a1a1a; /* Dark background color for the list */
+          }
+
+          /* Add more styles for dark mode as needed */
+      }
+
+      .nav {
+          padding: 20px;
+          margin: 0;
+          text-align: center;
+      }
+
+      ul {
+          list-style: none;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          align-items: center;
+          padding: 20px;
+      }
+
+      /* Card Styles */
+      .card,
+      .card1 {
+          background-color: #fff;
+          border: 1px solid #ccc;
+          border-radius: 10px;
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+          padding: 20px;
+          transition: transform 0.2s, box-shadow 0.2s;
+          text-align: center;
+          margin: 10px;
+          text-transform: capitalize; /* Capitalize the first letter */
+          display: block;
+          width: 200px;
+      }
+
+      .card1 {
+          height: 20px;
+          color: blue;
+          font-size: 14px;
+      }
+
+      .card1:hover,
+      .card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      a {
+          text-decoration: none;
+          color: #1723c2; /* Default text color */
+      }
+
+      .card img {
+          width: 100px; /* Set the desired width for your image */
+          height: auto; /* Maintain aspect ratio */
+      }
+  </style>
+
+
+</head>
+
+<body>
+<div class="nav">
+      <h1> {{teachername}}  </h1>
+
+</div>
+      <ul>
+          {% for video in videos %}
+            {%if video.url%}
+            <a href="{{video.url}}" target="_blank">
+                <div class="card">
+                    {{ video.title }}
+                </div>
+            </a>
+            {%else%}
+          <a href="https://www.youtube.com/watch?v={{ video.id }}" target="_blank">
+              <div class="card">
+                  {{ video.title }}
+              </div>
+          </a>
+          {%endif%}
+      {% endfor %}
+      </ul>
+   <hr>
+   <ul>
+  
+   <a href="https://www.youtube.com/playlist?list={{playlist_id}}" target="_blank">   
+      <div class="card">
+          <img src="static/assets/yt.avif"></img>
+          <br> Open Playlist
+      </div>
+   </a>
+  </ul>
+</body>
+<script>
+  function getRandomColor() {
+      const min = 0;
+      const max = 255;
+
+      const r = Math.floor(Math.random() * (max - min + 1)) + min;
+      const g = Math.floor(Math.random() * (max - min + 1)) + min;
+      const b = Math.floor(Math.random() * (max - min + 1)) + min;
+
+      return `rgb(${r}, ${g}, ${b})`;
+  }
+
+  function changeColors() {
+      const h1 = document.querySelector(".nav");
+      const randomColor = getRandomColor();
+      h1.style.backgroundColor = randomColor;
+
+      // You can set the link colors here as well if you have links to change.
+      // For this example, I'll assume there's a "links" array defined somewhere.
+
+      // You can use the randomColor for the link color as well.
+  }
+
+  window.onload = changeColors;
+
+</script>
+</html>
