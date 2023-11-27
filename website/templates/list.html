@@ -1,61 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SpysNet</title>
-    <link rel="icon" type="image/x-icon" href="/static/snn.png">
-    <meta name="description" content="{{teacher}}">
+    <title>Commands List</title>
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            position: relative;
+            background-color: #fff;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        strong {
+            color: #007bff;
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 0;
+            right: 50px;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            right: 0;
+            min-width: 160px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content button {
+            width: 100%;
+            padding: 8px;
+            text-align: left;
+            border: none;
+            background: none;
+            cursor: pointer;
+        }
+
+        .dropdown-content button:hover {
+            background-color: #ddd;
+        }
+    </style>
 </head>
-
 <body>
+    <h1>Commands List</h1>
 
-    <h1>{{teacher}} list</h1>
-  
-    <a href="/update?teacher={{teacher}}">Update list</a>
-
-  <p>Total Number of Videos in All Playlists: {{ total_videos }}</p>
-   <hr>
-    {% for playlist_link, data in final.items() %}
- 
-    <h2><a href="{{ playlist_link }}" class="niqqa" target="_blank">{{ data.playlist_name }}</a></h2>
-    <p>Number of Videos: {{ data.titles|length }}</p>
     <ul>
-        {% for title in data.titles %}
-        <li>
-            <a href="https://www.youtube.com/watch?v={{ title.url }}" class="niqqa" target="_blank">{{ title.title }}</a>
-        </li>
+        {% for command in cmds_queue %}
+            <li>
+                <strong>Video Name:</strong> {{ extract_save_name(command) }}<br>
+                <strong>Teacher Name:</strong> {{ extract_teacher_name(command) }}
+                <div class="dropdown" onclick="toggleDropdown(this)">
+                    &#9660;
+                    <div class="dropdown-content">
+                        <button onclick="showFullCommand('{{ command }}')">Show Full Command</button>
+                        <button onclick="confirmDelete('{{ command }}')">Delete</button>
+                    </div>
+                </div>
+            </li>
         {% endfor %}
     </ul>
-   <hr>
-    {% endfor %}
 
+    <script>
+        function toggleDropdown(dropdown) {
+            var content = dropdown.querySelector('.dropdown-content');
+            if (content) {
+                content.style.display = (content.style.display === "block") ? "none" : "block";
+            }
+        }
 
+        function showFullCommand(command) {
+            alert(command);
+            console.log("show");
+        }
+
+        function confirmDelete(command) {
+            var confirmDelete = window.confirm("Are you sure you want to delete?");
+            if (confirmDelete) {
+                window.location.href = "/deletecmd?command=" + encodeURIComponent(command);
+            }
+        }
+    </script>
 </body>
-
-<style>
-    body {
-        font-family: Arial, sans-serif;
-    }
-
-    h1 {
-        text-transform: capitalize;
-    }
-
-    ul {
-        list-style-type: none;
-        padding: 0;
-    }
-
-    li {
-        text-transform: capitalize;
-    }
-
-    .niqqa {
-        color: inherit;
-        text-decoration: none;
-    }
-</style>
-
 </html>

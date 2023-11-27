@@ -375,12 +375,9 @@ def storj():
 
 @vdo.route("/storj2", methods=['GET', 'POST'])
 def storjflask2():
-    print(cmds_queue)
     if request.method == 'POST':
-        print(cmds_queue)
         userinput = request.form['userinput']
         cmds_queue.append(userinput)
-        print(cmds_queue)
         return 'command sent! to view list <a href="/list">list</a> to start <a href="/startstorj">Start</a>'
 
 
@@ -397,6 +394,34 @@ def startstorjflask():
 @vdo.route("/rawlist")
 def storjlist():
         return f"{cmds_queue}"
+
+
+
+@vdo.route("/list")
+def commandslist():
+
+    def extract_save_name(command):
+        save_name_match = re.search(r'--save-name\s+(\S+)', command)
+        if save_name_match:
+            return save_name_match.group(1)
+        else:
+            return None
+    def extract_teacher_name(command):
+        teacher_name_match = re.search(r'--teacher-name\s+(\S+)', command)
+        if teacher_name_match:
+            teacher_name = teacher_name_match.group(1)
+            return teacher_name
+        else:
+            return None
+
+    return render_template("list.html", cmds_queue=cmds_queue, extract_save_name=extract_save_name, extract_teacher_name=extract_teacher_name)
+
+@vdo.route('/deletecmd', methods=['GET'])
+def delete_command():
+    command_to_delete = request.args.get('command')
+    if command_to_delete in cmds_queue:
+        cmds_queue.remove(command_to_delete)
+    return redirect(url_for('vdo.commandslist'))
 
 
 
