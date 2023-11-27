@@ -264,9 +264,11 @@ import threading
 
 
 storj_lock = threading.Lock()
+storj_lock2 = threading.Lock()
 
 def storj():
-    if storj_lock.acquire(blocking=False):
+    if storj_lock.acquire(blocking=False) and storj_lock2.acquire(blocking=False):
+
         try :
             if cmds_queue :
                 while len(cmds_queue) > 0:
@@ -352,16 +354,17 @@ def storj():
                         del cmds_queue[0]
         finally:
             storj_lock.release()
+            storj_lock2.release()
 
 
 
 
 
 
-storj_lock2 = threading.Lock()
+
 
 def storjsingle(command):
-    if storj_lock2.acquire(blocking=False):
+    if storj_lock.acquire(blocking=False) and storj_lock2.acquire(blocking=False):
         try :
             def senddiscrdmsg(content):
                 message = {
@@ -445,6 +448,7 @@ def storjsingle(command):
                 del cmds_queue[0]
         finally:
             storj_lock2.release()
+            storj_lock.release()
 
 
 
