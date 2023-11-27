@@ -69,7 +69,10 @@
 </head>
 <body>
     <h1>Commands List</h1>
-
+    <div class="action-buttons">
+        <button onclick="downloadAll()">Download All</button>
+        <button onclick="addCommand()">Add</button>
+    </div>
     <ul>
         {% for command in cmds_queue %}
             <li>
@@ -79,7 +82,10 @@
                     &#9660;
                     <div class="dropdown-content">
                         <button onclick="showFullCommand('{{ command }}')">Show Full Command</button>
+                        <button onclick="Download('{{ command }}')">Download</button>
+                       
                         <button onclick="confirmDelete('{{ command }}')">Delete</button>
+
                     </div>
                 </div>
             </li>
@@ -104,6 +110,23 @@
             if (confirmDelete) {
                 window.location.href = "/deletecmd?command=" + encodeURIComponent(command);
             }
+        }
+        
+        function Download(command) {
+            var confirmDelete = window.confirm("Are you sure you want to download and upload this video to storj?");
+            if (confirmDelete) {
+                window.location.href = "/downloadsingle?command=" + encodeURIComponent(command);
+            }
+        }
+
+        function downloadall() {
+            var confirmDelete = window.confirm("Are you sure you want to download and upload all the videos below to storj?");
+            if (confirmDelete) {
+                window.location.href = "/downloadall";
+            }
+        }
+        function downloadall() {
+            window.location.href = "/storj2";
         }
     </script>
 </body>

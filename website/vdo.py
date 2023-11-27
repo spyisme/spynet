@@ -262,24 +262,6 @@ def discord():
 #-------------------------------------------------------------------------------------
 import threading
 
-processing_lock = threading.Lock()
-
-@vdo.route("/storj", methods=['GET', 'POST'])
-def storjflask():
-    if not processing_lock.locked():
-        if request.method == 'POST':
-        
-            with processing_lock:
-                userinput = request.form['userinput']
-                # storj(userinput)
-                return "command sent!"
-    else:
-
-        return "Proccesing another data...."
-
-    return render_template("storj.html")
-
-
 
 storj_lock = threading.Lock()
 
@@ -373,21 +355,127 @@ def storj():
 
 
 
+
+
+
+storj_lock2 = threading.Lock()
+
+def storjsingle(command):
+    if storj_lock2.acquire(blocking=False):
+        try :
+            def senddiscrdmsg(content):
+                message = {
+                        'content': f'{content}'
+                    }
+                payload = json.dumps(message)
+                headers = {'Content-Type': 'application/json'}
+                requests.post("https://discord.com/api/webhooks/1177648648172093562/8PN6BS5c4l4tST5H_jtunzO46iiigz1zyEI34nPbWN_Q7IKJjQKIEYLdb6OXYpwVofwp", data=payload, headers=headers)
+
+            def run_command(command):
+                subprocess.run(command, shell=True)
+
+            def extract_url(command_output):
+                url_match = re.search(r'URL\s+:\s+(https://\S+)', command_output)
+                if url_match:
+                    extracted_url = url_match.group(1)
+                    return extracted_url if extracted_url.startswith("https://link.storjshare.io") else None
+                else:
+                    return None
+
+            def extract_save_name(command):
+                save_name_match = re.search(r'--save-name\s+(\S+)', command)
+                if save_name_match:
+                    return save_name_match.group(1)
+                else:
+                    return None
+            def extract_teacher_name(command):
+                teacher_name_match = re.search(r'--teacher-name\s+(\S+)', command)
+                if teacher_name_match:
+                    teacher_name = teacher_name_match.group(1)
+                    # Make the first letter lowercase
+                    teacher_name = teacher_name[0].lower() + teacher_name[1:]
+                    return teacher_name
+                else:
+                    return None
+            cmd = command
+            video_name = extract_save_name(cmd)
+            teacher = extract_teacher_name(cmd)
+            teacher_mapping = {"nasser-El-Batal": "chem","moSalama" : "mosalama"}
+            if teacher in teacher_mapping:
+                teacher = teacher_mapping[teacher]
+            else:
+                pass
+            #print(video_name , teacher)
+            if teacher and video_name :
+                command2 = f"uplink.exe cp ./output/{video_name}.mp4 sj://{teacher}"
+                command3 = f"uplink.exe share --url sj://{teacher}/{video_name}.mp4 --not-after=none"
+                command4 = fr"del .\output\{video_name}.mp4"
+
+                senddiscrdmsg(f"Downloading the video... {video_name}")
+
+                run_command(cmd)
+
+                senddiscrdmsg("Uploading the video...")
+                run_command(command2)
+
+
+                senddiscrdmsg("Sharing the video...")
+                output_command3 = subprocess.check_output(command3, shell=True, text=True)
+                shared_url = extract_url(output_command3)
+
+
+
+                notepad_file_path = f"website/storj/{teacher}.txt"
+                with open(notepad_file_path, "a") as notepad_file:
+                    notepad_file.write(f"{video_name}xx{shared_url}\n")
+
+                senddiscrdmsg(f"{shared_url}")
+
+                # Run command4
+                senddiscrdmsg("Deleting the video...")
+                run_command(command4)
+                run_command("cls")
+                run_command("echo Running!")
+                senddiscrdmsg("exiting... safe to start new video<@709799648143081483>")
+                del cmds_queue[0]
+            else : 
+                print("Wrong cmd")
+                run_command("cls")
+                run_command("echo Running!")
+                del cmds_queue[0]
+        finally:
+            storj_lock2.release()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @vdo.route("/storj2", methods=['GET', 'POST'])
 def storjflask2():
     if request.method == 'POST':
         userinput = request.form['userinput']
         cmds_queue.append(userinput)
-        return 'command sent! to view list <a href="/list">list</a> to start <a href="/startstorj">Start</a>'
-
+        return redirect(url_for('vdo.commandslist'))
 
     return render_template("storj.html")
 
 
-@vdo.route("/startstorj")
+@vdo.route("/downloadall")
 def startstorjflask():
         storj()
-        return " "
+        return redirect(url_for('vdo.commandslist'))
+
 
 
 
@@ -395,7 +483,12 @@ def startstorjflask():
 def storjlist():
         return f"{cmds_queue}"
 
-
+@vdo.route('/downloadsingle', methods=['GET'])
+def downloadsingle():
+    command = request.args.get('command')
+    if command in cmds_queue:
+        storjsingle(command)
+    return redirect(url_for('vdo.commandslist'))
 
 @vdo.route("/list")
 def commandslist():
