@@ -129,7 +129,7 @@ select option {
     <form method="POST" action="/form">
         <br>
         <label for="vidname">Video Name:</label>
-        <input type="text" name="vidname" required="" autocomplete="off">
+        <input type="text" id="vidname" name="vidname" required="" autocomplete="off" oninput="validateInput(this)">
         <br>
         <label for="dropdown">Choose a Channel:</label>
         <select id="dropdown" name="dropdown">
@@ -178,6 +178,15 @@ select option {
         document.execCommand("copy");
         document.body.removeChild(textArea);
     }
+ 
+        function validateInput(inputField) {
+            // Remove white spaces
+            inputField.value = inputField.value.replace(/\s/g, '');
+
+            // Remove non-alphanumeric characters
+            inputField.value = inputField.value.replace(/[^a-zA-Z0-9]/g, '');
+        }
+  
 </script>
 </body>
 </html>

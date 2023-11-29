@@ -77,7 +77,7 @@ used_tokens = set()  # Set to store used tokens
 @vdo.route('/vdocipher', methods=['GET', 'POST'])
 def index():
     mytoken = request.args.get('token')
-  
+    
 
     if mytoken in used_tokens:
         return jsonify({'error': 'Token already used'}), 400
@@ -230,7 +230,7 @@ def form():
 
 
 
-cmds_queue = ['s']
+cmds_queue = []
 
 
 @vdo.route('/discord', methods=['GET', 'POST'])
@@ -474,11 +474,9 @@ def storjsingle(command):
 @vdo.route("/locks")
 def lock_status():
     storj_lock_acquired = storj_lock.acquire(blocking=False)
-    storj_lock2_acquired = storj_lock2.acquire(blocking=False)
 
     # Release the locks immediately after checking the status
     storj_lock.release()
-    storj_lock2.release()
 
     return f'{"Ready to use" if storj_lock_acquired else "Locked"}'
 
