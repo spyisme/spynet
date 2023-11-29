@@ -158,7 +158,7 @@ def nawarch2():
   teachername = "Nawar"
   playlist_id = 'PLM-GVlebsoPWU4v5bcndzPBt6e7PsiCwQ'
   videos = get_playlist_videos(playlist_id)
-  videos += [{'url': '/nawarstorj', 'title': 'More'}]
+  # videos += [{'url': '/nawarstorj', 'title': 'More'}]
   return render_template('videopage.html',
                          videos=videos,
                          playlist_id=playlist_id,
@@ -206,7 +206,7 @@ def chemch3():
     teachername = "Nasser-El-Batal"
     playlist_id = 'PLM-GVlebsoPVXmash3q9sfG5bsD3Mt88x'
     videos = get_playlist_videos(playlist_id)
-    videos += [{'url': '/chemstorj', 'title': 'More'}]
+    # videos += [{'url': '/chemstorj', 'title': 'More'}]
     return render_template('videopage.html',
                            videos=videos,
                            playlist_id=playlist_id,
@@ -315,7 +315,7 @@ def gedoo():
   teachername = "Gedo"
   playlist_id = 'PLM-GVlebsoPXBcSNcLjkmcQG53hQYTvui'
   videos = get_playlist_videos(playlist_id)
-  videos += [{'url': '/gedostorj', 'title': 'More'}]
+  #videos += [{'url': '/gedostorj', 'title': 'More'}]
 
   return render_template('videopage.html',
                          videos=videos,
@@ -365,7 +365,7 @@ def bioch3():
   teachername = "Daif"
   playlist_id = 'PLM-GVlebsoPV0ylAbm7LFlKCD9_X0CGEK'
   videos = get_playlist_videos(playlist_id)
-  videos += [{'url': '/biostorj', 'title': 'More'}]
+ # videos += [{'url': '/biostorj', 'title': 'More'}]
 
   return render_template('videopage.html',
                          videos=videos,
@@ -537,7 +537,7 @@ def salamach11():
   teachername = "Mohamed Salama Course 11"
   playlist_id = 'PLM-GVlebsoPVB0u2fWqO9ep3cuBp_8zTW'
   videos = get_playlist_videos(playlist_id)
-  videos += [{'url': '/salamastorj', 'title': 'More'}]
+ # videos += [{'url': '/salamastorj', 'title': 'More'}]
 
   return render_template('videopage.html',
                          videos=videos,
@@ -550,7 +550,7 @@ def salamach12():
   teachername = "Mohamed Salama Course 12"
   playlist_id = 'PLM-GVlebsoPU0BwzCsqsPQfKMSPZauuFl'
   videos = get_playlist_videos(playlist_id)
-  videos += [{'url': '/salamastorj', 'title': 'More'}]
+ # videos += [{'url': '/salamastorj', 'title': 'More'}]
 
   return render_template('videopage.html',
                          videos=videos,

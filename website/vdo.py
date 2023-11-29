@@ -549,11 +549,7 @@ def delete_command():
 def chemstorj():
     with open('website/storj/chem.txt', 'r') as file:
         lines = file.readlines()
-        
     return render_template('teacher.html', lines=lines, teachername="All",storj = "True" ,teacher="Chem")
-
-
-
 
 @vdo.route("/nawarstorj")
 def nawarstorj():
@@ -596,3 +592,9 @@ def elsestorj():
 
 
 
+@vdo.route('/allstorj')
+def display_links():
+    with open('website/storj/links.txt', 'r') as file:
+        lines = file.readlines()
+
+    return render_template('teacher.html', lines=lines, teachername="All")
