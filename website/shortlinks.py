@@ -133,7 +133,7 @@ def links():
 
 @shortlinks.route("/books")
 def books():
-    return redirect("https://drive.google.com/drive/u/0/folders/1HJRe2ejazmPYWGDojfViz-3izr-tQ26k") 
+    return redirect("https://drive.google.com/drive/folders/12OIgF6ceqUP6yxHdaX22fpQfGWvB-5e8?usp=sharing") 
               
 @shortlinks.route("/tools2")
 def tools2():
