@@ -107,7 +107,7 @@ def get_video_details(video_ids):
             videos.append({
                 'duration': duration_formatted,
                 'title': item.get('snippet', {}).get('title', ''),
-                'videoId': item['id']
+                'id': item['id']
             })
 
     return videos
