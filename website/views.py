@@ -266,6 +266,7 @@ def chemch3():
 def sherbo():
   teacher_links = {
     "Sherbo Statics": "sherbostatics",
+    "Sherbo Statics v2": "sherbostatics2",
     "Sherbo Calculus": "sherbocalc"
 
   }
@@ -281,6 +282,16 @@ def sherbo():
 def sherbostatics():
   teachername = "Sherbo Statics"
   playlist_id = 'PLM-GVlebsoPX_3mlaOeWIjCPY8jH8MpfJ'
+  videos = get_playlist_videos(playlist_id)
+  return render_template('videopage.html',
+                         videos=videos,
+                         playlist_id=playlist_id,
+                         teachername=teachername)
+
+@views.route("/sherbostatics2")
+def sherbostatics2():
+  teachername = "Sherbo Statics"
+  playlist_id = 'PLM-GVlebsoPWglys60cNg_dhTJ6RzXmUR'
   videos = get_playlist_videos(playlist_id)
   return render_template('videopage.html',
                          videos=videos,
