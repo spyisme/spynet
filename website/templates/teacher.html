@@ -25,7 +25,11 @@
           padding: 0;
           overflow: auto;
       }
-
+      .card-description {
+            font-size: 14px;
+            color: black;
+            margin-top: 10px;
+        }
       /* Style the iframe to take 100% of the viewport */
       iframe {
           width: 100%;
@@ -218,7 +222,8 @@
                       <img src="static/assets/{{ teachername }}/{{ name }}.jpg" alt="{{ name }} Image">
                       {% endif %}
                       <p>{{ name }}</p>
-                  </div>
+            
+                </div>
               </a>
           </li>
           {% endfor %}
