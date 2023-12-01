@@ -261,7 +261,9 @@ def chemch3():
                            playlist_id=playlist_id,
                            teachername=teachername)
 
-
+@views.route('/learn-more')
+def learnmore():
+  return render_template('more.html')
 
 @views.route('/sherbo')
 def sherbo():
