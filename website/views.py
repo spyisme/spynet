@@ -458,7 +458,7 @@ def salama():
     "Course 3": ("https://spysnet.com/salamach3", "Course 3"),
     "Course 4": ("https://spysnet.com/salamach4", "Course 4"),
     "Course 5": ("https://spysnet.com/salamach5", "Course 5"),
-    "Course 6 (Revision)": ("https://spysnet.com/salamach6", "Course 6 (Revision)"),
+    "Course 6 (Revision)": ("https://spysnet.com/salamach6", ""),
     "Course 7": ("https://spysnet.com/salamach7", "Course 7"),
     "Course 8": ("https://spysnet.com/salamach8", "Course 8"),
     "Course 9": ("https://spysnet.com/salamach9", "Course 9"),
