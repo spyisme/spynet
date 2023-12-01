@@ -268,7 +268,9 @@ def sherbo():
   teacher_links = {
     "Sherbo Statics": ("sherbostatics", "S1 --> S10"),
     "Sherbo Statics v2": ("sherbostatics2", "S11 --> Chapter 6 rev"),
-    "Sherbo Calculus": ("sherbocalc", "Calculus")
+    "Sherbo Calculus": ("sherbocalc", "Calculus"),
+    "Sherbo Files": ("sherbopdfs", "Google Drive")
+
   }
 
   teachername = "Sherbo"
