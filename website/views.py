@@ -152,9 +152,9 @@ def edit():
 @views.route('/nawar')
 def nawar():
   teacher_links = {
-    "Nawar Chapter 1": "/nawarch1",
-    "Nawar Chapter 1 Revision": "nawarch1rev",
-    "Nawar Chapter 2": "nawarch2"
+  "Nawar Chapter 1": ("/nawarch1", "Chapter 1"),
+    "Nawar Chapter 1 Revision": ("nawarch1rev", "Chapter 1 Revision"),
+    "Nawar Chapter 2": ("nawarch2", "Chapter 2")
   }
 
   teachername = "Nawar"
@@ -201,9 +201,10 @@ def nawarch2():
 @views.route('/chem')
 def chem():
   teacher_links = {
-    "Nasser-El-Batal Chapter 1": "chemch1",
-    "Nasser-El-Batal Chapter 2": "chemch2",
-    "Nasser-El-Batal Chapter 3": "chemch3"
+     "Nasser-El-Batal Chapter 1": ("chemch1", "Chapter 1"),
+    "Nasser-El-Batal Chapter 2": ("chemch2", "Chapter 2"),
+    "Nasser-El-Batal Chapter 3": ("chemch3", "Chapter 3")
+  
 
   }
 
@@ -265,10 +266,9 @@ def chemch3():
 @views.route('/sherbo')
 def sherbo():
   teacher_links = {
-    "Sherbo Statics": "sherbostatics",
-    "Sherbo Statics v2": "sherbostatics2",
-    "Sherbo Calculus": "sherbocalc"
-
+    "Sherbo Statics": ("sherbostatics", "S1 --> S10"),
+    "Sherbo Statics v2": ("sherbostatics2", "S11 --> Chapter 6 rev"),
+    "Sherbo Calculus": ("sherbocalc", "Calculus")
   }
 
   teachername = "Sherbo"
@@ -314,9 +314,9 @@ def sherbocalc():
 @views.route('/sameh')
 def sameh():
   teacher_links = {
-    "Sameh Nash2t Chapter 1": "samehh1",
-    "Sameh Nash2t Chapter 2": "samehh2",
-    "Sameh Nash2t Chapter 3": "samehh3"
+    "Sameh Nash2t Chapter 1": ("samehh1", "Chapter 1"),
+    "Sameh Nash2t Chapter 2": ("samehh2", "Chapter 2"),
+    "Sameh Nash2t Chapter 3": ("samehh3", "Chapter 3")
 
   }
 
@@ -360,8 +360,10 @@ def samehh3():
                          teachername=teachername)
 @views.route('/gedo')
 def gedo():
-  teacher_links = {"Gedo": "gedoo"}
-
+  teacher_links = {
+    "Gedo": ("gedoo", "Gedo"),
+    # Add other entries with the correct structure
+}
   teachername = "Gedo"
   return render_template('teacher.html',
                          teacher_links=teacher_links,
@@ -385,9 +387,10 @@ def gedoo():
 @views.route('/bio')
 def bio():
   teacher_links = {
-    "Chapter 1": "bioch1",
-    "Chapter 2": "bioch2",
-    "Chapter 3": "bioch3"
+      "Chapter 1": ("bioch1", "Chapter 1"),
+    "Chapter 2": ("bioch2", "Chapter 2"),
+    "Chapter 3": ("bioch3", "Chapter 3"),
+
 
   }
 
@@ -445,20 +448,19 @@ def english():
 @views.route('/salama')
 def salama():
   teacher_links = {
-    "PreStudy": "https://spysnet.com/salamapre",
-    "Course 1": "https://spysnet.com/salamach1",
-    "Course 2": "https://spysnet.com/salamach2",
-    "Course 3": "https://spysnet.com/salamach3",
-    "Course 4": "https://spysnet.com/salamach4",
-    "Course 5": "https://spysnet.com/salamach5",
-    "Course 6 (Revison)": "https://spysnet.com/salamach6",
-    "Course 7": "https://spysnet.com/salamach7",
-    "Course 8": "https://spysnet.com/salamach8",
-    "Course 9": "https://spysnet.com/salamach9",
-    "Course 10": "https://spysnet.com/salamach10",
-    "Course 11": "https://spysnet.com/salamach11",
-    "Course 12": "https://spysnet.com/salamach12"
-
+  "PreStudy": ("https://spysnet.com/salamapre", "PreStudy"),
+    "Course 1": ("https://spysnet.com/salamach1", "Course 1"),
+    "Course 2": ("https://spysnet.com/salamach2", "Course 2"),
+    "Course 3": ("https://spysnet.com/salamach3", "Course 3"),
+    "Course 4": ("https://spysnet.com/salamach4", "Course 4"),
+    "Course 5": ("https://spysnet.com/salamach5", "Course 5"),
+    "Course 6 (Revision)": ("https://spysnet.com/salamach6", "Course 6 (Revision)"),
+    "Course 7": ("https://spysnet.com/salamach7", "Course 7"),
+    "Course 8": ("https://spysnet.com/salamach8", "Course 8"),
+    "Course 9": ("https://spysnet.com/salamach9", "Course 9"),
+    "Course 10": ("https://spysnet.com/salamach10", "Course 10"),
+    "Course 11": ("https://spysnet.com/salamach11", "Course 11"),
+    "Course 12": ("https://spysnet.com/salamach12", "Course 12")
   }
   teachername = "Mohamed Salama"
   return render_template('teacher.html',

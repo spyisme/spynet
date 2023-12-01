@@ -214,7 +214,8 @@
   </div>
   {%endif%}
    <ul>
-  {% for name, url in teacher_links.items() %}
+    {% for name, (url, description) in teacher_links.items() %}
+
           <li>
               <a href="{{ url }}">
                   <div class="card">
@@ -222,7 +223,10 @@
                       <img src="static/assets/{{ teachername }}/{{ name }}.jpg" alt="{{ name }} Image">
                       {% endif %}
                       <p>{{ name }}</p>
-            
+                      {%if description %}
+                      
+                    <span class="card-description">{{description}}</span>
+                 {%endif%}
                 </div>
               </a>
           </li>
