@@ -140,13 +140,10 @@ def get_playlist_videos(playlist_id):
 
 @views.route("/")
 def home():
-  return render_template("index.html")
+  return redirect(url_for("views.display_links"))
 
 
 
-@views.route("/edit")
-def edit():
-  return redirect("https://replit.com/@Spy/Spynet")
 
 
 @views.route('/nawar')
