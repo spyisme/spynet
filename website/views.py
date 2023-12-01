@@ -151,7 +151,9 @@ def nawar():
   teacher_links = {
   "Nawar Chapter 1": ("/nawarch1", "Chapter 1"),
     "Nawar Chapter 1 Revision": ("nawarch1rev", "Chapter 1 Revision"),
-    "Nawar Chapter 2": ("nawarch2", "Chapter 2")
+    "Nawar Chapter 2": ("nawarch2", "Chapter 2"),
+    "Nawar Files": ("nawarpdfs", "Google Drive")
+
   }
 
   teachername = "Nawar"
@@ -200,8 +202,9 @@ def chem():
   teacher_links = {
      "Nasser-El-Batal Chapter 1": ("chemch1", "Chapter 1"),
     "Nasser-El-Batal Chapter 2": ("chemch2", "Chapter 2"),
-    "Nasser-El-Batal Chapter 3": ("chemch3", "Chapter 3")
-  
+    "Nasser-El-Batal Chapter 3": ("chemch3", "Chapter 3"),
+    "Nasser-El-Batal Files": ("chempdfs", "Google Drive")
+
 
   }
 

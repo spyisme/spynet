@@ -162,12 +162,13 @@ def nawarpdfs():
 
             
 
+      
+@shortlinks.route("/chempdfs")
+def chempdfs():
+    return redirect("https://drive.google.com/drive/folders/1trBpK01IknkeMC9LtsCM7dyTz-9uqY0n?usp=drive_link") 
             
 
-@shortlinks.route("/cars")
-def cars():
-    return redirect("https://link.storjshare.io/s/jusqtijcg4gfmzpxdhkynz4xwl4q/judee%2FCopy%20of%20Cars%20(2006)%20Full%20Arabic%201080p%20.ahmadalsheikhly.com.mp4") 
-            
+               
 
 
 
