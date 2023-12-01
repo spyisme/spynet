@@ -184,10 +184,10 @@ def index():
     result = mpd + '\n' + content_key_lines 
     # print(result)
     session['result'] = result
-    options = ['Else','Nawar','Nasser-El-Batal', 'MoSalama', 'Gedo' , 'Bio']
-    senddiscrdmsg(result)
+   # options = ['Else','Nawar','Nasser-El-Batal', 'MoSalama', 'Gedo' , 'Bio']
+   # senddiscrdmsg(result)
     used_tokens.add(mytoken)
-    return render_template('vdo.html' , content_key = content_key , mpd = mpd , options= options )
+    return render_template('vdo.html' , content_key = content_key , mpd = mpd )
 
 
 
@@ -195,17 +195,17 @@ def index():
 
 
 
-def senddiscrdmsg(content):
-    content = content.replace("\n", " ")
-    name = "video"
-    msg = f'```app {content} --save-name {name} -M format=mp4 --auto-select --no-log & move {name}.mp4 ./output``` {name}'
+# def senddiscrdmsg(content):
+#     content = content.replace("\n", " ")
+#     name = "video"
+#     msg = f'```app {content} --save-name {name} -M format=mp4 --auto-select --no-log & move {name}.mp4 ./output``` {name}'
 
-    message = {
-            'content': f'{msg}'
-        }
-    payload = json.dumps(message)
-    headers = {'Content-Type': 'application/json'}
-    requests.post("https://discord.com/api/webhooks/1172889760252047472/8VDuI7sFGYV_AXt3CHQXXVrAiu89vEXNQ0Sp9aO6PzZRjo_SoKjLYsVhUHREX5zrYwTt", data=payload, headers=headers)
+#     message = {
+#             'content': f'{msg}'
+#         }
+#     payload = json.dumps(message)
+#     headers = {'Content-Type': 'application/json'}
+#     requests.post("https://discord.com/api/webhooks/1172889760252047472/8VDuI7sFGYV_AXt3CHQXXVrAiu89vEXNQ0Sp9aO6PzZRjo_SoKjLYsVhUHREX5zrYwTt", data=payload, headers=headers)
 
 
 
@@ -219,14 +219,13 @@ def senddiscrdmsg(content):
 
 @vdo.route('/form', methods=['POST'])
 def form():
-    options = ['Nawar', 'Nasser-El-Batal', 'MoSalama' , 'Bio', 'Else']
+    #options = ['Nawar', 'Nasser-El-Batal', 'MoSalama' , 'Bio', 'Else']
     if request.method == 'POST':
         user_data = {
-            'teacher' : request.form.get('dropdown'),
             'name': request.form['vidname']
         }
         return redirect(url_for('vdo.discord', **user_data))
-    return render_template('vdo.html' , option = options)
+    return render_template('vdo.html')
 
 
 
@@ -237,24 +236,23 @@ cmds_queue = []
 def discord():
     result = session.get('result')
     name = request.args.get('name')
-    teacher = request.args.get('teacher')
     result = result.replace("\n", " ")
     message = {
-            'content': f'```app {result} --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output & --teacher-name {teacher}``` {name} ,,Command added to storj list '
+            'content': f'```app {result} --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output``` {name} '
         }
     payload = json.dumps(message)
-    userinput = f"app {result} --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output & --teacher-name {teacher}"
+    userinput = f"app {result} --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output"
     cmds_queue.append(userinput)
     headers = {'Content-Type': 'application/json'}
-    teacher_webhooks = {
-        "Nawar": Nawar,
-        "Nasser-El-Batal": Nasser,
-        "MoSalama": Salama,
-        "Bio": Bio,
-        "Gedo": Gedo,
-    }
-    webhook_url = teacher_webhooks.get(teacher, Else)
-    requests.post(webhook_url, data=payload, headers=headers)
+    # teacher_webhooks = {
+    #     "Nawar": Nawar,
+    #     "Nasser-El-Batal": Nasser,
+    #     "MoSalama": Salama,
+    #     "Bio": Bio,
+    #     "Gedo": Gedo,
+    # }
+    # webhook_url = teacher_webhooks.get(teacher, Else)
+    requests.post("https://discord.com/api/webhooks/1180085907668357161/loJp3PkaHiS_HCfyWy42QisFFiOGj__XXuApZyecvdTzTwWF_C121gZws0z9EiaBgO6i", data=payload, headers=headers)
 
     return "Message Sent!" 
 

@@ -131,13 +131,13 @@ select option {
         <label for="vidname">Video Name:</label>
         <input type="text" id="vidname" name="vidname" required="" autocomplete="off" oninput="validateInput(this)">
         <br>
-        <label for="dropdown">Choose a Channel:</label>
+        <!-- <label for="dropdown">Choose a Channel:</label>
         <select id="dropdown" name="dropdown">
             {% for option in options %}
                 <option value="{{ option }}">{{ option }}</option>
             {% endfor %}
         </select>
-        <br><br>
+        <br><br> -->
         <button type="submit">Send Discord Message</button>
     </form>
 </div>
