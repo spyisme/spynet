@@ -18,12 +18,13 @@
 
 
   <style>
-      /* Reset some default styles */
+
       html, body {
           height: 100%;
           margin: 0;
           padding: 0;
-          overflow: auto;
+          
+          overflow: auto
       }
       .card-description {
             font-size: 14px;
@@ -97,6 +98,10 @@
           {%if teachername != "All" %}
           height: 210px;
           {% endif %}
+          {%if teachername == "Mohamed Salama" %}
+          width: 210px;
+          {% endif %}
+
 
       }
 
@@ -108,8 +113,7 @@
       .card img {
           max-width: 100%;
 
-   
-              height: 100px;
+            height: 100px;
         
       }
 
