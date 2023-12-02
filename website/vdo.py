@@ -77,7 +77,7 @@ used_tokens = set()  # Set to store used tokens
 @vdo.route('/vdocipher', methods=['GET', 'POST'])
 def index():
     mytoken = request.args.get('token')
-    
+    spy = request.args.get('spy')
 
     if mytoken in used_tokens:
         return jsonify({'error': 'Token already used'}), 400
@@ -184,30 +184,13 @@ def index():
     result = mpd + '\n' + content_key_lines 
     # print(result)
     session['result'] = result
-   # options = ['Else','Nawar','Nasser-El-Batal', 'MoSalama', 'Gedo' , 'Bio']
-   # senddiscrdmsg(result)
+    options = []
+    if spy :
+        options = ['Else','Nawar','Nasser-El-Batal', 'MoSalama', 'Gedo' , 'Bio']
     used_tokens.add(mytoken)
-    return render_template('vdo.html' , content_key = content_key , mpd = mpd )
-
-
-
-
-
-
-
-# def senddiscrdmsg(content):
-#     content = content.replace("\n", " ")
-#     name = "video"
-#     msg = f'```app {content} --save-name {name} -M format=mp4 --auto-select --no-log & move {name}.mp4 ./output``` {name}'
-
-#     message = {
-#             'content': f'{msg}'
-#         }
-#     payload = json.dumps(message)
-#     headers = {'Content-Type': 'application/json'}
-#     requests.post("https://discord.com/api/webhooks/1172889760252047472/8VDuI7sFGYV_AXt3CHQXXVrAiu89vEXNQ0Sp9aO6PzZRjo_SoKjLYsVhUHREX5zrYwTt", data=payload, headers=headers)
-
-
+    session['result'] = result
+    session['spy'] = spy
+    return render_template('vdo.html' , content_key = content_key , mpd = mpd ,options = options ,spy = spy)
 
 
 
@@ -219,17 +202,64 @@ def index():
 
 @vdo.route('/form', methods=['POST'])
 def form():
-    #options = ['Nawar', 'Nasser-El-Batal', 'MoSalama' , 'Bio', 'Else']
+    options = ['Nawar', 'Nasser-El-Batal', 'MoSalama' , 'Bio', 'Else']
+    spy = session.get('spy')
+    route = "vdo.discord"
+    if spy :
+        route = "vdo.discord2"
     if request.method == 'POST':
         user_data = {
+            'teacher' : request.form.get('dropdown'),
             'name': request.form['vidname']
         }
-        return redirect(url_for('vdo.discord', **user_data))
-    return render_template('vdo.html')
+        return redirect(url_for(f'{route}', **user_data))
+    return render_template('vdo.html', option = options)
 
 
 
 cmds_queue = []
+
+
+
+@vdo.route('/discord2', methods=['GET', 'POST'])
+def discord2():
+    result = session.get('result')
+    name = request.args.get('name')
+    result = result.replace("\n", " ")
+    teacher = request.args.get('teacher')
+    message = {
+            'content': f'```app {result} --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output``` {name} '
+        }
+    payload = json.dumps(message)
+    userinput = f"app {result} --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output"
+    cmds_queue.append(userinput)
+    headers = {'Content-Type': 'application/json'}
+    teacher_webhooks = {
+        "Nawar": Nawar,
+        "Nasser-El-Batal": Nasser,
+        "MoSalama": Salama,
+        "Bio": Bio,
+        "Gedo": Gedo,
+    }
+    webhook_url = teacher_webhooks.get(teacher, Else)
+    requests.post(webhook_url, data=payload, headers=headers)
+    session.pop('spy', None)
+
+    return 'Message Sent! <a href="https://discord.gg/vKBnMy5yUe">Discord server</a>'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 @vdo.route('/discord', methods=['GET', 'POST'])
