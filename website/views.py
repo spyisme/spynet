@@ -645,6 +645,8 @@ def iframes():
 @views.route('/sherboiframe', methods=['GET', 'POST'])
 def sherboframe():
     url = request.args.get('url')
+    name = request.args.get('name')
+
     url = url.replace("/play/", "/embed/")
     if request.method == 'POST':
         name =  request.form.get('name')
@@ -662,4 +664,4 @@ def sherboframe():
         webhook_url = "https://discord.com/api/webhooks/1169342540575670292/crazeFe5z0qAozWBJOnlZfevMMQ219NVzZ-Cl6mWK9NrtBqBXc3kBzj1tJ8_KVu7UuKf"
         requests.post(webhook_url, data=payload, headers=headers)
         return "Message Sent!" 
-    return render_template('iframe.html' , url = url)
+    return render_template('iframe.html' , url = url , name= name)
