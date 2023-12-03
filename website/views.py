@@ -73,67 +73,33 @@ def login():
 
 #     return render_template('register.html')
 
-import isodate
-
 YOUTUBE_API_KEY = 'AIzaSyAbrVMIzmLLhHQSrMVUG8gS3d6IAYE0qVc'
 
-def chunks(lst, chunk_size):
-    """Yield successive n-sized chunks from lst."""
-    for i in range(0, len(lst), chunk_size):
-        yield lst[i:i + chunk_size]
-
-def get_video_details(video_ids):
-    youtube = build('youtube', 'v3', developerKey=YOUTUBE_API_KEY)
-
-    videos = []
-    for video_chunk in chunks(video_ids, 50):
-        video_request = youtube.videos().list(
-            part='contentDetails,snippet',
-            id=','.join(video_chunk)
-        )
-        video_response = video_request.execute()
-
-        for item in video_response.get('items', []):
-            content_details = item.get('contentDetails', {})
-            duration = content_details.get('duration', '')
-
-            # Check if the duration is not empty before attempting to parse it
-            if duration:
-                parsed_duration = isodate.parse_duration(duration)
-                duration_formatted = str(parsed_duration)
-            else:
-                duration_formatted = 'N/A'
-
-            videos.append({
-                'duration': duration_formatted,
-                'title': item.get('snippet', {}).get('title', ''),
-                'id': item['id']
-            })
-
-    return videos
 
 def get_playlist_videos(playlist_id):
-    youtube = build('youtube', 'v3', developerKey=YOUTUBE_API_KEY)
+    youtube = build('youtube', 'v3', developerKey=YOUTUBE_API_KEY, static_discovery=False)
 
+    # Fetch the playlist items
     playlist_items = []
     next_page_token = None
 
     while True:
         playlist_request = youtube.playlistItems().list(
-            part='contentDetails',
+            part='snippet',
             playlistId=playlist_id,
-            maxResults=50,
-            pageToken=next_page_token)
+            maxResults=50,  # Adjust as needed
+            pageToken=next_page_token
+        )
         playlist_response = playlist_request.execute()
 
-        playlist_items.extend(playlist_response.get('items', []))
+        playlist_items.extend(playlist_response['items'])
         next_page_token = playlist_response.get('nextPageToken')
 
         if not next_page_token:
             break
 
-    video_ids = [item['contentDetails']['videoId'] for item in playlist_items]
-    videos = get_video_details(video_ids)
+    videos = [{'id': item['snippet']['resourceId']['videoId'], 'title': item['snippet']['title']}
+              for item in playlist_items]
 
     return videos
 
