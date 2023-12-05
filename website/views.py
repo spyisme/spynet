@@ -152,7 +152,7 @@ def nawarch1rev():
                          playlist_id=playlist_id,
                          teachername=teachername)
 @views.route("/nawarch2rev")
-def nawarch1rev():
+def nawarch2rev():
   teachername = "Nawar"
   playlist_id = 'PLM-GVlebsoPVAd_O1EYC8ORRkYGQ_latH'
   videos = get_playlist_videos(playlist_id)
