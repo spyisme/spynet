@@ -118,6 +118,8 @@ def nawar():
   "Nawar Chapter 1": ("/nawarch1", "Chapter 1"),
     "Nawar Chapter 1 Revision": ("nawarch1rev", "Chapter 1 Revision"),
     "Nawar Chapter 2": ("nawarch2", "Chapter 2"),
+    "Nawar Chapter 2 Revision": ("nawarch2rev", "Chapter 2 Revision"),
+
     "Nawar Files": ("nawarpdfs", "Google Drive")
 
   }
@@ -149,7 +151,15 @@ def nawarch1rev():
                          videos=videos,
                          playlist_id=playlist_id,
                          teachername=teachername)
-
+@views.route("/nawarch2rev")
+def nawarch1rev():
+  teachername = "Nawar"
+  playlist_id = 'PLM-GVlebsoPVAd_O1EYC8ORRkYGQ_latH'
+  videos = get_playlist_videos(playlist_id)
+  return render_template('videopage.html',
+                         videos=videos,
+                         playlist_id=playlist_id,
+                         teachername=teachername)
 
 @views.route("/nawarch2")
 def nawarch2():
