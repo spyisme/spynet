@@ -231,7 +231,7 @@ def chemch3():
     teachername = "Nasser-El-Batal"
     playlist_id = 'PLM-GVlebsoPVXmash3q9sfG5bsD3Mt88x'
     videos = get_playlist_videos(playlist_id)
-    # videos += [{'url': '/chemstorj', 'title': 'More'}]
+    #videos += [{'url': '/chemstorj', 'title': 'More'}]
     return render_template('videopage.html',
                            videos=videos,
                            playlist_id=playlist_id,
@@ -272,7 +272,10 @@ def sherbostatics():
 def sherbostatics2():
   teachername = "Sherbo Statics"
   playlist_id = 'PLM-GVlebsoPWglys60cNg_dhTJ6RzXmUR'
+  
   videos = get_playlist_videos(playlist_id)
+  videos += [{'url': 'https://iframe.mediadelivery.net/play/33074/a7f0f898-432f-4b08-a793-0dc942c7fbd8', 'title': 'Save my statics Ch6'}]
+
   return render_template('videopage.html',
                          videos=videos,
                          playlist_id=playlist_id,
