@@ -274,6 +274,12 @@ def sherbostatics2():
   playlist_id = 'PLM-GVlebsoPWglys60cNg_dhTJ6RzXmUR'
   
   videos = get_playlist_videos(playlist_id)
+  videos += {'url': 'https://iframe.mediadelivery.net/play/33074/5fd08bd7-0920-4685-b99d-7c02b4f45aab', 'title': 'Save mystatics Ch1'}
+  videos += {'url': 'https://iframe.mediadelivery.net/play/33074/88e41628-26d6-48fc-a431-064ca36fd253', 'title': 'Save mystatics Ch2Part1'}
+  videos += {'url': 'https://iframe.mediadelivery.net/play/33074/e816faf2-2866-4d68-a5f7-9ed5f3002afd', 'title': 'Save mystatics Ch2Part2'}
+  videos += {'url': 'https://iframe.mediadelivery.net/play/33074/22808708-26e9-46a6-ba6e-afcdb84a6b31', 'title': 'Save mystatics Ch3Part1'}
+  videos += {'url': 'https://iframe.mediadelivery.net/play/33074/bc116916-ad29-47a7-856d-0660ad0e3033', 'title': 'Save mystatics Ch3Part2'}
+  videos += {'url': 'https://iframe.mediadelivery.net/play/33074/917ad2d8-f268-46d0-8eb8-c82f3ee48568', 'title': 'Save mystatics Ch4'}
   videos += [{'url': 'https://iframe.mediadelivery.net/play/33074/a7f0f898-432f-4b08-a793-0dc942c7fbd8', 'title': 'Save my statics Ch6'}]
 
   return render_template('videopage.html',
