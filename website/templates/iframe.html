@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="https://spysnet.com/static/snn.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="description" content="Dencrypt Vdocipher">
+  <meta name="author" content="Spy">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpysNet</title>
+<style>/* styles.css */
+
+    /* Apply styles to the body element */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+    
+    /* Style the header */
+    h1 {
+        text-align: center;
+        color: #333;
+    }
+    
+    /* Style the form */
+    form {
+        max-width: 400px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Style form labels and input fields */
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+    
+    input[type="text"] {
+            width: 90%; /* Set the width to 100% to make them full-width */
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        
+    button[type="submit"] {
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+    
+    /* Style the output section */
+    .output {
+        max-width: 700px;
+        margin: 20px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Style error messages */
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    
+    ul li {
+        color: red;
+    }
+    /* Add styles for the dropdown */
+select {
+    width: 90%; /* Set the width to 100% to make it full-width */
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+/* Style the dropdown arrow */
+select:after {
+    content: "\25BC"; /* Unicode character for a downward arrow */
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    pointer-events: none; /* Prevent clicking on the arrow */
+}
+
+/* Style the dropdown options */
+select option {
+    background-color: #fff;
+    color: #333;
+}
+
+    </style>
+</head>
+<body>
+    <h1>iFrame Videos</h1>
+    <form method="POST">
+        <label for="name">Name:</label>
+        <input type="text" name="name" required autocomplete="off"> 
+        <br>
+        <button type="submit">Send Message</button>
+    </form>
+
+
+    <div class="output">
+        <h2>Url : </h2>
+        <p>{{url}}</p>
+            </div>
+</div>
+
+<div class="output">
+    <h2>Name : </h2>
+    <p>{{name}}</p>
+        </div>
+</div>
+</body>
+</html>
