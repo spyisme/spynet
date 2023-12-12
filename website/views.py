@@ -650,3 +650,16 @@ def sherboframe():
         requests.post(webhook_url, data=payload, headers=headers)
         return "Message Sent!" 
     return render_template('iframe.html' , url = url , name= name)
+
+
+
+
+
+
+
+
+
+
+@views.route("/test")
+def test():
+  return render_template('videoplayer.html' )
