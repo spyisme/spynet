@@ -449,7 +449,11 @@ def salama():
     "Course 9": ("https://spysnet.com/salamach9", "Course 9"),
     "Course 10": ("https://spysnet.com/salamach10", "Course 10"),
     "Course 11": ("https://spysnet.com/salamach11", "Course 11"),
-    "Course 12": ("https://spysnet.com/salamach12", "Course 12")
+    "Course 12": ("https://spysnet.com/salamach12", "Course 12"),
+    "Course 13": ("https://spysnet.com/salamach13", "Course 13"),
+    "Course 14": ("https://spysnet.com/salamach14", "Course 14")
+
+
   }
   teachername = "Mohamed Salama"
   return render_template('teacher.html',
@@ -607,6 +611,28 @@ def salamach12():
                          playlist_id=playlist_id,
                          teachername=teachername)
 
+@views.route("/salamach13")
+def salamach13():
+  teachername = "Mohamed Salama Course 13"
+  playlist_id = 'PLM-GVlebsoPURAU8nu_tU2dphnGXxZeMM'
+  videos = get_playlist_videos(playlist_id)
+ # videos += [{'url': '/salamastorj', 'title': 'More'}]
+
+  return render_template('videopage.html',
+                         videos=videos,
+                         playlist_id=playlist_id,
+                         teachername=teachername)
+@views.route("/salamach14")
+def salamach14():
+  teachername = "Mohamed Salama Course 14"
+  playlist_id = 'PLM-GVlebsoPXnRQBjkDqUUAXDKyUJqK9-'
+  videos = get_playlist_videos(playlist_id)
+ # videos += [{'url': '/salamastorj', 'title': 'More'}]
+
+  return render_template('videopage.html',
+                         videos=videos,
+                         playlist_id=playlist_id,
+                         teachername=teachername)
 
 
 
