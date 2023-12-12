@@ -2,6 +2,8 @@ from website import create_app
 from flask import  redirect 
 import logging
 
+from os import system
+system("title " + "Spynet")
 
 log = logging.getLogger('werkzeug')
 log.setLevel(logging.ERROR)
