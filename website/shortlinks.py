@@ -329,4 +329,10 @@ def main():
 
             
 
+    
+@shortlinks.route("/mariam")
+def mariam():
+    return redirect("https://spysnet.com/static/mariam.png") 
             
+
+                    

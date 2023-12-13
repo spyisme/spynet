@@ -119,6 +119,7 @@ def nawar():
     "Nawar Chapter 1 Revision": ("nawarch1rev", "Chapter 1 Revision"),
     "Nawar Chapter 2": ("nawarch2", "Chapter 2"),
     "Nawar Chapter 2 Revision": ("nawarch2rev", "Chapter 2 Revision"),
+    "Nawar Chapter 3": ("nawarch3", "Chapter 3"),
 
     "Nawar Files": ("nawarpdfs", "Google Drive")
 
@@ -133,7 +134,7 @@ def nawar():
 
 @views.route("/nawarch1")
 def nawarch1():
-  teachername = "Nawar"
+  teachername = "Nawar Chapter 1"
   playlist_id = 'PLM-GVlebsoPXpGe3wzMN7SKYvmTr0jACa'
   videos = get_playlist_videos(playlist_id)
   return render_template('videopage.html',
@@ -163,7 +164,7 @@ def nawarch2rev():
 
 @views.route("/nawarch2")
 def nawarch2():
-  teachername = "Nawar"
+  teachername = "Nawar Chapter 2"
   playlist_id = 'PLM-GVlebsoPWU4v5bcndzPBt6e7PsiCwQ'
   videos = get_playlist_videos(playlist_id)
   # videos += [{'url': '/nawarstorj', 'title': 'More'}]
@@ -172,6 +173,15 @@ def nawarch2():
                          playlist_id=playlist_id,
                          teachername=teachername)
 
+@views.route("/nawarch3")
+def nawarch3():
+  teachername = "Nawar Chapter 3"
+  playlist_id = 'PLM-GVlebsoPXwGQGxiTBmNCzD4E_BgDCo'
+  videos = get_playlist_videos(playlist_id)
+  return render_template('videopage.html',
+                         videos=videos,
+                         playlist_id=playlist_id,
+                         teachername=teachername)
 
 @views.route('/chem')
 def chem():
@@ -244,8 +254,7 @@ def learnmore():
 @views.route('/sherbo')
 def sherbo():
   teacher_links = {
-    "Sherbo Statics": ("sherbostatics", "S1 --> S10"),
-    "Sherbo Statics v2": ("sherbostatics2", "S11 --> Chapter 6 rev"),
+    "Sherbo Statics": ("sherbostatics", "Statics"),
     "Sherbo Calculus": ("sherbocalc", "Calculus"),
     "Sherbo Files": ("sherbopdfs", "Google Drive")
 
@@ -263,24 +272,15 @@ def sherbostatics():
   teachername = "Sherbo Statics"
   playlist_id = 'PLM-GVlebsoPX_3mlaOeWIjCPY8jH8MpfJ'
   videos = get_playlist_videos(playlist_id)
-  return render_template('videopage.html',
-                         videos=videos,
-                         playlist_id=playlist_id,
-                         teachername=teachername)
-
-@views.route("/sherbostatics2")
-def sherbostatics2():
-  teachername = "Sherbo Statics"
-  playlist_id = 'PLM-GVlebsoPWglys60cNg_dhTJ6RzXmUR'
-  
-  videos = get_playlist_videos(playlist_id)
-  videos += [{'url': 'https://iframe.mediadelivery.net/play/33074/5fd08bd7-0920-4685-b99d-7c02b4f45aab', 'title': 'Save mystatics Ch1'}]
-  videos += [{'url': 'https://iframe.mediadelivery.net/play/33074/88e41628-26d6-48fc-a431-064ca36fd253', 'title': 'Save mystatics Ch2Part1'}]
-  videos += [{'url': 'https://iframe.mediadelivery.net/play/33074/e816faf2-2866-4d68-a5f7-9ed5f3002afd', 'title': 'Save mystatics Ch2Part2'}]
-  videos += [{'url': 'https://iframe.mediadelivery.net/play/33074/22808708-26e9-46a6-ba6e-afcdb84a6b31', 'title': 'Save mystatics Ch3Part1'}]
-  videos += [{'url': 'https://iframe.mediadelivery.net/play/33074/bc116916-ad29-47a7-856d-0660ad0e3033', 'title': 'Save mystatics Ch3Part2'}]
-  videos += [{'url': 'https://iframe.mediadelivery.net/play/33074/917ad2d8-f268-46d0-8eb8-c82f3ee48568', 'title': 'Save mystatics Ch4'}]
-  videos += [{'url': 'https://iframe.mediadelivery.net/play/33074/a7f0f898-432f-4b08-a793-0dc942c7fbd8', 'title': 'Save my statics Ch6'}]
+  videos += [
+    {'url': 'https://iframe.mediadelivery.net/play/33074/5fd08bd7-0920-4685-b99d-7c02b4f45aab', 'title': 'Save mystatics Ch1'},
+    {'url': 'https://iframe.mediadelivery.net/play/33074/88e41628-26d6-48fc-a431-064ca36fd253', 'title': 'Save mystatics Ch2Part1'},
+    {'url': 'https://iframe.mediadelivery.net/play/33074/e816faf2-2866-4d68-a5f7-9ed5f3002afd', 'title': 'Save mystatics Ch2Part2'},
+    {'url': 'https://iframe.mediadelivery.net/play/33074/22808708-26e9-46a6-ba6e-afcdb84a6b31', 'title': 'Save mystatics Ch3Part1'},
+    {'url': 'https://iframe.mediadelivery.net/play/33074/bc116916-ad29-47a7-856d-0660ad0e3033', 'title': 'Save mystatics Ch3Part2'},
+    {'url': 'https://iframe.mediadelivery.net/play/33074/917ad2d8-f268-46d0-8eb8-c82f3ee48568', 'title': 'Save mystatics Ch4'},
+    {'url': 'https://iframe.mediadelivery.net/play/33074/a7f0f898-432f-4b08-a793-0dc942c7fbd8', 'title': 'Save my statics Ch6'}
+  ]
 
   return render_template('videopage.html',
                          videos=videos,
@@ -350,7 +350,7 @@ def samehh3():
 @views.route('/gedo')
 def gedo():
   teacher_links = {
-    "Gedo": ("gedoo", "Gedo"),
+    "Gedo": ("gedoo", "S2 and S3 Not Available"),
     # Add other entries with the correct structure
 }
   teachername = "Gedo"
@@ -376,7 +376,7 @@ def gedoo():
 @views.route('/bio')
 def bio():
   teacher_links = {
-      "Chapter 1": ("bioch1", "Chapter 1"),
+      "Chapter 1": ("bioch1", "S2 Not Available"),
     "Chapter 2": ("bioch2", "Chapter 2"),
     "Chapter 3": ("bioch3", "Chapter 3"),
 
