@@ -294,7 +294,7 @@ def sherbocalc():
   teachername = "Sherbo Calculus"
   playlist_id = 'PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq'
   videos = get_playlist_videos(playlist_id)
-  return render_template('used_pages/used_pages/videopage.html',
+  return render_template('used_pages/videopage.html',
                          videos=videos,
                          playlist_id=playlist_id,
                          teachername=teachername)
