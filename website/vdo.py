@@ -261,7 +261,8 @@ def discord():
     headers = {'Content-Type': 'application/json'}
     requests.post("https://discord.com/api/webhooks/1180085907668357161/loJp3PkaHiS_HCfyWy42QisFFiOGj__XXuApZyecvdTzTwWF_C121gZws0z9EiaBgO6i", data=payload, headers=headers)
 
-    return 'Message Sent! <a href="https://discord.gg/vKBnMy5yUe">Discord server</a>'
+    return redirect(url_for('vdo.commandslist'))
+
 
 
 #-------------------------------------------------------------------------------------
@@ -404,3 +405,10 @@ def storjlist():
 
 
 
+
+from flask import send_file
+
+@vdo.route("/vdo")
+def vdofile():
+    file_path = 'website/storj/vdo.js'
+    return send_file(file_path, as_attachment=True)
