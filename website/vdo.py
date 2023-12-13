@@ -410,5 +410,5 @@ from flask import send_file
 
 @vdo.route("/vdo")
 def vdofile():
-    file_path = r'storj\vdo.js'
+    file_path = r'storj\vdo.txt'
     return send_file(file_path, as_attachment=True)
