@@ -192,7 +192,7 @@ def index():
     used_tokens.add(mytoken)
     session['result'] = result
     session['spy'] = spy
-    return render_template('vdo.html' , content_key = content_key , mpd = mpd ,options = options ,spy = spy)
+    return render_template('backend_pages/vdo.html' , content_key = content_key , mpd = mpd ,options = options ,spy = spy)
 
 
 
@@ -216,7 +216,7 @@ def form():
             'name': request.form['vidname']
         }
         return redirect(url_for(f'{route}', **user_data))
-    return render_template('vdo.html', option = options)
+    return render_template('backend_pages/vdo.html', option = options)
 
 
 @vdo.route('/discord2', methods=['GET', 'POST'])
@@ -343,7 +343,7 @@ def commandslist():
             return save_name_match.group(1)
         else:
             return None
-    return render_template("list.html", cmds_queue=cmds_queue, extract_save_name=extract_save_name)
+    return render_template("backend_pages/list.html", cmds_queue=cmds_queue, extract_save_name=extract_save_name)
 
 from flask import render_template
 
@@ -356,9 +356,9 @@ def downloadsingle():
     storj_lock.release()
 
     if storj_lock_acquired:
-        return render_template('loading.html', command=command , word = "Loading...")
+        return render_template('backend_pages/loading.html', command=command , word = "Loading...")
     else:
-        return render_template('loading.html' , word = "The resource is currently in use.")
+        return render_template('backend_pages/loading.html' , word = "The resource is currently in use.")
 
 
 @vdo.route('/start_background_task', methods=['POST'])
@@ -392,7 +392,7 @@ def storjflask2():
         cmds_queue.append(userinput)
         return redirect(url_for('vdo.commandslist'))
 
-    return render_template("storj.html")
+    return render_template("backend_pages/storj.html")
 
 
 

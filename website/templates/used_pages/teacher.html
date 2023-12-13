@@ -1,21 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2812078112067783"
-     crossorigin="anonymous"></script>
-{% if storj == "True"%}
-<title>{{ teacher }}</title>
+ <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2812078112067783"
+ crossorigin="anonymous"></script>
 
-{%else %}
     <title>{{ teachername }}</title>
-
-    {%endif%}
-
-
     <link rel="icon" type="image/x-icon" href="/static/snn.png">
     <meta name="description" content="{{teachername}}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-
 
 
 
@@ -149,22 +141,15 @@ padding: 20px;
 transition: transform 0.2s, box-shadow 0.2s;
 text-align: center;
 text-transform: capitalize;
-
+height: 210px;
 
 }
+.discord-link a {
+              color: white;
+              text-decoration: underline;
+            }
   </style>
 
-
-
-
-  {%if teachername != "All" %}
-<style>
-.card {
-
-height: 210px;
-}
-</style>
-{% endif %}
 {%if teachername == "Mohamed Salama" %}
 
 <style>
@@ -180,85 +165,13 @@ width: 210px
 </head>
 
 
-
-
 <body>
-  {% if alert == "true"%}
-  <script>
-    alert("Link Deleted")
-  </script>
-  {%endif%}
 
-{% if teachername == "All"%}
-
-{% if storj == "True"%}
-
-    <div class="nav">
-
-        <h1>{{teacher}} Storj</h1>
-        </div>
-    <ul>
-        {% for line in lines %}
-            {% set parts = line.strip().split('xx') %}
-            <li>
-                <a href="{{ parts[1] }}" , target="_blank">
-                    <div class="card">
-
-                    {{ parts[0] }}
-                </div>
-
-            </a>
-        </li>
-        {% endfor %}
-    </ul>
-
-{%else%}
-  <div class="nav">
-
-  <h1>All links</h1>
-  <style>
-    .discord-link a {
-      color: white;
-      text-decoration: underline;
-    }
-  </style>
-  
-  <p>Experimenting to add ads. <div class="discord-link"><a href="/all">Home</a>  | <a href="/learn-more" target="_blank">Api Usage</a></div></p>
-
-  </div>
-  <ul>
-    {% for item in lines %}
-        <li>
-            <a href="{{ item }}">
-                <div class="card">
-                    {{ item }}
-                </div>
-            </a>
-        </li>
-
-    {% endfor %}
-
-  </ul>
-  {%endif%}
-  {%else%}
-  {%if "PDF" in teachername%}
-<div class="nav">
-      <h1>{{ teachername }}</h1>
-</div>
-  {%else%}
   <div class="nav">
         <h1>{{ teachername }} Videos</h1>
-        <style>
-            .discord-link a {
-              color: white;
-              text-decoration: underline;
-            }
-          </style>
           
           <p>Experimenting to add ads. <div class="discord-link"><a href="/all">Home</a>  | <a href="/learn-more" target="_blank">Api Usage</a></div></p>
-
   </div>
-  {%endif%}
    <ul>
     {% for name, (url, description) in teacher_links.items() %}
 
@@ -274,17 +187,15 @@ width: 210px
                       <img src="static/assets/{{ teachername }}/{{ name }}.jpg" alt="{{ name }} Image">
                       {% endif %}
                       <p>{{ name }}</p>
-                      {%if description %}
+      
                       
                     <span class="card-description">{{description}}</span>
-                 {%endif%}
                 </div>
               </a>
           </li>
           {% endfor %}
       </ul>
   
-{%endif%}
 </body>
 
 

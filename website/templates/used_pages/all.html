@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2812078112067783"
+ crossorigin="anonymous"></script>
+
+    <title>{{ teachername }}</title>
+    <link rel="icon" type="image/x-icon" href="/static/snn.png">
+    <meta name="description" content="{{teachername}}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+
+
+  <style>
+
+      html, body {
+          height: 100%;
+          margin: 0;
+          padding: 0;
+          
+          overflow: auto
+      }
+      .card-description {
+            font-size: 14px;
+            color: black;
+            margin-top: 10px;
+        }
+      /* Style the iframe to take 100% of the viewport */
+      iframe {
+          width: 100%;
+          height: 100%;
+          border: none; /* Remove iframe border, adjust as needed */
+      }
+
+      body {
+          font-family: Arial, sans-serif;
+          background-color: #f0f0f0;
+          color: #fff; /* Default text color */
+      }
+
+      /* Dark Mode */
+      @media (prefers-color-scheme: dark) {
+          body {
+              background-color: #1a1a1a;
+              color: #fff; /* Text color in dark mode */
+          }
+
+          .nav {
+              background-color: #1a1a1a; /* Dark background color for the navigation */
+              color: #fff;
+          }
+
+          ul {
+              background-color: #1a1a1a; /* Dark background color for the list */
+          }
+
+          /* Add more styles for dark mode as needed */
+      }
+
+      .nav {
+          padding: 20px;
+          margin: 0;
+          text-align: center;
+          background-color: pink;
+          color: #fff;
+      }
+
+      ul {
+          list-style: none;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          padding: 20px;
+      }
+
+      li {
+          margin: 10px;
+          flex: 1;
+          max-width: 300px; /* Set a maximum width for the cards on PC */
+      }
+
+
+      .card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .card img {
+          max-width: 100%;
+
+            height: 100px;
+        
+      }
+
+      .card p {
+          font-size: 22px; /* Increase text size */
+      }
+
+      a {
+          text-decoration: none;
+          color: blue;
+      }
+
+      a:hover {
+          text-decoration: none;
+          text-align: center;
+      }
+
+      /* Mobile Styles */
+      @media screen and (max-width: 768px) {
+          h1 {
+              padding: 10px;
+              width: 96%;
+          }
+
+          ul {
+              flex-direction: column; /* Stack cards vertically */
+              padding: 10px;
+          }
+
+          li {
+              margin: 5px;
+              max-width: 100%; /* Make cards full width on mobile */
+          }
+
+          .card {
+              padding: 10px;
+              width: 96%; /* Make cards 100% width on mobile */
+              margin: 0 auto; /* Center-align the cards */
+              min-height: 50px;
+              width: 210px
+          }
+      }
+      .card {
+
+background-color: #fff;
+border: 1px solid #ccc;
+border-radius: 10px;
+box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+padding: 20px;
+transition: transform 0.2s, box-shadow 0.2s;
+text-align: center;
+text-transform: capitalize;
+
+}
+.discord-link a {
+              color: white;
+              text-decoration: underline;
+            }
+  </style>
+
+
+
+</head>
+
+
+<body>
+
+  <div class="nav">
+        <h1>{{ teachername }}</h1>
+          
+          <p>Experimenting to add ads. <div class="discord-link"><a href="/all">Home</a>  | <a href="/learn-more" target="_blank">Api Usage</a></div></p>
+  </div>
+   <ul>
+    {% for item in lines %}
+    <li>
+        <a href="{{ item }}">
+            <div class="card">
+                {{ item }}
+            </div>
+        </a>
+    </li>
+
+{% endfor %}
+
+      </ul>
+  
+</body>
+
+
+  <script>
+
+    window.onload = function () {
+      function getRandomColor() {
+        const min = 0;
+        const max = 255;
+
+        const r = Math.floor(Math.random() * (max - min + 1)) + min;
+        const g = Math.floor(Math.random() * (max - min + 1)) + min;
+        const b = Math.floor(Math.random() * (max - min + 1)) + min;
+
+        return `rgb(${r}, ${g}, ${b})`;
+      }
+
+      function changeColors() {
+        const h1 = document.querySelector(".nav");
+        const links = document.querySelectorAll("a");
+        const randomColor = getRandomColor();
+        h1.style.backgroundColor = randomColor;
+
+        links.forEach(link => {
+          link.style.backgroundColor = randomColor;
+        });
+      }
+
+      changeColors();
+    };
+  </script>
+
+</html>
