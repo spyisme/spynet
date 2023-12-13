@@ -310,22 +310,25 @@ def storjsingle(command):
                 run_command(cmd)
 
                 # Upload to stoj
+                run_command(f"move {video_name}.mp4 ./output")
                 senddiscrdmsg("Uploading the video...")
                 run_command(command2)
 
                 # Cleanup
                 # senddiscrdmsg("Deleting the video...")
                 run_command(command4)
-                #run_command("cls")
-                #run_command("echo Running!")
+                run_command("cls")
+                run_command("echo Running!")
                 senddiscrdmsg("Done !")
-                del cmds_queue[0]
+                if command in cmds_queue:
+                    cmds_queue.remove(command)
              #Incase no video name   
             else : 
                 print("Wrong cmd")
-               # run_command("cls")
-               # run_command("echo Running!")
-                del cmds_queue[0]
+                run_command("cls")
+                run_command("echo Running!")
+                if command in cmds_queue:
+                    cmds_queue.remove(command)
         finally:
             storj_lock.release()
 
@@ -346,18 +349,22 @@ from flask import render_template
 @vdo.route('/downloadsingle', methods=['GET'])
 def downloadsingle():
     command = request.args.get('command')
-    if command in cmds_queue:
-        return render_template('loading.html', command=command)
-    else:
-        return redirect(url_for('vdo.commandslist'))
+    
+    # Check the status before proceeding
+    storj_lock_acquired = storj_lock.acquire(blocking=False)
+    storj_lock.release()
 
+    if storj_lock_acquired:
+        return render_template('loading.html', command=command , word = "Loading...")
+    else:
+        return render_template('loading.html' , word = "The resource is currently in use.")
 
 
 @vdo.route('/start_background_task', methods=['POST'])
 def start_background_task():
     command = request.args.get('command')
     storjsingle(command)
-    return jsonify({'status': f'Task started successfully , {command}'})
+    return jsonify({'status': f'Video uploaded successfully'})
 
 
 
@@ -377,8 +384,8 @@ def lock_status():
 
 
 #Manual command add
-@vdo.route("/storj", methods=['GET', 'POST'])
-def storjmanual():
+@vdo.route("/storj2", methods=['GET', 'POST'])
+def storjflask2():
     if request.method == 'POST':
         userinput = request.form['userinput']
         cmds_queue.append(userinput)

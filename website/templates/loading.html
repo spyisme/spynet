@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loading...</title>
+    <title>Spynet</title>
+    <link rel="icon" type="image/x-icon" href="/static/snn.png">
+    <meta name="description" content="Spynet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Mobile viewport support -->
+    
+</head>
+<body>
     <style>
         body {
             text-align: center;
@@ -11,32 +15,35 @@
             font-size: 20px;
         }
     </style>
-</head>
-<body>
-    <h1>Loading...</h1>
+    <h1 id="status">{{word}}</h1>
     <script>
         const urlParams = new URLSearchParams(window.location.search);
         const command = urlParams.get('command');
-    
+        const statusElement = document.getElementById('status');
+
         setTimeout(function() {
-            fetch('/start_background_task', {
+            fetch(`/start_background_task?command=${command}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
                 },
-                body: `command=${command}`,
             })
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);
-                    console.log("error?")
                 }
                 return response.json();
             })
-        
-            .catch(error => console.error('Error:', error));
+            .then(data => {
+                console.log(data);
+                statusElement.textContent = 'Done!';
+                // Additional actions after completion if needed
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                statusElement.textContent = 'Error occurred';
+            });
         }, 3000);
     </script>
-    
 </body>
 </html>
