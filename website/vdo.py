@@ -197,11 +197,11 @@ def index():
     session['result'] = result
     session['spy'] = spy
     message = {
-            'content': f'{username} used the api! Video details https://dev.vdocipher.com/api/meta/{video_id}'
+            'content': f'{username} used the api! \n Video details https://dev.vdocipher.com/api/meta/{video_id}'
         }
     payload = json.dumps(message)
     headers = {'Content-Type': 'application/json'}
-    requests.post("https://discord.com/api/webhooks/1177648648172093562/8PN6BS5c4l4tST5H_jtunzO46iiigz1zyEI34nPbWN_Q7IKJjQKIEYLdb6OXYpwVofwp", data=payload, headers=headers)
+    requests.post("https://discord.com/api/webhooks/1184959672755683419/aFkdmCQCiliXCNQZPjUyLXqKtFcVzTO8sJoA_MnFZg2uGZMu4_v_WBY9qQfMB1huLcQt", data=payload, headers=headers)
 
     return render_template('backend_pages/vdo.html' , content_key = content_key , mpd = mpd ,options = options ,spy = spy)
 
