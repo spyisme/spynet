@@ -350,7 +350,7 @@ def samehh3():
 @views.route('/gedo')
 def gedo():
   teacher_links = {
-    "Gedo": ("gedoo", "S2 and S3 Not Available"),
+    "Gedo": ("gedoo", "Gedo"),
     # Add other entries with the correct structure
 }
   teachername = "Gedo"
