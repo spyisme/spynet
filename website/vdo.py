@@ -428,7 +428,7 @@ def start_background_task():
 
 
 @vdo.route('/start_background_task_all', methods=['POST'])
-def start_background_task():
+def start_background_task_all():
     storj()
     return jsonify({'status': f'Videos uploaded successfully'})
 
