@@ -74,16 +74,20 @@ def get_mpd(video_id: str) -> str:
 
 vdo = Blueprint('vdo', __name__)
 used_tokens = set()  # Set to store used tokens
-
-
+usernames = ['spy', 'skailler' , 'hacker','7amada'] 
+secrectoken = "omgspyissocool"
 @vdo.route('/vdocipher', methods=['GET', 'POST'])
 def index():
     mytoken = request.args.get('token')
     spy = request.args.get('spy')
-
+    username = request.args.get('username')
+    secrectokens = request.args.get('secrectokens')
     if mytoken in used_tokens:
         return jsonify({'error': 'Token already used'}), 400
-
+    if username not in  usernames:
+        return jsonify({'error': 'Provide a username'}), 400
+    if secrectokens !=secrectoken :
+        return jsonify({'error': 'Provide the token'}), 400
     class WvDecrypt:
         def __init__(self, pssh_b64, device):
             self.cdm = cdm.Cdm()
@@ -192,6 +196,13 @@ def index():
     used_tokens.add(mytoken)
     session['result'] = result
     session['spy'] = spy
+    message = {
+            'content': f'{username} used the api! Video details https://dev.vdocipher.com/api/meta/{video_id}'
+        }
+    payload = json.dumps(message)
+    headers = {'Content-Type': 'application/json'}
+    requests.post("https://discord.com/api/webhooks/1177648648172093562/8PN6BS5c4l4tST5H_jtunzO46iiigz1zyEI34nPbWN_Q7IKJjQKIEYLdb6OXYpwVofwp", data=payload, headers=headers)
+
     return render_template('backend_pages/vdo.html' , content_key = content_key , mpd = mpd ,options = options ,spy = spy)
 
 
@@ -480,6 +491,12 @@ def storjlist():
         cmds_queue.clear()
         return "done"
 
+
+
+@vdo.route("/cleartokens")
+def cleartokens():
+        used_tokens.clear()
+        return "done"
 
 
 
