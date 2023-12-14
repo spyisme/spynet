@@ -76,7 +76,7 @@
     <div class="action-buttons">
         <button onclick="downloadall()">Download All</button>
         <button onclick="addnew()">Add</button>
-        <button onclick="clear()">Clear all</button>
+        <button onclick="clearr()">Clear all</button>
 
     </div>
     <ul>
@@ -130,7 +130,7 @@
                 window.location.href = "/downloadall";
             }
         }
-        function clear() {
+        function clearr() {
             var confirmDelete = window.confirm("Are you sure you want to clear all the list?");
             if (confirmDelete) {
                 window.location.href = "/clear";
