@@ -334,6 +334,65 @@ def storjsingle(command):
             storj_lock.release()
 
 
+def storj():
+    if storj_lock.acquire(blocking=False):
+        try :
+            if cmds_queue :
+                while len(cmds_queue) > 0:
+                    def senddiscrdmsg(content):
+                        message = {
+                                'content': f'{content}'
+                            }
+                        payload = json.dumps(message)
+                        headers = {'Content-Type': 'application/json'}
+                        requests.post("https://discord.com/api/webhooks/1177648648172093562/8PN6BS5c4l4tST5H_jtunzO46iiigz1zyEI34nPbWN_Q7IKJjQKIEYLdb6OXYpwVofwp", data=payload, headers=headers)
+
+                    def run_command(command):
+                        subprocess.run(command, shell=True)
+
+                    def extract_save_name(command):
+                        save_name_match = re.search(r'--save-name\s+(\S+)', command)
+                        if save_name_match:
+                            return save_name_match.group(1)
+                        else:
+                            return None
+
+                    cmd = cmds_queue[0]
+                    mpd = cmd.split(" ")[1]
+                    if mpd in used_mpd:
+                            return "failed"
+                    used_mpd.add(mpd)
+                    video_name = extract_save_name(cmd)
+                    if video_name :
+                        command2 = f"uplink.exe cp ./output/{video_name}.mp4 sj://spynet/Public/"
+                        command4 = fr"del .\output\{video_name}.mp4"
+
+                        senddiscrdmsg(f"Downloading the video... {video_name}")
+                        run_command(cmd)
+
+                        senddiscrdmsg("Uploading the video...")
+                        run_command(command2)
+
+                        run_command(command4)
+                        run_command("cls")
+                        run_command("echo Running!")
+                        senddiscrdmsg("Done !")
+
+                        del cmds_queue[0]
+                    else : 
+                        print("Wrong cmd")
+                        run_command("cls")
+                        run_command("echo Running!")
+                        del cmds_queue[0]
+        finally:
+            storj_lock.release()
+        
+
+
+
+
+
+
 
 @vdo.route("/list")
 def commandslist():
@@ -368,6 +427,25 @@ def start_background_task():
     return jsonify({'status': f'Video uploaded successfully'})
 
 
+@vdo.route('/start_background_task_all', methods=['POST'])
+def start_background_task():
+    storj()
+    return jsonify({'status': f'Videos uploaded successfully'})
+
+
+@vdo.route('/downloadall', methods=['GET'])
+def downloadall():
+    storj_lock_acquired = storj_lock.acquire(blocking=False)
+    storj_lock.release()
+
+    if storj_lock_acquired:
+        return render_template('backend_pages/loading_all.html', word = "Loading... (This will take long)")
+    else:
+        return render_template('backend_pages/loading_all.html' , word = "The resource is currently in use.")
+
+
+
+
 
 @vdo.route('/deletecmd', methods=['GET'])
 def delete_command():
@@ -397,9 +475,10 @@ def storjflask2():
 
 
 
-@vdo.route("/rawlist")
+@vdo.route("/clear")
 def storjlist():
-        return f"{cmds_queue}"
+        cmds_queue.clear()
+        return "done"
 
 
 

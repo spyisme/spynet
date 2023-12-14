@@ -76,6 +76,8 @@
     <div class="action-buttons">
         <button onclick="downloadall()">Download All</button>
         <button onclick="addnew()">Add</button>
+        <button onclick="clear()">Clear all</button>
+
     </div>
     <ul>
         {% for command in cmds_queue %}
@@ -126,6 +128,12 @@
             var confirmDelete = window.confirm("Are you sure you want to download and upload all the videos below to storj?");
             if (confirmDelete) {
                 window.location.href = "/downloadall";
+            }
+        }
+        function clear() {
+            var confirmDelete = window.confirm("Are you sure you want to clear all the list?");
+            if (confirmDelete) {
+                window.location.href = "/clear";
             }
         }
         function addnew() {
