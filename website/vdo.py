@@ -74,7 +74,7 @@ def get_mpd(video_id: str) -> str:
 
 vdo = Blueprint('vdo', __name__)
 used_tokens = set()  # Set to store used tokens
-usernames = ['spy', 'skailler' , 'hacker','7amada'] 
+usernames = ['spy', 'skailler' , 'hacker','7amada','thatguy'] 
 secrectoken = "omgspyissocool"
 @vdo.route('/vdocipher', methods=['GET', 'POST'])
 def index():
