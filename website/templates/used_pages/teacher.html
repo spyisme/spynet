@@ -65,20 +65,6 @@
           color: #fff;
       }
 
-      ul {
-          list-style: none;
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-          padding: 20px;
-      }
-
-      li {
-          margin: 10px;
-          flex: 1;
-          max-width: 300px; /* Set a maximum width for the cards on PC */
-      }
-
 
       .card:hover {
           transform: translateY(-5px);
@@ -131,18 +117,33 @@
               width: 210px
           }
       }
-      .card {
+        .card {
 
-background-color: #fff;
-border: 1px solid #ccc;
-border-radius: 10px;
-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-padding: 20px;
-transition: transform 0.2s, box-shadow 0.2s;
-text-align: center;
-text-transform: capitalize;
-height: 235px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-align: center;
+    text-transform: capitalize;
+    height: 235px;
 
+
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+li {
+    margin: 10px;
+    flex: 0 0 calc(25% - 20px); /* Each item takes up 25% of the container width, accounting for margin and padding */
+    max-width: 300px; /* Set a maximum width for the cards on PC */
 }
 .discord-link a {
               color: white;
@@ -150,16 +151,7 @@ height: 235px;
             }
   </style>
 
-{%if teachername == "Mohamed Salama" %}
 
-<style>
-.card {
-height: 210px;
-
-width: 210px
-}
-</style>
-{% endif %}
 
 
 </head>
@@ -183,14 +175,11 @@ width: 210px
               <a href="{{ url }}">
 {%endif%}
                   <div class="card">
-                      {% if imgs == "yes" %}
                       <img src="static/assets/{{ teachername }}/{{ name }}.jpg" alt="{{ name }} Image">
-                      {% endif %}
                       <p>{{ name }}</p>
-      
-                      
-                    <span class="card-description">{{description}}</span>
+                <span class="card-description">{{description}}</span>
                 </div>
+
               </a>
           </li>
           {% endfor %}
