@@ -451,7 +451,9 @@ def salama():
     "Course 11": ("https://spysnet.com/salamach11", "S21 not available"),
     "Course 12": ("https://spysnet.com/salamach12", "Course 12 "),
     "Course 13": ("https://spysnet.com/salamach13", "Course 13"),
-    "Course 14": ("https://spysnet.com/salamach14", "Course 14")
+    "Course 14": ("https://spysnet.com/salamach14", "Course 14"),
+    "Course 15": ("https://spysnet.com/salamach15", "Course 15")
+
 
 
   }
@@ -633,7 +635,16 @@ def salamach14():
                          videos=videos,
                          playlist_id=playlist_id,
                          teachername=teachername)
+@views.route("/salamach15")
+def salamach15():
+  teachername = "Mohamed Salama Course 15"
+  playlist_id = 'PLM-GVlebsoPWCqnSBAANAy8Wn89lbLmqt'
+  videos = get_playlist_videos(playlist_id)
 
+  return render_template('used_pages/videopage.html',
+                         videos=videos,
+                         playlist_id=playlist_id,
+                         teachername=teachername)
 
 
 @views.route('/iframes', methods=['GET', 'POST'])
