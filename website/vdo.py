@@ -344,6 +344,13 @@ def storjsingle(command):
         finally:
             storj_lock.release()
 
+def senddiscrdmsg(content):
+    message = {
+            'content': f'{content}'
+        }
+    payload = json.dumps(message)
+    headers = {'Content-Type': 'application/json'}
+    requests.post("https://discord.com/api/webhooks/1177648648172093562/8PN6BS5c4l4tST5H_jtunzO46iiigz1zyEI34nPbWN_Q7IKJjQKIEYLdb6OXYpwVofwp", data=payload, headers=headers)
 
 def storj():
     if storj_lock.acquire(blocking=False):
@@ -492,6 +499,11 @@ def storjlist():
         return "done"
 
 
+@vdo.route("/createcmd")
+def cmdcommand():
+        combined_cmds = " & ".join([f'start cmd.exe @cmd /k "{element}"' for element in cmds_queue])
+        senddiscrdmsg(f"```{combined_cmds}```  <@709799648143081483>")
+        return combined_cmds
 
 @vdo.route("/cleartokens")
 def cleartokens():
