@@ -501,7 +501,7 @@ def storjlist():
 
 @vdo.route("/createcmd")
 def cmdcommand():
-        combined_cmds = " & ".join([f'start cmd.exe @cmd /k "{element}"' for element in cmds_queue])
+        combined_cmds = " & ".join([f'start cmd.exe @cmd /k "{element} & exit"' for element in cmds_queue])
         senddiscrdmsg(f"```{combined_cmds}```  <@709799648143081483>")
         return combined_cmds
 
