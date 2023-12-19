@@ -7,6 +7,7 @@ from flask_login import login_user, logout_user, login_required
 from .models import User
 from werkzeug.security import check_password_hash , generate_password_hash
 from . import db
+from functools import lru_cache
 
 views = Blueprint('views', __name__)
 print('Running!')
