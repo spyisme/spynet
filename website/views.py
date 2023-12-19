@@ -106,9 +106,9 @@ def get_playlist_videos(playlist_id):
 
 
 @views.route("/")
-@lru_cache(maxsize=None)  # None means unlimited cache size
 def home():
-    return render_template('used_pages/saved.html')
+    return redirect(url_for('display_links'))
+
 
 
 
