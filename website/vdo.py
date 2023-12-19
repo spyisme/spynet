@@ -675,7 +675,7 @@ def ink():
 
 
 @vdo.route('/inkform', methods=['POST'])
-def form():
+def inkform():
     if request.method == 'POST':
         user_data = {
             'name': request.form['vidname']
