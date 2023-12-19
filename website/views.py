@@ -108,10 +108,7 @@ def get_playlist_videos(playlist_id):
 @views.route("/")
 @lru_cache(maxsize=None)  # None means unlimited cache size
 def home():
-    # with open('website/links.txt', 'r') as file:
-    #     lines = file.readlines()
-    lines = ["nawar", "chem", "gedo","sherbo","salama","sameh", "bio","english"]
-    return render_template('used_pages/all.html', lines=lines, teachername="All")
+    return render_template('used_pages/saved.html')
 
 
 
