@@ -692,7 +692,7 @@ def discordink():
 
     msg = f'app {result} --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output'
     message = {
-            'content': f'``{msg}```{name}'
+            'content': f'```{msg}```{name}'
         }
     payload = json.dumps(message)
     headers = {'Content-Type': 'application/json'}
