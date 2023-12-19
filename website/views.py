@@ -654,6 +654,8 @@ def salamach15():
 def sherboframe():
     url = request.args.get('url')
     name = request.args.get('name')
+    sname = request.args.get('sname')
+
     if name == "nawar":
       webhook_url ="https://discord.com/api/webhooks/1159805446039797780/bE4xU3lkcjlb4vfCVQ9ky5BS2OuD01Y8g9godljNBfoApGt59-VfKf19GQuMUmH0IYzw"
     elif name == "ahmadsalah":
@@ -676,7 +678,7 @@ def sherboframe():
         headers = {'Content-Type': 'application/json'}
         requests.post(webhook_url, data=payload, headers=headers)
         return "Message Sent!" 
-    return render_template('backend_pages/iframe.html' , url = url , name= name)
+    return render_template('backend_pages/iframe.html' , url = url , sname= sname)
 
 
 
