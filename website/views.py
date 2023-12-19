@@ -105,6 +105,7 @@ def get_playlist_videos(playlist_id):
 
 
 @views.route("/")
+@lru_cache(maxsize=None)  # None means unlimited cache size
 def home():
     # with open('website/links.txt', 'r') as file:
     #     lines = file.readlines()
