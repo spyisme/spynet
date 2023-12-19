@@ -107,7 +107,7 @@ def get_playlist_videos(playlist_id):
 
 @views.route("/")
 def home():
-    return redirect(url_for('display_links'))
+    return redirect(url_for('views.display_links'))
 
 
 
@@ -701,4 +701,4 @@ def sherboframe():
 
 @views.route("/test")
 def test():
-  return render_template('videoplayer.html' )
+  return render_template('test_pages/videoplayer.html' )
