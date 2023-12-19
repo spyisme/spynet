@@ -22,9 +22,9 @@ print('Running!')
 
 @views.route('/all')
 def display_links():
-    with open('website/links.txt', 'r') as file:
-        lines = file.readlines()
-
+    # with open('website/links.txt', 'r') as file:
+    #     lines = file.readlines()
+    lines = ["nawar", "chem", "gedo","sherbo","salama","sameh", "bio","english"]
     return render_template('used_pages/all.html', lines=lines, teachername="All")
 
 
@@ -106,7 +106,10 @@ def get_playlist_videos(playlist_id):
 
 @views.route("/")
 def home():
-  return redirect(url_for("views.display_links"))
+    # with open('website/links.txt', 'r') as file:
+    #     lines = file.readlines()
+    lines = ["nawar", "chem", "gedo","sherbo","salama","sameh", "bio","english"]
+    return render_template('used_pages/all.html', lines=lines, teachername="All")
 
 
 
