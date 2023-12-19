@@ -549,8 +549,6 @@ def get_pssh(mpd: str):
 
 
 
-webhook = "https://discord.com/api/webhooks/1158824183833309326/lOGuL_T9mAtYuGCkDRkVxRERIQAD1fHS3RTzxkRmS1ZlzT5yY4C7bi20XdK-1pSXcVzZ"
-
 #mpd
 def get_mpd(video_id , xotp):
     headers = {
@@ -572,7 +570,7 @@ def get_mpd(video_id , xotp):
 
 
 @vdo.route('/ink', methods=['GET', 'POST'])
-def index():
+def ink():
     token = request.args.get('token')
     xotp = request.args.get('otp')
 
