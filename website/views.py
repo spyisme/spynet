@@ -649,28 +649,17 @@ def salamach15():
                          teachername=teachername)
 
 
-@views.route('/iframes', methods=['GET', 'POST'])
-def iframes():
-  url = request.args.get('url')
-  if url is None:
-    url = "none"
-  url = url.replace("/play/", "/embed/")
-  if request.method == 'POST':
-    name = request.form.get('name')
-    msg = f'```python main.py {url} {name}``` {name}'
-    message = {'content': f'{msg}'}
-    payload = json.dumps(message)
-    headers = {'Content-Type': 'application/json'}
-    webhook_url = "https://discord.com/api/webhooks/1170733207835115630/MpyyTLirCjBUOSHxisTsb4l7lqF7XBw-l4KEsi7DAFLAoZdUzMtGFwth67Qj3ZJCE5Oo"
-    requests.post(webhook_url, data=payload, headers=headers)
-    return "Message Sent!"
-  return render_template('backend_pages/iframe.html', url=url, word="url")
 
-@views.route('/sherboiframe', methods=['GET', 'POST'])
+@views.route('/iframes', methods=['GET', 'POST'])
 def sherboframe():
     url = request.args.get('url')
     name = request.args.get('name')
-
+    if name == "nawar":
+      webhook_url ="https://discord.com/api/webhooks/1159805446039797780/bE4xU3lkcjlb4vfCVQ9ky5BS2OuD01Y8g9godljNBfoApGt59-VfKf19GQuMUmH0IYzw"
+    elif name == "ahmadsalah":
+      webhook_url = "https://discord.com/api/webhooks/1170733207835115630/MpyyTLirCjBUOSHxisTsb4l7lqF7XBw-l4KEsi7DAFLAoZdUzMtGFwth67Qj3ZJCE5Oo"
+    else:
+      webhook_url="https://discord.com/api/webhooks/1169342540575670292/crazeFe5z0qAozWBJOnlZfevMMQ219NVzZ-Cl6mWK9NrtBqBXc3kBzj1tJ8_KVu7UuKf" 
     url = url.replace("/play/", "/embed/")
     if request.method == 'POST':
         name =  request.form.get('name')
@@ -685,16 +674,9 @@ def sherboframe():
             }
         payload = json.dumps(message)
         headers = {'Content-Type': 'application/json'}
-        webhook_url = "https://discord.com/api/webhooks/1169342540575670292/crazeFe5z0qAozWBJOnlZfevMMQ219NVzZ-Cl6mWK9NrtBqBXc3kBzj1tJ8_KVu7UuKf"
         requests.post(webhook_url, data=payload, headers=headers)
         return "Message Sent!" 
     return render_template('backend_pages/iframe.html' , url = url , name= name)
-
-
-
-
-
-
 
 
 
