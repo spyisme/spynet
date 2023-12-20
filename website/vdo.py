@@ -550,7 +550,7 @@ def get_pssh(mpd: str):
 
 
 #mpd
-def get_mpd(video_id , xotp):
+def get_mpd2(video_id , xotp):
     headers = {
         'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36',
         'origin': 'https://resource.inkryptvideos.com',
@@ -642,7 +642,7 @@ def ink():
 
         def start(self):
             newv = getv(token)
-            mpd = get_mpd(newv , xotp)
+            mpd = get_mpd2(newv , xotp)
             pssh = get_pssh(mpd)
             license_url = "https://license.inkryptvideos.com/api/v1/wj/license"
             pssh_b64 = f"{pssh}"
