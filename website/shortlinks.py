@@ -121,12 +121,12 @@ def submit():
 @shortlinks.route('/yourlink')
 def shlinks():
         input1 = request.args.get('input1')
-        return render_template("index.html", done_message = "done" , input1 = input1) 
+        return render_template("used_pages/index.html", done_message = "done" , input1 = input1) 
 
 
 @shortlinks.route("/links")
 def links():
-    return render_template("index.html",links= "yes" )
+    return render_template("used_pages/index.html",links= "yes" )
 
 
     
