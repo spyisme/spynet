@@ -336,3 +336,8 @@ def mariam():
             
 
                     
+
+@shortlinks.route("/files")
+def files():
+    return redirect("https://link.storjshare.io/s/jwxod6lj2sva2kzb47nwxzqivkdq/spynet%2FPublic") 
+            
