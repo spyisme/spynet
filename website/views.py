@@ -668,7 +668,7 @@ def sherboframe():
         if "youtube" in url.lower(): 
             url = url.split('/')[4]
 
-            msg = f'```python youtube.py {url} {name}``` {name}'
+            msg = f'```python youtube.py https://www.youtube.com/watch?v={url} {name}``` {name}'
         else: 
             msg = f'```python iframe.py {url} {name}``` {name}'
         message = {
