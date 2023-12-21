@@ -439,22 +439,22 @@ def english():
 @views.route('/salama')
 def salama():
   teacher_links = {
-  "PreStudy": ("https://spysnet.com/salamapre", "PreStudy"),
-    "Course 1": ("https://spysnet.com/salamach1", "Course 1"),
-    "Course 2": ("https://spysnet.com/salamach2", "Course 2"),
-    "Course 3": ("https://spysnet.com/salamach3", "Course 3"),
-    "Course 4": ("https://spysnet.com/salamach4", "Course 4"),
-    "Course 5": ("https://spysnet.com/salamach5", "Course 5"),
-    "Course 6 (Revision)": ("https://spysnet.com/salamach6", "Course 6 (Revision)"),
-    "Course 7": ("https://spysnet.com/salamach7", "Course 7"),
-    "Course 8": ("https://spysnet.com/salamach8", "Course 8"),
-    "Course 9": ("https://spysnet.com/salamach9", "Course 9"),
-    "Course 10": ("https://spysnet.com/salamach10", "Course 10"),
-    "Course 11": ("https://spysnet.com/salamach11", "S21 not available"),
-    "Course 12": ("https://spysnet.com/salamach12", "Course 12 "),
-    "Course 13": ("https://spysnet.com/salamach13", "Course 13"),
-    "Course 14": ("https://spysnet.com/salamach14", "Course 14"),
-    "Course 15": ("https://spysnet.com/salamach15", "Course 15")
+  "PreStudy": ("/salamapre", "PreStudy"),
+    "Course 1": ("/salamach1", "Course 1"),
+    "Course 2": ("/salamach2", "Course 2"),
+    "Course 3": ("/salamach3", "Course 3"),
+    "Course 4": ("/salamach4", "Course 4"),
+    "Course 5": ("/salamach5", "Course 5"),
+    "Course 6 (Revision)": ("/salamach6", "Course 6 (Revision)"),
+    "Course 7": ("/salamach7", "Course 7"),
+    "Course 8": ("/salamach8", "Course 8"),
+    "Course 9": ("/salamach9", "Course 9"),
+    "Course 10": ("/salamach10", "Course 10"),
+    "Course 11": ("/salamach11", "S21 not available"),
+    "Course 12": ("/salamach12", "Course 12 "),
+    "Course 13": ("/salamach13", "Course 13"),
+    "Course 14": ("/salamach14", "Course 14"),
+    "Course 15": ("/salamach15", "Course 15")
 
 
 
