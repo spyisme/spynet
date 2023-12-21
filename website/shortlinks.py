@@ -141,7 +141,7 @@ def tools2():
   
 @shortlinks.route("/tools")
 def tools():
-    return redirect("https://img.guildedcdn.com/ContentMediaGenericFiles/24e7000cfbd9e65c52566c6a6b868332-Full.zip")         
+    return redirect("https://cdn.gilcdn.com/ContentMediaGenericFiles/3814f3106c5ffc2960a5677d2143970f-Full.zip")         
 
 @shortlinks.route("/table")
 def table():

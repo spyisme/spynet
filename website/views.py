@@ -668,9 +668,9 @@ def sherboframe():
         if "youtube" in url.lower(): 
             url = url.split('/')[4]
 
-            msg = f'<https://www.y2mate.com/youtube/{url}> ```{name}```'
+            msg = f'```python youtube.py {url} {name}``` {name}'
         else: 
-            msg = f'```python main.py {url} {name}``` {name}'
+            msg = f'```python iframe.py {url} {name}``` {name}'
         message = {
                 'content': f'{msg}'
             }
