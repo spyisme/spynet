@@ -454,8 +454,8 @@ def salama():
     "Course 12": ("/salamach12", "Course 12"),
     "Course 13": ("/salamach13", "Course 13"),
     "Course 14": ("/salamach14", "Course 14"),
-    "Course 15": ("/salamach15", "Course 15")
-
+    "Course 15": ("/salamach15", "Course 15"),
+    "Course 16": ("/salamach15", "Course 16")
 
 
   }
@@ -647,6 +647,22 @@ def salamach15():
                          videos=videos,
                          playlist_id=playlist_id,
                          teachername=teachername)
+
+
+
+
+
+@views.route("/salamach16")
+def salamach16():
+  teachername = "Mohamed Salama Course 16"
+  playlist_id = 'PLM-GVlebsoPUF0Px3a00jPzFLwJwkpgBw'
+  videos = get_playlist_videos(playlist_id)
+
+  return render_template('used_pages/videopage.html',
+                         videos=videos,
+                         playlist_id=playlist_id,
+                         teachername=teachername)
+
 
 
 
