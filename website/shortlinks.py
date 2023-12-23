@@ -123,13 +123,9 @@ def shlinks():
         input1 = request.args.get('input1')
         return render_template("used_pages/index.html", done_message = "done" , input1 = input1) 
 
-
 @shortlinks.route("/links")
 def links():
     return render_template("used_pages/index.html",links= "yes" )
-
-
-    
 
 @shortlinks.route("/books")
 def books():
@@ -141,201 +137,30 @@ def tools2():
   
 @shortlinks.route("/tools")
 def tools():
-    return redirect("https://cdn.gilcdn.com/ContentMediaGenericFiles/3814f3106c5ffc2960a5677d2143970f-Full.zip")         
+    return redirect("https://cdn.gilcdn.com/ContentMediaGenericFiles/dfb6c51f966eedb2d3af259a31390e49-Full.zip")         
 
 @shortlinks.route("/table")
 def table():
     return redirect("https://periodic-table.tech/") 
             
-
 @shortlinks.route("/sherbopdfs")
 def sherbopdfs():
     return redirect("https://drive.google.com/drive/folders/1cEnVqh8bAFr4aqHgMdy-_TpfbEVXC0zc?usp=share_link") 
             
 
-            
-
 @shortlinks.route("/nawarpdfs")
 def nawarpdfs():
     return redirect("https://drive.google.com/drive/folders/1co0YX7h8Xdg3HV4zFhf2xze9yNX-xM71?usp=drive_link") 
-            
-
-            
-
-      
+                 
 @shortlinks.route("/chempdfs")
 def chempdfs():
     return redirect("https://drive.google.com/drive/folders/1trBpK01IknkeMC9LtsCM7dyTz-9uqY0n?usp=drive_link") 
-            
-
-               
-
-
-
-            
-# def get_links(teacher_dict):
-#   links_list = []
-
-#   def get_href_from_xpath(html_content, xpath):
-#       root = html.fromstring(html_content)
-#       elements = root.xpath(xpath)
-#       if elements:
-#           return elements[0].get('href')
-#       return None
-
-#   for teacher, url in teacher_dict.items():
-#       response = requests.get(url)
-
-#       if response.status_code == 200:
-#           html_content = response.text
-#           xpath = "/html/body/ul[2]/a"          
-#           href_value = get_href_from_xpath(html_content, xpath)
-
-#           if href_value:
-#               playlist_link = f"{href_value}"
-#               links_list.append(playlist_link)
-#              # print(f"Checked videos from {url}")
-#           else:
-#               # print(f"Failed to find href value in {url}")
-#               break
-
-#   return links_list
-
-# xpath_template = "/html/body/ul/li[{}]"
-
-# # Function to scrape and store href in a dictionary until an error occurs
-# def scrape_website(url):
-#   spylinks = {}
-#   try:
-#       index = 1
-#       while True:
-#           xpath = xpath_template.format(index)
-#           response = requests.get(url)
-#           response.raise_for_status()  # Raise an HTTPError for bad requests
-#           tree = html.fromstring(response.content)
-#           href = tree.xpath(xpath + "/a/@href")
-
-#           if not href:
-#               break
-
-#           spylinks[f"Teacher {index}"] = href[0]
-#           index += 1
-#   except requests.exceptions.HTTPError as e:
-#       print(f"HTTP error: {e}")
-#   except Exception as e:
-#       print(f"An error occurred: {e}")
-
-#   return spylinks
-
-
-
-# def get_playlist_items(playlist_url):
-#     ydl_opts = {
-#         'quiet': True,
-#         'extract_flat': True,
-#     }
-
-#     with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-#         result = ydl.extract_info(playlist_url, download=False)
-#         return result.get('entries', [])
-
-# def get_playlist_name(playlist_url):
-#     ydl_opts = {
-#         'quiet': True,
-#         'extract_flat': True,
-#     }
-
-#     with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-#         result = ydl.extract_info(playlist_url, download=False)
-#         return result.get('title')
-
-# def save_items_to_dict(playlist_name, items):
-#     titles_dict = {'playlist_name': playlist_name, 'titles': [{'title': item['title'], 'url': item['url']} for item in items]}
-#     return titles_dict
-
-# def count_videos_in_playlist(items):
-#     return len(items)
-
-# def count_total_videos(combined_dict):
-#     total_videos = 0
-#     for playlist_data in combined_dict.values():
-#         total_videos += count_videos_in_playlist(playlist_data['titles'])
-#     return total_videos
-
-# def items(playlist_links):
-#     combined_dict = {}
-
-#     for playlist_link in playlist_links:
-#         items = get_playlist_items(playlist_link)
-
-#         if items:
-#             playlist_name = get_playlist_name(playlist_link)
-#             playlist_dict = save_items_to_dict(playlist_name, items)
-#             combined_dict[playlist_link] = playlist_dict
-
-#     total_videos = count_total_videos(combined_dict)
-#     return combined_dict, total_videos
-
-# def get_links_and_items(teacher):
-#     linkspy = get_links(scrape_website(f"https://spysnet.com/{teacher}"))
-#     result_links = linkspy
-#     final = items(result_links)
-#     return final
-@shortlinks.route("/list/<teacher>")
-def list(teacher):
-    return "Out of Service"
-
-@shortlinks.route("/update")
-def update():
-    return "Out of Service"
-
-# @shortlinks.route("/list/<teacher>")
-# def list(teacher):
-#     html_filename = f"{teacher}_list.html"
-#     templates_folder = os.path.join(os.getcwd(), "website/templates/list")
-#     html_filepath = os.path.join(templates_folder, html_filename)
-
-#     return send_file(html_filepath)
-
-# @shortlinks.route("/update")
-# @login_required
-# def update():
-#     teacher = request.args.get("teacher")
-
-#     if not teacher:
-#         return "Error: 'teacher' parameter is required for update."
-
-#     final, total_videos = get_links_and_items(teacher)  # Unpack the tuple
-#     html_filename = f"{teacher}_list.html"
-#     templates_folder = os.path.join(os.getcwd(), "website/templates/list")
-#     html_filepath = os.path.join(templates_folder, html_filename)
-
-#     with open(html_filepath, 'w') as file:
-#         file.write(render_template("list.html", final=final, total_videos=total_videos, teacher=teacher))
-
-#     return f'HTML file for {teacher} has been updated. <a href="https://spysnet.com/list/{teacher}">Teacher List</a>'
-
-
-
-
 
 
 @shortlinks.route("/main")
 def main():
     return redirect("https://cdn.discordapp.com/attachments/1154501683427156048/1172494252660494376/main.py?ex=6560855d&is=654e105d&hm=02f55ad84a970c8ff473bb1bc0b9ec06d8c50952ffa2748e312393cebc31b349&") 
             
-
-            
-
-            
-
-    
-@shortlinks.route("/mariam")
-def mariam():
-    return redirect("https://spysnet.com/static/mariam.png") 
-            
-
-                    
 
 @shortlinks.route("/files")
 def files():
