@@ -450,8 +450,8 @@ def salama():
     "Course 8": ("/salamach8", "Course 8"),
     "Course 9": ("/salamach9", "Course 9"),
     "Course 10": ("/salamach10", "Course 10"),
-    "Course 11": ("/salamach11", "S21 not available"),
-    "Course 12": ("/salamach12", "Course 12 "),
+    "Course 11": ("/salamach11", "Course 11"),
+    "Course 12": ("/salamach12", "Course 12"),
     "Course 13": ("/salamach13", "Course 13"),
     "Course 14": ("/salamach14", "Course 14"),
     "Course 15": ("/salamach15", "Course 15")
