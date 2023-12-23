@@ -455,7 +455,7 @@ def salama():
     "Course 13": ("/salamach13", "Course 13"),
     "Course 14": ("/salamach14", "Course 14"),
     "Course 15": ("/salamach15", "Course 15"),
-    "Course 16": ("/salamach15", "Course 16")
+    "Course 16": ("/salamach16", "Course 16")
 
 
   }
