@@ -31,6 +31,10 @@
           background-color: #f0f0f0;
           color: #fff; /* Default text color */
       }
+      a {
+          text-decoration: none;
+          color: black
+      }
 
       /* Dark Mode */
       @media (prefers-color-scheme: dark) {
@@ -38,7 +42,10 @@
               background-color: #1a1a1a;
               color: #fff; /* Text color in dark mode */
           }
-
+          a {
+          text-decoration: none;
+          color: white;
+      }
           .nav {
               background-color: #1a1a1a; /* Dark background color for the navigation */
               color: #fff;
@@ -92,10 +99,7 @@
 
       }
 
-      a {
-          text-decoration: none;
-          color: rgb(255, 255, 255);
-      }
+    
 
       a:hover {
           text-decoration: none;
@@ -109,6 +113,11 @@
               width: 96%;
 
           }
+          a {
+          text-decoration: none;
+          color: rgb(255, 255, 255);
+      }
+
 
           ul {
               flex-direction: column; /* Stack cards vertically */
@@ -235,7 +244,7 @@ h1{
             <div class="discord-link"><a href="/learn-more" target="_blank">Api Usage</a></div></p> -->
   </div>
   <ul>
-    <audio id="my_audio" src="static/songgg.mp3" loop="loop"></audio>
+    <audio id="my_audio" src="static/song.mp3" loop="loop"></audio>
 
     <li>
         <a href="/books" target="_blank">
@@ -271,12 +280,23 @@ h1{
   <script>
       window.onload = function() {
             // Show the popup on page load
+            showPopup();
+        };
+        function showPopup() {
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('popup').style.display = 'block';
+        }
+        function hidePopup() {
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('popup').style.display = 'none';
+            document.getElementById('my_audio').play();
+
             setTimeout(function() {
         document.getElementById('canvas').style.pointerEvents = 'none';
-    }, 100);
-      }
+    }, 5000);
 
-    
+
+        }
     // window.onload = function () {
     //   function getRandomColor() {
     //     const min = 0;
@@ -345,7 +365,22 @@ function startAnimation() {
 
     draw() {
       this.ctx.beginPath();
-      this.ctx.fillStyle = `rgba(255,255,255,${0.8})`;
+    // Get the body element
+const body = document.body;
+
+// Get the computed background color of the body
+const bodyBgColor = window.getComputedStyle(body).backgroundColor;
+
+// Check if the background color is light or dark
+if (bodyBgColor === 'rgb(240, 240, 240)' || bodyBgColor === '#f0f0f0') {
+    // Light mode: set fill style to white
+    ctx.fillStyle = 'rgba(255, 0, 0, 0.8)';
+
+} else {
+    // Dark mode: set fill style to red
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+}
+
       this.ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
       this.ctx.fill();
       this.ctx.closePath();
