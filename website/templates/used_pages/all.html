@@ -88,11 +88,13 @@
 
       .card p {
           font-size: 22px; /* Increase text size */
+
+
       }
 
       a {
           text-decoration: none;
-          color: blue;
+          color: rgb(255, 255, 255);
       }
 
       a:hover {
@@ -105,6 +107,7 @@
           h1 {
               padding: 10px;
               width: 96%;
+
           }
 
           ul {
@@ -125,18 +128,7 @@
               width: 210px
           }
       }
-      .card {
 
-background-color: #fff;
-border: 1px solid #ccc;
-border-radius: 10px;
-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-padding: 20px;
-transition: transform 0.2s, box-shadow 0.2s;
-text-align: center;
-text-transform: capitalize;
-
-}
 .discord-link a {
               color: white;
               text-decoration: underline;
@@ -201,8 +193,27 @@ span {
             height: 100%;
             background: rgba(0, 0, 0, 0.5);
         }
+
+h1{
+  font-size: 46px;
+
+}
+
+.card {
+
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+
+
     </style>
-  </style>
+  
 
 
 
@@ -260,23 +271,12 @@ span {
   <script>
       window.onload = function() {
             // Show the popup on page load
-            showPopup();
-        };
-        function showPopup() {
-            document.getElementById('overlay').style.display = 'block';
-            document.getElementById('popup').style.display = 'block';
-        }
-        function hidePopup() {
-            document.getElementById('overlay').style.display = 'none';
-            document.getElementById('popup').style.display = 'none';
-            document.getElementById('my_audio').play();
-
             setTimeout(function() {
         document.getElementById('canvas').style.pointerEvents = 'none';
-    }, 5000);
+    }, 100);
+      }
 
-
-        }
+    
     // window.onload = function () {
     //   function getRandomColor() {
     //     const min = 0;
