@@ -3,7 +3,7 @@
 <head>
 
 
-    <title>{{ teachername }}</title>
+    <title> ❄️ {{ teachername }} ❄️</title>
     <link rel="icon" type="image/x-icon" href="/static/snn.png">
     <meta name="description" content="{{teachername}}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
@@ -24,12 +24,7 @@
             color: black;
             margin-top: 10px;
         }
-      /* Style the iframe to take 100% of the viewport */
-      iframe {
-          width: 100%;
-          height: 100%;
-          border: none; /* Remove iframe border, adjust as needed */
-      }
+
 
       body {
           font-family: Arial, sans-serif;
@@ -60,7 +55,7 @@
           padding: 20px;
           margin: 0;
           text-align: center;
-          background-color: pink;
+          background-color: #f3423e ;
           color: #fff;
       }
 
@@ -146,6 +141,67 @@ text-transform: capitalize;
               color: white;
               text-decoration: underline;
             }
+
+            
+            
+            
+            
+ .banner {
+  width: 100%;
+  height: 100%;
+
+}
+.banner_content {
+  display: flex;
+  position: relative;
+  z-index: 1;
+  flex-direction: column;
+  text-align: center;
+}
+span {
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0px 4px 12px #000000ba;
+}
+#canvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: s; /* Allow click events to pass through the canvas */
+}
+
+
+.popup p {
+        color: #3498db; /* Change the color to your preferred color */
+        font-size: 16px; /* You can adjust the font size as needed */
+    }
+
+.popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center; /* Adjust as needed */
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+    </style>
   </style>
 
 
@@ -155,13 +211,21 @@ text-transform: capitalize;
 
 <body>
 
+
+    <section class="banner">
+        <canvas id="canvas"> </canvas>
+ 
+
+    
   <div class="nav">
-        <h1>{{ teachername }}</h1>
+        <h1> 🎄 {{ teachername }} 🎄</h1>
           
-        <!-- <p>Last updated 15/12.  -->
-            <p> <div class="discord-link"><a href="/learn-more" target="_blank">Api Usage</a></div></p>
+        <!-- <p>El site hayo23 mn 29 dec till 1 jan</p>
+            <div class="discord-link"><a href="/learn-more" target="_blank">Api Usage</a></div></p> -->
   </div>
   <ul>
+    <audio id="my_audio" src="static/songgg.mp3" loop="loop"></audio>
+
     <li>
         <a href="/books" target="_blank">
             <div class="card">
@@ -185,37 +249,170 @@ text-transform: capitalize;
 {% endfor %}
 
       </ul>
-
+    </section>
 </body>
-
+<div class="overlay" id="overlay"></div>
+<div class="popup" id="popup">
+    <p >Wait 5 secs :D</p>
+    <button onclick="hidePopup()">Close</button>
+</div>
 
   <script>
+      window.onload = function() {
+            // Show the popup on page load
+            showPopup();
+        };
+        function showPopup() {
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('popup').style.display = 'block';
+        }
+        function hidePopup() {
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('popup').style.display = 'none';
+            document.getElementById('my_audio').play();
 
-    window.onload = function () {
-      function getRandomColor() {
-        const min = 0;
-        const max = 255;
+            setTimeout(function() {
+        document.getElementById('canvas').style.pointerEvents = 'none';
+    }, 5000);
 
-        const r = Math.floor(Math.random() * (max - min + 1)) + min;
-        const g = Math.floor(Math.random() * (max - min + 1)) + min;
-        const b = Math.floor(Math.random() * (max - min + 1)) + min;
 
-        return `rgb(${r}, ${g}, ${b})`;
+        }
+    // window.onload = function () {
+    //   function getRandomColor() {
+    //     const min = 0;
+    //     const max = 255;
+
+    //     const r = Math.floor(Math.random() * (max - min + 1)) + min;
+    //     const g = Math.floor(Math.random() * (max - min + 1)) + min;
+    //     const b = Math.floor(Math.random() * (max - min + 1)) + min;
+
+    //     return `rgb(${r}, ${g}, ${b})`;
+    //   }
+
+    //   function changeColors() {
+    //     const h1 = document.querySelector(".nav");
+    //     const links = document.querySelectorAll("a");
+    //     const randomColor = getRandomColor();
+    //     h1.style.backgroundColor = randomColor;
+
+    //     links.forEach(link => {
+    //       link.style.backgroundColor = randomColor;
+    //     });
+    //   }
+
+    //   changeColors();
+    // };
+
+
+    const SNOW_COUNT = 300;
+
+function startAnimation() {
+  const CANVAS_WIDTH = window.innerWidth;
+  const CANVAS_HEIGHT = window.innerHeight;
+  const MIN = 0;
+  const MAX = CANVAS_WIDTH;
+
+  const canvas = document.getElementById("canvas");
+  const ctx = canvas.getContext("2d");
+
+  canvas.width = CANVAS_WIDTH;
+  canvas.height = CANVAS_HEIGHT;
+
+  function clamp(number, min = MIN, max = MAX) {
+    return Math.max(min, Math.min(number, max));
+  }
+
+  function random(factor = 1) {
+    return Math.random() * factor;
+  }
+
+  function degreeToRadian(deg) {
+    return deg * (Math.PI / 180);
+  }
+
+  // All the properties for Circle
+  class Circle {
+    radius = 0;
+    x = 0;
+    y = 0;
+    vx = 0;
+    vy = 0;
+
+    constructor(ctx) {
+      this.ctx = ctx;
+      this.reset();
+    }
+
+    draw() {
+      this.ctx.beginPath();
+      this.ctx.fillStyle = `rgba(255,255,255,${0.8})`;
+      this.ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
+      this.ctx.fill();
+      this.ctx.closePath();
+    }
+
+    reset() {
+    this.radius = random(2.5);
+    this.x = random(CANVAS_WIDTH);
+    this.y = this.y ? 0 : random(CANVAS_HEIGHT);
+
+    // Increase or decrease the speed by modifying these lines
+    this.vx = clamp((Math.random() - 0.5) * 1.5, -1.5, 1.5);
+    this.vy = clamp(random(2), 0.5, 2) * this.radius * 0.5;
+}
+  }
+
+  // Array for storing all the generated circles
+  let circles = [];
+
+  // Generate circles
+  for (let i = 0; i < SNOW_COUNT; i++) {
+    circles.push(new Circle(ctx));
+  }
+
+  // Clear canvas
+  function clearCanvas() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  }
+
+  // start and end cordinates of canvas
+  let canvasOffset = {
+    x0: ctx.canvas.offsetLeft,
+    y0: ctx.canvas.offsetTop,
+    x1: ctx.canvas.offsetLeft + ctx.canvas.width,
+    y1: ctx.canvas.offsetTop + ctx.canvas.height
+  };
+
+  function animate() {
+    clearCanvas();
+
+    circles.forEach((e) => {
+      // reset the circle if it collides on border
+      if (
+        e.x <= canvasOffset.x0 ||
+        e.x >= canvasOffset.x1 ||
+        e.y <= canvasOffset.y0 ||
+        e.y >= canvasOffset.y1
+      ) {
+        e.reset();
       }
 
-      function changeColors() {
-        const h1 = document.querySelector(".nav");
-        const links = document.querySelectorAll("a");
-        const randomColor = getRandomColor();
-        h1.style.backgroundColor = randomColor;
+      // Drawing path using polar cordinates
+      e.x = e.x + e.vx;
+      e.y = e.y + e.vy;
+      e.draw();
+    });
 
-        links.forEach(link => {
-          link.style.backgroundColor = randomColor;
-        });
-      }
+    requestAnimationFrame(animate);
+  }
 
-      changeColors();
-    };
+  animate();
+}
+
+startAnimation();
+
+window.addEventListener("resize", startAnimation);
+
   </script>
 
 </html>
