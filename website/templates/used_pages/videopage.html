@@ -111,12 +111,7 @@
   flex-direction: column;
   text-align: center;
 }
-span {
-  font-size: 2.2rem;
-  font-weight: bold;
-  color: #fff;
-  text-shadow: 0px 4px 12px #000000ba;
-}
+
 #canvas {
   position: absolute;
   left: 0;
@@ -136,8 +131,9 @@ h1{
 
 <body>
     <section class="banner">
-        <canvas id="canvas"> </canvas>
-    
+
+        <canvas id="canvas"></canvas>
+
 <div class="nav">
       <h1>🎄 {{teachername}} 🎄 </h1>
       <style>
@@ -177,7 +173,8 @@ h1{
       </div>
    </a>
   </ul>
-  </section>
+ 
+    </section>
 </body>
 <script>
 //   function getRandomColor() {
@@ -203,6 +200,7 @@ h1{
 //   }
 
 //   window.onload = changeColors;
+
 
 
 
@@ -326,6 +324,7 @@ if (bodyBgColor === 'rgb(240, 240, 240)' || bodyBgColor === '#f0f0f0') {
 startAnimation();
 
 window.addEventListener("resize", startAnimation);
+
 
 
 
