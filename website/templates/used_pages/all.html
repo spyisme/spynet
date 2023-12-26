@@ -418,10 +418,8 @@ if (bodyBgColor === 'rgb(240, 240, 240)' || bodyBgColor === '#f0f0f0') {
     this.radius = random(2.5);
     this.x = random(CANVAS_WIDTH);
     this.y = this.y ? 0 : random(CANVAS_HEIGHT);
-
-    // Increase or decrease the speed by modifying these lines
-    this.vx = clamp((Math.random() - 0.5) * 1.5, -1.5, 1.5);
-    this.vy = clamp(random(2), 0.5, 2) * this.radius * 0.5;
+    this.vx = clamp((Math.random() - 0.5) * 0.4, -0.4, 0.4);
+      this.vy = clamp(random(1.5), 0.1, 0.8) * this.radius * 0.5;
 }
   }
 
