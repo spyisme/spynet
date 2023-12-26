@@ -1,25 +1,35 @@
-<html><head>
-  <title>{{teachername}}</title>
-  <link rel="icon" type="image/x-icon" href="/static/snn.png">
-  <meta name="description" content="All">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Mobile viewport support -->
-  
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2812078112067783"
-     crossorigin="anonymous"></script>
+<!DOCTYPE html>
+<html>
+<head>
+ <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2812078112067783"
+ crossorigin="anonymous"></script>
+
+    <title>❄️ {{ teachername }} ❄️</title>
+    <link rel="icon" type="image/x-icon" href="/static/snn.png">
+    <meta name="description" content="{{teachername}}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+
+
   <style>
-      /* Reset some default styles */
-      body, ul {
+
+      html, body {
+          height: 100%;
           margin: 0;
           padding: 0;
-          
+          zoom: 90%;
+          overflow: auto
       }
+      .card-description {
+            font-size: 14px;
+            color: black;
+            margin-top: 10px;
+        }
+      /* Style the iframe to take 100% of the viewport */
 
-      /* Global Styles */
       body {
           font-family: Arial, sans-serif;
           background-color: #f0f0f0;
-          overflow: auto;
-          zoom: 90%;
           color: #fff; /* Default text color */
       }
 
@@ -28,13 +38,10 @@
           body {
               background-color: #1a1a1a;
               color: #fff; /* Text color in dark mode */
-            overflow: auto;
-            font-family: Arial, sans-serif;
-
           }
 
           .nav {
-              background-color: #f3423e; /* Dark background color for the navigation */
+              background-color: #1a1a1a; /* Dark background color for the navigation */
               color: #fff;
           }
 
@@ -49,8 +56,8 @@
           padding: 20px;
           margin: 0;
           text-align: center;
-          background-color: #f3423e; /* Dark background color for the navigation */
-
+          background-color: #f3423e;
+          color: #fff;
       }
 
       ul {
@@ -62,9 +69,63 @@
           padding: 20px;
       }
 
-      /* Card Styles */
-      .card,
-      .card1 {
+
+  
+
+
+      .card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .card img {
+          max-width: 100%;
+
+            height: 100px;
+        
+      }
+
+      .card p {
+          font-size: 22px; /* Increase text size */
+      }
+
+      a {
+          text-decoration: none;
+          color: blue;
+      }
+
+      a:hover {
+          text-decoration: none;
+          text-align: center;
+      }
+
+      /* Mobile Styles */
+      @media screen and (max-width: 768px) {
+          h1 {
+              padding: 10px;
+              width: 96%;
+          }
+
+          ul {
+              flex-direction: column; /* Stack cards vertically */
+              padding: 10px;
+          }
+
+          li {
+              margin: 5px;
+              max-width: 100%; /* Make cards full width on mobile */
+          }
+
+          .card {
+              padding: 10px;
+              width: 96%; /* Make cards 100% width on mobile */
+              margin: 0 auto; /* Center-align the cards */
+              min-height: 50px;
+              width: 210px
+          }
+      }
+      .card
+    {
           background-color: #fff;
           border: 1px solid #ccc;
           border-radius: 10px;
@@ -78,28 +139,15 @@
           width: 200px;
       }
 
-      .card1 {
-          height: 20px;
-          color: blue;
-          font-size: 14px;
-      }
+.discord-link a {
+              color: white;
+              text-decoration: underline;
+            }
 
-      .card1:hover,
-      .card:hover {
-          transform: translateY(-5px);
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      }
 
-      a {
-          text-decoration: none;
-          color: #1723c2; /* Default text color */
-      }
 
-      .card img {
-          width: 100px; /* Set the desired width for your image */
-          height: auto; /* Maintain aspect ratio */
-      }
-      .banner {
+                        
+ .banner {
   width: 100%;
   height: 100%;
 
@@ -111,7 +159,12 @@
   flex-direction: column;
   text-align: center;
 }
-
+span {
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0px 4px 12px #000000ba;
+}
 #canvas {
   position: absolute;
   left: 0;
@@ -122,89 +175,124 @@
 }
 h1{
   font-size: 46px;
-
 }
+
+
+.christmasLights {
+  animation: flash 2s step-start infinite;
+  border-image-repeat: round;
+  border-image-slice: 50% 0;
+  border-style: solid;
+  width: 100%;
+}
+
+@keyframes flash {
+  0% {
+    border-width: 100px 0 0;
+  }
+  50% {
+    border-width: 0 0 100px;
+  }
+  100% {
+    border-width: 100px 0 0;
+  }
+}
+
+.christmasLights {
+  border-image-source: url(https://media.discordapp.net/attachments/1172915363336429628/1189174544712355959/download_1.png?ex=659d3419&is=658abf19&hm=457158c0f9b58183e02dd320fc116d64b75781b103cb6aef95ea8632244eb46e&=&format=webp&quality=lossless&width=300&height=179)
+}
+
   </style>
 
 
 </head>
 
+
 <body>
-    <section class="banner">
 
-        <canvas id="canvas"></canvas>
+  <section class="banner">
+    <canvas id="canvas"> </canvas>
+    <div class="nav">
+        <h1>🎄 {{teachername}} 🎄 </h1>
+        <style>
+          .discord-link a {
+            color: white;
+            text-decoration: underline;
+          }
+        </style>
+            <!-- <p>Please donate to keep this site up. -->
+               <p><div class="discord-link"><a href="/all">Home</a>  | <a href="/learn-more" target="_blank">Api Usage</a></div></p>
+  
+  </div>
+  <div class="christmasLights"></div>
 
-<div class="nav">
-      <h1>🎄 {{teachername}} 🎄 </h1>
-      <style>
-        .discord-link a {
-          color: white;
-          text-decoration: underline;
-        }
-      </style>
-          <!-- <p>Please donate to keep this site up. -->
-             <p><div class="discord-link"><a href="/all">Home</a>  | <a href="/learn-more" target="_blank">Api Usage</a></div></p>
-
-</div>
-      <ul>
-          {% for video in videos %}
-            {%if video.url%}
-            <a href="{{video.url}}" target="_blank">
+        <ul>
+            {% for video in videos %}
+              {%if video.url%}
+              <a href="{{video.url}}" target="_blank">
+                  <div class="card">
+                      {{ video.title }}
+                  </div>
+              </a>
+              {%else%}
+            <a href="https://www.youtube.com/watch?v={{ video.id }}&list={{playlist_id}}" target="_blank">
                 <div class="card">
                     {{ video.title }}
                 </div>
             </a>
-            {%else%}
-          <a href="https://www.youtube.com/watch?v={{ video.id }}&list={{playlist_id}}" target="_blank">
-              <div class="card">
-                  {{ video.title }}
-              </div>
-          </a>
-          {%endif%}
-      {% endfor %}
-      </ul>
-   <hr>
-   <ul>
+            {%endif%}
+        {% endfor %}
+        </ul>
+     <hr>
+     <ul>
+    
+     <a href="https://www.youtube.com/playlist?list={{playlist_id}}" target="_blank">   
+        <div class="card">
+            <img src="static/assets/yt.avif"></img>
+            <br> Open Playlist
+        </div>
+     </a>
+    </ul>
+   
   
-   <a href="https://www.youtube.com/playlist?list={{playlist_id}}" target="_blank">   
-      <div class="card">
-          <img src="static/assets/yt.avif"></img>
-          <br> Open Playlist
-      </div>
-   </a>
-  </ul>
- 
-    </section>
 </body>
-<script>
-//   function getRandomColor() {
-//       const min = 0;
-//       const max = 255;
 
-//       const r = Math.floor(Math.random() * (max - min + 1)) + min;
-//       const g = Math.floor(Math.random() * (max - min + 1)) + min;
-//       const b = Math.floor(Math.random() * (max - min + 1)) + min;
+</section>
 
-//       return `rgb(${r}, ${g}, ${b})`;
-//   }
+  <script>
 
-//   function changeColors() {
-//       const h1 = document.querySelector(".nav");
-//       const randomColor = getRandomColor();
-//       h1.style.backgroundColor = randomColor;
+    // window.onload = function () {
+    //   function getRandomColor() {
+    //     const min = 0;
+    //     const max = 255;
 
-//       // You can set the link colors here as well if you have links to change.
-//       // For this example, I'll assume there's a "links" array defined somewhere.
+    //     const r = Math.floor(Math.random() * (max - min + 1)) + min;
+    //     const g = Math.floor(Math.random() * (max - min + 1)) + min;
+    //     const b = Math.floor(Math.random() * (max - min + 1)) + min;
 
-//       // You can use the randomColor for the link color as well.
-//   }
+    //     return `rgb(${r}, ${g}, ${b})`;
+    //   }
 
-//   window.onload = changeColors;
+    //   function changeColors() {
+    //     const h1 = document.querySelector(".nav");
+    //     const links = document.querySelectorAll("a");
+    //     const randomColor = getRandomColor();
+    //     h1.style.backgroundColor = randomColor;
+
+    //     links.forEach(link => {
+    //       link.style.backgroundColor = randomColor;
+    //     });
+    //   }
+
+    //   changeColors();
+    // };
 
 
 
 
-const SNOW_COUNT = 300;
+
+
+    const SNOW_COUNT = 300;
 
 function startAnimation() {
   const CANVAS_WIDTH = window.innerWidth;
@@ -333,5 +421,7 @@ window.addEventListener("resize", startAnimation);
 
 
 
-</script>
+
+  </script>
+
 </html>

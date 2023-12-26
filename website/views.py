@@ -136,7 +136,7 @@ def nawar():
 
 @views.route("/nawarch1")
 def nawarch1():
-  teachername = "Nawar Chapter 1"
+  teachername = "Chapter 1"
   playlist_id = 'PLM-GVlebsoPXpGe3wzMN7SKYvmTr0jACa'
   videos = get_playlist_videos(playlist_id)
   return render_template('used_pages/videopage.html',
@@ -147,7 +147,8 @@ def nawarch1():
 
 @views.route("/nawarch1rev")
 def nawarch1rev():
-  teachername = "Nawar"
+  teachername = "Revision 1"
+
   playlist_id = 'PLM-GVlebsoPXELEhVJi-nBm-oZXpE85K2'
   videos = get_playlist_videos(playlist_id)
   return render_template('used_pages/videopage.html',
@@ -156,7 +157,7 @@ def nawarch1rev():
                          teachername=teachername)
 @views.route("/nawarch2rev")
 def nawarch2rev():
-  teachername = "Nawar"
+  teachername = "Revision 2"
   playlist_id = 'PLM-GVlebsoPVAd_O1EYC8ORRkYGQ_latH'
   videos = get_playlist_videos(playlist_id)
   return render_template('used_pages/videopage.html',
@@ -166,7 +167,7 @@ def nawarch2rev():
 
 @views.route("/nawarch2")
 def nawarch2():
-  teachername = "Nawar Chapter 2"
+  teachername = "Chapter 2"
   playlist_id = 'PLM-GVlebsoPWU4v5bcndzPBt6e7PsiCwQ'
   videos = get_playlist_videos(playlist_id)
   # videos += [{'url': '/nawarstorj', 'title': 'More'}]
@@ -177,7 +178,7 @@ def nawarch2():
 
 @views.route("/nawarch3")
 def nawarch3():
-  teachername = "Nawar Chapter 3"
+  teachername = "Chapter 3"
   playlist_id = 'PLM-GVlebsoPXwGQGxiTBmNCzD4E_BgDCo'
   videos = get_playlist_videos(playlist_id)
   return render_template('used_pages/videopage.html',
@@ -216,7 +217,7 @@ def chemch1():
 
 @views.route("/chemch2")
 def chemch2():
-    teachername = "Nasser-El-Batal"
+    teachername  = "Chapter 1"
     playlist_id = 'PLM-GVlebsoPVYwDkN3DxFcyS1QWCKfAjv'
     videos = get_playlist_videos(playlist_id)
     #return videos
@@ -229,10 +230,10 @@ def chemch2():
 
 @views.route("/chemch2test")
 def chemch2test():
-    teachername = "Nasser-El-Batal"
+    teachername = "Chapter 2"
+
     playlist_id = 'PLM-GVlebsoPVYwDkN3DxFcyS1QWCKfAjv'
     videos = get_playlist_videos(playlist_id)
-    #return videos
     return render_template('videopagesplits.html',
                           videos=videos,
                           playlist_id=playlist_id,
@@ -240,10 +241,9 @@ def chemch2test():
                          
 @views.route("/chemch3")
 def chemch3():
-    teachername = "Nasser-El-Batal"
+    teachername = "Chapter 3"
     playlist_id = 'PLM-GVlebsoPVXmash3q9sfG5bsD3Mt88x'
     videos = get_playlist_videos(playlist_id)
-    #videos += [{'url': '/chemstorj', 'title': 'More'}]
     return render_template('used_pages/videopage.html',
                            videos=videos,
                            playlist_id=playlist_id,
@@ -320,7 +320,7 @@ def sameh():
 
 @views.route("/samehh1")
 def samehh1():
-  teachername = "Sameh Nash2t"
+  teachername = "Chapter 1"
   playlist_id = 'PLM-GVlebsoPXd5COr54fuG-1lNCfpDdwl'
   videos = get_playlist_videos(playlist_id)
   return render_template('used_pages/videopage.html',
@@ -331,7 +331,7 @@ def samehh1():
 
 @views.route("/samehh2")
 def samehh2():
-  teachername = "Sameh Nash2t"
+  teachername = "Chapter 2"
   playlist_id = 'PLM-GVlebsoPUckTjXcvKP483XHykKHH-m'
   videos = get_playlist_videos(playlist_id)
   return render_template('used_pages/videopage.html',
@@ -342,7 +342,7 @@ def samehh2():
 
 @views.route("/samehh3")
 def samehh3():
-  teachername = "Sameh Nash2t"
+  teachername = "Chapter 3"
   playlist_id = 'PLM-GVlebsoPX1xJ0JSvE7gLfkPEKIo3kA'
   videos = get_playlist_videos(playlist_id)
   return render_template('used_pages/videopage.html',
@@ -378,7 +378,7 @@ def gedoo():
 @views.route('/bio')
 def bio():
   teacher_links = {
-      "Chapter 1": ("bioch1", "S2 Not Available"),
+     "Chapter 1": ("bioch1", "S2 Not Available"),
     "Chapter 2": ("bioch2", "Chapter 2"),
     "Chapter 3": ("bioch3", "Chapter 3"),
 
@@ -394,7 +394,8 @@ def bio():
 
 @views.route("/bioch1")
 def bioch1():
-  teachername = "Daif"
+  teachername = "Chapter 1"
+
   playlist_id = 'PLM-GVlebsoPWYFgg9hks2GaWKC2kI1r7X'
   videos = get_playlist_videos(playlist_id)
   return render_template('used_pages/videopage.html',
@@ -405,7 +406,8 @@ def bioch1():
 
 @views.route("/bioch2")
 def bioch2():
-  teachername = "Daif"
+  teachername = "Chapter 2"
+
   playlist_id = 'PLM-GVlebsoPVXxEs5mtOyS-4QLolBXjlX'
   videos = get_playlist_videos(playlist_id)
   return render_template('used_pages/videopage.html',
@@ -415,7 +417,7 @@ def bioch2():
 
 @views.route("/bioch3")
 def bioch3():
-  teachername = "Daif"
+  teachername = "Chapter 3"
   playlist_id = 'PLM-GVlebsoPV0ylAbm7LFlKCD9_X0CGEK'
   videos = get_playlist_videos(playlist_id)
  # videos += [{'url': '/biostorj', 'title': 'More'}]
@@ -468,7 +470,7 @@ def salama():
 
 @views.route("/salamapre")
 def salamapre():
-  teachername = "Mohamed Salama PreStudy"
+  teachername = "PreStudy"
   playlist_id = 'PLM-GVlebsoPVEULTnn90gqVL0AL99KtU0'
   videos = get_playlist_videos(playlist_id)
   return render_template('used_pages/videopage.html',
@@ -479,7 +481,7 @@ def salamapre():
 
 @views.route("/salamach1")
 def salamach1():
-  teachername = "Mohamed Salama Course 1"
+  teachername= "Course 1"
   playlist_id = 'PLM-GVlebsoPWfuCf4h_ucKPOBKjH6No-W'
   videos = get_playlist_videos(playlist_id)
   return render_template('used_pages/videopage.html',
@@ -490,7 +492,7 @@ def salamach1():
 
 @views.route("/salamach2")
 def salamach2():
-  teachername = "Mohamed Salama Course 2"
+  teachername = "Course 2"
   playlist_id = 'PLM-GVlebsoPUubsCYnPGc27tihI0pz4hi'
   videos = get_playlist_videos(playlist_id)
   return render_template('used_pages/videopage.html',
@@ -501,7 +503,7 @@ def salamach2():
 
 @views.route("/salamach3")
 def salamach3():
-  teachername = "Mohamed Salama Course 3"
+  teachername= "Course 3"
   playlist_id = 'PLM-GVlebsoPUSSsoABHH059FBapcSjvGg'
   videos = get_playlist_videos(playlist_id)
   return render_template('used_pages/videopage.html',
@@ -512,7 +514,8 @@ def salamach3():
 
 @views.route("/salamach4")
 def salamach4():
-  teachername = "Mohamed Salama Course 4"
+  teachername = "Course 4"
+
   playlist_id = 'PLM-GVlebsoPXWSZDCjeDfvdMV5QXYwg4x'
   videos = get_playlist_videos(playlist_id)
   return render_template('used_pages/videopage.html',
@@ -523,7 +526,7 @@ def salamach4():
 
 @views.route("/salamach5")
 def salamach5():
-  teachername = "Mohamed Salama Course 5"
+  teachername = "Course 5"
   playlist_id = 'PLM-GVlebsoPWEGxQu5D0hVrUCJjTMqYvd'
   videos = get_playlist_videos(playlist_id)
   return render_template('used_pages/videopage.html',
@@ -534,7 +537,7 @@ def salamach5():
 
 @views.route("/salamach6")
 def salamach6():
-  teachername = "Mohamed Salama Course 6"
+  teachername = "Course 6"
   playlist_id = 'PLM-GVlebsoPWZKrvX8MvfJxfxXhKXvqR3'
   videos = get_playlist_videos(playlist_id)
   return render_template('used_pages/videopage.html',
@@ -545,7 +548,7 @@ def salamach6():
 
 @views.route("/salamach7")
 def salamach7():
-  teachername = "Mohamed Salama"
+  teachername = "Course 7"
   playlist_id = 'PLM-GVlebsoPUobUeuNIWsitKeP-aHOwif'
   videos = get_playlist_videos(playlist_id)
   return render_template('used_pages/videopage.html',
@@ -556,7 +559,7 @@ def salamach7():
 
 @views.route("/salamach8")
 def salamach8():
-  teachername = "Mohamed Salama Course 8"
+  teachername = "Course 8"
   playlist_id = 'PLM-GVlebsoPUqwS3-Ij-pHBq4_aoEAwMZ'
   videos = get_playlist_videos(playlist_id)
   return render_template('used_pages/videopage.html',
@@ -567,7 +570,7 @@ def salamach8():
 
 @views.route("/salamach9")
 def salamach9():
-  teachername = "Mohamed Salama Course 9"
+  teachername = "Course 9"
   playlist_id = 'PLM-GVlebsoPXe2kZo_cM06BZWXwdSxQ7B'
   videos = get_playlist_videos(playlist_id)
   return render_template('used_pages/videopage.html',
@@ -580,7 +583,7 @@ def salamach9():
 
 @views.route("/salamach10")
 def salamach10():
-  teachername = "Mohamed Salama Course 10"
+  teachername = "Course 10"
   playlist_id = 'PLM-GVlebsoPXZmghd3uMqZWx6wlLZDiiu'
   videos = get_playlist_videos(playlist_id)
   return render_template('used_pages/videopage.html',
@@ -592,7 +595,7 @@ def salamach10():
 
 @views.route("/salamach11")
 def salamach11():
-  teachername = "Mohamed Salama Course 11"
+  teachername = "Course 11"
   playlist_id = 'PLM-GVlebsoPVB0u2fWqO9ep3cuBp_8zTW'
   videos = get_playlist_videos(playlist_id)
  # videos += [{'url': '/salamastorj', 'title': 'More'}]
@@ -605,7 +608,7 @@ def salamach11():
 
 @views.route("/salamach12")
 def salamach12():
-  teachername = "Mohamed Salama Course 12"
+  teachername = "Course 12"
   playlist_id = 'PLM-GVlebsoPU0BwzCsqsPQfKMSPZauuFl'
   videos = get_playlist_videos(playlist_id)
  # videos += [{'url': '/salamastorj', 'title': 'More'}]
@@ -617,7 +620,7 @@ def salamach12():
 
 @views.route("/salamach13")
 def salamach13():
-  teachername = "Mohamed Salama Course 13"
+  teachername = "Course 13"
   playlist_id = 'PLM-GVlebsoPURAU8nu_tU2dphnGXxZeMM'
   videos = get_playlist_videos(playlist_id)
  # videos += [{'url': '/salamastorj', 'title': 'More'}]
@@ -628,7 +631,7 @@ def salamach13():
                          teachername=teachername)
 @views.route("/salamach14")
 def salamach14():
-  teachername = "Mohamed Salama Course 14"
+  teachername = "Course 14"
   playlist_id = 'PLM-GVlebsoPXnRQBjkDqUUAXDKyUJqK9-'
   videos = get_playlist_videos(playlist_id)
  # videos += [{'url': '/salamastorj', 'title': 'More'}]
@@ -639,7 +642,7 @@ def salamach14():
                          teachername=teachername)
 @views.route("/salamach15")
 def salamach15():
-  teachername = "Mohamed Salama Course 15"
+  teachername = "Course 15"
   playlist_id = 'PLM-GVlebsoPWCqnSBAANAy8Wn89lbLmqt'
   videos = get_playlist_videos(playlist_id)
 
@@ -654,7 +657,7 @@ def salamach15():
 
 @views.route("/salamach16")
 def salamach16():
-  teachername = "Mohamed Salama Course 16"
+  teachername = "Course 16"
   playlist_id = 'PLM-GVlebsoPUF0Px3a00jPzFLwJwkpgBw'
   videos = get_playlist_videos(playlist_id)
 
