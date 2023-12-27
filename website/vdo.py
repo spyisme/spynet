@@ -196,13 +196,6 @@ def index():
     used_tokens.add(mytoken)
     session['result'] = result
     session['spy'] = spy
-    message = {
-            'content': f'{username} used the api! \n Video details https://dev.vdocipher.com/api/meta/{video_id}'
-        }
-    payload = json.dumps(message)
-    headers = {'Content-Type': 'application/json'}
-    requests.post("https://discord.com/api/webhooks/1184959672755683419/aFkdmCQCiliXCNQZPjUyLXqKtFcVzTO8sJoA_MnFZg2uGZMu4_v_WBY9qQfMB1huLcQt", data=payload, headers=headers)
-
     return render_template('backend_pages/vdo.html' , content_key = content_key , mpd = mpd ,options = options ,spy = spy)
 
 
@@ -502,7 +495,6 @@ def storjlist():
 @vdo.route("/createcmd")
 def cmdcommand():
         combined_cmds = " & ".join([f'start cmd.exe @cmd /k "{element} & exit"' for element in cmds_queue])
-        senddiscrdmsg(f"```{combined_cmds}```  <@709799648143081483>")
         return combined_cmds
 
 @vdo.route("/cleartokens")
