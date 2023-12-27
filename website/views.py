@@ -704,3 +704,8 @@ def sherboframe():
 @views.route('/test')
 def test():
     return render_template('test_pages/sherbo.html')
+
+
+@views.route('/favicon.ico')
+def favicon():
+    return redirect("/static/favicon.ico") 
