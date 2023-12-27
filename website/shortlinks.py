@@ -164,10 +164,5 @@ def main():
 
 @shortlinks.route("/files")
 def files():
-    return redirect("https://link.storjshare.io/s/jwxod6lj2sva2kzb47nwxzqivkdq/spynet%2FPublic") 
-            
-
-@shortlinks.route("/files2")
-def files2():
-    return redirect("https://link.storjshare.io/s/jvkl7k2i3uiefe7zjwzfnamindza/spynet%2FPrivate") 
+    return redirect("https://link.storjshare.io/s/jubit7purhfmiw6zi7mysb2jr4wq/spynet%2FPrivate") 
             

@@ -307,7 +307,7 @@ def storjsingle(command):
             video_name = extract_save_name(cmd)
 
             if video_name :
-                command2 = f"uplink.exe cp ./output/{video_name}.mp4 sj://spynet/Public/"
+                command2 = f"uplink.exe cp ./output/{video_name}.mp4 sj://spynet/Private/"
                 command4 = fr"del .\output\{video_name}.mp4"
 
                 # Download to local pc
@@ -375,7 +375,7 @@ def storj():
                     used_mpd.add(mpd)
                     video_name = extract_save_name(cmd)
                     if video_name :
-                        command2 = f"uplink.exe cp ./output/{video_name}.mp4 sj://spynet/Public/"
+                        command2 = f"uplink.exe cp ./output/{video_name}.mp4 sj://spynet/Private/"
                         command4 = fr"del .\output\{video_name}.mp4"
 
                         senddiscrdmsg(f"Downloading the video... {video_name}")
