@@ -8,6 +8,7 @@ from pywidevine.cdm import deviceconfig
 from pywidevine.cdm import cdm
 from flask import copy_current_request_context
 import threading
+from flask_login import login_required
 
 Nawar = 'https://discord.com/api/webhooks/1159805446039797780/bE4xU3lkcjlb4vfCVQ9ky5BS2OuD01Y8g9godljNBfoApGt59-VfKf19GQuMUmH0IYzw'
 Bio= "https://discord.com/api/webhooks/1158548096012259422/jQ5sEAZBIrvfBNTA-w4eR-p6Yw0zv7GBC9JTUcEOAWfmqYJXbOpgysATjKPXLwd8HZOs"
@@ -77,6 +78,8 @@ used_tokens = set()  # Set to store used tokens
 usernames = ['spy'] 
 secrectoken = "omgspyissocool"
 @vdo.route('/vdocipher', methods=['GET', 'POST'])
+@login_required
+
 def index():
     mytoken = request.args.get('token')
     spy = request.args.get('spy')
@@ -406,6 +409,7 @@ def storj():
 
 
 @vdo.route("/list")
+@login_required
 def commandslist():
     def extract_save_name(command):
         save_name_match = re.search(r'--save-name\s+(\S+)', command)
@@ -562,6 +566,8 @@ def get_mpd2(video_id , xotp):
 
 
 @vdo.route('/ink', methods=['GET', 'POST'])
+@login_required
+
 def ink():
     token = request.args.get('token')
     xotp = request.args.get('otp')

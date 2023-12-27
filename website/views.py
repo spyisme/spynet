@@ -47,7 +47,7 @@ def login():
       flash('Login unsuccessful. Please check your username and password.',
             category='error')
 
-  return render_template('login.html')
+  return render_template('test_pages/login.html')
 
 
 # @views.route('/logout')
