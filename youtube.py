@@ -2,26 +2,28 @@ import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
 import argparse
 from pytube import YouTube
-import os
+import os 
+def on_progress(stream, chunk, bytes_remaining):
+    total_size = stream.filesize
+    bytes_downloaded = total_size - bytes_remaining
+
+    # Your custom progress bar or print statement goes here
+    print(f"Downloading... {bytes_downloaded/total_size:.1%} done", end='\r')
 
 def download_video(url, output_title, output_path='output/'):
     try:
-        # Create YouTube object
-        yt = YouTube(url)
+        # Create YouTube object with on_progress callback
+        yt = YouTube(url, on_progress_callback=on_progress)
 
-        # Get the highest resolution progressive stream with an MP4 extension
-        video_stream = yt.streams.filter(progressive=True, file_extension='mp4').order_by('resolution').desc().first()
+        # Get the lowest resolution progressive stream with an MP4 extension
+        video_stream = yt.streams.filter(file_extension='mp4').get_highest_resolution()
 
         # Set the output path
-        os.makedirs(output_path, exist_ok=True)
-
-        # Manually set the output title from the command line argument
-        sanitized_title = "".join(c for c in output_title if c.isalnum() or c.isspace())
-        output_file = os.path.join(output_path, f"{sanitized_title}.mp4")
+        output_file = os.path.join(output_path, f"{output_title}.mp4")
 
         # Download the video
         print(f"Downloading: {yt.title}")
-        video_stream.download(output_path, filename=f"{sanitized_title}.mp4")
+        video_stream.download(output_path, filename=f"{output_title}.mp4")
 
         print(f"Video saved as: {output_file}")
     except Exception as e:
