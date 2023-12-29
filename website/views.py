@@ -25,7 +25,7 @@ print('Running!')
 def display_links():
     # with open('website/links.txt', 'r') as file:
     #     lines = file.readlines()
-    lines = ["nawar", "chem", "gedo","sherbo","salama","sameh", "bio","english"]
+    lines = ["nawar", "chem", "gedo","sherbo","salama","geology", "bio","english"]
     return render_template('used_pages/all.html', lines=lines, teachername="All")
 
 
@@ -293,16 +293,16 @@ def sherbocalc():
                          teachername=teachername)
 
 
-@views.route('/sameh')
+@views.route('/geology')
 def sameh():
   teacher_links = {
     "Sameh Nash2t Chapter 1": ("samehh1", "Chapter 1"),
     "Sameh Nash2t Chapter 2": ("samehh2", "Chapter 2"),
-    "Sameh Nash2t Chapter 3": ("samehh3", "Chapter 3")
-
+    "Sameh Nash2t Chapter 3": ("samehh3", "Chapter 3"),
+    "Gio maged": ("giomaged", "Gio maged")
   }
 
-  teachername = "Sameh Nash2t"
+  teachername = "Geology"
   return render_template('used_pages/teacher.html',
                          teacher_links=teacher_links,
                          teachername=teachername,
@@ -340,6 +340,22 @@ def samehh3():
                          videos=videos,
                          playlist_id=playlist_id,
                          teachername=teachername)
+
+
+@views.route("/giomaged")
+def giomaged():
+  teachername = "Gio maged"
+  playlist_id = 'PLM-GVlebsoPXh1obVV3aWysV7wXlN3yET'
+  videos = get_playlist_videos(playlist_id)
+  return render_template('used_pages/videopage.html',
+                         videos=videos,
+                         playlist_id=playlist_id,
+                         teachername=teachername)
+
+
+
+
+
 @views.route('/gedo')
 def gedo():
   teacher_links = {
