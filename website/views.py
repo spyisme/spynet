@@ -25,7 +25,7 @@ print('Running!')
 def display_links():
     # with open('website/links.txt', 'r') as file:
     #     lines = file.readlines()
-    lines = ["nawar", "chem", "gedo","sherbo","salama","geology", "bio","english"]
+    lines = ["physics", "chemistry","math", "arabic","geology", "biology","english"]
     return render_template('used_pages/all.html', lines=lines, teachername="All")
 
 
@@ -113,6 +113,18 @@ def home():
 
 
 
+@views.route('/math')
+def math():
+  teacher_links = {
+  "Sherbo": ("/sherbo", "Omar sherbeni"),
+    "Salama": ("salama", "Mohamed Salama")
+  }
+
+  teachername = "Math"
+  return render_template('used_pages/teacher.html',
+                         teacher_links=teacher_links,
+                         teachername=teachername,
+                         imgs="yes")
 
 @views.route('/nawar')
 def nawar():
@@ -128,6 +140,19 @@ def nawar():
   }
 
   teachername = "Nawar"
+  return render_template('used_pages/teacher.html',
+                         teacher_links=teacher_links,
+                         teachername=teachername,
+                         imgs="yes")
+@views.route('/physics')
+def Physics():
+  teacher_links = {
+  "Nawar": ("/nawar", "Nawar"),
+
+
+  }
+
+  teachername = "Physics"
   return render_template('used_pages/teacher.html',
                          teacher_links=teacher_links,
                          teachername=teachername,
@@ -186,8 +211,8 @@ def nawarch3():
                          playlist_id=playlist_id,
                          teachername=teachername)
 
-@views.route('/chem')
-def chem():
+@views.route('/nasser')
+def nasser():
   teacher_links = {
      "Nasser-El-Batal Chapter 1": ("chemch1", "Chapter 1"),
     "Nasser-El-Batal Chapter 2": ("chemch2", "Chapter 2"),
@@ -203,6 +228,17 @@ def chem():
                          teachername=teachername,
                          imgs="yes")
 
+@views.route('/chemistry')
+def chem():
+  teacher_links = {
+     "Nasser-El-Batal": ("nasser", "Nasser-El-Batal")
+  }
+
+  teachername = "Chemistry"
+  return render_template('used_pages/teacher.html',
+                         teacher_links=teacher_links,
+                         teachername=teachername,
+                         imgs="yes")
 
 @views.route("/chemch1")
 def chemch1():
@@ -293,13 +329,12 @@ def sherbocalc():
                          teachername=teachername)
 
 
-@views.route('/geology')
+@views.route('/sameh')
 def sameh():
   teacher_links = {
     "Sameh Nash2t Chapter 1": ("samehh1", "Chapter 1"),
     "Sameh Nash2t Chapter 2": ("samehh2", "Chapter 2"),
     "Sameh Nash2t Chapter 3": ("samehh3", "Chapter 3"),
-    "Gio maged": ("giomaged", "Gio maged")
   }
 
   teachername = "Geology"
@@ -308,6 +343,19 @@ def sameh():
                          teachername=teachername,
                          imgs="yes")
 
+@views.route('/geology')
+def geology():
+  teacher_links = {
+    "Sameh Nash2t": ("sameh", "Sameh Nash2t"),
+    "Gio maged": ("giomaged", "Gio maged")
+  }
+
+  teachername = "Geology"
+  return render_template('used_pages/teacher.html',
+                          teacher_links=teacher_links,
+                          teachername=teachername,
+                          imgs="yes")
+  
 
 @views.route("/samehh1")
 def samehh1():
@@ -356,13 +404,13 @@ def giomaged():
 
 
 
-@views.route('/gedo')
+@views.route('/arabic')
 def gedo():
   teacher_links = {
     "Gedo": ("gedoo", "Gedo"),
     # Add other entries with the correct structure
 }
-  teachername = "Gedo"
+  teachername = "Arabic"
   return render_template('used_pages/teacher.html',
                          teacher_links=teacher_links,
                          teachername=teachername,
@@ -382,8 +430,8 @@ def gedoo():
                          teachername=teachername)
 
 
-@views.route('/bio')
-def bio():
+@views.route('/daif')
+def daif():
   teacher_links = {
      "Chapter 1": ("bioch1", "S2 Not Available"),
     "Chapter 2": ("bioch2", "Chapter 2"),
@@ -398,7 +446,18 @@ def bio():
                          teachername=teachername,
                          imgs="yes")
 
+@views.route('/biology')
+def bio():
+  teacher_links = {
+     "Daif": ("daif", "Mohamed Daif"),
 
+  }
+
+  teachername = "Biology"
+  return render_template('used_pages/teacher.html',
+                         teacher_links=teacher_links,
+                         teachername=teachername,
+                         imgs="yes")
 @views.route("/bioch1")
 def bioch1():
   teachername = "Chapter 1"
