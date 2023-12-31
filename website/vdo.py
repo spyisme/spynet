@@ -82,15 +82,9 @@ secrectoken = "omgspyissocool"
 
 def index():
     mytoken = request.args.get('token')
-    spy = request.args.get('spy')
-    username = request.args.get('username')
-    secrectokens = request.args.get('secrectokens')
+    spy = ""
     if mytoken in used_tokens:
         return jsonify({'error': 'Token already used'}), 400
-    if username not in  usernames:
-        return jsonify({'error': 'Provide a username'}), 400
-    if secrectokens !=secrectoken :
-        return jsonify({'error': 'Provide the token'}), 400
     class WvDecrypt:
         def __init__(self, pssh_b64, device):
             self.cdm = cdm.Cdm()
