@@ -82,7 +82,7 @@ secrectoken = "omgspyissocool"
 
 def index():
     mytoken = request.args.get('token')
-    spy = ""
+    spy = request.args.get('spy')
     if mytoken in used_tokens:
         return jsonify({'error': 'Token already used'}), 400
     class WvDecrypt:
