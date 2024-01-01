@@ -79,10 +79,8 @@ usernames = ['spy']
 secrectoken = "omgspyissocool"
 @vdo.route('/vdocipher', methods=['GET', 'POST'])
 @login_required
-
 def index():
     mytoken = request.args.get('token')
-    spy = request.args.get('spy')
     if mytoken in used_tokens:
         return jsonify({'error': 'Token already used'}), 400
     class WvDecrypt:
@@ -187,13 +185,11 @@ def index():
     result = mpd + '\n' + content_key_lines 
     # print(result)
     session['result'] = result
-    options = []
-    if spy :
-        options = ['Else','Nawar','Nasser-El-Batal', 'MoSalama', 'Gedo' , 'Bio']
+    options = ['Else','Nawar','Nasser-El-Batal', 'MoSalama', 'Gedo' , 'Bio']
     used_tokens.add(mytoken)
     session['result'] = result
-    session['spy'] = spy
-    return render_template('backend_pages/vdo.html' , content_key = content_key , mpd = mpd ,options = options ,spy = spy)
+
+    return render_template('backend_pages/vdo.html' , content_key = content_key , mpd = mpd ,options = options)
 
 
 
@@ -207,10 +203,7 @@ cmds_queue = []
 @vdo.route('/form', methods=['POST'])
 def form():
     options = ['Nawar', 'Nasser-El-Batal', 'MoSalama' , 'Bio', 'Else']
-    spy = session.get('spy')
     route = "vdo.discord"
-    if spy :
-        route = "vdo.discord2"
     if request.method == 'POST':
         user_data = {
             'teacher' : request.form.get('dropdown'),
@@ -220,8 +213,8 @@ def form():
     return render_template('backend_pages/vdo.html', option = options)
 
 
-@vdo.route('/discord2', methods=['GET', 'POST'])
-def discord2():
+@vdo.route('/discord', methods=['GET', 'POST'])
+def discord():
     result = session.get('result')
     name = request.args.get('name')
     result = result.replace("\n", " ")
@@ -242,27 +235,10 @@ def discord2():
     }
     webhook_url = teacher_webhooks.get(teacher, Else)
     requests.post(webhook_url, data=payload, headers=headers)
-    session.pop('spy', None)
 
     return 'Message Sent! <a href="https://discord.gg/vKBnMy5yUe">Discord server</a>'
 
 
-
-@vdo.route('/discord', methods=['GET', 'POST'])
-def discord():
-    result = session.get('result')
-    name = request.args.get('name')
-    result = result.replace("\n", " ")
-    message = {
-            'content': f'```app {result} --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output``` {name} '
-        }
-    payload = json.dumps(message)
-    userinput = f"app {result} --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output"
-    cmds_queue.append(userinput)
-    headers = {'Content-Type': 'application/json'}
-    requests.post("https://discord.com/api/webhooks/1180085907668357161/loJp3PkaHiS_HCfyWy42QisFFiOGj__XXuApZyecvdTzTwWF_C121gZws0z9EiaBgO6i", data=payload, headers=headers)
-
-    return redirect(url_for('vdo.commandslist'))
 
 
 
