@@ -34,20 +34,22 @@ def display_links():
 
 @views.route('/login', methods=['GET', 'POST'])
 def login():
-  if request.method == 'POST':
-    username = request.form.get('username')
-    password = request.form.get('password')
-    user = User.query.filter_by(username=username).first()
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+        remember = request.form.get('remember')  # Assuming you have a checkbox named 'remember' in your login form
 
-    if user and check_password_hash(user.password, password):
-      login_user(user)
-      flash('Login successful!', category='success')
-      return redirect(url_for('views.home'))
-    else:
-      flash('Login unsuccessful. Please check your username and password.',
-            category='error')
+        user = User.query.filter_by(username=username).first()
 
-  return render_template('test_pages/login.html')
+        if user and check_password_hash(user.password, password):
+            login_user(user, remember=remember == 'on')  # Convert the string 'on' to boolean
+            flash('Login successful!', category='success')
+            return redirect(url_for('views.home'))
+
+        else:
+            flash('Login unsuccessful. Please check your username and password.', category='error')
+
+    return render_template('test_pages/login.html')
 
 
 # @views.route('/logout')
