@@ -75,8 +75,9 @@ def get_mpd(video_id: str) -> str:
 
 vdo = Blueprint('vdo', __name__)
 used_tokens = set()  # Set to store used tokens
-usernames = ['spy'] 
-secrectoken = "omgspyissocool"
+
+
+
 @vdo.route('/vdocipher', methods=['GET', 'POST'])
 @login_required
 def index():
@@ -200,17 +201,17 @@ cmds_queue = []
 
 
 
+
 @vdo.route('/form', methods=['POST'])
 def form():
     options = ['Nawar', 'Nasser-El-Batal', 'MoSalama' , 'Bio', 'Else']
-    route = "vdo.discord"
     if request.method == 'POST':
         user_data = {
             'teacher' : request.form.get('dropdown'),
             'name': request.form['vidname']
         }
-        return redirect(url_for(f'{route}', **user_data))
-    return render_template('backend_pages/vdo.html', option = options)
+        return redirect(url_for('vdo.discord', **user_data))
+    return render_template('index.html' , option = options)
 
 
 @vdo.route('/discord', methods=['GET', 'POST'])
@@ -241,7 +242,8 @@ def discord():
 
 
 
-
+    userinput = f"app {result} --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output"
+    cmds_queue.append(userinput)
 #-------------------------------------------------------------------------------------
 import threading
 

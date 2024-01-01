@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/x-icon" href="https://spysnet.com/static/snn.png">
+    <link rel="icon" type="image/x-icon" href="https://spysnet.com/static/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vdocipher</title>
     <style>
@@ -131,7 +131,7 @@ select option {
         <label for="vidname">Video Name:</label>
         <input type="text" id="vidname" name="vidname" required="" autocomplete="off" oninput="validateInput(this)">
         <br>
-        {% if spy%}
+ 
         <label for="dropdown">Choose a Channel:</label>
         <select id="dropdown" name="dropdown">
             {% for option in options %}
@@ -139,7 +139,7 @@ select option {
             {% endfor %}
         </select>
         <br><br>
-        {%endif%}
+
         <button type="submit">Send Discord Message</button>
     </form>
 </div>
