@@ -237,13 +237,10 @@ def discord():
     webhook_url = teacher_webhooks.get(teacher, Else)
     requests.post(webhook_url, data=payload, headers=headers)
 
-    return 'Message Sent! <a href="https://discord.gg/vKBnMy5yUe">Discord server</a>'
+    return 'Message Sent!'
 
 
 
-
-    userinput = f"app {result} --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output"
-    cmds_queue.append(userinput)
 #-------------------------------------------------------------------------------------
 import threading
 
