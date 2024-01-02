@@ -542,10 +542,6 @@ def ink():
     xotp = request.args.get('otp')
     username = request.args.get('username')
     secrectokens = request.args.get('secrectokens')
-    if username not in  usernames:
-        return jsonify({'error': 'Provide a username'}), 400
-    if secrectokens !=secrectoken :
-        return jsonify({'error': 'Provide the token'}), 400 
     class WvDecrypt:
         def __init__(self, pssh_b64, device):
             self.cdm = cdm.Cdm()
