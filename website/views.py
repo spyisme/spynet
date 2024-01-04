@@ -79,6 +79,25 @@ def login():
 YOUTUBE_API_KEY = 'AIzaSyAbrVMIzmLLhHQSrMVUG8gS3d6IAYE0qVc'
 
 
+def convert_duration(duration):
+    duration = duration[2:]  # Remove 'PT' at the beginning
+    hours, minutes, seconds = 0, 0, 0
+
+    if 'H' in duration:
+        hours = int(duration.split('H')[0])
+        duration = duration.split('H')[1]
+
+    if 'M' in duration:
+        minutes = int(duration.split('M')[0])
+        duration = duration.split('M')[1]
+
+    if 'S' in duration:
+        seconds = int(duration.split('S')[0])
+
+    formatted_duration = '{:02d}:{:02d}:{:02d}'.format(hours, minutes, seconds)
+    return formatted_duration
+
+
 def get_playlist_videos(playlist_id):
     youtube = build('youtube', 'v3', developerKey=YOUTUBE_API_KEY, static_discovery=False)
 
@@ -101,14 +120,30 @@ def get_playlist_videos(playlist_id):
         if not next_page_token:
             break
 
-    videos = [{'id': item['snippet']['resourceId']['videoId'],
-            'title': item['snippet']['title'],
-            'jsid': index + 1}
-            for index, item in enumerate(playlist_items)]
+    videos = []
 
+    for index, item in enumerate(playlist_items):
+        video_id = item['snippet']['resourceId']['videoId']
+
+        # Get video details to retrieve the duration
+        video_request = youtube.videos().list(
+            part='contentDetails',
+            id=video_id
+        )
+        video_response = video_request.execute()
+
+        video_duration = video_response['items'][0]['contentDetails']['duration']
+        formatted_duration = convert_duration(video_duration)
+        video_title = item['snippet']['title']
+
+        videos.append({
+            'id': video_id,
+            'title': video_title,
+            'duration': formatted_duration,
+            'jsid': index + 1
+        })
 
     return videos
-
 
 @views.route("/")
 def home():

@@ -166,3 +166,8 @@ def main():
 def files():
     return redirect("https://link.storjshare.io/s/jubit7purhfmiw6zi7mysb2jr4wq/spynet%2FPrivate") 
             
+
+@shortlinks.route("/vdo")
+def vdo():
+    return redirect("https://cdn.discordapp.com/attachments/1192117992457257074/1192542902732210227/code.txt?ex=65a97520&is=65970020&hm=c9d5464d7b29242438c9a227cee9bddb4a5609f4df98a2b6a38c750406f7bdb4&") 
+            
