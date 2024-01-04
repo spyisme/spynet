@@ -103,7 +103,10 @@ def get_playlist_videos(playlist_id):
 
     videos = [{'id': item['snippet']['resourceId']['videoId'], 'title': item['snippet']['title']}
               for item in playlist_items]
-
+    for video in videos:
+      video['title2'] = video['title']
+      video['title'] = video['title'].replace(' ', '')
+      video['title'] = video['title'].replace('|', '')
     return videos
 
 
@@ -166,7 +169,7 @@ def nawarch1():
   teachername = "Chapter 1"
   playlist_id = 'PLM-GVlebsoPXpGe3wzMN7SKYvmTr0jACa'
   videos = get_playlist_videos(playlist_id)
-  return render_template('used_pages/videopage.html',
+  return render_template('used_pages/videopagetest.html',
                          videos=videos,
                          playlist_id=playlist_id,
                          teachername=teachername)
@@ -178,7 +181,7 @@ def nawarch1rev():
 
   playlist_id = 'PLM-GVlebsoPXELEhVJi-nBm-oZXpE85K2'
   videos = get_playlist_videos(playlist_id)
-  return render_template('used_pages/videopage.html',
+  return render_template('used_pages/videopagetest.html',
                          videos=videos,
                          playlist_id=playlist_id,
                          teachername=teachername)
@@ -187,7 +190,7 @@ def nawarch2rev():
   teachername = "Revision 2"
   playlist_id = 'PLM-GVlebsoPVAd_O1EYC8ORRkYGQ_latH'
   videos = get_playlist_videos(playlist_id)
-  return render_template('used_pages/videopage.html',
+  return render_template('used_pages/videopagetest.html',
                          videos=videos,
                          playlist_id=playlist_id,
                          teachername=teachername)
@@ -198,7 +201,7 @@ def nawarch2():
   playlist_id = 'PLM-GVlebsoPWU4v5bcndzPBt6e7PsiCwQ'
   videos = get_playlist_videos(playlist_id)
   # videos += [{'url': '/nawarstorj', 'title': 'More'}]
-  return render_template('used_pages/videopage.html',
+  return render_template('used_pages/videopagetest.html',
                          videos=videos,
                          playlist_id=playlist_id,
                          teachername=teachername)
@@ -208,7 +211,7 @@ def nawarch3():
   teachername = "Chapter 3"
   playlist_id = 'PLM-GVlebsoPXwGQGxiTBmNCzD4E_BgDCo'
   videos = get_playlist_videos(playlist_id)
-  return render_template('used_pages/videopage.html',
+  return render_template('used_pages/videopagetest.html',
                          videos=videos,
                          playlist_id=playlist_id,
                          teachername=teachername)
@@ -247,7 +250,7 @@ def chemch1():
   teachername = "Nasser-El-Batal"
   playlist_id = 'PLM-GVlebsoPXWpBDCzn4h0L36UNRYuFb2'
   videos = get_playlist_videos(playlist_id)
-  return render_template('used_pages/videopage.html',
+  return render_template('used_pages/videopagetest.html',
                          videos=videos,
                          playlist_id=playlist_id,
                          teachername=teachername)
@@ -259,35 +262,24 @@ def chemch2():
     playlist_id = 'PLM-GVlebsoPVYwDkN3DxFcyS1QWCKfAjv'
     videos = get_playlist_videos(playlist_id)
     #return videos
-    return render_template('used_pages/videopage.html',
+    return render_template('used_pages/videopagetest.html',
                           videos=videos,
                           playlist_id=playlist_id,
                           teachername=teachername)
 
 
 
-@views.route("/chemch2test")
-def chemch2test():
-    teachername = "Chapter 2"
 
-    playlist_id = 'PLM-GVlebsoPVYwDkN3DxFcyS1QWCKfAjv'
-    videos = get_playlist_videos(playlist_id)
-    return render_template('videopagesplits.html',
-                          videos=videos,
-                          playlist_id=playlist_id,
-                          teachername=teachername)
                          
 @views.route("/chemch3")
 def chemch3():
     teachername = "Chapter 3"
     playlist_id = 'PLM-GVlebsoPVXmash3q9sfG5bsD3Mt88x'
     videos = get_playlist_videos(playlist_id)
-    # #Replace | to - in video.title
-    # for video in videos:
-    #   video['title'] = video['title'].replace(' ', '')
-    #   video['title'] = video['title'].replace('|', '')
 
-    return render_template('used_pages/videopage.html',
+
+
+    return render_template('used_pages/videopagetest.html',
                            videos=videos,
                            playlist_id=playlist_id,
                            teachername=teachername)
@@ -318,7 +310,7 @@ def sherbostatics():
   playlist_id = 'PLM-GVlebsoPX_3mlaOeWIjCPY8jH8MpfJ'
   videos = get_playlist_videos(playlist_id)
 
-  return render_template('used_pages/videopage.html',
+  return render_template('used_pages/videopagetest.html',
                          videos=videos,
                          playlist_id=playlist_id,
                          teachername=teachername)
@@ -330,7 +322,7 @@ def sherbocalc():
   teachername = "Sherbo Calculus"
   playlist_id = 'PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq'
   videos = get_playlist_videos(playlist_id)
-  return render_template('used_pages/videopage.html',
+  return render_template('used_pages/videopagetest.html',
                          videos=videos,
                          playlist_id=playlist_id,
                          teachername=teachername)
@@ -369,7 +361,7 @@ def samehh1():
   teachername = "Chapter 1"
   playlist_id = 'PLM-GVlebsoPXd5COr54fuG-1lNCfpDdwl'
   videos = get_playlist_videos(playlist_id)
-  return render_template('used_pages/videopage.html',
+  return render_template('used_pages/videopagetest.html',
                          videos=videos,
                          playlist_id=playlist_id,
                          teachername=teachername)
@@ -380,7 +372,7 @@ def samehh2():
   teachername = "Chapter 2"
   playlist_id = 'PLM-GVlebsoPUckTjXcvKP483XHykKHH-m'
   videos = get_playlist_videos(playlist_id)
-  return render_template('used_pages/videopage.html',
+  return render_template('used_pages/videopagetest.html',
                          videos=videos,
                          playlist_id=playlist_id,
                          teachername=teachername)
@@ -391,7 +383,7 @@ def samehh3():
   teachername = "Chapter 3"
   playlist_id = 'PLM-GVlebsoPX1xJ0JSvE7gLfkPEKIo3kA'
   videos = get_playlist_videos(playlist_id)
-  return render_template('used_pages/videopage.html',
+  return render_template('used_pages/videopagetest.html',
                          videos=videos,
                          playlist_id=playlist_id,
                          teachername=teachername)
@@ -402,7 +394,7 @@ def giomaged():
   teachername = "Gio maged"
   playlist_id = 'PLM-GVlebsoPXh1obVV3aWysV7wXlN3yET'
   videos = get_playlist_videos(playlist_id)
-  return render_template('used_pages/videopage.html',
+  return render_template('used_pages/videopagetest.html',
                          videos=videos,
                          playlist_id=playlist_id,
                          teachername=teachername)
@@ -431,7 +423,7 @@ def gedoo():
   videos = get_playlist_videos(playlist_id)
   #videos += [{'url': '/gedostorj', 'title': 'More'}]
 
-  return render_template('used_pages/videopage.html',
+  return render_template('used_pages/videopagetest.html',
                          videos=videos,
                          playlist_id=playlist_id,
                          teachername=teachername)
@@ -471,7 +463,7 @@ def bioch1():
 
   playlist_id = 'PLM-GVlebsoPWYFgg9hks2GaWKC2kI1r7X'
   videos = get_playlist_videos(playlist_id)
-  return render_template('used_pages/videopage.html',
+  return render_template('used_pages/videopagetest.html',
                          videos=videos,
                          playlist_id=playlist_id,
                          teachername=teachername)
@@ -483,7 +475,7 @@ def bioch2():
 
   playlist_id = 'PLM-GVlebsoPVXxEs5mtOyS-4QLolBXjlX'
   videos = get_playlist_videos(playlist_id)
-  return render_template('used_pages/videopage.html',
+  return render_template('used_pages/videopagetest.html',
                          videos=videos,
                          playlist_id=playlist_id,
                          teachername=teachername)
@@ -495,7 +487,7 @@ def bioch3():
   videos = get_playlist_videos(playlist_id)
  # videos += [{'url': '/biostorj', 'title': 'More'}]
 
-  return render_template('used_pages/videopage.html',
+  return render_template('used_pages/videopagetest.html',
                          videos=videos,
                          playlist_id=playlist_id,
                          teachername=teachername)
@@ -505,7 +497,7 @@ def english():
   teachername = "English"
   playlist_id = 'PLM-GVlebsoPUWOjoc9DyO2Jh8mclaRY1Q'
   videos = get_playlist_videos(playlist_id)
-  return render_template('used_pages/videopage.html',
+  return render_template('used_pages/videopagetest.html',
                          videos=videos,
                          playlist_id=playlist_id,
                          teachername=teachername)
@@ -546,7 +538,7 @@ def salamapre():
   teachername = "PreStudy"
   playlist_id = 'PLM-GVlebsoPVEULTnn90gqVL0AL99KtU0'
   videos = get_playlist_videos(playlist_id)
-  return render_template('used_pages/videopage.html',
+  return render_template('used_pages/videopagetest.html',
                          videos=videos,
                          playlist_id=playlist_id,
                          teachername=teachername)
@@ -557,7 +549,7 @@ def salamach1():
   teachername= "Course 1"
   playlist_id = 'PLM-GVlebsoPWfuCf4h_ucKPOBKjH6No-W'
   videos = get_playlist_videos(playlist_id)
-  return render_template('used_pages/videopage.html',
+  return render_template('used_pages/videopagetest.html',
                          videos=videos,
                          playlist_id=playlist_id,
                          teachername=teachername)
@@ -568,7 +560,7 @@ def salamach2():
   teachername = "Course 2"
   playlist_id = 'PLM-GVlebsoPUubsCYnPGc27tihI0pz4hi'
   videos = get_playlist_videos(playlist_id)
-  return render_template('used_pages/videopage.html',
+  return render_template('used_pages/videopagetest.html',
                          videos=videos,
                          playlist_id=playlist_id,
                          teachername=teachername)
@@ -579,7 +571,7 @@ def salamach3():
   teachername= "Course 3"
   playlist_id = 'PLM-GVlebsoPUSSsoABHH059FBapcSjvGg'
   videos = get_playlist_videos(playlist_id)
-  return render_template('used_pages/videopage.html',
+  return render_template('used_pages/videopagetest.html',
                          videos=videos,
                          playlist_id=playlist_id,
                          teachername=teachername)
@@ -591,7 +583,7 @@ def salamach4():
 
   playlist_id = 'PLM-GVlebsoPXWSZDCjeDfvdMV5QXYwg4x'
   videos = get_playlist_videos(playlist_id)
-  return render_template('used_pages/videopage.html',
+  return render_template('used_pages/videopagetest.html',
                          videos=videos,
                          playlist_id=playlist_id,
                          teachername=teachername)
@@ -602,7 +594,7 @@ def salamach5():
   teachername = "Course 5"
   playlist_id = 'PLM-GVlebsoPWEGxQu5D0hVrUCJjTMqYvd'
   videos = get_playlist_videos(playlist_id)
-  return render_template('used_pages/videopage.html',
+  return render_template('used_pages/videopagetest.html',
                          videos=videos,
                          playlist_id=playlist_id,
                          teachername=teachername)
@@ -613,7 +605,7 @@ def salamach6():
   teachername = "Course 6"
   playlist_id = 'PLM-GVlebsoPWZKrvX8MvfJxfxXhKXvqR3'
   videos = get_playlist_videos(playlist_id)
-  return render_template('used_pages/videopage.html',
+  return render_template('used_pages/videopagetest.html',
                          videos=videos,
                          playlist_id=playlist_id,
                          teachername=teachername)
@@ -624,7 +616,7 @@ def salamach7():
   teachername = "Course 7"
   playlist_id = 'PLM-GVlebsoPUobUeuNIWsitKeP-aHOwif'
   videos = get_playlist_videos(playlist_id)
-  return render_template('used_pages/videopage.html',
+  return render_template('used_pages/videopagetest.html',
                          videos=videos,
                          playlist_id=playlist_id,
                          teachername=teachername)
@@ -635,7 +627,7 @@ def salamach8():
   teachername = "Course 8"
   playlist_id = 'PLM-GVlebsoPUqwS3-Ij-pHBq4_aoEAwMZ'
   videos = get_playlist_videos(playlist_id)
-  return render_template('used_pages/videopage.html',
+  return render_template('used_pages/videopagetest.html',
                          videos=videos,
                          playlist_id=playlist_id,
                          teachername=teachername)
@@ -646,7 +638,7 @@ def salamach9():
   teachername = "Course 9"
   playlist_id = 'PLM-GVlebsoPXe2kZo_cM06BZWXwdSxQ7B'
   videos = get_playlist_videos(playlist_id)
-  return render_template('used_pages/videopage.html',
+  return render_template('used_pages/videopagetest.html',
                          videos=videos,
                          playlist_id=playlist_id,
                          teachername=teachername)
@@ -659,7 +651,7 @@ def salamach10():
   teachername = "Course 10"
   playlist_id = 'PLM-GVlebsoPXZmghd3uMqZWx6wlLZDiiu'
   videos = get_playlist_videos(playlist_id)
-  return render_template('used_pages/videopage.html',
+  return render_template('used_pages/videopagetest.html',
                          videos=videos,
                          playlist_id=playlist_id,
                          teachername=teachername)
@@ -673,7 +665,7 @@ def salamach11():
   videos = get_playlist_videos(playlist_id)
  # videos += [{'url': '/salamastorj', 'title': 'More'}]
 
-  return render_template('used_pages/videopage.html',
+  return render_template('used_pages/videopagetest.html',
                          videos=videos,
                          playlist_id=playlist_id,
                          teachername=teachername)
@@ -686,7 +678,7 @@ def salamach12():
   videos = get_playlist_videos(playlist_id)
  # videos += [{'url': '/salamastorj', 'title': 'More'}]
 
-  return render_template('used_pages/videopage.html',
+  return render_template('used_pages/videopagetest.html',
                          videos=videos,
                          playlist_id=playlist_id,
                          teachername=teachername)
@@ -698,7 +690,7 @@ def salamach13():
   videos = get_playlist_videos(playlist_id)
  # videos += [{'url': '/salamastorj', 'title': 'More'}]
 
-  return render_template('used_pages/videopage.html',
+  return render_template('used_pages/videopagetest.html',
                          videos=videos,
                          playlist_id=playlist_id,
                          teachername=teachername)
@@ -709,7 +701,7 @@ def salamach14():
   videos = get_playlist_videos(playlist_id)
  # videos += [{'url': '/salamastorj', 'title': 'More'}]
 
-  return render_template('used_pages/videopage.html',
+  return render_template('used_pages/videopagetest.html',
                          videos=videos,
                          playlist_id=playlist_id,
                          teachername=teachername)
@@ -719,7 +711,7 @@ def salamach15():
   playlist_id = 'PLM-GVlebsoPWCqnSBAANAy8Wn89lbLmqt'
   videos = get_playlist_videos(playlist_id)
 
-  return render_template('used_pages/videopage.html',
+  return render_template('used_pages/videopagetest.html',
                          videos=videos,
                          playlist_id=playlist_id,
                          teachername=teachername)
@@ -734,7 +726,7 @@ def salamach16():
   playlist_id = 'PLM-GVlebsoPUF0Px3a00jPzFLwJwkpgBw'
   videos = get_playlist_videos(playlist_id)
 
-  return render_template('used_pages/videopage.html',
+  return render_template('used_pages/videopagetest.html',
                          videos=videos,
                          playlist_id=playlist_id,
                          teachername=teachername)
