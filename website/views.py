@@ -216,22 +216,9 @@ def nawarch3():
                          playlist_id=playlist_id,
                          teachername=teachername)
 
-@views.route('/nasser')
-def nasser():
-  teacher_links = {
-     "Nasser-El-Batal Chapter 1": ("chemch1", "Chapter 1"),
-    "Nasser-El-Batal Chapter 2": ("chemch2", "Chapter 2"),
-    "Nasser-El-Batal Chapter 3": ("chemch3", "Chapter 3"),
-    "Nasser-El-Batal Files": ("chempdfs", "Google Drive")
 
 
-  }
 
-  teachername = "Nasser-El-Batal"
-  return render_template('used_pages/teacher.html',
-                         teacher_links=teacher_links,
-                         teachername=teachername,
-                         imgs="yes")
 
 @views.route('/chemistry')
 def chem():
@@ -244,6 +231,25 @@ def chem():
                          teacher_links=teacher_links,
                          teachername=teachername,
                          imgs="yes")
+@views.route('/nasser')
+def nasser():
+  teacher_links = {
+     "Nasser-El-Batal Chapter 1": ("chemch1", "Chapter 1"),
+    "Nasser-El-Batal Chapter 2": ("chemch2", "Chapter 2"),
+    "Nasser-El-Batal Chapter 3": ("chemch3", "Chapter 3"),
+    "Nasser-El-Batal Chapter 4": ("chemch4", "Chapter 4"),
+
+    "Nasser-El-Batal Files": ("chempdfs", "Google Drive")
+
+
+  }
+
+  teachername = "Nasser-El-Batal"
+  return render_template('used_pages/teacher.html',
+                         teacher_links=teacher_links,
+                         teachername=teachername,
+                         imgs="yes")
+
 
 @views.route("/chemch1")
 def chemch1():
@@ -283,6 +289,24 @@ def chemch3():
                            videos=videos,
                            playlist_id=playlist_id,
                            teachername=teachername)
+
+
+
+
+@views.route("/chemch4")
+def chemch4():
+    teachername = "Chapter 4"
+    playlist_id = 'PLM-GVlebsoPXBmTFLVyH4mWaxQELcIQ8C'
+    videos = get_playlist_videos(playlist_id)
+
+    return render_template('used_pages/videopage.html',
+                           videos=videos,
+                           playlist_id=playlist_id,
+                           teachername=teachername)
+
+
+
+
 
 @views.route('/learn-more')
 def learnmore():
