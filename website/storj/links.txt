@@ -1,6 +1,0 @@
-chemstorj
-nawarstorj
-biostorj
-gedostorj
-salamastorj
-elsestorj
