@@ -136,7 +136,6 @@
       }
       .card
     {
-      color: blue;
           background-color: #fff;
           border: 1px solid #ccc;
           border-radius: 10px;
@@ -270,9 +269,7 @@ h1{
         display: block; /* Make each span appear on a new line */
         margin-top: 5px; /* Adjust the margin between button and text */
     }
-    h3{
-      color:Black
-    }
+
   </style>
 
 
@@ -297,41 +294,14 @@ h1{
   </div>
 
 
-        <ul>       
+        <ul>
             {% for video in videos %}
   
-
-                <div class="card" onclick="openPopupname{{video.title}}(event)">
-                    {{ video.title2 }}
+            <a href="https://www.youtube.com/watch?v={{ video.id }}&list={{playlist_id}}" target="_blank">
+                <div class="card">
+                    {{ video.title }}
                 </div>
-
-                <div class="popup-container" id="popupContainer{{ video.title }}" onclick="closePopup{{video.title}}()">
-                  <div class="popup" id="cardPopupname" onclick="preventPopupClose{{video.title}}(event)">
-                      <span class="close" onclick="closePopup{{video.title}}()">&times;</span>
-                      <div class="popup-content">
-                          <h3>   {{ video.title2 }}</h3>
-                          <div class="popup-buttons">
-                              <button class="popupbtn">
-                                <a href="https://www.youtube.com/watch?v={{ video.id }}&list={{playlist_id}}" target="_blank">
-                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
-                                  </a>
-                                  <p>Play</p>
-                              </button>
-          
-                              <!-- Text under btn 1 -->
-                              <button class="popupbtn">
-                                  <a href="https://y2mate.com/youtube/{{ video.id }}" target="_blank">
-                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
-                                  </a>
-                                  <p>Downlaod</p>
-          
-                              </button>
-          
-                          </div>
-                          
-                      </div>
-                  </div>
-              </div>
+            </a>
       
         {% endfor %}
         </ul>
@@ -352,22 +322,6 @@ h1{
 </section>
 
   <script>
-            {% for video in videos %}
-
-     function openPopupname{{ video.title }}(event) {
-            event.stopPropagation();
-            document.getElementById('popupContainer{{ video.title }}').style.display = 'block';
-        }
-
-        function closePopup{{ video.title }}() {
-            document.getElementById('popupContainer{{ video.title }}').style.display = 'none';
-        }
-
-        function preventPopupClose{{video.title}}(event) {
-            event.stopPropagation();
-        }
-        {% endfor %}
-
 
     // window.onload = function () {
     //   function getRandomColor() {
