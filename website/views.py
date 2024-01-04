@@ -282,6 +282,11 @@ def chemch3():
     teachername = "Chapter 3"
     playlist_id = 'PLM-GVlebsoPVXmash3q9sfG5bsD3Mt88x'
     videos = get_playlist_videos(playlist_id)
+    # #Replace | to - in video.title
+    # for video in videos:
+    #   video['title'] = video['title'].replace(' ', '')
+    #   video['title'] = video['title'].replace('|', '')
+
     return render_template('used_pages/videopage.html',
                            videos=videos,
                            playlist_id=playlist_id,
