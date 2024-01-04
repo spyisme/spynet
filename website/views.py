@@ -101,12 +101,12 @@ def get_playlist_videos(playlist_id):
         if not next_page_token:
             break
 
-    videos = [{'id': item['snippet']['resourceId']['videoId'], 'title': item['snippet']['title']}
-              for item in playlist_items]
-    for video in videos:
-      video['title2'] = video['title']
-      video['title'] = video['title'].replace(' ', '')
-      video['title'] = video['title'].replace('|', '')
+    videos = [{'id': item['snippet']['resourceId']['videoId'],
+            'title': item['snippet']['title'],
+            'jsid': index + 1}
+            for index, item in enumerate(playlist_items)]
+
+
     return videos
 
 
