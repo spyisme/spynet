@@ -25,7 +25,7 @@ print('Running!')
 def display_links():
     # with open('website/links.txt', 'r') as file:
     #     lines = file.readlines()
-    lines = ["physics", "chemistry","math", "arabic","geology", "biology","english"]
+    lines = ["physics", "chemistry","math", "arabic","geology", "biology","english" , "german"]
     return render_template('used_pages/all.html', lines=lines, teachername="All")
 
 
