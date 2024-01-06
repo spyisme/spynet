@@ -807,6 +807,7 @@ def salamach17():
 @views.route('/iframes', methods=['GET', 'POST'])
 def sherboframe():
     url = request.args.get('url')
+    url = request.args.get('url')
     name = request.args.get('name')
     sname = request.args.get('sname')
 
@@ -836,9 +837,11 @@ def sherboframe():
 
 
 
-@views.route('/test')
-def test():
-    return render_template('test_pages/sherbo.html')
+@views.route('/watch')
+def watwatchch():
+    vidoid = request.args.get('id')
+    
+    return render_template('used_pages/videoplayeryt.html',videoid=vidoid)
 
 
 @views.route('/favicon.ico')
