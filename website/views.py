@@ -476,8 +476,9 @@ def giomaged():
 @views.route('/arabic')
 def gedo():
   teacher_links = {
-    "Gedo": ("gedoo", "Gedo"),
-    # Add other entries with the correct structure
+    "Gedo 1": ("gedoo1", "S1 --> S10"),
+    "Gedo 2": ("gedoo2", "S11 --> S20"),
+
 }
   teachername = "Arabic"
   return render_template('used_pages/teacher.html',
@@ -487,12 +488,19 @@ def gedo():
 
 
 @views.route("/gedoo")
-def gedoo():
+def gedoo1():
   teachername = "Gedo"
   playlist_id = 'PLM-GVlebsoPXBcSNcLjkmcQG53hQYTvui'
   videos = get_playlist_videos(playlist_id)
-  #videos += [{'url': '/gedostorj', 'title': 'More'}]
-
+  return render_template('used_pages/videopage.html',
+                         videos=videos,
+                         playlist_id=playlist_id,
+                         teachername=teachername)
+@views.route("/gedoo2")
+def gedoo2():
+  teachername = "Gedo"
+  playlist_id = 'PLM-PLM-GVlebsoPUYJw4jlFJ2X6v8OGkcgxbz'
+  videos = get_playlist_videos(playlist_id)
   return render_template('used_pages/videopage.html',
                          videos=videos,
                          playlist_id=playlist_id,
