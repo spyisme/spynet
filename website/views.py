@@ -8,6 +8,7 @@ from .models import User
 from werkzeug.security import check_password_hash , generate_password_hash
 from . import db
 from functools import lru_cache
+import subprocess
 
 views = Blueprint('views', __name__)
 print('Running!')
@@ -17,7 +18,19 @@ print('Running!')
 
 
 
-
+@views.route('/restart')
+def restart():
+    try:
+        # Change the path to your restart.bat file
+        bat_file_path = r'C:\Users\Spy\Downloads\Restart.bat'
+        
+        # Run the restart.bat file using subprocess
+        subprocess.run([bat_file_path], shell=True, check=True)
+        
+        return 'Restart command executed successfully!'
+    
+    except subprocess.CalledProcessError as e:
+        return f'Error executing restart command: {e}', 500
 
 
 
@@ -581,7 +594,7 @@ def english():
                          teachername=teachername)
 @views.route("/german")
 def german():
-   return "Coming soon.."
+   return "Coming soon..."
   # teachername = "German"
   # playlist_id = 'PLM-GVlebsoPWNh__WI8QAIN2xQjawgB4i'
   # videos = get_playlist_videos(playlist_id)
