@@ -586,7 +586,7 @@ def english():
                          teachername=teachername)
 @views.route("/german")
 def german():
-   return "Coming soon.."
+   return "Coming soon..."
   # teachername = "German"
   # playlist_id = 'PLM-GVlebsoPWNh__WI8QAIN2xQjawgB4i'
   # videos = get_playlist_videos(playlist_id)
