@@ -500,7 +500,7 @@ def gedo():
                          imgs="yes")
 
 
-@views.route("/gedoo")
+@views.route("/gedoo1")
 def gedoo1():
   teachername = "Gedo"
   playlist_id = 'PLM-GVlebsoPXBcSNcLjkmcQG53hQYTvui'
@@ -512,7 +512,7 @@ def gedoo1():
 @views.route("/gedoo2")
 def gedoo2():
   teachername = "Gedo"
-  playlist_id = 'PLM-PLM-GVlebsoPUYJw4jlFJ2X6v8OGkcgxbz'
+  playlist_id = 'PLM-GVlebsoPUYJw4jlFJ2X6v8OGkcgxbz'
   videos = get_playlist_videos(playlist_id)
   return render_template('used_pages/videopage.html',
                          videos=videos,
