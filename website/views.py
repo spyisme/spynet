@@ -393,6 +393,8 @@ def sameh():
     "Sameh Nash2t Chapter 1": ("samehh1", "Chapter 1"),
     "Sameh Nash2t Chapter 2": ("samehh2", "Chapter 2"),
     "Sameh Nash2t Chapter 3": ("samehh3", "Chapter 3"),
+    "Sameh Nash2t Chapter 4": ("samehh4", "Chapter 4"),
+
   }
 
   teachername = "Geology"
@@ -447,6 +449,15 @@ def samehh3():
                          playlist_id=playlist_id,
                          teachername=teachername)
 
+@views.route("/samehh4")
+def samehh4():
+  teachername = "Chapter 4"
+  playlist_id = 'PLM-GVlebsoPX_zFeoKW57nOoPlLUMlxZR'
+  videos = get_playlist_videos(playlist_id)
+  return render_template('used_pages/videopage.html',
+                         videos=videos,
+                         playlist_id=playlist_id,
+                         teachername=teachername)
 
 @views.route("/giomaged")
 def giomaged():
@@ -560,7 +571,16 @@ def english():
                          videos=videos,
                          playlist_id=playlist_id,
                          teachername=teachername)
-
+@views.route("/german")
+def german():
+   return "Coming soon"
+  # teachername = "German"
+  # playlist_id = 'PLM-GVlebsoPWNh__WI8QAIN2xQjawgB4i'
+  # videos = get_playlist_videos(playlist_id)
+  # return render_template('used_pages/videopage.html',
+  #                        videos=videos,
+  #                        playlist_id=playlist_id,
+  #                        teachername=teachername)
 
 @views.route('/salama')
 def salama():
