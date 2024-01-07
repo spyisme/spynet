@@ -591,246 +591,44 @@ def german():
   #                        playlist_id=playlist_id,
   #                        teachername=teachername)
 
+course_info = {
+    "PreStudy": {"id": 'PLM-GVlebsoPVEULTnn90gqVL0AL99KtU0'},
+    "Course 1": {"id": 'PLM-GVlebsoPWfuCf4h_ucKPOBKjH6No-W'},
+    "Course 2": {"id": 'PLM-GVlebsoPUubsCYnPGc27tihI0pz4hi'},
+    "Course 3": {"id": 'PLM-GVlebsoPUSSsoABHH059FBapcSjvGg'},
+    "Course 4": {"id": 'PLM-GVlebsoPXWSZDCjeDfvdMV5QXYwg4x'},
+    "Course 5": {"id": 'PLM-GVlebsoPWEGxQu5D0hVrUCJjTMqYvd'},
+    "Course 6 (Revision)": {"id": 'PLM-GVlebsoPWZKrvX8MvfJxfxXhKXvqR3'},
+    "Course 7": {"id": 'PLM-GVlebsoPUobUeuNIWsitKeP-aHOwif'},
+    "Course 8": {"id": 'PLM-GVlebsoPUqwS3-Ij-pHBq4_aoEAwMZ'},
+    "Course 9": {"id": 'PLM-GVlebsoPXe2kZo_cM06BZWXwdSxQ7B'},
+    "Course 10": {"id": 'PLM-GVlebsoPXZmghd3uMqZWx6wlLZDiiu'},
+    "Course 11": {"id": 'PLM-GVlebsoPVB0u2fWqO9ep3cuBp_8zTW'},
+    "Course 12": {"id": 'PLM-GVlebsoPU0BwzCsqsPQfKMSPZauuFl'},
+    "Course 13": {"id": 'PLM-GVlebsoPURAU8nu_tU2dphnGXxZeMM'},
+    "Course 14": {"id": 'PLM-GVlebsoPXnRQBjkDqUUAXDKyUJqK9-'},
+    "Course 15": {"id": 'PLM-GVlebsoPWCqnSBAANAy8Wn89lbLmqt'},
+    "Course 16": {"id": 'PLM-GVlebsoPUF0Px3a00jPzFLwJwkpgBw'},
+    "Course 17": {"id": 'PLM-GVlebsoPXMiQ12yf0u8yXhwuFTAR0h'},
+    "Course 18": {"id": 'PLM-GVlebsoPV0RRzBKVtugIVlvEKmmHQn'},
+}
 @views.route('/salama')
 def salama():
-  teacher_links = {
-  "PreStudy": ("/salamapre", "PreStudy"),
-    "Course 1": ("/salamach1", "Course 1"),
-    "Course 2": ("/salamach2", "Course 2"),
-    "Course 3": ("/salamach3", "Course 3"),
-    "Course 4": ("/salamach4", "Course 4"),
-    "Course 5": ("/salamach5", "Course 5"),
-    "Course 6 (Revision)": ("/salamach6", "Course 6 (Revision)"),
-    "Course 7": ("/salamach7", "Course 7"),
-    "Course 8": ("/salamach8", "Course 8"),
-    "Course 9": ("/salamach9", "Course 9"),
-    "Course 10": ("/salamach10", "Course 10"),
-    "Course 11": ("/salamach11", "Course 11"),
-    "Course 12": ("/salamach12", "Course 12"),
-    "Course 13": ("/salamach13", "Course 13"),
-    "Course 14": ("/salamach14", "Course 14"),
-    "Course 15": ("/salamach15", "Course 15"),
-    "Course 16": ("/salamach16", "Course 16"),
-    "Course 17": ("/salamach17", "Course 17"),
+    
+    teacher_links = {course: (f"/salamach{i}", course) for i, (course, _) in enumerate(course_info.items(), start=1)}
+    teachername = "Mohamed Salama"
+    return render_template('used_pages/teacher.html', teacher_links=teacher_links, teachername=teachername, imgs="yes")
 
+@views.route("/salamach<int:course_number>")
+def salamach(course_number):
+    course_key = f"Course {course_number}"
+    if course_key not in course_info:
+        return render_template('404.html'), 404
 
-
-  }
-  teachername = "Mohamed Salama"
-  return render_template('used_pages/teacher.html',
-                         teacher_links=teacher_links,
-                         teachername=teachername,
-                         imgs="yes")
-
-
-@views.route("/salamapre")
-def salamapre():
-  teachername = "PreStudy"
-  playlist_id = 'PLM-GVlebsoPVEULTnn90gqVL0AL99KtU0'
-  videos = get_playlist_videos(playlist_id)
-  return render_template('used_pages/videopage.html',
-                         videos=videos,
-                         playlist_id=playlist_id,
-                         teachername=teachername)
-
-
-@views.route("/salamach1")
-def salamach1():
-  teachername= "Course 1"
-  playlist_id = 'PLM-GVlebsoPWfuCf4h_ucKPOBKjH6No-W'
-  videos = get_playlist_videos(playlist_id)
-  return render_template('used_pages/videopage.html',
-                         videos=videos,
-                         playlist_id=playlist_id,
-                         teachername=teachername)
-
-
-@views.route("/salamach2")
-def salamach2():
-  teachername = "Course 2"
-  playlist_id = 'PLM-GVlebsoPUubsCYnPGc27tihI0pz4hi'
-  videos = get_playlist_videos(playlist_id)
-  return render_template('used_pages/videopage.html',
-                         videos=videos,
-                         playlist_id=playlist_id,
-                         teachername=teachername)
-
-
-@views.route("/salamach3")
-def salamach3():
-  teachername= "Course 3"
-  playlist_id = 'PLM-GVlebsoPUSSsoABHH059FBapcSjvGg'
-  videos = get_playlist_videos(playlist_id)
-  return render_template('used_pages/videopage.html',
-                         videos=videos,
-                         playlist_id=playlist_id,
-                         teachername=teachername)
-
-
-@views.route("/salamach4")
-def salamach4():
-  teachername = "Course 4"
-
-  playlist_id = 'PLM-GVlebsoPXWSZDCjeDfvdMV5QXYwg4x'
-  videos = get_playlist_videos(playlist_id)
-  return render_template('used_pages/videopage.html',
-                         videos=videos,
-                         playlist_id=playlist_id,
-                         teachername=teachername)
-
-
-@views.route("/salamach5")
-def salamach5():
-  teachername = "Course 5"
-  playlist_id = 'PLM-GVlebsoPWEGxQu5D0hVrUCJjTMqYvd'
-  videos = get_playlist_videos(playlist_id)
-  return render_template('used_pages/videopage.html',
-                         videos=videos,
-                         playlist_id=playlist_id,
-                         teachername=teachername)
-
-
-@views.route("/salamach6")
-def salamach6():
-  teachername = "Course 6"
-  playlist_id = 'PLM-GVlebsoPWZKrvX8MvfJxfxXhKXvqR3'
-  videos = get_playlist_videos(playlist_id)
-  return render_template('used_pages/videopage.html',
-                         videos=videos,
-                         playlist_id=playlist_id,
-                         teachername=teachername)
-
-
-@views.route("/salamach7")
-def salamach7():
-  teachername = "Course 7"
-  playlist_id = 'PLM-GVlebsoPUobUeuNIWsitKeP-aHOwif'
-  videos = get_playlist_videos(playlist_id)
-  return render_template('used_pages/videopage.html',
-                         videos=videos,
-                         playlist_id=playlist_id,
-                         teachername=teachername)
-
-
-@views.route("/salamach8")
-def salamach8():
-  teachername = "Course 8"
-  playlist_id = 'PLM-GVlebsoPUqwS3-Ij-pHBq4_aoEAwMZ'
-  videos = get_playlist_videos(playlist_id)
-  return render_template('used_pages/videopage.html',
-                         videos=videos,
-                         playlist_id=playlist_id,
-                         teachername=teachername)
-
-
-@views.route("/salamach9")
-def salamach9():
-  teachername = "Course 9"
-  playlist_id = 'PLM-GVlebsoPXe2kZo_cM06BZWXwdSxQ7B'
-  videos = get_playlist_videos(playlist_id)
-  return render_template('used_pages/videopage.html',
-                         videos=videos,
-                         playlist_id=playlist_id,
-                         teachername=teachername)
-
-
-
-
-@views.route("/salamach10")
-def salamach10():
-  teachername = "Course 10"
-  playlist_id = 'PLM-GVlebsoPXZmghd3uMqZWx6wlLZDiiu'
-  videos = get_playlist_videos(playlist_id)
-  return render_template('used_pages/videopage.html',
-                         videos=videos,
-                         playlist_id=playlist_id,
-                         teachername=teachername)
-
-
-
-@views.route("/salamach11")
-def salamach11():
-  teachername = "Course 11"
-  playlist_id = 'PLM-GVlebsoPVB0u2fWqO9ep3cuBp_8zTW'
-  videos = get_playlist_videos(playlist_id)
- # videos += [{'url': '/salamastorj', 'title': 'More'}]
-
-  return render_template('used_pages/videopage.html',
-                         videos=videos,
-                         playlist_id=playlist_id,
-                         teachername=teachername)
-
-
-@views.route("/salamach12")
-def salamach12():
-  teachername = "Course 12"
-  playlist_id = 'PLM-GVlebsoPU0BwzCsqsPQfKMSPZauuFl'
-  videos = get_playlist_videos(playlist_id)
- # videos += [{'url': '/salamastorj', 'title': 'More'}]
-
-  return render_template('used_pages/videopage.html',
-                         videos=videos,
-                         playlist_id=playlist_id,
-                         teachername=teachername)
-
-@views.route("/salamach13")
-def salamach13():
-  teachername = "Course 13"
-  playlist_id = 'PLM-GVlebsoPURAU8nu_tU2dphnGXxZeMM'
-  videos = get_playlist_videos(playlist_id)
- # videos += [{'url': '/salamastorj', 'title': 'More'}]
-
-  return render_template('used_pages/videopage.html',
-                         videos=videos,
-                         playlist_id=playlist_id,
-                         teachername=teachername)
-@views.route("/salamach14")
-def salamach14():
-  teachername = "Course 14"
-  playlist_id = 'PLM-GVlebsoPXnRQBjkDqUUAXDKyUJqK9-'
-  videos = get_playlist_videos(playlist_id)
- # videos += [{'url': '/salamastorj', 'title': 'More'}]
-
-  return render_template('used_pages/videopage.html',
-                         videos=videos,
-                         playlist_id=playlist_id,
-                         teachername=teachername)
-@views.route("/salamach15")
-def salamach15():
-  teachername = "Course 15"
-  playlist_id = 'PLM-GVlebsoPWCqnSBAANAy8Wn89lbLmqt'
-  videos = get_playlist_videos(playlist_id)
-
-  return render_template('used_pages/videopage.html',
-                         videos=videos,
-                         playlist_id=playlist_id,
-                         teachername=teachername)
-
-
-
-
-
-@views.route("/salamach16")
-def salamach16():
-  teachername = "Course 16"
-  playlist_id = 'PLM-GVlebsoPUF0Px3a00jPzFLwJwkpgBw'
-  videos = get_playlist_videos(playlist_id)
-
-  return render_template('used_pages/videopage.html',
-                         videos=videos,
-                         playlist_id=playlist_id,
-                         teachername=teachername)
-
-@views.route("/salamach17")
-def salamach17():
-  teachername = "Course 17"
-  playlist_id = 'PLM-GVlebsoPXMiQ12yf0u8yXhwuFTAR0h'
-  videos = get_playlist_videos(playlist_id)
-
-  return render_template('used_pages/videopage.html',
-                         videos=videos,
-                         playlist_id=playlist_id,
-                         teachername=teachername)
+    teachername = course_info[course_key]["id"]
+    playlist_id = course_info[course_key]["id"]
+    videos = get_playlist_videos(playlist_id)
+    return render_template('used_pages/videopage.html', videos=videos, playlist_id=playlist_id, teachername=teachername)
 
 
 @views.route('/iframes', methods=['GET', 'POST'])
