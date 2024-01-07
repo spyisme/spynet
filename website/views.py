@@ -625,7 +625,7 @@ def salamach(course_number):
     if course_key not in course_info:
         return render_template('404.html'), 404
 
-    teachername = course_info[course_key]["id"]
+    teachername = course_key
     playlist_id = course_info[course_key]["id"]
     videos = get_playlist_videos(playlist_id)
     return render_template('used_pages/videopage.html', videos=videos, playlist_id=playlist_id, teachername=teachername)
