@@ -592,7 +592,7 @@ def german():
   #                        teachername=teachername)
 
 course_info = {
-    "PreStudy": {"id": 'PLM-GVlebsoPVEULTnn90gqVL0AL99KtU0'},
+    # "PreStudy": {"id": 'PLM-GVlebsoPVEULTnn90gqVL0AL99KtU0'},
     "Course 1": {"id": 'PLM-GVlebsoPWfuCf4h_ucKPOBKjH6No-W'},
     "Course 2": {"id": 'PLM-GVlebsoPUubsCYnPGc27tihI0pz4hi'},
     "Course 3": {"id": 'PLM-GVlebsoPUSSsoABHH059FBapcSjvGg'},
@@ -624,7 +624,6 @@ def salamach(course_number):
     course_key = f"Course {course_number}"
     if course_key not in course_info:
         return render_template('404.html'), 404
-    course_key = f"Course {course_number- 1}"
     teachername = course_key
     playlist_id = course_info[course_key]["id"]
     videos = get_playlist_videos(playlist_id)
