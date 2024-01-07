@@ -1,15 +1,12 @@
 from flask import  render_template, request, redirect, url_for, session , Blueprint, jsonify
-
 import base64
 import json
 import requests , re 
-import subprocess
 from pywidevine.cdm import deviceconfig
 from pywidevine.cdm import cdm
-from flask import copy_current_request_context
-import threading
 from flask_login import login_required
 
+from flask import send_file
 Nawar = 'https://discord.com/api/webhooks/1159805446039797780/bE4xU3lkcjlb4vfCVQ9ky5BS2OuD01Y8g9godljNBfoApGt59-VfKf19GQuMUmH0IYzw'
 Bio= "https://discord.com/api/webhooks/1158548096012259422/jQ5sEAZBIrvfBNTA-w4eR-p6Yw0zv7GBC9JTUcEOAWfmqYJXbOpgysATjKPXLwd8HZOs"
 Nasser = "https://discord.com/api/webhooks/1158548163209199626/73nAC_d1rgUr6IS79gC508Puood83ho848IEGOpxLtUzGEEJ3h8CyZqlZvCZ6jEXH5k1"
@@ -241,136 +238,42 @@ def discord():
 
 
 
+@vdo.route('/iframes', methods=['GET', 'POST'])
+def sherboframe():
+    url = request.args.get('url')
+    url = request.args.get('url')
+    name = request.args.get('name')
+    sname = request.args.get('sname')
+
+    if name == "nawar":
+      webhook_url ="https://discord.com/api/webhooks/1159805446039797780/bE4xU3lkcjlb4vfCVQ9ky5BS2OuD01Y8g9godljNBfoApGt59-VfKf19GQuMUmH0IYzw"
+    elif name == "ahmadsalah":
+      webhook_url = "https://discord.com/api/webhooks/1170733207835115630/MpyyTLirCjBUOSHxisTsb4l7lqF7XBw-l4KEsi7DAFLAoZdUzMtGFwth67Qj3ZJCE5Oo"
+    elif name == "sherbo":
+      webhook_url="https://discord.com/api/webhooks/1169342540575670292/crazeFe5z0qAozWBJOnlZfevMMQ219NVzZ-Cl6mWK9NrtBqBXc3kBzj1tJ8_KVu7UuKf" 
+    url = url.replace("/play/", "/embed/")
+    if request.method == 'POST':
+        name =  request.form.get('name')
+        if "youtube" in url.lower(): 
+            url = url.split('/')[4]
+
+            msg = f'```python youtube.py https://www.youtube.com/watch?v={url} {name}``` {name}'
+            cmds_queue.append(f"python youtube.py https://www.youtube.com/watch?v={url} {name}")
+        else: 
+            msg = f'```python iframe.py {url} {name}``` {name}'
+            cmds_queue.append(f"python iframe.py {url} {name}")
+
+        message = {
+                'content': f'{msg}'
+            }
+        payload = json.dumps(message)
+        headers = {'Content-Type': 'application/json'}
+        requests.post(webhook_url, data=payload, headers=headers)
+        return "Message Sent!" 
+    return render_template('backend_pages/iframe.html' , url = url , sname= sname)
+
+
 #-------------------------------------------------------------------------------------
-import threading
-
-
-storj_lock = threading.Lock()
-
-
-used_mpd = set()  # Set to store used tokens
- 
-
-def storjsingle(command):
-    if storj_lock.acquire(blocking=False):
-        try :
-            def senddiscrdmsg(content):
-                message = {
-                        'content': f'{content}'
-                    }
-                payload = json.dumps(message)
-                headers = {'Content-Type': 'application/json'}
-                requests.post("https://discord.com/api/webhooks/1177648648172093562/8PN6BS5c4l4tST5H_jtunzO46iiigz1zyEI34nPbWN_Q7IKJjQKIEYLdb6OXYpwVofwp", data=payload, headers=headers)
-
-            def run_command(command):
-                subprocess.run(command, shell=True)
-
-            def extract_save_name(command):
-                save_name_match = re.search(r'--save-name\s+(\S+)', command)
-                if save_name_match:
-                    return save_name_match.group(1)
-                else:
-                    return None
-            cmd = command
-            mpd = cmd.split(" ")[1]
-            if mpd in used_mpd:
-                    return "failed"      
-            used_mpd.add(mpd)
-            video_name = extract_save_name(cmd)
-
-            if video_name :
-                command2 = f"uplink.exe cp ./output/{video_name}.mp4 sj://spynet/Private/"
-                command4 = fr"del .\output\{video_name}.mp4"
-
-                # Download to local pc
-                senddiscrdmsg(f"Downloading the video... {video_name}")
-                run_command(cmd)
-
-                # Upload to stoj
-                run_command(f"move {video_name}.mp4 ./output")
-                senddiscrdmsg("Uploading the video...")
-                run_command(command2)
-
-                # Cleanup
-                # senddiscrdmsg("Deleting the video...")
-                run_command(command4)
-                run_command("cls")
-                run_command("echo Running!")
-                senddiscrdmsg("Done !")
-                if command in cmds_queue:
-                    cmds_queue.remove(command)
-             #Incase no video name   
-            else : 
-                print("Wrong cmd")
-                run_command("cls")
-                run_command("echo Running!")
-                if command in cmds_queue:
-                    cmds_queue.remove(command)
-        finally:
-            storj_lock.release()
-
-def senddiscrdmsg(content):
-    message = {
-            'content': f'{content}'
-        }
-    payload = json.dumps(message)
-    headers = {'Content-Type': 'application/json'}
-    requests.post("https://discord.com/api/webhooks/1185957394526781491/-nQ6rLQ1Vlo8El7VB9of0waEU9A4mTKBJfrla8Po7F9UelL_HVfkhy9pIGN9pU8ZEMv4", data=payload, headers=headers)
-
-def storj():
-    if storj_lock.acquire(blocking=False):
-        try :
-            if cmds_queue :
-                while len(cmds_queue) > 0:
-                    def senddiscrdmsg(content):
-                        message = {
-                                'content': f'{content}'
-                            }
-                        payload = json.dumps(message)
-                        headers = {'Content-Type': 'application/json'}
-                        requests.post("https://discord.com/api/webhooks/1177648648172093562/8PN6BS5c4l4tST5H_jtunzO46iiigz1zyEI34nPbWN_Q7IKJjQKIEYLdb6OXYpwVofwp", data=payload, headers=headers)
-
-                    def run_command(command):
-                        subprocess.run(command, shell=True)
-
-                    def extract_save_name(command):
-                        save_name_match = re.search(r'--save-name\s+(\S+)', command)
-                        if save_name_match:
-                            return save_name_match.group(1)
-                        else:
-                            return None
-
-                    cmd = cmds_queue[0]
-                    mpd = cmd.split(" ")[1]
-                    if mpd in used_mpd:
-                            return "failed"
-                    used_mpd.add(mpd)
-                    video_name = extract_save_name(cmd)
-                    if video_name :
-                        command2 = f"uplink.exe cp ./output/{video_name}.mp4 sj://spynet/Private/"
-                        command4 = fr"del .\output\{video_name}.mp4"
-
-                        senddiscrdmsg(f"Downloading the video... {video_name}")
-                        run_command(cmd)
-
-                        senddiscrdmsg("Uploading the video...")
-                        run_command(command2)
-
-                        run_command(command4)
-                        run_command("cls")
-                        run_command("echo Running!")
-                        senddiscrdmsg("Done !")
-
-                        del cmds_queue[0]
-                    else : 
-                        print("Wrong cmd")
-                        run_command("cls")
-                        run_command("echo Running!")
-                        del cmds_queue[0]
-        finally:
-            storj_lock.release()
-        
-
 
 
 
@@ -381,51 +284,15 @@ def storj():
 @login_required
 def commandslist():
     def extract_save_name(command):
-        save_name_match = re.search(r'--save-name\s+(\S+)', command)
-        if save_name_match:
-            return save_name_match.group(1)
+        if command.startswith("python"):
+            return command.split(' ')[3]
         else:
-            return None
+            save_name_match = re.search(r'--save-name\s+(\S+)', command)
+            return save_name_match.group(1)
+    
     return render_template("backend_pages/list.html", cmds_queue=cmds_queue, extract_save_name=extract_save_name)
 
 from flask import render_template
-
-@vdo.route('/downloadsingle', methods=['GET'])
-def downloadsingle():
-    command = request.args.get('command')
-    
-    # Check the status before proceeding
-    storj_lock_acquired = storj_lock.acquire(blocking=False)
-    storj_lock.release()
-
-    if storj_lock_acquired:
-        return render_template('backend_pages/loading.html', command=command , word = "Loading...")
-    else:
-        return render_template('backend_pages/loading.html' , word = "The resource is currently in use.")
-
-
-@vdo.route('/start_background_task', methods=['POST'])
-def start_background_task():
-    command = request.args.get('command')
-    storjsingle(command)
-    return jsonify({'status': f'Video uploaded successfully'})
-
-
-@vdo.route('/start_background_task_all', methods=['POST'])
-def start_background_task_all():
-    storj()
-    return jsonify({'status': f'Videos uploaded successfully'})
-
-
-@vdo.route('/downloadall', methods=['GET'])
-def downloadall():
-    storj_lock_acquired = storj_lock.acquire(blocking=False)
-    storj_lock.release()
-
-    if storj_lock_acquired:
-        return render_template('backend_pages/loading_all.html', word = "Loading... (This will take long)")
-    else:
-        return render_template('backend_pages/loading_all.html' , word = "The resource is currently in use.")
 
 
 
@@ -438,16 +305,9 @@ def delete_command():
         cmds_queue.remove(command_to_delete)
     return redirect(url_for('vdo.commandslist'))
 
-@vdo.route("/status")
-def lock_status():
-    storj_lock_acquired = storj_lock.acquire(blocking=False)
-    storj_lock.release()
-    return f'{"Ready to use" if storj_lock_acquired else "Locked"}'
 
 
-
-#Manual command add
-@vdo.route("/storj2", methods=['GET', 'POST'])
+@vdo.route("/addcmd", methods=['GET', 'POST'])
 def storjflask2():
     if request.method == 'POST':
         userinput = request.form['userinput']
@@ -467,7 +327,7 @@ def storjlist():
 
 @vdo.route("/createcmd")
 def cmdcommand():
-        combined_cmds = " & ".join([f'start cmd.exe @cmd /k "{element} & exit"' for element in cmds_queue])
+        combined_cmds = " & ".join([f'start cmd.exe @cmd /k "{element} & exit" & exit' for element in cmds_queue])
         return combined_cmds
 
 @vdo.route("/cleartokens")
@@ -478,25 +338,7 @@ def cleartokens():
 
 
 
-
-from flask import send_file
-
-@vdo.route("/vdo")
-def vdofile():
-    file_path = r'storj\vdo.txt'
-    return send_file(file_path, as_attachment=True)
-
-
-
-
-
-
-
-
-
-
-
-#--------------------------------------------------------------------------
+#----------------------------------------------------------------------------------------------------------------
 def getv(token):
     decoded_bytes = base64.b64decode(token)
     decoded_string = decoded_bytes.decode('utf-8')
@@ -540,8 +382,6 @@ def get_mpd2(video_id , xotp):
 def ink():
     token = request.args.get('token')
     xotp = request.args.get('otp')
-    username = request.args.get('username')
-    secrectokens = request.args.get('secrectokens')
     class WvDecrypt:
         def __init__(self, pssh_b64, device):
             self.cdm = cdm.Cdm()
