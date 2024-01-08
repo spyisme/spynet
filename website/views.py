@@ -18,8 +18,8 @@ print('Running!')
 
 
 
-@views.route('/update')
-def update():
+@views.route('/restart')
+def restart():
     try:
         # Change the path to your restart.bat file
         bat_file_path = r'C:\Users\Spy\Downloads\Restart.bat'
@@ -31,6 +31,36 @@ def update():
     
     except subprocess.CalledProcessError as e:
         return f'Error executing restart command: {e}', 500
+
+
+
+
+@views.route('/update')
+def update():
+    try:
+        # Change the path to your restart.bat file
+        bat_file_path = r'C:\Users\Spy\Downloads\Updateonly.bat'
+        
+        # Run the restart.bat file using subprocess
+        subprocess.run([bat_file_path], shell=True, check=True)
+        
+        return 'Restart command executed successfully!'
+    
+    except subprocess.CalledProcessError as e:
+        return f'Error executing restart command: {e}', 500
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 @views.route('/login', methods=['GET', 'POST'])
@@ -80,6 +110,7 @@ def login():
 YOUTUBE_API_KEY = 'AIzaSyAbrVMIzmLLhHQSrMVUG8gS3d6IAYE0qVc'
 
 
+
 def convert_duration(duration):
     duration = duration[2:]  # Remove 'PT' at the beginning
     hours, minutes, seconds = 0, 0, 0
@@ -98,9 +129,8 @@ def convert_duration(duration):
     formatted_duration = '{:02d}:{:02d}:{:02d}'.format(hours, minutes, seconds)
     return formatted_duration
 
-
 def get_playlist_videos(playlist_id):
-    youtube = build('youtube', 'v3', developerKey=YOUTUBE_API_KEY, static_discovery=False)
+    youtube = build('youtube', 'v3', developerKey='YOUR_YOUTUBE_API_KEY', static_discovery=False)
 
     # Fetch the playlist items
     playlist_items = []
@@ -134,10 +164,16 @@ def get_playlist_videos(playlist_id):
             )
             video_response = video_request.execute()
 
-            video_duration = video_response['items'][0]['contentDetails']['duration']
-            formatted_duration = convert_duration(video_duration)
+            # Check if there are items in the response and if 'contentDetails' and 'duration' keys exist
+            if 'items' in video_response and video_response['items'] and 'contentDetails' in video_response['items'][0] and 'duration' in video_response['items'][0]['contentDetails']:
+                # Assuming the structure is correct, retrieve the duration
+                video_duration = video_response['items'][0]['contentDetails']['duration']
+                formatted_duration = convert_duration(video_duration)
+            else:
+                # Handle the case when 'contentDetails' or 'duration' keys are missing
+                formatted_duration = 'N/A'
         except KeyError:
-            # Handle the case when duration is not available
+            # Handle the case when 'contentDetails' or 'duration' keys are not available
             formatted_duration = 'N/A'
 
         video_title = item['snippet']['title']
@@ -150,7 +186,6 @@ def get_playlist_videos(playlist_id):
         })
 
     return videos
-
 
 
 
