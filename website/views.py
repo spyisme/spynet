@@ -634,7 +634,7 @@ def english():
 
 
 @views.route('/german')
-def bio():
+def german():
   teacher_links = {
      "German": ("germann", "Abd El Moez"),
   }
@@ -645,7 +645,7 @@ def bio():
                          imgs="yes")
 
 @views.route("/germann")
-def german():
+def germann():
   teachername = "German"
   playlist_id = 'PLM-GVlebsoPWNh__WI8QAIN2xQjawgB4i'
   videos = get_playlist_videos(playlist_id)
