@@ -11,7 +11,7 @@ console_output_buffer = StringIO()
 # Replace the standard output with the buffer
 sys.stdout = console_output_buffer
 
-@app.route('/console')
+@app.route('/console2')
 def console():
     # Get the console output and reset the buffer
     console_output = console_output_buffer.getvalue()
