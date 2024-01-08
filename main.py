@@ -1,7 +1,5 @@
 from website import create_app
-from flask import redirect, render_template
-import sys
-from io import StringIO
+from flask import redirect
 
 app = create_app()
 
