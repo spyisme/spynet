@@ -637,7 +637,7 @@ def english():
 def german():
   teacher_links = {
      "German": ("germann", "Abd El Moez"),
-     "German Files": ("germanfiles", "Google Drive"),
+     "German Files": ("germanpdfs", "Google Drive"),
 
   }
   teachername = "German"
