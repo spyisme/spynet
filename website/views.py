@@ -18,8 +18,8 @@ print('Running!')
 
 
 
-@views.route('/restart')
-def restart():
+@views.route('/update')
+def update():
     try:
         # Change the path to your restart.bat file
         bat_file_path = r'C:\Users\Spy\Downloads\Restart.bat'
@@ -31,36 +31,6 @@ def restart():
     
     except subprocess.CalledProcessError as e:
         return f'Error executing restart command: {e}', 500
-
-
-
-
-@views.route('/update')
-def update():
-    try:
-        # Change the path to your restart.bat file
-        bat_file_path = r'C:\Users\Spy\Downloads\Updateonly.bat'
-        
-        # Run the restart.bat file using subprocess
-        subprocess.run([bat_file_path], shell=True, check=True)
-        
-        return 'Restart command executed successfully!'
-    
-    except subprocess.CalledProcessError as e:
-        return f'Error executing restart command: {e}', 500
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 @views.route('/login', methods=['GET', 'POST'])
@@ -110,7 +80,6 @@ def login():
 YOUTUBE_API_KEY = 'AIzaSyAbrVMIzmLLhHQSrMVUG8gS3d6IAYE0qVc'
 
 
-
 def convert_duration(duration):
     duration = duration[2:]  # Remove 'PT' at the beginning
     hours, minutes, seconds = 0, 0, 0
@@ -129,8 +98,9 @@ def convert_duration(duration):
     formatted_duration = '{:02d}:{:02d}:{:02d}'.format(hours, minutes, seconds)
     return formatted_duration
 
+
 def get_playlist_videos(playlist_id):
-    youtube = build('youtube', 'v3', developerKey='YOUR_YOUTUBE_API_KEY', static_discovery=False)
+    youtube = build('youtube', 'v3', developerKey=YOUTUBE_API_KEY, static_discovery=False)
 
     # Fetch the playlist items
     playlist_items = []
@@ -156,26 +126,15 @@ def get_playlist_videos(playlist_id):
     for index, item in enumerate(playlist_items):
         video_id = item['snippet']['resourceId']['videoId']
 
-        try:
-            # Get video details to retrieve the duration
-            video_request = youtube.videos().list(
-                part='contentDetails',
-                id=video_id
-            )
-            video_response = video_request.execute()
+        # Get video details to retrieve the duration
+        video_request = youtube.videos().list(
+            part='contentDetails',
+            id=video_id
+        )
+        video_response = video_request.execute()
 
-            # Check if there are items in the response and if 'contentDetails' and 'duration' keys exist
-            if 'items' in video_response and video_response['items'] and 'contentDetails' in video_response['items'][0] and 'duration' in video_response['items'][0]['contentDetails']:
-                # Assuming the structure is correct, retrieve the duration
-                video_duration = video_response['items'][0]['contentDetails']['duration']
-                formatted_duration = convert_duration(video_duration)
-            else:
-                # Handle the case when 'contentDetails' or 'duration' keys are missing
-                formatted_duration = 'N/A'
-        except KeyError:
-            # Handle the case when 'contentDetails' or 'duration' keys are not available
-            formatted_duration = 'N/A'
-
+        video_duration = video_response['items'][0]['contentDetails']['duration']
+        formatted_duration = convert_duration(video_duration)
         video_title = item['snippet']['title']
 
         videos.append({
@@ -449,7 +408,7 @@ def salama():
 def salamach(course_number):
     course_key = f"Course {course_number}"
     if course_key not in salama_info:
-        return redirect(url_for('views.salama'))
+        return redirect(url_for('views.display_links'))
     teachername = course_key
     playlist_id = salama_info[course_key]["id"]
     videos = get_playlist_videos(playlist_id)
