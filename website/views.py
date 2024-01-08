@@ -629,16 +629,30 @@ def english():
                          videos=videos,
                          playlist_id=playlist_id,
                          teachername=teachername)
-@views.route("/german")
+
+
+
+
+@views.route('/german')
+def bio():
+  teacher_links = {
+     "German": ("germann", "Abd El Moez"),
+  }
+  teachername = "German"
+  return render_template('used_pages/teacher.html',
+                         teacher_links=teacher_links,
+                         teachername=teachername,
+                         imgs="yes")
+
+@views.route("/germann")
 def german():
-   return "Coming soon..."
-  # teachername = "German"
-  # playlist_id = 'PLM-GVlebsoPWNh__WI8QAIN2xQjawgB4i'
-  # videos = get_playlist_videos(playlist_id)
-  # return render_template('used_pages/videopage.html',
-  #                        videos=videos,
-  #                        playlist_id=playlist_id,
-  #                        teachername=teachername)
+  teachername = "German"
+  playlist_id = 'PLM-GVlebsoPWNh__WI8QAIN2xQjawgB4i'
+  videos = get_playlist_videos(playlist_id)
+  return render_template('used_pages/videopage.html',
+                         videos=videos,
+                         playlist_id=playlist_id,
+                         teachername=teachername)
 
 
 
