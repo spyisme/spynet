@@ -126,15 +126,20 @@ def get_playlist_videos(playlist_id):
     for index, item in enumerate(playlist_items):
         video_id = item['snippet']['resourceId']['videoId']
 
-        # Get video details to retrieve the duration
-        video_request = youtube.videos().list(
-            part='contentDetails',
-            id=video_id
-        )
-        video_response = video_request.execute()
+        try:
+            # Get video details to retrieve the duration
+            video_request = youtube.videos().list(
+                part='contentDetails',
+                id=video_id
+            )
+            video_response = video_request.execute()
 
-        video_duration = video_response['items'][0]['contentDetails']['duration']
-        formatted_duration = convert_duration(video_duration)
+            video_duration = video_response['items'][0]['contentDetails']['duration']
+            formatted_duration = convert_duration(video_duration)
+        except KeyError:
+            # Handle the case when duration is not available
+            formatted_duration = 'N/A'
+
         video_title = item['snippet']['title']
 
         videos.append({
@@ -145,6 +150,7 @@ def get_playlist_videos(playlist_id):
         })
 
     return videos
+
 
 
 
@@ -408,7 +414,7 @@ def salama():
 def salamach(course_number):
     course_key = f"Course {course_number}"
     if course_key not in salama_info:
-        return "404"
+        return redirect(url_for('views.salama'))
     teachername = course_key
     playlist_id = salama_info[course_key]["id"]
     videos = get_playlist_videos(playlist_id)
