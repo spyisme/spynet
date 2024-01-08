@@ -100,7 +100,7 @@ def convert_duration(duration):
 
 
 def get_playlist_videos(playlist_id):
-    youtube = build('youtube', 'v3', developerKey=YOUTUBE_API_KEY, static_discovery=False)
+    youtube = build('youtube', 'v3', developerKey='YOUR_YOUTUBE_API_KEY', static_discovery=False)
 
     # Fetch the playlist items
     playlist_items = []
@@ -126,15 +126,26 @@ def get_playlist_videos(playlist_id):
     for index, item in enumerate(playlist_items):
         video_id = item['snippet']['resourceId']['videoId']
 
-        # Get video details to retrieve the duration
-        video_request = youtube.videos().list(
-            part='contentDetails',
-            id=video_id
-        )
-        video_response = video_request.execute()
+        try:
+            # Get video details to retrieve the duration
+            video_request = youtube.videos().list(
+                part='contentDetails',
+                id=video_id
+            )
+            video_response = video_request.execute()
 
-        video_duration = video_response['items'][0]['contentDetails']['duration']
-        formatted_duration = convert_duration(video_duration)
+            # Check if there are items in the response and if 'items' is not empty
+            if 'items' in video_response and video_response['items'] and isinstance(video_response['items'], list):
+                # Assuming the structure is correct, retrieve the duration
+                video_duration = video_response['items'][0]['contentDetails']['duration']
+                formatted_duration = convert_duration(video_duration)
+            else:
+                # Handle the case when 'items' is empty or not a list
+                formatted_duration = 'N/A'
+        except KeyError:
+            # Handle the case when 'contentDetails' or 'duration' keys are not available
+            formatted_duration = 'N/A'
+
         video_title = item['snippet']['title']
 
         videos.append({
