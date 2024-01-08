@@ -637,6 +637,8 @@ def english():
 def german():
   teacher_links = {
      "German": ("germann", "Abd El Moez"),
+     "German Files": ("germanfiles", "Google Drive"),
+
   }
   teachername = "German"
   return render_template('used_pages/teacher.html',
