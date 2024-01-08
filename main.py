@@ -23,6 +23,4 @@ def internal_error(error):
     return error_message, 500
 
 if __name__ == "__main__":
-    app.debug = True  
-    from waitress import serve
-    serve(app, host="0.0.0.0", port=80  ,  _quiet=True)
+    app.run(host="0.0.0.0", port=80, debug=True)
