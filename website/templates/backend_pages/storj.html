@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/x-icon" href="https://spysnet.com/static/snn.png">
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Storj Form</title>
@@ -59,9 +60,9 @@
     </style>
 </head>
 <body>
-    <h1>Storj Upload</h1>
+    <h1>Commands</h1>
     <form method="post" action="{{ url_for('vdo.storjflask2') }}">
-        <label for="userinput">Enter Storj Command:</label>
+        <label for="userinput">Enter Command:</label>
         <input type="text" id="userinput" name="userinput" required autocomplete="off">
         <button type="submit">Submit</button>
     </form>
