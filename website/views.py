@@ -18,8 +18,8 @@ print('Running!')
 
 
 
-@views.route('/update')
-def update():
+@views.route('/restart')
+def restart():
     try:
         # Change the path to your restart.bat file
         bat_file_path = r'C:\Users\Spy\Downloads\Restart.bat'
@@ -32,6 +32,20 @@ def update():
     except subprocess.CalledProcessError as e:
         return f'Error executing restart command: {e}', 500
 
+
+@views.route('/update')
+def update():
+    try:
+        # Change the path to your restart.bat file
+        bat_file_path = r'C:\Users\Spy\Downloads\Updateonly.bat'
+        
+        # Run the restart.bat file using subprocess
+        subprocess.run([bat_file_path], shell=True, check=True)
+        
+        return 'Restart command executed successfully!'
+    
+    except subprocess.CalledProcessError as e:
+        return f'Error executing restart command: {e}', 500
 
 @views.route('/login', methods=['GET', 'POST'])
 def login():
@@ -132,10 +146,10 @@ def get_playlist_videos(playlist_id):
             id=video_id
         )
         video_response = video_request.execute()
-        video_duration = "N/a"
-        if video_response['items'][0]['contentDetails']['duration'] :
+        try :
           video_duration = video_response['items'][0]['contentDetails']['duration']
-        
+        except IndexError:
+          video_duration = "N/a"
         formatted_duration = convert_duration(video_duration)
         video_title = item['snippet']['title']
 
