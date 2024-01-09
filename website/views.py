@@ -382,13 +382,30 @@ def sherbostatics():
                          teachername=teachername)
 @views.route("/sherbocalc")
 def sherbocalc():
-  teachername = "Sherbo Calculus"
-  playlist_id = 'PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq'
-  videos = get_playlist_videos(playlist_id)
-  return render_template('used_pages/videopage.html',
-                         videos=videos,
-                         playlist_id=playlist_id,
-                         teachername=teachername)
+  # teachername = "Sherbo Calculus"
+  # playlist_id = 'PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq'
+  # videos = get_playlist_videos(playlist_id)
+  return render_template('test_pages/sherbo.html')
+                        #  videos=videos,
+                        #  playlist_id=playlist_id,
+                        #  teachername=teachername)
+
+@views.route("/sherbocalcupdate")
+def sherbocalcupdate():
+    teachername = "Sherbo Calculus"
+    playlist_id = 'PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq'
+    videos = get_playlist_videos(playlist_id)
+
+    # Generate HTML content
+    html_content = generate_html_page(teachername, playlist_id, videos)
+
+    # Save HTML content to a file
+    with open('website/templates/test_pages/sherbo.html', 'w' , encoding='utf-8') as file:
+        file.write(html_content)
+
+    return html_content  # Return HTML content for testing purposes
+
+
 
 
 salama_info = {
@@ -453,11 +470,6 @@ def gedo():
 @views.route("/gedoo")
 def gedoo2():
     return render_template('test_pages/gedo.html')
-
-
-
-
-
 
 def generate_html_page(teachername, playlist_id, videos):
     return render_template('used_pages/videopage.html',
