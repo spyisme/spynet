@@ -457,7 +457,7 @@ def gedoo2():
 
 
 
-
+import os
 
 def generate_html_page(teachername, playlist_id, videos):
     return render_template('used_pages/videopage.html',
@@ -471,17 +471,20 @@ def gedoupdate():
     playlist_id = 'PLM-GVlebsoPXBcSNcLjkmcQG53hQYTvui'
     videos = get_playlist_videos(playlist_id)
 
+    # Specify the directory
+    directory = 'test_pages/'
+
+    # Create the directory if it doesn't exist
+    os.makedirs(directory, exist_ok=True)
+
     # Generate HTML content
     html_content = generate_html_page(teachername, playlist_id, videos)
 
     # Save HTML content to a file
-    with open('test_pages/gedo.html', 'w') as file:
+    with open(os.path.join(directory, 'gedo.html'), 'w') as file:
         file.write(html_content)
 
     return html_content  # Return HTML content for testing purposes
-
-
-
 
 
 
