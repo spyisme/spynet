@@ -169,8 +169,8 @@ def get_playlist_videos(playlist_id):
 
 @views.route('/all')
 def display_links():
-    lines = ["physics", "chemistry","math", "arabic","geology", "biology","english" , "german"]
-    return render_template('used_pages/all.html', lines=lines, teachername="All")
+    return redirect("/") 
+
 
 
 
