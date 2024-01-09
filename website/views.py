@@ -448,15 +448,26 @@ def gedo():
                          teacher_links=teacher_links,
                          teachername=teachername,
                          imgs="yes")
+
+
 @views.route("/gedoo")
-def gedoo():
-  teachername = "Gedo"
-  playlist_id = 'PLM-GVlebsoPXBcSNcLjkmcQG53hQYTvui'
-  videos = get_playlist_videos(playlist_id)
-  return render_template('used_pages/videopage.html',
-                         videos=videos,
-                         playlist_id=playlist_id,
-                         teachername=teachername)
+def gedoo2():
+    return render_template('test_pages/gedo.html')
+
+
+
+
+
+
+# @views.route("/gedoo")
+# def gedoo():
+#   teachername = "Gedo"
+#   playlist_id = 'PLM-GVlebsoPXBcSNcLjkmcQG53hQYTvui'
+#   videos = get_playlist_videos(playlist_id)
+#   return render_template('used_pages/videopage.html',
+#                          videos=videos,
+#                          playlist_id=playlist_id,
+#                          teachername=teachername)
 
 
 
