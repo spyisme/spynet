@@ -1,0 +1,3377 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2812078112067783"
+ crossorigin="anonymous"></script>
+
+    <title>Sherbo Calculus</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+
+
+    <meta name="description" content="Sherbo Calculus">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+
+
+  <style>
+
+      html, body {
+          height: 100%;
+          margin: 0;
+          padding: 0;
+          zoom: 90%;
+          overflow: auto
+      }
+      html{
+        cursor: url('https://media.discordapp.net/attachments/951495863509876828/1190799754519650435/cursor2.png?ex=65a31db1&is=6590a8b1&hm=4b46da89ec303157e22691eaef3a9bd0bcf001613403571da23a02e9f736a968&=&format=webp&quality=lossless&width=14&height=14'), auto;
+
+      }
+      .card-description {
+            font-size: 14px;
+            color: black;
+            margin-top: 10px;
+        }
+      /* Style the iframe to take 100% of the viewport */
+
+      body {
+          font-family: Arial, sans-serif;
+          background-color: #1a1a1a;
+
+          color: #fff; /* Default text color */
+      }
+
+      /* Dark Mode */
+      @media (prefers-color-scheme: dark) {
+          body {
+              background-color: #1a1a1a;
+              color: #fff; /* Text color in dark mode */
+          }
+
+          .nav {
+              background-color: #9dd3d0; /* Dark background color for the navigation */
+              color: #fff;
+          }
+
+          ul {
+              background-color: #1a1a1a; /* Dark background color for the list */
+          }
+
+          /* Add more styles for dark mode as needed */
+      }
+
+      .nav {
+          padding: 20px;
+          margin: 0;
+          text-align: center;
+          background-color: #9dd3d0;
+          color: #fff;
+      }
+
+      ul {
+          list-style: none;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          align-items: center;
+          padding: 20px;
+      }
+
+
+  
+
+
+      .card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .card img {
+          max-width: 100%;
+
+            height: 100px;
+        
+      }
+
+      .card p {
+          font-size: 22px; /* Increase text size */
+      }
+
+      a {
+          text-decoration: none;
+          color: blue;
+          cursor: url('https://media.discordapp.net/attachments/951495863509876828/1190799754519650435/cursor2.png?ex=65a31db1&is=6590a8b1&hm=4b46da89ec303157e22691eaef3a9bd0bcf001613403571da23a02e9f736a968&=&format=webp&quality=lossless&width=14&height=14'), auto;
+
+      }
+
+      a:hover {
+          text-decoration: none;
+          text-align: center;
+      }
+
+      /* Mobile Styles */
+      @media screen and (max-width: 768px) {
+          h1 {
+              padding: 10px;
+              width: 96%;
+          }
+          html{
+  cursor: auto;
+}
+          ul {
+              flex-direction: column; /* Stack cards vertically */
+              padding: 10px;
+          }
+
+          li {
+              margin: 5px;
+              max-width: 100%; /* Make cards full width on mobile */
+          }
+
+          .card {
+              padding: 10px;
+              width: 96%; /* Make cards 100% width on mobile */
+              margin: 0 auto; /* Center-align the cards */
+              min-height: 50px;
+              width: 210px
+          }
+      }
+      .card
+    {
+      color: blue;
+          background-color: #fff;
+          border: 1px solid #ccc;
+          border-radius: 10px;
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+          padding: 20px;
+          transition: transform 0.2s, box-shadow 0.2s;
+          text-align: center;
+          margin: 10px;
+          text-transform: capitalize; /* Capitalize the first letter */
+          display: block;
+          width: 200px;
+      }
+
+.discord-link a {
+              color: white;
+              text-decoration: underline;
+            }
+
+
+
+                        
+ .banner {
+  width: 100%;
+  height: 100%;
+
+}
+.banner_content {
+  display: flex;
+  position: relative;
+  z-index: 1;
+  flex-direction: column;
+  text-align: center;
+}
+span {
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0px 4px 12px #000000ba;
+}
+#canvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Allow click events to pass through the canvas */
+}
+h1{
+  font-size: 46px;
+}
+
+
+
+
+
+.popup-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+            display: none;
+            text-align: center;
+
+            z-index: 999;
+        }
+
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 15px; /* Rounded corners */
+            z-index: 1000;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            /* cursor: pointer; */
+        }
+
+        .popup-buttons {
+            display: flex;
+            justify-content: center;
+
+            margin-top: 20px;
+            
+        }
+
+        .popup-buttons button {
+            padding: 10px;
+            font-size: 16px;
+            /* cursor: pointer; */
+            margin: 30px;
+
+        }
+        .popup-buttons img {
+        width: 110px; /* Set the width of the image */
+    }
+    .popup-buttons span {
+        display: block; /* Make each span appear on a new line */
+        margin-top: 5px; /* Adjust the margin between button and text */
+    }
+    h3{
+      color:Black
+    }
+    .nohover{
+  cursor: url('https://media.discordapp.net/attachments/951495863509876828/1190799754519650435/cursor2.png?ex=65a31db1&is=6590a8b1&hm=4b46da89ec303157e22691eaef3a9bd0bcf001613403571da23a02e9f736a968&=&format=webp&quality=lossless&width=14&height=14'), auto; 
+color:white ;
+        text-decoration: underline;
+}
+
+  </style>
+
+
+</head>
+
+
+<body>
+
+  <section class="banner">
+    <canvas id="canvas"> </canvas>
+    <div class="nav">
+        <h1>✰ Sherbo Calculus ✰</h1>
+
+            <!-- <p>Please donate to keep this site up. -->
+              <p>
+                <a href="/" class="nohover">Home</a>
+              </p>
+ 
+              
+  
+  </div>
+
+
+        <ul>       
+            
+  
+
+                <div class="card" onclick="openPopupname1(event)">
+                    S1 | Skills
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer1" onclick="closePopup1()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose1(event)">
+                      <span class="close" onclick="closePopup1()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   S1 | Skills</h3>
+                          <h3>01:15:57</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=7BkflzSCJSc&list=PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=7BkflzSCJSc">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/7BkflzSCJSc" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname2(event)">
+                    S1 | Part 1 | Explain
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer2" onclick="closePopup2()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose2(event)">
+                      <span class="close" onclick="closePopup2()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   S1 | Part 1 | Explain</h3>
+                          <h3>01:49:06</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=CNKX3UOPdlQ&list=PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=CNKX3UOPdlQ">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/CNKX3UOPdlQ" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname3(event)">
+                    S1 | Part 1 | Classwork
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer3" onclick="closePopup3()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose3(event)">
+                      <span class="close" onclick="closePopup3()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   S1 | Part 1 | Classwork</h3>
+                          <h3>00:38:44</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=vJoWf2neJaM&list=PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=vJoWf2neJaM">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/vJoWf2neJaM" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname4(event)">
+                    S1 | Part 2 | Explain
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer4" onclick="closePopup4()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose4(event)">
+                      <span class="close" onclick="closePopup4()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   S1 | Part 2 | Explain</h3>
+                          <h3>01:07:32</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=mEuxg-wr36A&list=PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=mEuxg-wr36A">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/mEuxg-wr36A" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname5(event)">
+                    S1 | Part 2 | Classwork
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer5" onclick="closePopup5()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose5(event)">
+                      <span class="close" onclick="closePopup5()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   S1 | Part 2 | Classwork</h3>
+                          <h3>00:25:53</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=_YEjOfDkUHc&list=PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=_YEjOfDkUHc">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/_YEjOfDkUHc" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname6(event)">
+                    S1 | Part 3 | Explain
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer6" onclick="closePopup6()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose6(event)">
+                      <span class="close" onclick="closePopup6()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   S1 | Part 3 | Explain</h3>
+                          <h3>01:43:48</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=Tgb1MgFpVLY&list=PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=Tgb1MgFpVLY">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/Tgb1MgFpVLY" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname7(event)">
+                    S1 | Part 3 | Classwork
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer7" onclick="closePopup7()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose7(event)">
+                      <span class="close" onclick="closePopup7()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   S1 | Part 3 | Classwork</h3>
+                          <h3>00:09:02</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=zRxyHwABUc0&list=PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=zRxyHwABUc0">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/zRxyHwABUc0" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname8(event)">
+                    S1 | Homework
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer8" onclick="closePopup8()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose8(event)">
+                      <span class="close" onclick="closePopup8()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   S1 | Homework</h3>
+                          <h3>07:26:39</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=ZEcabe4DkM8&list=PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=ZEcabe4DkM8">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/ZEcabe4DkM8" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname9(event)">
+                    S2 | Skills
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer9" onclick="closePopup9()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose9(event)">
+                      <span class="close" onclick="closePopup9()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   S2 | Skills</h3>
+                          <h3>01:55:38</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=H14xZscRYZ4&list=PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=H14xZscRYZ4">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/H14xZscRYZ4" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname10(event)">
+                    S2 | Part 1
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer10" onclick="closePopup10()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose10(event)">
+                      <span class="close" onclick="closePopup10()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   S2 | Part 1</h3>
+                          <h3>03:17:19</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=Dsj5K0GBXWQ&list=PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=Dsj5K0GBXWQ">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/Dsj5K0GBXWQ" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname11(event)">
+                    S2 | Part 2
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer11" onclick="closePopup11()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose11(event)">
+                      <span class="close" onclick="closePopup11()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   S2 | Part 2</h3>
+                          <h3>02:47:19</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=jUBDSjdTl8M&list=PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=jUBDSjdTl8M">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/jUBDSjdTl8M" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname12(event)">
+                    S2 | Classwork 1
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer12" onclick="closePopup12()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose12(event)">
+                      <span class="close" onclick="closePopup12()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   S2 | Classwork 1</h3>
+                          <h3>00:30:52</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=jDVZUVqRT9E&list=PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=jDVZUVqRT9E">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/jDVZUVqRT9E" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname13(event)">
+                    S2 | Classwork 2
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer13" onclick="closePopup13()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose13(event)">
+                      <span class="close" onclick="closePopup13()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   S2 | Classwork 2</h3>
+                          <h3>00:31:41</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=2NfBi6yIZjg&list=PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=2NfBi6yIZjg">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/2NfBi6yIZjg" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname14(event)">
+                    S2 | Homework
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer14" onclick="closePopup14()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose14(event)">
+                      <span class="close" onclick="closePopup14()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   S2 | Homework</h3>
+                          <h3>04:13:57</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=ok-s_Jj48pw&list=PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=ok-s_Jj48pw">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/ok-s_Jj48pw" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname15(event)">
+                    S3 | Part 1
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer15" onclick="closePopup15()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose15(event)">
+                      <span class="close" onclick="closePopup15()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   S3 | Part 1</h3>
+                          <h3>01:12:48</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=25vhepXYFXw&list=PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=25vhepXYFXw">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/25vhepXYFXw" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname16(event)">
+                    S3 | Part 2
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer16" onclick="closePopup16()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose16(event)">
+                      <span class="close" onclick="closePopup16()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   S3 | Part 2</h3>
+                          <h3>01:00:49</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=KtOj69-JPoo&list=PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=KtOj69-JPoo">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/KtOj69-JPoo" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname17(event)">
+                    S3 | Homework
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer17" onclick="closePopup17()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose17(event)">
+                      <span class="close" onclick="closePopup17()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   S3 | Homework</h3>
+                          <h3>02:16:21</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=YbzFIk8D-YA&list=PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=YbzFIk8D-YA">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/YbzFIk8D-YA" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname18(event)">
+                    S4 | Skills
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer18" onclick="closePopup18()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose18(event)">
+                      <span class="close" onclick="closePopup18()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   S4 | Skills</h3>
+                          <h3>00:45:12</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=Icd-ear_86k&list=PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=Icd-ear_86k">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/Icd-ear_86k" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname19(event)">
+                    S4 | Prestudy
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer19" onclick="closePopup19()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose19(event)">
+                      <span class="close" onclick="closePopup19()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   S4 | Prestudy</h3>
+                          <h3>00:59:20</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=cCn1Tb1BRrI&list=PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=cCn1Tb1BRrI">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/cCn1Tb1BRrI" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname20(event)">
+                    S4 | Part 1
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer20" onclick="closePopup20()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose20(event)">
+                      <span class="close" onclick="closePopup20()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   S4 | Part 1</h3>
+                          <h3>03:12:09</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=ktZmN_WlXnA&list=PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=ktZmN_WlXnA">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/ktZmN_WlXnA" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname21(event)">
+                    S4 | Part 1 Classwork
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer21" onclick="closePopup21()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose21(event)">
+                      <span class="close" onclick="closePopup21()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   S4 | Part 1 Classwork</h3>
+                          <h3>01:23:57</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=KEvlRMS23C4&list=PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=KEvlRMS23C4">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/KEvlRMS23C4" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname22(event)">
+                    S4 | Part 2
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer22" onclick="closePopup22()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose22(event)">
+                      <span class="close" onclick="closePopup22()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   S4 | Part 2</h3>
+                          <h3>00:51:53</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=q9mPZW9nMp0&list=PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=q9mPZW9nMp0">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/q9mPZW9nMp0" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname23(event)">
+                    S4 | Part 2 Classwork
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer23" onclick="closePopup23()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose23(event)">
+                      <span class="close" onclick="closePopup23()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   S4 | Part 2 Classwork</h3>
+                          <h3>00:23:20</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=ZUuFXVt0Wuo&list=PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=ZUuFXVt0Wuo">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/ZUuFXVt0Wuo" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname24(event)">
+                    S4 | Part 3
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer24" onclick="closePopup24()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose24(event)">
+                      <span class="close" onclick="closePopup24()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   S4 | Part 3</h3>
+                          <h3>01:06:26</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=FmSBY4aUGdI&list=PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=FmSBY4aUGdI">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/FmSBY4aUGdI" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname25(event)">
+                    S4 | Part 4
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer25" onclick="closePopup25()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose25(event)">
+                      <span class="close" onclick="closePopup25()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   S4 | Part 4</h3>
+                          <h3>00:27:46</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=I8WnMQXgBuM&list=PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=I8WnMQXgBuM">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/I8WnMQXgBuM" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname26(event)">
+                    S4 | Homework
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer26" onclick="closePopup26()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose26(event)">
+                      <span class="close" onclick="closePopup26()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   S4 | Homework</h3>
+                          <h3>04:22:06</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=BIpDqxcVI9I&list=PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=BIpDqxcVI9I">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/BIpDqxcVI9I" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname27(event)">
+                    S5 | Part 1
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer27" onclick="closePopup27()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose27(event)">
+                      <span class="close" onclick="closePopup27()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   S5 | Part 1</h3>
+                          <h3>01:45:28</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=tgurPHGumr4&list=PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=tgurPHGumr4">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/tgurPHGumr4" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname28(event)">
+                    S5 | Part 1 Classwork
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer28" onclick="closePopup28()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose28(event)">
+                      <span class="close" onclick="closePopup28()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   S5 | Part 1 Classwork</h3>
+                          <h3>00:13:50</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=j6ISTmCcOAE&list=PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=j6ISTmCcOAE">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/j6ISTmCcOAE" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname29(event)">
+                    S5 | Part 2
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer29" onclick="closePopup29()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose29(event)">
+                      <span class="close" onclick="closePopup29()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   S5 | Part 2</h3>
+                          <h3>00:54:02</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=OUKQboyGD-g&list=PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=OUKQboyGD-g">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/OUKQboyGD-g" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname30(event)">
+                    S5 | Part 2 Classwork
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer30" onclick="closePopup30()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose30(event)">
+                      <span class="close" onclick="closePopup30()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   S5 | Part 2 Classwork</h3>
+                          <h3>00:07:54</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=ikBR8S80KuY&list=PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=ikBR8S80KuY">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/ikBR8S80KuY" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname31(event)">
+                    S5 | Part 3
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer31" onclick="closePopup31()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose31(event)">
+                      <span class="close" onclick="closePopup31()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   S5 | Part 3</h3>
+                          <h3>01:09:52</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=yu8T-rU8bUE&list=PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=yu8T-rU8bUE">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/yu8T-rU8bUE" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname32(event)">
+                    S5 | Part 3 Claswork
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer32" onclick="closePopup32()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose32(event)">
+                      <span class="close" onclick="closePopup32()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   S5 | Part 3 Claswork</h3>
+                          <h3>00:06:21</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=du25ALpAFTA&list=PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=du25ALpAFTA">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/du25ALpAFTA" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname33(event)">
+                    S5 | Trig
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer33" onclick="closePopup33()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose33(event)">
+                      <span class="close" onclick="closePopup33()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   S5 | Trig</h3>
+                          <h3>00:24:10</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=Jdr_S-vPqB8&list=PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=Jdr_S-vPqB8">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/Jdr_S-vPqB8" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname34(event)">
+                    S5 | Homework
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer34" onclick="closePopup34()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose34(event)">
+                      <span class="close" onclick="closePopup34()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   S5 | Homework</h3>
+                          <h3>08:49:37</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=QOEDrAKA3Bo&list=PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=QOEDrAKA3Bo">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/QOEDrAKA3Bo" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname35(event)">
+                    S6 | Part 1
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer35" onclick="closePopup35()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose35(event)">
+                      <span class="close" onclick="closePopup35()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   S6 | Part 1</h3>
+                          <h3>00:34:06</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=nkhx_UCB8X0&list=PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=nkhx_UCB8X0">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/nkhx_UCB8X0" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname36(event)">
+                    S6 | Part 1 Classwork
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer36" onclick="closePopup36()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose36(event)">
+                      <span class="close" onclick="closePopup36()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   S6 | Part 1 Classwork</h3>
+                          <h3>00:05:22</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=XYhY8Hjamhk&list=PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=XYhY8Hjamhk">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/XYhY8Hjamhk" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname37(event)">
+                    S6 | Part 2
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer37" onclick="closePopup37()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose37(event)">
+                      <span class="close" onclick="closePopup37()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   S6 | Part 2</h3>
+                          <h3>00:42:39</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=sOToHBTag0Q&list=PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=sOToHBTag0Q">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/sOToHBTag0Q" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname38(event)">
+                    S6 | Part 2 Classwork
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer38" onclick="closePopup38()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose38(event)">
+                      <span class="close" onclick="closePopup38()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   S6 | Part 2 Classwork</h3>
+                          <h3>00:15:34</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=uM4YDaUqGXA&list=PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=uM4YDaUqGXA">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/uM4YDaUqGXA" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname39(event)">
+                    S6 | Applications
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer39" onclick="closePopup39()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose39(event)">
+                      <span class="close" onclick="closePopup39()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   S6 | Applications</h3>
+                          <h3>01:02:41</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=Fz4gxkkHzu0&list=PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=Fz4gxkkHzu0">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/Fz4gxkkHzu0" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname40(event)">
+                    S6 | Homework
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer40" onclick="closePopup40()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose40(event)">
+                      <span class="close" onclick="closePopup40()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   S6 | Homework</h3>
+                          <h3>03:31:00</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=yGWWzKqsLK0&list=PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=yGWWzKqsLK0">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/yGWWzKqsLK0" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname41(event)">
+                    S7| Part 1
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer41" onclick="closePopup41()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose41(event)">
+                      <span class="close" onclick="closePopup41()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   S7| Part 1</h3>
+                          <h3>02:01:41</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=CvKWfzadL2o&list=PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=CvKWfzadL2o">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/CvKWfzadL2o" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname42(event)">
+                    S7 | Part 1 Classwork
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer42" onclick="closePopup42()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose42(event)">
+                      <span class="close" onclick="closePopup42()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   S7 | Part 1 Classwork</h3>
+                          <h3>00:28:45</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=_Wy8zzbRCJ8&list=PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=_Wy8zzbRCJ8">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/_Wy8zzbRCJ8" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname43(event)">
+                    S7 | Part 2
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer43" onclick="closePopup43()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose43(event)">
+                      <span class="close" onclick="closePopup43()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   S7 | Part 2</h3>
+                          <h3>00:43:47</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=7IjtYgZOEIE&list=PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=7IjtYgZOEIE">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/7IjtYgZOEIE" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname44(event)">
+                    S7 | Part 2 Classwork
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer44" onclick="closePopup44()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose44(event)">
+                      <span class="close" onclick="closePopup44()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   S7 | Part 2 Classwork</h3>
+                          <h3>00:15:19</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=5RYDePi8zdE&list=PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=5RYDePi8zdE">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/5RYDePi8zdE" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname45(event)">
+                    S7 | Homework
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer45" onclick="closePopup45()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose45(event)">
+                      <span class="close" onclick="closePopup45()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   S7 | Homework</h3>
+                          <h3>07:26:59</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=GHe9QuzVxPA&list=PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=GHe9QuzVxPA">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/GHe9QuzVxPA" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname46(event)">
+                    S8 | Graphs of Chapter 3
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer46" onclick="closePopup46()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose46(event)">
+                      <span class="close" onclick="closePopup46()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   S8 | Graphs of Chapter 3</h3>
+                          <h3>01:16:54</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=Eoe5VHyx2rs&list=PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=Eoe5VHyx2rs">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/Eoe5VHyx2rs" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname47(event)">
+                    S8 | Classwork
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer47" onclick="closePopup47()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose47(event)">
+                      <span class="close" onclick="closePopup47()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   S8 | Classwork</h3>
+                          <h3>01:21:27</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=OnrTMQDOPHI&list=PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=OnrTMQDOPHI">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/OnrTMQDOPHI" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname48(event)">
+                    S8 | Homework
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer48" onclick="closePopup48()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose48(event)">
+                      <span class="close" onclick="closePopup48()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   S8 | Homework</h3>
+                          <h3>01:25:19</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=bkjfQ9IRuXE&list=PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=bkjfQ9IRuXE">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/bkjfQ9IRuXE" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname49(event)">
+                    S9 | Part 1
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer49" onclick="closePopup49()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose49(event)">
+                      <span class="close" onclick="closePopup49()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   S9 | Part 1</h3>
+                          <h3>02:18:46</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=i0LL9bysF_g&list=PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=i0LL9bysF_g">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/i0LL9bysF_g" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname50(event)">
+                    S9 | Part 1 Classwork
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer50" onclick="closePopup50()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose50(event)">
+                      <span class="close" onclick="closePopup50()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   S9 | Part 1 Classwork</h3>
+                          <h3>01:05:35</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=a0VBRp4mdkc&list=PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=a0VBRp4mdkc">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/a0VBRp4mdkc" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname51(event)">
+                    S9 | Part 2
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer51" onclick="closePopup51()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose51(event)">
+                      <span class="close" onclick="closePopup51()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   S9 | Part 2</h3>
+                          <h3>00:47:13</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=XIeHKL4OwA4&list=PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=XIeHKL4OwA4">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/XIeHKL4OwA4" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname52(event)">
+                    S9 | Part 2 Classwork
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer52" onclick="closePopup52()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose52(event)">
+                      <span class="close" onclick="closePopup52()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   S9 | Part 2 Classwork</h3>
+                          <h3>00:40:40</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=EqMiBZSZXbk&list=PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=EqMiBZSZXbk">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/EqMiBZSZXbk" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname53(event)">
+                    S9  | Homework
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer53" onclick="closePopup53()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose53(event)">
+                      <span class="close" onclick="closePopup53()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   S9  | Homework</h3>
+                          <h3>08:21:40</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=IWVvWVMv0R4&list=PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=IWVvWVMv0R4">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/IWVvWVMv0R4" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname54(event)">
+                    S10 | Maxmin Part 1
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer54" onclick="closePopup54()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose54(event)">
+                      <span class="close" onclick="closePopup54()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   S10 | Maxmin Part 1</h3>
+                          <h3>02:11:20</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=uglmO27Fsic&list=PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=uglmO27Fsic">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/uglmO27Fsic" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname55(event)">
+                    S10 | Maxmin Part 1 Classwork
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer55" onclick="closePopup55()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose55(event)">
+                      <span class="close" onclick="closePopup55()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   S10 | Maxmin Part 1 Classwork</h3>
+                          <h3>00:36:29</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=xw_5pWASlRM&list=PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=xw_5pWASlRM">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/xw_5pWASlRM" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname56(event)">
+                    S10 | Maxmin Part 2
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer56" onclick="closePopup56()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose56(event)">
+                      <span class="close" onclick="closePopup56()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   S10 | Maxmin Part 2</h3>
+                          <h3>01:07:29</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=ONZtau7gQcg&list=PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=ONZtau7gQcg">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/ONZtau7gQcg" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname57(event)">
+                    S10 | Maxmin Part 2 Classwork
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer57" onclick="closePopup57()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose57(event)">
+                      <span class="close" onclick="closePopup57()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   S10 | Maxmin Part 2 Classwork</h3>
+                          <h3>00:43:00</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=pNpTMJ-kjCo&list=PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=pNpTMJ-kjCo">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/pNpTMJ-kjCo" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+        </ul>
+     <hr>
+     <ul>
+    
+     <a href="https://www.youtube.com/playlist?list=PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq" target="_blank">   
+        <div class="card">
+            <img src="static/assets/yt.png" loading="lazy"></img>
+            <br> Open Playlist
+        </div>
+     </a>
+    </ul>
+   
+  
+</body>
+
+</section>
+
+  <script>
+            
+
+     function openPopupname1(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer1').style.display = 'block';
+        }
+
+        function closePopup1() {
+            document.getElementById('popupContainer1').style.display = 'none';
+        }
+
+        function preventPopupClose1(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname2(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer2').style.display = 'block';
+        }
+
+        function closePopup2() {
+            document.getElementById('popupContainer2').style.display = 'none';
+        }
+
+        function preventPopupClose2(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname3(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer3').style.display = 'block';
+        }
+
+        function closePopup3() {
+            document.getElementById('popupContainer3').style.display = 'none';
+        }
+
+        function preventPopupClose3(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname4(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer4').style.display = 'block';
+        }
+
+        function closePopup4() {
+            document.getElementById('popupContainer4').style.display = 'none';
+        }
+
+        function preventPopupClose4(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname5(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer5').style.display = 'block';
+        }
+
+        function closePopup5() {
+            document.getElementById('popupContainer5').style.display = 'none';
+        }
+
+        function preventPopupClose5(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname6(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer6').style.display = 'block';
+        }
+
+        function closePopup6() {
+            document.getElementById('popupContainer6').style.display = 'none';
+        }
+
+        function preventPopupClose6(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname7(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer7').style.display = 'block';
+        }
+
+        function closePopup7() {
+            document.getElementById('popupContainer7').style.display = 'none';
+        }
+
+        function preventPopupClose7(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname8(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer8').style.display = 'block';
+        }
+
+        function closePopup8() {
+            document.getElementById('popupContainer8').style.display = 'none';
+        }
+
+        function preventPopupClose8(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname9(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer9').style.display = 'block';
+        }
+
+        function closePopup9() {
+            document.getElementById('popupContainer9').style.display = 'none';
+        }
+
+        function preventPopupClose9(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname10(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer10').style.display = 'block';
+        }
+
+        function closePopup10() {
+            document.getElementById('popupContainer10').style.display = 'none';
+        }
+
+        function preventPopupClose10(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname11(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer11').style.display = 'block';
+        }
+
+        function closePopup11() {
+            document.getElementById('popupContainer11').style.display = 'none';
+        }
+
+        function preventPopupClose11(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname12(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer12').style.display = 'block';
+        }
+
+        function closePopup12() {
+            document.getElementById('popupContainer12').style.display = 'none';
+        }
+
+        function preventPopupClose12(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname13(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer13').style.display = 'block';
+        }
+
+        function closePopup13() {
+            document.getElementById('popupContainer13').style.display = 'none';
+        }
+
+        function preventPopupClose13(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname14(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer14').style.display = 'block';
+        }
+
+        function closePopup14() {
+            document.getElementById('popupContainer14').style.display = 'none';
+        }
+
+        function preventPopupClose14(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname15(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer15').style.display = 'block';
+        }
+
+        function closePopup15() {
+            document.getElementById('popupContainer15').style.display = 'none';
+        }
+
+        function preventPopupClose15(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname16(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer16').style.display = 'block';
+        }
+
+        function closePopup16() {
+            document.getElementById('popupContainer16').style.display = 'none';
+        }
+
+        function preventPopupClose16(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname17(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer17').style.display = 'block';
+        }
+
+        function closePopup17() {
+            document.getElementById('popupContainer17').style.display = 'none';
+        }
+
+        function preventPopupClose17(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname18(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer18').style.display = 'block';
+        }
+
+        function closePopup18() {
+            document.getElementById('popupContainer18').style.display = 'none';
+        }
+
+        function preventPopupClose18(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname19(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer19').style.display = 'block';
+        }
+
+        function closePopup19() {
+            document.getElementById('popupContainer19').style.display = 'none';
+        }
+
+        function preventPopupClose19(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname20(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer20').style.display = 'block';
+        }
+
+        function closePopup20() {
+            document.getElementById('popupContainer20').style.display = 'none';
+        }
+
+        function preventPopupClose20(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname21(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer21').style.display = 'block';
+        }
+
+        function closePopup21() {
+            document.getElementById('popupContainer21').style.display = 'none';
+        }
+
+        function preventPopupClose21(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname22(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer22').style.display = 'block';
+        }
+
+        function closePopup22() {
+            document.getElementById('popupContainer22').style.display = 'none';
+        }
+
+        function preventPopupClose22(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname23(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer23').style.display = 'block';
+        }
+
+        function closePopup23() {
+            document.getElementById('popupContainer23').style.display = 'none';
+        }
+
+        function preventPopupClose23(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname24(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer24').style.display = 'block';
+        }
+
+        function closePopup24() {
+            document.getElementById('popupContainer24').style.display = 'none';
+        }
+
+        function preventPopupClose24(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname25(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer25').style.display = 'block';
+        }
+
+        function closePopup25() {
+            document.getElementById('popupContainer25').style.display = 'none';
+        }
+
+        function preventPopupClose25(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname26(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer26').style.display = 'block';
+        }
+
+        function closePopup26() {
+            document.getElementById('popupContainer26').style.display = 'none';
+        }
+
+        function preventPopupClose26(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname27(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer27').style.display = 'block';
+        }
+
+        function closePopup27() {
+            document.getElementById('popupContainer27').style.display = 'none';
+        }
+
+        function preventPopupClose27(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname28(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer28').style.display = 'block';
+        }
+
+        function closePopup28() {
+            document.getElementById('popupContainer28').style.display = 'none';
+        }
+
+        function preventPopupClose28(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname29(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer29').style.display = 'block';
+        }
+
+        function closePopup29() {
+            document.getElementById('popupContainer29').style.display = 'none';
+        }
+
+        function preventPopupClose29(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname30(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer30').style.display = 'block';
+        }
+
+        function closePopup30() {
+            document.getElementById('popupContainer30').style.display = 'none';
+        }
+
+        function preventPopupClose30(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname31(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer31').style.display = 'block';
+        }
+
+        function closePopup31() {
+            document.getElementById('popupContainer31').style.display = 'none';
+        }
+
+        function preventPopupClose31(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname32(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer32').style.display = 'block';
+        }
+
+        function closePopup32() {
+            document.getElementById('popupContainer32').style.display = 'none';
+        }
+
+        function preventPopupClose32(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname33(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer33').style.display = 'block';
+        }
+
+        function closePopup33() {
+            document.getElementById('popupContainer33').style.display = 'none';
+        }
+
+        function preventPopupClose33(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname34(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer34').style.display = 'block';
+        }
+
+        function closePopup34() {
+            document.getElementById('popupContainer34').style.display = 'none';
+        }
+
+        function preventPopupClose34(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname35(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer35').style.display = 'block';
+        }
+
+        function closePopup35() {
+            document.getElementById('popupContainer35').style.display = 'none';
+        }
+
+        function preventPopupClose35(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname36(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer36').style.display = 'block';
+        }
+
+        function closePopup36() {
+            document.getElementById('popupContainer36').style.display = 'none';
+        }
+
+        function preventPopupClose36(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname37(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer37').style.display = 'block';
+        }
+
+        function closePopup37() {
+            document.getElementById('popupContainer37').style.display = 'none';
+        }
+
+        function preventPopupClose37(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname38(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer38').style.display = 'block';
+        }
+
+        function closePopup38() {
+            document.getElementById('popupContainer38').style.display = 'none';
+        }
+
+        function preventPopupClose38(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname39(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer39').style.display = 'block';
+        }
+
+        function closePopup39() {
+            document.getElementById('popupContainer39').style.display = 'none';
+        }
+
+        function preventPopupClose39(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname40(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer40').style.display = 'block';
+        }
+
+        function closePopup40() {
+            document.getElementById('popupContainer40').style.display = 'none';
+        }
+
+        function preventPopupClose40(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname41(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer41').style.display = 'block';
+        }
+
+        function closePopup41() {
+            document.getElementById('popupContainer41').style.display = 'none';
+        }
+
+        function preventPopupClose41(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname42(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer42').style.display = 'block';
+        }
+
+        function closePopup42() {
+            document.getElementById('popupContainer42').style.display = 'none';
+        }
+
+        function preventPopupClose42(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname43(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer43').style.display = 'block';
+        }
+
+        function closePopup43() {
+            document.getElementById('popupContainer43').style.display = 'none';
+        }
+
+        function preventPopupClose43(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname44(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer44').style.display = 'block';
+        }
+
+        function closePopup44() {
+            document.getElementById('popupContainer44').style.display = 'none';
+        }
+
+        function preventPopupClose44(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname45(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer45').style.display = 'block';
+        }
+
+        function closePopup45() {
+            document.getElementById('popupContainer45').style.display = 'none';
+        }
+
+        function preventPopupClose45(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname46(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer46').style.display = 'block';
+        }
+
+        function closePopup46() {
+            document.getElementById('popupContainer46').style.display = 'none';
+        }
+
+        function preventPopupClose46(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname47(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer47').style.display = 'block';
+        }
+
+        function closePopup47() {
+            document.getElementById('popupContainer47').style.display = 'none';
+        }
+
+        function preventPopupClose47(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname48(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer48').style.display = 'block';
+        }
+
+        function closePopup48() {
+            document.getElementById('popupContainer48').style.display = 'none';
+        }
+
+        function preventPopupClose48(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname49(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer49').style.display = 'block';
+        }
+
+        function closePopup49() {
+            document.getElementById('popupContainer49').style.display = 'none';
+        }
+
+        function preventPopupClose49(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname50(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer50').style.display = 'block';
+        }
+
+        function closePopup50() {
+            document.getElementById('popupContainer50').style.display = 'none';
+        }
+
+        function preventPopupClose50(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname51(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer51').style.display = 'block';
+        }
+
+        function closePopup51() {
+            document.getElementById('popupContainer51').style.display = 'none';
+        }
+
+        function preventPopupClose51(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname52(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer52').style.display = 'block';
+        }
+
+        function closePopup52() {
+            document.getElementById('popupContainer52').style.display = 'none';
+        }
+
+        function preventPopupClose52(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname53(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer53').style.display = 'block';
+        }
+
+        function closePopup53() {
+            document.getElementById('popupContainer53').style.display = 'none';
+        }
+
+        function preventPopupClose53(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname54(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer54').style.display = 'block';
+        }
+
+        function closePopup54() {
+            document.getElementById('popupContainer54').style.display = 'none';
+        }
+
+        function preventPopupClose54(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname55(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer55').style.display = 'block';
+        }
+
+        function closePopup55() {
+            document.getElementById('popupContainer55').style.display = 'none';
+        }
+
+        function preventPopupClose55(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname56(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer56').style.display = 'block';
+        }
+
+        function closePopup56() {
+            document.getElementById('popupContainer56').style.display = 'none';
+        }
+
+        function preventPopupClose56(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname57(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer57').style.display = 'block';
+        }
+
+        function closePopup57() {
+            document.getElementById('popupContainer57').style.display = 'none';
+        }
+
+        function preventPopupClose57(event) {
+            event.stopPropagation();
+        }
+        
+
+
+    // window.onload = function () {
+    //   function getRandomColor() {
+    //     const min = 0;
+    //     const max = 255;
+
+    //     const r = Math.floor(Math.random() * (max - min + 1)) + min;
+    //     const g = Math.floor(Math.random() * (max - min + 1)) + min;
+    //     const b = Math.floor(Math.random() * (max - min + 1)) + min;
+
+    //     return `rgb(${r}, ${g}, ${b})`;
+    //   }
+
+    //   function changeColors() {
+    //     const h1 = document.querySelector(".nav");
+    //     const links = document.querySelectorAll("a");
+    //     const randomColor = getRandomColor();
+    //     h1.style.backgroundColor = randomColor;
+
+    //     links.forEach(link => {
+    //       link.style.backgroundColor = randomColor;
+    //     });
+    //   }
+
+    //   changeColors();
+    // };
+
+
+
+
+
+
+    const SNOW_COUNT = 300;
+
+function startAnimation() {
+  const CANVAS_WIDTH = window.innerWidth;
+  const CANVAS_HEIGHT = window.innerHeight;
+  const MIN = 0;
+  const MAX = CANVAS_WIDTH;
+
+  const canvas = document.getElementById("canvas");
+  const ctx = canvas.getContext("2d");
+
+  canvas.width = CANVAS_WIDTH;
+  canvas.height = CANVAS_HEIGHT;
+
+  function clamp(number, min = MIN, max = MAX) {
+    return Math.max(min, Math.min(number, max));
+  }
+
+  function random(factor = 1) {
+    return Math.random() * factor;
+  }
+
+  function degreeToRadian(deg) {
+    return deg * (Math.PI / 180);
+  }
+
+  // All the properties for Circle
+  class Circle {
+    radius = 0;
+    x = 0;
+    y = 0;
+    vx = 0;
+    vy = 0;
+
+    constructor(ctx) {
+      this.ctx = ctx;
+      this.reset();
+    }
+
+    draw() {
+      this.ctx.beginPath();
+      const body = document.body;
+
+// Get the computed background color of the body
+const bodyBgColor = window.getComputedStyle(body).backgroundColor;
+
+// Check if the background color is light or dark
+if (bodyBgColor === 'rgb(240, 240, 240)' || bodyBgColor === '#f0f0f0') {
+    // Light mode: set fill style to white
+    ctx.fillStyle = 'rgba(255, 0, 0, 0.8)';
+
+} else {
+    // Dark mode: set fill style to red
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+}
+
+      this.ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
+      this.ctx.fill();
+      this.ctx.closePath();
+    }
+
+    reset() {
+      this.radius = random(2.5);
+      this.x = random(CANVAS_WIDTH);
+      this.y = this.y ? 0 : random(CANVAS_HEIGHT);
+      this.vx = clamp((Math.random() - 0.5) * 0.4, -0.4, 0.4);
+      this.vy = clamp(random(1.5), 0.1, 0.8) * this.radius * 0.5;
+    }
+  }
+
+  // Array for storing all the generated circles
+  let circles = [];
+
+  // Generate circles
+  for (let i = 0; i < SNOW_COUNT; i++) {
+    circles.push(new Circle(ctx));
+  }
+
+  // Clear canvas
+  function clearCanvas() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  }
+
+  // start and end cordinates of canvas
+  let canvasOffset = {
+    x0: ctx.canvas.offsetLeft,
+    y0: ctx.canvas.offsetTop,
+    x1: ctx.canvas.offsetLeft + ctx.canvas.width,
+    y1: ctx.canvas.offsetTop + ctx.canvas.height
+  };
+
+  function animate() {
+    clearCanvas();
+
+    circles.forEach((e) => {
+      // reset the circle if it collides on border
+      if (
+        e.x <= canvasOffset.x0 ||
+        e.x >= canvasOffset.x1 ||
+        e.y <= canvasOffset.y0 ||
+        e.y >= canvasOffset.y1
+      ) {
+        e.reset();
+      }
+
+      // Drawing path using polar cordinates
+      e.x = e.x + e.vx;
+      e.y = e.y + e.vy;
+      e.draw();
+    });
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+}
+
+startAnimation();
+
+window.addEventListener("resize", startAnimation);
+
+
+
+
+
+
+
+
+
+
+  </script>
+
+</html>
