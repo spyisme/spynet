@@ -459,16 +459,26 @@ def gedoo2():
 
 
 
-# @views.route("/gedoo")
-# def gedoo():
-#   teachername = "Gedo"
-#   playlist_id = 'PLM-GVlebsoPXBcSNcLjkmcQG53hQYTvui'
-#   videos = get_playlist_videos(playlist_id)
-#   return render_template('used_pages/videopage.html',
-#                          videos=videos,
-#                          playlist_id=playlist_id,
-#                          teachername=teachername)
+def generate_html_page(teachername, playlist_id, videos):
+    return render_template('used_pages/videopage.html',
+                           videos=videos,
+                           playlist_id=playlist_id,
+                           teachername=teachername)
 
+@views.route("/gedoupdate")
+def gedoupdate():
+    teachername = "Gedo"
+    playlist_id = 'PLM-GVlebsoPXBcSNcLjkmcQG53hQYTvui'
+    videos = get_playlist_videos(playlist_id)
+
+    # Generate HTML content
+    html_content = generate_html_page(teachername, playlist_id, videos)
+
+    # Save HTML content to a file
+    with open('test_pages/gedo.html', 'w') as file:
+        file.write(html_content)
+
+    return html_content  # Return HTML content for testing purposes
 
 
 
