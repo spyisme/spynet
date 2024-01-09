@@ -89,7 +89,7 @@ def register():
         flash('Account created successfully!', category='success')
         return redirect(url_for('views.home'))
 
-    return render_template('register.html')
+    return render_template('test_pages/register.html')
 
 YOUTUBE_API_KEY = 'AIzaSyAbrVMIzmLLhHQSrMVUG8gS3d6IAYE0qVc'
 
