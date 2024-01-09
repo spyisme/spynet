@@ -278,7 +278,20 @@ width: 210px
   <div class="nav">
         <h1>🎄 {{ teachername }} 🎄</h1>
             <!-- <p>Please donate to keep this site up. -->
-              <p><div class="discord-link"onclick="history.back()"><u>Go Back</u></div></p>
+              <p>
+                <div class="discord-link" onclick="goBackOrRedirect();"><u>Go Back</u></div>
+              </p>
+              
+              <script>
+              function goBackOrRedirect() {
+                if (history && history.back) {
+                  history.back(); // Go back if history is available
+                } else {
+                  window.location.href = "/"; // Redirect to /home if history.back is not available
+                }
+              }
+              </script>
+              
 
 
             </div>

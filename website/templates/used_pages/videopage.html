@@ -293,7 +293,20 @@ h1{
           }
         </style>
             <!-- <p>Please donate to keep this site up. -->
-               <p><div class="discord-link"onclick="history.back()"><u>Go Back</u></div></p>
+              <p>
+                <div class="discord-link" onclick="goBackOrRedirect();"><u>Go Back</u></div>
+              </p>
+              
+              <script>
+              function goBackOrRedirect() {
+                if (history && history.back) {
+                  history.back(); // Go back if history is available
+                } else {
+                  window.location.href = "/home"; // Redirect to /home if history.back is not available
+                }
+              }
+              </script>
+              
   
   </div>
 

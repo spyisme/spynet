@@ -175,11 +175,10 @@ def display_links():
 
 
 
-
-
 @views.route("/")
 def home():
-    return redirect(url_for('views.display_links'))
+    lines = ["physics", "chemistry","math", "arabic","geology", "biology","english" , "german"]
+    return render_template('used_pages/all.html', lines=lines, teachername="All")
 
 @views.route('/favicon.ico')
 def favicon():
