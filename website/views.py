@@ -373,13 +373,40 @@ def sherbo():
                          imgs="yes")
 @views.route("/sherbostatics")
 def sherbostatics():
-  teachername = "Sherbo Statics"
-  playlist_id = 'PLM-GVlebsoPX_3mlaOeWIjCPY8jH8MpfJ'
-  videos = get_playlist_videos(playlist_id)
-  return render_template('used_pages/videopage.html',
-                         videos=videos,
-                         playlist_id=playlist_id,
-                         teachername=teachername)
+  # teachername = "Sherbo Statics"
+  # playlist_id = 'PLM-GVlebsoPX_3mlaOeWIjCPY8jH8MpfJ'
+  # videos = get_playlist_videos(playlist_id)
+  return render_template('test_pages/sherbostatics.html')
+                        #  videos=videos,
+                        #  playlist_id=playlist_id,
+                        #  teachername=teachername)
+
+@views.route("/sherbostaticsupdate")
+def sherboStaticsupdate():
+    teachername = "Sherbo Statics"
+    playlist_id = 'GVlebsoPX_3mlaOeWIjCPY8jH8MpfJ'
+    videos = get_playlist_videos(playlist_id)
+
+    # Generate HTML content
+    html_content = generate_html_page(teachername, playlist_id, videos)
+
+    # Save HTML content to a file
+    with open('website/templates/test_pages/sherbostatics.html', 'w' , encoding='utf-8') as file:
+        file.write(html_content)
+
+    return html_content  # Return HTML content for testing purposes
+
+
+
+
+
+
+
+
+
+
+
+
 @views.route("/sherbocalc")
 def sherbocalc():
   # teachername = "Sherbo Calculus"
