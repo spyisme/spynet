@@ -181,13 +181,11 @@ def index():
     #code = generate_input1(mpd, content_key, "vidname")
     content_key_lines = '\n'.join([f'--key {key}' for key in content_key])
     result = mpd + '\n' + content_key_lines 
-    # print(result)
-    session['result'] = result
     options = ['Else','Nawar','Nasser-El-Batal', 'MoSalama', 'Gedo' , 'Bio']
     used_tokens.add(mytoken)
     session['result'] = result
 
-    return render_template('backend_pages/vdo.html' , content_key = content_key , mpd = mpd ,options = options)
+    return render_template('backend_pages/vdo.html' , content_key = content_key , mpd = mpd ,options = options, result= result)
 
 
 
