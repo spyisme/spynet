@@ -75,21 +75,21 @@ def login():
 
 
 
-# @views.route('/register', methods=['GET', 'POST'])
-# def register():
-#     if request.method == 'POST':
-#         username = request.form.get('username')
-#         password = request.form.get('password')
-#         hashed_password = generate_password_hash(password, method='scrypt')
+@views.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+        hashed_password = generate_password_hash(password, method='scrypt')
 
-#         new_user = User(username=username, password=hashed_password)
-#         db.session.add(new_user)
-#         db.session.commit()
+        new_user = User(username=username, password=hashed_password)
+        db.session.add(new_user)
+        db.session.commit()
 
-#         flash('Account created successfully!', category='success')
-#         return redirect(url_for('views.home'))
+        flash('Account created successfully!', category='success')
+        return redirect(url_for('views.home'))
 
-#     return render_template('register.html')
+    return render_template('register.html')
 
 YOUTUBE_API_KEY = 'AIzaSyAbrVMIzmLLhHQSrMVUG8gS3d6IAYE0qVc'
 
