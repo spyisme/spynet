@@ -188,8 +188,10 @@ a :hover{
         <h1>{{ teachername }}</h1>
             <!-- <p>Please donate to keep this site up. -->
               <p>
-               <a href="/">Home</a> | <div onclick="goBackOrRedirect();"><u>Go Back</u></div>
+                <a href="/" style="color: white; text-decoration: underline;" onmouseover="this.style.cursor='default'" onmouseout="this.style.cursor='pointer'">Home</a> | 
+                <div onclick="goBackOrRedirect();" style="color: white; text-decoration: underline; cursor: pointer;"><u>Go Back</u></div>
               </p>
+              
               
               <script>
               function goBackOrRedirect() {
