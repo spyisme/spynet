@@ -14,160 +14,179 @@
 
 
   <style>
-  <style>
 
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    zoom: 90%;
-    overflow: auto;
-    cursor: url('https://media.discordapp.net/attachments/951495863509876828/1190799754519650435/cursor2.png?ex=65a31db1&is=6590a8b1&hm=4b46da89ec303157e22691eaef3a9bd0bcf001613403571da23a02e9f736a968&=&format=webp&quality=lossless&width=14&height=14'), auto; 
-}
+      html, body {
+          height: 100%;
+          margin: 0;
+          padding: 0;
+          zoom: 90%;
+          overflow: auto
+      }
+      html{
+        cursor: url('https://media.discordapp.net/attachments/951495863509876828/1190799754519650435/cursor2.png?ex=65a31db1&is=6590a8b1&hm=4b46da89ec303157e22691eaef3a9bd0bcf001613403571da23a02e9f736a968&=&format=webp&quality=lossless&width=14&height=14'), auto;
+
+      }
+      .card-description {
+            font-size: 14px;
+            color: black;
+            margin-top: 10px;
+        }
+      /* Style the iframe to take 100% of the viewport */
+
+      body {
+          font-family: Arial, sans-serif;
+          background-color: #1a1a1a;
+
+          color: #fff; /* Default text color */
+      }
+
+      /* Dark Mode */
+      @media (prefers-color-scheme: dark) {
+          body {
+              background-color: #1a1a1a;
+              color: #fff; /* Text color in dark mode */
+          }
+
+          .nav {
+              background-color: #9dd3d0; /* Dark background color for the navigation */
+              color: #fff;
+          }
+
+          ul {
+              background-color: #1a1a1a; /* Dark background color for the list */
+          }
+
+          /* Add more styles for dark mode as needed */
+      }
+
+      .nav {
+          padding: 20px;
+          margin: 0;
+          text-align: center;
+          background-color: #9dd3d0;
+          color: #fff;
+      }
+
+      ul {
+          list-style: none;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          align-items: center;
+          padding: 20px;
+      }
 
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #1a1a1a;
-        color: #fff;
-}
-.nav {
-    padding: 20px;
-    margin: 0;
-    text-align: center;
-    background-color: #9dd3d0; 
-        color: #fff;
-}
-h1{
-  font-size: 46px;
-}
-ul {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 20px;
-    background-color: #1a1a1a; 
-    justify-content: space-around
-}
-li {
-    margin: 10px;
-    flex: 1;
-    flex: 0 0 calc(25% - 20px); /* Each item takes up 25% of the container width, accounting for margin and padding */
-    max-width: 300px; /* Set a maximum width for the cards on PC */
-}
-.card {
-background-color: #fff;
-border: 1px solid #ccc;
-border-radius: 10px;
-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-padding: 20px;
-transition: transform 0.2s, box-shadow 0.2s;
-text-align: center;
-text-transform: capitalize;
-height: 230px;
-  }
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-.card img {
-    max-width: 100%;
-      height: 100px;
   
-}
-.card p {
-    font-size: 22px; /* Increase text size */
-}
-.card-description {
-font-size: 14px;
-color: black;
-margin-top: 10px;
-position: relative;
-overflow: hidden;
-}
-
-.card-description::after {
-content: "";
-display: block;
-position: absolute;
-top: 0;
-left: -80%;
-width: 80%;
-height: 100%;
-background: linear-gradient(to right, transparent 0%, #ffffff 50%, transparent 100%);
-animation: shine 2s linear infinite;
-}
-
-@keyframes shine {
-0% {
-  left: -80%;
-}
-100% {
-  left: 80%;
-}
-}
-
-a {
-    text-decoration: none;
-    color: blue;
-}
-a :hover{
-cursor: url('https://media.discordapp.net/attachments/951495863509876828/1190799754519650435/cursor2.png?ex=65a31db1&is=6590a8b1&hm=4b46da89ec303157e22691eaef3a9bd0bcf001613403571da23a02e9f736a968&=&format=webp&quality=lossless&width=14&height=14'), auto; 
-
-}
-
-/* Mobile Styles */
-@media screen and (max-width: 768px) {
-    h1 {
-        padding: 10px;
-        width: 96%;
-    }
-    html{
-cursor: auto;
-}
-    ul {
-        flex-direction: column; /* Stack cards vertically */
-        padding: 10px;
-    }
-
-    li {
-        margin: 5px;
-        max-width: 100%; /* Make cards full width on mobile */
-    }
-
-    .card {
-        padding: 10px;
-        width: 96%; /* Make cards 100% width on mobile */
-        margin: 0 auto; /* Center-align the cards */
-        min-height: 50px;
-        width: 210px
-    }
-}
 
 
+      .card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
 
-/* Snow stuff */
-.banner {
-width: 100%;
-height: 100%;
+      .card img {
+          max-width: 100%;
+
+            height: 100px;
+        
+      }
+
+      .card p {
+          font-size: 22px; /* Increase text size */
+      }
+
+      a {
+          text-decoration: none;
+          color: blue;
+          cursor: url('https://media.discordapp.net/attachments/951495863509876828/1190799754519650435/cursor2.png?ex=65a31db1&is=6590a8b1&hm=4b46da89ec303157e22691eaef3a9bd0bcf001613403571da23a02e9f736a968&=&format=webp&quality=lossless&width=14&height=14'), auto;
+
+      }
+
+      a:hover {
+          text-decoration: none;
+          text-align: center;
+      }
+
+      /* Mobile Styles */
+      @media screen and (max-width: 768px) {
+          h1 {
+              padding: 10px;
+              width: 96%;
+          }
+          html{
+  cursor: auto;
+}
+          ul {
+              flex-direction: column; /* Stack cards vertically */
+              padding: 10px;
+          }
+
+          li {
+              margin: 5px;
+              max-width: 100%; /* Make cards full width on mobile */
+          }
+
+          .card {
+              padding: 10px;
+              width: 96%; /* Make cards 100% width on mobile */
+              margin: 0 auto; /* Center-align the cards */
+              min-height: 50px;
+              width: 210px
+          }
+      }
+      .card
+    {
+      color: blue;
+          background-color: #fff;
+          border: 1px solid #ccc;
+          border-radius: 10px;
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+          padding: 20px;
+          transition: transform 0.2s, box-shadow 0.2s;
+          text-align: center;
+          margin: 10px;
+          text-transform: capitalize; /* Capitalize the first letter */
+          display: block;
+          width: 200px;
+      }
+
+.discord-link a {
+              color: white;
+              text-decoration: underline;
+            }
+
+
+
+                        
+ .banner {
+  width: 100%;
+  height: 100%;
 
 }
 .banner_content {
-display: flex;
-position: relative;
-z-index: 1;
-flex-direction: column;
-text-align: center;
+  display: flex;
+  position: relative;
+  z-index: 1;
+  flex-direction: column;
+  text-align: center;
+}
+span {
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0px 4px 12px #000000ba;
 }
 #canvas {
-position: absolute;
-left: 0;
-top: 0;
-width: 100%;
-height: 100%;
-pointer-events: none; /* Allow click events to pass through the canvas */
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Allow click events to pass through the canvas */
+}
+h1{
+  font-size: 46px;
 }
 
 
