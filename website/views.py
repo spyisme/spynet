@@ -384,7 +384,7 @@ def sherbostatics():
 @views.route("/sherbostaticsupdate")
 def sherboStaticsupdate():
     teachername = "Sherbo Statics"
-    playlist_id = 'GVlebsoPX_3mlaOeWIjCPY8jH8MpfJ'
+    playlist_id = 'PLM-GVlebsoPX_3mlaOeWIjCPY8jH8MpfJ'
     videos = get_playlist_videos(playlist_id)
 
     # Generate HTML content
@@ -395,14 +395,6 @@ def sherboStaticsupdate():
         file.write(html_content)
 
     return html_content  # Return HTML content for testing purposes
-
-
-
-
-
-
-
-
 
 
 
