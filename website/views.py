@@ -385,7 +385,7 @@ def sherbocalc():
   # teachername = "Sherbo Calculus"
   # playlist_id = 'PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq'
   # videos = get_playlist_videos(playlist_id)
-  return render_template('test_pages/sherbo.html')
+  return render_template('test_pages/sherbocalc.html')
                         #  videos=videos,
                         #  playlist_id=playlist_id,
                         #  teachername=teachername)
@@ -400,7 +400,7 @@ def sherbocalcupdate():
     html_content = generate_html_page(teachername, playlist_id, videos)
 
     # Save HTML content to a file
-    with open('website/templates/test_pages/sherbo.html', 'w' , encoding='utf-8') as file:
+    with open('website/templates/test_pages/sherbocalc.html', 'w' , encoding='utf-8') as file:
         file.write(html_content)
 
     return html_content  # Return HTML content for testing purposes
