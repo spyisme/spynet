@@ -1,0 +1,509 @@
+from flask import  render_template, request, redirect, url_for, session , Blueprint, jsonify
+import base64
+import json
+import requests , re 
+from pywidevine.cdm import deviceconfig
+from pywidevine.cdm import cdm
+from flask_login import login_required
+
+from flask import send_file
+Nawar = 'https://discord.com/api/webhooks/1159805446039797780/bE4xU3lkcjlb4vfCVQ9ky5BS2OuD01Y8g9godljNBfoApGt59-VfKf19GQuMUmH0IYzw'
+Bio= "https://discord.com/api/webhooks/1158548096012259422/jQ5sEAZBIrvfBNTA-w4eR-p6Yw0zv7GBC9JTUcEOAWfmqYJXbOpgysATjKPXLwd8HZOs"
+Nasser = "https://discord.com/api/webhooks/1158548163209199626/73nAC_d1rgUr6IS79gC508Puood83ho848IEGOpxLtUzGEEJ3h8CyZqlZvCZ6jEXH5k1"
+Salama = "https://discord.com/api/webhooks/1158548226971009115/qtBWD8plfY3JFMjCKYrcXwJ8ayMIbUnXFU3_XtbPeXdxGBzb794t8oSKB2WjoN05Lc-j"
+Gedo = "https://discord.com/api/webhooks/1158824183833309326/lOGuL_T9mAtYuGCkDRkVxRERIQAD1fHS3RTzxkRmS1ZlzT5yY4C7bi20XdK-1pSXcVzZ"
+Else = "https://discord.com/api/webhooks/1158548386392309831/V3d-iMhY0-cwU6TZ9bS8OZZEoKtqicbSzw6AjbB-pUaSiFvr-bEVZduwkwcYzPpIRGCk"
+
+
+
+
+
+#The code on the html
+def generate_input1(mpd, content_key, vidname):
+    ffmpegcmd = f"move {vidname}.mp4 ./output"
+    input1 = f"app {mpd}\n--key " + "\n--key ".join(content_key) + f"\n--save-name {vidname} -M format=mp4 & {ffmpegcmd}"
+    return input1
+
+
+
+
+#get otp from token2
+def getotp(token):
+    decoded_bytes = base64.b64decode(token)
+    decoded_string = decoded_bytes.decode('utf-8')
+    data = json.loads(decoded_string)
+    otp_value = data.get("otp")
+    return (otp_value)
+
+
+
+def playback(token):
+    decoded_bytes = base64.b64decode(token)
+    decoded_string = decoded_bytes.decode('utf-8')
+    data = json.loads(decoded_string)
+    playbackInfo = data.get("playbackInfo")
+    return (playbackInfo)
+
+#Video ID for mpd and pssh
+def get_video_id(token: str):
+    playback_info = json.loads(base64.b64decode(token))['playbackInfo']
+    return json.loads(base64.b64decode(playback_info))['videoId']
+#pssh
+def get_pssh(mpd: str):
+    req = None
+    req = requests.get(mpd)
+    return re.search('<cenc:pssh>(.*)</cenc:pssh>', req.text).group(1)
+
+
+#mpd
+def get_mpd(video_id: str) -> str:
+    headers = {
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36',
+        'origin': 'https://dev.vdocipher.com/',
+        'referer': 'https://dev.vdocipher.com/'
+    }
+    url = 'https://dev.vdocipher.com/api/meta/' + video_id
+    req = None
+    req = requests.get(url, headers=headers)
+    resp = req.json()
+    return resp['dash']['manifest']
+
+#Defult
+
+vdo = Blueprint('vdo', __name__)
+used_tokens = set()  # Set to store used tokens
+
+
+
+@vdo.route('/vdocipher', methods=['GET', 'POST'])
+@login_required
+def index():
+    mytoken = request.args.get('token')
+    if mytoken in used_tokens:
+        return jsonify({'error': 'Token already used'}), 400
+    class WvDecrypt:
+        def __init__(self, pssh_b64, device):
+            self.cdm = cdm.Cdm()
+            self.session = self.cdm.open_session(pssh_b64, device)
+    
+        def create_challenge(self):
+            challenge = self.cdm.get_license_request(self.session)
+            return challenge
+    
+        def decrypt_license(self, license_b64):
+            if self.cdm.provide_license(self.session, license_b64) == 1:
+                raise ValueError
+    
+        def set_server_certificate(self, certificate_b64):
+            if self.cdm.set_service_certificate(self.session, certificate_b64) == 1:
+                raise ValueError
+    
+        def get_content_key(self):
+            content_keys = []
+            for key in self.cdm.get_keys(self.session):
+                if key.type == 'CONTENT':
+                    kid = key.kid.hex()
+                    key = key.key.hex()
+    
+                    content_keys.append('{}:{}'.format(kid, key))
+    
+            return content_keys
+    
+        def get_signing_key(self):
+            for key in self.cdm.get_keys(self.session):
+                if key.type == 'SIGNING':
+                    kid = key.kid.hex()
+                    key = key.key.hex()
+    
+                    signing_key = '{}:{}'.format(kid, key)
+                    return signing_key
+    
+    def headers():
+
+        return {
+        'Content-Type': "application/json",
+        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+        "accept-encoding": "gzip, deflate, br",
+        "accept-language": "en-US,en;q=0.9",
+        "connection": "keep-alive",
+        "host": "player.vdocipher.com",
+    #   "referer": "https://dashboard.elhusseinyusmleprep.com/",
+        "sec-ch-ua-mobile": "?1",
+        "sec-ch-ua-platform": "Android",
+        "sec-fetch-dest": "iframe",
+        "sec-fetch-mode": "navigate",
+        "sec-fetch-site": "cross-site",
+        "sec-fetch-user": "?1",
+        "upgrade-insecure-requests": '1',
+        "user-agent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36"
+    }
+    
+    
+    class Pyd:
+        def __init__(self) -> None:
+            pass
+
+        def post_license_request(self, link, challenge, data):
+            if challenge == "":
+                enoded = base64.b64encode(challenge.encode()).decode()
+            else:
+                enoded = base64.b64encode(challenge).decode()
+            myotp = getotp(mytoken)
+            data['otp'] = f"{myotp}"
+            data["licenseRequest"] = enoded
+            
+            payload_new = {
+                'token': base64.b64encode(json.dumps(data).encode("utf-8")).decode('utf-8')
+            }
+            r = requests.post(link, json=payload_new, headers=headers())
+            return r.json()['license']
+    
+        def start(self):
+            license_url = "https://license.vdocipher.com/auth"
+            video_id = get_video_id(mytoken)
+            mpd = get_mpd(video_id)
+            pssh = get_pssh(mpd)
+            pssh_b64 = f"{pssh}"
+            data = {"token":f"{mytoken}"}
+            data = eval(base64.b64decode(data['token']).decode())
+            wvdecrypt = WvDecrypt(pssh_b64, deviceconfig.DeviceConfig(deviceconfig.device_android_generic))
+            wvdecrypt.set_server_certificate(self.post_license_request(license_url, '', data))
+            challenge = wvdecrypt.create_challenge()
+            license = self.post_license_request(license_url, challenge, data)
+            wvdecrypt.decrypt_license(license)
+            content_key = wvdecrypt.get_content_key()
+            return content_key 
+        
+    video_id = get_video_id(mytoken)
+    mpd = get_mpd(video_id)
+    content_key = Pyd().start()
+
+    #code = generate_input1(mpd, content_key, "vidname")
+    content_key_lines = '\n'.join([f'--key {key}' for key in content_key])
+    result = mpd + '\n' + content_key_lines 
+    # print(result)
+    session['result'] = result
+    options = ['Else','Nawar','Nasser-El-Batal', 'MoSalama', 'Gedo' , 'Bio']
+    used_tokens.add(mytoken)
+    session['result'] = result
+
+    return render_template('backend_pages/vdo.html' , content_key = content_key , mpd = mpd ,options = options)
+
+
+
+
+cmds_queue = []
+
+#Discord webhook , The webpage
+
+
+
+
+@vdo.route('/form', methods=['POST'])
+def form():
+    options = ['Nawar', 'Nasser-El-Batal', 'MoSalama' , 'Bio', 'Else']
+    if request.method == 'POST':
+        user_data = {
+            'teacher' : request.form.get('dropdown'),
+            'name': request.form['vidname']
+        }
+        return redirect(url_for('vdo.discord', **user_data))
+    return render_template('index.html' , option = options)
+
+
+@vdo.route('/discord', methods=['GET', 'POST'])
+def discord():
+    result = session.get('result')
+    name = request.args.get('name')
+    result = result.replace("\n", " ")
+    teacher = request.args.get('teacher')
+    message = {
+            'content': f'```app {result} --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output``` {name} '
+        }
+    payload = json.dumps(message)
+    userinput = f"app {result} --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output"
+    cmds_queue.append(userinput)
+    headers = {'Content-Type': 'application/json'}
+    teacher_webhooks = {
+        "Nawar": Nawar,
+        "Nasser-El-Batal": Nasser,
+        "MoSalama": Salama,
+        "Bio": Bio,
+        "Gedo": Gedo,
+    }
+    webhook_url = teacher_webhooks.get(teacher, Else)
+    requests.post(webhook_url, data=payload, headers=headers)
+
+    return 'Message Sent!'
+
+
+
+@vdo.route('/iframes', methods=['GET', 'POST'])
+def sherboframe():
+    url = request.args.get('url')
+    url = request.args.get('url')
+    name = request.args.get('name')
+    sname = request.args.get('sname')
+
+    if name == "nawar":
+      webhook_url ="https://discord.com/api/webhooks/1159805446039797780/bE4xU3lkcjlb4vfCVQ9ky5BS2OuD01Y8g9godljNBfoApGt59-VfKf19GQuMUmH0IYzw"
+    elif name == "ahmadsalah":
+      webhook_url = "https://discord.com/api/webhooks/1170733207835115630/MpyyTLirCjBUOSHxisTsb4l7lqF7XBw-l4KEsi7DAFLAoZdUzMtGFwth67Qj3ZJCE5Oo"
+    elif name == "sherbo":
+      webhook_url="https://discord.com/api/webhooks/1169342540575670292/crazeFe5z0qAozWBJOnlZfevMMQ219NVzZ-Cl6mWK9NrtBqBXc3kBzj1tJ8_KVu7UuKf" 
+    url = url.replace("/play/", "/embed/")
+    if request.method == 'POST':
+        name =  request.form.get('name')
+        if "youtube" in url.lower(): 
+            url = url.split('/')[4]
+
+            msg = f'```python youtube.py https://www.youtube.com/watch?v={url} {name}``` {name}'
+            cmds_queue.append(f"python youtube.py https://www.youtube.com/watch?v={url} {name}")
+        else: 
+            msg = f'```python iframe.py {url} {name}``` {name}'
+            cmds_queue.append(f"python iframe.py {url} {name}")
+
+        message = {
+                'content': f'{msg}'
+            }
+        payload = json.dumps(message)
+        headers = {'Content-Type': 'application/json'}
+        requests.post(webhook_url, data=payload, headers=headers)
+        return "Message Sent!" 
+    return render_template('backend_pages/iframe.html' , url = url , sname= sname)
+
+
+#-------------------------------------------------------------------------------------
+
+
+
+
+
+
+@vdo.route("/list")
+@login_required
+def commandslist():
+    def extract_save_name(command):
+        if command.startswith("python"):
+            return command.split(' ')[3]
+        else:
+            save_name_match = re.search(r'--save-name\s+(\S+)', command)
+            return save_name_match.group(1)
+    
+    return render_template("backend_pages/list.html", cmds_queue=cmds_queue, extract_save_name=extract_save_name)
+
+from flask import render_template
+
+
+
+
+
+@vdo.route('/deletecmd', methods=['GET'])
+def delete_command():
+    command_to_delete = request.args.get('command')
+    if command_to_delete in cmds_queue:
+        cmds_queue.remove(command_to_delete)
+    return redirect(url_for('vdo.commandslist'))
+
+
+
+@vdo.route("/addcmd", methods=['GET', 'POST'])
+def storjflask2():
+    if request.method == 'POST':
+        userinput = request.form['userinput']
+        cmds_queue.append(userinput)
+        return redirect(url_for('vdo.commandslist'))
+
+    return render_template("backend_pages/storj.html")
+
+
+
+
+@vdo.route("/clear")
+def storjlist():
+        cmds_queue.clear()
+        return "done"
+
+
+@vdo.route("/createcmd")
+def cmdcommand():
+        combined_cmds = " & ".join([f'start cmd.exe @cmd /k "{element} & exit"' for element in cmds_queue])
+        return combined_cmds
+
+@vdo.route("/cleartokens")
+def cleartokens():
+        used_tokens.clear()
+        return "done"
+
+
+
+
+#----------------------------------------------------------------------------------------------------------------
+def getv(token):
+    decoded_bytes = base64.b64decode(token)
+    decoded_string = decoded_bytes.decode('utf-8')
+    data = json.loads(decoded_string)
+    v = data.get("v")
+    return (v)
+
+
+
+#pssh
+def get_pssh(mpd: str):
+    req = None
+    req = requests.get(mpd)
+    return re.search('<cenc:pssh>(.*)</cenc:pssh>', req.text).group(1)
+
+
+
+#mpd
+def get_mpd2(video_id , xotp):
+    headers = {
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36',
+        'origin': 'https://resource.inkryptvideos.com',
+        'referer': 'https://resource.inkryptvideos.com/',
+        'X-Otp' : f'{xotp}'
+    }
+    url = 'https://api.inkryptvideos.com/api/s1/v_info/' + video_id
+    req = None
+    req = requests.get(url, headers=headers)
+    req.raise_for_status()  # Raise an exception if the request fails
+    resp = req.json()
+    storage_hostname = resp['data']['storage_hostname']
+    dash_manifest = resp['data']['dash_manifest'].replace("\\", "")
+    full_url = f"https://{storage_hostname}/{dash_manifest}"
+    return full_url
+
+
+
+@vdo.route('/ink', methods=['GET', 'POST'])
+@login_required
+
+def ink():
+    token = request.args.get('token')
+    xotp = request.args.get('otp')
+    class WvDecrypt:
+        def __init__(self, pssh_b64, device):
+            self.cdm = cdm.Cdm()
+            self.session = self.cdm.open_session(pssh_b64, device)
+
+        def create_challenge(self):
+            challenge = self.cdm.get_license_request(self.session)
+            return challenge
+
+        def decrypt_license(self, license_b64):
+            if self.cdm.provide_license(self.session, license_b64) == 1:
+                raise ValueError
+
+        def set_server_certificate(self, certificate_b64):
+            if self.cdm.set_service_certificate(self.session, certificate_b64) == 1:
+                raise ValueError
+
+        def get_content_key(self):
+            content_keys = []
+            for key in self.cdm.get_keys(self.session):
+                if key.type == 'CONTENT':
+                    kid = key.kid.hex()
+                    key = key.key.hex()
+                    content_keys.append('{}:{}'.format(kid, key))
+
+            return content_keys
+
+        def get_signing_key(self):
+            for key in self.cdm.get_keys(self.session):
+                if key.type == 'SIGNING':
+                    kid = key.kid.hex()
+                    key = key.key.hex()
+
+                    signing_key = '{}:{}'.format(kid, key)
+                    return signing_key
+
+    def headers():
+        
+        return {
+        'sec-ch-ua': '"Google Chrome";v="117", "Not;A=Brand";v="8", "Chromium";v="117"',
+        'x-version': '2.1.63',
+        'x-otp': f'{xotp}',
+        'sec-ch-ua-mobile': '?0',
+        #'ink-ref': 'https://mrredaelfarouk.com/lectures/progress/5',
+        'content-type': 'application/json',
+        'Referer': 'https://resource.inkryptvideos.com/',
+        'sec-ch-ua-platform': '"Windows"',
+    }
+
+
+    class Pyd:
+        def __init__(self) -> None:
+            pass
+
+        def post_license_request(self, link, challenge, data):
+            if challenge == "":
+                enoded = base64.b64encode(challenge.encode()).decode()
+            else:
+                enoded = base64.b64encode(challenge).decode()
+            newv = getv(token)
+            g = {"v" : f"{newv}",  
+                    "c" : enoded}
+            payload_new = {'token': base64.b64encode(json.dumps(g).encode()).decode()}
+            r = requests.post(link, json=payload_new, headers=headers())
+            return r.json()['l']
+
+        def start(self):
+            newv = getv(token)
+            mpd = get_mpd2(newv , xotp)
+            pssh = get_pssh(mpd)
+            license_url = "https://license.inkryptvideos.com/api/v1/wj/license"
+            pssh_b64 = f"{pssh}"
+            data = {"token":f"{token}"}
+            data = eval(base64.b64decode(data['token']).decode())
+            wvdecrypt = WvDecrypt(pssh_b64, deviceconfig.DeviceConfig(deviceconfig.device_android_generic))
+            wvdecrypt.set_server_certificate(self.post_license_request(license_url, '', data))
+            challenge = wvdecrypt.create_challenge()
+            license = self.post_license_request(license_url, challenge, data)
+            wvdecrypt.decrypt_license(license)
+            content_key = wvdecrypt.get_content_key()
+
+            return content_key , mpd
+
+    content_key , mpd = Pyd().start()
+
+    content_key_lines = '\n'.join([f'--key {key}' for key in content_key])
+    result = mpd + '\n' + content_key_lines
+    session['result'] = result
+    return render_template('backend_pages/ink.html', content_key=content_key , mpd = mpd ,input1 = result)
+
+
+
+
+
+
+
+#END PAGE
+
+
+
+@vdo.route('/inkform', methods=['POST'])
+def inkform():
+    if request.method == 'POST':
+        user_data = {
+            'name': request.form['vidname']
+        }
+        return redirect(url_for('vdo.discordink', **user_data))
+    return render_template('backend_pages/ink.html')
+
+
+@vdo.route('/inkdiscord', methods=['GET', 'POST'])
+def discordink():
+    result = session.get('result')
+    name = request.args.get('name')
+    result = result.replace("\n", " ")
+
+    msg = f'app {result} --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output'
+    message = {
+            'content': f'```{msg}```{name}'
+        }
+    payload = json.dumps(message)
+    headers = {'Content-Type': 'application/json'}
+    cmds_queue.append(msg)
+    requests.post("https://discord.com/api/webhooks/1158824183833309326/lOGuL_T9mAtYuGCkDRkVxRERIQAD1fHS3RTzxkRmS1ZlzT5yY4C7bi20XdK-1pSXcVzZ", data=payload, headers=headers)
+    return "Message Sent!" 

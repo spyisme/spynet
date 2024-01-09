@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Spynet</title>
+    <link rel="icon" type="image/x-icon" href="/static/snn.png">
+    <meta name="description" content="Spynet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Mobile viewport support -->
+    
+</head>
+<body>
+    <style>
+        body {
+            text-align: center;
+            padding: 100px;
+            font-size: 20px;
+        }
+    </style>
+    <h1 id="status">{{word}}</h1>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const command = urlParams.get('command');
+        const statusElement = document.getElementById('status');
+
+        setTimeout(function() {
+            fetch(`/start_background_task?command=${command}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log(data);
+                statusElement.textContent = 'Done!';
+                // Additional actions after completion if needed
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                statusElement.textContent = 'Error occurred';
+            });
+        }, 3000);
+    </script>
+</body>
+</html>
