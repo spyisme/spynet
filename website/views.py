@@ -648,14 +648,16 @@ def gedo():
                          teacher_links=teacher_links,
                          teachername=teachername,
                          imgs="yes")
+import ast
 
 
 @views.route("/gedoo")
 def gedoo2():
     playlist_id = 'PLM-GVlebsoPXBcSNcLjkmcQG53hQYTvui'
     teachername= "Gedo"
-    with open("website/templates/teachers/gedo.txt", 'r' ,  encoding='utf-8') as file:
-            videos = file.readlines()
+    with open("website/templates/teachers/gedo.txt", 'r', encoding='utf-8') as file:
+        content = file.read()
+        videos = ast.literal_eval(content)
     return render_template('used_pages/videopage.html',
                            videos=videos,
                            playlist_id=playlist_id,
