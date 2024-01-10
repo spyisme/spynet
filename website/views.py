@@ -47,6 +47,27 @@ def update():
     except subprocess.CalledProcessError as e:
         return f'Error executing restart command: {e}', 500
 
+
+@views.route('/push')
+def push():
+    try:
+        # Change the path to your restart.bat file
+        bat_file_path = r"C:\Users\Spy\Downloads\Push.bat"
+        
+        # Run the restart.bat file using subprocess
+        subprocess.run([bat_file_path], shell=True, check=True)
+        
+        return 'Restart command executed successfully!'
+    
+    except subprocess.CalledProcessError as e:
+        return f'Error executing restart command: {e}', 500
+
+
+
+
+
+
+
 @views.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -208,10 +229,10 @@ def Physics():
 @views.route('/nawar')
 def nawar():
   teacher_links = {
-  "Nawar Chapter 1": ("/nawarch1", "Chapter 1"),
-    "Nawar Chapter 1 Revision": ("nawarch1rev", "Chapter 1 Revision"),
-    "Nawar Chapter 2": ("nawarch2", "Chapter 2"),
-    "Nawar Chapter 2 Revision": ("nawarch2rev", "Chapter 2 Revision"),
+  "Nawar Chapter 1": ("/nawarch1", "⚡ Chapter 1 ⚡"),
+    "Nawar Chapter 1 Revision": ("nawarch1rev", "⚡ Chapter 1 Revision ⚡"),
+    "Nawar Chapter 2": ("nawarch2", "⚡ Chapter 2 ⚡"),
+    "Nawar Chapter 2 Revision": ("nawarch2rev", "⚡ Chapter 2 Revision ⚡"),
     "Nawar Chapter 3": ("nawarch3", "Chapter 3"),
     "Nawar Files": ("nawarpdfs", "Google Drive")
   }
@@ -222,41 +243,124 @@ def nawar():
                          imgs="yes")
 @views.route("/nawarch1")
 def nawarch1():
-  teachername = "Chapter 1"
-  playlist_id = 'PLM-GVlebsoPXpGe3wzMN7SKYvmTr0jACa'
-  videos = get_playlist_videos(playlist_id)
-  return render_template('used_pages/videopage.html',
-                         videos=videos,
-                         playlist_id=playlist_id,
-                         teachername=teachername)
+  # teachername = "Chapter 1"
+  # playlist_id = 'PLM-GVlebsoPXpGe3wzMN7SKYvmTr0jACa'
+  # videos = get_playlist_videos(playlist_id)
+  return render_template('teachers/nawarch1.html')
+                        #  videos=videos,
+                        #  playlist_id=playlist_id,
+                        #  teachername=teachername)
+
+
+@views.route("/nawarch1update")
+def nawarch1update():
+    teachername = "Chapter 1"
+    playlist_id = 'PLM-GVlebsoPXpGe3wzMN7SKYvmTr0jACa'
+    videos = get_playlist_videos(playlist_id)
+
+    # Generate HTML content
+    html_content = generate_html_page(teachername, playlist_id, videos)
+
+    # Save HTML content to a file
+    with open('website/templates/teachers/nawarch1.html', 'w' , encoding='utf-8') as file:
+        file.write(html_content)
+
+    return html_content  # Return HTML content for testing purposes
+
+
+
+
+
 @views.route("/nawarch1rev")
 def nawarch1rev():
-  teachername = "Revision 1"
+  # teachername = "Revision 1"
 
-  playlist_id = 'PLM-GVlebsoPXELEhVJi-nBm-oZXpE85K2'
-  videos = get_playlist_videos(playlist_id)
-  return render_template('used_pages/videopage.html',
-                         videos=videos,
-                         playlist_id=playlist_id,
-                         teachername=teachername)
+  # playlist_id = 'PLM-GVlebsoPXELEhVJi-nBm-oZXpE85K2'
+  # videos = get_playlist_videos(playlist_id)
+  return render_template('teachers/nawarch1rev.html')
+                        #  videos=videos,
+                        #  playlist_id=playlist_id,
+                        #  teachername=teachername)
+
+
+@views.route("/nawarch1revupdate")
+def nawarch1revupdate():
+    teachername = "Revision 1"
+    playlist_id = 'PLM-GVlebsoPXELEhVJi-nBm-oZXpE85K2'
+    videos = get_playlist_videos(playlist_id)
+
+    # Generate HTML content
+    html_content = generate_html_page(teachername, playlist_id, videos)
+
+    # Save HTML content to a file
+    with open('website/templates/teachers/nawarch1rev.html', 'w' , encoding='utf-8') as file:
+        file.write(html_content)
+
+    return html_content  # Return HTML content for testing purposes
+
+
+
 @views.route("/nawarch2rev")
 def nawarch2rev():
-  teachername = "Revision 2"
-  playlist_id = 'PLM-GVlebsoPVAd_O1EYC8ORRkYGQ_latH'
-  videos = get_playlist_videos(playlist_id)
-  return render_template('used_pages/videopage.html',
-                         videos=videos,
-                         playlist_id=playlist_id,
-                         teachername=teachername)
+  # teachername = "Revision 2"
+  # playlist_id = 'PLM-GVlebsoPVAd_O1EYC8ORRkYGQ_latH'
+  # videos = get_playlist_videos(playlist_id)
+  return render_template('teachers/nawarch2rev.html')
+                        #  videos=videos,
+                        #  playlist_id=playlist_id,
+                        #  teachername=teachername)
+
+@views.route("/nawarch2revupdate")
+def nawarch2revupdate():
+    teachername = "Revision 2"
+    playlist_id = 'PLM-GVlebsoPVAd_O1EYC8ORRkYGQ_latH'
+    videos = get_playlist_videos(playlist_id)
+
+    # Generate HTML content
+    html_content = generate_html_page(teachername, playlist_id, videos)
+
+    # Save HTML content to a file
+    with open('website/templates/teachers/nawarch2rev.html', 'w' , encoding='utf-8') as file:
+        file.write(html_content)
+
+    return html_content  # Return HTML content for testing purposes
+
+
+
 @views.route("/nawarch2")
 def nawarch2():
-  teachername = "Chapter 2"
-  playlist_id = 'PLM-GVlebsoPWU4v5bcndzPBt6e7PsiCwQ'
-  videos = get_playlist_videos(playlist_id)
-  return render_template('used_pages/videopage.html',
-                         videos=videos,
-                         playlist_id=playlist_id,
-                         teachername=teachername)
+  # teachername = "Chapter 2"
+  # playlist_id = 'PLM-GVlebsoPWU4v5bcndzPBt6e7PsiCwQ'
+  # videos = get_playlist_videos(playlist_id)
+  return render_template('teachers/nawarch2.html')
+                        #  videos=videos,
+                        #  playlist_id=playlist_id,
+                        #  teachername=teachername)
+
+
+@views.route("/nawarch2update")
+def nawarch2update():
+    teachername = "Chapter 2"
+    playlist_id = 'PLM-GVlebsoPWU4v5bcndzPBt6e7PsiCwQ'
+    videos = get_playlist_videos(playlist_id)
+
+    # Generate HTML content
+    html_content = generate_html_page(teachername, playlist_id, videos)
+
+    # Save HTML content to a file
+    with open('website/templates/teachers/nawarch2.html', 'w' , encoding='utf-8') as file:
+        file.write(html_content)
+
+    return html_content  # Return HTML content for testing purposes
+
+
+
+
+
+
+
+
+
 @views.route("/nawarch3")
 def nawarch3():
   teachername = "Chapter 3"
@@ -290,9 +394,9 @@ def chem():
 @views.route('/nasser')
 def nasser():
   teacher_links = {
-     "Nasser-El-Batal Chapter 1": ("chemch1", "Chapter 1"),
-    "Nasser-El-Batal Chapter 2": ("chemch2", "Chapter 2"),
-    "Nasser-El-Batal Chapter 3": ("chemch3", "Chapter 3"),
+     "Nasser-El-Batal Chapter 1": ("chemch1", "⚡ Chapter 1 ⚡"),
+    "Nasser-El-Batal Chapter 2": ("chemch2", "⚡ Chapter 2 ⚡"),
+    "Nasser-El-Batal Chapter 3": ("chemch3",   "⚡ Chapter 3 ⚡"),
     "Nasser-El-Batal Chapter 4": ("chemch4", "Chapter 4"),
     "Nasser-El-Batal Files": ("chempdfs", "Google Drive")
   }
@@ -303,31 +407,91 @@ def nasser():
                          imgs="yes")
 @views.route("/chemch1")
 def chemch1():
-  teachername = "Nasser-El-Batal"
-  playlist_id = 'PLM-GVlebsoPXWpBDCzn4h0L36UNRYuFb2'
-  videos = get_playlist_videos(playlist_id)
-  return render_template('used_pages/videopage.html',
-                         videos=videos,
-                         playlist_id=playlist_id,
-                         teachername=teachername)
+  # teachername = "Chapter 1"
+  # playlist_id = 'PLM-GVlebsoPXWpBDCzn4h0L36UNRYuFb2'
+  # videos = get_playlist_videos(playlist_id)
+  return render_template('teachers/chemch1.html')
+                        #  videos=videos,
+                        #  playlist_id=playlist_id,
+                        #  teachername=teachername)
+
+
+@views.route("/chemch1update")
+def chemch1update():
+    teachername = "Chapter 1"
+    playlist_id = 'PLM-GVlebsoPXWpBDCzn4h0L36UNRYuFb2'
+    videos = get_playlist_videos(playlist_id)
+
+    # Generate HTML content
+    html_content = generate_html_page(teachername, playlist_id, videos)
+
+    # Save HTML content to a file
+    with open('website/templates/teachers/chemch1.html', 'w' , encoding='utf-8') as file:
+        file.write(html_content)
+
+    return html_content  # Return HTML content for testing purposes
+
+
+
+
+
+
+
+
 @views.route("/chemch2")
 def chemch2():
-    teachername  = "Chapter 1"
+    # teachername  = "Chapter 2"
+    # playlist_id = 'PLM-GVlebsoPVYwDkN3DxFcyS1QWCKfAjv'
+    # videos = get_playlist_videos(playlist_id)
+    return render_template('teachers/chemch2.html')
+                          # videos=videos,
+                          # playlist_id=playlist_id,
+                          # teachername=teachername)   
+
+
+@views.route("/chemch2update")
+def chemch2update():
+    teachername = "Chapter 2"
     playlist_id = 'PLM-GVlebsoPVYwDkN3DxFcyS1QWCKfAjv'
     videos = get_playlist_videos(playlist_id)
-    return render_template('used_pages/videopage.html',
-                          videos=videos,
-                          playlist_id=playlist_id,
-                          teachername=teachername)                       
+
+    # Generate HTML content
+    html_content = generate_html_page(teachername, playlist_id, videos)
+
+    # Save HTML content to a file
+    with open('website/templates/teachers/chemch2.html', 'w' , encoding='utf-8') as file:
+        file.write(html_content)
+
+    return html_content  # Return HTML content for testing purposes
+
+
 @views.route("/chemch3")
 def chemch3():
+    # teachername = "Chapter 3"
+    # playlist_id = 'PLM-GVlebsoPVXmash3q9sfG5bsD3Mt88x'
+    # videos = get_playlist_videos(playlist_id)
+    return render_template('teachers/chemch3.html')
+                          #  videos=videos,
+                          #  playlist_id=playlist_id,
+                          #  teachername=teachername)
+
+@views.route("/chemch3update")
+def chemch3update():
     teachername = "Chapter 3"
     playlist_id = 'PLM-GVlebsoPVXmash3q9sfG5bsD3Mt88x'
     videos = get_playlist_videos(playlist_id)
-    return render_template('used_pages/videopage.html',
-                           videos=videos,
-                           playlist_id=playlist_id,
-                           teachername=teachername)
+
+    # Generate HTML content
+    html_content = generate_html_page(teachername, playlist_id, videos)
+
+    # Save HTML content to a file
+    with open('website/templates/teachers/chemch3.html', 'w' , encoding='utf-8') as file:
+        file.write(html_content)
+
+    return html_content  # Return HTML content for testing purposes
+
+
+
 @views.route("/chemch4")
 def chemch4():
     teachername = "Chapter 4"
@@ -376,7 +540,7 @@ def sherbostatics():
   # teachername = "Sherbo Statics"
   # playlist_id = 'PLM-GVlebsoPX_3mlaOeWIjCPY8jH8MpfJ'
   # videos = get_playlist_videos(playlist_id)
-  return render_template('test_pages/sherbostatics.html')
+  return render_template('teachers/sherbostatics.html')
                         #  videos=videos,
                         #  playlist_id=playlist_id,
                         #  teachername=teachername)
@@ -391,7 +555,7 @@ def sherboStaticsupdate():
     html_content = generate_html_page(teachername, playlist_id, videos)
 
     # Save HTML content to a file
-    with open('website/templates/test_pages/sherbostatics.html', 'w' , encoding='utf-8') as file:
+    with open('website/templates/teachers/sherbostatics.html', 'w' , encoding='utf-8') as file:
         file.write(html_content)
 
     return html_content  # Return HTML content for testing purposes
@@ -404,7 +568,7 @@ def sherbocalc():
   # teachername = "Sherbo Calculus"
   # playlist_id = 'PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq'
   # videos = get_playlist_videos(playlist_id)
-  return render_template('test_pages/sherbocalc.html')
+  return render_template('teachers/sherbocalc.html')
                         #  videos=videos,
                         #  playlist_id=playlist_id,
                         #  teachername=teachername)
@@ -419,7 +583,7 @@ def sherbocalcupdate():
     html_content = generate_html_page(teachername, playlist_id, videos)
 
     # Save HTML content to a file
-    with open('website/templates/test_pages/sherbocalc.html', 'w' , encoding='utf-8') as file:
+    with open('website/templates/teachers/sherbocalc.html', 'w' , encoding='utf-8') as file:
         file.write(html_content)
 
     return html_content  # Return HTML content for testing purposes
@@ -488,10 +652,10 @@ def gedo():
 
 @views.route("/gedoo")
 def gedoo2():
-    return render_template('test_pages/gedo.html')
+    return render_template('teachers/gedo.html')
 
 def generate_html_page(teachername, playlist_id, videos):
-    return render_template('used_pages/videopage.html',
+    return render_template('teachers/videopage.html',
                            videos=videos,
                            playlist_id=playlist_id,
                            teachername=teachername)
@@ -506,7 +670,7 @@ def gedoupdate():
     html_content = generate_html_page(teachername, playlist_id, videos)
 
     # Save HTML content to a file
-    with open('website/templates/test_pages/gedo.html', 'w' , encoding='utf-8') as file:
+    with open('website/templates/teachers/gedo.html', 'w' , encoding='utf-8') as file:
         file.write(html_content)
 
     return html_content  # Return HTML content for testing purposes
