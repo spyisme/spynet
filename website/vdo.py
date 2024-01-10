@@ -184,8 +184,21 @@ def index():
     options = ['Else','Nawar','Nasser-El-Batal', 'MoSalama', 'Gedo' , 'Bio']
     used_tokens.add(mytoken)
     session['result'] = result
+    components = result.split()
+    input_url = components[0]
+    components = result.split("--key")[1:]
+    keys = [key.strip() for key in components[1:]]
 
-    return render_template('backend_pages/vdo.html' , content_key = content_key , mpd = mpd ,options = options, result= result)
+    # Extracting keys and values
+    ckvaluetobeused = {}
+    for key in keys:
+        parts = key.split(":")
+        if len(parts) == 2:
+            ckvaluetobeused[parts[0]] = parts[1]
+
+    # Create the URL with the encoded key-value pairs
+    url = input_url + "?ck=" + base64.urlsafe_b64encode(str(ckvaluetobeused).encode()).decode()
+    return render_template('backend_pages/vdo.html' , content_key = content_key , mpd = mpd ,options = options, result= result , url = url)
 
 
 
