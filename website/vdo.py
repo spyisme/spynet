@@ -184,7 +184,7 @@ def index():
     options = ['Else','Nawar','Nasser-El-Batal', 'MoSalama', 'Gedo' , 'Bio']
     used_tokens.add(mytoken)
     session['result'] = result
-    viewonline = result.replace("\n", " ")
+    viewonline = "app " +result.replace("\n", " ")
     components = viewonline.split()
     # Extract URL and keys
     input_url = components[1]
