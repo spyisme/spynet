@@ -243,29 +243,20 @@ def nawar():
                          imgs="yes")
 @views.route("/nawarch1")
 def nawarch1():
-  # teachername = "Chapter 1"
-  # playlist_id = 'PLM-GVlebsoPXpGe3wzMN7SKYvmTr0jACa'
-  # videos = get_playlist_videos(playlist_id)
-  return render_template('teachers/nawarch1.html')
-                        #  videos=videos,
-                        #  playlist_id=playlist_id,
-                        #  teachername=teachername)
+  teachername = "Chapter 1"
+  playlist_id = 'PLM-GVlebsoPXpGe3wzMN7SKYvmTr0jACa'
+  with open("website/templates/teachers/nawarch1.txt", 'r', encoding='utf-8') as file:
+        content = file.read()
+        videos = ast.literal_eval(content)
+  return render_template('teachers/nawarch1.html',
+                         videos=videos,
+                         playlist_id=playlist_id,
+                         teachername=teachername)
 
 
 @views.route("/nawarch1update")
 def nawarch1update():
-    teachername = "Chapter 1"
-    playlist_id = 'PLM-GVlebsoPXpGe3wzMN7SKYvmTr0jACa'
-    videos = get_playlist_videos(playlist_id)
-
-    # Generate HTML content
-    html_content = generate_html_page(teachername, playlist_id, videos)
-
-    # Save HTML content to a file
-    with open('website/templates/teachers/nawarch1.html', 'w' , encoding='utf-8') as file:
-        file.write(html_content)
-
-    return html_content  # Return HTML content for testing purposes
+    return createtxtfile("nawarch1" , "PLM-GVlebsoPXpGe3wzMN7SKYvmTr0jACa")
 
 
 
@@ -273,87 +264,57 @@ def nawarch1update():
 
 @views.route("/nawarch1rev")
 def nawarch1rev():
-  # teachername = "Revision 1"
-
-  # playlist_id = 'PLM-GVlebsoPXELEhVJi-nBm-oZXpE85K2'
-  # videos = get_playlist_videos(playlist_id)
-  return render_template('teachers/nawarch1rev.html')
-                        #  videos=videos,
-                        #  playlist_id=playlist_id,
-                        #  teachername=teachername)
+  teachername = "Revision 1"
+  playlist_id = 'PLM-GVlebsoPXELEhVJi-nBm-oZXpE85K2'
+  with open("website/templates/teachers/nawarch1rev.txt", 'r', encoding='utf-8') as file:
+        content = file.read()
+        videos = ast.literal_eval(content)
+  return render_template('teachers/nawarch1rev.html',
+                         videos=videos,
+                         playlist_id=playlist_id,
+                         teachername=teachername)
 
 
 @views.route("/nawarch1revupdate")
 def nawarch1revupdate():
-    teachername = "Revision 1"
-    playlist_id = 'PLM-GVlebsoPXELEhVJi-nBm-oZXpE85K2'
-    videos = get_playlist_videos(playlist_id)
-
-    # Generate HTML content
-    html_content = generate_html_page(teachername, playlist_id, videos)
-
-    # Save HTML content to a file
-    with open('website/templates/teachers/nawarch1rev.html', 'w' , encoding='utf-8') as file:
-        file.write(html_content)
-
-    return html_content  # Return HTML content for testing purposes
+    return createtxtfile("nawarch1rev" , "PLM-GVlebsoPXELEhVJi-nBm-oZXpE85K2")
 
 
 
 @views.route("/nawarch2rev")
 def nawarch2rev():
-  # teachername = "Revision 2"
-  # playlist_id = 'PLM-GVlebsoPVAd_O1EYC8ORRkYGQ_latH'
-  # videos = get_playlist_videos(playlist_id)
-  return render_template('teachers/nawarch2rev.html')
-                        #  videos=videos,
-                        #  playlist_id=playlist_id,
-                        #  teachername=teachername)
+  teachername = "Revision 2"
+  playlist_id = 'PLM-GVlebsoPVAd_O1EYC8ORRkYGQ_latH'
+  with open("website/templates/teachers/nawarch2rev.txt", 'r', encoding='utf-8') as file:
+        content = file.read()
+        videos = ast.literal_eval(content)
+  return render_template('used_pages/videopage.html',
+                         videos=videos,
+                         playlist_id=playlist_id,
+                         teachername=teachername)
 
 @views.route("/nawarch2revupdate")
 def nawarch2revupdate():
-    teachername = "Revision 2"
-    playlist_id = 'PLM-GVlebsoPVAd_O1EYC8ORRkYGQ_latH'
-    videos = get_playlist_videos(playlist_id)
-
-    # Generate HTML content
-    html_content = generate_html_page(teachername, playlist_id, videos)
-
-    # Save HTML content to a file
-    with open('website/templates/teachers/nawarch2rev.html', 'w' , encoding='utf-8') as file:
-        file.write(html_content)
-
-    return html_content  # Return HTML content for testing purposes
+    return createtxtfile("nawarch2rev" , "PLM-GVlebsoPVAd_O1EYC8ORRkYGQ_latH")
 
 
 
 @views.route("/nawarch2")
 def nawarch2():
-  # teachername = "Chapter 2"
-  # playlist_id = 'PLM-GVlebsoPWU4v5bcndzPBt6e7PsiCwQ'
-  # videos = get_playlist_videos(playlist_id)
-  return render_template('teachers/nawarch2.html')
-                        #  videos=videos,
-                        #  playlist_id=playlist_id,
-                        #  teachername=teachername)
+  teachername = "Chapter 2"
+  playlist_id = 'PLM-GVlebsoPWU4v5bcndzPBt6e7PsiCwQ'
+  with open("website/templates/teachers/nawarch2.txt", 'r', encoding='utf-8') as file:
+        content = file.read()
+        videos = ast.literal_eval(content)
+  return render_template('used_pages/videopage.html',
+                         videos=videos,
+                         playlist_id=playlist_id,
+                         teachername=teachername)
 
 
 @views.route("/nawarch2update")
 def nawarch2update():
-    teachername = "Chapter 2"
-    playlist_id = 'PLM-GVlebsoPWU4v5bcndzPBt6e7PsiCwQ'
-    videos = get_playlist_videos(playlist_id)
-
-    # Generate HTML content
-    html_content = generate_html_page(teachername, playlist_id, videos)
-
-    # Save HTML content to a file
-    with open('website/templates/teachers/nawarch2.html', 'w' , encoding='utf-8') as file:
-        file.write(html_content)
-
-    return html_content  # Return HTML content for testing purposes
-
-
+    return createtxtfile("nawarch2" , "PLM-GVlebsoPWU4v5bcndzPBt6e7PsiCwQ")
 
 
 
