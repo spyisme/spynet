@@ -654,7 +654,7 @@ def gedo():
 def gedoo2():
     playlist_id = 'PLM-GVlebsoPXBcSNcLjkmcQG53hQYTvui'
     teachername= "Gedo"
-    with open("website/templates/teachers/gedo.txt", 'r') as file:
+    with open("website/templates/teachers/gedo.txt", 'r' ,  encoding='utf-8') as file:
             videos = file.readlines()
     return render_template('used_pages/videopage.html',
                            videos=videos,
