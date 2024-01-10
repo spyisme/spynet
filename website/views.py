@@ -407,31 +407,20 @@ def nasser():
                          imgs="yes")
 @views.route("/chemch1")
 def chemch1():
-  # teachername = "Chapter 1"
-  # playlist_id = 'PLM-GVlebsoPXWpBDCzn4h0L36UNRYuFb2'
-  # videos = get_playlist_videos(playlist_id)
-  return render_template('teachers/chemch1.html')
-                        #  videos=videos,
-                        #  playlist_id=playlist_id,
-                        #  teachername=teachername)
+  teachername = "Chapter 1"
+  playlist_id = 'PLM-GVlebsoPXWpBDCzn4h0L36UNRYuFb2'
+  with open("website/templates/teachers/chemch1.txt", 'r', encoding='utf-8') as file:
+        content = file.read()
+        videos = ast.literal_eval(content)
+  return render_template('used_pages/videopage.html',
+                         videos=videos,
+                         playlist_id=playlist_id,
+                         teachername=teachername)
 
 
 @views.route("/chemch1update")
 def chemch1update():
-    teachername = "Chapter 1"
-    playlist_id = 'PLM-GVlebsoPXWpBDCzn4h0L36UNRYuFb2'
-    videos = get_playlist_videos(playlist_id)
-
-    # Generate HTML content
-    html_content = generate_html_page(teachername, playlist_id, videos)
-
-    # Save HTML content to a file
-    with open('website/templates/teachers/chemch1.html', 'w' , encoding='utf-8') as file:
-        file.write(html_content)
-
-    return html_content  # Return HTML content for testing purposes
-
-
+    return createtxtfile("chemch1" , "PLM-GVlebsoPXWpBDCzn4h0L36UNRYuFb2")
 
 
 
@@ -440,55 +429,38 @@ def chemch1update():
 
 @views.route("/chemch2")
 def chemch2():
-    # teachername  = "Chapter 2"
-    # playlist_id = 'PLM-GVlebsoPVYwDkN3DxFcyS1QWCKfAjv'
-    # videos = get_playlist_videos(playlist_id)
-    return render_template('teachers/chemch2.html')
-                          # videos=videos,
-                          # playlist_id=playlist_id,
-                          # teachername=teachername)   
+    teachername  = "Chapter 2"
+    playlist_id = 'PLM-GVlebsoPVYwDkN3DxFcyS1QWCKfAjv'
+    with open("website/templates/teachers/chemch2.txt", 'r', encoding='utf-8') as file:
+        content = file.read()
+        videos = ast.literal_eval(content)
+    return render_template('used_pages/videopage.html',
+                          videos=videos,
+                          playlist_id=playlist_id,
+                          teachername=teachername)   
 
 
 @views.route("/chemch2update")
 def chemch2update():
-    teachername = "Chapter 2"
-    playlist_id = 'PLM-GVlebsoPVYwDkN3DxFcyS1QWCKfAjv'
-    videos = get_playlist_videos(playlist_id)
+    return createtxtfile("chemch2" , "PLM-GVlebsoPVYwDkN3DxFcyS1QWCKfAjv")
 
-    # Generate HTML content
-    html_content = generate_html_page(teachername, playlist_id, videos)
-
-    # Save HTML content to a file
-    with open('website/templates/teachers/chemch2.html', 'w' , encoding='utf-8') as file:
-        file.write(html_content)
-
-    return html_content  # Return HTML content for testing purposes
 
 
 @views.route("/chemch3")
 def chemch3():
-    # teachername = "Chapter 3"
-    # playlist_id = 'PLM-GVlebsoPVXmash3q9sfG5bsD3Mt88x'
-    # videos = get_playlist_videos(playlist_id)
-    return render_template('teachers/chemch3.html')
-                          #  videos=videos,
-                          #  playlist_id=playlist_id,
-                          #  teachername=teachername)
+    teachername = "Chapter 3"
+    playlist_id = 'PLM-GVlebsoPVXmash3q9sfG5bsD3Mt88x'
+    with open("website/templates/teachers/chemch3.txt", 'r', encoding='utf-8') as file:
+        content = file.read()
+        videos = ast.literal_eval(content)
+    return render_template('used_pages/videopage.html',
+                           videos=videos,
+                           playlist_id=playlist_id,
+                           teachername=teachername)
 
 @views.route("/chemch3update")
 def chemch3update():
-    teachername = "Chapter 3"
-    playlist_id = 'PLM-GVlebsoPVXmash3q9sfG5bsD3Mt88x'
-    videos = get_playlist_videos(playlist_id)
-
-    # Generate HTML content
-    html_content = generate_html_page(teachername, playlist_id, videos)
-
-    # Save HTML content to a file
-    with open('website/templates/teachers/chemch3.html', 'w' , encoding='utf-8') as file:
-        file.write(html_content)
-
-    return html_content  # Return HTML content for testing purposes
+    return createtxtfile("chemch3" , "PLM-GVlebsoPVXmash3q9sfG5bsD3Mt88x")
 
 
 
@@ -537,56 +509,37 @@ def sherbo():
                          imgs="yes")
 @views.route("/sherbostatics")
 def sherbostatics():
-  # teachername = "Sherbo Statics"
-  # playlist_id = 'PLM-GVlebsoPX_3mlaOeWIjCPY8jH8MpfJ'
-  # videos = get_playlist_videos(playlist_id)
-  return render_template('teachers/sherbostatics.html')
-                        #  videos=videos,
-                        #  playlist_id=playlist_id,
-                        #  teachername=teachername)
+  teachername = "Sherbo Statics"
+  playlist_id="PLM-GVlebsoPX_3mlaOeWIjCPY8jH8MpfJ"
+  with open("website/templates/teachers/sherbostatics.txt", 'r', encoding='utf-8') as file:
+        content = file.read()
+        videos = ast.literal_eval(content)
+  return render_template('used_pages/videopage.html',
+                         videos=videos,
+                         playlist_id=playlist_id,
+                         teachername=teachername)
 
 @views.route("/sherbostaticsupdate")
-def sherboStaticsupdate():
-    teachername = "Sherbo Statics"
-    playlist_id = 'PLM-GVlebsoPX_3mlaOeWIjCPY8jH8MpfJ'
-    videos = get_playlist_videos(playlist_id)
-
-    # Generate HTML content
-    html_content = generate_html_page(teachername, playlist_id, videos)
-
-    # Save HTML content to a file
-    with open('website/templates/teachers/sherbostatics.html', 'w' , encoding='utf-8') as file:
-        file.write(html_content)
-
-    return html_content  # Return HTML content for testing purposes
-
+def sherbostaticsupdate():
+    return createtxtfile("sherbostatics" , "PLM-GVlebsoPX_3mlaOeWIjCPY8jH8MpfJ")
 
 
 
 @views.route("/sherbocalc")
 def sherbocalc():
-  # teachername = "Sherbo Calculus"
-  # playlist_id = 'PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq'
-  # videos = get_playlist_videos(playlist_id)
-  return render_template('teachers/sherbocalc.html')
-                        #  videos=videos,
-                        #  playlist_id=playlist_id,
-                        #  teachername=teachername)
+  teachername = "Sherbo Calculus"
+  playlist_id = 'PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq'
+  with open("website/templates/teachers/sherbocalc.txt", 'r', encoding='utf-8') as file:
+        content = file.read()
+        videos = ast.literal_eval(content)
+  return render_template('used_pages/videopage.html',
+                         videos=videos,
+                         playlist_id=playlist_id,
+                         teachername=teachername)
 
 @views.route("/sherbocalcupdate")
 def sherbocalcupdate():
-    teachername = "Sherbo Calculus"
-    playlist_id = 'PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq'
-    videos = get_playlist_videos(playlist_id)
-
-    # Generate HTML content
-    html_content = generate_html_page(teachername, playlist_id, videos)
-
-    # Save HTML content to a file
-    with open('website/templates/teachers/sherbocalc.html', 'w' , encoding='utf-8') as file:
-        file.write(html_content)
-
-    return html_content  # Return HTML content for testing purposes
+    return createtxtfile("sherbocalc" , "PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq")
 
 
 
@@ -666,14 +619,19 @@ def gedoo2():
 
 @views.route("/gedoupdate")
 def gedoupdate():
-    playlist_id = 'PLM-GVlebsoPXBcSNcLjkmcQG53hQYTvui'
+    return createtxtfile("gedo" , "PLM-GVlebsoPXBcSNcLjkmcQG53hQYTvui")
+    # playlist_id = 'PLM-GVlebsoPXBcSNcLjkmcQG53hQYTvui'
+    # videos = get_playlist_videos(playlist_id)
+    # with open("website/templates/teachers/gedo.txt", 'w' , encoding='utf-8') as file:
+    #     # Write the entire string to the file
+    #     file.write(str(videos))
+    # return videos  
+
+def createtxtfile(name ,playlist_id ):
     videos = get_playlist_videos(playlist_id)
-    with open("website/templates/teachers/gedo.txt", 'w' , encoding='utf-8') as file:
-        # Write the entire string to the file
+    with open(f"website/templates/teachers/{name}.txt", 'w' , encoding='utf-8') as file:
         file.write(str(videos))
     return videos  
-
-
 
 
 
