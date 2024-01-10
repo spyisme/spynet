@@ -655,7 +655,7 @@ def gedoo2():
     return render_template('teachers/gedo.html')
 
 def generate_html_page(teachername, playlist_id, videos):
-    return render_template('teachers/videopage.html',
+    return render_template('used_pages/videopage.html',
                            videos=videos,
                            playlist_id=playlist_id,
                            teachername=teachername)
