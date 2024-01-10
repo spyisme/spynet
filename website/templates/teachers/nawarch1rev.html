@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2812078112067783"
+ crossorigin="anonymous"></script>
+
+    <title>Revision 1</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+
+
+    <meta name="description" content="Revision 1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+
+
+  <style>
+
+      html, body {
+          height: 100%;
+          margin: 0;
+          padding: 0;
+          zoom: 90%;
+          overflow: auto
+      }
+      html{
+        cursor: url('https://media.discordapp.net/attachments/951495863509876828/1190799754519650435/cursor2.png?ex=65a31db1&is=6590a8b1&hm=4b46da89ec303157e22691eaef3a9bd0bcf001613403571da23a02e9f736a968&=&format=webp&quality=lossless&width=14&height=14'), auto;
+
+      }
+      .card-description {
+            font-size: 14px;
+            color: black;
+            margin-top: 10px;
+        }
+      /* Style the iframe to take 100% of the viewport */
+
+      body {
+          font-family: Arial, sans-serif;
+          background-color: #1a1a1a;
+
+          color: #fff; /* Default text color */
+      }
+
+      /* Dark Mode */
+      @media (prefers-color-scheme: dark) {
+          body {
+              background-color: #1a1a1a;
+              color: #fff; /* Text color in dark mode */
+          }
+
+          .nav {
+              background-color: #9dd3d0; /* Dark background color for the navigation */
+              color: #fff;
+          }
+
+          ul {
+              background-color: #1a1a1a; /* Dark background color for the list */
+          }
+
+          /* Add more styles for dark mode as needed */
+      }
+
+      .nav {
+          padding: 20px;
+          margin: 0;
+          text-align: center;
+          background-color: #9dd3d0;
+          color: #fff;
+      }
+
+      ul {
+          list-style: none;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          align-items: center;
+          padding: 20px;
+      }
+
+
+  
+
+
+      .card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .card img {
+          max-width: 100%;
+
+            height: 100px;
+        
+      }
+
+      .card p {
+          font-size: 22px; /* Increase text size */
+      }
+
+      a {
+          text-decoration: none;
+          color: blue;
+          cursor: url('https://media.discordapp.net/attachments/951495863509876828/1190799754519650435/cursor2.png?ex=65a31db1&is=6590a8b1&hm=4b46da89ec303157e22691eaef3a9bd0bcf001613403571da23a02e9f736a968&=&format=webp&quality=lossless&width=14&height=14'), auto;
+
+      }
+
+      a:hover {
+          text-decoration: none;
+          text-align: center;
+      }
+
+      /* Mobile Styles */
+      @media screen and (max-width: 768px) {
+          h1 {
+              padding: 10px;
+              width: 96%;
+          }
+          html{
+  cursor: auto;
+}
+          ul {
+              flex-direction: column; /* Stack cards vertically */
+              padding: 10px;
+          }
+
+          li {
+              margin: 5px;
+              max-width: 100%; /* Make cards full width on mobile */
+          }
+
+          .card {
+              padding: 10px;
+              width: 96%; /* Make cards 100% width on mobile */
+              margin: 0 auto; /* Center-align the cards */
+              min-height: 50px;
+              width: 210px
+          }
+      }
+      .card
+    {
+      color: blue;
+          background-color: #fff;
+          border: 1px solid #ccc;
+          border-radius: 10px;
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+          padding: 20px;
+          transition: transform 0.2s, box-shadow 0.2s;
+          text-align: center;
+          margin: 10px;
+          text-transform: capitalize; /* Capitalize the first letter */
+          display: block;
+          width: 200px;
+      }
+
+.discord-link a {
+              color: white;
+              text-decoration: underline;
+            }
+
+
+
+                        
+ .banner {
+  width: 100%;
+  height: 100%;
+
+}
+.banner_content {
+  display: flex;
+  position: relative;
+  z-index: 1;
+  flex-direction: column;
+  text-align: center;
+}
+span {
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0px 4px 12px #000000ba;
+}
+#canvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Allow click events to pass through the canvas */
+}
+h1{
+  font-size: 46px;
+}
+
+
+
+
+
+.popup-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+            display: none;
+            text-align: center;
+
+            z-index: 999;
+        }
+
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 15px; /* Rounded corners */
+            z-index: 1000;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            /* cursor: pointer; */
+        }
+
+        .popup-buttons {
+            display: flex;
+            justify-content: center;
+
+            margin-top: 20px;
+            
+        }
+
+        .popup-buttons button {
+            padding: 10px;
+            font-size: 16px;
+            /* cursor: pointer; */
+            margin: 30px;
+
+        }
+        .popup-buttons img {
+        width: 110px; /* Set the width of the image */
+    }
+    .popup-buttons span {
+        display: block; /* Make each span appear on a new line */
+        margin-top: 5px; /* Adjust the margin between button and text */
+    }
+    h3{
+      color:Black
+    }
+    .nohover{
+  cursor: url('https://media.discordapp.net/attachments/951495863509876828/1190799754519650435/cursor2.png?ex=65a31db1&is=6590a8b1&hm=4b46da89ec303157e22691eaef3a9bd0bcf001613403571da23a02e9f736a968&=&format=webp&quality=lossless&width=14&height=14'), auto; 
+color:white ;
+        text-decoration: underline;
+}
+
+  </style>
+
+
+</head>
+
+
+<body>
+
+  <section class="banner">
+    <canvas id="canvas"> </canvas>
+    <div class="nav">
+        <h1>✰ Revision 1 ✰</h1>
+
+            <!-- <p>Please donate to keep this site up. -->
+              <p>
+                <a href="/" class="nohover">Home</a>
+              </p>
+ 
+              
+  
+  </div>
+
+
+        <ul>       
+            
+  
+
+                <div class="card" onclick="openPopupname1(event)">
+                    RevPart1
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer1" onclick="closePopup1()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose1(event)">
+                      <span class="close" onclick="closePopup1()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   RevPart1</h3>
+                          <h3>02:25:51</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=GyOXtkFf2go&list=PLM-GVlebsoPXELEhVJi-nBm-oZXpE85K2" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=GyOXtkFf2go">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/GyOXtkFf2go" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname2(event)">
+                    RevPart2
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer2" onclick="closePopup2()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose2(event)">
+                      <span class="close" onclick="closePopup2()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   RevPart2</h3>
+                          <h3>01:03:13</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=-JgDjBo-2Cs&list=PLM-GVlebsoPXELEhVJi-nBm-oZXpE85K2" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=-JgDjBo-2Cs">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/-JgDjBo-2Cs" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname3(event)">
+                    RevPart3
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer3" onclick="closePopup3()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose3(event)">
+                      <span class="close" onclick="closePopup3()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   RevPart3</h3>
+                          <h3>02:24:11</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=SF0Q6rlsRS8&list=PLM-GVlebsoPXELEhVJi-nBm-oZXpE85K2" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=SF0Q6rlsRS8">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/SF0Q6rlsRS8" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname4(event)">
+                    RevPart4
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer4" onclick="closePopup4()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose4(event)">
+                      <span class="close" onclick="closePopup4()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   RevPart4</h3>
+                          <h3>01:42:32</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=uWIFwVL_ivY&list=PLM-GVlebsoPXELEhVJi-nBm-oZXpE85K2" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=uWIFwVL_ivY">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/uWIFwVL_ivY" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname5(event)">
+                    RevPart5
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer5" onclick="closePopup5()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose5(event)">
+                      <span class="close" onclick="closePopup5()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   RevPart5</h3>
+                          <h3>03:20:16</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=hdkbltySwtU&list=PLM-GVlebsoPXELEhVJi-nBm-oZXpE85K2" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=hdkbltySwtU">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/hdkbltySwtU" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname6(event)">
+                    RevPart6
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer6" onclick="closePopup6()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose6(event)">
+                      <span class="close" onclick="closePopup6()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   RevPart6</h3>
+                          <h3>02:21:36</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=wedO_0ZplQU&list=PLM-GVlebsoPXELEhVJi-nBm-oZXpE85K2" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=wedO_0ZplQU">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/wedO_0ZplQU" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+  
+
+                <div class="card" onclick="openPopupname7(event)">
+                    RevPart7
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer7" onclick="closePopup7()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose7(event)">
+                      <span class="close" onclick="closePopup7()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   RevPart7</h3>
+                          <h3>01:23:29</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v=B1m8unBo9F0&list=PLM-GVlebsoPXELEhVJi-nBm-oZXpE85K2" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <a href="/watch?id=B1m8unBo9F0">Beta player</a>
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://y2mate.com/youtube/B1m8unBo9F0" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        
+        </ul>
+     <hr>
+     <ul>
+    
+     <a href="https://www.youtube.com/playlist?list=PLM-GVlebsoPXELEhVJi-nBm-oZXpE85K2" target="_blank">   
+        <div class="card">
+            <img src="static/assets/yt.png" loading="lazy"></img>
+            <br> Open Playlist
+        </div>
+     </a>
+    </ul>
+   
+  
+</body>
+
+</section>
+
+  <script>
+            
+
+     function openPopupname1(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer1').style.display = 'block';
+        }
+
+        function closePopup1() {
+            document.getElementById('popupContainer1').style.display = 'none';
+        }
+
+        function preventPopupClose1(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname2(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer2').style.display = 'block';
+        }
+
+        function closePopup2() {
+            document.getElementById('popupContainer2').style.display = 'none';
+        }
+
+        function preventPopupClose2(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname3(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer3').style.display = 'block';
+        }
+
+        function closePopup3() {
+            document.getElementById('popupContainer3').style.display = 'none';
+        }
+
+        function preventPopupClose3(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname4(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer4').style.display = 'block';
+        }
+
+        function closePopup4() {
+            document.getElementById('popupContainer4').style.display = 'none';
+        }
+
+        function preventPopupClose4(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname5(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer5').style.display = 'block';
+        }
+
+        function closePopup5() {
+            document.getElementById('popupContainer5').style.display = 'none';
+        }
+
+        function preventPopupClose5(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname6(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer6').style.display = 'block';
+        }
+
+        function closePopup6() {
+            document.getElementById('popupContainer6').style.display = 'none';
+        }
+
+        function preventPopupClose6(event) {
+            event.stopPropagation();
+        }
+        
+
+     function openPopupname7(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer7').style.display = 'block';
+        }
+
+        function closePopup7() {
+            document.getElementById('popupContainer7').style.display = 'none';
+        }
+
+        function preventPopupClose7(event) {
+            event.stopPropagation();
+        }
+        
+
+
+    // window.onload = function () {
+    //   function getRandomColor() {
+    //     const min = 0;
+    //     const max = 255;
+
+    //     const r = Math.floor(Math.random() * (max - min + 1)) + min;
+    //     const g = Math.floor(Math.random() * (max - min + 1)) + min;
+    //     const b = Math.floor(Math.random() * (max - min + 1)) + min;
+
+    //     return `rgb(${r}, ${g}, ${b})`;
+    //   }
+
+    //   function changeColors() {
+    //     const h1 = document.querySelector(".nav");
+    //     const links = document.querySelectorAll("a");
+    //     const randomColor = getRandomColor();
+    //     h1.style.backgroundColor = randomColor;
+
+    //     links.forEach(link => {
+    //       link.style.backgroundColor = randomColor;
+    //     });
+    //   }
+
+    //   changeColors();
+    // };
+
+
+
+
+
+
+    const SNOW_COUNT = 300;
+
+function startAnimation() {
+  const CANVAS_WIDTH = window.innerWidth;
+  const CANVAS_HEIGHT = window.innerHeight;
+  const MIN = 0;
+  const MAX = CANVAS_WIDTH;
+
+  const canvas = document.getElementById("canvas");
+  const ctx = canvas.getContext("2d");
+
+  canvas.width = CANVAS_WIDTH;
+  canvas.height = CANVAS_HEIGHT;
+
+  function clamp(number, min = MIN, max = MAX) {
+    return Math.max(min, Math.min(number, max));
+  }
+
+  function random(factor = 1) {
+    return Math.random() * factor;
+  }
+
+  function degreeToRadian(deg) {
+    return deg * (Math.PI / 180);
+  }
+
+  // All the properties for Circle
+  class Circle {
+    radius = 0;
+    x = 0;
+    y = 0;
+    vx = 0;
+    vy = 0;
+
+    constructor(ctx) {
+      this.ctx = ctx;
+      this.reset();
+    }
+
+    draw() {
+      this.ctx.beginPath();
+      const body = document.body;
+
+// Get the computed background color of the body
+const bodyBgColor = window.getComputedStyle(body).backgroundColor;
+
+// Check if the background color is light or dark
+if (bodyBgColor === 'rgb(240, 240, 240)' || bodyBgColor === '#f0f0f0') {
+    // Light mode: set fill style to white
+    ctx.fillStyle = 'rgba(255, 0, 0, 0.8)';
+
+} else {
+    // Dark mode: set fill style to red
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+}
+
+      this.ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
+      this.ctx.fill();
+      this.ctx.closePath();
+    }
+
+    reset() {
+      this.radius = random(2.5);
+      this.x = random(CANVAS_WIDTH);
+      this.y = this.y ? 0 : random(CANVAS_HEIGHT);
+      this.vx = clamp((Math.random() - 0.5) * 0.4, -0.4, 0.4);
+      this.vy = clamp(random(1.5), 0.1, 0.8) * this.radius * 0.5;
+    }
+  }
+
+  // Array for storing all the generated circles
+  let circles = [];
+
+  // Generate circles
+  for (let i = 0; i < SNOW_COUNT; i++) {
+    circles.push(new Circle(ctx));
+  }
+
+  // Clear canvas
+  function clearCanvas() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  }
+
+  // start and end cordinates of canvas
+  let canvasOffset = {
+    x0: ctx.canvas.offsetLeft,
+    y0: ctx.canvas.offsetTop,
+    x1: ctx.canvas.offsetLeft + ctx.canvas.width,
+    y1: ctx.canvas.offsetTop + ctx.canvas.height
+  };
+
+  function animate() {
+    clearCanvas();
+
+    circles.forEach((e) => {
+      // reset the circle if it collides on border
+      if (
+        e.x <= canvasOffset.x0 ||
+        e.x >= canvasOffset.x1 ||
+        e.y <= canvasOffset.y0 ||
+        e.y >= canvasOffset.y1
+      ) {
+        e.reset();
+      }
+
+      // Drawing path using polar cordinates
+      e.x = e.x + e.vx;
+      e.y = e.y + e.vy;
+      e.draw();
+    });
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+}
+
+startAnimation();
+
+window.addEventListener("resize", startAnimation);
+
+
+
+
+
+
+
+
+
+
+  </script>
+
+</html>
