@@ -652,24 +652,24 @@ def gedo():
 
 @views.route("/gedoo")
 def gedoo2():
-    # playlist_id = 'PLM-GVlebsoPXBcSNcLjkmcQG53hQYTvui'
-    # teachername= "Gedo"
-    # with open("website/templates/teachers/gedo.txt", 'r') as file:
-    #         videos = file.readlines()
-    return render_template('teachers/gedo.html')
-                        #    videos=videos,
-                        #    playlist_id=playlist_id,
-                        #    teachername=teachername)
+    playlist_id = 'PLM-GVlebsoPXBcSNcLjkmcQG53hQYTvui'
+    teachername= "Gedo"
+    with open("website/templates/teachers/gedo.txt", 'r') as file:
+            videos = file.readlines()
+    return render_template('used_pages/videopage.html',
+                           videos=videos,
+                           playlist_id=playlist_id,
+                           teachername=teachername)
 
 
 @views.route("/gedoupdate")
 def gedoupdate():
     playlist_id = 'PLM-GVlebsoPXBcSNcLjkmcQG53hQYTvui'
     videos = get_playlist_videos(playlist_id)
-    with open("website/templates/teachers/gedo.txt", 'w') as file:
-            file.write({videos})
+    with open("website/templates/teachers/gedo.txt", 'w' , encoding='utf-8') as file:
+        # Write the entire string to the file
+        file.write(str(videos))
     return videos  
-
 
 
 
