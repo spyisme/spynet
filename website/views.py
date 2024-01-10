@@ -652,34 +652,34 @@ def gedo():
 
 @views.route("/gedoo")
 def gedoo2():
-    return render_template('teachers/gedo.html')
+    playlist_id = 'PLM-GVlebsoPXBcSNcLjkmcQG53hQYTvui'
+    teachername= "Gedo"
+    with open("website/templates/teachers/gedo.txt", 'r') as file:
+            videos = file.readlines()
+    return render_template('used_pages/videopage.html',
+                           videos=videos,
+                           playlist_id=playlist_id,
+                           teachername=teachername)
+
+
+@views.route("/gedoupdate")
+def gedoupdate():
+    playlist_id = 'PLM-GVlebsoPXBcSNcLjkmcQG53hQYTvui'
+    videos = get_playlist_videos(playlist_id)
+    with open("website/templates/teachers/gedo.txt", 'w') as file:
+            file.write({videos})
+    return videos  
+
+
+
+
+
 
 def generate_html_page(teachername, playlist_id, videos):
     return render_template('used_pages/videopage.html',
                            videos=videos,
                            playlist_id=playlist_id,
                            teachername=teachername)
-
-@views.route("/gedoupdate")
-def gedoupdate():
-    teachername = "Gedo"
-    playlist_id = 'PLM-GVlebsoPXBcSNcLjkmcQG53hQYTvui'
-    videos = get_playlist_videos(playlist_id)
-
-    # Generate HTML content
-    html_content = generate_html_page(teachername, playlist_id, videos)
-
-    # Save HTML content to a file
-    with open('website/templates/teachers/gedo.html', 'w' , encoding='utf-8') as file:
-        file.write(html_content)
-
-    return html_content  # Return HTML content for testing purposes
-
-
-
-
-
-
 
 
 
