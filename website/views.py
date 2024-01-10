@@ -362,8 +362,8 @@ def math():
 @views.route('/sherbo')
 def sherbo():
   teacher_links = {
-    "Sherbo Statics": ("sherbostatics", "Statics"),
-    "Sherbo Calculus": ("sherbocalc", "Calculus"),
+    "Sherbo Statics": ("sherbostatics", "⚡ Statics ⚡"),
+    "Sherbo Calculus": ("sherbocalc", "⚡ Calculus ⚡"),
     "Sherbo Files": ("sherbopdfs", "Google Drive")
   }
   teachername = "Sherbo"
@@ -477,7 +477,7 @@ def salamach(course_number):
 @views.route('/arabic')
 def gedo():
   teacher_links = {
-    "Gedo": ("gedoo", "Gedo"),
+    "Gedo": ("gedoo", "⚡ Gedo ⚡"),
 }
   teachername = "Arabic"
   return render_template('used_pages/teacher.html',
