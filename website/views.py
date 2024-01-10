@@ -269,7 +269,7 @@ def nawarch1rev():
   with open("website/templates/teachers/nawarch1rev.txt", 'r', encoding='utf-8') as file:
         content = file.read()
         videos = ast.literal_eval(content)
-  return render_template('teachers/nawarch1rev.html',
+  return render_template('used_pages/videopage.html',
                          videos=videos,
                          playlist_id=playlist_id,
                          teachername=teachername)
