@@ -271,6 +271,7 @@ def sherboframe():
             msg = f'```python youtube.py https://www.youtube.com/watch?v={url} {name}``` {name}'
             cmds_queue.append(f"python youtube.py https://www.youtube.com/watch?v={url} {name}")
         else: 
+            url = url.split('?')[0]
             msg = f'```python iframe.py {url} {name}``` {name}'
             cmds_queue.append(f"python iframe.py {url} {name}")
 
