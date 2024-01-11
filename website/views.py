@@ -358,7 +358,7 @@ def nasser():
      "Nasser-El-Batal Chapter 1": ("chemch1", "⚡ Chapter 1 ⚡"),
     "Nasser-El-Batal Chapter 2": ("chemch2", "⚡ Chapter 2 ⚡"),
     "Nasser-El-Batal Chapter 3": ("chemch3",   "⚡ Chapter 3 ⚡"),
-    "Nasser-El-Batal Chapter 4": ("chemch4", "Chapter 4"),
+    "Nasser-El-Batal Chapter 4": ("chemch4", "⚡ Chapter 4 ⚡"),
     "Nasser-El-Batal Files": ("chempdfs", "Google Drive")
   }
   teachername = "Nasser-El-Batal"
