@@ -429,16 +429,18 @@ def chemch3update():
 def chemch4():
     teachername = "Chapter 4"
     playlist_id = 'PLM-GVlebsoPXBmTFLVyH4mWaxQELcIQ8C'
-    videos = get_playlist_videos(playlist_id)
+    with open("website/templates/teachers/chemch4.txt", 'r', encoding='utf-8') as file:
+        content = file.read()
+        videos = ast.literal_eval(content)
     return render_template('used_pages/videopage.html',
                            videos=videos,
                            playlist_id=playlist_id,
                            teachername=teachername)
 
 
-
-
-
+@views.route("/chemch4update")
+def chemch4update():
+    return createtxtfile("chemch4" , "PLM-GVlebsoPXBmTFLVyH4mWaxQELcIQ8C")
 
 
 
