@@ -532,6 +532,9 @@ salama_info = {
     "Course 16": {"id": 'PLM-GVlebsoPUF0Px3a00jPzFLwJwkpgBw'},
     "Course 17": {"id": 'PLM-GVlebsoPXMiQ12yf0u8yXhwuFTAR0h'},
     "Course 18": {"id": 'PLM-GVlebsoPV0RRzBKVtugIVlvEKmmHQn'},
+    "Course 19": {"id": 'PLM-GVlebsoPW0boxDQxqLZz8gbmxhGZvP'},
+
+
 }
 @views.route('/salama')
 def salama():
