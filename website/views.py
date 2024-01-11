@@ -321,17 +321,22 @@ def nawarch2update():
 
 
 
-
 @views.route("/nawarch3")
 def nawarch3():
   teachername = "Chapter 3"
   playlist_id = 'PLM-GVlebsoPXwGQGxiTBmNCzD4E_BgDCo'
-  videos = get_playlist_videos(playlist_id)
+  with open("website/templates/teachers/nawarch3.txt", 'r', encoding='utf-8') as file:
+        content = file.read()
+        videos = ast.literal_eval(content)
   return render_template('used_pages/videopage.html',
                          videos=videos,
                          playlist_id=playlist_id,
                          teachername=teachername)
 
+
+@views.route("/nawarch3update")
+def nawarch3update():
+    return createtxtfile("nawarch3" , "PLM-GVlebsoPXwGQGxiTBmNCzD4E_BgDCo")
 
 
 
