@@ -230,10 +230,10 @@ def Physics():
 def nawar():
   teacher_links = {
   "Nawar Chapter 1": ("/nawarch1", "⚡ Chapter 1 ⚡"),
-    "Nawar Chapter 1 Revision": ("nawarch1rev", "⚡ Chapter 1 Revision ⚡"),
+    "Nawar Chapter 1 Revision": ("nawarch1rev", "⚡ Revision 1 ⚡"),
     "Nawar Chapter 2": ("nawarch2", "⚡ Chapter 2 ⚡"),
-    "Nawar Chapter 2 Revision": ("nawarch2rev", "⚡ Chapter 2 Revision ⚡"),
-    "Nawar Chapter 3": ("nawarch3", "Chapter 3"),
+    "Nawar Chapter 2 Revision": ("nawarch2rev", "⚡ Revision 1 ⚡"),
+    "Nawar Chapter 3": ("nawarch3", "⚡ Chapter 3 ⚡"),
     "Nawar Files": ("nawarpdfs", "Google Drive")
   }
   teachername = "Nawar"
