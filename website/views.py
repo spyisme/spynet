@@ -519,7 +519,7 @@ salama_info = {
     "Course 3": {"id": 'PLM-GVlebsoPUSSsoABHH059FBapcSjvGg'},
     "Course 4": {"id": 'PLM-GVlebsoPXWSZDCjeDfvdMV5QXYwg4x'},
     "Course 5": {"id": 'PLM-GVlebsoPWEGxQu5D0hVrUCJjTMqYvd'},
-    "Course 6 (Revision)": {"id": 'PLM-GVlebsoPWZKrvX8MvfJxfxXhKXvqR3'},
+    "Course 6": {"id": 'PLM-GVlebsoPWZKrvX8MvfJxfxXhKXvqR3'},
     "Course 7": {"id": 'PLM-GVlebsoPUobUeuNIWsitKeP-aHOwif'},
     "Course 8": {"id": 'PLM-GVlebsoPUqwS3-Ij-pHBq4_aoEAwMZ'},
     "Course 9": {"id": 'PLM-GVlebsoPXe2kZo_cM06BZWXwdSxQ7B'},
