@@ -206,6 +206,9 @@ def favicon():
     return redirect("/static/favicon.ico") 
 
 
+@views.route('/testt')
+def testtt():
+    return render_template('spotifytheme.html')
 
 
 
