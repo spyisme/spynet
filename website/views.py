@@ -208,7 +208,7 @@ def favicon():
 
 @views.route('/testt')
 def testtt():
-    return render_template('spotifytheme.html')
+    return render_template('test.html')
 
 
 
