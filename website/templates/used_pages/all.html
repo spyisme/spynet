@@ -405,6 +405,38 @@ h1{
     text-transform: capitalize;
     height: 230px;
 }
+
+.card22:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+      .card22 img {
+          max-width: 100%;
+            height: 100px;
+        
+      }
+      .card22 p {
+          font-size: 22px; /* Increase text size */
+      }
+      .card-description {
+    font-size: 14px;
+    color: black;
+    margin-top: 10px;
+    position: relative;
+    overflow: hidden;
+      }
+
+    .card-description::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: -80%;
+    width: 80%;
+    height: 100%;
+    background: linear-gradient(to right, transparent 0%, #ffffff 50%, transparent 100%);
+    animation: shine 2s linear infinite;
+      }
 </style>
 
     </section>
