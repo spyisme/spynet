@@ -208,6 +208,43 @@ h1{
 }
 
 
+.hidden {
+            display: none;
+        }
+        .textcont {
+    display: flex;
+    margin-left: 200px; /* Start 20px from the left */   
+    margin-right: 200px; /* Start 20px from the left */   
+
+}
+
+.textcont p {
+    flex: 1;
+    margin-right: 10px; /* Add 100px space between each paragraph */
+    text-align: center;
+}
+
+.textcont p:last-child {
+    margin-right: 0; /* Remove margin from the last paragraph to avoid extra space */
+}
+
+
+.button {
+    background-color: #121212;
+  color: white;
+  padding: 15px 25px;
+  height: 50px;
+  text-align: center;
+  font-size: 16px;
+  border: 2px solid white; /* Set the border property */
+
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #1ed760; /* Darker green color on hover */
+}
 
     </style>
   
@@ -250,6 +287,17 @@ h1{
   </ul>
   <br><hr>
 
+  <br><br>
+  <div class="textcont">
+    <p><button class="button" id="homeBtn" onclick="showDiv('homestuff', 'homeBtn')">Home</button></p>
+    <p><button class="button" id="booksBtn" onclick="showDiv('booksstuff', 'booksBtn')">Books</button></p>
+    <p><button class="button" id="pdfsBtn" onclick="showDiv('pdfsstuff', 'pdfsBtn')">Pdfs</button></p>
+    <p><button class="button" id="downloadBtn" onclick="showDiv('downloadstuff', 'downloadBtn')">Downloads</button></p>
+
+
+</div>
+
+  <div id="homestuff" class="content hidden">
    <ul>
     {% for item in lines %}
     <li>
@@ -263,62 +311,33 @@ h1{
 {% endfor %}
 
       </ul>
+</div>
       
     </section>
 
 </body>
-<!-- <div class="overlay" id="overlay"></div>
-<div class="popup" id="popup">
-    <p >Wait 5 secs :D</p>
-    <button onclick="hidePopup()">Close</button>
-</div> -->
 
   <script>
-    //   window.onload = function() {
-    //         // Show the popup on page load
-    //         showPopup();
-    //     };
-    //     function showPopup() {
-    //         document.getElementById('overlay').style.display = 'block';
-    //         document.getElementById('popup').style.display = 'block';
-    //     }
-    //     function hidePopup() {
-    //         document.getElementById('overlay').style.display = 'none';
-    //         document.getElementById('popup').style.display = 'none';
-    //         document.getElementById('my_audio').play();
+  
+  function showDiv(divId, buttonId) {
+            // Hide all divs first
+            var divs = document.querySelectorAll('.content');
+            divs.forEach(function (div) {
+                div.classList.add('hidden');
+            });
 
-    //         setTimeout(function() {
-    //     document.getElementById('canvas').style.pointerEvents = 'none';
-    // }, 5000);
+            // Remove 'active' class from all buttons
+            var buttons = document.querySelectorAll('.button');
+            buttons.forEach(function (button) {
+                button.classList.remove('active');
+            });
 
+            // Show the selected div
+            document.getElementById(divId).classList.remove('hidden');
 
-    //     }
-    // window.onload = function () {
-    //   function getRandomColor() {
-    //     const min = 0;
-    //     const max = 255;
-
-    //     const r = Math.floor(Math.random() * (max - min + 1)) + min;
-    //     const g = Math.floor(Math.random() * (max - min + 1)) + min;
-    //     const b = Math.floor(Math.random() * (max - min + 1)) + min;
-
-    //     return `rgb(${r}, ${g}, ${b})`;
-    //   }
-
-    //   function changeColors() {
-    //     const h1 = document.querySelector(".nav");
-    //     const links = document.querySelectorAll("a");
-    //     const randomColor = getRandomColor();
-    //     h1.style.backgroundColor = randomColor;
-
-    //     links.forEach(link => {
-    //       link.style.backgroundColor = randomColor;
-    //     });
-    //   }
-
-    //   changeColors();
-    // };
-
+            // Add 'active' class to the clicked button
+            document.getElementById(buttonId).classList.add('active');
+        }
 
     const SNOW_COUNT = 400;
 
