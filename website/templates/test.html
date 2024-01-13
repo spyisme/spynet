@@ -242,15 +242,55 @@ h1{
 }
 
 .button:hover {
-  background-color: #388E3C; /* Darker green color on hover */
+  background-color: #1ed760; /* Darker green color on hover */
 }
 
 .hidden {
             display: none;
         }
         .button.active {
-            background-color: #388E3C; /* Change the background color for the active button */
+            background-color: #1ed760; /* Change the background color for the active button */
         }
+
+
+
+
+
+
+        .card {
+  width: 300px; /* Adjust as needed */
+  height: 200px; /* Adjust as needed */
+  background-color: #fff; /* Replace with desired background color */
+  border-radius: 5px; /* Rounded corners */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow */
+  margin: 10px; /* Adjust spacing as needed */
+  text-align: center; /* Align content centrally */
+  overflow: hidden; /* Prevent content overflow */
+}
+
+.card .card-image {
+  width: 100%; /* Full-width image */
+  height: 150px; /* Adjust as needed */
+  object-fit: cover; /* Ensure image covers the area */
+}
+
+.card .card-content {
+  padding: 15px;
+}
+
+.card .card-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.card .card-text {
+  font-size: 14px;
+  color: #777;
+}
+
+
+
     </style>
   
 
@@ -267,7 +307,7 @@ h1{
     
         <div class="image-container">
             <img class="pic1" src="https://cdn.discordapp.com/attachments/951495863509876828/1195550772662910976/Sanaeya_Sessions.png?ex=65b4666c&is=65a1f16c&hm=3e1d5022bbf42cd28ddd7ef78971d174c79f3694051b9d7d340a91566c9be745&" alt="Image 1">
-            <img class="pic2" src="https://cdn.discordapp.com/attachments/1192117992457257074/1195382240411140106/image.png?ex=65b3c977&amp;is=65a15477&amp;hm=36021fcf88226c27acc80f8c2f3c0d2d71bca706412158441378dd264bcf11db&amp;" alt="Image 2">
+            <img class="pic2" src="https://cdn.discordapp.com/attachments/951495863509876828/1195557782955499682/Spotify.png?ex=65b46cf3&is=65a1f7f3&hm=d838c32e0d921b0c771f9bba382a96ab8eedf72a741d60eba5f420a35a771550&" alt="Image 2">
         </div>
          
         <br><br><br><br><br><br><br><br>
@@ -277,15 +317,26 @@ h1{
           <p><button class="button" id="homeBtn" onclick="showDiv('homestuff', 'homeBtn')">Home</button></p>
           <p><button class="button" id="booksBtn" onclick="showDiv('booksstuff', 'booksBtn')">Books</button></p>
           <p><button class="button" id="pdfsBtn" onclick="showDiv('pdfsstuff', 'pdfsBtn')">Pdfs</button></p>
-          <p><button class="button" id="downloadBtn" onclick="showDiv('downloadstuff', 'downloadBtn')">Download</button></p>
+          <p><button class="button" id="downloadBtn" onclick="showDiv('downloadstuff', 'downloadBtn')">Downloads</button></p>
       
       
 </div>
+
+
+
 <div id="homestuff" class="content hidden">
 
 
-
-  Home Stuff
+  <div class="card">
+    <img class="card-image" src="image.jpg" alt="Card image">
+  
+    <div class="card-content">
+      <h2 class="card-title">Card Title</h2>
+      <p class="card-text">Some descriptive text about the card.</p>
+      <a href="#" class="card-link">Learn More</a>
+    </div>
+  </div>
+  
 
   
 </div>
@@ -321,50 +372,7 @@ h1{
 
 
   <script>
-    //   window.onload = function() {
-    //         // Show the popup on page load
-    //         showPopup();
-    //     };
-    //     function showPopup() {
-    //         document.getElementById('overlay').style.display = 'block';
-    //         document.getElementById('popup').style.display = 'block';
-    //     }
-    //     function hidePopup() {
-    //         document.getElementById('overlay').style.display = 'none';
-    //         document.getElementById('popup').style.display = 'none';
-    //         document.getElementById('my_audio').play();
 
-    //         setTimeout(function() {
-    //     document.getElementById('canvas').style.pointerEvents = 'none';
-    // }, 5000);
-
-
-    //     }
-    // window.onload = function () {
-    //   function getRandomColor() {
-    //     const min = 0;
-    //     const max = 255;
-
-    //     const r = Math.floor(Math.random() * (max - min + 1)) + min;
-    //     const g = Math.floor(Math.random() * (max - min + 1)) + min;
-    //     const b = Math.floor(Math.random() * (max - min + 1)) + min;
-
-    //     return `rgb(${r}, ${g}, ${b})`;
-    //   }
-
-    //   function changeColors() {
-    //     const h1 = document.querySelector(".nav");
-    //     const links = document.querySelectorAll("a");
-    //     const randomColor = getRandomColor();
-    //     h1.style.backgroundColor = randomColor;
-
-    //     links.forEach(link => {
-    //       link.style.backgroundColor = randomColor;
-    //     });
-    //   }
-
-    //   changeColors();
-    // };
     function showDiv(divId, buttonId) {
             // Hide all divs first
             var divs = document.querySelectorAll('.content');
