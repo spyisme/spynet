@@ -280,88 +280,24 @@ h1{
     <p><button class="button" id="homeBtn" onclick="showDiv('homestuff', 'homeBtn')">All</button></p>
     <p><button class="button" id="booksBtn" onclick="showDiv('booksstuff', 'booksBtn')">Books</button></p>
     <p><button class="button" id="pdfsBtn" onclick="showDiv('pdfsstuff', 'pdfsBtn')">Pdfs</button></p>
-    <p><button class="button" id="downloadBtn" onclick="showDiv('downloadstuff', 'downloadBtn')">Downloads</button></p>
 
 
 </div>
 
   <div id="homestuff" class="content hidden">
- <ul>
-    
-    <li>
-        <a href="physics">
-            <div class="card">
-                physics
-            </div>
-        </a>
-    </li>
-
-
-    <li>
-        <a href="chemistry">
-            <div class="card">
-                chemistry
-            </div>
-        </a>
-    </li>
-
-
-    <li>
-        <a href="math">
-            <div class="card">
-                math
-            </div>
-        </a>
-    </li>
-
-
-    <li>
-        <a href="arabic">
-            <div class="card">
-                arabic
-            </div>
-        </a>
-    </li>
-
-
-    <li>
-        <a href="geology">
-            <div class="card">
-                geology
-            </div>
-        </a>
-    </li>
-
-
-    <li>
-        <a href="biology">
-            <div class="card">
-                biology
-            </div>
-        </a>
-    </li>
-
-
-    <li>
-        <a href="english">
-            <div class="card">
-                english
-            </div>
-        </a>
-    </li>
-
-
-    <li>
-        <a href="german">
-            <div class="card">
-                german
-            </div>
-        </a>
-    </li>
-
-
-
-      </ul>
+    <ul>
+      {% for item in lines %}
+          <li>
+              <a href="{{ item }}">
+                  <div class="card">
+                      {{ item }}
+                  </div>
+              </a>
+          </li>
+  
+      {% endfor %}
+  
+    </ul>
 </div>
       
 
@@ -379,7 +315,10 @@ h1{
 </ul>
 </div>
 
+<div id="pdfsstuff" class="content hidden">
 
+
+</div>
 
     </section>
 
