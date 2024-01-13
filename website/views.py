@@ -766,7 +766,7 @@ def bioch3():
 
 
 @views.route('/english')
-def german():
+def english():
   teacher_links = {
      "English": ("englishh", "Ahmed Salah"),
 
