@@ -239,7 +239,7 @@ def nawar():
     "Nawar Chapter 3": ("nawarch3", "⚡ Chapter 3 ⚡"),
     "Nawar Files": ("nawarpdfs", "Google Drive")
   }
-  teachername = "Nawar"
+  teachername = "Physics"
   return render_template('used_pages/teacher.html',
                          teacher_links=teacher_links,
                          teachername=teachername,
@@ -369,7 +369,7 @@ def nasser():
     "Nasser-El-Batal Chapter 4": ("chemch4", "⚡ Chapter 4 ⚡"),
     "Nasser-El-Batal Files": ("chempdfs", "Google Drive")
   }
-  teachername = "Nasser-El-Batal"
+  teachername = "Chemistry"
   return render_template('used_pages/teacher.html',
                          teacher_links=teacher_links,
                          teachername=teachername,
@@ -473,7 +473,7 @@ def sherbo():
     "Sherbo Calculus": ("sherbocalc", "⚡ Calculus ⚡"),
     "Sherbo Files": ("sherbopdfs", "Google Drive")
   }
-  teachername = "Sherbo"
+  teachername = "Math"
   return render_template('used_pages/teacher.html',
                          teacher_links=teacher_links,
                          teachername=teachername,
@@ -543,7 +543,7 @@ salama_info = {
 def salama():
     
     teacher_links = {course: (f"/salamach{i}", course) for i, (course, _) in enumerate(salama_info.items(), start=1)}
-    teachername = "Mohamed Salama"
+    teachername = "Math"
     return render_template('used_pages/teacher.html', teacher_links=teacher_links, teachername=teachername, imgs="yes")
 
 @views.route("/salamach<int:course_number>")
@@ -717,7 +717,7 @@ def daif():
     "Chapter 2": ("bioch2", "Chapter 2"),
     "Chapter 3": ("bioch3", "Chapter 3"),
   }
-  teachername = "Daif"
+  teachername = "Biology"
   return render_template('used_pages/teacher.html',
                          teacher_links=teacher_links,
                          teachername=teachername,
