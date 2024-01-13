@@ -765,12 +765,20 @@ def bioch3():
 
 
 
+@views.route('/english')
+def german():
+  teacher_links = {
+     "English": ("englishh", "Ahmed Salah"),
 
+  }
+  teachername = "English"
+  return render_template('used_pages/teacher.html',
+                         teacher_links=teacher_links,
+                         teachername=teachername,
+                         imgs="yes")
 
-
-
-@views.route("/english")
-def english():
+@views.route("/englishh")
+def englishh():
   teachername = "English"
   playlist_id = 'PLM-GVlebsoPUWOjoc9DyO2Jh8mclaRY1Q'
   videos = get_playlist_videos(playlist_id)
