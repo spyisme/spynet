@@ -197,17 +197,17 @@ def display_links():
 @views.route('/logs')
 def logs():
     log_file_path = 'access_log.txt'
-
-    # Read the file and remove newline characters from each line
     with open(log_file_path, 'r') as f:
         lines = [line.strip() for line in f]
 
-    # Join the lines into a single string
     content = '\n'.join(lines)
-
-    # Create a plain text response
     return Response(content, content_type='text/plain; charset=utf-8')
 
+@views.route('/clearlogs')
+def clearlogs():
+    with open("access_log.txt", 'w'):
+        pass 
+    return "Cleared logs"
 
 @views.route("/")
 def home():
