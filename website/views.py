@@ -195,7 +195,7 @@ def display_links():
 
 
 @views.route("/logs")
-def home():
+def logs():
     with open('access_log.txt') as f:
         lines = f.readlines()
     return lines
