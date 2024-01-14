@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, session, flash, url_for
+from flask import Blueprint, render_template, request, redirect, session, flash, url_for , Response
 from googleapiclient.discovery import build
 import random
 import json
@@ -194,11 +194,19 @@ def display_links():
 
 
 
-@views.route("/logs")
+@views.route('/logs')
 def logs():
-    with open('access_log.txt') as f:
-        lines = f.readlines()
-    return lines
+    log_file_path = 'access_log.txt'
+
+    # Read the file and remove newline characters from each line
+    with open(log_file_path, 'r') as f:
+        lines = [line.strip() for line in f]
+
+    # Join the lines into a single string
+    content = '\n'.join(lines)
+
+    # Create a plain text response
+    return Response(content, content_type='text/plain; charset=utf-8')
 
 
 @views.route("/")
