@@ -584,60 +584,52 @@ def geology():
                           teachername=teachername,
                           imgs="yes")
 
+sameh_links = {
+    "Sameh Nash2t Chapter 1": ("samehh1", "Chapter 1", "PLM-GVlebsoPXd5COr54fuG-1lNCfpDdwl"),
+    "Sameh Nash2t Chapter 2": ("samehh2", "Chapter 2", "PLM-GVlebsoPUckTjXcvKP483XHykKHH-m"),
+    "Sameh Nash2t Chapter 3": ("samehh3", "Chapter 3", "PLM-GVlebsoPX1xJ0JSvE7gLfkPEKIo3kA"),
+    "Sameh Nash2t Chapter 4": ("samehh4", "Chapter 4", "PLM-GVlebsoPX_zFeoKW57nOoPlLUMlxZR"),
+}
+
 @views.route('/sameh')
 def sameh():
-  teacher_links = {
-    "Sameh Nash2t Chapter 1": ("samehh1", "Chapter 1"),
-    "Sameh Nash2t Chapter 2": ("samehh2", "Chapter 2"),
-    "Sameh Nash2t Chapter 3": ("samehh3", "Chapter 3"),
-    "Sameh Nash2t Chapter 4": ("samehh4", "Chapter 4"),
-  }
-  teachername = "Geology"
-  return render_template('used_pages/teacher.html',
-                         teacher_links=teacher_links,
-                         teachername=teachername,
-                         imgs="yes")
-@views.route("/samehh1")
-def samehh1():
-  teachername = "Chapter 1"
-  playlist_id = 'PLM-GVlebsoPXd5COr54fuG-1lNCfpDdwl'
-  videos = get_playlist_videos(playlist_id)
-  return render_template('used_pages/videopage.html',
-                         videos=videos,
-                         playlist_id=playlist_id,
-                         teachername=teachername)
-@views.route("/samehh2")
-def samehh2():
-  teachername = "Chapter 2"
-  playlist_id = 'PLM-GVlebsoPUckTjXcvKP483XHykKHH-m'
-  videos = get_playlist_videos(playlist_id)
-  return render_template('used_pages/videopage.html',
-                         videos=videos,
-                         playlist_id=playlist_id,
-                         teachername=teachername)
-@views.route("/samehh3")
-def samehh3():
-  teachername = "Chapter 3"
-  playlist_id = 'PLM-GVlebsoPX1xJ0JSvE7gLfkPEKIo3kA'
-  videos = get_playlist_videos(playlist_id)
-  return render_template('used_pages/videopage.html',
-                         videos=videos,
-                         playlist_id=playlist_id,
-                         teachername=teachername)
-@views.route("/samehh4")
-def samehh4():
-  teachername = "Chapter 4"
-  playlist_id = 'PLM-GVlebsoPX_zFeoKW57nOoPlLUMlxZR'
-  videos = get_playlist_videos(playlist_id)
-  return render_template('used_pages/videopage.html',
-                         videos=videos,
-                         playlist_id=playlist_id,
-                         teachername=teachername)
+    teacher_links = {key: (value[0], value[1]) for key, value in sameh_links.items()}
+    teachername = "Geology"
+    return render_template('used_pages/teacher.html',
+                           teacher_links=teacher_links,
+                           teachername=teachername,
+                           imgs="yes")
+
+
+@views.route("/samehh<int:i>")
+def samehh(i):
+    teachername = f"Chapter {i}"
+    playlist_id = sameh_links.get(f"Sameh Nash2t Chapter {i}", ("", "", ""))[2]
+    with open(f"website/templates/teachers/samehh{i}.txt", 'r', encoding='utf-8') as file:
+        content = file.read()
+        videos = ast.literal_eval(content) 
+    return render_template('used_pages/videopage.html',
+                           videos=videos,
+                           playlist_id=playlist_id,
+                           teachername=teachername)
+
+
+@views.route("/samehh<int:i>update")
+def samehupdate(i):
+    chapter_name = f"samehh{i}"
+    playlist_id = bio_links.get(f"Chapter {i}", ("", "", ""))[2]
+
+    return createtxtfile(chapter_name, playlist_id)
+
+
+
 @views.route("/giomaged")
 def giomaged():
   teachername = "Gio maged"
   playlist_id = 'PLM-GVlebsoPXh1obVV3aWysV7wXlN3yET'
-  videos = get_playlist_videos(playlist_id)
+  with open("website/templates/teachers/giomaged.txt", 'r', encoding='utf-8') as file:
+        content = file.read()
+        videos = ast.literal_eval(content) 
   return render_template('used_pages/videopage.html',
                          videos=videos,
                          playlist_id=playlist_id,
@@ -645,7 +637,9 @@ def giomaged():
 
 
 
-
+@views.route("/giomagedupdate")
+def englishhupdate():
+    return createtxtfile("giomaged" , "PLM-GVlebsoPXh1obVV3aWysV7wXlN3yET")
 
 
 
