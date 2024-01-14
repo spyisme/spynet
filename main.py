@@ -63,11 +63,10 @@ def ban_ip():
     else:
         return "No IP provided in the query parameters.", 400
 
-@app.before_request
-def check_banned_ip():
-    client_ip = request.remote_addr
-    if client_ip in banned_ips:
-        return "Access Denied: Your IP is banned.", 403
+@app.route("/unbanall")
+def unbanall():
+        banned_ips.clear()
+        return "done"
 
 
 @app.errorhandler(404)
