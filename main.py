@@ -22,9 +22,17 @@ logger.addHandler(file_handler)
 
 app = create_app()
 
+excluded_urls = {'/favicon.ico', '/logs'}
+
 @app.before_request
 def log_request_info():
-    ip_address = request.headers['CF-Connecting-IP']
+    if request.url in excluded_urls:
+        return
+    if 'CF-Connecting-IP' in request.headers:
+        ip_address = request.headers['CF-Connecting-IP']
+    else:
+        ip_address = request.remote_addr
+
     logger.info(f"IP Address: {ip_address} accessed {request.url}")
 
 @app.errorhandler(404)
