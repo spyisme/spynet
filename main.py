@@ -24,9 +24,13 @@ logger.addHandler(file_handler)
 
 app = create_app()
 
-excluded_urls = {'http://spysnet.com/favicon.ico', 'http://spysnet.com/logs'}
+excluded_urls = {'http://spysnet.com/favicon.ico', 'http://spysnet.com/logs' , 'http://www.spysnet.com/favicon.ico', 'http://wwww.spysnet.com/logs'}
 pattern = 'http://spysnet.com/static/assets/*'
 excluded_urls.add(pattern)
+www_pattern = 'http://www.spysnet.com/static/assets/*'
+excluded_urls.add(www_pattern)
+
+
 
 @app.before_request
 def log_request_info():
