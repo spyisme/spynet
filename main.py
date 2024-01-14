@@ -2,6 +2,7 @@ from website import create_app
 from flask import request, redirect
 import logging
 import os
+import fnmatch
 
 # Set up logging
 log = logging.getLogger('werkzeug')
@@ -28,7 +29,7 @@ excluded_urls.add(pattern)
 
 @app.before_request
 def log_request_info():
-    if request.url in excluded_urls:
+    if any(fnmatch.fnmatch(request.url, pattern) for pattern in excluded_urls):
         return
     if 'CF-Connecting-IP' in request.headers:
         ip_address = request.headers['CF-Connecting-IP']
