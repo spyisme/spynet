@@ -27,7 +27,9 @@ def log_request_info():
     ip_address = request.remote_addr
     logger.info(f"IP Address: {ip_address} accessed {request.url}")
 
-# Rest of your code...
+@app.errorhandler(404)
+def page_not_found(e):
+    return redirect('/')
 
 if __name__ == "__main__":
     app.debug = True
