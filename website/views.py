@@ -212,8 +212,38 @@ def clearlogs():
 
 @views.route("/")
 def home():
-    lines = ["physics", "chemistry","math", "arabic","geology", "biology","english" , "german"]
+    lines = ["physics", "chemistry","math", "arabic","geology", "biology","english" , "german" , 'adby']
     return render_template('used_pages/all.html', lines=lines, teachername="All")
+
+
+
+
+@views.route("/adby")
+def adby():
+  teachername = "Adby"
+  playlist_id = 'PLM-GVlebsoPWZG7j5kRK479fragOS83By'
+  with open("website/templates/teachers/adby.txt", 'r', encoding='utf-8') as file:
+        content = file.read()
+        videos = ast.literal_eval(content)
+  return render_template('used_pages/videopage.html',
+                         videos=videos,
+                         playlist_id=playlist_id,
+                         teachername=teachername)
+
+
+@views.route("/adbyupdate")
+def nawarch1update():
+    return createtxtfile("adby" , "PLM-GVlebsoPWZG7j5kRK479fragOS83By")
+
+
+
+
+
+
+
+
+
+
 
 @views.route('/favicon.ico')
 def favicon():
