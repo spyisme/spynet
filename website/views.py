@@ -195,6 +195,7 @@ def display_links():
 
 
 @views.route('/logs')
+@login_required
 def logs():
     log_file_path = 'access_log.txt'
     with open(log_file_path, 'r') as f:
