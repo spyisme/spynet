@@ -541,7 +541,7 @@ salama_info = {
 }
 
 
-@views.route("/salamacourse<int:course_number>update")
+@views.route("/salama<int:course_number>update")
 def salamacoursesupdate(course_number):
     course_key = f"Course {course_number}"
     if course_key not in salama_info:
