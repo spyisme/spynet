@@ -465,6 +465,51 @@ def sherbocalcupdate():
     return createtxtfile("sherbocalc" , "PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq")
 
 
+sherbolinks = {
+    "Nasser-El-Batal Chapter 1": ("chemch1", "Chapter 1", "PLM-GVlebsoPXWpBDCzn4h0L36UNRYuFb2"),
+    "Nasser-El-Batal Chapter 2": ("chemch2", "Chapter 2", "PLM-GVlebsoPVYwDkN3DxFcyS1QWCKfAjv"),
+    "Nasser-El-Batal Chapter 3": ("chemch3", "Chapter 3", "PLM-GVlebsoPVXmash3q9sfG5bsD3Mt88x"),
+    "Nasser-El-Batal Chapter 4": ("chemch4", "Chapter 4", "PLM-GVlebsoPXBmTFLVyH4mWaxQELcIQ8C")
+}
+
+
+@views.route('/nasser')
+def nasser():
+  teacher_links = {key: (value[0], value[1]) for key, value in sherbolinks.items()}
+  teacher_links["Nasser-El-Batal Files"] = ("chempdfs", "Google Drive")
+  teachername = "Chemistry"
+  return render_template('used_pages/teacher.html',
+                         teacher_links=teacher_links,
+                         teachername=teachername,
+                         imgs="yes")
+
+
+@views.route("/chemch<int:i>update")
+def update_route(i):
+    chapter_name = f"chemch{i}"
+    playlist_id = sherbolinks.get(f"Nasser-El-Batal Chapter {i}", ("", "", ""))[2]
+
+    return createtxtfile(chapter_name, playlist_id)
+
+
+@views.route("/chemch<int:i>")
+def nasservids(i):
+  teachername = f"Chapter {i}"
+  playlist_id = sherbolinks.get(f"Nasser-El-Batal Chapter {i}", ("", "", ""))[2]
+  with open(f"website/templates/teachers/chemch{i}.txt", 'r', encoding='utf-8') as file:
+        content = file.read()
+        videos = ast.literal_eval(content)
+  return render_template('used_pages/videopage.html',
+                         videos=videos,
+                         playlist_id=playlist_id,
+                         teachername=teachername)
+
+
+
+
+
+
+
 
 
 salama_info = {
@@ -561,12 +606,6 @@ def gedoo2():
 @views.route("/gedoupdate")
 def gedoupdate():
     return createtxtfile("gedo" , "PLM-GVlebsoPXBcSNcLjkmcQG53hQYTvui")
-    # playlist_id = 'PLM-GVlebsoPXBcSNcLjkmcQG53hQYTvui'
-    # videos = get_playlist_videos(playlist_id)
-    # with open("website/templates/teachers/gedo.txt", 'w' , encoding='utf-8') as file:
-    #     # Write the entire string to the file
-    #     file.write(str(videos))
-    # return videos  
 
 def createtxtfile(name ,playlist_id ):
     videos = get_playlist_videos(playlist_id)
@@ -574,13 +613,6 @@ def createtxtfile(name ,playlist_id ):
         file.write(str(videos))
     return videos  
 
-
-
-def generate_html_page(teachername, playlist_id, videos):
-    return render_template('used_pages/videopage.html',
-                           videos=videos,
-                           playlist_id=playlist_id,
-                           teachername=teachername)
 
 
 
