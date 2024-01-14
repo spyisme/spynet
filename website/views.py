@@ -374,7 +374,7 @@ nasserlinks = {
 
 @views.route('/nasser')
 def nasser():
-  teacher_links = nasserlinks.copy() 
+  teacher_links = {key: (value[0], value[1]) for key, value in nasserlinks.items()}
   teacher_links["Nasser-El-Batal Files"] = ("chempdfs", "Google Drive")
   teachername = "Chemistry"
   return render_template('used_pages/teacher.html',
