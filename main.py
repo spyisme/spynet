@@ -47,9 +47,6 @@ def log_request_info():
     
     logger.info(f"IP Address: {ip_address} accessed {request.url} , {user_agent}")
 
-
-
-
 @app.route('/ban_ip')
 @login_required
 def ban_ip():
@@ -63,6 +60,7 @@ def ban_ip():
         return "No IP provided in the query parameters.", 400
 
 @app.route("/unbanall")
+@login_required
 def unbanall():
     with open("bannedips.txt", 'w'):
         pass 
