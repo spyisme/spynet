@@ -791,7 +791,7 @@ def englishh():
                          teachername=teachername)
 
 @views.route("/englishhupdate")
-def sherbocalcupdate():
+def englishhupdate():
     return createtxtfile("englishh" , "PLM-GVlebsoPUWOjoc9DyO2Jh8mclaRY1Q")
 
 
