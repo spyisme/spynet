@@ -777,15 +777,28 @@ def english():
                          teachername=teachername,
                          imgs="yes")
 
+
 @views.route("/englishh")
 def englishh():
   teachername = "English"
   playlist_id = 'PLM-GVlebsoPUWOjoc9DyO2Jh8mclaRY1Q'
-  videos = get_playlist_videos(playlist_id)
+  with open("website/templates/teachers/englishh.txt", 'r', encoding='utf-8') as file:
+        content = file.read()
+        videos = ast.literal_eval(content)
   return render_template('used_pages/videopage.html',
                          videos=videos,
                          playlist_id=playlist_id,
                          teachername=teachername)
+
+@views.route("/englishhupdate")
+def sherbocalcupdate():
+    return createtxtfile("englishh" , "PLM-GVlebsoPUWOjoc9DyO2Jh8mclaRY1Q")
+
+
+
+
+
+
 
 
 
