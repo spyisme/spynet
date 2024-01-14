@@ -638,7 +638,7 @@ def giomaged():
 
 
 @views.route("/giomagedupdate")
-def englishhupdate():
+def giomagedupdate():
     return createtxtfile("giomaged" , "PLM-GVlebsoPXh1obVV3aWysV7wXlN3yET")
 
 
