@@ -25,9 +25,9 @@ logger.addHandler(file_handler)
 app = create_app()
 
 excluded_urls = {'http://spysnet.com/favicon.ico', 'http://spysnet.com/logs' , 'http://www.spysnet.com/favicon.ico', 'http://wwww.spysnet.com/logs'}
-pattern = 'http://spysnet.com/static/assets/*'
+pattern = 'http://spysnet.com/static/*'
 excluded_urls.add(pattern)
-www_pattern = 'http://www.spysnet.com/static/assets/*'
+www_pattern = 'http://www.spysnet.com/static/*'
 excluded_urls.add(www_pattern)
 
 
