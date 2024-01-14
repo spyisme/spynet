@@ -39,7 +39,8 @@ def log_request_info():
         lines = [line.rstrip() for line in file]
     if client_ip in lines:
         return "Access Denied: Your IP is banned.", 403
-    if any(fnmatch.fnmatch(request.url, pattern) for pattern in excluded_urls):
+    if any(fnmatch.fnmatch(request.url, pattern) or fnmatch.fnmatch(request.url, www_pattern) for pattern in excluded_urls):
+
         return
     if 'CF-Connecting-IP' in request.headers:
         ip_address = request.headers['CF-Connecting-IP']
