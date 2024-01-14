@@ -360,98 +360,41 @@ def chem():
                          teacher_links=teacher_links,
                          teachername=teachername,
                          imgs="yes")
-@views.route('/nasser')
-def nasser():
-  teacher_links = {
-     "Nasser-El-Batal Chapter 1": ("chemch1", "Chapter 1"),
+def render_video_page(chapter_name, playlist_id):
+    teachername = f"Chapter {chapter_name[-1]}"
+    with open(f"website/templates/teachers/{chapter_name}.txt", 'r', encoding='utf-8') as file:
+        content = file.read()
+        videos = ast.literal_eval(content)
+
+    return render_template('used_pages/videopage.html',
+                           videos=videos,
+                           playlist_id=playlist_id,
+                           teachername=teachername)
+
+# Chapter data
+teacher_links = {
+    "Nasser-El-Batal Chapter 1": ("chemch1", "Chapter 1"),
     "Nasser-El-Batal Chapter 2": ("chemch2", "Chapter 2"),
-    "Nasser-El-Batal Chapter 3": ("chemch3",   "Chapter 3"),
+    "Nasser-El-Batal Chapter 3": ("chemch3", "Chapter 3"),
     "Nasser-El-Batal Chapter 4": ("chemch4", "Chapter 4"),
     "Nasser-El-Batal Files": ("chempdfs", "Google Drive")
-  }
-  teachername = "Chemistry"
-  return render_template('used_pages/teacher.html',
-                         teacher_links=teacher_links,
-                         teachername=teachername,
-                         imgs="yes")
-@views.route("/chemch1")
-def chemch1():
-  teachername = "Chapter 1"
-  playlist_id = 'PLM-GVlebsoPXWpBDCzn4h0L36UNRYuFb2'
-  with open("website/templates/teachers/chemch1.txt", 'r', encoding='utf-8') as file:
-        content = file.read()
-        videos = ast.literal_eval(content)
-  return render_template('used_pages/videopage.html',
-                         videos=videos,
-                         playlist_id=playlist_id,
-                         teachername=teachername)
+}
 
+# Generate chapter routes dynamically
+for chapter_name, (route_name, _) in teacher_links.items():
+    route_function = lambda chapter_name=route_name, playlist_id=f"PLM-GVlebsoP{chapter_name[-1]}": render_video_page(chapter_name, playlist_id)
+    update_function = lambda chapter_name=route_name, playlist_id=f"PLM-GVlebsoP{chapter_name[-1]}": createtxtfile(chapter_name, playlist_id)
 
-@views.route("/chemch1update")
-def chemch1update():
-    return createtxtfile("chemch1" , "PLM-GVlebsoPXWpBDCzn4h0L36UNRYuFb2")
+    views.route(f"/{route_name}")(route_function)
+    views.route(f"/{route_name}update")(update_function)
 
-
-
-
-
-
-@views.route("/chemch2")
-def chemch2():
-    teachername  = "Chapter 2"
-    playlist_id = 'PLM-GVlebsoPVYwDkN3DxFcyS1QWCKfAjv'
-    with open("website/templates/teachers/chemch2.txt", 'r', encoding='utf-8') as file:
-        content = file.read()
-        videos = ast.literal_eval(content)
-    return render_template('used_pages/videopage.html',
-                          videos=videos,
-                          playlist_id=playlist_id,
-                          teachername=teachername)   
-
-
-@views.route("/chemch2update")
-def chemch2update():
-    return createtxtfile("chemch2" , "PLM-GVlebsoPVYwDkN3DxFcyS1QWCKfAjv")
-
-
-
-@views.route("/chemch3")
-def chemch3():
-    teachername = "Chapter 3"
-    playlist_id = 'PLM-GVlebsoPVXmash3q9sfG5bsD3Mt88x'
-    with open("website/templates/teachers/chemch3.txt", 'r', encoding='utf-8') as file:
-        content = file.read()
-        videos = ast.literal_eval(content)
-    return render_template('used_pages/videopage.html',
-                           videos=videos,
-                           playlist_id=playlist_id,
-                           teachername=teachername)
-
-@views.route("/chemch3update")
-def chemch3update():
-    return createtxtfile("chemch3" , "PLM-GVlebsoPVXmash3q9sfG5bsD3Mt88x")
-
-
-
-@views.route("/chemch4")
-def chemch4():
-    teachername = "Chapter 4"
-    playlist_id = 'PLM-GVlebsoPXBmTFLVyH4mWaxQELcIQ8C'
-    with open("website/templates/teachers/chemch4.txt", 'r', encoding='utf-8') as file:
-        content = file.read()
-        videos = ast.literal_eval(content)
-    return render_template('used_pages/videopage.html',
-                           videos=videos,
-                           playlist_id=playlist_id,
-                           teachername=teachername)
-
-
-@views.route("/chemch4update")
-def chemch4update():
-    return createtxtfile("chemch4" , "PLM-GVlebsoPXBmTFLVyH4mWaxQELcIQ8C")
-
-
-
+@views.route('/nasser')
+def nasser():
+    teachername = "Chemistry"
+    return render_template('used_pages/teacher.html',
+                           teacher_links=teacher_links,
+                           teachername=teachername,
+                           imgs="yes")
 
 
 #Math --------------------------------------------------------------------------------------------------------------------------
