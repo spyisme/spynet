@@ -375,7 +375,6 @@ def nasser():
                          teachername=teachername,
                          imgs="yes")
 
-
 nasserlinks = {
     "Nasser-El-Batal Chapter 1": ("chemch1", "Chapter 1", "PLM-GVlebsoPXWpBDCzn4h0L36UNRYuFb2"),
     "Nasser-El-Batal Chapter 2": ("chemch2", "Chapter 2", "PLM-GVlebsoPVYwDkN3DxFcyS1QWCKfAjv"),
@@ -402,42 +401,6 @@ def nasservids(i):
                          videos=videos,
                          playlist_id=playlist_id,
                          teachername=teachername)
-
-@views.route("/chemch2")
-def chemch2():
-    teachername  = "Chapter 2"
-    playlist_id = 'PLM-GVlebsoPVYwDkN3DxFcyS1QWCKfAjv'
-    with open("website/templates/teachers/chemch2.txt", 'r', encoding='utf-8') as file:
-        content = file.read()
-        videos = ast.literal_eval(content)
-    return render_template('used_pages/videopage.html',
-                          videos=videos,
-                          playlist_id=playlist_id,
-                          teachername=teachername)   
-
-@views.route("/chemch3")
-def chemch3():
-    teachername = "Chapter 3"
-    playlist_id = 'PLM-GVlebsoPVXmash3q9sfG5bsD3Mt88x'
-    with open("website/templates/teachers/chemch3.txt", 'r', encoding='utf-8') as file:
-        content = file.read()
-        videos = ast.literal_eval(content)
-    return render_template('used_pages/videopage.html',
-                           videos=videos,
-                           playlist_id=playlist_id,
-                           teachername=teachername)
-
-@views.route("/chemch4")
-def chemch4():
-    teachername = "Chapter 4"
-    playlist_id = 'PLM-GVlebsoPXBmTFLVyH4mWaxQELcIQ8C'
-    with open("website/templates/teachers/chemch4.txt", 'r', encoding='utf-8') as file:
-        content = file.read()
-        videos = ast.literal_eval(content)
-    return render_template('used_pages/videopage.html',
-                           videos=videos,
-                           playlist_id=playlist_id,
-                           teachername=teachername)
 
 
 
