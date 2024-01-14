@@ -3,6 +3,7 @@ from flask import request, redirect
 import logging
 import os
 import fnmatch
+from flask_login import login_required
 
 # Set up logging
 log = logging.getLogger('werkzeug')
@@ -40,6 +41,31 @@ def log_request_info():
     user_agent = request.user_agent
     
     logger.info(f"IP Address: {ip_address} accessed {request.url} , {user_agent}")
+
+
+
+
+
+
+banned_ips = set()
+
+@app.route('/ban_ip')
+@login_required
+def ban_ip():
+    ip_to_ban = request.args.get('ip')
+
+    if ip_to_ban:
+        banned_ips.add(ip_to_ban)
+        return f"IP {ip_to_ban} has been banned."
+    else:
+        return "No IP provided in the query parameters.", 400
+
+@app.before_request
+def check_banned_ip():
+    client_ip = request.remote_addr
+    if client_ip in banned_ips:
+        return "Access Denied: Your IP is banned.", 403
+
 
 @app.errorhandler(404)
 def page_not_found(e):
