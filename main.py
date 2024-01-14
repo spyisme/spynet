@@ -38,7 +38,7 @@ def log_request_info():
     with open("bannedips.txt") as file:
         lines = [line.rstrip() for line in file]
     if client_ip in lines:
-        return "Access Denied: Your IP is banned.", 403
+        return " ", 403
     if any(fnmatch.fnmatch(request.url, pattern) or fnmatch.fnmatch(request.url, www_pattern) for pattern in excluded_urls):
 
         return
