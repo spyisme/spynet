@@ -391,29 +391,17 @@ def update_route(i):
     return createtxtfile(chapter_name, playlist_id)
 
 
-
-
-@views.route("/chemch1")
-def chemch1():
-  teachername = "Chapter 1"
-  playlist_id = 'PLM-GVlebsoPXWpBDCzn4h0L36UNRYuFb2'
-  with open("website/templates/teachers/chemch1.txt", 'r', encoding='utf-8') as file:
+@views.route("/chemch<int:i>")
+def nasservids(i):
+  teachername = f"Chapter {i}"
+  playlist_id = nasserlinks.get(f"Nasser-El-Batal Chapter {i}", ("", "", ""))[2]
+  with open(f"website/templates/teachers/chemch{i}.txt", 'r', encoding='utf-8') as file:
         content = file.read()
         videos = ast.literal_eval(content)
   return render_template('used_pages/videopage.html',
                          videos=videos,
                          playlist_id=playlist_id,
                          teachername=teachername)
-
-
-# @views.route("/chemch1update")
-# def chemch1update():
-#     return createtxtfile("chemch1" , "PLM-GVlebsoPXWpBDCzn4h0L36UNRYuFb2")
-
-
-
-
-
 
 @views.route("/chemch2")
 def chemch2():
@@ -427,13 +415,6 @@ def chemch2():
                           playlist_id=playlist_id,
                           teachername=teachername)   
 
-
-# @views.route("/chemch2update")
-# def chemch2update():
-#     return createtxtfile("chemch2" , "PLM-GVlebsoPVYwDkN3DxFcyS1QWCKfAjv")
-
-
-
 @views.route("/chemch3")
 def chemch3():
     teachername = "Chapter 3"
@@ -446,12 +427,6 @@ def chemch3():
                            playlist_id=playlist_id,
                            teachername=teachername)
 
-# @views.route("/chemch3update")
-# def chemch3update():
-#     return createtxtfile("chemch3" , "PLM-GVlebsoPVXmash3q9sfG5bsD3Mt88x")
-
-
-
 @views.route("/chemch4")
 def chemch4():
     teachername = "Chapter 4"
@@ -463,12 +438,6 @@ def chemch4():
                            videos=videos,
                            playlist_id=playlist_id,
                            teachername=teachername)
-
-
-# @views.route("/chemch4update")
-# def chemch4update():
-#     return createtxtfile("chemch4" , "PLM-GVlebsoPXBmTFLVyH4mWaxQELcIQ8C")
-
 
 
 
