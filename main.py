@@ -35,9 +35,9 @@ def log_request_info():
         ip_address = request.headers['CF-Connecting-IP']
     else:
         ip_address = request.remote_addr
+    if "UptimeRobot" in user_agent:
+        return    
     user_agent = request.user_agent
-    device_details = f"Device: {user_agent.platform} - Browser: {user_agent.browser} - Version: {user_agent.version}"
-
     logger.info(f"IP Address: {ip_address} accessed {request.url} , {user_agent}")
 
 @app.errorhandler(404)
