@@ -30,7 +30,7 @@ excluded_urls.add(pattern)
 
 @app.before_request
 def log_request_info():
-    client_ip = request.remote_addr
+    client_ip = request.headers['CF-Connecting-IP']
     if client_ip in banned_ips:
         return "Access Denied: Your IP is banned.", 403
     if any(fnmatch.fnmatch(request.url, pattern) for pattern in excluded_urls):
