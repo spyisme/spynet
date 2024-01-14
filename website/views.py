@@ -384,7 +384,7 @@ def nasser():
 
 
 @views.route("/chemch<int:i>update")
-def update_route(i):
+def chemupdate(i):
     chapter_name = f"chemch{i}"
     playlist_id = nasserlinks.get(f"Nasser-El-Batal Chapter {i}", ("", "", ""))[2]
 
@@ -697,7 +697,7 @@ def bioch(i):
 
 
 @views.route("/bioch<int:i>update")
-def update_route(i):
+def bioupdate(i):
     chapter_name = f"bioch{i}"
     playlist_id = bio_links.get(f"Chapter {i}", ("", "", ""))[2]
 
