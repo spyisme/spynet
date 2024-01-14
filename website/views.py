@@ -232,7 +232,7 @@ def adby():
 
 
 @views.route("/adbyupdate")
-def nawarch1update():
+def adbyupdate():
     return createtxtfile("adby" , "PLM-GVlebsoPWZG7j5kRK479fragOS83By")
 
 
