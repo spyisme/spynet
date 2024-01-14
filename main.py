@@ -22,7 +22,7 @@ logger.addHandler(file_handler)
 
 app = create_app()
 
-excluded_urls = {'/favicon.ico', '/logs'}
+excluded_urls = {'http://spysnet.com/favicon.ico', 'http://spysnet.com/logs'}
 
 @app.before_request
 def log_request_info():
