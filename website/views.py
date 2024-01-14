@@ -675,7 +675,7 @@ bio_links = {
 @views.route('/daif')
 def biology():
     teacher_links = {key: (value[0], value[1]) for key, value in bio_links.items()}
-    teacher_links["Biology Files"] = ("biopdfs", "Google Drive") 
+    # teacher_links["Daif Files"] = ("biopdfs", "Google Drive") 
     teachername = "Biology"
     return render_template('used_pages/teacher.html',
                            teacher_links=teacher_links,
