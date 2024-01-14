@@ -616,7 +616,7 @@ def samehh(i):
 @views.route("/samehh<int:i>update")
 def samehupdate(i):
     chapter_name = f"samehh{i}"
-    playlist_id = sameh_links.get(f"Chapter {i}", ("", "", ""))[2]
+    playlist_id = sameh_links.get(f"Sameh Nash2t Chapter {i}", ("", "", ""))[2]
     return createtxtfile(chapter_name, playlist_id)
 
 
