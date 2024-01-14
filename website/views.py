@@ -380,10 +380,12 @@ teacher_links = {
     "Nasser-El-Batal Files": ("chempdfs", "Google Drive")
 }
 
-# Generate chapter routes dynamically
 for chapter_name, (route_name, _) in teacher_links.items():
-    route_function = lambda chapter_name=route_name, playlist_id=f"PLM-GVlebsoP{chapter_name[-1]}": render_video_page(chapter_name, playlist_id)
-    update_function = lambda chapter_name=route_name, playlist_id=f"PLM-GVlebsoP{chapter_name[-1]}": createtxtfile(chapter_name, playlist_id)
+    def route_function(chapter_name=route_name, playlist_id=f"PLM-GVlebsoP{chapter_name[-1]}"):
+        return render_video_page(chapter_name, playlist_id)
+
+    def update_function(chapter_name=route_name, playlist_id=f"PLM-GVlebsoP{chapter_name[-1]}"):
+        return createtxtfile(chapter_name, playlist_id)
 
     views.route(f"/{route_name}")(route_function)
     views.route(f"/{route_name}update")(update_function)
