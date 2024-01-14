@@ -696,7 +696,12 @@ def bioch(i):
                            teachername=teachername)
 
 
+@views.route("/bioch<int:i>update")
+def update_route(i):
+    chapter_name = f"bioch{i}"
+    playlist_id = bio_links.get(f"Chapter {i}", ("", "", ""))[2]
 
+    return createtxtfile(chapter_name, playlist_id)
 
 
 
