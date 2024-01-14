@@ -174,6 +174,21 @@ a :hover{
 color:white ;
 }
 
+
+.bottom-image {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    user-select: none; /* Prevent text selection within the container */
+    pointer-events: none; 
+    
+}
+.img{
+  user-select: none; /* Prevent text selection within the container */
+    pointer-events: none; 
+}
+
+
   </style>
 
 
@@ -190,7 +205,7 @@ color:white ;
   <div class="nav">
     {% if teachername == "Arabic"or teachername == "English" or teachername == "Biology" or teachername == "Chemistry" or teachername == "Geology" or teachername == "German" or teachername == "Math" or teachername == "Physics" %}
 
-    <img src="static/assets/subjects/{{ teachername }}11.png"></img>
+    <img class="img" src="static/assets/subjects/{{ teachername }}11.png"></img>
             <!-- <p>Please donate to keep this site up. -->
          {%else%}
         <h1>✰ {{ teachername }} ✰</h1>
@@ -221,6 +236,7 @@ color:white ;
           </li>
           {% endfor %}
       </ul>
+      <img class="bottom-image" src="https://cdn.discordapp.com/attachments/1192117992457257074/1196011140745003058/Asset_7.png"></img>
   
 </body>
 
