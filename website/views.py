@@ -360,20 +360,9 @@ def chem():
                          teacher_links=teacher_links,
                          teachername=teachername,
                          imgs="yes")
-@views.route('/nasser')
-def nasser():
-  teacher_links = {
-     "Nasser-El-Batal Chapter 1": ("chemch1", "Chapter 1"),
-    "Nasser-El-Batal Chapter 2": ("chemch2", "Chapter 2"),
-    "Nasser-El-Batal Chapter 3": ("chemch3",   "Chapter 3"),
-    "Nasser-El-Batal Chapter 4": ("chemch4", "Chapter 4"),
-    "Nasser-El-Batal Files": ("chempdfs", "Google Drive")
-  }
-  teachername = "Chemistry"
-  return render_template('used_pages/teacher.html',
-                         teacher_links=teacher_links,
-                         teachername=teachername,
-                         imgs="yes")
+
+
+
 
 nasserlinks = {
     "Nasser-El-Batal Chapter 1": ("chemch1", "Chapter 1", "PLM-GVlebsoPXWpBDCzn4h0L36UNRYuFb2"),
@@ -381,6 +370,17 @@ nasserlinks = {
     "Nasser-El-Batal Chapter 3": ("chemch3", "Chapter 3", "PLM-GVlebsoPVXmash3q9sfG5bsD3Mt88x"),
     "Nasser-El-Batal Chapter 4": ("chemch4", "Chapter 4", "PLM-GVlebsoPXBmTFLVyH4mWaxQELcIQ8C")
 }
+
+
+@views.route('/nasser')
+def nasser():
+  teacher_links = nasserlinks + {"Nasser-El-Batal Files": ("chempdfs", "Google Drive")}
+  teachername = "Chemistry"
+  return render_template('used_pages/teacher.html',
+                         teacher_links=teacher_links,
+                         teachername=teachername,
+                         imgs="yes")
+
 
 @views.route("/chemch<int:i>update")
 def update_route(i):
