@@ -820,11 +820,17 @@ def german():
 def germann():
   teachername = "German"
   playlist_id = 'PLM-GVlebsoPWNh__WI8QAIN2xQjawgB4i'
-  videos = get_playlist_videos(playlist_id)
+  with open("website/templates/teachers/germann.txt", 'r', encoding='utf-8') as file:
+        content = file.read()
+        videos = ast.literal_eval(content)
   return render_template('used_pages/videopage.html',
                          videos=videos,
                          playlist_id=playlist_id,
                          teachername=teachername)
+
+@views.route("/germannupdate")
+def germannupdate():
+    return createtxtfile("germann" , "PLM-GVlebsoPWNh__WI8QAIN2xQjawgB4i")
 
 
 
