@@ -38,7 +38,7 @@ def log_request_info():
     user_agent = request.user_agent
     device_details = f"Device: {user_agent.platform} - Browser: {user_agent.browser} - Version: {user_agent.version}"
 
-    logger.info(f"IP Address: {ip_address} accessed {request.url} , {device_details}")
+    logger.info(f"IP Address: {ip_address} accessed {request.url} , {user_agent}")
 
 @app.errorhandler(404)
 def page_not_found(e):
