@@ -195,15 +195,10 @@ def display_links():
 
 
 @views.route("/logs")
-def get_visitor_ip():
-    # Check if the request is coming through Cloudflare
-    if 'CF-Connecting-IP' in request.headers:
-        visitor_ip = request.headers['CF-Connecting-IP']
-    else:
-        # If not through Cloudflare, use the remote address
-        visitor_ip = request.remote_addr
-
-    return f'The visitor\'s IP address is: {visitor_ip}'
+def logs():
+    with open('access_log.txt') as f:
+        lines = f.readlines()
+    return lines
 
 
 @views.route("/")
