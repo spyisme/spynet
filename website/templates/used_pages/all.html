@@ -135,7 +135,10 @@ html{
 
             
             
-            
+    .img{
+      user-select: none; /* Prevent text selection within the container */
+    pointer-events: none; 
+    }        
             
  .banner {
   width: 100%;
@@ -257,6 +260,14 @@ box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
         }
 
 
+        .bottom-image {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    user-select: none; /* Prevent text selection within the container */
+    pointer-events: none; 
+    
+}
 
     </style>
   
@@ -332,6 +343,9 @@ box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
 
     </section>
 
+
+
+    <img class="bottom-image" src="https://cdn.discordapp.com/attachments/1192117992457257074/1196011140745003058/Asset_7.png"></img>
 </body>
 
   <script>
