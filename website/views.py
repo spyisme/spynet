@@ -539,6 +539,18 @@ salama_info = {
 
 
 }
+
+
+@views.route("/salamacourse<int:course_number>update")
+def salamacoursesupdate(course_number):
+    course_key = f"Course {course_number}"
+    if course_key not in salama_info:
+        return redirect(url_for('views.display_links'))
+    playlist_id = salama_info[course_key]["id"]
+
+    return  createtxtfile(f"salama{course_key}", playlist_id)
+
+
 @views.route('/salama')
 def salama():
     
@@ -553,7 +565,10 @@ def salamach(course_number):
         return redirect(url_for('views.display_links'))
     teachername = course_key
     playlist_id = salama_info[course_key]["id"]
-    videos = get_playlist_videos(playlist_id)
+    # videos = get_playlist_videos(playlist_id)
+    with open(f"website/templates/teachers/salama{course_key}.txt", 'r', encoding='utf-8') as file:
+        content = file.read()
+        videos = ast.literal_eval(content)
     return render_template('used_pages/videopage.html', videos=videos, playlist_id=playlist_id, teachername=teachername)
 
 
