@@ -374,6 +374,25 @@ def nasser():
                          teacher_links=teacher_links,
                          teachername=teachername,
                          imgs="yes")
+
+
+nasserlinks = {
+    "Nasser-El-Batal Chapter 1": ("chemch1", "Chapter 1", "PLM-GVlebsoPXWpBDCzn4h0L36UNRYuFb2"),
+    "Nasser-El-Batal Chapter 2": ("chemch2", "Chapter 2", "PLM-GVlebsoPVYwDkN3DxFcyS1QWCKfAjv"),
+    "Nasser-El-Batal Chapter 3": ("chemch3", "Chapter 3", "PLM-GVlebsoPVXmash3q9sfG5bsD3Mt88x"),
+    "Nasser-El-Batal Chapter 4": ("chemch4", "Chapter 4", "PLM-GVlebsoPXBmTFLVyH4mWaxQELcIQ8C")
+}
+
+@views.route("/chemch<int:i>update")
+def update_route(i):
+    chapter_name = f"chemch{i}"
+    playlist_id = nasserlinks.get(f"Nasser-El-Batal Chapter {i}", ("", "", ""))[2]
+
+    return createtxtfile(chapter_name, playlist_id)
+
+
+
+
 @views.route("/chemch1")
 def chemch1():
   teachername = "Chapter 1"
@@ -387,9 +406,9 @@ def chemch1():
                          teachername=teachername)
 
 
-@views.route("/chemch1update")
-def chemch1update():
-    return createtxtfile("chemch1" , "PLM-GVlebsoPXWpBDCzn4h0L36UNRYuFb2")
+# @views.route("/chemch1update")
+# def chemch1update():
+#     return createtxtfile("chemch1" , "PLM-GVlebsoPXWpBDCzn4h0L36UNRYuFb2")
 
 
 
@@ -409,9 +428,9 @@ def chemch2():
                           teachername=teachername)   
 
 
-@views.route("/chemch2update")
-def chemch2update():
-    return createtxtfile("chemch2" , "PLM-GVlebsoPVYwDkN3DxFcyS1QWCKfAjv")
+# @views.route("/chemch2update")
+# def chemch2update():
+#     return createtxtfile("chemch2" , "PLM-GVlebsoPVYwDkN3DxFcyS1QWCKfAjv")
 
 
 
@@ -427,9 +446,9 @@ def chemch3():
                            playlist_id=playlist_id,
                            teachername=teachername)
 
-@views.route("/chemch3update")
-def chemch3update():
-    return createtxtfile("chemch3" , "PLM-GVlebsoPVXmash3q9sfG5bsD3Mt88x")
+# @views.route("/chemch3update")
+# def chemch3update():
+#     return createtxtfile("chemch3" , "PLM-GVlebsoPVXmash3q9sfG5bsD3Mt88x")
 
 
 
@@ -446,9 +465,9 @@ def chemch4():
                            teachername=teachername)
 
 
-@views.route("/chemch4update")
-def chemch4update():
-    return createtxtfile("chemch4" , "PLM-GVlebsoPXBmTFLVyH4mWaxQELcIQ8C")
+# @views.route("/chemch4update")
+# def chemch4update():
+#     return createtxtfile("chemch4" , "PLM-GVlebsoPXBmTFLVyH4mWaxQELcIQ8C")
 
 
 
