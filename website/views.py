@@ -590,7 +590,6 @@ sameh_links = {
     "Sameh Nash2t Chapter 3": ("samehh3", "Chapter 3", "PLM-GVlebsoPX1xJ0JSvE7gLfkPEKIo3kA"),
     "Sameh Nash2t Chapter 4": ("samehh4", "Chapter 4", "PLM-GVlebsoPX_zFeoKW57nOoPlLUMlxZR"),
 }
-
 @views.route('/sameh')
 def sameh():
     teacher_links = {key: (value[0], value[1]) for key, value in sameh_links.items()}
@@ -617,8 +616,7 @@ def samehh(i):
 @views.route("/samehh<int:i>update")
 def samehupdate(i):
     chapter_name = f"samehh{i}"
-    playlist_id = bio_links.get(f"Chapter {i}", ("", "", ""))[2]
-
+    playlist_id = sameh_links.get(f"Chapter {i}", ("", "", ""))[2]
     return createtxtfile(chapter_name, playlist_id)
 
 
