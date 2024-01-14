@@ -31,7 +31,9 @@ excluded_urls.add(pattern)
 @app.before_request
 def log_request_info():
     client_ip = request.headers['CF-Connecting-IP']
-    if client_ip in banned_ips:
+    with open("bannedips.txt") as file:
+        lines = [line.rstrip() for line in file]
+    if client_ip in lines:
         return "Access Denied: Your IP is banned.", 403
     if any(fnmatch.fnmatch(request.url, pattern) for pattern in excluded_urls):
         return
@@ -48,24 +50,22 @@ def log_request_info():
 
 
 
-
-
-banned_ips = set()
-
 @app.route('/ban_ip')
 @login_required
 def ban_ip():
     ip_to_ban = request.args.get('ip')
 
     if ip_to_ban:
-        banned_ips.add(ip_to_ban)
+        with open("bannedips.txt", "a") as myfile:
+            myfile.write(f"{ip_to_ban}\n")  
         return f"IP {ip_to_ban} has been banned."
     else:
         return "No IP provided in the query parameters.", 400
 
 @app.route("/unbanall")
 def unbanall():
-        banned_ips.clear()
+    with open("bannedips.txt", 'w'):
+        pass 
         return "done"
 
 
