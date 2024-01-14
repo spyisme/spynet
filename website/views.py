@@ -232,11 +232,11 @@ def Physics():
 @views.route('/nawar')
 def nawar():
   teacher_links = {
-  "Nawar Chapter 1": ("/nawarch1", "⚡ Chapter 1 ⚡"),
-    "Nawar Chapter 1 Revision": ("nawarch1rev", "⚡ Revision 1 ⚡"),
-    "Nawar Chapter 2": ("nawarch2", "⚡ Chapter 2 ⚡"),
-    "Nawar Chapter 2 Revision": ("nawarch2rev", "⚡ Revision 2 ⚡"),
-    "Nawar Chapter 3": ("nawarch3", "⚡ Chapter 3 ⚡"),
+  "Nawar Chapter 1": ("/nawarch1", "Chapter 1"),
+    "Nawar Chapter 1 Revision": ("nawarch1rev", "Revision 1"),
+    "Nawar Chapter 2": ("nawarch2", "Chapter 2"),
+    "Nawar Chapter 2 Revision": ("nawarch2rev", "Revision 2"),
+    "Nawar Chapter 3": ("nawarch3", "Chapter 3"),
     "Nawar Files": ("nawarpdfs", "Google Drive")
   }
   teachername = "Physics"
@@ -363,10 +363,10 @@ def chem():
 @views.route('/nasser')
 def nasser():
   teacher_links = {
-     "Nasser-El-Batal Chapter 1": ("chemch1", "⚡ Chapter 1 ⚡"),
-    "Nasser-El-Batal Chapter 2": ("chemch2", "⚡ Chapter 2 ⚡"),
-    "Nasser-El-Batal Chapter 3": ("chemch3",   "⚡ Chapter 3 ⚡"),
-    "Nasser-El-Batal Chapter 4": ("chemch4", "⚡ Chapter 4 ⚡"),
+     "Nasser-El-Batal Chapter 1": ("chemch1", "Chapter 1"),
+    "Nasser-El-Batal Chapter 2": ("chemch2", "Chapter 2"),
+    "Nasser-El-Batal Chapter 3": ("chemch3",   "Chapter 3"),
+    "Nasser-El-Batal Chapter 4": ("chemch4", "Chapter 4"),
     "Nasser-El-Batal Files": ("chempdfs", "Google Drive")
   }
   teachername = "Chemistry"
@@ -469,8 +469,8 @@ def math():
 @views.route('/sherbo')
 def sherbo():
   teacher_links = {
-    "Sherbo Statics": ("sherbostatics", "⚡ Statics ⚡"),
-    "Sherbo Calculus": ("sherbocalc", "⚡ Calculus ⚡"),
+    "Sherbo Statics": ("sherbostatics", "Statics"),
+    "Sherbo Calculus": ("sherbocalc", "Calculus"),
     "Sherbo Files": ("sherbopdfs", "Google Drive")
   }
   teachername = "Math"
@@ -583,7 +583,7 @@ def salamach(course_number):
 @views.route('/arabic')
 def gedo():
   teacher_links = {
-    "Gedo": ("gedoo", "⚡ Gedo ⚡"),
+    "Gedo": ("gedoo", "Gedo"),
 }
   teachername = "Arabic"
   return render_template('used_pages/teacher.html',
