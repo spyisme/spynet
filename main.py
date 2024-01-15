@@ -19,7 +19,11 @@ app = create_app()
 
 
 @app.before_request
-def ipwhitelis():
+def ip_whitelist():
+    # Allow requests to "/static/*" without IP check
+    if request.path.startswith('/static/'):
+        return
+
     with open("allowedips.txt") as file:
         lines = [line.rstrip() for line in file]
 
@@ -27,12 +31,10 @@ def ipwhitelis():
         ip_address = request.headers['CF-Connecting-IP']
     else:
         ip_address = request.remote_addr
-        with open("allowedips.txt", "a") as file:
-            file.write(f"{ip_address}\n")
-
 
     if ip_address not in lines:
         return jsonify({'Ip': f'{ip_address}'})
+
     
         #return render_template('test.html', ip_address=ip_address), 403    
 
