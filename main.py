@@ -22,9 +22,9 @@ app = create_app()
 def ip_whitelist():
     print(request.path)
 
-    if request.path.startswith('/'):
+    if '/static/' in request.path:
         return
-
+    
     with open("allowedips.txt") as file:
         lines = [line.rstrip() for line in file]
 
