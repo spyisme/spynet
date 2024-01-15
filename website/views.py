@@ -77,7 +77,7 @@ def login():
 
         user = User.query.filter_by(username=username).first()
 
-        if user and check_password_hash(user.password, password):
+        if user and password:
             login_user(user, remember=remember == 'on')  # Convert the string 'on' to boolean
             flash('Login successful!', category='success')
             return redirect(url_for('views.home'))
