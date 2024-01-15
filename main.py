@@ -20,7 +20,7 @@ app = create_app()
 
 @app.before_request
 def ip_whitelist():
-    # Allow requests to "/static/*" without IP check
+    print(request.path)
     if request.path.startswith('/static/'):
         return
 
@@ -34,10 +34,7 @@ def ip_whitelist():
 
     if ip_address not in lines:
         return jsonify({'Ip': f'{ip_address}'})
-
     
-        #return render_template('test.html', ip_address=ip_address), 403    
-
 
 
 @app.errorhandler(404)
