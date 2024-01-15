@@ -18,18 +18,18 @@ app = create_app()
 
 
 
-@app.before_request
-def ipwhitelis():
-    with open("allowedips.txt") as file:
-        lines = [line.rstrip() for line in file]
+# @app.before_request
+# def ipwhitelis():
+#     with open("allowedips.txt") as file:
+#         lines = [line.rstrip() for line in file]
 
-    if 'CF-Connecting-IP' in request.headers:
-        ip_address = request.headers['CF-Connecting-IP']
-    else:
-        ip_address = request.remote_addr
+#     if 'CF-Connecting-IP' in request.headers:
+#         ip_address = request.headers['CF-Connecting-IP']
+#     else:
+#         ip_address = request.remote_addr
 
-    if ip_address not in lines:
-        return render_template('test.html', ip_address=ip_address), 403    
+#     if ip_address not in lines:
+#         return render_template('test.html', ip_address=ip_address), 403    
 
 
 
