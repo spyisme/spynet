@@ -2,8 +2,11 @@ from website import create_app
 from flask import request, redirect
 import logging
 
+import os 
 
 
+
+os.system('title Spynet')
 
 log = logging.getLogger('werkzeug')
 log.setLevel(logging.ERROR)
