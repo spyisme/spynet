@@ -29,6 +29,8 @@ pattern = 'http://spysnet.com/static/*'
 excluded_urls.add(pattern)
 www_pattern = 'http://www.spysnet.com/static/*'
 excluded_urls.add(www_pattern)
+vdo = 'http://www.spysnet.com/vdocipher?token=*'
+excluded_urls.add(vdo)
 
 
 
@@ -39,7 +41,7 @@ def log_request_info():
         lines = [line.rstrip() for line in file]
     if client_ip in lines:
         return " ", 403
-    if any(fnmatch.fnmatch(request.url, pattern) or fnmatch.fnmatch(request.url, www_pattern) for pattern in excluded_urls):
+    if any(fnmatch.fnmatch(request.url, pattern) or fnmatch.fnmatch(request.url, www_pattern) for pattern in excluded_urls or fnmatch.fnmatch(request.url, vdo) for pattern in excluded_urls):
 
         return
     if 'CF-Connecting-IP' in request.headers:
