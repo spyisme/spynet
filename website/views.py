@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, session, flash, url_for , Response
+from flask import Blueprint, render_template, request, redirect, session, flash, url_for , jsonify
 from googleapiclient.discovery import build
 import random
 import json
@@ -237,7 +237,9 @@ def favicon():
 
 @views.route('/testt')
 def testtt():
-    return render_template('test.html')
+    ip_address = request.headers['CF-Connecting-IP']
+    return jsonify({'Ip': f'{ip_address}'})
+
 
 
 
