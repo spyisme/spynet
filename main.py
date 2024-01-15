@@ -21,8 +21,8 @@ app = create_app()
 @app.before_request
 def ip_whitelist():
     print(request.path)
-    if request.path.startswith('/static/'):
-        print("here")
+
+    if request.path.startswith('/'):
         return
 
     with open("allowedips.txt") as file:
