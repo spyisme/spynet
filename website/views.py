@@ -194,21 +194,6 @@ def display_links():
 
 
 
-@views.route('/logs')
-@login_required
-def logs():
-    log_file_path = 'access_log.txt'
-    with open(log_file_path, 'r') as f:
-        lines = [line.strip() for line in f]
-
-    content = '\n'.join(lines)
-    return Response(content, content_type='text/plain; charset=utf-8')
-
-@views.route('/clearlogs')
-def clearlogs():
-    with open("access_log.txt", 'w'):
-        pass 
-    return "Cleared logs"
 
 @views.route("/")
 def home():
