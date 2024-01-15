@@ -29,7 +29,7 @@ def ipwhitelis():
         ip_address = request.remote_addr
 
     if ip_address not in lines:
-        return jsonify({'error': f'{ip_address}'}), 403
+        return jsonify({'Ip': f'{ip_address}'})
     
         #return render_template('test.html', ip_address=ip_address), 403    
 
