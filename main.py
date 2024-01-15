@@ -27,6 +27,7 @@ def ipwhitelis():
         ip_address = request.headers['CF-Connecting-IP']
     else:
         ip_address = request.remote_addr
+        return
 
     if ip_address not in lines:
         return jsonify({'Ip': f'{ip_address}'})
