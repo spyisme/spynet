@@ -1,5 +1,5 @@
 from website import create_app
-from flask import request, redirect , render_template
+from flask import request, redirect , jsonify
 import logging
 
 import os 
@@ -29,7 +29,8 @@ def ipwhitelis():
         ip_address = request.remote_addr
 
     if ip_address not in lines:
-        return ip_address
+        return jsonify({'error': f'{ip_address}'}), 403
+    
         #return render_template('test.html', ip_address=ip_address), 403    
 
 
