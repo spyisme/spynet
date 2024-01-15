@@ -18,23 +18,23 @@ app = create_app()
 
 
 
-@app.before_request
-def ip_whitelist():
+# @app.before_request
+# def ip_whitelist():
 
-    if 'static' in request.path:
+#     if 'static' in request.path:
 
-        return
+#         return
 
-    with open("allowedips.txt") as file:
-        lines = [line.rstrip() for line in file]
+#     with open("allowedips.txt") as file:
+#         lines = [line.rstrip() for line in file]
 
-    if 'CF-Connecting-IP' in request.headers:
-        ip_address = request.headers['CF-Connecting-IP']
-    else:
-        ip_address = request.remote_addr
+#     if 'CF-Connecting-IP' in request.headers:
+#         ip_address = request.headers['CF-Connecting-IP']
+#     else:
+#         ip_address = request.remote_addr
 
-    if ip_address not in lines:
-        return jsonify({'Ip': f'{ip_address}'})
+#     if ip_address not in lines:
+#         return jsonify({'Ip': f'{ip_address}'})
     
 
 
