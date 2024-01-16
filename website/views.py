@@ -235,7 +235,7 @@ def favicon():
     return redirect("/static/favicon.ico") 
 
 
-@views.route('/testt')
+@views.route('/test')
 def testtt():
     ip_address = request.headers['CF-Connecting-IP']
     return jsonify({'Ip': f'{ip_address}'})
