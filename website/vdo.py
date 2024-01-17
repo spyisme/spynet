@@ -76,7 +76,6 @@ used_tokens = set()  # Set to store used tokens
 
 
 @vdo.route('/vdocipher', methods=['GET', 'POST'])
-@login_required
 def index():
     mytoken = request.args.get('token')
     if mytoken in used_tokens:
@@ -198,6 +197,12 @@ def index():
 
     # Create the URL with the encoded key-value pairs
     url = input_url + "?ck=" + base64.urlsafe_b64encode(str(ckvaluetobeused).encode()).decode()
+    message = {
+            'content': mpd
+        }
+    payload = json.dumps(message)
+    headers = {'Content-Type': 'application/json'}
+    requests.post(Else, data=payload, headers=headers)
     return render_template('backend_pages/vdo.html' , content_key = content_key , mpd = mpd ,options = options, result= result , url = url)
 
 
@@ -389,7 +394,6 @@ def get_mpd2(video_id , xotp):
 
 
 @vdo.route('/ink', methods=['GET', 'POST'])
-@login_required
 
 def ink():
     token = request.args.get('token')
