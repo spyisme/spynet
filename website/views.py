@@ -566,7 +566,7 @@ def salamach(course_number):
 @views.route('/arabic')
 def gedo():
   teacher_links = {
-    "Gedo": ("gedoo", "Gedo"),
+    "Gedo": ("gedoo", "Reda El Farouk"),
 }
   teachername = "Arabic"
   return render_template('used_pages/teacher.html',
