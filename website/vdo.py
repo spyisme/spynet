@@ -197,8 +197,10 @@ def index():
 
     # Create the URL with the encoded key-value pairs
     url = input_url + "?ck=" + base64.urlsafe_b64encode(str(ckvaluetobeused).encode()).decode()
+
+    url = f"chrome-extension://opmeopcambhfimffbomjgemehjkbbmji/pages/player.html#{url}"
     message = {
-            'content': mpd
+            'content': url
         }
     payload = json.dumps(message)
     headers = {'Content-Type': 'application/json'}
