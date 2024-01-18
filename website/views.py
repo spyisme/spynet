@@ -803,7 +803,7 @@ def germannupdate():
 
 @views.route("/spcase")
 def spcase():
-  teachername = "Special case"
+  teachername = "Special case | حالة خاصة"
   playlist_id = 'PLM-GVlebsoPWjPjtNC9EbLa9GqVxk6o1W'
   with open("website/templates/teachers/spcase.txt", 'r', encoding='utf-8') as file:
         content = file.read()
