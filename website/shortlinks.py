@@ -176,3 +176,8 @@ def vdo():
 def germanpdfs():
     return redirect("https://drive.google.com/drive/folders/1Mfyook7uXVp0d3y85WaRUuXB_F6Or_Yn?usp=drive_link") 
             
+
+@shortlinks.route("/discord")
+def discord():
+    return redirect("https://discord.gg/pW3f6TdEzm") 
+            
