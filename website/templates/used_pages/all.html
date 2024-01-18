@@ -297,6 +297,7 @@ box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
     <p><button class="button" id="homeBtn" onclick="showDiv('homestuff', 'homeBtn')">Subjects</button></p>
     <p><button class="button" id="booksBtn" onclick="showDiv('booksstuff', 'booksBtn')">Books</button></p>
     <p><button class="button" id="pdfsBtn" onclick="showDiv('pdfsstuff', 'pdfsBtn')">Pdfs</button></p>
+    <p><button class="button" id="otherBtn" onclick="showDiv('othersstuff', 'otherBtn')">Other</button></p>
 
 
 </div>
@@ -320,7 +321,26 @@ box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
 
 
 </div>
-      
+<div id="othersstuff" class="content hidden">
+  <ul>
+    {% for item in other %}
+        <li>
+            <a href="{{ item }}">
+                <div class="card">
+                    {{ item }}
+                </div>
+            </a>
+        </li>
+
+    {% endfor %}
+
+  </ul>
+
+
+
+
+</div>
+    
 
 <div id="booksstuff" class="content hidden">
 
