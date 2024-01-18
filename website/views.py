@@ -197,7 +197,7 @@ def display_links():
 
 @views.route("/")
 def home():
-    lines = ["physics", "chemistry","math", "arabic","geology", "biology","english" , "german" , 'adby']
+    lines = ["physics", "chemistry","math", "arabic","geology", "biology","english" , "german" , 'adby' , 'spcase']
     return render_template('used_pages/all.html', lines=lines, teachername="All")
 
 
@@ -801,9 +801,20 @@ def germannupdate():
 
 
 
+@views.route("/spcase")
+def spcase():
+  teachername = "Special case"
+  playlist_id = 'PLM-GVlebsoPWjPjtNC9EbLa9GqVxk6o1W'
+  with open("website/templates/teachers/spcase.txt", 'r', encoding='utf-8') as file:
+        content = file.read()
+        videos = ast.literal_eval(content)
+  return render_template('used_pages/videopage.html',
+                         videos=videos,
+                         playlist_id=playlist_id,
+                         teachername=teachername)
 
-
-
-
+@views.route("/spcaseupdate")
+def spcaseupdate():
+    return createtxtfile("spcase" , "PLM-GVlebsoPWjPjtNC9EbLa9GqVxk6o1W")
 
 
