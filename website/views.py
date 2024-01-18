@@ -253,7 +253,7 @@ def watwatchch():
 @views.route('/physics')
 def Physics():
   teacher_links = {
-  "Nawar": ("/nawar", "Nawar"),
+  "Nawar": ("/nawar", "Ahmad Nawar"),
   }
   teachername = "Physics"
   return render_template('used_pages/teacher.html',
@@ -384,7 +384,7 @@ def nawarch3update():
 @views.route('/chemistry')
 def chem():
   teacher_links = {
-     "Nasser-El-Batal": ("nasser", "Nasser-El-Batal")
+     "Nasser": ("nasser", "Nasser-El-Batal")
   }
   teachername = "Chemistry"
   return render_template('used_pages/teacher.html',
@@ -606,7 +606,7 @@ def createtxtfile(name ,playlist_id ):
 @views.route('/geology')
 def geology():
   teacher_links = {
-    "Sameh Nash2t": ("sameh", "Sameh Nash2t"),
+    "Sameh": ("sameh", "Sameh Nash2t"),
     "Gio maged": ("giomaged", "Gio maged")
   }
   teachername = "Geology"
