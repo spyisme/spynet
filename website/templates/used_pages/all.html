@@ -210,6 +210,10 @@ h1{
   transition: transform 0.2s, box-shadow 0.2s;
   display: flex;
   align-items: center;
+  width: 33.33%; /* Set the width of each card to one-third */
+  box-sizing: border-box; /* Include padding and border in the total width */
+  box-flex: 1; /* Ensure flex items share the available space equally */
+  flex-grow: 1; /* Allow cards to grow to fill the container */
 }
 
 .card img {
@@ -222,6 +226,7 @@ h1{
   text-align: left;
   text-transform: capitalize;
 }
+
 
 
 
