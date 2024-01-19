@@ -197,7 +197,7 @@ def display_links():
 
 @views.route("/")
 def home():
-    lines = ["physics", "chemistry","math", "arabic","geology", "biology","english" , "german" , 'adby']
+    lines = ["physics", "chemistry","maths", "arabic","geology", "biology","english" , "german" , 'adby']
 
 
     return render_template('used_pages/all.html', lines=lines , teachername="All")
@@ -270,7 +270,7 @@ def nawar():
     "Nawar Chapter 2": ("nawarch2", "Chapter 2"),
     "Nawar Chapter 2 Revision": ("nawarch2rev", "Revision 2"),
     "Nawar Chapter 3": ("nawarch3", "Chapter 3"),
-    "Nawar Files": ("nawarpdfs", "Google Drive")
+    # "Nawar Files": ("nawarpdfs", "Google Drive")
   }
   teachername = "Physics"
   return render_template('used_pages/teacher.html',
@@ -408,7 +408,7 @@ nasserlinks = {
 @views.route('/nasser')
 def nasser():
   teacher_links = {key: (value[0], value[1]) for key, value in nasserlinks.items()}
-  teacher_links["Nasser-El-Batal Files"] = ("chempdfs", "Google Drive")
+#   teacher_links["Nasser-El-Batal Files"] = ("chempdfs", "Google Drive")
   teachername = "Chemistry"
   return render_template('used_pages/teacher.html',
                          teacher_links=teacher_links,
@@ -440,7 +440,7 @@ def nasservids(i):
 
 
 #Math --------------------------------------------------------------------------------------------------------------------------
-@views.route('/math')
+@views.route('/maths')
 def math():
   teacher_links = {
   "Sherbo": ("/sherbo", "Omar sherbeni"),
@@ -456,7 +456,7 @@ def sherbo():
   teacher_links = {
     "Sherbo Statics": ("sherbostatics", "Statics"),
     "Sherbo Calculus": ("sherbocalc", "Calculus"),
-    "Sherbo Files": ("sherbopdfs", "Google Drive")
+    # "Sherbo Files": ("sherbopdfs", "Google Drive")
   }
   teachername = "Math"
   return render_template('used_pages/teacher.html',
@@ -775,7 +775,7 @@ def englishhupdate():
 def german():
   teacher_links = {
      "German": ("germann", "Abd El Moez"),
-     "German Files": ("germanpdfs", "Google Drive"),
+    #  "German Files": ("germanpdfs", "Google Drive"),
 
   }
   teachername = "German"
