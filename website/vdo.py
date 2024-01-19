@@ -229,7 +229,7 @@ def form():
     return render_template('index.html' , option = options)
 
 
-@vdo.route('/discord', methods=['GET', 'POST'])
+@vdo.route('/vdodiscord', methods=['GET', 'POST'])
 def discord():
     result = session.get('result')
     name = request.args.get('name')
