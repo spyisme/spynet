@@ -200,21 +200,21 @@ color:white ;
     <canvas id="canvas"> </canvas>
 
   <div class="nav">
-    {% if teachername == "Arabic"or teachername == "English" or teachername == "Biology" or teachername == "Chemistry" or teachername == "Geology" or teachername == "German" or teachername == "Math" or teachername == "Physics" %}
+    {% if teachername == "Arabic" or teachername == "English" or teachername == "Biology" or teachername == "Chemistry" or teachername == "Geology" or teachername == "German" or teachername == "Math" or teachername == "Physics" %}
 
     <img class="img" src="static/assets/subjects/{{ teachername }}11.png"></img>
-{%if teachername== "Biology"  or teachername == "Geology" %}
 
-      Behary Group
-         {%else%}
-         <p>Spy#5555</p>  
+    {% if teachername == "Biology" or teachername == "Geology" %}
+        <p>Behary Group</p>
+    {% else %}
+        <p>Spy#5555</p>
+    {% endif %}
 
-{%endif%}
-
-        <h1>✰ {{ teachername }} ✰</h1>
+    <h1>✰ {{ teachername }} ✰</h1>
    
-        <p>Spy#5555</p>  
-{%endif%}
+    <p>Spy#5555</p>
+
+{% endif %}
 
 
 
