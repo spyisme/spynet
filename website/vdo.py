@@ -302,7 +302,7 @@ def watchit():
     if request.method == 'POST':
         name =  request.form.get('name')
         msg = f'```app {url} --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output``` {name}'
-        cmds_queue.append(f"python iframe.py {url} {name}")
+        cmds_queue.append(f"app {url} --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output")
 
         message = {
                 'content': f'{msg}'
