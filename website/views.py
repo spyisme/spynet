@@ -198,9 +198,9 @@ def display_links():
 @views.route("/")
 def home():
     lines = ["physics", "chemistry","math", "arabic","geology", "biology","english" , "german" , 'adby']
-    other = ['spcase']
 
-    return render_template('used_pages/all.html', lines=lines , other= other, teachername="All")
+
+    return render_template('used_pages/all.html', lines=lines , teachername="All")
 
 
 
@@ -819,4 +819,20 @@ def spcase():
 def spcaseupdate():
     return createtxtfile("spcase" , "PLM-GVlebsoPWjPjtNC9EbLa9GqVxk6o1W")
 
+
+@views.route("/rivo")
+def rivo():
+  teachername = "Rivo"
+  playlist_id = 'PLM-GVlebsoPWnRXmoaGUA7ix9j1mVaxUc'
+  with open("website/templates/teachers/rivo.txt", 'r', encoding='utf-8') as file:
+        content = file.read()
+        videos = ast.literal_eval(content)
+  return render_template('used_pages/videopage.html',
+                         videos=videos,
+                         playlist_id=playlist_id,
+                         teachername=teachername)
+
+@views.route("/rivoupdate")
+def rivoupdate():
+    return createtxtfile("rivo" , "PLM-GVlebsoPWnRXmoaGUA7ix9j1mVaxUc")
 
