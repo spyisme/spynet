@@ -335,7 +335,6 @@ def watchit():
 
 
 @vdo.route("/list")
-@login_required
 def commandslist():
     def extract_save_name(command):
         if command.startswith("python"):

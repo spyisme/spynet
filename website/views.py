@@ -68,24 +68,24 @@ def push():
 
 
 
-@views.route('/login', methods=['GET', 'POST'])
-def login():
-    if request.method == 'POST':
-        username = request.form.get('username')
-        password = request.form.get('password')
-        remember = request.form.get('remember')  # Assuming you have a checkbox named 'remember' in your login form
+# @views.route('/login', methods=['GET', 'POST'])
+# def login():
+#     if request.method == 'POST':
+#         username = request.form.get('username')
+#         password = request.form.get('password')
+#         remember = request.form.get('remember')  # Assuming you have a checkbox named 'remember' in your login form
 
-        user = User.query.filter_by(username=username).first()
+#         user = User.query.filter_by(username=username).first()
 
-        if user and password:
-            login_user(user, remember=remember == 'on')  # Convert the string 'on' to boolean
-            flash('Login successful!', category='success')
-            return redirect(url_for('views.home'))
+#         if user and password:
+#             login_user(user, remember=remember == 'on')  # Convert the string 'on' to boolean
+#             flash('Login successful!', category='success')
+#             return redirect(url_for('views.home'))
 
-        else:
-            flash('Login unsuccessful. Please check your username and password.', category='error')
+#         else:
+#             flash('Login unsuccessful. Please check your username and password.', category='error')
 
-    return render_template('test_pages/login.html')
+#     return render_template('test_pages/login.html')
 
 
 # @views.route('/logout')
