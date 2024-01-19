@@ -69,9 +69,9 @@
       li {
           margin: 10px;
           flex: 1;
+          flex: 0 0 calc(25% - 20px); /* Each item takes up 25% of the container width, accounting for margin and padding */
           max-width: 300px; /* Set a maximum width for the cards on PC */
       }
-
 
       .card:hover {
           transform: translateY(-5px);
@@ -210,10 +210,6 @@ h1{
   transition: transform 0.2s, box-shadow 0.2s;
   display: flex;
   align-items: center;
-  width: 33.33%; /* Set the width of each card to one-third */
-  box-sizing: border-box; /* Include padding and border in the total width */
-  box-flex: 1; /* Ensure flex items share the available space equally */
-  flex-grow: 1; /* Allow cards to grow to fill the container */
 }
 
 .card img {
@@ -226,7 +222,6 @@ h1{
   text-align: left;
   text-transform: capitalize;
 }
-
 
 
 
