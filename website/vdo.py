@@ -259,7 +259,6 @@ def discord():
 @vdo.route('/iframes', methods=['GET', 'POST'])
 def sherboframe():
     url = request.args.get('url')
-    url = request.args.get('url')
     name = request.args.get('name')
     sname = request.args.get('sname')
 
@@ -290,6 +289,42 @@ def sherboframe():
         requests.post(webhook_url, data=payload, headers=headers)
         return "Message Sent!" 
     return render_template('backend_pages/iframe.html' , url = url , sname= sname)
+
+
+
+
+
+
+@vdo.route('/watchit', methods=['GET', 'POST'])
+def watchit():
+    url = request.args.get('url')
+    webhook_url="https://discord.com/api/webhooks/1197986558368825444/Q7kjJ3twI6GkOAqRAppGBlEtGR2I5egr98lX-Gh7D2JByHk1ePNBTVYKnjCtiHhIZ8U3" 
+    if request.method == 'POST':
+        name =  request.form.get('name')
+        msg = f'```app {url} --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output``` {name}'
+        cmds_queue.append(f"python iframe.py {url} {name}")
+
+        message = {
+                'content': f'{msg}'
+            }
+        payload = json.dumps(message)
+        headers = {'Content-Type': 'application/json'}
+        requests.post(webhook_url, data=payload, headers=headers)
+        return "Message Sent!" 
+    return render_template('backend_pages/iframe.html' , url = url)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 #-------------------------------------------------------------------------------------
