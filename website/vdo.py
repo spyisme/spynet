@@ -199,23 +199,23 @@ def index():
     url = input_url + "?ck=" + base64.urlsafe_b64encode(str(ckvaluetobeused).encode()).decode()
 
     url = f"chrome-extension://opmeopcambhfimffbomjgemehjkbbmji/pages/player.html#{url}"
-    headersss = {
-    "Authorization": f"Bearer TOTVsCiEmDGVKTAz",
-    "Content-Type": "application/json"
-    }
+    # headersss = {
+    # "Authorization": f"Bearer TOTVsCiEmDGVKTAz",
+    # "Content-Type": "application/json"
+    # }
 
-    payload = {
-        "url":url
-    }
+    # payload = {
+    #     "url":url
+    # }
 
-    response = requests.post("https://i8.ae/api/url/add", json=payload, headers=headersss)
+    # response = requests.post("https://i8.ae/api/url/add", json=payload, headers=headersss)
 
-    if response.status_code == 200:
-        short_url = response.json()['shorturl']
+    # if response.status_code == 200:
+    #     short_url = response.json()['shorturl']
 
-    print(short_url)
+    # print(short_url)
     message = {
-            'content': short_url
+            'content': url
         }
     payload = json.dumps(message)
     headers = {'Content-Type': 'application/json'}

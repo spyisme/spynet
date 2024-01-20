@@ -591,7 +591,7 @@ def gedoo2():
                            teachername=teachername)
 
 
-@views.route("/gedoupdate")
+@views.route("/gedooupdate")
 def gedoupdate():
     return createtxtfile("gedo" , "PLM-GVlebsoPXBcSNcLjkmcQG53hQYTvui")
 
