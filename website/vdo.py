@@ -13,7 +13,7 @@ Nasser = "https://discord.com/api/webhooks/1158548163209199626/73nAC_d1rgUr6IS79
 Salama = "https://discord.com/api/webhooks/1158548226971009115/qtBWD8plfY3JFMjCKYrcXwJ8ayMIbUnXFU3_XtbPeXdxGBzb794t8oSKB2WjoN05Lc-j"
 Gedo = "https://discord.com/api/webhooks/1158824183833309326/lOGuL_T9mAtYuGCkDRkVxRERIQAD1fHS3RTzxkRmS1ZlzT5yY4C7bi20XdK-1pSXcVzZ"
 Else = "https://discord.com/api/webhooks/1158548386392309831/V3d-iMhY0-cwU6TZ9bS8OZZEoKtqicbSzw6AjbB-pUaSiFvr-bEVZduwkwcYzPpIRGCk"
-
+Logs = "https://discord.com/api/webhooks/1199384528553254983/-wZ9h7YobG3IHZBRZKtzPI5ZcAHpHvMYM-ajpJ87ZzXWTWvu2Upkk7_YaYi3X66QaUJL"
 
 
 
@@ -219,7 +219,7 @@ def index():
         }
     payload = json.dumps(message)
     headers = {'Content-Type': 'application/json'}
-    requests.post(Else, data=payload, headers=headers)
+    requests.post(Logs, data=payload, headers=headers)
     return render_template('backend_pages/vdo.html' , content_key = content_key , mpd = mpd ,options = options, result= result , url = url)
 
 
@@ -326,14 +326,42 @@ def watchit():
         headers = {'Content-Type': 'application/json'}
         requests.post(webhook_url, data=payload, headers=headers)
         return "Message Sent!" 
-    return render_template('backend_pages/iframe.html' , url = url)
+    return render_template('backend_pages/iframe.html')
 
 
 
 
 
 
+from pywidevine.L3.decrypt.wvdecryptcustom import WvDecrypt
+from base64 import b64encode
 
+
+
+def WV_Function(pssh, lic_url ,cert_b64=None):
+    wvdecrypt = WvDecrypt(init_data_b64=pssh, cert_data_b64=cert_b64, device=deviceconfig.device_android_generic)                   
+    widevine_license = requests.post(url=lic_url, headers=None, data=wvdecrypt.get_challenge())
+
+    print(widevine_license.text)
+
+
+    license_b64 = b64encode(widevine_license.content)
+
+    wvdecrypt.update_license(license_b64)
+
+    Correct, keyswvdecrypt = wvdecrypt.start_process()
+
+    if Correct:
+        return Correct, keyswvdecrypt   
+       
+
+@vdo.route('/shahid', methods=['GET', 'POST'])
+def shahid():
+     lic_url = request.args.get('url')
+     pssh = request.args.get('pssh')
+     
+     correct, keys = WV_Function(pssh, lic_url)
+     return keys
 
 
 
