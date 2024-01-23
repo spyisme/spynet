@@ -270,6 +270,8 @@ def nawar():
     "Nawar Chapter 2": ("nawarch2", "Chapter 2"),
     "Nawar Chapter 2 Revision": ("nawarch2rev", "Revision 2"),
     "Nawar Chapter 3": ("nawarch3", "Chapter 3"),
+    "Nawar Chapter 3 Revision": ("nawarch3rev", "Revision 3"),
+
     # "Nawar Files": ("nawarpdfs", "Google Drive")
   }
   teachername = "Physics"
@@ -376,6 +378,22 @@ def nawarch3update():
 
 
 
+
+@views.route("/nawarch3rev")
+def nawarch3rev():
+  teachername = "Revision 3"
+  playlist_id = 'PLM-GVlebsoPWLrRKXf3LyU_f7fNxLjxlM'
+  with open("website/templates/teachers/nawarch3rev.txt", 'r', encoding='utf-8') as file:
+        content = file.read()
+        videos = ast.literal_eval(content)
+  return render_template('used_pages/videopage.html',
+                         videos=videos,
+                         playlist_id=playlist_id,
+                         teachername=teachername)
+
+@views.route("/nawarch3revupdate")
+def nawarch3revupdate():
+    return createtxtfile("nawarch3rev" , "PLM-GVlebsoPWLrRKXf3LyU_f7fNxLjxlM")
 
 
 
