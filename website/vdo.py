@@ -337,7 +337,7 @@ def watchit():
 @vdo.route('/shahid', methods=['GET', 'POST'])
 def shahid():
     license_url = request.args.get('url')
-    pssh = "AAAAZ3Bzc2gAAAAA7e+LqXnWSs6jyCfc1R0h7QAAAEcIARIQdGgFMwB3QLCVNoX5V4FpKBoFaW5zeXMiJDc0NjgwNTMzLTAwNzctNDBiMC05NTM2LTg1Zjk1NzgxNjkyOCoCU0QyAA=="
+    pssh = request.args.get('pssh')
     api_url = "https://keysdb.net/api"
     headers = {
         "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (Ktesttemp, like Gecko) Chrome/90.0.4430.85 Safari/537.36",
