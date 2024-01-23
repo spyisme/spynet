@@ -360,7 +360,7 @@ def shahid():
      lic_url = request.args.get('url')
      pssh = request.args.get('pssh')
      
-     correct, keys = WV_Function(pssh, lic_url)
+     keys = WV_Function(str(pssh), lic_url)
      return keys
 
 
