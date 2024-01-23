@@ -286,7 +286,7 @@ def sherboframe():
     url = url.replace("/play/", "/embed/")
     if request.method == 'POST':
         name =  request.form.get('name')
-        if "youtube" in url.lower(): 
+        if "youtube" in url.lower() or "youtu.be" in url.lower():
             url = url.split('/')[4]
 
             msg = f'```python youtube.py https://www.youtube.com/watch?v={url} {name}``` {name}'
