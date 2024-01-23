@@ -333,37 +333,23 @@ def watchit():
 
 
 
-from pywidevine.L3.decrypt.wvdecryptcustom import WvDecrypt
-from base64 import b64encode
-
-
-
-def WV_Function(pssh, lic_url ,cert_b64=None):
-    wvdecrypt = WvDecrypt(init_data_b64=pssh, cert_data_b64=cert_b64, device=deviceconfig.device_android_generic)                   
-    widevine_license = requests.post(url=lic_url, headers=None, data=wvdecrypt.get_challenge())
-
-    print(widevine_license.text)
-
-
-    license_b64 = b64encode(widevine_license.content)
-
-    wvdecrypt.update_license(license_b64)
-
-    Correct, keyswvdecrypt = wvdecrypt.start_process()
-
-    if Correct:
-        return Correct, keyswvdecrypt   
-       
 
 @vdo.route('/shahid', methods=['GET', 'POST'])
 def shahid():
-     lic_url = request.args.get('url')
-     pssh = request.args.get('pssh')
-     
-     keys = WV_Function(str(pssh), lic_url)
-     return keys
-
-
+    license_url = request.args.get('url')
+    pssh = request.args.get('pssh')
+    api_url = "https://keysdb.net/api"
+    headers = {
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (Ktesttemp, like Gecko) Chrome/90.0.4430.85 Safari/537.36",
+        "Content-Type": "application/json",
+        "X-API-Key": 'c13cf813a7a384b56f5b5249d6fc0d113e3d981b3af7ee3b1409ff33fe452b15',
+    }
+    payload = {
+        "license_url": license_url,
+        "pssh": pssh,
+    }
+    r = requests.post(api_url, headers=headers, json=payload).text
+    return r
 
 
 
