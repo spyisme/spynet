@@ -845,36 +845,43 @@ def germannupdate():
 
 
 
-@views.route("/spcase")
-def spcase():
-  teachername = "Special case | حالة خاصة"
-  playlist_id = 'PLM-GVlebsoPWjPjtNC9EbLa9GqVxk6o1W'
-  with open("website/templates/teachers/spcase.txt", 'r', encoding='utf-8') as file:
-        content = file.read()
-        videos = ast.literal_eval(content)
-  return render_template('used_pages/videopage.html',
-                         videos=videos,
-                         playlist_id=playlist_id,
-                         teachername=teachername)
-
-@views.route("/spcaseupdate")
-def spcaseupdate():
-    return createtxtfile("spcase" , "PLM-GVlebsoPWjPjtNC9EbLa9GqVxk6o1W")
 
 
-@views.route("/rivo")
-def rivo():
-  teachername = "Rivo"
-  playlist_id = 'PLM-GVlebsoPWnRXmoaGUA7ix9j1mVaxUc'
-  with open("website/templates/teachers/rivo.txt", 'r', encoding='utf-8') as file:
-        content = file.read()
-        videos = ast.literal_eval(content)
-  return render_template('used_pages/videopage.html',
-                         videos=videos,
-                         playlist_id=playlist_id,
-                         teachername=teachername)
 
-@views.route("/rivoupdate")
-def rivoupdate():
-    return createtxtfile("rivo" , "PLM-GVlebsoPWnRXmoaGUA7ix9j1mVaxUc")
+
+
+
+
+
+
+
+with open('students.json', 'r', encoding='utf-8') as file:
+    students = json.load(file)
+
+@views.route('/nawarsearch')
+def nawarsearch():
+    return render_template('nawardata.html', students=students)
+
+@views.route('/search', methods=['POST'])
+def nawarsearchfunc():
+    query = request.form.get('query', '').lower()
+
+    # Filter students based on the search query
+    filtered_students = [student for student in students if query in student['Name'].lower()]
+
+    return jsonify(filtered_students)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

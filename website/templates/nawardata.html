@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Data</title>
+</head>
+<body>
+    <h1>Student Data</h1>
+
+    <input type="text" id="searchInput" placeholder="Search by name">
+    <button onclick="searchStudents()">Search</button>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Student Phone</th>
+                <th>Parent Phone</th>
+                <th>Last Online</th>
+                <th>Enrollment Date</th>
+                <th>City</th>
+                <th>Group</th>
+                <th>School</th>
+                <th>Parent ID</th>
+            </tr>
+        </thead>
+        <tbody id="studentTableBody">
+            {% for student in students %}
+                <tr>
+                    <td>{{ student['ID'] }}</td>
+                    <td>{{ student['Name'] }}</td>
+                    <td>{{ student['StudentPhone'] }}</td>
+                    <td>{{ student['ParentPhone'] }}</td>
+                    <td>{{ student['Lastonline'] }}</td>
+                    <td>{{ student['EnrollmentDate'] }}</td>
+                    <td>{{ student['City'] }}</td>
+                    <td>{{ student['Group'] }}</td>
+                    <td>{{ student['School'] }}</td>
+                    <td>{{ student['Parentid'] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <script>
+        function searchStudents() {
+            var query = document.getElementById('searchInput').value.toLowerCase();
+
+            // Make an AJAX request to the server
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/search', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    // Update the table with the filtered data
+                    var filteredStudents = JSON.parse(xhr.responseText);
+                    updateTable(filteredStudents);
+                }
+            };
+            xhr.send('query=' + encodeURIComponent(query));
+        }
+
+        function updateTable(filteredStudents) {
+            var tableBody = document.getElementById('studentTableBody');
+            tableBody.innerHTML = '';
+
+            filteredStudents.forEach(function (student) {
+                var row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${student['ID']}</td>
+                    <td>${student['Name']}</td>
+                    <td>${student['StudentPhone']}</td>
+                    <td>${student['ParentPhone']}</td>
+                    <td>${student['Lastonline']}</td>
+                    <td>${student['EnrollmentDate']}</td>
+                    <td>${student['City']}</td>
+                    <td>${student['Group']}</td>
+                    <td>${student['School']}</td>
+                    <td>${student['Parentid']}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+    </script>
+</body>
+</html>
