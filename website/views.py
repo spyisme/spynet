@@ -855,17 +855,16 @@ def germannupdate():
 
 
 
+from flask import jsonify
 
 @views.route('/nawarsearch')
 def nawarsearch():
-
-    with open('students.json', 'r', encoding='utf-8') as file:
-        students = json.load(file)
-    return students
-
-
-
-
+    try:
+        with open('students.json', 'r', encoding='utf-8') as file:
+            students = json.load(file)
+        return jsonify(students)
+    except Exception as e:
+        return jsonify({"error": str(e)})
 
 
 
