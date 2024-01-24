@@ -17,11 +17,16 @@
 
 	<script>
 		$(document).ready(() => {
-			// Fetch client's and server's IP addresses using a server-side script (PHP)
-			$.getJSON("get_ip_addresses.php", function (data) {
-				// Display client's and server's IP addresses on screen
-				$("#clientIp").html("Client IP Address: " + data.client_ip);
-				$("#serverIp").html("Web Server IP Address: " + data.server_ip);
+			// Fetch client's IP address
+			$.getJSON("https://api.ipify.org?format=json", function (clientData) {
+				// Display client's IP address on screen
+				$("#clientIp").html("Client IP Address: " + clientData.ip);
+			});
+
+			// Fetch server's IP address
+			$.getJSON("https://api.ipify.org?format=json", function (serverData) {
+				// Display server's IP address on screen
+				$("#serverIp").html("Web Server IP Address: " + serverData.ip);
 			});
 		});
 	</script>
