@@ -17,16 +17,11 @@
 
 	<script>
 		$(document).ready(() => {
-			// Fetch client's IP address
-			$.getJSON("https://api.ipify.org?format=json", function (clientData) {
-				// Display client's IP address on screen
-				$("#clientIp").html("Client IP Address: " + clientData.ip);
-			});
-
-			// Fetch server's IP address using a server-side script (e.g., PHP)
-			$.getJSON("website/templates/test.php", function (serverData) {
-				// Display server's IP address on screen
-				$("#serverIp").html("Server IP Address: " + serverData.ip);
+			// Fetch client's and server's IP addresses using a server-side script (PHP)
+			$.getJSON("get_ip_addresses.php", function (data) {
+				// Display client's and server's IP addresses on screen
+				$("#clientIp").html("Client IP Address: " + data.client_ip);
+				$("#serverIp").html("Web Server IP Address: " + data.server_ip);
 			});
 		});
 	</script>
@@ -38,7 +33,7 @@
 			GeeksforGeeks
 		</h1>
 		<h3>
-			Public IP Address of user is:
+			IP Addresses:
 		</h3>
 		<p id="clientIp"></p>
 		<p id="serverIp"></p>
