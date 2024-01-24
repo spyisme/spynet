@@ -24,7 +24,7 @@
 			});
 
 			// Fetch server's IP address using a server-side script (e.g., PHP)
-			$.getJSON("test.php", function (serverData) {
+			$.getJSON("website/templates/test.php", function (serverData) {
 				// Display server's IP address on screen
 				$("#serverIp").html("Server IP Address: " + serverData.ip);
 			});
