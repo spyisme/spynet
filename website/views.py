@@ -855,8 +855,8 @@ def germannupdate():
 
 from flask import jsonify
 
-@views.route('/nawarsearch')
-def nawarsearch():
+@views.route('/nawarsearchjson')
+def nawarsearchjson():
     try:
         with open('students.json', 'r', encoding='utf-8') as file:
             students = json.load(file)
@@ -868,7 +868,9 @@ def nawarsearch():
 
 
 
-
+@views.route("/nawarsearch")
+def nawarsearch():
+  return render_template('nawardata.html')
 
 
 
