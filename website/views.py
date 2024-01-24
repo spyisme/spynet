@@ -239,7 +239,7 @@ def favicon():
 
 @views.route('/hello.php')
 def testifiles():
-    return render_template('test.html')
+    return render_template('test.php')
 
 
 
