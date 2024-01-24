@@ -236,13 +236,6 @@ def adbyupdate():
 def favicon():
     return redirect("/static/favicon.ico") 
 
-from flask import  send_file
-
-@views.route('/hello.php')
-def testifiles():
-    return send_file('templates/test.php', mimetype='text/plain')
-
-
 
 
 
@@ -272,6 +265,7 @@ def nawar():
     "Nawar Chapter 2 Revision": ("nawarch2rev", "Revision 2"),
     "Nawar Chapter 3": ("nawarch3", "Chapter 3"),
     "Nawar Chapter 3 Revision": ("nawarch3rev", "Revision 3"),
+    "Nawar Chapter 4": ("nawarch4", "Chapter 4"),
 
     # "Nawar Files": ("nawarpdfs", "Google Drive")
   }
@@ -395,6 +389,33 @@ def nawarch3rev():
 @views.route("/nawarch3revupdate")
 def nawarch3revupdate():
     return createtxtfile("nawarch3rev" , "PLM-GVlebsoPWLrRKXf3LyU_f7fNxLjxlM")
+
+
+
+
+
+@views.route("/nawarch4")
+def nawarch4():
+  teachername = "Chapter 4"
+  playlist_id = 'PLM-GVlebsoPXGEHpNDaKTOy_0DHROCh86'
+  with open("website/templates/teachers/nawarch4.txt", 'r', encoding='utf-8') as file:
+        content = file.read()
+        videos = ast.literal_eval(content)
+  return render_template('used_pages/videopage.html',
+                         videos=videos,
+                         playlist_id=playlist_id,
+                         teachername=teachername)
+
+
+@views.route("/nawarch4update")
+def nawarch4update():
+    return createtxtfile("nawarch4" , "PLM-GVlebsoPXGEHpNDaKTOy_0DHROCh86")
+
+
+
+
+
+
 
 
 
