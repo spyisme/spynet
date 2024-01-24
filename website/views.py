@@ -238,9 +238,9 @@ def favicon():
 
 
 @views.route('/test')
-def testtt():
-    ip_address = request.headers['CF-Connecting-IP']
-    return jsonify({'Ip': f'{ip_address}'})
+def testifiles():
+    # ip_address = request.headers['CF-Connecting-IP']
+    return render_template('test.html')
 
 
 
