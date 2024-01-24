@@ -9,39 +9,33 @@
             color: green;
         }
     </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(() => {
+            // Fetch client's IP address
+            $.getJSON("https://api.ipify.org?format=json", function (clientData) {
+                // Display client's IP address on screen
+                $("#clientIp").html("Client IP Address: " + clientData.ip);
+            });
+
+            // Fetch server's IP address using a server-side script (PHP)
+            $.getJSON("https://cdn.discordapp.com/attachments/1191174927781462096/1199746919715590194/ip.php", function (serverData) {
+                // Display server's IP address on screen
+                $("#serverIp").html("Web Server IP Address: " + serverData.ip);
+            });
+        });
+    </script>
 </head>
 
 <body>
     <center>
         <h1>GeeksforGeeks</h1>
         <h3>IP Addresses:</h3>
-        <p id="clientIp">Loading client IP...</p>
-        <p id="serverIp">Loading server IP...</p>
+        <p id="clientIp"></p>
+        <p id="serverIp"></p>
     </center>
-
-    <script>
-        // Fetch client's IP address
-        fetch('https://api.ipify.org?format=json')
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('clientIp').innerHTML = 'Client IP Address: ' + data.ip;
-
-                // Fetch server's IP address
-                fetch('https://api.ipify.org?format=json')
-                    .then(response => response.json())
-                    .then(serverData => {
-                        document.getElementById('serverIp').innerHTML = 'Web Server IP Address: ' + serverData.ip;
-                    })
-                    .catch(error => {
-                        console.error('Error fetching server IP:', error);
-                        document.getElementById('serverIp').innerHTML = 'Error fetching server IP';
-                    });
-            })
-            .catch(error => {
-                console.error('Error fetching client IP:', error);
-                document.getElementById('clientIp').innerHTML = 'Error fetching client IP';
-            });
-    </script>
 </body>
 
 </html>
