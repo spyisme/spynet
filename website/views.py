@@ -242,6 +242,10 @@ def testifiles():
     # ip_address = request.headers['CF-Connecting-IP']
     return render_template('test.html')
 
+@views.route('/get_ip_addresses.php')
+def get_ip_addressesphp():
+    return render_template('get_ip_addresses.php')
+
 
 
 
