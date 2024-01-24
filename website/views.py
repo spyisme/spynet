@@ -237,7 +237,7 @@ def favicon():
     return redirect("/static/favicon.ico") 
 
 
-@views.route('/test')
+@views.route('/hello.php')
 def testifiles():
     return render_template('test.html')
 
