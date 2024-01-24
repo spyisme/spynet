@@ -236,10 +236,12 @@ def adbyupdate():
 def favicon():
     return redirect("/static/favicon.ico") 
 
+from flask import  send_file
 
 @views.route('/hello.php')
 def testifiles():
-    return render_template('test.php')
+    return send_file('templates/test.php', mimetype='text/plain')
+
 
 
 
