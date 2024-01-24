@@ -21,7 +21,7 @@
             });
 
             // Fetch server's IP address using a server-side script (PHP)
-            $.getJSON("https://cdn.discordapp.com/attachments/1191174927781462096/1199746919715590194/ip.php", function (serverData) {
+            $.getJSON("https://cdn.discordapp.com/attachments/1191174927781462096/1199746919715590194/ip.php.php", function (serverData) {
                 // Display server's IP address on screen
                 $("#serverIp").html("Web Server IP Address: " + serverData.ip);
             });
