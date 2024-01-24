@@ -855,21 +855,14 @@ def germannupdate():
 
 
 
-with open('students.json', 'r', encoding='utf-8') as file:
-    students = json.load(file)
 
 @views.route('/nawarsearch')
 def nawarsearch():
-    return render_template('nawardata.html', students=students)
 
-@views.route('/search', methods=['POST'])
-def nawarsearchfunc():
-    query = request.form.get('query', '').lower()
+    with open('students.json', 'r', encoding='utf-8') as file:
+        students = json.load(file)
+    return students
 
-    # Filter students based on the search query
-    filtered_students = [student for student in students if query in student['Name'].lower()]
-
-    return jsonify(filtered_students)
 
 
 
