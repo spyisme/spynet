@@ -12,20 +12,22 @@
 		}
 	</style>
 
-	<script src=
-"https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
 	</script>
 
 	<script>
-		/* Add "https://api.ipify.org?format=json" to 
-		get the IP Address of user*/
-		$(document).ready(()=>{
-			$.getJSON("https://api.ipify.org?format=json",
-			function (data) {
+		$(document).ready(() => {
+			// Fetch client's IP address
+			$.getJSON("https://api.ipify.org?format=json", function (clientData) {
+				// Display client's IP address on screen
+				$("#clientIp").html("Client IP Address: " + clientData.ip);
+			});
 
-				// Displayin IP address on screen
-				$("#gfg").html(data.ip);
-			})
+			// Fetch server's IP address using a server-side script (e.g., PHP)
+			$.getJSON("get_server_ip.php", function (serverData) {
+				// Display server's IP address on screen
+				$("#serverIp").html("Server IP Address: " + serverData.ip);
+			});
 		});
 	</script>
 </head>
@@ -38,13 +40,9 @@
 		<h3>
 			Public IP Address of user is:
 		</h3>
-		<p id="gfg"></p>
-
+		<p id="clientIp"></p>
+		<p id="serverIp"></p>
 	</center>
 </body>
-<script type="text/javascript">
-  var ip = location.host;
-  alert(ip);
-</script>
 
 </html>
