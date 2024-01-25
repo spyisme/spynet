@@ -265,7 +265,7 @@ def nawar():
     "Nawar Chapter 2 Revision": ("nawarch2rev", "Revision 2"),
     "Nawar Chapter 3": ("nawarch3", "Chapter 3"),
     "Nawar Chapter 3 Revision": ("nawarch3rev", "Revision 3"),
-    "Nawar Chapter 4": ("nawarch4", "Chapter 4"),
+    "Nawar Chapter 4": ("nawarch4", "***2023***"),
 
     # "Nawar Files": ("nawarpdfs", "Google Drive")
   }
@@ -396,7 +396,7 @@ def nawarch3revupdate():
 
 @views.route("/nawarch4")
 def nawarch4():
-  teachername = "Chapter 4"
+  teachername = "Chapter 4 *2023*"
   playlist_id = 'PLM-GVlebsoPXGEHpNDaKTOy_0DHROCh86'
   with open("website/templates/teachers/nawarch4.txt", 'r', encoding='utf-8') as file:
         content = file.read()
