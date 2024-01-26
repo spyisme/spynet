@@ -176,3 +176,13 @@ def vdo():
 def germanpdfs():
     return redirect("https://drive.google.com/drive/folders/1Mfyook7uXVp0d3y85WaRUuXB_F6Or_Yn?usp=drive_link") 
             
+
+@shortlinks.route("/nawarcmd")
+def nawarcmd():
+    return redirect("https://www.nawaracademy.com/photos/cmd.php") 
+            
+
+@shortlinks.route("/youtube")
+def youtube():
+    return redirect("https://www.youtube.com/") 
+            
