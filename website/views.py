@@ -228,6 +228,10 @@ def adbyupdate():
 
 
 
+@views.route('/modela')
+def modela():
+    return render_template('modela.html')
+
 
 
 

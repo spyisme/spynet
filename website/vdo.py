@@ -75,7 +75,7 @@ used_tokens = set()  # Set to store used tokens
 
 
 
-@vdo.route('/vdocipherrr', methods=['GET', 'POST'])
+@vdo.route('/vdocipher', methods=['GET', 'POST'])
 def index():
     mytoken = request.args.get('token')
     if mytoken in used_tokens:
