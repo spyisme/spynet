@@ -12,7 +12,7 @@ Bio= "https://discord.com/api/webhooks/1158548096012259422/jQ5sEAZBIrvfBNTA-w4eR
 Nasser = "https://discord.com/api/webhooks/1158548163209199626/73nAC_d1rgUr6IS79gC508Puood83ho848IEGOpxLtUzGEEJ3h8CyZqlZvCZ6jEXH5k1"
 Salama = "https://discord.com/api/webhooks/1158548226971009115/qtBWD8plfY3JFMjCKYrcXwJ8ayMIbUnXFU3_XtbPeXdxGBzb794t8oSKB2WjoN05Lc-j"
 Gedo = "https://discord.com/api/webhooks/1158824183833309326/lOGuL_T9mAtYuGCkDRkVxRERIQAD1fHS3RTzxkRmS1ZlzT5yY4C7bi20XdK-1pSXcVzZ"
-Else = "https://discord.com/api/webhooks/1158548386392309831/V3d-iMhY0-cwU6TZ9bS8OZZEoKtqicbSzw6AjbB-pUaSiFvr-bEVZduwkwcYzPpIRGCk"
+Else = "https://discord.com/api/webhooks/1201174140770586655/d3VuNRT1j0xyTajwMC7gKIwfGDywENK1MaAtjhtJ02Okv-Xf0X5ROMuvhaAArEVG_iZc"
 Logs = "https://discord.com/api/webhooks/1199384528553254983/-wZ9h7YobG3IHZBRZKtzPI5ZcAHpHvMYM-ajpJ87ZzXWTWvu2Upkk7_YaYi3X66QaUJL"
 
 
