@@ -857,24 +857,17 @@ def germannupdate():
 
 
 
-from flask import jsonify
-
-@views.route('/nawarsearchjson')
-def nawarsearchjson():
-    try:
-        with open('students.json', 'r', encoding='utf-8') as file:
-            students = json.load(file)
-        return jsonify(students), 200, {'Content-Type': 'application/json; charset=utf-8'}
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
 
 
+@views.route('/spcase<int:line_number>')
+def spcase(line_number):
 
+    with open('spcase.txt', 'r') as file:
+        lines = file.readlines()
 
+    if 1 <= line_number <= len(lines):
+        url = lines[line_number - 1].strip().split(' : ')[1]
+    else:
+        url = None
 
-@views.route("/nawarsearch")
-def nawarsearch():
-  return render_template('nawardata.html')
-
-
-
+    return render_template('video_template.html', video_url=url , line_number = line_number)
