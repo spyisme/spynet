@@ -871,3 +871,22 @@ def spcase(line_number):
         url = None
 
     return render_template('video_template.html', video_url=url , line_number = line_number)
+
+
+
+
+@views.route('/spcase')
+def spcase():
+    with open('spcase.txt', 'r') as file:
+        lines = file.readlines()
+
+    # Count the number of lines in the file
+    count = len(lines)
+
+    # Generate links for each line number
+    links = [f'<a href="/spcase{i}">Ep{i}</a>' for i in range(1, count + 1)]
+
+    # Join the links to create the response string
+    response = f'Number of lines with {", ".join(links)}'
+
+    return render_template('spcase_template.html', response=response)
