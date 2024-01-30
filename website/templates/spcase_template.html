@@ -1,16 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hala 5asah</title>
+    <style>
+        body {
+            text-align: center;
+          background: linear-gradient(to bottom, #1d114d, #232323); /* Gradient from #1d114d to #232323 */
+
+        }
+    </style>
 </head>
 <body>
-<h1>Episodes</h1>
+    <h1>Episodes</h1>
 
-
-{%for link in links%}
-
-<a href="/spcase{{link}}">Ep{{link}}</a> <br>
-
-{%endfor%}
+    {% for link in links %}
+        <a href="/spcase{{ link }}">Ep{{ link }}</a> <br>
+    {% endfor %}
 </body>
 </html>
