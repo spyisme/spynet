@@ -860,7 +860,7 @@ def germannupdate():
 
 
 @views.route('/spcase<int:line_number>')
-def spcase(line_number):
+def spcaseview(line_number):
 
     with open('spcase.txt', 'r') as file:
         lines = file.readlines()
@@ -876,7 +876,7 @@ def spcase(line_number):
 
 
 @views.route('/spcase')
-def spcase():
+def spcasetemp():
     with open('spcase.txt', 'r') as file:
         lines = file.readlines()
 
