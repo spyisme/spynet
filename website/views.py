@@ -866,7 +866,7 @@ def spcase(line_number):
         lines = file.readlines()
 
     if 1 <= line_number <= len(lines):
-        url = lines[line_number - 1].strip().split(' : ')[1]
+        url = lines[line_number - 1].strip()
     else:
         url = None
 
