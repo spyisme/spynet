@@ -3,13 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+
     <title>Hala 5asah</title>
+
 </head>
-<body style="font-family: Arial, sans-serif; background: linear-gradient(to bottom, #1d114d, #232323); color: #fff;">
+<style>
+      @media screen and (max-width: 768px) {
+
+.card2 {
+              padding: 10px;
+              width: 96%; /* Make cards 100% width on mobile */
+              margin: 0 auto; /* Center-align the cards */
+              min-height: 50px;
+              width: 210px
+          }
+
+        }
+          .card2 {
+  background: linear-gradient(to bottom, #32303a, #544c5e); /* Gradient from #1d114d to #232323 */
+
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  align-items: center;
+  text-transform: capitalize;
+  justify-content: center; /* Center content vertically */
+
+  height: 80px !important; /* Set the fixed height for the card */
+
+}
+</style>
+
+
+<body>
     <h1>Episodes</h1>
 
     {% for link in links %}
-        <a href="/spcase{{ link }}">Ep{{ link }}</a> <br>
+        <a href="/spcase{{ link }}">
+            <div class="card2">
+            Ep{{ link }}
+        </div>
+        </a> 
     {% endfor %}
 </body>
 </html>
