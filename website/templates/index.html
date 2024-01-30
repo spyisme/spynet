@@ -1,0 +1,232 @@
+{%if links != "yes"%}
+
+<html>
+    {% if done_message != 'done' %}
+  
+<head>
+  <title>SpysNet</title>
+  <link rel="icon" type="image/x-icon" href="/static/snn.png">
+  <meta name="description" content="By Spy">
+
+</head>
+    <style>
+        /* Center-align text vertically */
+        h1 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0; /* Remove default margin to ensure text is centered */
+        }
+    </style>
+<h1 >
+ Hello World! <br>
+<br><br><br>
+  <h1><a href="/all">All links</a></h1><br><br><br>
+  <h1 ><div id="clock"></div></h1>
+</h1>
+
+  
+<script>
+    function openIframe(url) {
+        var iframe = document.getElementById("iframe-container");
+        iframe.src = url;
+    }
+
+    function updateTime() {
+        var now = new Date();
+        var hours = now.getHours();
+        var minutes = now.getMinutes();
+        var seconds = now.getSeconds();
+        var ampm = hours >= 12 ? 'pm' : 'am';
+        hours = hours % 12;
+        hours = hours ? hours : 12;
+        minutes = minutes < 10 ? '0' + minutes : minutes;
+        seconds = seconds < 10 ? '0' + seconds : seconds;
+        var timeString = hours + ':' + minutes + ':' + seconds + ' ' + ampm;
+
+        document.getElementById("clock").innerText = timeString;
+
+        setTimeout(updateTime, 1000); // Update the clock every second
+    }
+
+    updateTime(); // Start the clock update
+</script>
+  {%else%}
+<!DOCTYPE html>
+<head>
+  <link rel="icon" type="image/x-icon" href="/static/sn.png">
+  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shortened URL</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Additional CSS styles for the target page */
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        p {
+            color: #333;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Your Shortened URL</h1>
+        <p>Shortened URL:</p>
+        <input type="text" id="shortened-url" value="https://spysnet.com/{{input1}}" readonly>
+        <button id="copy-button" onclick="copyToClipboard()">Copy</button>
+        
+        <!-- Add a button for redirection -->
+        <button id="redirect-button" onclick="redirectToLinks()">Create New Link</button>
+
+              <button id="redirect-button" onclick="redirectToLinks2()">View all Links</button>
+    </div>
+    
+    <script>
+        function copyToClipboard() {
+            const input = document.getElementById('shortened-url');
+            input.select();
+            document.execCommand('copy');
+            
+            // Change the text on the "Copy" button to "Copied"
+            const copyButton = document.getElementById('copy-button');
+            copyButton.innerHTML = "Copied";
+
+            // Disable the "Copy" button to prevent multiple clicks
+            copyButton.disabled = true;
+        }
+
+        // Function to redirect to spysnet.com/links
+        function redirectToLinks() {
+            window.location.href = "https://spysnet.com/links";
+        }
+              function redirectToLinks2() {
+            window.location.href = "https://spysnet.com/all";
+        }
+      
+    </script>
+</body>
+
+  {% endif %}
+
+
+</html>
+
+
+{%else%}
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="icon" type="image/x-icon" href="/static/snn.png">
+
+    <title>SpyNet</title>
+    <style>
+        /* Apply some basic styling to the body */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Style the form container */
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Style form labels and inputs */
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        input[type="text"] {
+            width: 95%; /* Adjusted width to 95% */
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        /* Style the submit button */
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Shorten your URL</h1>
+    <form method="POST" action="/submit">
+        <label for="input1">URL name (Spysnet.com/name):</label>
+        <input type="text" name="input1" id="input1" required pattern="[a-z0-9]+" placeholder="Please enter only lowercase letters and numbers">
+<br><br>
+
+<label for="input2">URL to shorten:</label>
+<input type="text" name="input2" id="input2" required pattern="https://.*" placeholder="Please Enter URL in the following form : https://google.com"><br><br>
+
+        <input type="submit" value="Create">
+    </form>
+</body>
+</html>
+{%endif%}

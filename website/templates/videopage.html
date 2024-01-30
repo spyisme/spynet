@@ -1,0 +1,124 @@
+<html><head>
+  <title>{{teachername}}</title>
+  <link rel="icon" type="image/x-icon" href="/static/snn.png">
+  <meta name="description" content="All">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Mobile viewport support -->
+  <style>
+      /* Reset some default styles */
+      body, ul {
+          margin: 0;
+          padding: 0;
+      }
+
+      /* Global Styles */
+      body {
+          font-family: Arial, sans-serif;
+          background-color: #f0f0f0;
+      }
+
+      h1 {
+          background-color: #2fc090; /* Default background color */
+          color: #fff;
+          padding: 20px;
+          margin: 0;
+          text-align: center;
+      }
+
+      ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+
+
+      /* Card Styles */
+      .card {
+          background-color: #fff;
+          border: 1px solid #ccc;
+          border-radius: 10px;
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+          padding: 20px;
+          transition: transform 0.2s, box-shadow 0.2s;
+          text-align: center;
+          margin: 10px; 
+          text-transform: capitalize; /* Capitalize the first letter */
+          display: block;
+          width: 200px;
+      }
+
+      .card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      a {
+          text-decoration: none;
+          color: #1723c2; /* Default text color */
+      }
+
+      .card img {
+          width: 100px; /* Set the desired width for your image */
+          height: auto; /* Maintain aspect ratio */
+      }
+  </style>
+
+</head>
+
+<body>
+
+      <h1>{{teachername}}</h1>
+
+      <ul>
+        {% for video in videos %}
+        <a href="https://www.youtube.com/watch?v={{ video.id }}" target="_blank">
+            <div class="card">
+                {{ video.title }}
+            </div>
+        </a>
+        {% if not loop.last %}
+         <hr>
+        {% endif %}
+    {% endfor %}
+    
+      </ul>
+   <hr>
+   <ul>
+   <a href="https://www.youtube.com/playlist?list={{playlist_id}}" target="_blank">   
+      <div class="card">
+          <img src="https://img.freepik.com/premium-vector/red-youtube-logo-social-media-logo_197792-1803.jpg"></img>
+          <br> Open Playlist
+      </div>
+   </a>
+  </ul>
+</body>
+<script>
+  function getRandomColor() {
+      const min = 0;
+      const max = 255;
+
+      const r = Math.floor(Math.random() * (max - min + 1)) + min;
+      const g = Math.floor(Math.random() * (max - min + 1)) + min;
+      const b = Math.floor(Math.random() * (max - min + 1)) + min;
+
+      return `rgb(${r}, ${g}, ${b})`;
+  }
+
+  function changeColors() {
+      const h1 = document.querySelector("h1");
+      const randomColor = getRandomColor();
+      h1.style.backgroundColor = randomColor;
+
+      // You can set the link colors here as well if you have links to change.
+      // For this example, I'll assume there's a "links" array defined somewhere.
+
+      // You can use the randomColor for the link color as well.
+  }
+
+  window.onload = changeColors;
+
+</script>
+</html>

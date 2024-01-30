@@ -1,0 +1,1 @@
+9999999999{"name": "greenlet", "version": "3.0.0", "summary": "Lightweight in-process concurrent programming", "platform": "any", "requires_dist": ["Sphinx ; extra == 'docs'", "objgraph ; extra == 'test'", "psutil ; extra == 'test'"], "requires_python": ">=3.7", "files": [], "_cache_version": "1.0.0"}

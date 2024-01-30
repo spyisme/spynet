@@ -1,0 +1,1 @@
+9999999999{"name": "Flask-SQLAlchemy", "version": "3.1.1", "summary": "Add SQLAlchemy support to your Flask application.", "platform": null, "requires_dist": ["flask>=2.2.5", "sqlalchemy>=2.0.16"], "requires_python": ">=3.8", "files": [], "_cache_version": "1.0.0"}

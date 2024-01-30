@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Game</title>
+    <style>
+        body {
+            background-color: #f9ecd2; /* Background color */
+
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: green; /* Heading color */
+            font-size: 24px; /* Font size for mobile */
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: red; /* Default background color */
+            color: white; /* Text color */
+            padding: 10px;
+            border: 1px solid #ccc;
+            box-shadow: 0px 0px 5px 0px #000;
+            text-align: center;
+        }
+
+        .popup.correct {
+            background-color: green; /* Background color for the "Correct" popup */
+        }
+
+        /* Style for buttons */
+        button {
+            background-color: #70a1ff; /* Button background color */
+            color: white; /* Button text color */
+            padding: 5px 10px;
+            border: none;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* Style for forms and labels */
+        form, label {
+            margin-bottom: 10px;
+        }
+
+        /* Style for containers */
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #70a1ff; /* Container background color */
+            color: white; /* Text color in containers */
+            padding: 10px;
+            font-size: 24px; /* Font size for mobile */
+        }
+
+        .container.operator {
+            background-color: #ff6b6b; /* Operator container background color */
+        }
+
+        .center {
+            text-align: center;
+            margin: 0 auto;
+            max-width: 300px; /* Adjust the maximum width for mobile */
+        }
+         /* Media query for screens with a maximum width of 600px */
+         @media only screen and (max-width: 600px) {
+            body {
+                background-color: lightblue;
+            }
+            h1 {
+                font-size: 18px; /* Adjust the font size for smaller screens */
+                margin-top: 5px;
+            }
+            .center {
+                max-width: 100%; /* Allow content to expand to full width on smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="center">
+    <h1>Guess the Sum Game</h1> 
+    <p>Score: {{ score }}</p>
+    <form action="/reset" method="post">
+        <button type="submit" style="background-color: #ff6b6b; color: white;">Reset Score</button>
+    </form>
+
+    </div>
+
+    <div class="container">
+        <p>{{ num1 }}</p>
+    </div>
+    <div class="container operator">
+        <p>+</p>
+    </div>
+    <div class="container">
+        <p>{{ num2 }}</p>
+    </div>
+
+
+    <form action="/gamesubmit" method="post">
+        <div class="center">
+            <br>    <br>
+        <!-- <label for="user_sum" style="color: black; font-weight: bold; font-size: 16px;">Your Answer:</label> -->
+        <input type="number" id="user_sum" name="user_sum" required>
+        <br>    <br>
+        <button type="submit">Submit</button>
+    </div>
+    </form>
+
+
+    {% if answer == "correct" %}
+        
+    {% elif answer == "wrong" %}
+        
+    {% endif %}
+</body>
+</html>
