@@ -4,6 +4,11 @@
     <title>Episodes</title>
 </head>
 <body>
-    <p>{{ response | safe }}</p>
+{for link in links}
+
+<a href="/spcase{{link}}">Ep{{link}}</a>
+
+
+{endfor}
 </body>
 </html>

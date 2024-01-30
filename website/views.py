@@ -884,9 +884,6 @@ def spcasetemp():
     count = len(lines)
 
     # Generate links for each line number
-    links = [f'<a href="/spcase{i}">Ep{i}</a>' for i in range(1, count + 1)]
+    links = [f'{i}' for i in range(1, count + 1)]
 
-    # Join the links to create the response string
-    response = f'Number of lines with {", ".join(links)}'
-
-    return render_template('spcase_template.html', response=response)
+    return render_template('spcase_template.html', response=links)
