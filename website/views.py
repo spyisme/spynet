@@ -875,15 +875,14 @@ def spcaseview(line_number):
 
 
 
+
 @views.route('/spcase')
 def spcasetemp():
     with open('spcase.txt', 'r') as file:
         lines = file.readlines()
 
-    # Count the number of lines in the file
     count = len(lines)
 
-    # Generate links for each line number
     links = [f'{i}' for i in range(1, count + 1)]
 
-    return render_template('spcase_template.html', response=links)
+    return render_template('spcase_template.html', links=links)
