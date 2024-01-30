@@ -1,83 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
+
+    <!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+
     <title>Hala 5asah</title>
-    <style>
-        @media screen and (max-width: 968px) {
-            .card2 {
-                background-color: #fff;
-                border: 1px solid #ccc;
-                border-radius: 10px;
-                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-
-                transition: transform 0.2s, box-shadow 0.2s;
-                text-align: center;
-                text-transform: capitalize;
-                height: auto; /* Adjusted to make the height auto on mobile */
-                margin: 10px auto; /* Center-align the cards with some margin */
-                width: 80px; /* Adjusted width for better responsiveness on mobile */
-            }
-
-        }
-
-        .card2 {
-            background: linear-gradient(to bottom, #32303a, #544c5e);
-            /* Gradient from #1d114d to #232323 */
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s, box-shadow 0.2s;
-            display: flex;
-            align-items: center;
-            text-transform: capitalize;
-            justify-content: center;
-            /* Center content horizontally */
-            width: 500px;
-            height: 80px !important;
-            /* Set the fixed height for the card */
-            margin: 0 auto; /* Center the card itself */
-
-        }
-
-        /* .card2 a {
-            display: block;
-            width: 100%;
-            height: 100%;
-            color: white;
-            text-decoration: none;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        } */
-
-
-
-        .card2:hover {
-          transform: translateY(-5px);
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      }
-
-
-
-    </style>
 </head>
 <body>
-    <div class="center">
-    <h1>Episodes</h1>
+<h1>Episodes</h1>
 
-    {% for link in links %}
-        <div class="card2">
-            <a href="/spcase{{ link }}">
-                <div class="text">Episode {{ link }}</div>
-            </a>
-        </div>
-    {% endfor %}
-</div>
+
+{%for link in links%}
+
+<a href="/spcase{{link}}">Ep{{link}}</a> <br>
+
+{%endfor%}
 </body>
-
 </html>
- 
