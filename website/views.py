@@ -270,6 +270,7 @@ def nawar():
     "Nawar Chapter 3": ("nawarch3", "Chapter 3"),
     "Nawar Chapter 3 Revision": ("nawarch3rev", "Revision 3"),
     "Nawar Chapter 4": ("nawarch4", "***2023***"),
+    "Nawar Chapter 5": ("nawarch5", "***2023***"),
 
     # "Nawar Files": ("nawarpdfs", "Google Drive")
   }
@@ -416,6 +417,25 @@ def nawarch4update():
     return createtxtfile("nawarch4" , "PLM-GVlebsoPXGEHpNDaKTOy_0DHROCh86")
 
 
+
+
+
+@views.route("/nawarch5")
+def nawarch5():
+  teachername = "Chapter 5 *2023*"
+  playlist_id = 'PLM-GVlebsoPWzOheA-_DOYpbwXNdCeE_7'
+  with open("website/templates/teachers/nawarch5.txt", 'r', encoding='utf-8') as file:
+        content = file.read()
+        videos = ast.literal_eval(content)
+  return render_template('used_pages/videopage.html',
+                         videos=videos,
+                         playlist_id=playlist_id,
+                         teachername=teachername)
+
+
+@views.route("/nawarch5update")
+def nawarch5update():
+    return createtxtfile("nawarch5" , "PLM-GVlebsoPWzOheA-_DOYpbwXNdCeE_7")
 
 
 
