@@ -586,8 +586,7 @@ salama_info = {
     "Course 18": {"id": 'PLM-GVlebsoPV0RRzBKVtugIVlvEKmmHQn'},
     "Course 19": {"id": 'PLM-GVlebsoPW0boxDQxqLZz8gbmxhGZvP'},
     "Course 20": {"id": 'PLM-GVlebsoPVe61apiwj3BNUJZgRxPx7R'},
-
-
+    "Course 21": {"id": 'PLM-GVlebsoPW08Jvd51hPJlzAuWZW779p'},
 
 }
 
