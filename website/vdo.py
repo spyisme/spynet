@@ -332,12 +332,14 @@ def watchit():
 
 
 
+import base64
 
 
 @vdo.route('/shahid', methods=['GET', 'POST'])
 def shahid():
     license_url = request.args.get('url')
-    pssh = request.args.get('pssh')
+    pssh = base64.b64decode(request.args.get('pssh'))
+    pssh = pssh.decode('utf-8')
     api_url = "https://keysdb.net/api"
     headers = {
         "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (Ktesttemp, like Gecko) Chrome/90.0.4430.85 Safari/537.36",
