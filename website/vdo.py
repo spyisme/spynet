@@ -351,10 +351,12 @@ def shahid():
         "pssh": pssh,
     }
     r = requests.post(api_url, headers=headers, json=payload).text
+    
     def extract_content_between_brackets(r):
         match = re.search(r'\[([^]]*)\]', r)
-        return match.group(1) if match else None
-    return extract_content_between_brackets(r)
+        return match.group(1).replace('"', '') if match else None
+    
+    return f"Key : {extract_content_between_brackets(r)}"
 
 
 
