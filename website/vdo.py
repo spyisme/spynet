@@ -361,41 +361,41 @@ def shahid():
 
 
 
-from pywidevine.L3.cdm import cdm, deviceconfig
-from base64 import b64encode
-from pywidevine.L3.getPSSH import get_pssh
-from pywidevine.L3.decrypt.wvdecryptcustom import WvDecrypt
+# from pywidevine.L3.cdm import cdm, deviceconfig
+# from base64 import b64encode
+# from pywidevine.L3.getPSSH import get_pssh
+# from pywidevine.L3.decrypt.wvdecryptcustom import WvDecrypt
 
 
-@vdo.route('/spotify', methods=['GET', 'POST'])
-def spotify():
-    lic_url = "https://gew1-spclient.spotify.com/widevine-license/v1/audio/license"
+# @vdo.route('/spotify', methods=['GET', 'POST'])
+# def spotify():
+#     lic_url = "https://gew1-spclient.spotify.com/widevine-license/v1/audio/license"
 
-    pssh = base64.b64decode(request.args.get('pssh'))
-    pssh = pssh.decode('utf-8')
-    auth = base64.b64decode(request.args.get('auth'))
-    auth = auth.decode('utf-8')
+#     pssh = base64.b64decode(request.args.get('pssh'))
+#     pssh = pssh.decode('utf-8')
+#     auth = base64.b64decode(request.args.get('auth'))
+#     auth = auth.decode('utf-8')
 
-    headers = {'Authorization': f'{auth}'}
+#     headers = {'Authorization': f'{auth}'}
 
-    def WV_Function(pssh, lic_url ,cert_b64=None):
-        wvdecrypt = WvDecrypt(init_data_b64=pssh, cert_data_b64=cert_b64, device=deviceconfig.device_android_generic)                   
-        widevine_license = requests.post(url=lic_url, headers=headers, data=wvdecrypt.get_challenge())
+#     def WV_Function(pssh, lic_url ,cert_b64=None):
+#         wvdecrypt = WvDecrypt(init_data_b64=pssh, cert_data_b64=cert_b64, device=deviceconfig.device_android_generic)                   
+#         widevine_license = requests.post(url=lic_url, headers=headers, data=wvdecrypt.get_challenge())
 
-        print(widevine_license.text)
+#         print(widevine_license.text)
 
 
-        license_b64 = b64encode(widevine_license.content)
+#         license_b64 = b64encode(widevine_license.content)
 
-        wvdecrypt.update_license(license_b64)
+#         wvdecrypt.update_license(license_b64)
 
-        Correct, keyswvdecrypt = wvdecrypt.start_process()
+#         Correct, keyswvdecrypt = wvdecrypt.start_process()
 
-        if Correct:
-            return Correct, keyswvdecrypt   
-    keys = WV_Function(pssh, lic_url)
+#         if Correct:
+#             return Correct, keyswvdecrypt   
+#     keys = WV_Function(pssh, lic_url)
 
-    return keys
+#     return keys
 
 
 
