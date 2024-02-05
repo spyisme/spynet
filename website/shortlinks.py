@@ -57,3 +57,7 @@ def vdo():
 def germanpdfs():
     return redirect("https://drive.google.com/drive/folders/1Mfyook7uXVp0d3y85WaRUuXB_F6Or_Yn?usp=drive_link") 
             
+@shortlinks.route("/music")
+def playbottitan():
+    return redirect("https://link.storjshare.io/s/jvuuglmsl23el3bljjjpaa7hsmdq/spotifydrm%2Fplayboi%20carti%20%20titan%20prod%20cash%20carti.mp3?wrap=0") 
+            
