@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+    <title>{{ teachername }}</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+
+
+    <meta name="description" content="{{teachername}}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+
+
+  <style>
+
+      html, body {
+          height: 100%;
+          margin: 0;
+          padding: 0;
+          zoom: 90%;
+          overflow: auto
+      }
+      html{
+        cursor: url('/static/cursor.png'), auto;
+
+      }
+      .card-description {
+            font-size: 14px;
+            color: black;
+            margin-top: 10px;
+        }
+      /* Style the iframe to take 100% of the viewport */
+
+      body {
+        font-family: Arial, sans-serif;
+        background: rgb(14,182,191);
+background: linear-gradient(144deg, rgba(14,182,191,1) 0%, rgba(110,10,202,1) 60%, rgba(157,64,233,1) 100%);
+      }
+
+
+
+      .nav {
+          padding: 20px;
+          margin: 0;
+          text-align: center;
+
+          color: #fff;
+      }
+
+      ul {
+          list-style: none;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          align-items: center;
+          padding: 20px;
+      }
+
+
+  
+
+
+      .card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .card img {
+          max-width: 100%;
+
+            height: 100px;
+        
+      }
+
+      .card p {
+          font-size: 22px; /* Increase text size */
+      }
+
+      a {
+          text-decoration: none;
+          color: blue;
+          cursor: url('/static/cursor.png'), auto;
+
+      }
+
+      a:hover {
+          text-decoration: none;
+          text-align: center;
+      }
+
+      /* Mobile Styles */
+      @media screen and (max-width: 768px) {
+          h1 {
+              padding: 10px;
+              width: 96%;
+          }
+          html{
+  cursor: auto;
+}
+          ul {
+              flex-direction: column; /* Stack cards vertically */
+              padding: 10px;
+          }
+
+          li {
+              margin: 5px;
+              max-width: 100%; /* Make cards full width on mobile */
+          }
+
+          .card {
+              padding: 10px;
+              width: 96%; /* Make cards 100% width on mobile */
+              margin: 0 auto; /* Center-align the cards */
+              min-height: 50px;
+              width: 210px
+          }
+      }
+      .card
+    {
+      color: blue;
+          background-color: #fff;
+          border: 1px solid #ccc;
+          border-radius: 10px;
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+          padding: 20px;
+          transition: transform 0.2s, box-shadow 0.2s;
+          text-align: center;
+          margin: 10px;
+          text-transform: capitalize; /* Capitalize the first letter */
+          display: block;
+          width: 200px;
+      }
+
+.discord-link a {
+              color: white;
+              text-decoration: underline;
+            }
+
+
+
+                        
+ .banner {
+  width: 100%;
+  height: 100%;
+
+}
+.banner_content {
+  display: flex;
+  position: relative;
+  z-index: 1;
+  flex-direction: column;
+  text-align: center;
+}
+span {
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0px 4px 12px #000000ba;
+}
+#canvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Allow click events to pass through the canvas */
+}
+h1{
+  font-size: 46px;
+}
+
+
+
+
+
+.popup-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+            display: none;
+            text-align: center;
+
+            z-index: 999;
+        }
+
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 15px; /* Rounded corners */
+            z-index: 1000;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            /* cursor: pointer; */
+        }
+
+        .popup-buttons {
+            display: flex;
+            justify-content: center;
+
+            margin-top: 20px;
+            
+        }
+
+        .popup-buttons button {
+            padding: 10px;
+            font-size: 16px;
+            /* cursor: pointer; */
+            margin: 30px;
+
+        }
+        .popup-buttons img {
+        width: 110px; /* Set the width of the image */
+    }
+    .popup-buttons span {
+        display: block; /* Make each span appear on a new line */
+        margin-top: 5px; /* Adjust the margin between button and text */
+    }
+    h3{
+      color:Black
+    }
+    .nohover{
+      cursor: url('/static/cursor.png'), auto;
+
+
+  color:white ;
+        text-decoration: underline;
+}
+
+  </style>
+
+
+</head>
+
+
+<body>
+
+  <section class="banner">
+    <canvas id="canvas"> </canvas>
+    <div class="nav">
+        <h1>° {{teachername}} °</h1>
+
+            <!-- <p>Please donate to keep this site up. -->
+              <p>
+                <a href="/" class="nohover">Home</a>
+              </p>
+              <p>Spy#5555</p>
+
+              
+  
+  </div>
+
+
+        <ul>       
+            {% for video in videos %}
+  
+
+                <div class="card" onclick="openPopupname{{video.jsid}}(event)">
+                    {{ video.title }}
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer{{ video.jsid }}" onclick="closePopup{{video.jsid}}()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose{{video.jsid}}(event)">
+                      <span class="close" onclick="closePopup{{video.jsid}}()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   {{ video.title }}</h3>
+                          <h3>{{video.duration}}</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="https://www.youtube.com/watch?v={{ video.id }}&list={{playlist_id}}" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118540795396218/image.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <!-- <a href="/watch?id={{video.id}}">Beta player</a> -->
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="https://ytsnag.com/download?v=https://www.youtube.com/watch?v={{ video.id }}" target="_blank">
+                                      <img src="https://cdn.discordapp.com/attachments/1192117992457257074/1192118003836403833/image.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        {% endfor %}
+        </ul>
+     <hr>
+     <ul>
+    
+     <a href="https://www.youtube.com/playlist?list={{playlist_id}}" target="_blank">   
+        <div class="card">
+            <img src="static/assets/yt.png" loading="lazy"></img>
+            <br> Open Playlist
+        </div>
+     </a>
+    </ul>
+   
+  
+</body>
+
+</section>
+
+  <script>
+            {% for video in videos %}
+
+     function openPopupname{{ video.jsid }}(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer{{ video.jsid }}').style.display = 'block';
+        }
+
+        function closePopup{{ video.jsid }}() {
+            document.getElementById('popupContainer{{ video.jsid }}').style.display = 'none';
+        }
+
+        function preventPopupClose{{video.jsid}}(event) {
+            event.stopPropagation();
+        }
+        {% endfor %}
+
+
+    // window.onload = function () {
+    //   function getRandomColor() {
+    //     const min = 0;
+    //     const max = 255;
+
+    //     const r = Math.floor(Math.random() * (max - min + 1)) + min;
+    //     const g = Math.floor(Math.random() * (max - min + 1)) + min;
+    //     const b = Math.floor(Math.random() * (max - min + 1)) + min;
+
+    //     return `rgb(${r}, ${g}, ${b})`;
+    //   }
+
+    //   function changeColors() {
+    //     const h1 = document.querySelector(".nav");
+    //     const links = document.querySelectorAll("a");
+    //     const randomColor = getRandomColor();
+    //     h1.style.backgroundColor = randomColor;
+
+    //     links.forEach(link => {
+    //       link.style.backgroundColor = randomColor;
+    //     });
+    //   }
+
+    //   changeColors();
+    // };
+
+
+
+
+
+
+    const SNOW_COUNT = 400;
+
+function startAnimation() {
+  const CANVAS_WIDTH = window.innerWidth;
+  const CANVAS_HEIGHT = window.innerHeight;
+  const MIN = 0;
+  const MAX = CANVAS_WIDTH;
+
+  const canvas = document.getElementById("canvas");
+  const ctx = canvas.getContext("2d");
+
+  canvas.width = CANVAS_WIDTH;
+  canvas.height = CANVAS_HEIGHT;
+
+  function clamp(number, min = MIN, max = MAX) {
+    return Math.max(min, Math.min(number, max));
+  }
+
+  function random(factor = 1) {
+    return Math.random() * factor;
+  }
+
+  function degreeToRadian(deg) {
+    return deg * (Math.PI / 180);
+  }
+
+  // All the properties for Circle
+  class Circle {
+    radius = 0;
+    x = 0;
+    y = 0;
+    vx = 0;
+    vy = 0;
+
+    constructor(ctx) {
+      this.ctx = ctx;
+      this.reset();
+    }
+
+    draw() {
+      this.ctx.beginPath();
+      const body = document.body;
+
+// Get the computed background color of the body
+const bodyBgColor = window.getComputedStyle(body).backgroundColor;
+
+// Check if the background color is light or dark
+if (bodyBgColor === 'rgb(240, 240, 240)' || bodyBgColor === '#f0f0f0') {
+    // Light mode: set fill style to white
+    ctx.fillStyle = 'rgba(255, 0, 0, 0.8)';
+
+} else {
+    // Dark mode: set fill style to red
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+}
+
+      this.ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
+      this.ctx.fill();
+      this.ctx.closePath();
+    }
+
+    reset() {
+      this.radius = random(2.5);
+      this.x = random(CANVAS_WIDTH);
+      this.y = this.y ? 0 : random(CANVAS_HEIGHT);
+      this.vx = clamp((Math.random() - 0.5) * 0.4, -0.4, 0.4);
+      this.vy = clamp(random(1.5), 0.1, 0.8) * this.radius * 0.5;
+    }
+  }
+
+  // Array for storing all the generated circles
+  let circles = [];
+
+  // Generate circles
+  for (let i = 0; i < SNOW_COUNT; i++) {
+    circles.push(new Circle(ctx));
+  }
+
+  // Clear canvas
+  function clearCanvas() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  }
+
+  // start and end cordinates of canvas
+  let canvasOffset = {
+    x0: ctx.canvas.offsetLeft,
+    y0: ctx.canvas.offsetTop,
+    x1: ctx.canvas.offsetLeft + ctx.canvas.width,
+    y1: ctx.canvas.offsetTop + ctx.canvas.height
+  };
+
+  function animate() {
+    clearCanvas();
+
+    circles.forEach((e) => {
+      // reset the circle if it collides on border
+      if (
+        e.x <= canvasOffset.x0 ||
+        e.x >= canvasOffset.x1 ||
+        e.y <= canvasOffset.y0 ||
+        e.y >= canvasOffset.y1
+      ) {
+        e.reset();
+      }
+
+      // Drawing path using polar cordinates
+      e.x = e.x + e.vx;
+      e.y = e.y + e.vy;
+      e.draw();
+    });
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+}
+
+startAnimation();
+
+window.addEventListener("resize", startAnimation);
+
+
+
+
+
+
+
+
+
+
+  </script>
+
+</html>

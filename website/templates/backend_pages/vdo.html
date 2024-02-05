@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="https://spysnet.com/static/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vdocipher</title>
+    <style>
+        
+    /* Apply styles to the body element */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+    
+    /* Style the header */
+    h1 {
+        text-align: center;
+        color: #333;
+    }
+    
+    /* Style the form */
+    form {
+        max-width: 400px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Style form labels and input fields */
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+    
+    input[type="text"] {
+            width: 90%; /* Set the width to 100% to make them full-width */
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        
+    button[type="submit"] {
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        border-radius: 12px;
+    }
+    .btn{
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        border-radius: 12px;
+    }
+    /* Style the output section */
+    .output {
+        max-width: 700px;
+        margin: 20px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Style error messages */
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    
+    ul li {
+        color: red;
+    }
+    /* Add styles for the dropdown */
+select {
+    width: 90%; /* Set the width to 100% to make it full-width */
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+/* Style the dropdown arrow */
+select:after {
+    content: "\25BC"; /* Unicode character for a downward arrow */
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    pointer-events: none; /* Prevent clicking on the arrow */
+}
+
+/* Style the dropdown options */
+select option {
+    background-color: #fff;
+    color: #333;
+}
+
+.new{
+            visibility: hidden
+        }
+
+
+        .copied {
+            background-color: #0056b3; /* Dark blue */
+        }
+        .center{
+            text-align: center;
+
+        }
+    </style>
+</head>
+<body>
+
+    <br><br>
+    <h1 class="center">SpyNet</h1>
+    <div class="center">
+    <form method="POST" action="/form">
+        <br>
+        <label for="vidname">Video Name:</label>
+        <input type="text" id="vidname" name="vidname" required="" autocomplete="off" oninput="validateInput(this)">
+        <br>
+ 
+        <label for="dropdown">Choose a Channel:</label>
+        <select id="dropdown" name="dropdown">
+            {% for option in options %}
+                <option value="{{ option }}">{{ option }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+
+        <button type="submit">Send Discord Message</button>
+        <a href="{{url}}">view online</a>
+    </form>
+</div>
+
+    <div class="output">
+        <h2>Keys :</h2>
+        <p>{{mpd}}</p>
+      {% for keys in content_key %}
+        <pre>--key {{keys}}</pre>
+    {% endfor %}
+    <div class="center">
+            <button class="btn" id="copyButton">Copy Keys</button></div>
+    </div>
+
+        <div class="new" id="new">{{result}}</div>
+
+
+
+<script>
+    const copyButton = document.getElementById("copyButton");
+    const newTextToCopy = document.querySelector(".new");
+    
+    copyButton.addEventListener("click", () => {
+        copyToClipboard(newTextToCopy.textContent);
+        copyButton.textContent = "Copied!";
+        copyButton.classList.add("copied");
+        setTimeout(() => {
+            copyButton.textContent = "Copy Keys";
+            copyButton.classList.remove("copied");
+        }, 5000); // 5000 milliseconds (5 seconds)
+    });
+    
+    function copyToClipboard(text) {
+        const textArea = document.createElement("textarea");
+        textArea.value = text;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textArea);
+    }
+ 
+        function validateInput(inputField) {
+            // Remove white spaces
+            inputField.value = inputField.value.replace(/\s/g, '');
+
+            // Remove non-alphanumeric characters
+            inputField.value = inputField.value.replace(/[^a-zA-Z0-9]/g, '');
+        }
+  
+</script>
+</body>
+</html>
