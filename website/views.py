@@ -18,50 +18,6 @@ print('Running!')
 
 
 
-@views.route('/restart')
-def restart():
-    try:
-        # Change the path to your restart.bat file
-        bat_file_path = r"C:\Users\Spy\Downloads\Restart.bat"
-        
-        # Run the restart.bat file using subprocess
-        subprocess.run([bat_file_path], shell=True, check=True)
-        
-        return 'Restart command executed successfully!'
-    
-    except subprocess.CalledProcessError as e:
-        return f'Error executing restart command: {e}', 500
-
-
-@views.route('/update')
-def update():
-    try:
-        # Change the path to your restart.bat file
-        bat_file_path = r"C:\Users\Spy\Downloads\Updateonly.bat"
-        
-        # Run the restart.bat file using subprocess
-        subprocess.run([bat_file_path], shell=True, check=True)
-        
-        return 'Restart command executed successfully!'
-    
-    except subprocess.CalledProcessError as e:
-        return f'Error executing restart command: {e}', 500
-
-
-@views.route('/push')
-def push():
-    try:
-        # Change the path to your restart.bat file
-        bat_file_path = r"C:\Users\Spy\Downloads\Push.bat"
-        
-        # Run the restart.bat file using subprocess
-        subprocess.run([bat_file_path], shell=True, check=True)
-        
-        return 'Restart command executed successfully!'
-    
-    except subprocess.CalledProcessError as e:
-        return f'Error executing restart command: {e}', 500
-
 
 
 
@@ -209,7 +165,7 @@ def home():
 def adby():
   teachername = "Adby"
   playlist_id = 'PLM-GVlebsoPWZG7j5kRK479fragOS83By'
-  with open("website/templates/teachers/adby.txt", 'r', encoding='utf-8') as file:
+  with open("website/playlists/adby.txt", 'r', encoding='utf-8') as file:
         content = file.read()
         videos = ast.literal_eval(content)
   return render_template('used_pages/videopage.html',
@@ -242,11 +198,6 @@ def favicon():
 
 
 
-
-@views.route('/watch')
-def watwatchch():
-    vidoid = request.args.get('id')
-    return render_template('used_pages/videoplayeryt.html',videoid=vidoid)
 
 
 #Physics --------------------------------------------------------------------------------------------------------------------------
@@ -283,7 +234,7 @@ def nawar():
 def nawarch1():
   teachername = "Chapter 1"
   playlist_id = 'PLM-GVlebsoPXpGe3wzMN7SKYvmTr0jACa'
-  with open("website/templates/teachers/nawarch1.txt", 'r', encoding='utf-8') as file:
+  with open("website/playlists/nawarch1.txt", 'r', encoding='utf-8') as file:
         content = file.read()
         videos = ast.literal_eval(content)
   return render_template('used_pages/videopage.html',
@@ -304,7 +255,7 @@ def nawarch1update():
 def nawarch1rev():
   teachername = "Revision 1"
   playlist_id = 'PLM-GVlebsoPXELEhVJi-nBm-oZXpE85K2'
-  with open("website/templates/teachers/nawarch1rev.txt", 'r', encoding='utf-8') as file:
+  with open("website/playlists/nawarch1rev.txt", 'r', encoding='utf-8') as file:
         content = file.read()
         videos = ast.literal_eval(content)
   return render_template('used_pages/videopage.html',
@@ -323,7 +274,7 @@ def nawarch1revupdate():
 def nawarch2rev():
   teachername = "Revision 2"
   playlist_id = 'PLM-GVlebsoPVAd_O1EYC8ORRkYGQ_latH'
-  with open("website/templates/teachers/nawarch2rev.txt", 'r', encoding='utf-8') as file:
+  with open("website/playlists/nawarch2rev.txt", 'r', encoding='utf-8') as file:
         content = file.read()
         videos = ast.literal_eval(content)
   return render_template('used_pages/videopage.html',
@@ -341,7 +292,7 @@ def nawarch2revupdate():
 def nawarch2():
   teachername = "Chapter 2"
   playlist_id = 'PLM-GVlebsoPWU4v5bcndzPBt6e7PsiCwQ'
-  with open("website/templates/teachers/nawarch2.txt", 'r', encoding='utf-8') as file:
+  with open("website/playlists/nawarch2.txt", 'r', encoding='utf-8') as file:
         content = file.read()
         videos = ast.literal_eval(content)
   return render_template('used_pages/videopage.html',
@@ -363,7 +314,7 @@ def nawarch2update():
 def nawarch3():
   teachername = "Chapter 3"
   playlist_id = 'PLM-GVlebsoPXwGQGxiTBmNCzD4E_BgDCo'
-  with open("website/templates/teachers/nawarch3.txt", 'r', encoding='utf-8') as file:
+  with open("website/playlists/nawarch3.txt", 'r', encoding='utf-8') as file:
         content = file.read()
         videos = ast.literal_eval(content)
   return render_template('used_pages/videopage.html',
@@ -383,7 +334,7 @@ def nawarch3update():
 def nawarch3rev():
   teachername = "Revision 3"
   playlist_id = 'PLM-GVlebsoPWLrRKXf3LyU_f7fNxLjxlM'
-  with open("website/templates/teachers/nawarch3rev.txt", 'r', encoding='utf-8') as file:
+  with open("website/playlists/nawarch3rev.txt", 'r', encoding='utf-8') as file:
         content = file.read()
         videos = ast.literal_eval(content)
   return render_template('used_pages/videopage.html',
@@ -403,7 +354,7 @@ def nawarch3revupdate():
 def nawarch4():
   teachername = "Chapter 4 *2023*"
   playlist_id = 'PLM-GVlebsoPXGEHpNDaKTOy_0DHROCh86'
-  with open("website/templates/teachers/nawarch4.txt", 'r', encoding='utf-8') as file:
+  with open("website/playlists/nawarch4.txt", 'r', encoding='utf-8') as file:
         content = file.read()
         videos = ast.literal_eval(content)
   return render_template('used_pages/videopage.html',
@@ -424,7 +375,7 @@ def nawarch4update():
 def nawarch5():
   teachername = "Chapter 5 *2023*"
   playlist_id = 'PLM-GVlebsoPWzOheA-_DOYpbwXNdCeE_7'
-  with open("website/templates/teachers/nawarch5.txt", 'r', encoding='utf-8') as file:
+  with open("website/playlists/nawarch5.txt", 'r', encoding='utf-8') as file:
         content = file.read()
         videos = ast.literal_eval(content)
   return render_template('used_pages/videopage.html',
@@ -492,7 +443,7 @@ def chemupdate(i):
 def nasservids(i):
   teachername = f"Chapter {i}"
   playlist_id = nasserlinks.get(f"Nasser-El-Batal Chapter {i}", ("", "", ""))[2]
-  with open(f"website/templates/teachers/chemch{i}.txt", 'r', encoding='utf-8') as file:
+  with open(f"website/playlists/chemch{i}.txt", 'r', encoding='utf-8') as file:
         content = file.read()
         videos = ast.literal_eval(content)
   return render_template('used_pages/videopage.html',
@@ -531,7 +482,7 @@ def sherbo():
 def sherbostatics():
   teachername = "Sherbo Statics"
   playlist_id="PLM-GVlebsoPX_3mlaOeWIjCPY8jH8MpfJ"
-  with open("website/templates/teachers/sherbostatics.txt", 'r', encoding='utf-8') as file:
+  with open("website/playlists/sherbostatics.txt", 'r', encoding='utf-8') as file:
         content = file.read()
         videos = ast.literal_eval(content)
   return render_template('used_pages/videopage.html',
@@ -549,7 +500,7 @@ def sherbostaticsupdate():
 def sherbocalc():
   teachername = "Sherbo Calculus"
   playlist_id = 'PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq'
-  with open("website/templates/teachers/sherbocalc.txt", 'r', encoding='utf-8') as file:
+  with open("website/playlists/sherbocalc.txt", 'r', encoding='utf-8') as file:
         content = file.read()
         videos = ast.literal_eval(content)
   return render_template('used_pages/videopage.html',
@@ -616,7 +567,7 @@ def salamach(course_number):
     teachername = course_key
     playlist_id = salama_info[course_key]["id"]
     # videos = get_playlist_videos(playlist_id)
-    with open(f"website/templates/teachers/salama{course_key}.txt", 'r', encoding='utf-8') as file:
+    with open(f"website/playlists/salama{course_key}.txt", 'r', encoding='utf-8') as file:
         content = file.read()
         videos = ast.literal_eval(content)
     return render_template('used_pages/videopage.html', videos=videos, playlist_id=playlist_id, teachername=teachername)
@@ -647,7 +598,7 @@ import ast
 def gedoo2():
     playlist_id = 'PLM-GVlebsoPXBcSNcLjkmcQG53hQYTvui'
     teachername= "Gedo"
-    with open("website/templates/teachers/gedo.txt", 'r', encoding='utf-8') as file:
+    with open("website/playlists/gedo.txt", 'r', encoding='utf-8') as file:
         content = file.read()
         videos = ast.literal_eval(content)
     return render_template('used_pages/videopage.html',
@@ -662,7 +613,7 @@ def gedoupdate():
 
 def createtxtfile(name ,playlist_id ):
     videos = get_playlist_videos(playlist_id)
-    with open(f"website/templates/teachers/{name}.txt", 'w' , encoding='utf-8') as file:
+    with open(f"website/playlists/{name}.txt", 'w' , encoding='utf-8') as file:
         file.write(str(videos))
     return videos  
 
@@ -702,7 +653,7 @@ def sameh():
 def samehh(i):
     teachername = f"Chapter {i}"
     playlist_id = sameh_links.get(f"Sameh Nash2t Chapter {i}", ("", "", ""))[2]
-    with open(f"website/templates/teachers/samehh{i}.txt", 'r', encoding='utf-8') as file:
+    with open(f"website/playlists/samehh{i}.txt", 'r', encoding='utf-8') as file:
         content = file.read()
         videos = ast.literal_eval(content) 
     return render_template('used_pages/videopage.html',
@@ -723,7 +674,7 @@ def samehupdate(i):
 def giomaged():
   teachername = "Gio maged"
   playlist_id = 'PLM-GVlebsoPXh1obVV3aWysV7wXlN3yET'
-  with open("website/templates/teachers/giomaged.txt", 'r', encoding='utf-8') as file:
+  with open("website/playlists/giomaged.txt", 'r', encoding='utf-8') as file:
         content = file.read()
         videos = ast.literal_eval(content) 
   return render_template('used_pages/videopage.html',
@@ -777,7 +728,7 @@ def biology():
 def bioch(i):
     teachername = f"Chapter {i}"
     playlist_id = bio_links.get(f"Chapter {i}", ("", "", ""))[2]
-    with open(f"website/templates/teachers/bioch{i}.txt", 'r', encoding='utf-8') as file:
+    with open(f"website/playlists/bioch{i}.txt", 'r', encoding='utf-8') as file:
         content = file.read()
         videos = ast.literal_eval(content)
     return render_template('used_pages/videopage.html',
@@ -815,7 +766,7 @@ def english():
 def englishh():
   teachername = "English"
   playlist_id = 'PLM-GVlebsoPUWOjoc9DyO2Jh8mclaRY1Q'
-  with open("website/templates/teachers/englishh.txt", 'r', encoding='utf-8') as file:
+  with open("website/playlists/englishh.txt", 'r', encoding='utf-8') as file:
         content = file.read()
         videos = ast.literal_eval(content)
   return render_template('used_pages/videopage.html',
@@ -853,7 +804,7 @@ def german():
 def germann():
   teachername = "German"
   playlist_id = 'PLM-GVlebsoPWNh__WI8QAIN2xQjawgB4i'
-  with open("website/templates/teachers/germann.txt", 'r', encoding='utf-8') as file:
+  with open("website/playlists/germann.txt", 'r', encoding='utf-8') as file:
         content = file.read()
         videos = ast.literal_eval(content)
   return render_template('used_pages/videopage.html',
