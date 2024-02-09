@@ -1,14 +1,11 @@
-from flask import Blueprint, render_template, request, redirect, session, flash, url_for , jsonify
+from flask import Blueprint, render_template, request, redirect, session,  url_for 
 from googleapiclient.discovery import build
-import random
-import json
-import requests
+
 from flask_login import login_user, logout_user, login_required
 from .models import User
 from werkzeug.security import check_password_hash , generate_password_hash
 from . import db
-from functools import lru_cache
-import subprocess
+import ast
 
 views = Blueprint('views', __name__)
 print('Running!')
@@ -540,6 +537,27 @@ salama_info = {
     "Course 21": {"id": 'PLM-GVlebsoPW08Jvd51hPJlzAuWZW779p'},
     "Course 22": {"id": 'PLM-GVlebsoPV167FUPTP329rzQmG6PG-G'}
 }
+
+@views.route("/create")
+def anyyourtubeplaylist():
+    name = request.args.get('name')
+    link = request.args.get('link')
+
+    return createtxtfile(name , link)
+
+
+
+@views.route("/Prestudy")
+def Prestudy():
+    playlist_id = 'PLM-GVlebsoPVEULTnn90gqVL0AL99KtU0'
+    teachername= "Prestudy"
+    with open("website/playlists/Prestudy.txt", 'r', encoding='utf-8') as file:
+        content = file.read()
+        videos = ast.literal_eval(content)
+    return render_template('used_pages/videopage.html',
+                           videos=videos,
+                           playlist_id=playlist_id,
+                           teachername=teachername)
 
 
 @views.route("/salamach<int:course_number>update")
