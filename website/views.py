@@ -555,7 +555,13 @@ def salamacoursesupdate(course_number):
 @views.route('/salama')
 def salama():
     
-    teacher_links = {course: (f"/salamach{i}", course) for i, (course, _) in enumerate(salama_info.items(), start=1)}
+    teacher_links = {
+        course: (f"/salamach{i}", course)
+        for i, (course, _) in enumerate(salama_info.items(), start=1)
+    }
+
+    teacher_links = teacher_links + {"Prestudy" : "/salamaprestudy"}
+ 
     teachername = "Math"
     return render_template('used_pages/teacher.html', teacher_links=teacher_links, teachername=teachername, imgs="yes")
 
