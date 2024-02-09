@@ -516,7 +516,7 @@ def sherbocalcupdate():
 
 
 salama_info = {
-    "Course 0": {"id": 'PLM-GVlebsoPVEULTnn90gqVL0AL99KtU0'},
+    # "Course 0": {"id": 'PLM-GVlebsoPVEULTnn90gqVL0AL99KtU0'},
     "Course 1": {"id": 'PLM-GVlebsoPWfuCf4h_ucKPOBKjH6No-W'},
     "Course 2": {"id": 'PLM-GVlebsoPUubsCYnPGc27tihI0pz4hi'},
     "Course 3": {"id": 'PLM-GVlebsoPUSSsoABHH059FBapcSjvGg'},
