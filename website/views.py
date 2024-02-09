@@ -516,7 +516,7 @@ def sherbocalcupdate():
 
 
 salama_info = {
-    # "PreStudy": {"id": 'PLM-GVlebsoPVEULTnn90gqVL0AL99KtU0'},
+    "Course 0": {"id": 'PLM-GVlebsoPVEULTnn90gqVL0AL99KtU0'},
     "Course 1": {"id": 'PLM-GVlebsoPWfuCf4h_ucKPOBKjH6No-W'},
     "Course 2": {"id": 'PLM-GVlebsoPUubsCYnPGc27tihI0pz4hi'},
     "Course 3": {"id": 'PLM-GVlebsoPUSSsoABHH059FBapcSjvGg'},
@@ -538,7 +538,7 @@ salama_info = {
     "Course 19": {"id": 'PLM-GVlebsoPW0boxDQxqLZz8gbmxhGZvP'},
     "Course 20": {"id": 'PLM-GVlebsoPVe61apiwj3BNUJZgRxPx7R'},
     "Course 21": {"id": 'PLM-GVlebsoPW08Jvd51hPJlzAuWZW779p'},
-
+    "Course 22": {"id": 'PLM-GVlebsoPV167FUPTP329rzQmG6PG-G'}
 }
 
 
