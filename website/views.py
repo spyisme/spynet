@@ -551,7 +551,6 @@ def salamacoursesupdate(course_number):
 
     return  createtxtfile(f"salama{course_key}", playlist_id)
 
-
 @views.route('/salama')
 def salama():
     
@@ -560,7 +559,7 @@ def salama():
         for i, (course, _) in enumerate(salama_info.items(), start=1)
     }
 
-    teacher_links = teacher_links + {"Prestudy" : "/salamaprestudy"}
+    teacher_links.update({"Prestudy": "/salamaprestudy"})
  
     teachername = "Math"
     return render_template('used_pages/teacher.html', teacher_links=teacher_links, teachername=teachername, imgs="yes")
