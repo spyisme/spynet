@@ -559,7 +559,7 @@ def salama():
         for i, (course, _) in enumerate(salama_info.items(), start=1)
     }
 
-    teacher_links.update({ "Prestudy": ( "Prestudy", "PLM-GVlebsoPVEULTnn90gqVL0AL99KtU0"),})
+    teacher_links.update({ "Prestudy": ( "Prestudy", "Pre-Study Course"),})
  
     teachername = "Math"
     return render_template('used_pages/teacher.html', teacher_links=teacher_links, teachername=teachername, imgs="yes")
