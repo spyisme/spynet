@@ -614,7 +614,7 @@ def salamach(course_number):
 def gedo():
   teacher_links = {
     "Gedo": ("gedoo", "Reda El Farouk"),
-    "El kaysar": ("#", "Mohamed Tarek"),
+    "El kaysar": ("#", "Soon....."),
 
 }
   teachername = "Arabic"
