@@ -195,25 +195,12 @@ def index():
         if len(parts) == 2:
             ckvaluetobeused[parts[0]] = parts[1]
 
-    # Create the URL with the encoded key-value pairs
-    url = input_url + "?ck=" + base64.urlsafe_b64encode(str(ckvaluetobeused).encode()).decode()
+    keysbase64 = base64.urlsafe_b64encode(str(ckvaluetobeused).encode()).decode()
+    session['urlopen'] = url
+    url = input_url + "?ck=" + keysbase64
 
-    url = f"chrome-extension://opmeopcambhfimffbomjgemehjkbbmji/pages/player.html#{url}"
-    # headersss = {
-    # "Authorization": f"Bearer TOTVsCiEmDGVKTAz",
-    # "Content-Type": "application/json"
-    # }
+    url = f"{url}"
 
-    # payload = {
-    #     "url":url
-    # }
-
-    # response = requests.post("https://i8.ae/api/url/add", json=payload, headers=headersss)
-
-    # if response.status_code == 200:
-    #     short_url = response.json()['shorturl']
-
-    # print(short_url)
     message = {
             'content': url
         }
@@ -247,11 +234,12 @@ def form():
 @vdo.route('/vdodiscord', methods=['GET', 'POST'])
 def discord():
     result = session.get('result')
+    urlopen = session.get('urlopen')
     name = request.args.get('name')
     result = result.replace("\n", " ")
     teacher = request.args.get('teacher')
     message = {
-            'content': f'```app {result} --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output``` {name} '
+            'content': f'```app {result} --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output``` {name} ```watch now``` {urlopen}'
         }
     payload = json.dumps(message)
     userinput = f"app {result} --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output"
