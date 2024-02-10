@@ -734,6 +734,8 @@ bio_links = {
     "Chapter 1": ("bioch1", "S2 Not Available", "PLM-GVlebsoPWYFgg9hks2GaWKC2kI1r7X"),
     "Chapter 2": ("bioch2", "Chapter 2", "PLM-GVlebsoPVXxEs5mtOyS-4QLolBXjlX"),
     "Chapter 3": ("bioch3", "Chapter 3", "PLM-GVlebsoPV0ylAbm7LFlKCD9_X0CGEK"),
+    "Chapter 4": ("bioch4", "Chapter 4", "PLM-GVlebsoPWuIcYhH_qPOcwtJPiRJLI_"),
+
 }
 
 @views.route('/daif')
