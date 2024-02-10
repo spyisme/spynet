@@ -196,10 +196,11 @@ def index():
             ckvaluetobeused[parts[0]] = parts[1]
 
     keysbase64 = base64.urlsafe_b64encode(str(ckvaluetobeused).encode()).decode()
-    session['urlopen'] = url
+
     url = input_url + "?ck=" + keysbase64
 
-    url = f"{url}"
+    session['urlopen'] = url
+
 
     message = {
             'content': url
