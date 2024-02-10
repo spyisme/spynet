@@ -14,6 +14,12 @@ print('Running!')
 
 
 
+def createtxtfile(name ,playlist_id ):
+    videos = get_playlist_videos(playlist_id)
+    with open(f"website/playlists/{name}.txt", 'w' , encoding='utf-8') as file:
+        file.write(str(videos))
+    return videos  
+
 
 
 
@@ -608,13 +614,37 @@ def salamach(course_number):
 def gedo():
   teacher_links = {
     "Gedo": ("gedoo", "Reda El Farouk"),
+    "El kaysar": ("#", "Mohamed Tarek"),
+
 }
   teachername = "Arabic"
   return render_template('used_pages/teacher.html',
                          teacher_links=teacher_links,
                          teachername=teachername,
                          imgs="yes")
-import ast
+
+
+
+
+
+@views.route("/mohamedtarek")
+def mohamedtarek():
+    playlist_id = 'PLM-GVlebsoPWeP1pGCJWmf20Uc2Cu4JWN'
+    teachername= "Mohamed Tarek"
+    with open("website/playlists/mohamedtarek.txt", 'r', encoding='utf-8') as file:
+        content = file.read()
+        videos = ast.literal_eval(content)
+    return render_template('used_pages/videopage.html',
+                           videos=videos,
+                           playlist_id=playlist_id,
+                           teachername=teachername)
+
+
+@views.route("/mohamedtarekupdate")
+def mohamedtarekupdate():
+    return createtxtfile("mohamedtarek" , "PLM-GVlebsoPWeP1pGCJWmf20Uc2Cu4JWN")
+
+
 
 
 @views.route("/gedoo")
