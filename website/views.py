@@ -217,7 +217,9 @@ def Physics():
 @views.route('/nawar')
 def nawar():
   teacher_links = {
-  "Nawar Chapter 1": ("/nawarch1", "Chapter 1"),
+  "Nawar WorkShops": ("nawarworkshops", "WorkShops"),
+      
+  "Nawar Chapter 1": ("nawarch1", "Chapter 1"),
     "Nawar Chapter 1 Revision": ("nawarch1rev", "Revision 1"),
     "Nawar Chapter 2": ("nawarch2", "Chapter 2"),
     "Nawar Chapter 2 Revision": ("nawarch2rev", "Revision 2"),
@@ -395,6 +397,22 @@ def nawarch5update():
 
 
 
+@views.route("/nawarworkshops")
+def nawarworkshops():
+  teachername = "WorkShops"
+  playlist_id = 'PLM-GVlebsoPX5utZzxatuUWlx-8kbDrh4'
+  with open("website/playlists/WorkShops.txt", 'r', encoding='utf-8') as file:
+        content = file.read()
+        videos = ast.literal_eval(content)
+  return render_template('used_pages/videopage.html',
+                         videos=videos,
+                         playlist_id=playlist_id,
+                         teachername=teachername)
+
+
+@views.route("/nawarworkshopsupdate")
+def nawarworkshopsupdate():
+    return createtxtfile("WorkShops" , "PLM-GVlebsoPX5utZzxatuUWlx-8kbDrh4")
 
 
 
