@@ -217,16 +217,15 @@ def Physics():
 @views.route('/nawar')
 def nawar():
   teacher_links = {
-  "Nawar WorkShops": ("nawarworkshops", "WorkShops"),
-      
-  "Nawar Chapter 1": ("nawarch1", "Chapter 1"),
+    "Nawar WorkShops": ("nawarworkshops", "WorkShops"),
+    "Nawar Chapter 1": ("nawarch1", "Chapter 1"),
     "Nawar Chapter 1 Revision": ("nawarch1rev", "Revision 1"),
     "Nawar Chapter 2": ("nawarch2", "Chapter 2"),
     "Nawar Chapter 2 Revision": ("nawarch2rev", "Revision 2"),
     "Nawar Chapter 3": ("nawarch3", "Chapter 3"),
     "Nawar Chapter 3 Revision": ("nawarch3rev", "Revision 3"),
-    "Nawar Chapter 4": ("nawarch4", "***2023***"),
-    "Nawar Chapter 5": ("nawarch5", "***2023***"),
+    "Nawar Chapter 4": ("nawarch4", "Chapter 4"),
+    "Nawar Chapter 5": ("nawarch5", "Chapter 5"),
 
     # "Nawar Files": ("nawarpdfs", "Google Drive")
   }
