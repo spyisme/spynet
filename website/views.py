@@ -186,15 +186,6 @@ def adbyupdate():
 
 
 
-
-@views.route('/modela')
-def modela():
-    return render_template('modela.html')
-
-
-
-
-
 @views.route('/favicon.ico')
 def favicon():
     return redirect("/static/favicon.ico") 
@@ -356,7 +347,7 @@ def nawarch3revupdate():
 
 @views.route("/nawarch4")
 def nawarch4():
-  teachername = "Chapter 4 *2023*"
+  teachername = "Chapter 4"
   playlist_id = 'PLM-GVlebsoPXGEHpNDaKTOy_0DHROCh86'
   with open("website/playlists/nawarch4.txt", 'r', encoding='utf-8') as file:
         content = file.read()
