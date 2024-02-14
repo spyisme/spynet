@@ -156,7 +156,7 @@ def display_links():
 
 @views.route("/")
 def home():
-    lines = ["physics", "chemistry","maths","biology", "geology", 'adby', "arabic", "german" , "english"]
+    lines = ["physics", "chemistry","maths" , "arabic", "german" , "english" ,"biology", "geology", 'adby']
 
 
     return render_template('used_pages/all.html', lines=lines , teachername="All")
