@@ -482,7 +482,7 @@ def sherbo():
   teacher_links = {
     "Sherbo Statics": ("sherbostatics", "Statics"),
     "Sherbo Calculus": ("sherbocalc", "Calculus"),
-    "Sherbo Dynamics": ("#", "Dynamics"),
+    "Sherbo Dynamics": ("sherbodynamics", "Dynamics"),
 
     # "Sherbo Files": ("sherbopdfs", "Google Drive")
   }
