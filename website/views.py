@@ -524,8 +524,6 @@ def sherbocalcupdate():
     return createtxtfile("sherbocalc" , "PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq")
 
 
-
-
 salama_info = {
     # "Course 0": {"id": 'PLM-GVlebsoPVEULTnn90gqVL0AL99KtU0'},
     "Course 1": {"id": 'PLM-GVlebsoPWfuCf4h_ucKPOBKjH6No-W'},
@@ -549,7 +547,9 @@ salama_info = {
     "Course 19": {"id": 'PLM-GVlebsoPW0boxDQxqLZz8gbmxhGZvP'},
     "Course 20": {"id": 'PLM-GVlebsoPVe61apiwj3BNUJZgRxPx7R'},
     "Course 21": {"id": 'PLM-GVlebsoPW08Jvd51hPJlzAuWZW779p'},
-    "Course 22": {"id": 'PLM-GVlebsoPV167FUPTP329rzQmG6PG-G'}
+    "Course 22": {"id": 'PLM-GVlebsoPV167FUPTP329rzQmG6PG-G'},
+    "Course 23": {"id": 'PLM-GVlebsoPWqsj4eyVs60lxIi1MpjkM3'},
+
 }
 
 @views.route("/create")
