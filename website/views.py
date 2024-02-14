@@ -482,6 +482,8 @@ def sherbo():
   teacher_links = {
     "Sherbo Statics": ("sherbostatics", "Statics"),
     "Sherbo Calculus": ("sherbocalc", "Calculus"),
+    "Sherbo Dynamics": ("#", "Dynamics"),
+
     # "Sherbo Files": ("sherbopdfs", "Google Drive")
   }
   teachername = "Math"
@@ -522,6 +524,26 @@ def sherbocalc():
 @views.route("/sherbocalcupdate")
 def sherbocalcupdate():
     return createtxtfile("sherbocalc" , "PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq")
+
+
+
+
+@views.route("/sherbodynamics")
+def sherbodynamics():
+  teachername = "Sherbo Dynamics"
+  playlist_id = 'PLM-GVlebsoPWZdGWOOOqg4W9K9AgoXC2M'
+  with open("website/playlists/sherbodynamics.txt", 'r', encoding='utf-8') as file:
+        content = file.read()
+        videos = ast.literal_eval(content)
+  return render_template('used_pages/videopage.html',
+                         videos=videos,
+                         playlist_id=playlist_id,
+                         teachername=teachername)
+
+@views.route("/sherbodynamicsupdate")
+def sherbodynamicsupdate():
+    return createtxtfile("sherbodynamics" , "PLM-GVlebsoPWZdGWOOOqg4W9K9AgoXC2M")
+
 
 
 salama_info = {
