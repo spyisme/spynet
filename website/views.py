@@ -631,7 +631,7 @@ def salamach(course_number):
         content = file.read()
         videos = ast.literal_eval(content)
     if course_key == "Course 17" :
-        extra = {"Pdf" : "https://drive.google.com/file/d/1Ng8UkfF48_Cj1ZjiMn8NPfkWEONh3vJD/view?usp=drive_link"}
+        extra = {"Revision Solid Geometry pdf" : "https://drive.google.com/file/d/1Ng8UkfF48_Cj1ZjiMn8NPfkWEONh3vJD/view?usp=drive_link"}
     return render_template('used_pages/videopage.html', videos=videos, playlist_id=playlist_id, teachername=teachername ,extra = extra)
 
 
