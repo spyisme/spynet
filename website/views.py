@@ -535,7 +535,7 @@ def sherbodynamics():
   with open("website/playlists/sherbodynamics.txt", 'r', encoding='utf-8') as file:
         content = file.read()
         videos = ast.literal_eval(content)
-  extra = {"S1" : "https://drive.google.com/file/d/1pdTVxYtcEqfaWZb3laZeWXJjsrOh36SH/view?usp=drive_link"} 
+  extra = {"S1.pdf" : "https://drive.google.com/file/d/1pdTVxYtcEqfaWZb3laZeWXJjsrOh36SH/view?usp=drive_link"} 
   return render_template('used_pages/videopage.html',
                          videos=videos,
                          playlist_id=playlist_id,
