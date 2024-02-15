@@ -620,6 +620,7 @@ def salama():
 
 @views.route("/salamach<int:course_number>")
 def salamach(course_number):
+    extra = None
     course_key = f"Course {course_number}"
     if course_key not in salama_info:
         return redirect(url_for('views.display_links'))
