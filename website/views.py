@@ -466,7 +466,7 @@ def nasservids(i):
 
     }
   if teachername in teacher_pdf_mapping:
-    extra = {teachername: teacher_pdf_mapping[teachername]}
+    extra = {f"{teachername} Pdfs": teacher_pdf_mapping[teachername]}
   return render_template('used_pages/videopage.html',
                          videos=videos,
                          playlist_id=playlist_id,
