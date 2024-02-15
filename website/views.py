@@ -453,14 +453,25 @@ def chemupdate(i):
 @views.route("/chemch<int:i>")
 def nasservids(i):
   teachername = f"Chapter {i}"
+  extra = None
   playlist_id = nasserlinks.get(f"Nasser-El-Batal Chapter {i}", ("", "", ""))[2]
   with open(f"website/playlists/chemch{i}.txt", 'r', encoding='utf-8') as file:
         content = file.read()
         videos = ast.literal_eval(content)
+  teacher_pdf_mapping = {
+    "Chapter 1": "https://drive.google.com/drive/folders/1otLcK6atSsKhZGIo7Cz0hRxoZ7gbN8nz?usp=drive_link",
+    "Chapter 2": "https://drive.google.com/drive/folders/1yY4NSy-guuvbtSUGuRg6uXh6nxi4XXmY?usp=drive_link",
+    "Chapter 3": "https://drive.google.com/drive/folders/1CqVC871-_kgNxNuJtpXAkp8BMHWL0cqU?usp=drive_link",
+    "Chapter 4": "https://drive.google.com/drive/folders/1xtEHPFPHAiyXaQ62Ou2MRkklZmBvWzZd?usp=drive_link",
+
+    }
+  if teachername in teacher_pdf_mapping:
+    extra = {teachername: teacher_pdf_mapping[teachername]}
   return render_template('used_pages/videopage.html',
                          videos=videos,
                          playlist_id=playlist_id,
-                         teachername=teachername)
+                         teachername=teachername,
+                         extra = extra)
 
 
 
