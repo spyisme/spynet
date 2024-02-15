@@ -303,6 +303,16 @@ h1{
               </div>
       
         {% endfor %}
+        {%if extra%}
+        {% for item in extra.items() %}
+        <a href="{{ item.1 }}">
+            <div class="card">
+                {{ item.0 }}
+            </div>
+        </a>
+    {% endfor %}
+    
+{%endif%}
         </ul>
      <hr>
      <ul>

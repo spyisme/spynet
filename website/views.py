@@ -629,7 +629,9 @@ def salamach(course_number):
     with open(f"website/playlists/salama{course_key}.txt", 'r', encoding='utf-8') as file:
         content = file.read()
         videos = ast.literal_eval(content)
-    return render_template('used_pages/videopage.html', videos=videos, playlist_id=playlist_id, teachername=teachername)
+    if course_number == "17" :
+        extra = {"Pdf" : "https://drive.google.com/file/d/1Ng8UkfF48_Cj1ZjiMn8NPfkWEONh3vJD/view?usp=drive_link"}
+    return render_template('used_pages/videopage.html', videos=videos, playlist_id=playlist_id, teachername=teachername ,extra = extra)
 
 
 
