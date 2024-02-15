@@ -516,10 +516,12 @@ def sherbocalc():
   with open("website/playlists/sherbocalc.txt", 'r', encoding='utf-8') as file:
         content = file.read()
         videos = ast.literal_eval(content)
+  extra = {"Pdfs" : "https://drive.google.com/drive/folders/142TCiyG-oCmkpgeLpEnHmGaRSmnN6Och?usp=drive_link"} 
+
   return render_template('used_pages/videopage.html',
                          videos=videos,
                          playlist_id=playlist_id,
-                         teachername=teachername)
+                         teachername=teachername , extra= extra )
 
 @views.route("/sherbocalcupdate")
 def sherbocalcupdate():
