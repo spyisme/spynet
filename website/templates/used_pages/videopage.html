@@ -305,9 +305,10 @@ h1{
         {% endfor %}
       
         </ul>
+        {%if extra%}
         <hr>
         <ul>
-        {%if extra%}
+ 
         {% for item in extra.items() %}
         <a href="{{ item.1 }}" target="_blank">
             <div class="card">
@@ -316,8 +317,9 @@ h1{
         </a>
     {% endfor %}
     
-{%endif%}
-</ul>
+
+      </ul>
+      {%endif%}
      <hr>
      <ul>
     
