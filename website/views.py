@@ -225,35 +225,186 @@ def nawar():
                          teacher_links=teacher_links,
                          teachername=teachername,
                          imgs="yes")
+@views.route("/nawarch1")
+def nawarch1():
+  teachername = "Chapter 1"
+  playlist_id = 'PLM-GVlebsoPXpGe3wzMN7SKYvmTr0jACa'
+  with open("website/playlists/nawarch1.txt", 'r', encoding='utf-8') as file:
+        content = file.read()
+        videos = ast.literal_eval(content)
+  return render_template('used_pages/videopage.html',
+                         videos=videos,
+                         playlist_id=playlist_id,
+                         teachername=teachername)
 
-def render_video_page(route, teachername, playlist_id, txt_file):
-    @views.route(route)
-    def view_funcnew():
-        with open(f"website/playlists/{txt_file}.txt", 'r', encoding='utf-8') as file:
-            content = file.read()
-            videos = ast.literal_eval(content)
 
-        return render_template('used_pages/videopage.html',
-                               videos=videos,
-                               playlist_id=playlist_id,
-                               teachername=teachername)
+@views.route("/nawarch1update")
+def nawarch1update():
+    return createtxtfile("nawarch1" , "PLM-GVlebsoPXpGe3wzMN7SKYvmTr0jACa")
 
-    update_route = f"{route}update"
-    @views.route(update_route)
-    def update_funcnew():
-        return createtxtfile(txt_file, playlist_id)
 
-    return view_funcnew, update_funcnew
 
-render_video_page("/nawarch1", "Chapter 1", "PLM-GVlebsoPXpGe3wzMN7SKYvmTr0jACa", "nawarch1")
-render_video_page("/nawarch1rev", "Revision 1", "PLM-GVlebsoPXELEhVJi-nBm-oZXpE85K2", "nawarch1rev")
-render_video_page("/nawarch2rev", "Revision 2", "PLM-GVlebsoPVAd_O1EYC8ORRkYGQ_latH", "nawarch2rev")
-render_video_page("/nawarch2", "Chapter 2", "PLM-GVlebsoPWU4v5bcndzPBt6e7PsiCwQ", "nawarch2")
-render_video_page("/nawarch3", "Chapter 3", "PLM-GVlebsoPXwGQGxiTBmNCzD4E_BgDCo", "nawarch3")
-render_video_page("/nawarch3rev", "Revision 3", "PLM-GVlebsoPWLrRKXf3LyU_f7fNxLjxlM", "nawarch3rev")
-render_video_page("/nawarch4", "Chapter 4", "PLM-GVlebsoPXGEHpNDaKTOy_0DHROCh86", "nawarch4")
-render_video_page("/nawarch5", "Chapter 5 *2023*", "PLM-GVlebsoPWzOheA-_DOYpbwXNdCeE_7", "nawarch5")
-render_video_page("/nawarworkshops", "WorkShops", "PLM-GVlebsoPX5utZzxatuUWlx-8kbDrh4", "WorkShops")
+
+
+@views.route("/nawarch1rev")
+def nawarch1rev():
+  teachername = "Revision 1"
+  playlist_id = 'PLM-GVlebsoPXELEhVJi-nBm-oZXpE85K2'
+  with open("website/playlists/nawarch1rev.txt", 'r', encoding='utf-8') as file:
+        content = file.read()
+        videos = ast.literal_eval(content)
+  return render_template('used_pages/videopage.html',
+                         videos=videos,
+                         playlist_id=playlist_id,
+                         teachername=teachername)
+
+
+@views.route("/nawarch1revupdate")
+def nawarch1revupdate():
+    return createtxtfile("nawarch1rev" , "PLM-GVlebsoPXELEhVJi-nBm-oZXpE85K2")
+
+
+
+@views.route("/nawarch2rev")
+def nawarch2rev():
+  teachername = "Revision 2"
+  playlist_id = 'PLM-GVlebsoPVAd_O1EYC8ORRkYGQ_latH'
+  with open("website/playlists/nawarch2rev.txt", 'r', encoding='utf-8') as file:
+        content = file.read()
+        videos = ast.literal_eval(content)
+  return render_template('used_pages/videopage.html',
+                         videos=videos,
+                         playlist_id=playlist_id,
+                         teachername=teachername)
+
+@views.route("/nawarch2revupdate")
+def nawarch2revupdate():
+    return createtxtfile("nawarch2rev" , "PLM-GVlebsoPVAd_O1EYC8ORRkYGQ_latH")
+
+
+
+@views.route("/nawarch2")
+def nawarch2():
+  teachername = "Chapter 2"
+  playlist_id = 'PLM-GVlebsoPWU4v5bcndzPBt6e7PsiCwQ'
+  with open("website/playlists/nawarch2.txt", 'r', encoding='utf-8') as file:
+        content = file.read()
+        videos = ast.literal_eval(content)
+  return render_template('used_pages/videopage.html',
+                         videos=videos,
+                         playlist_id=playlist_id,
+                         teachername=teachername)
+
+
+@views.route("/nawarch2update")
+def nawarch2update():
+    return createtxtfile("nawarch2" , "PLM-GVlebsoPWU4v5bcndzPBt6e7PsiCwQ")
+
+
+
+
+
+
+@views.route("/nawarch3")
+def nawarch3():
+  teachername = "Chapter 3"
+  playlist_id = 'PLM-GVlebsoPXwGQGxiTBmNCzD4E_BgDCo'
+  with open("website/playlists/nawarch3.txt", 'r', encoding='utf-8') as file:
+        content = file.read()
+        videos = ast.literal_eval(content)
+  return render_template('used_pages/videopage.html',
+                         videos=videos,
+                         playlist_id=playlist_id,
+                         teachername=teachername)
+
+
+@views.route("/nawarch3update")
+def nawarch3update():
+    return createtxtfile("nawarch3" , "PLM-GVlebsoPXwGQGxiTBmNCzD4E_BgDCo")
+
+
+
+
+@views.route("/nawarch3rev")
+def nawarch3rev():
+  teachername = "Revision 3"
+  playlist_id = 'PLM-GVlebsoPWLrRKXf3LyU_f7fNxLjxlM'
+  with open("website/playlists/nawarch3rev.txt", 'r', encoding='utf-8') as file:
+        content = file.read()
+        videos = ast.literal_eval(content)
+  return render_template('used_pages/videopage.html',
+                         videos=videos,
+                         playlist_id=playlist_id,
+                         teachername=teachername)
+
+@views.route("/nawarch3revupdate")
+def nawarch3revupdate():
+    return createtxtfile("nawarch3rev" , "PLM-GVlebsoPWLrRKXf3LyU_f7fNxLjxlM")
+
+
+
+
+
+@views.route("/nawarch4")
+def nawarch4():
+  teachername = "Chapter 4"
+  playlist_id = 'PLM-GVlebsoPXGEHpNDaKTOy_0DHROCh86'
+  with open("website/playlists/nawarch4.txt", 'r', encoding='utf-8') as file:
+        content = file.read()
+        videos = ast.literal_eval(content)
+  return render_template('used_pages/videopage.html',
+                         videos=videos,
+                         playlist_id=playlist_id,
+                         teachername=teachername)
+
+
+@views.route("/nawarch4update")
+def nawarch4update():
+    return createtxtfile("nawarch4" , "PLM-GVlebsoPXGEHpNDaKTOy_0DHROCh86")
+
+
+
+
+
+@views.route("/nawarch5")
+def nawarch5():
+  teachername = "Chapter 5 *2023*"
+  playlist_id = 'PLM-GVlebsoPWzOheA-_DOYpbwXNdCeE_7'
+  with open("website/playlists/nawarch5.txt", 'r', encoding='utf-8') as file:
+        content = file.read()
+        videos = ast.literal_eval(content)
+  return render_template('used_pages/videopage.html',
+                         videos=videos,
+                         playlist_id=playlist_id,
+                         teachername=teachername)
+
+
+@views.route("/nawarch5update")
+def nawarch5update():
+    return createtxtfile("nawarch5" , "PLM-GVlebsoPWzOheA-_DOYpbwXNdCeE_7")
+
+
+
+
+
+@views.route("/nawarworkshops")
+def nawarworkshops():
+  teachername = "WorkShops"
+  playlist_id = 'PLM-GVlebsoPX5utZzxatuUWlx-8kbDrh4'
+  with open("website/playlists/WorkShops.txt", 'r', encoding='utf-8') as file:
+        content = file.read()
+        videos = ast.literal_eval(content)
+  return render_template('used_pages/videopage.html',
+                         videos=videos,
+                         playlist_id=playlist_id,
+                         teachername=teachername)
+
+
+@views.route("/nawarworkshopsupdate")
+def nawarworkshopsupdate():
+    return createtxtfile("WorkShops" , "PLM-GVlebsoPX5utZzxatuUWlx-8kbDrh4")
+
+
 
 
 
