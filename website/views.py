@@ -228,7 +228,7 @@ def nawar():
 
 def render_video_page(route, teachername, playlist_id, txt_file):
     @views.route(route)
-    def view_func():
+    def view_funcnew():
         with open(f"website/playlists/{txt_file}.txt", 'r', encoding='utf-8') as file:
             content = file.read()
             videos = ast.literal_eval(content)
@@ -240,10 +240,10 @@ def render_video_page(route, teachername, playlist_id, txt_file):
 
     update_route = f"{route}update"
     @views.route(update_route)
-    def update_func():
+    def update_funcnew():
         return createtxtfile(txt_file, playlist_id)
 
-    return view_func, update_func
+    return view_funcnew, update_funcnew
 
 render_video_page("/nawarch1", "Chapter 1", "PLM-GVlebsoPXpGe3wzMN7SKYvmTr0jACa", "nawarch1")
 render_video_page("/nawarch1rev", "Revision 1", "PLM-GVlebsoPXELEhVJi-nBm-oZXpE85K2", "nawarch1rev")
