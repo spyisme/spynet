@@ -156,7 +156,7 @@ def ashraf():
 
 @views.route('/new')
 def new():
-
+    discord_log("/new clicked <@709799648143081483>")  
     return '<a href="https://t.me/amrayman_n">Telegram</a>'
 
 
