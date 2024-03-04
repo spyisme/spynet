@@ -157,7 +157,7 @@ def ashraf():
 @views.route('/new')
 def new():
 
-    return '<a href="t.me/amrayman_n">Telegram</a>'
+    return '<a href="https://t.me/amrayman_n">Telegram</a>'
 
 
 
