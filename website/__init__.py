@@ -79,7 +79,7 @@ def create_app():
             if not current_user.is_authenticated:
                 return redirect(url_for('views.login'))
             else:
-                if current_user.username != 'spy' :
+                if current_user.username != 'sp1y' :
                     client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
                     user_agent = request.headers.get('User-Agent')
                     if not request.path.startswith('/static/'):
