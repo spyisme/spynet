@@ -835,7 +835,7 @@ def nasservids(i):
 def math():
   teacher_links = {
   "Sherbo": ("/sherbo", "Omar sherbeni"),
-    "Salama": ("salama", "Mohamed Salama")
+    "Salama": ("/salama", "Mohamed Salama")
   }
   teachername = "Math"
   return render_template('used_pages/teacher.html',
@@ -1034,6 +1034,10 @@ def salamacoursesupdate(course_number):
 
     return  createtxtfile(f"salama{course_key}", playlist_id)
 
+
+
+
+
 @views.route('/salama')
 def salama():
     salama_info = load_salama_info()
@@ -1044,8 +1048,19 @@ def salama():
         for i, (course, _) in enumerate(salama_info.items(), start=1)
     })
  
+
+    teacher_links["Course 25"] = ("/salamach25", "Course 25", True)
+    teacher_links["Course 26"] = ("/salamach26", "Course 26", True)
+
     teachername = "Math"
     return render_template('used_pages/teacher.html', teacher_links=teacher_links, teachername=teachername, imgs="yes")
+
+
+
+
+
+
+
 
 @views.route("/salamach<int:course_number>")
 def salamach(course_number):
