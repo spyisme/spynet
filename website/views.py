@@ -154,7 +154,10 @@ def ashraf():
 
 
 
+@views.route('/new')
+def new():
 
+    return '<a href="t.me/amrayman_n">Telegram</a>'
 
 
 
