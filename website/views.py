@@ -735,8 +735,7 @@ def chem():
   teacher_links = {
      "Zoz": ("nasser", "Nasser-El-Batal"),
      "Ashraf elshnawy": ("ashraf", "All sessions"),
-
-     "Ashraf elshnawy": ("ashrafelshnawy", "Revision CH 1-4"),
+     "Ashraf elshnawy(YT)": ("ashrafelshnawy", "Revision CH 1-4"),
 
   }
   teachername = "Chemistry"
