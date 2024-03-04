@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+    <title>{{ teachername }}</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+
+
+    <meta name="description" content="Spynet">
+    <meta name="keywords" content="spy, spynet, spysnet">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+
+    <link rel="stylesheet" type="text/css" href="static/styles/videopage.css">
+    <link rel="stylesheet" type="text/css" href="static/styles/main.css">
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
+    <script src="static/java/connection.js"></script>
+    
+</head>
+
+
+<body>
+
+  <section class="banner">
+    <canvas id="canvas"> </canvas>
+    <div class="nav">
+        <h1>° {{teachername}} °</h1>
+
+            <!-- <p>Please donate to keep this site up. -->
+              <p>
+                <a href="/" class="nohover">Home</a>
+              </p>
+              <!-- <p>Yarab amr ygeb 90%</p> -->
+
+
+              
+  
+  </div>
+
+
+        <ul>       
+            {%if videos%}
+            {% for video in videos %}
+  
+
+                <div class="card" onclick="openPopupname{{video.jsid}}(event)">
+                    {{ video.title }}
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer{{ video.jsid }}" onclick="closePopup{{video.jsid}}()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose{{video.jsid}}(event)">
+                      <span class="close" onclick="closePopup{{video.jsid}}()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   {{ video.title }}</h3>
+                          <h3>{{video.duration}}</h3>
+                          <div class="popup-buttons">
+                              <button class="popupbtn">
+                                <a href="/redirect/https://www.youtube.com/watchquestionmarkv={{ video.id }}andsympollist={{playlist_id}}" target="_blank">
+                                      <img src="static/assets/Play.png">
+                                  </a>
+                                  <p>Play</p>
+                              </button>
+          <!-- <a href="/watch?id={{video.id}}">Beta player</a> -->
+                              <!-- Text under btn 1 -->
+                              <button class="popupbtn">
+                                  <a href="/redirect/https://ytsnag.com/downloadquestionmarkv=https://www.youtube.com/watchquestionmarkv={{ video.id }}" target="_blank">
+                                      <img src="static/assets/Download.png">
+                                  </a>
+                                  <p>Downlaod</p>
+          
+                              </button>
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        {% endfor %}
+        {%endif%}
+      {%if iframe_videos%}
+      {% for item in iframe_videos.items() %}
+
+      <a href="/iframe-embed/{{iframe_lib}}_{{ item.1 }}" target="_blank">
+        <div class="cardiframe">
+            {{ item.0 }}
+        </div>
+    </a>
+    {%endfor%}
+      {%endif%}
+        </ul>
+        {%if extra%}
+        <hr>
+        <ul>
+   
+        {% for item in extra.items() %}
+        <a href="{{ item.1 }}" target="_blank">
+            <div class="card">
+                {{ item.0 }}
+            </div>
+        </a>
+    {% endfor %}
+    
+
+</ul>
+{%endif%}
+     <hr>
+     <ul>
+{%if playlist_id%}
+    
+     <a href="/redirect/https://www.youtube.com/playlistquestionmarklist={{playlist_id}}" target="_blank">   
+        <div class="card">
+            <img src="static/assets/yt.png" loading="lazy"></img>
+            <br> Open Playlist
+        </div>
+     </a>
+     {%endif%}
+     {% if folder %}
+     <a href="/redirect/{{folder}}" target="_blank">   
+      <div class="card">
+          <img src="static/assets/drive.jpg" loading="lazy"></img>
+          <br> Open Drive
+      </div>
+   </a>
+     {%endif%}
+    </ul>
+   
+  
+</body>
+
+</section>
+
+  <script>
+            {% for video in videos %}
+
+     function openPopupname{{ video.jsid }}(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer{{ video.jsid }}').style.display = 'block';
+        }
+
+        function closePopup{{ video.jsid }}() {
+            document.getElementById('popupContainer{{ video.jsid }}').style.display = 'none';
+        }
+
+        function preventPopupClose{{video.jsid}}(event) {
+            event.stopPropagation();
+        }
+        {% endfor %}
+
+  </script>
+
+<script src="static/java/snow.js"></script>
+
+</html>

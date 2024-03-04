@@ -1,0 +1,525 @@
+{
+  "filtered_lectures": [
+    {
+      "id": "1",
+      "title": "Feed-back Part A (4 sections)",
+      "part_a_video": "e9c1267a5ddb4a86a5dc8b6f63a63781",
+      "part_b_video": "ed27dd5865f0428baff095b17ccf4406",
+      "part_c_video": "b3231023276b4471934278bc6c062fec",
+      "part_d_video": "429995cc8a9446db97e9c937bc6e4a3f"
+    },
+    {
+      "id": "2",
+      "title": "Feed-back Part B (4 sections)",
+      "part_a_video": "38fd7d3758d041998b73ac85145e3e86",
+      "part_b_video": "9ebb4fcc56c84580bfeadc2182d08848",
+      "part_c_video": "3dfddce949104cd6bd8875c1167dcbaf",
+      "part_d_video": "13e8933f24ba41a68a1b173a4ec171d4"
+    },
+    {
+      "id": "3",
+      "title": "CH1L1(part A) Transition elements (7 sections)",
+      "part_a_video": "90f805cea2d44c25b20a72ea2f5b0674",
+      "part_b_video": "ba7eeae8abab446bab34eb331a69529f",
+      "part_c_video": "238855090ff84422bf5086bfd1803a6c",
+      "part_d_video": "770af1fda78241218e95bc50072ff495",
+      "part_e_video": "147ad0fd1c5241c38cc8901e2f37f2d4",
+      "part_f_video": "c4defd81b87b4e11912283b282bc78c5",
+      "part_g_video": "a31d4a8e57b344478d0e87bf90c62b81"
+    },
+    {
+      "id": "4",
+      "title": "CH1L1(part B) Follow : Transition elements(9 sections)",
+      "part_a_video": "964b9830e7134af9945f88e872cceb74",
+      "part_b_video": "1371c380bc2749fca8a0cdecefc0805a",
+      "part_c_video": "b66606417c76405d8fb7212bed387944",
+      "part_d_video": "5d566303c7584d6287ab17160216c1a3",
+      "part_e_video": "feb24394428d4a659f7df44042668ebf",
+      "part_f_video": "ad238432328949c1a395a23e155a2f88",
+      "part_g_video": "c9aa130af2b44499acf249025531c878",
+      "part_h_video": "c60e2f86fa454b399faa426b39ada31f",
+      "part_i_video": "700f0a34a9f64c46a2d90f289b5b072e"
+    },
+    {
+      "id": "5",
+      "title": "CH1L2(part A) Definition of transition element & its properties (7 sections)",
+      "part_a_video": "0136fb2ece014b7c9a5236cbc7247b9a",
+      "part_b_video": "4a394e22b08947969a1ec0c7abba3e56",
+      "part_c_video": "4a8d370f96d342708c5b3b3f6ec7fa47",
+      "part_d_video": "8a3c2b3e39b147078f0753097cbfbb31",
+      "part_e_video": "9e5247b6145044e295b4dc631211a8b7",
+      "part_f_video": "1d35437db79d46c983dbe9aeab4a57ba",
+      "part_g_video": "9596f1ed5d904267bea5c95fef6b7793"
+    },
+    {
+      "id": "6",
+      "title": "CH1L2(part B) FOLLOW: Definition of transition element & its properties (5 sections)",
+      "part_a_video": "bb8efce065014f9a9dad9d56e043ca2b",
+      "part_b_video": "9feb86e8e5db4f66adc602b8358e79fc",
+      "part_c_video": "3ddbb567a1944621bf60067e24352a8d",
+      "part_d_video": "8855a537bcdd453fac77b87b54681972",
+      "part_e_video": "50ada5ea214240078688c31cbbce52ac"
+    },
+    {
+      "id": "7",
+      "title": "CH1L3(part A) Catalyst, magnetic property &   colour property .(7 sections)",
+      "part_a_video": "7691498f8d474ad49397d188edcb401c",
+      "part_b_video": "b54a6f4e56754b30aca5e5d8b046b8a1",
+      "part_c_video": "63c0144d446a4c488f723bc5a198b535",
+      "part_d_video": "c8d55046a3b14f5d875e4cecfb702148",
+      "part_e_video": "f95580d10bdc483b917026e87ed6b35f",
+      "part_f_video": "d3884277615745a49eb2e052ba82048a",
+      "part_g_video": "cf9531587f464bc2bf1bf05577139611"
+    },
+    {
+      "id": "8",
+      "title": "CH1L3(part B) Follow: Catalyst, magnetic property &   colour property. (7 sections)",
+      "part_a_video": "f8c59ff12b6547ea922364962cc49728",
+      "part_b_video": "c1670d5bb71f408ca2cfa3ddafe17f55",
+      "part_c_video": "a7002b25fd784d62bbc51aef22ed1741",
+      "part_d_video": "7a95215725fe4c6f8fdb17c08dc1dac0",
+      "part_e_video": "4ce9b93d1ad64ea08360e87a0d2cb0eb",
+      "part_f_video": "f9d7e6b6646341e5bc37f1113b2c5da3",
+      "part_g_video": "560f21365d61411eb5ffd68a49fe98d7"
+    },
+    {
+      "id": "9",
+      "title": "CH1L4(part A)  Extraction of iron (6 sections)",
+      "part_a_video": "e70993f2b3e4444bb597ccdfd429d27e",
+      "part_b_video": "a06dcc0ca1cf47d29ab64b234e82b73a",
+      "part_c_video": "258cd0aed8ea402fbd2738b516ba4b84",
+      "part_d_video": "ba3bbf0e58214c1387d6d99430290cff",
+      "part_e_video": "c65b5cc1f9894feca7de7166d79be94a",
+      "part_f_video": "15542575ad7c4697a9bf2042873541c0"
+    },
+    {
+      "id": "10",
+      "title": "CH1L4(part B)  Properties of iron & alloys (7 sections)",
+      "part_a_video": "a9e6723de6c44899ab84fb07b86fb622",
+      "part_b_video": "76cafd11227a4293ad685a3a721d1002",
+      "part_c_video": "e5fafad6604a40f6ad759dc6b1594bc6",
+      "part_d_video": "24b49b23c56c4d6ea6ab6f3b41cd8f29",
+      "part_e_video": "b08f4b815f85454db6e6655adb620732",
+      "part_f_video": "c148b17fd1784b6fbf9fb791047d6e0a",
+      "part_g_video": "ff9e22f544c24252be76a33a2bf04084"
+    },
+    {
+      "id": "11",
+      "title": "CH1L5(part A)  Iron oxides  ( 7 sections )",
+      "part_a_video": "1cedd71bd79b41a58cfff7b3beea8c17",
+      "part_b_video": "8957ec48f3924103a673644abb8ea866",
+      "part_c_video": "9fbcaf5673c84d36ae5c864603fa11e5",
+      "part_d_video": "a4ee6c4f7edf4746a384c0592e77f793",
+      "part_e_video": "c16e1eeac6a94550b00c03f344600213",
+      "part_f_video": "22a4b9209825447cb768cdb1c1a36b5c",
+      "part_g_video": "996f1de97f214e0eab41363e137b2491"
+    },
+    {
+      "id": "12",
+      "title": "CH1L5(part B) Linkage between equations (8 sections)",
+      "part_a_video": "2b2800143ee142d6bb321091ca9b6be0",
+      "part_b_video": "4b131966776b48ddb7c6fbb619f39c79",
+      "part_c_video": "2d78d6ed5fa148c494673b4c7f3fc495",
+      "part_d_video": "e13fb73235d34fbab345603e672e673c",
+      "part_e_video": "bc4e54810bb64bd0af0eab049bd774c1",
+      "part_f_video": "58ea6fffa3434ee08c4ebc7094fecb3d",
+      "part_g_video": "609db400f4db4166977bb55e0b29b65b",
+      "part_h_video": "3bf58eedcdc44c8295d9d31c76339211"
+    },
+    {
+      "id": "13",
+      "title": "CH1L5 Solving of the last HW in chapter 1",
+      "part_a_video": "3681774ad1be49e1821b7cb70e736e70"
+    },
+    {
+      "id": "14",
+      "title": "Revision for Chapter one [ Part A ]",
+      "part_a_video": "4d8831fab6ad4e5b9134c18758df0efd",
+      "part_b_video": "5345eed6c95a4f16a518df2c1a1dd802",
+      "part_c_video": "71d017db8b63469fbd3096fcff8992cd",
+      "part_d_video": "5bc78eb871844ba99733692e9fd6daac"
+    },
+    {
+      "id": "15",
+      "title": "Revision for Chapter one [ Part B ]",
+      "part_a_video": "0088d0cfb4b246258a4a0afa959d20a1",
+      "part_b_video": "d3d511d1ccd7424c9c88d21932f267ed",
+      "part_c_video": "d8e95cde00f640919d34d10aec444149"
+    },
+    {
+      "id": "16",
+      "title": "CH2L1(part A) Chemical analysis (main experiment for anions) (7 sections)",
+      "part_a_video": "55913890830a4e9984c2ec43a2c4f9ad",
+      "part_b_video": "41da6d80df854156ac17efd2450bec2a",
+      "part_c_video": "e36790dcdfaa4ecc8293d7880e02a9d8",
+      "part_d_video": "bf045c0a3f2c4929b281c1d2fa00fa29",
+      "part_e_video": "78fbd4c142884915834c9849510f9153",
+      "part_f_video": "7feccabfd69c4c378ee57c6ec02604c5",
+      "part_g_video": "fead3919920f46c78f73cb02d9e966dc"
+    },
+    {
+      "id": "17",
+      "title": "CH2L1(part B) Follow :Chemical analysis (main experiment for anions) (9 sections)",
+      "part_a_video": "ea642f0863ff4e7dacfc89eb285f42e8",
+      "part_b_video": "dd74a91080064932bef9c8f707a10abe",
+      "part_c_video": "fee77b474f7a4a7cb2884bdae3580358",
+      "part_d_video": "34a823e581e04c23bfd1373c8cd95d13",
+      "part_e_video": "19f01498927a49a4a36528196d4d1bc5",
+      "part_f_video": "0d889b04a53148d98203bfd6f30b3513",
+      "part_g_video": "dee1f8a24f5b444595dc1eb782871eb6",
+      "part_h_video": "3ca4242e431446cdbb4a410316be6946",
+      "part_i_video": "110a4b56ed09416fba474f4c4bdca19f"
+    },
+    {
+      "id": "18",
+      "title": "CH2L2(part A) Confirmatory test for anions (5 sections)",
+      "part_a_video": "272f4625f320408792398528fcbb0a3c",
+      "part_b_video": "e38c71e2c448414eabd18d347106bf0d",
+      "part_c_video": "6b22abe34dca4e8889fb13d3144b31f0",
+      "part_d_video": "fcc2de7590084cdc96fdec2c156b87e3",
+      "part_e_video": "4e31896d9e7440088f93057c150a844f"
+    },
+    {
+      "id": "19",
+      "title": "CH2L2(part B) Detection for cations (8 sections)",
+      "part_a_video": "3a5f99d1c6a144eba8102f13e05dc87f",
+      "part_b_video": "3e9ece95f5be4ccb8abc1bbd36e420de",
+      "part_c_video": "4f6b5553b5304399935b48b4628b9c61",
+      "part_d_video": "7c7b80570bf5478cba8699665c6e02e2",
+      "part_e_video": "50ea2943aa084004a1e98cf98d39dade",
+      "part_f_video": "c39b7315df9246cf9e2d86f255a55af9",
+      "part_g_video": "cdfdd573a98a4b6da08b2f0138d4decd",
+      "part_h_video": "3c1c1443439e4928a99cf22abdbd47df"
+    },
+    {
+      "id": "20",
+      "title": "CH2L3(part A) All ideas for anions & cations questions & the mole (8 sections)",
+      "part_a_video": "8847b657c7484564a8e7b632b2ffcfa5",
+      "part_b_video": "caf8365116384a1f89a528dcf20063fb",
+      "part_c_video": "52aa9dd648f5426a90ff061468ff8abe",
+      "part_d_video": "390f56bea636426fbb1c4f8d15a63dd8",
+      "part_e_video": "899d8b0645eb41f7b6ecd0e5fe8b9cf5",
+      "part_f_video": "82cf389c71b94ed08dde7baef0b2e609",
+      "part_g_video": "e24617d2dd65455f920a0c8ab7f6dc1b",
+      "part_h_video": "4a3c2e724d2648be8b6912ca1a54d038"
+    },
+    {
+      "id": "21",
+      "title": "CH2L3(part B) Molarity & titration process (7 sections)",
+      "part_a_video": "f99a323bb03b49b2a398f30300497977",
+      "part_b_video": "6dddde29fae14d81bcca438e21280b6e",
+      "part_c_video": "83466d1618bb49f8bd2fdad33dab9102",
+      "part_d_video": "aa2fef2dcf2c494a9386e63bacecc280",
+      "part_e_video": "7011b0feba5f47898aeb3c76830d99b9",
+      "part_f_video": "a35300867c884b899bc198af56e68c32",
+      "part_g_video": "f6cef5df6a4e4bf88754c220d2991b85"
+    },
+    {
+      "id": "22",
+      "title": "CH2L4 (part A)  Problems of titration (8 sections)",
+      "part_a_video": "02b38909a74f46a48e7a3398bed16a8d",
+      "part_b_video": "a21910d5495046ed9ce7f4eda58286f5",
+      "part_c_video": "e96da08647584ce5a2975a5f5d9f5052",
+      "part_d_video": "590ed9b0e8e9409390e18d9ce73549a9",
+      "part_e_video": "3cf7a396c8f94734b8c4c7704c39142c",
+      "part_f_video": "9c66d71c2a2f417c908f912e503d7b06",
+      "part_g_video": "b29b0897bb9f4e6d9a0fa010e6270dbd",
+      "part_h_video": "a752806c785445d1b918a4f6b56f26df"
+    },
+    {
+      "id": "23",
+      "title": "CH2L4 (part B)  Precipitation and volatilization (8 sections)",
+      "part_a_video": "f83969d0548d423694b33551e788db60",
+      "part_b_video": "ac9bccf043a8457b844451664d231d27",
+      "part_c_video": "98f39949e3f740b0b93fdc5c4112b44d",
+      "part_d_video": "a584a3179103412796a0993c000cdde3",
+      "part_e_video": "4aa0d9408a9e454dad1e009288e66d63",
+      "part_f_video": "7e5e57d2455248f787153195d0501e5b",
+      "part_g_video": "faaede4e015f417b8045871f686f7743",
+      "part_h_video": "d72b030f58c94973bed8829be67f2d52"
+    },
+    {
+      "id": "24",
+      "title": "CH2L4 Solving of the last HW in chapter 2",
+      "part_a_video": "f266aa9f035348bb8c6194e6055ea897"
+    },
+    {
+      "id": "25",
+      "title": "Revision for Chapter  Two  [ Part A: Revision for qualitative analysis ]",
+      "part_a_video": "ff742121448044e88d8211a12bf53ae1",
+      "part_b_video": "27c433b461314cbda44ddffcf7bc1a4a",
+      "part_c_video": "cf9aeabbb43b42e8b5711ab7252ed9c1",
+      "part_d_video": "0880bdb1f56f4a18b3e777abb7ddf572"
+    },
+    {
+      "id": "26",
+      "title": "Revision for Chapter  Two  [ Part B: Quantitative analysis ]",
+      "part_a_video": "3d1067836cb64de1b2a3e1442a91deaa",
+      "part_b_video": "682c8c9297ea4c27a98706eda70cda18",
+      "part_c_video": "4c97ed5a53534c5db2890b715b136f52",
+      "part_d_video": "61655dac5904480fbc71e3bb8a59e3de",
+      "part_e_video": "85c7e952087945f59d2fa278022351e8",
+      "part_f_video": "44ef8048578e40abb7379d696036b22a"
+    },
+    {
+      "id": "27",
+      "title": "CH3L1(part A) Chemical equilibrium (8 sections)",
+      "part_a_video": "1ba72978445148f2b02dbd1e0672924c",
+      "part_b_video": "da57a31614c44dd5908192072110c047",
+      "part_c_video": "5628d68e6e1f4b4898c2a277630814ff",
+      "part_d_video": "be64355b366348789617e30b2c173e9d",
+      "part_e_video": "960d4b08a5b84f7399ef248291ec8748",
+      "part_f_video": "f7a0a7031cbc4f6a8be389d2bdfc41c8",
+      "part_g_video": "0f0aab6bd8e44931b1d384e3faddc0e6",
+      "part_h_video": "ba85eab993e54ab09fb0dc292c40e367"
+    },
+    {
+      "id": "28",
+      "title": "CH3L1(part B) Rate of chemical reactions (7 sections)",
+      "part_a_video": "d72d357badba40c29e9018a479efb4d0",
+      "part_b_video": "00882b14a7534e0cbe5f1ba339a9f5e3",
+      "part_c_video": "03af383a7bad47e8a853908a0e17c2eb",
+      "part_d_video": "b42842e26a1a444d8f470e8ae2f48cb7",
+      "part_e_video": "31fa54e8e6bf4eae9977ff080d0754b1",
+      "part_f_video": "c63f521e4f70480ea26b15d370b22277",
+      "part_g_video": "cb852ce2ab9c4bbc856232330c440667"
+    },
+    {
+      "id": "29",
+      "title": "CH3L2(part A)  effect of concentration, Law of mass action & Kc ( 7 sections)",
+      "part_a_video": "88f7e2cc31624f7f818a0791bf930d82",
+      "part_b_video": "290292acfcf648aaa65a0d1e077f09d4",
+      "part_c_video": "76a9d177ebd648948cf473326725777e",
+      "part_d_video": "a59fad3a482d4a1e901d391fd8466407",
+      "part_e_video": "46c883025bd54c50b9e3e8d6337d9608",
+      "part_f_video": "eeca78d70caa44ceb2d47f02093c088b",
+      "part_g_video": "4feab783f5014788a2410420265f9fc6"
+    },
+    {
+      "id": "30",
+      "title": "CH3L2(part B)  Pressure & temperature affect on rate of reaction ( 7 sections)",
+      "part_a_video": "bf1e2d23d94f48e9af374699f91994b3",
+      "part_b_video": "986a13698f614989b9deaf14a6ac34d4",
+      "part_c_video": "26d52abb1f5c48f7b75eaefd13fab576",
+      "part_d_video": "539f7db2bfe74d4eb9395a77f93acd54",
+      "part_e_video": "29cbf7419ee14781bec0bed9f9f8b492",
+      "part_f_video": "0ce3bfee507d491cbf05fb8cb19c5178",
+      "part_g_video": "29fb8082bb3d46d49028cd75fbf3f6bf"
+    },
+    {
+      "id": "31",
+      "title": "CH3L3(part A)  Catalyst & light ( 7 sections)",
+      "part_a_video": "34a217128b0a4bd4be8639c29ded0450",
+      "part_b_video": "929d2ed129a14625a7884327bd1503c8",
+      "part_c_video": "90b7ab5233074302adc6fbfbc8923777",
+      "part_d_video": "6d15a38c920c44b5acc2029407f30a43",
+      "part_e_video": "f772d81940cd4c28b00712b30124c26a",
+      "part_f_video": "a7529fbb20b74fe5b85606ea8b39305b",
+      "part_g_video": "3762434ca58b4892a39af5e480d8e228"
+    },
+    {
+      "id": "32",
+      "title": "CH3L3(part B)  Ostwald law - Ionization of water (  7 sections)",
+      "part_a_video": "31e3203a755840899509772ae88b19dc",
+      "part_b_video": "7836c0837da049aca6bacd2e74c1544f",
+      "part_c_video": "399c60774d724b488f299c8103c43ca5",
+      "part_d_video": "9efceb810959421882a2cb037f742291",
+      "part_e_video": "7ad185b97c3a4b56b2449f05d7f8a57f",
+      "part_f_video": "84c68ff00fe54abca666867663f2f4c3",
+      "part_g_video": "0ef012d6809e490698d040c95eefa7d4"
+    },
+    {
+      "id": "33",
+      "title": "CH3L4(part A)   PH,POH & 4 items (  10 sections)",
+      "part_a_video": "44758a2ea2944d15aa1214b4666be984",
+      "part_b_video": "758bdef74ed9499db83ab117e2aafab8",
+      "part_c_video": "6566eaa013cb41d985eed9f1e92b6507",
+      "part_d_video": "cd9bba4a193347f1900267b364979ca0",
+      "part_e_video": "f832c48b254a45ad85fb483415faea09",
+      "part_f_video": "24468cff24f647509498c1a9d419e570",
+      "part_g_video": "f9df7919a32d45d1963551d53b368784",
+      "part_h_video": "6470f2386c364fd483454e3ca0661eaa",
+      "part_i_video": "85ec403f70314453a48b3053696018b1",
+      "part_j_video": "79e33d2e00d64ea0a266f03206a50933"
+    },
+    {
+      "id": "34",
+      "title": "CH3L4(part B) Hydrolysis of salts and solubility product (Ksp)   ( 7 sections)",
+      "part_a_video": "0b80a769bd4a433abbca166541e187fd",
+      "part_b_video": "98a18997d7394c64abcd89e6be604325",
+      "part_c_video": "295f2840b414431db9a73be0475a7337",
+      "part_d_video": "9691637d8d59450bb9e8e3eab88e20ba",
+      "part_e_video": "b39b7578bd0246d68f6eab0ab1e4c440",
+      "part_f_video": "cf997a222bdc4c91b8e5802101337862",
+      "part_g_video": "a3f3e1662e6d41498c8cfd33c3b24b97"
+    },
+    {
+      "id": "35",
+      "title": "CH3L4 Solving of the last HW in chapter 3",
+      "part_a_video": "8485cbd226d74fd9bf5db725bf9caa55"
+    },
+    {
+      "id": "36",
+      "title": "Revision for Chapter 3 [ Part A ] ( 5 sections)",
+      "part_a_video": "f0e980f7249640e090c35e98042fbf3b",
+      "part_b_video": "ebbc9e0f7f6f44afa47014c6162b85c0",
+      "part_c_video": "39add80ac85f4111aa13d4fe6f6f7f2a",
+      "part_d_video": "b3cf8832795c4577b9e84f4eca112c4a",
+      "part_e_video": "6bd460a41af1402480767272a2f7c306"
+    },
+    {
+      "id": "37",
+      "title": "Revision for Chapter 3 [ Part B ] ( 5 sections)",
+      "part_a_video": "e76e1f7ce0814879b76cd761e97b42c4",
+      "part_b_video": "c3e23841c1b44d5abf4d44e1104177d9",
+      "part_c_video": "5bee0fdf7335456b96a6d6480c01e8a1",
+      "part_d_video": "56ec26b94af74e729f15c8461eb84468",
+      "part_e_video": "cb4ce4a5abd64f07882ba1bd4e6ac9ea"
+    },
+    {
+      "id": "38",
+      "title": "CH4L1(part A) Electrochemistry (Oxidation & reduction) (3 sections)",
+      "part_a_video": "5378eef0fd344239a7cf60760efb52d5",
+      "part_b_video": "74524cf0d3744544b50f3801ffef9532",
+      "part_c_video": "c42b3a64c4c74400bcf2f5d115e73834"
+    },
+    {
+      "id": "39",
+      "title": "CH4L1(part B) Galvanic cell (5 sections)",
+      "part_a_video": "a92bb0660fcb44089edb89b1aae7ab19",
+      "part_b_video": "e94db265a84e468795d35edc31c3cdb5",
+      "part_c_video": "4595d53631bd4119b95f56d7930979d0",
+      "part_d_video": "8eaa99fd7ca24b709959937342eff46b",
+      "part_e_video": "e3c0e7e102234c24b36d73dfbf803da8"
+    },
+    {
+      "id": "40",
+      "title": "CH4L2(part A)  Electromotive series  & S.H.E.  ( 8 sections)",
+      "part_a_video": "7018d90ec005401c864df5fc83cf6e42",
+      "part_b_video": "f5b8ec9069cc4100bb9863d71681647a",
+      "part_c_video": "5f433288d8434ac0af3b4733466b824b",
+      "part_d_video": "5d987541b59247afb9cfba08df8da22b",
+      "part_e_video": "cdbbd17f5ee146329a8c9c6095b847fa",
+      "part_f_video": "021314fb2f2f4b17b077c47af11a73dd",
+      "part_g_video": "884ee8758eca458089ad0fabaa9b36b0",
+      "part_h_video": "c4d780e486ee439e98aac5b88a92bb17"
+    },
+    {
+      "id": "41",
+      "title": "CH4L2(part B)  E.M.F.  (  5 sections)",
+      "part_a_video": "2181a10306d14102878a0200c8f1a96c",
+      "part_b_video": "50201724d2be474990d0ba943c24ca58",
+      "part_c_video": "3435bb099fa449699afd0c729c7d0be7",
+      "part_d_video": "4a67c8e706f3416a8f1b254121b03179",
+      "part_e_video": "e1e38f7c53d64dd7acd7e62ee2ca693f"
+    },
+    {
+      "id": "42",
+      "title": "CH4L3(part A) The 4 batterIes  ( 6 sections)",
+      "part_a_video": "af2cc41a96d5442bb80a739fc1f96b2f",
+      "part_b_video": "d6732cdea1fb4d609aed738bb608500f",
+      "part_c_video": "9a69ca85950f44d68e51bec444636699",
+      "part_d_video": "8d64d8ee76e845a9baa589e48531c6eb",
+      "part_e_video": "b36c25888d284fdb86c2d01b86765d34",
+      "part_f_video": "73b14fef1b8141c7988d6ff51b678a16"
+    },
+    {
+      "id": "43",
+      "title": "CH4L3(part B)  Iron rusting (  8 sections)",
+      "part_a_video": "b12906f8b505457f9dbab1e4bb56584c",
+      "part_b_video": "d61af0f96887469881e39ffc1ca81aa6",
+      "part_c_video": "e612eaa36ee6450e8f7e00e517507fa7",
+      "part_d_video": "569a40055a9d431191cad6f30d744168",
+      "part_e_video": "8896d3b4457f45a1a7c32d8fe99e18e6",
+      "part_f_video": "bd61f8c0d09640a4868de5f97a1af7dc",
+      "part_g_video": "99339e8dec484094b90277382c2caf67",
+      "part_h_video": "37a24ebc8f13487d8e9a5184f40f0559"
+    },
+    {
+      "id": "44",
+      "title": "CH4L4(part A) Applications for electrolysis  ( 6 sections)",
+      "part_a_video": "38179cbfd7a5490a8392a105c409c1ab",
+      "part_b_video": "a49a840443374c919ba6244a5265def2",
+      "part_c_video": "a02855651b9c43e9bbbcfa264ba52c20",
+      "part_d_video": "90c9cc1b3b1340689428d28eeae283b1",
+      "part_e_video": "f0da27fc18b04fb0a564e765f196397e",
+      "part_f_video": "33bc13fca9a741fdbbb6946e50f24fc0"
+    },
+    {
+      "id": "45",
+      "title": "CH4L4(part B)  Faraday's laws (  7 sections)",
+      "part_a_video": "f307fe6a12cf4481893ae591956c628c",
+      "part_b_video": "1a53f61aee8341efb2d97aea2d504e0a",
+      "part_c_video": "c4d0f67825ef436a84b4d2bd9573401d",
+      "part_d_video": "a6384c49032d4661b883fbdd62ff0a48",
+      "part_e_video": "314dd3e385774022b1bc4d2c0f33c974",
+      "part_f_video": "dfc4dfd28b3a479ab1d650cf155991a6",
+      "part_g_video": "912f178a0a67499dabf5348b9b94a92c"
+    },
+    {
+      "id": "46",
+      "title": "CH4L4 Solving of the last HW in chapter 4",
+      "part_a_video": "2f60f93c96ad40c98a3a1781c9f50549"
+    },
+    {
+      "id": "47",
+      "title": "Revision for Chapter 4  Galvanic cell  [ Part A ] ( 6 sections)",
+      "part_a_video": "816dda781ac1401497cf9553f1cff1aa",
+      "part_b_video": "8083b30ff5a04179a8b3a0f6d474714a",
+      "part_c_video": "156145b6d2464690a114b72e92d6a1fa",
+      "part_d_video": "d2aa77a534b84ae78bb31b08ffbf5e63",
+      "part_e_video": "f6bea1ebbcb1429d84a390a3288a2762",
+      "part_f_video": "c9db40ed227c46278edf912d2dfa858d"
+    },
+    {
+      "id": "48",
+      "title": "Revision for Chapter 4  [ Part B ] ( 5 sections)",
+      "part_a_video": "78f0ab0590ed476e9f9e2977ae60a910",
+      "part_b_video": "f3c400fb584f4de299f627ab7e01fb8d",
+      "part_c_video": "584ded559e114c4dbcf17417f2789e38",
+      "part_d_video": "778ac59c04a24a70b6af925b8a955dd3",
+      "part_e_video": "8a65c21dfe454d9da1afe7d999925376"
+    },
+    {
+      "id": "49",
+      "title": "CH5L1(part A) Introduction to organic chemistry  (8 sections)",
+      "part_a_video": "3dfadc263d6546d399ecde788c034657",
+      "part_b_video": "da59c19d4ca04cf7970d6555b9b542db",
+      "part_c_video": "bf094120134746dfa60b814a600a1bc5",
+      "part_d_video": "64b811d34d12417d86b8e4c8e48ab4d9",
+      "part_e_video": "15f971dc6e124cc5b2b50e8ec1d3eab1",
+      "part_f_video": "942190ebcb184f46bd1d924ea9b19b2c",
+      "part_g_video": "fd4feb40b12d429484510f7828bbc5d2",
+      "part_h_video": "f631ce2d7518443d9535ec99024ee81e"
+    },
+    {
+      "id": "50",
+      "title": "CH5L1(part B) Classification of hydrocarbons (7 sections)",
+      "part_a_video": "451b9676d54a4d1cb291835c50fe0a33",
+      "part_b_video": "766f374bed7e4b58add2b7f20b3b0067",
+      "part_c_video": "59098c95793f4c9f8e87b17469c140a0",
+      "part_d_video": "8e2fd9b4212e47c380e4cb06b16cf8fe",
+      "part_e_video": "8b7296ae93ac493bb3e7b50c830fc5eb",
+      "part_f_video": "c383e37b6061423fb53c598ad9b1d8af",
+      "part_g_video": "0eeb06c57251471687afbbc89344e4d0"
+    },
+    {
+      "id": "51",
+      "title": "CH5L2(part A) IUPAC system ( 4 sections)",
+      "part_a_video": "c56d4c698ce94edb9779882abb7e640e",
+      "part_b_video": "78c1c090e7d049fcbbfda3011bf067d8",
+      "part_c_video": "b326f4598bd349948fb33474e9c3bb62",
+      "part_d_video": "1a4cb6c60064463d8351be1d8b1396a5"
+    },
+    {
+      "id": "52",
+      "title": "CH5L2(part B) Isomers of alkanes (  6 sections)",
+      "part_a_video": "955145f3616a4210a092f7f0e3c68d8b",
+      "part_b_video": "6d6d7a6c0380476c929550e9e3c9e30d",
+      "part_c_video": "2b52d7d41cb747c98422ad290ae81840",
+      "part_d_video": "bd65688ffbe74e80816bd63f9bc98e42",
+      "part_e_video": "e12ad66fd93b4597a9b133abafe9dd68",
+      "part_f_video": "0565e50b700442f2bc781dfd1567309d"
+    }
+  ]
+}

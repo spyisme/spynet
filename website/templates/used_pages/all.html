@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+    <title>Sanawya Sessions</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+
+    <meta name="description" content="Spynet">
+    <meta name="keywords" content="spy, spynet, spysnet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+
+    <link rel="stylesheet" type="text/css" href="static/styles/all.css">
+
+    <link rel="stylesheet" type="text/css" href="static/styles/main.css">
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
+    <script src="static/java/connection.js"></script>
+
+
+
+
+</head>
+
+
+<body>
+
+    <section class="banner">
+        <canvas id="canvas"> </canvas>
+ 
+
+    
+  <div class="nav">
+        <img class ="img"src="static/assets/ss.png">
+        <!-- <p>Yarab amr ygeb 90%</p> -->
+        <p><a href="https://mathdf.com/" target="_blank" style="color: white; "><u>Mathdf</u></a></p>
+
+
+  </div>
+
+
+
+
+  <br><br>
+  <div class="textcont">
+    <p><button class="button" id="homeBtn" onclick="showDiv('homestuff', 'homeBtn')">Subjects</button></p>
+    <p><button class="button" id="pdfsBtn" onclick="showDiv('pdfsstuff', 'pdfsBtn')">Pdfs</button></p>
+    <p><button class="button" id="otherBtn" onclick="showDiv('othersstuff', 'otherBtn')">Netflix</button></p>
+
+
+</div>
+
+  <div id="homestuff" class="content hidden">
+    <ul>
+      {% for item in lines %}
+          <li>
+              <a href="{{ item }}">
+                <div class="card">
+                  <img src="static/assets/homepage/{{item}}.jpg" alt="{{ item }}" loading="lazy">
+                  <div class="text">{{ item }}</div>
+                </div>
+                
+              
+              </a>
+          </li>
+  
+      {% endfor %}
+  
+    </ul>
+
+
+
+
+</div>
+
+    
+<div id="pdfsstuff" class="content hidden">
+
+  <ul>
+
+    <li>
+        <a href="/redirect/https://drive.google.com/drive/folders/19Zx0ljyRbkBVB29D-Lz4nl_gE1-OmAjI?usp=drive_link" target="_blank">
+            <div class="card2">
+
+                Hacker pdfs
+            </div>
+        </a>
+    </li>
+    <li>
+      <a href="/redirect/https://drive.google.com/drive/folders/1trBpK01IknkeMC9LtsCM7dyTz-9uqY0n?usp=drive_link" target="_blank">
+          <div class="card2">
+    
+              Nasser
+          </div>
+      </a>
+    </li>
+    <li>
+      <a href="/redirect/https://drive.google.com/drive/folders/1cEnVqh8bAFr4aqHgMdy-_TpfbEVXC0zc?usp=drive_link" target="_blank">
+          <div class="card2">
+
+              Sherbo
+          </div>
+      </a>
+  </li>
+
+  <li>
+    <a href="/redirect/https://drive.google.com/drive/folders/1co0YX7h8Xdg3HV4zFhf2xze9yNX-xM71?usp=drive_link" target="_blank">
+        <div class="card2">
+
+            Nawar
+        </div>
+    </a>
+</li>
+
+<li>
+  <a href="/redirect/https://drive.google.com/drive/folders/1Mfyook7uXVp0d3y85WaRUuXB_F6Or_Yn?usp=drive_link" target="_blank">
+      <div class="card2">
+
+          German
+      </div>
+  </a>
+</li>
+<li>
+  <a href="/books" target="_blank">
+      <div class="card2">
+        More
+      </div>
+  </a>
+</li>
+  </ul>
+</div>
+
+
+<div id="othersstuff" class="content hidden">
+  <ul>
+    <li>
+
+      <a href="/netflix" target="_blank">
+      
+      <div class="card">
+      <img src="static/assets/netflix.png" loading="lazy">
+      <div class="text2">
+     Netflix cookie
+      </div>
+      
+      </div>
+      
+      </a>
+      
+      
+      </li>
+      
+        <li>
+            <a href="https://youtu.be/tIpbcAgCe-s" target="_blank">
+                <div class="card">
+            <img src="static/assets/netflix.png" loading="lazy">
+
+            <div class="text2">How to use</div>
+                </div>
+            </a>
+        </li>
+
+  </ul>
+
+
+
+
+</div>
+
+
+    </section>
+
+  </body>
+
+  <script>
+  
+  function showDiv(divId, buttonId) {
+            // Hide all divs first
+            var divs = document.querySelectorAll('.content');
+            divs.forEach(function (div) {
+                div.classList.add('hidden');
+            });
+
+            // Remove 'active' class from all buttons
+            var buttons = document.querySelectorAll('.button');
+            buttons.forEach(function (button) {
+                button.classList.remove('active');
+            });
+
+            // Show the selected div
+            document.getElementById(divId).classList.remove('hidden');
+
+            // Add 'active' class to the clicked button
+            document.getElementById(buttonId).classList.add('active');
+        }
+</script>
+
+
+<script src="static/java/snow.js"></script>
+
+
+</html>

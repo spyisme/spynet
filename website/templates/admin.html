@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+</head>
+
+
+
+<!-- Add this inside the <head> tag of your HTML file -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
+
+    <!-- Add this script at the end of your HTML file, before the </body> tag -->
+    <script>
+        var socket = io.connect('https://' + document.domain + ':' + location.port);
+    
+        socket.on('update_clients', function(data) {
+            // Update the UI with the new connected clients count
+            document.getElementById('connected_clients').innerText = data.count;
+        });
+    </script>
+    
+<body>
+    <h1>Welcome to the Admin Page</h1>
+    <h1><p>Connected Clients: <span id="connected_clients">{{ connected_clients }}</span></p> </h1>
+
+
+    {% if users %}
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>User ID</th>
+                    <th>Username</th>
+                    <th>Password</th>
+                    <th>Active Sessions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                    <tr>
+                        <td>{{ user.id }}</td>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.password }}</td>
+                        <td>{{ user.active_sessions }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No user data available.</p>
+    {% endif %}
+
+    <br>
+    <a href="{{ url_for('views.home') }}">Go back to Home</a>
+</body>
+</html>

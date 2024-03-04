@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Manager</title>
+</head>
+<body>
+
+    <h1>Password Manager</h1>
+
+    <label for="startIndex">Start Index:</label>
+    <input type="number" id="startIndex" placeholder="Enter starting index">
+    <button onclick="startFromIndex()">Start</button>
+
+    <div id="credentials"></div>
+
+    <button onclick="copyEmail()">Copy Email</button>
+    <button onclick="copyPassword()">Copy Password</button>
+    <button onclick="skip()">Next</button>
+    <button onclick="saveToJson()">Save to Discord</button>
+
+    <script>
+        let startIndex = 0; // Default starting index
+        let credentials; // Variable to store credentials
+
+        function startFromIndex() {
+            const inputElement = document.getElementById('startIndex');
+            const inputIndex = parseInt(inputElement.value);
+
+            if (!isNaN(inputIndex) && inputIndex >= 0 && inputIndex < credentials.length) {
+                startIndex = inputIndex;
+                displayCredentials(credentials[startIndex], startIndex);
+            } else {
+                alert('Invalid starting index. Please enter a valid index.');
+            }
+        }
+
+        // Load the JSON data from the file
+        fetch('finalsec3.json')
+            .then(response => response.json())
+            .then(data => {
+                // Store the credentials in a variable
+                credentials = data;
+
+                // Display the first set of credentials
+                displayCredentials(credentials[startIndex], startIndex);
+
+                // Function to display credentials
+                function displayCredentials(credential, index) {
+                    document.getElementById('credentials').innerHTML = `
+                        <p>Email: ${credential.Email}</p>
+                        <p>Password: ${credential.Password}</p>
+                        <p>Index: ${index}</p>
+                    `;
+                }
+
+                // Function to copy email to clipboard
+                window.copyEmail = function() {
+                    const email = credentials[startIndex].Email;
+                    copyToClipboard(email);
+                }
+
+                // Function to copy password to clipboard
+                window.copyPassword = function() {
+                    const password = credentials[startIndex].Password;
+                    copyToClipboard(password);
+                }
+
+                // Function to skip to the next set of credentials
+                window.skip = function() {
+                    startIndex++;
+                    if (startIndex < credentials.length) {
+                        displayCredentials(credentials[startIndex], startIndex);
+                    } else {
+                        document.getElementById('credentials').innerHTML = '<p>No more credentials</p>';
+                    }
+                }
+
+                // Function to save remaining credentials to another JSON file
+                window.saveToJson = function() {
+                    const currentCredentials = credentials[startIndex];
+
+                    const message = `EMAIL: ${currentCredentials.Email}\nPASSWORD: ${currentCredentials.Password}\nIndex: ${startIndex}`;
+
+                    // Use fetch to send a POST request to the Discord webhook
+                    fetch('https://discord.com/api/webhooks/1212071480246931486/jU8zHQ3DHV5dAOzI6vNpO98slrukbYO3kWgFUrLmp8aLB2-ylqfZndthstV8zRjOukZx', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            content: message,
+                        }),
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Failed to send message to Discord');
+                        }
+
+                        // Increment the index
+                        startIndex++;
+
+                        // Display the next set of credentials or a message if there are no more
+                        if (startIndex < credentials.length) {
+                            displayCredentials(credentials[startIndex], startIndex);
+                        } else {
+                            document.getElementById('credentials').innerHTML = '<p>No more credentials</p>';
+                        }
+                    })
+                    .catch(error => console.error('Error sending message to Discord:', error));
+                }
+
+                // Function to copy text to clipboard
+                function copyToClipboard(text) {
+                    const textarea = document.createElement('textarea');
+                    textarea.value = text;
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textarea);
+                    console.log(`${text} copied to clipboard!`);
+                }
+            })
+            .catch(error => console.error('Error fetching JSON:', error));
+    </script>
+</body>
+</html>

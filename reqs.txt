@@ -1,0 +1,15 @@
+flask
+requests
+Flask-SQLAlchemy
+flask_login
+google-api-python-client
+google-api-python-client
+pytube
+youtube_dl
+lxml
+protobuf==3.20.0
+pycryptodomex
+pycryptodome
+waitress
+flask-socketio
+flask-cors

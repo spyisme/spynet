@@ -1,0 +1,47 @@
+<!-- add-course.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Course</title>
+</head>
+<body>
+    <h1>Add Course</h1>
+
+    <form method="post" action="{{ url_for('views.add_course_route') }}" enctype="multipart/form-data">
+
+        <label for="userinput_password">Password:</label>
+        <input type="text" id="userinput_password" name="userinput_password" required>
+        <a href="#" onclick="generatePassword();" style="color: blue; text-decoration: underline;">Create password</a>
+
+
+        <label for="input1">Course Name:</label>
+        <input type="text" id="input1" name="input1" required>
+
+        <label for="input2">Course ID:</label>
+        <input type="text" id="input2" name="input2" required>
+
+        <label for="course_image">Course Image:</label>
+        <input type="file" id="course_image" name="course_image" accept="image/*" required>
+
+        <button type="submit">Add Course</button>
+    </form>
+
+    <script>
+        function generatePassword() {
+            // Use Fetch API to send a request to /create-password
+            fetch('/create-password', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    zoom: 90%;
+    overflow: auto;
+    cursor: url('/static/cursor.png'), auto;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    background: rgb(29,17,76);
+background: linear-gradient(72deg, rgba(29,17,76,1) 0%, rgba(108,43,81,1) 40%, rgba(33,0,89,1) 100%);
+}
+
+
+a {
+  text-decoration: none;
+    cursor: url('/static/cursor.png'), auto;
+}
+
+.nohover{
+    cursor: url('/static/cursor.png'), auto;
+    color:white ;
+    }

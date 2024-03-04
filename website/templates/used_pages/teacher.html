@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>{{ teachername }}</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+
+
+
+    <meta name="description" content="Spynet">
+    <meta name="keywords" content="spy, spynet, spysnet">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+    <link rel="stylesheet" type="text/css" href="static/styles/teacher.css">
+    <link rel="stylesheet" type="text/css" href="static/styles/main.css">
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
+    <script src="static/java/connection.js"></script>
+
+
+</head>
+
+
+<body>
+
+  <section class="banner">
+    <canvas id="canvas"> </canvas>
+
+  <div class="nav">
+    {% if teachername == "Arabic"or teachername == "English" or teachername == "Biology" or teachername == "Chemistry" or teachername == "Geology" or teachername == "German" or teachername == "Math" or teachername == "Physics" %}
+
+    <img class="img" src="static/assets/subjects/{{ teachername }}11.png"></img>
+
+    
+         {%else%}
+        <h1>✰ {{ teachername }} ✰</h1>
+
+{%endif%}
+              
+<!-- <p>Yarab amr ygeb 90%</p> -->
+
+
+
+
+
+
+
+            </div>
+
+
+   <ul>
+    {% for name, (url, description) in teacher_links.items() %}
+
+          <li>
+            {% if "Files" in name %}
+
+              <a href="{{ url }}" target="_blank">
+                {%else%}
+              <a href="{{ url }}">
+{%endif%}
+                  <div class="card">
+                      <img src="static/assets/{{ teachername }}/{{ name }}.jpg" loading="lazy">
+                      <p>{{ name }}</p>
+                <span class="card-description">{{description}}</span>
+                </div>
+
+              </a>
+          </li>
+          {% endfor %}
+      </ul>
+
+</body>
+
+</section>
+
+<script src="static/java/snow.js"></script>
+ 
+
+</html>
