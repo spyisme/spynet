@@ -1,5 +1,5 @@
 # __init__.py
-from flask import Flask, request, redirect, url_for , render_template
+from flask import Flask, request, redirect, url_for , render_template   
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, current_user
 from flask_socketio import SocketIO , emit
@@ -74,7 +74,7 @@ def create_app():
     # Before request callback to check if the user is logged in
     def before_request():
         excluded_routes = ['views.new','views.favicon' ,'shortlinks.netflix' ,'vdo.iframevids','views.login', 'shortlinks.tools', 'vdo.commandslist', 'shortlinks.youtube', 'vdo.cmdcommand' , 'vdo.storjflask2']
-
+        json_payload =""
         if request.endpoint and request.endpoint not in excluded_routes and not request.path.startswith('/static/'):
             if not current_user.is_authenticated:
                 return redirect(url_for('views.login'))
@@ -92,8 +92,10 @@ def create_app():
                             request.path =  request.path.replace('andsympol', '&')
                         else :
                             request.path = f"https://spysnet.com{request.path}"
-
-                        discord_log(f"{client_ip} Viewed <{request.path}> Device ```{user_agent}```")
+                        if request.method != "GET":
+                            json_payload = request.data.get_json()
+                            
+                        discord_log(f"{client_ip} Viewed <{request.path}> {json_payload} Device ```{user_agent}```")
 
 
     app.before_request(before_request)
