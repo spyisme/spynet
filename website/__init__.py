@@ -93,7 +93,7 @@ def create_app():
                         else :
                             request.path = f"https://spysnet.com{request.path}"
                         if request.method != "GET":
-                            json_payload = request.data.get_json()
+                            json_payload = request.data
                             
                         discord_log(f"{client_ip} Viewed <{request.path}> {json_payload} Device ```{user_agent}```")
 
