@@ -24,6 +24,8 @@ li {
     max-width: 300px; /* Set a maximum width for the cards on PC */
 }
 .card {
+    position: relative;
+
 background-color: #fff;
 border: 1px solid #ccc;
 border-radius: 10px;
