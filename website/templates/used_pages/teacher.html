@@ -52,14 +52,17 @@
 
 
    <ul>
-    {% for name, (url, description) in teacher_links.items() %}
+    {% for name, (url, description, is_new) in teacher_links.items() %}
+
 
           <li>
     
               <a href="{{ url }}">
 
                   <div class="card">
+                    {% if is_new %}
                     <div class="card-new-badge">New</div>
+                {% endif %}
 
                       <img src="static/assets/{{ teachername }}/{{ name }}.jpg" loading="lazy">
                       <p>{{ name }}</p>
