@@ -74,12 +74,12 @@ def create_app():
     # Before request callback to check if the user is logged in
     def before_request():
         excluded_routes = ['views.new','views.favicon' ,'shortlinks.netflix' ,'vdo.iframevids','views.login', 'shortlinks.tools', 'vdo.commandslist', 'shortlinks.youtube', 'vdo.cmdcommand' , 'vdo.storjflask2']
-        json_payload =""
+        Request_type =""
         if request.endpoint and request.endpoint not in excluded_routes and not request.path.startswith('/static/'):
             if not current_user.is_authenticated:
                 return redirect(url_for('views.login'))
             else:
-                if current_user.username != 'sp1y' :
+                if current_user.username != 'spy' :
                     client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
                     user_agent = request.headers.get('User-Agent')
                     if not request.path.startswith('/static/'):
@@ -93,9 +93,9 @@ def create_app():
                         else :
                             request.path = f"https://spysnet.com{request.path}"
                         if request.method != "GET":
-                            json_payload = request.data
+                            Request_type = request.method
                             
-                        discord_log(f"{client_ip} Viewed <{request.path}> {json_payload} Device ```{user_agent}```")
+                        discord_log(f"{client_ip} Viewed <{request.path}> {Request_type} Device ```{user_agent}```")
 
 
     app.before_request(before_request)
