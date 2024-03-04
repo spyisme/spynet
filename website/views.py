@@ -439,9 +439,9 @@ def nawar():
     "Nawar Chapter 4 Revision": ("nawarch4rev", "Revision 4"),
 
     "Nawar Chapter 5": ("nawarch5", "Chapter 5"),
-    "Nawar Chapter 6": ("nawarch6", "Chapter 6" , True),
-    "Nawar Chapter 7": ("nawarch7", "Chapter 7" , True),
-    "Nawar Chapter 8": ("nawarch8", "Chapter 8" , True),
+    "Nawar Chapter 6": ("nawarch6", "Chapter 6" , "New"),
+    "Nawar Chapter 7": ("nawarch7", "Chapter 7" , "New"),
+    "Nawar Chapter 8": ("nawarch8", "Chapter 8" , "New"),
   }
   teachername = "Physics"
   return render_template('used_pages/teacher.html',
@@ -734,7 +734,7 @@ def nawarworkshopsupdate():
 def chem():
   teacher_links = {
      "Zoz": ("nasser", "Nasser-El-Batal"),
-     "Ashraf elshnawy": ("ashraf", "All sessions", True),
+     "Ashraf elshnawy": ("ashraf", "All sessions", "New"),
      "Ashraf elshnawy(YT)": ("ashrafelshnawy", "Revision CH 1-4"),
 
   }
