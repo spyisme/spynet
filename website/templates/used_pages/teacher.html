@@ -55,13 +55,12 @@
     {% for name, (url, description) in teacher_links.items() %}
 
           <li>
-            {% if "Files" in name %}
-
-              <a href="{{ url }}" target="_blank">
-                {%else%}
+    
               <a href="{{ url }}">
-{%endif%}
+
                   <div class="card">
+                    <div class="card-new-badge">New</div>
+
                       <img src="static/assets/{{ teachername }}/{{ name }}.jpg" loading="lazy">
                       <p>{{ name }}</p>
                 <span class="card-description">{{description}}</span>

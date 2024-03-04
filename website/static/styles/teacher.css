@@ -138,6 +138,18 @@ pointer-events: none; /* Allow click events to pass through the canvas */
 }
 
 
+.card-new-badge {
+    position: absolute;
+    top: 10px; /* Adjust the distance from the top */
+    left: 10px; /* Adjust the distance from the left */
+    background-color: #ff0000; /* Set the badge background color */
+    color: #ffffff; /* Set the text color */
+    padding: 5px 10px; /* Adjust the padding for the badge */
+    border-radius: 5px; /* Optional: Add rounded corners */
+    font-size: 12px; /* Adjust the font size */
+    font-weight: bold; /* Optional: Make the text bold */
+    z-index: 2; /* Ensure the badge is above other elements */
+}
 
 
 .bottom-image {
