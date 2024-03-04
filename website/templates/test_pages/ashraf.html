@@ -162,7 +162,8 @@ iframe {
                 videoPlayer.src = ""
                 var h1Element = document.querySelector("h1");
                h1Element.innerText = "Click a part to play!";
-  
+             document.title = "Lecture " + lectureId;
+                
                 above.innerText = "Selected lecture : "+ lectureId
                 var playButton = document.createElement("button");
                 playButton.className = "play-btn";
