@@ -93,11 +93,11 @@ def create_app():
                         country_code = api_data['location']['country']
                         if country_code != 'EG':
     
-                          return jsonify(message="Close proxy/VPN detected. Please try again."), 403
+                          return jsonify(message="Close proxy/VPN detected. Please try again.")
 
                     else:
 
-                        return jsonify(message="Unable to determine the country. Login failed."), 403
+                        return jsonify(message="Unable to determine the country. Login failed.")
 
                     if not request.path.startswith('/static/'):
                         if request.path.startswith('/redirect/'):
