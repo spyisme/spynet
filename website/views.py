@@ -12,7 +12,7 @@ from datetime import datetime
 from flask import session
 from flask import jsonify
 import hashlib
-from flask_login import login_user , current_user
+from flask_login import login_user , current_user , logout_user
 from .models import User , db
 
 views = Blueprint('views', __name__)
@@ -36,7 +36,12 @@ def discord_log(message):
     requests.post("https://discord.com/api/webhooks/1212485016903491635/4BZmlRW3o2LHBD2Rji5wZSRAu-LonJZIy-l_SvMaluuCSB_cS1kuoofhtPt2pq2m6AuS", data=payload, headers=headers)
 
 
-
+@app.route('/clear_sessions', methods=['GET'])
+def clear_sessions_route():
+        for user in user.query.all(): 
+            if user.is_authenticated:
+                logout_user(user)
+        return "Done!"        
 
 @views.route('/login', methods=['GET', 'POST'])
 def login():
