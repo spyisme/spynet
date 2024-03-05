@@ -36,7 +36,7 @@ def discord_log(message):
     requests.post("https://discord.com/api/webhooks/1212485016903491635/4BZmlRW3o2LHBD2Rji5wZSRAu-LonJZIy-l_SvMaluuCSB_cS1kuoofhtPt2pq2m6AuS", data=payload, headers=headers)
 
 
-@app.route('/clear_sessions', methods=['GET'])
+@views.route('/clear_sessions', methods=['GET'])
 def clear_sessions_route():
         for user in user.query.all(): 
             if user.is_authenticated:
