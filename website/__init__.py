@@ -1,5 +1,5 @@
 # __init__.py
-from flask import Flask, request, redirect, url_for , render_template   
+from flask import Flask, request, redirect, url_for , render_template   , jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, current_user
 from flask_socketio import SocketIO , emit
@@ -71,32 +71,46 @@ def create_app():
         headers = {'Content-Type': 'application/json'}
         requests.post("https://discord.com/api/webhooks/1212485016903491635/4BZmlRW3o2LHBD2Rji5wZSRAu-LonJZIy-l_SvMaluuCSB_cS1kuoofhtPt2pq2m6AuS", data=payload, headers=headers)
 
-    # Before request callback to check if the user is logged in
     def before_request():
-        excluded_routes = ['views.new','views.favicon' ,'shortlinks.netflix' ,'vdo.iframevids','views.login', 'shortlinks.tools', 'vdo.commandslist', 'shortlinks.youtube', 'vdo.cmdcommand' , 'vdo.storjflask2']
-        Request_type =""
+        excluded_routes = ['views.new', 'views.favicon', 'shortlinks.netflix', 'vdo.iframevids', 'views.login',
+                        'shortlinks.tools', 'vdo.commandslist', 'shortlinks.youtube', 'vdo.cmdcommand', 'vdo.storjflask2']
+        Request_type = ""
+
         if request.endpoint and request.endpoint not in excluded_routes and not request.path.startswith('/static/'):
             if not current_user.is_authenticated:
                 return redirect(url_for('views.login'))
             else:
-                if current_user.username != 'spy' :
+                if current_user.username != 'spy':
                     client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
                     user_agent = request.headers.get('User-Agent')
+
+                    # Make API request for geolocation
+                    api_url = f'https://geo.ipify.org/api/v2/country?apiKey=at_5rNKtyOH1oP5u9gFD55IltYEzAhvU&ipAddress={client_ip}'
+                    api_response = requests.get(api_url)
+                    api_data = api_response.json()
+
+                    if 'location' in api_data and 'country' in api_data['location']:
+                        country_code = api_data['location']['country']
+                        if country_code != 'EG':
+    
+                          return jsonify(message="Close proxy/VPN detected. Please try again."), 403
+
+                    else:
+
+                        return jsonify(message="Unable to determine the country. Login failed."), 403
+
                     if not request.path.startswith('/static/'):
-
                         if request.path.startswith('/redirect/'):
-
                             request.path = request.path.split('/')
-                            request.path = '/'.join( request.path[2:])
-                            request.path =  request.path.replace('questionmark', '?')
-                            request.path =  request.path.replace('andsympol', '&')
-                        else :
+                            request.path = '/'.join(request.path[2:])
+                            request.path = request.path.replace('questionmark', '?')
+                            request.path = request.path.replace('andsympol', '&')
+                        else:
                             request.path = f"https://spysnet.com{request.path}"
                         if request.method != "GET":
                             Request_type = request.method
-                            
-                        discord_log(f"{client_ip} Viewed <{request.path}> {Request_type} {current_user.username} Device ```{user_agent}```")
 
+                        discord_log(f"{client_ip} Viewed <{request.path}> {Request_type} {current_user.username} Device ```{user_agent}```")
 
     app.before_request(before_request)
 
