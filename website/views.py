@@ -41,40 +41,42 @@ def discord_log(message):
 
 @views.route('/login', methods=['GET', 'POST'])
 def login():
+    client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
+    user_agent = request.headers.get('User-Agent')
+    api_url = f'https://geo.ipify.org/api/v2/country?apiKey=at_5rNKtyOH1oP5u9gFD55IltYEzAhvU&ipAddress={client_ip}'
+    response = requests.get(api_url)
+    data = response.json()
+
+    if 'location' in data and 'country' in data['location']:
+        country_code = data['location']['country']
+        if country_code != 'EG':
+            # User is not in Egypt, might be using a proxy/VPN
+            return jsonify(message="Close proxy/VPN detected. Please try again."), 403
+    else:
+        # Unable to determine country, handle accordingly
+        return jsonify(message="Unable to determine the country. Login failed."), 403
+
     if current_user.is_authenticated:
         return redirect(url_for('views.home'))
     
     if request.method == 'POST':
         username = request.form.get('username')
-
+        spy = request.args.get('spy')
         user = User.query.filter_by(username=username).first()
 
         if user:
-            if username !="spy" :
-                login_user(user)
-                user.active_sessions += 1
-                db.session.commit()
-                client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
-                user_agent = request.headers.get('User-Agent')
-                discord_log(f"{client_ip} just loggend with {username} Device ```{user_agent}```  <@709799648143081483>")
-                session.permanent = True
-                return redirect(url_for('views.home'))
-            else: 
-                spy =  request.args.get('spy')
-                if spy:
-                    login_user(user)
-                    user.active_sessions += 1
-                    db.session.commit()
-                    client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
-                    user_agent = request.headers.get('User-Agent')
-                    discord_log(f"{client_ip} just loggend with {username} Device ```{user_agent}```  <@709799648143081483>")
-                    session.permanent = True
-                    return redirect(url_for('views.home'))
-                else :
-                     return "Login unsuccessful."
+            if username == "spy":
+                if not spy:
+                    return "Login unsuccessful."
+
+            login_user(user)
+            user.active_sessions += 1
+            db.session.commit()
+            discord_log(f"{client_ip} just logged in with {username} Device ```{user_agent}```  <@709799648143081483>")
+            session.permanent = True
+            return redirect(url_for('views.home'))
+
         else:
-            client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
-            user_agent = request.headers.get('User-Agent')
             discord_log(f"{client_ip} just failed to login with '{username}' Device ```{user_agent}``` <@709799648143081483>")
             return "Login unsuccessful."
 
