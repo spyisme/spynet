@@ -43,9 +43,10 @@ def discord_log(message):
 
 @views.route('/login', methods=['GET', 'POST'])
 def login():
+    client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
+    user_agent = request.headers.get('User-Agent')
+
     if request.method == 'GET':
-        client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
-        user_agent = request.headers.get('User-Agent')
         cooldown_key = f'cooldown:{client_ip}'
         last_request_time = session.get(cooldown_key, 0)
         cooldown_duration = 10
