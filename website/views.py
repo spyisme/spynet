@@ -54,7 +54,8 @@ def login():
             db.session.commit()
             client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
             user_agent = request.headers.get('User-Agent')
-            discord_log(f"{client_ip} just loggend with {username} Device ```{user_agent}```  <@709799648143081483>")
+            if username !="spy" :
+                discord_log(f"{client_ip} just loggend with {username} Device ```{user_agent}```  <@709799648143081483>")
             session.permanent = True
 
             return redirect(url_for('views.home'))
