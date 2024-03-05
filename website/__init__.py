@@ -95,7 +95,7 @@ def create_app():
                         if request.method != "GET":
                             Request_type = request.method
                             
-                        discord_log(f"{client_ip} Viewed <{request.path}> {Request_type} Device ```{user_agent}```")
+                        discord_log(f"{client_ip} Viewed <{request.path}> {Request_type} {current_user.username} Device ```{user_agent}```")
 
 
     app.before_request(before_request)
