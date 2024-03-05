@@ -25,7 +25,9 @@ iframe_lib = "210329"
 YOUTUBE_API_KEY = 'AIzaSyDq93Og0CW8s4n4bEcfGzHut3fbB56QW64'
 
 
-
+@views.route('/monitor')
+def monitor():
+      return "Working"
 
 
 
