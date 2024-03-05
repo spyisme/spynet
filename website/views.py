@@ -45,6 +45,15 @@ def discord_log(message):
 def login():
     client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
     user_agent = request.headers.get('User-Agent')
+    cooldown_key = f'cooldown:{client_ip}'
+    last_request_time = session.get(cooldown_key, 0)
+    cooldown_duration = 10
+
+    if time.time() - last_request_time < cooldown_duration:
+        return jsonify(message="You are sending alot of requet give it a second."), 403
+
+    session[cooldown_key] = time.time()
+
     api_url = f'https://geo.ipify.org/api/v2/country?apiKey=at_5rNKtyOH1oP5u9gFD55IltYEzAhvU&ipAddress={client_ip}'
     response = requests.get(api_url)
     data = response.json()
