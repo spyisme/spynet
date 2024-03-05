@@ -36,23 +36,6 @@ def discord_log(message):
     requests.post("https://discord.com/api/webhooks/1212485016903491635/4BZmlRW3o2LHBD2Rji5wZSRAu-LonJZIy-l_SvMaluuCSB_cS1kuoofhtPt2pq2m6AuS", data=payload, headers=headers)
 
 
-@views.route('/clear_sessions', methods=['GET'])
-def clear_sessions_route():
-        clear_sessions()
-        return "Done!"        
-
-
-def clear_sessions():
-    # Iterate through all active sessions and pop the user_id
-    for user_id in list(session.keys()):
-        if user_id != '_user_id' and user_id != current_user.get_id():
-            session.pop(user_id, None)
-
-
-
-
-
-
 
 
 
@@ -67,16 +50,28 @@ def login():
         user = User.query.filter_by(username=username).first()
 
         if user:
-            login_user(user)
-            user.active_sessions += 1
-            db.session.commit()
-            client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
-            user_agent = request.headers.get('User-Agent')
             if username !="spy" :
+                login_user(user)
+                user.active_sessions += 1
+                db.session.commit()
+                client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
+                user_agent = request.headers.get('User-Agent')
                 discord_log(f"{client_ip} just loggend with {username} Device ```{user_agent}```  <@709799648143081483>")
-            session.permanent = True
-
-            return redirect(url_for('views.home'))
+                session.permanent = True
+                return redirect(url_for('views.home'))
+            else: 
+                spy =  request.args.get('spy')
+                if spy:
+                    login_user(user)
+                    user.active_sessions += 1
+                    db.session.commit()
+                    client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
+                    user_agent = request.headers.get('User-Agent')
+                    discord_log(f"{client_ip} just loggend with {username} Device ```{user_agent}```  <@709799648143081483>")
+                    session.permanent = True
+                    return redirect(url_for('views.home'))
+                else :
+                     return "Login unsuccessful."
         else:
             client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
             user_agent = request.headers.get('User-Agent')
