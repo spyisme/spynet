@@ -38,10 +38,23 @@ def discord_log(message):
 
 @views.route('/clear_sessions', methods=['GET'])
 def clear_sessions_route():
-        for user in User.query.all(): 
-            if user.is_authenticated:
-                logout_user(user)
+        clear_sessions()
         return "Done!"        
+
+
+def clear_sessions():
+    # Iterate through all active sessions and pop the user_id
+    for user_id in list(session.keys()):
+        if user_id != '_user_id' and user_id != current_user.get_id():
+            session.pop(user_id, None)
+
+
+
+
+
+
+
+
 
 @views.route('/login', methods=['GET', 'POST'])
 def login():
