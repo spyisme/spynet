@@ -52,7 +52,7 @@ def login():
     if 'location' in data and 'country' in data['location']:
         country_code = data['location']['country']
         if country_code != 'EG':
-            return jsonify(message="Close proxy/VPN detected. Please try again."), 403
+            return jsonify(message="Error 403"), 403
     else:
         return jsonify(message="Unable to determine the country. Login failed."), 403
 
