@@ -2,15 +2,8 @@
 
 const IMAGE_COUNT = 300;
 
-// Image URLs
-const imageUrls = [
-  'https://pbs.twimg.com/media/EXI1HDEWsAYiP9_.jpg',
-
-  'https://pbs.twimg.com/media/EXI1HDEWsAYiP9_.jpg',
-
-  'https://pbs.twimg.com/media/EXI1HDEWsAYiP9_.jpg',
-
-];
+// Image URL
+const imageUrl = 'https://cdn.discordapp.com/attachments/941430155346345984/1215046527018598450/EXI1HDEWsAYiP9___1_-removebg-preview.png?ex=65fb5342&is=65e8de42&hm=2d5b156cc4e7084fae4ec0ca95ebbdce5bd484071b999aaaa1e5002730c3c321&';
 
 function startAnimation() {
   const CANVAS_WIDTH = window.innerWidth;
@@ -64,7 +57,7 @@ function startAnimation() {
 
   // Generate image objects
   for (let i = 0; i < IMAGE_COUNT; i++) {
-    images.push(new ImageObject(ctx, imageUrls[i]));
+    images.push(new ImageObject(ctx, imageUrl));
   }
 
   // Clear canvas
