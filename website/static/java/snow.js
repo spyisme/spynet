@@ -32,6 +32,9 @@ function startAnimation() {
     y = 0;
     vx = 0;
     vy = 0;
+    rotation = 0; // Rotation in radians
+    rotationSpeed = random(0.02); // Rotation speed
+
     img = new Image();
 
     constructor(ctx, imageUrl) {
@@ -41,7 +44,11 @@ function startAnimation() {
     }
 
     draw() {
-      this.ctx.drawImage(this.img, this.x, this.y, this.size, this.size);
+      this.ctx.save();
+      this.ctx.translate(this.x + this.size / 2, this.y + this.size / 2);
+      this.ctx.rotate(this.rotation);
+      this.ctx.drawImage(this.img, -this.size / 2, -this.size / 2, this.size, this.size);
+      this.ctx.restore();
     }
 
     reset() {
@@ -49,6 +56,8 @@ function startAnimation() {
       this.y = random(-CANVAS_HEIGHT, 0); // Spawn from the top of the page
       this.vx = clamp((Math.random() - 0.5) * 2, -2, 2);
       this.vy = clamp(random(3), 1, 3);
+      this.rotation = random(Math.PI * 2); // Set initial rotation randomly
+      this.rotationSpeed = random(0.02); // Set rotation speed randomly
     }
   }
 
@@ -81,6 +90,10 @@ function startAnimation() {
       // Move image
       e.x += e.vx;
       e.y += e.vy;
+
+      // Rotate image
+      e.rotation += e.rotationSpeed;
+
       e.draw();
     });
 
