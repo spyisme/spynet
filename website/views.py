@@ -77,7 +77,7 @@ def login():
 
         if user:
             if username == "spy":
-                if spy:
+                if not spy:
                     return "here"
 
             login_user(user)
