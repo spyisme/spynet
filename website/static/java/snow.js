@@ -55,7 +55,7 @@ function startAnimation() {
       this.x = random(CANVAS_WIDTH);
       this.y = random(CANVAS_HEIGHT);
       this.vx = clamp((Math.random() - 0.5) * 0.4, -0.4, 0.4);
-      this.vy = clamp(random(1.5), 0.1, 0.8) * this.size * 0.5;
+      this.vy = clamp(random(3), 0.5, 2);
       this.rotation = random(Math.PI * 2); // Set initial rotation randomly
       this.rotationSpeed = random(0.02); // Set rotation speed randomly
     }
