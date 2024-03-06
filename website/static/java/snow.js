@@ -1,9 +1,4 @@
-// Snow.js
-
-const IMAGE_COUNT = 100;
-
-// Image URL
-const imageUrl = 'https://cdn.discordapp.com/attachments/941430155346345984/1215046527018598450/EXI1HDEWsAYiP9___1_-removebg-preview.png?ex=65fb5342&is=65e8de42&hm=2d5b156cc4e7084fae4ec0ca95ebbdce5bd484071b999aaaa1e5002730c3c321&';
+const SNOW_COUNT = 400;
 
 function startAnimation() {
   const CANVAS_WIDTH = window.innerWidth;
@@ -25,48 +20,61 @@ function startAnimation() {
     return Math.random() * factor;
   }
 
-  // All the properties for ImageObject
-  class ImageObject {
-    size = 20; // Set the size of your image
+  function degreeToRadian(deg) {
+    return deg * (Math.PI / 180);
+  }
+
+  // All the properties for Circle
+  class Circle {
+    radius = 0;
     x = 0;
     y = 0;
     vx = 0;
     vy = 0;
-    rotation = 0; // Rotation in radians
-    rotationSpeed = random(0.02); // Rotation speed
 
-    img = new Image();
-
-    constructor(ctx, imageUrl) {
+    constructor(ctx) {
       this.ctx = ctx;
-      this.img.src = imageUrl;
       this.reset();
     }
 
     draw() {
-      this.ctx.save();
-      this.ctx.translate(this.x + this.size / 2, this.y + this.size / 2);
-      this.ctx.rotate(this.rotation);
-      this.ctx.drawImage(this.img, -this.size / 2, -this.size / 2, this.size, this.size);
-      this.ctx.restore();
+      this.ctx.beginPath();
+    // Get the body element
+const body = document.body;
+
+// Get the computed background color of the body
+const bodyBgColor = window.getComputedStyle(body).backgroundColor;
+
+// Check if the background color is light or dark
+if (bodyBgColor === 'rgb(240, 240, 240)' || bodyBgColor === '#f0f0f0') {
+    // Light mode: set fill style to white
+    ctx.fillStyle = 'rgba(255, 0, 0, 0.8)';
+
+} else {
+    // Dark mode: set fill style to red
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+}
+
+      this.ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
+      this.ctx.fill();
+      this.ctx.closePath();
     }
 
     reset() {
-      this.x = random(CANVAS_WIDTH);
-      this.y = random(CANVAS_HEIGHT);
-      this.vx = clamp((Math.random() - 0.5) * 0.4, -0.4, 0.4);
-      this.vy = clamp(random(3), 0.5, 2);
-      this.rotation = random(Math.PI * 2); // Set initial rotation randomly
-      this.rotationSpeed = random(0.02); // Set rotation speed randomly
-    }
+    this.radius = random(2.5);
+    this.x = random(CANVAS_WIDTH);
+    this.y = this.y ? 0 : random(CANVAS_HEIGHT);
+    this.vx = clamp((Math.random() - 0.5) * 0.4, -0.4, 0.4);
+      this.vy = clamp(random(1.5), 0.1, 0.8) * this.radius * 0.5;
+}
   }
 
-  // Array for storing all the generated image objects
-  let images = [];
+  // Array for storing all the generated circles
+  let circles = [];
 
-  // Generate image objects
-  for (let i = 0; i < IMAGE_COUNT; i++) {
-    images.push(new ImageObject(ctx, imageUrl));
+  // Generate circles
+  for (let i = 0; i < SNOW_COUNT; i++) {
+    circles.push(new Circle(ctx));
   }
 
   // Clear canvas
@@ -74,27 +82,31 @@ function startAnimation() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
   }
 
+  // start and end cordinates of canvas
+  let canvasOffset = {
+    x0: ctx.canvas.offsetLeft,
+    y0: ctx.canvas.offsetTop,
+    x1: ctx.canvas.offsetLeft + ctx.canvas.width,
+    y1: ctx.canvas.offsetTop + ctx.canvas.height
+  };
+
   function animate() {
     clearCanvas();
 
-    images.forEach((e) => {
-      // reset the image if it collides on border
+    circles.forEach((e) => {
+      // reset the circle if it collides on border
       if (
-        e.x <= 0 ||
-        e.x >= CANVAS_WIDTH ||
-        e.y <= 0 ||
-        e.y >= CANVAS_HEIGHT
+        e.x <= canvasOffset.x0 ||
+        e.x >= canvasOffset.x1 ||
+        e.y <= canvasOffset.y0 ||
+        e.y >= canvasOffset.y1
       ) {
         e.reset();
       }
 
-      // Drawing path using polar coordinates
+      // Drawing path using polar cordinates
       e.x = e.x + e.vx;
       e.y = e.y + e.vy;
-
-      // Rotate image
-      e.rotation += e.rotationSpeed;
-
       e.draw();
     });
 
@@ -107,3 +119,4 @@ function startAnimation() {
 startAnimation();
 
 window.addEventListener("resize", startAnimation);
+
