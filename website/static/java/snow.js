@@ -1,6 +1,6 @@
 // Snow.js
 
-const IMAGE_COUNT = 300;
+const IMAGE_COUNT = 150;
 
 // Image URL
 const imageUrl = 'https://cdn.discordapp.com/attachments/941430155346345984/1215046527018598450/EXI1HDEWsAYiP9___1_-removebg-preview.png?ex=65fb5342&is=65e8de42&hm=2d5b156cc4e7084fae4ec0ca95ebbdce5bd484071b999aaaa1e5002730c3c321&';
