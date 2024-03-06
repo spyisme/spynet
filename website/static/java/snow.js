@@ -52,8 +52,8 @@ function startAnimation() {
     }
 
     reset() {
-      this.x = random(CANVAS_WIDTH); // Set x position randomly within the canvas
-      this.y = random(-CANVAS_HEIGHT, 0.1 * CANVAS_HEIGHT); // Spawn mostly from the top
+      this.x = random(CANVAS_WIDTH - this.size);
+      this.y = random(-CANVAS_HEIGHT, 0); // Spawn from the top of the page
       this.vx = clamp((Math.random() - 0.5) * 2, -2, 2);
       this.vy = clamp(random(3), 0.5, 2);
       this.rotation = random(Math.PI * 2); // Set initial rotation randomly
