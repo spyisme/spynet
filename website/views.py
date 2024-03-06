@@ -76,9 +76,9 @@ def login():
         user = User.query.filter_by(username=username).first()
 
         if user:
-            if username == "Amoor2019":
+            if username == "spy":
                 if spy:
-                    return "Exist"
+                    return "here"
 
             login_user(user)
             user.active_sessions += 1
