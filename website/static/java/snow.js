@@ -1,4 +1,15 @@
-const SNOW_COUNT = 400;
+// Snow.js
+
+const IMAGE_COUNT = 3;
+
+// Image URLs
+const imageUrls = [
+  'https://pbs.twimg.com/media/EXI1HDEWsAYiP9_.jpg',
+  'https://pbs.twimg.com/media/EXI1HDEWsAYiP9_.jpg',
+
+  'https://pbs.twimg.com/media/EXI1HDEWsAYiP9_.jpg',
+
+];
 
 function startAnimation() {
   const CANVAS_WIDTH = window.innerWidth;
@@ -20,61 +31,42 @@ function startAnimation() {
     return Math.random() * factor;
   }
 
-  function degreeToRadian(deg) {
-    return deg * (Math.PI / 180);
-  }
-
-  // All the properties for Circle
-  class Circle {
-    radius = 0;
+  // All the properties for ImageObject
+  class ImageObject {
+    width = 0;
+    height = 0;
     x = 0;
     y = 0;
     vx = 0;
     vy = 0;
+    img = new Image();
 
-    constructor(ctx) {
+    constructor(ctx, imageUrl) {
       this.ctx = ctx;
+      this.img.src = imageUrl;
       this.reset();
     }
 
     draw() {
-      this.ctx.beginPath();
-    // Get the body element
-const body = document.body;
-
-// Get the computed background color of the body
-const bodyBgColor = window.getComputedStyle(body).backgroundColor;
-
-// Check if the background color is light or dark
-if (bodyBgColor === 'rgb(240, 240, 240)' || bodyBgColor === '#f0f0f0') {
-    // Light mode: set fill style to white
-    ctx.fillStyle = 'rgba(255, 0, 0, 0.8)';
-
-} else {
-    // Dark mode: set fill style to red
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
-}
-
-      this.ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
-      this.ctx.fill();
-      this.ctx.closePath();
+      this.ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
     }
 
     reset() {
-    this.radius = random(2.5);
-    this.x = random(CANVAS_WIDTH);
-    this.y = this.y ? 0 : random(CANVAS_HEIGHT);
-    this.vx = clamp((Math.random() - 0.5) * 0.4, -0.4, 0.4);
-      this.vy = clamp(random(1.5), 0.1, 0.8) * this.radius * 0.5;
-}
+      this.width = 50; // Set the width of your image
+      this.height = 50; // Set the height of your image
+      this.x = random(CANVAS_WIDTH - this.width);
+      this.y = random(CANVAS_HEIGHT - this.height);
+      this.vx = clamp((Math.random() - 0.5) * 0.4, -0.4, 0.4);
+      this.vy = clamp(random(1.5), 0.1, 0.8);
+    }
   }
 
-  // Array for storing all the generated circles
-  let circles = [];
+  // Array for storing all the generated image objects
+  let images = [];
 
-  // Generate circles
-  for (let i = 0; i < SNOW_COUNT; i++) {
-    circles.push(new Circle(ctx));
+  // Generate image objects
+  for (let i = 0; i < IMAGE_COUNT; i++) {
+    images.push(new ImageObject(ctx, imageUrls[i]));
   }
 
   // Clear canvas
@@ -82,7 +74,7 @@ if (bodyBgColor === 'rgb(240, 240, 240)' || bodyBgColor === '#f0f0f0') {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
   }
 
-  // start and end cordinates of canvas
+  // start and end coordinates of canvas
   let canvasOffset = {
     x0: ctx.canvas.offsetLeft,
     y0: ctx.canvas.offsetTop,
@@ -93,20 +85,20 @@ if (bodyBgColor === 'rgb(240, 240, 240)' || bodyBgColor === '#f0f0f0') {
   function animate() {
     clearCanvas();
 
-    circles.forEach((e) => {
-      // reset the circle if it collides on border
+    images.forEach((e) => {
+      // reset the image if it collides on the border
       if (
         e.x <= canvasOffset.x0 ||
-        e.x >= canvasOffset.x1 ||
+        e.x + e.width >= canvasOffset.x1 ||
         e.y <= canvasOffset.y0 ||
-        e.y >= canvasOffset.y1
+        e.y + e.height >= canvasOffset.y1
       ) {
         e.reset();
       }
 
-      // Drawing path using polar cordinates
-      e.x = e.x + e.vx;
-      e.y = e.y + e.vy;
+      // Move image
+      e.x += e.vx;
+      e.y += e.vy;
       e.draw();
     });
 
@@ -119,4 +111,3 @@ if (bodyBgColor === 'rgb(240, 240, 240)' || bodyBgColor === '#f0f0f0') {
 startAnimation();
 
 window.addEventListener("resize", startAnimation);
-
