@@ -46,7 +46,7 @@ function startAnimation() {
 
     reset() {
       this.x = random(CANVAS_WIDTH - this.size);
-      this.y = random(CANVAS_HEIGHT - this.size);
+      this.y = random(-CANVAS_HEIGHT, 0); // Spawn from the top of the page
       this.vx = clamp((Math.random() - 0.5) * 2, -2, 2);
       this.vy = clamp(random(3), 1, 3);
     }
@@ -65,24 +65,15 @@ function startAnimation() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
   }
 
-  // start and end coordinates of canvas
-  let canvasOffset = {
-    x0: ctx.canvas.offsetLeft,
-    y0: ctx.canvas.offsetTop,
-    x1: ctx.canvas.offsetLeft + ctx.canvas.width,
-    y1: ctx.canvas.offsetTop + ctx.canvas.height
-  };
-
   function animate() {
     clearCanvas();
 
     images.forEach((e) => {
       // reset the image if it goes off the canvas
       if (
-        e.x <= canvasOffset.x0 ||
-        e.x + e.size >= canvasOffset.x1 ||
-        e.y <= canvasOffset.y0 ||
-        e.y + e.size >= canvasOffset.y1
+        e.x <= 0 ||
+        e.x + e.size >= CANVAS_WIDTH ||
+        e.y + e.size >= CANVAS_HEIGHT
       ) {
         e.reset();
       }
