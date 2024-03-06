@@ -96,21 +96,22 @@
     {%endfor%}
       {%endif%}
         </ul>
-        <!-- {%if extra%}
+        {%if extra%}
         <hr>
         <ul>
    
         {% for item in extra.items() %}
-        <a href="{{ item.1 }}" target="_blank">
+        <a href="/redirec/{{ item.1 }}" target="_blank">
             <div class="card">
                 {{ item.0 }}
             </div>
         </a>
     {% endfor %} 
-</ul> 
+</ul>
+    {%endif%}
 
-{%endif%}
--->
+
+
      <hr>
      <ul>
 {%if playlist_id%}
