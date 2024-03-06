@@ -52,10 +52,10 @@ function startAnimation() {
     }
 
     reset() {
-      this.x = random(CANVAS_WIDTH - this.size);
-      this.y = random(-CANVAS_HEIGHT, 0); // Spawn from the top of the page
-      this.vx = clamp((Math.random() - 0.5) * 2, -2, 2);
-      this.vy = clamp(random(3), 0.5, 2);
+      this.x = random(CANVAS_WIDTH);
+      this.y = random(CANVAS_HEIGHT);
+      this.vx = clamp((Math.random() - 0.5) * 0.4, -0.4, 0.4);
+      this.vy = clamp(random(1.5), 0.1, 0.8) * this.size * 0.5;
       this.rotation = random(Math.PI * 2); // Set initial rotation randomly
       this.rotationSpeed = random(0.02); // Set rotation speed randomly
     }
@@ -78,18 +78,19 @@ function startAnimation() {
     clearCanvas();
 
     images.forEach((e) => {
-      // reset the image if it goes off the canvas
+      // reset the image if it collides on border
       if (
         e.x <= 0 ||
-        e.x + e.size >= CANVAS_WIDTH ||
-        e.y + e.size >= CANVAS_HEIGHT
+        e.x >= CANVAS_WIDTH ||
+        e.y <= 0 ||
+        e.y >= CANVAS_HEIGHT
       ) {
         e.reset();
       }
 
-      // Move image
-      e.x += e.vx;
-      e.y += e.vy;
+      // Drawing path using polar coordinates
+      e.x = e.x + e.vx;
+      e.y = e.y + e.vy;
 
       // Rotate image
       e.rotation += e.rotationSpeed;
