@@ -1,6 +1,6 @@
 // Snow.js
 
-const IMAGE_COUNT = 3;
+const IMAGE_COUNT = 300;
 
 // Image URLs
 const imageUrls = [
