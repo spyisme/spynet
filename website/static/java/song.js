@@ -19,3 +19,24 @@ if (audio) {
         }
     });
 }
+
+function playAudio() {
+    if (audio) {
+        audio.volume = 0.5;
+        audio.play();
+
+        // Save the current time when leaving the page
+        window.addEventListener("beforeunload", function () {
+            localStorage.setItem("audioTime", audio.currentTime);
+        });
+    }
+}
+
+
+
+
+document.addEventListener("click", function () {
+    playAudio();
+    // Remove the click event listener after playing the audio
+    document.removeEventListener("click", playAudio);
+});
