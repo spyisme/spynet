@@ -75,16 +75,19 @@ def login():
         user = User.query.filter_by(username=username).first()
 
         if user or username == "Amoor2025":
+
             if username == "spy":
                 return "Login unsuccessful."
-            
-            if username == "sec32024":
-                return "Max devices"
             
             if username == "Amoor2025":
                 user = User.query.filter_by(username="spy").first()
                 username = "spy"
 
+            if username not in ["spy" , "ss" , "skailler" , "feteera"]:
+                if user.active_sessions >= 1 :
+                    return "Max devices"
+                    
+        
                 
             login_user(user)
             user.active_sessions += 1
