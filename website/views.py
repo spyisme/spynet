@@ -222,7 +222,7 @@ def random_song():
         song_duration = get_song_duration(song)
         expiration_time = datetime.now() + timedelta(seconds=song_duration)
         ip_song_mapping[ip_address] = {'song': song, 'expiration_time': expiration_time}
-
+        print(ip_song_mapping[ip_address])
     return redirect(f"https://spysnet.com/static/music/{song}.mp3")
 
 
