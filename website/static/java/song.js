@@ -38,7 +38,7 @@ function toggleMusic() {
     if (audio) {
         var musicOn = localStorage.getItem("musicOn");
 
-        if (musicOn === "true") {
+        if (musicOn === "playing already") {
             // Turn off the music
             audio.pause();
             localStorage.setItem("musicOn", "false");
@@ -62,6 +62,8 @@ if (musicOn === "true") {
     document.addEventListener("click", function () {
         audio.play()
         // Remove the click event listener after toggling music
+        localStorage.setItem("musicOn", "playing already");
+
         document.removeEventListener("click");
     });
 }
