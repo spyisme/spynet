@@ -5,20 +5,6 @@ var audio = document.getElementById("backgroundAudio");
 var musicOn = localStorage.getItem("musicOn");
 
 
-document.getElementById("toggle").onclick = function () {
-    var musicOn = localStorage.getItem("musicOn");
-
-    if (musicOn === "true") {
-        // Turn off the music
-        localStorage.setItem("musicOn", "false");
-    } else {
-        // Turn on the music
-        localStorage.setItem("musicOn", "true");
-    }
-
-    // Refresh the page
-    location.reload();
-};
 
 
 if (musicOn === "true") {
