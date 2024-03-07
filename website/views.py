@@ -194,7 +194,13 @@ songs = [
     "afraid",
     "Sound_motion_picturetrack_cas",
     "openarms",
-    "Stargirl"
+    "Stargirl",
+    "playboi_titani",
+    "outofmyleague",
+    "margret",
+    "Lunakaram",
+    "everymangetshiswish",
+
 ]
 
 ip_song_mapping = {}
