@@ -190,6 +190,9 @@ songs = [
     "slowdown",
     "iknow",
     "afraid",
+    "Sound_motion_picturetrack_cas",
+    "openarms",
+    "Stargirl"
 ]
 
 ip_song_mapping = {}
@@ -202,7 +205,7 @@ def random_song():
     ip_address = request.headers.get('CF-Connecting-IP', request.remote_addr)
 
 
-    if ip_address in ip_song_mapping and time.time() - ip_song_mapping[ip_address]['timestamp'] < 5:
+    if ip_address in ip_song_mapping and time.time() - ip_song_mapping[ip_address]['timestamp'] < 240:
         song = ip_song_mapping[ip_address]['song']
     else:
         song = get_random_song()
