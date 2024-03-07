@@ -31,25 +31,28 @@
     <section class="banner">
         <canvas id="canvas"> </canvas>
  
-<script>document.getElementById("toggle").onclick = function () {
-  var musicOn = localStorage.getItem("musicOn");
-
-  if (musicOn === "true") {
-      // Turn off the music
-      localStorage.setItem("musicOn", "false");
-  } else {
-      // Turn on the music
-      localStorage.setItem("musicOn", "true");
-  }
-
-  // Refresh the page
-  location.reload();
-};
-</script>
-    
-  <div class="nav">
-        <img class ="img" id="toggle"src="static/assets/ss.png" onclick="toggle()">
-        <!-- <p>Yarab amr ygeb 90%</p> -->
+        <script>
+          document.getElementById("toggle").onclick = function () {
+              var musicOn = localStorage.getItem("musicOn");
+      
+              if (musicOn === "true") {
+                  // Turn off the music
+                  localStorage.setItem("musicOn", "false");
+              } else {
+                  // Turn on the music
+                  localStorage.setItem("musicOn", "true");
+              }
+      
+              // Refresh the page
+              location.reload();
+          };
+      </script>
+      
+      <div class="nav">
+          <img class="img" id="toggle" src="static/assets/ss.png">
+          <!-- <p>Yarab amr ygeb 90%</p> -->
+      
+      
         <p><a href="https://mathdf.com/" target="_blank" style="color: white; "><u>Mathdf</u></a></p>
 
 
