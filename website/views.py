@@ -23,11 +23,27 @@ views = Blueprint('views', __name__)
 #Iframe key
 IFRAME_API_KEY = "5b5af6a3-ecd3-4ca2-8427-d68a74a8ecca"
 iframe_lib = "210329"
-#youtube key
-YOUTUBE_API_KEY = 'AIzaSyDq93Og0CW8s4n4bEcfGzHut3fbB56QW64'
+
+from google.oauth2.credentials import Credentials
+from googleapiclient.discovery import build
+
+SCOPES = ['https://www.googleapis.com/auth/youtube.readonly']
+
+REDIRECT_URI = 'http://localhost:8080/oauth2callback'
+
+TOKEN_FILE = 'token.json'
 
 
+def get_authenticated_service():
+    credentials = None
 
+    try:
+        credentials = Credentials.from_authorized_user_file(TOKEN_FILE, SCOPES)
+    except FileNotFoundError:
+        print("Coulndt login")
+
+    youtube = build('youtube', 'v3', credentials=credentials)
+    return youtube
 
 def convert_duration(duration):
     duration = duration[2:] 
@@ -47,13 +63,8 @@ def convert_duration(duration):
     formatted_duration = '{:02d}:{:02d}:{:02d}'.format(hours, minutes, seconds)
     return formatted_duration
 
-
-
-
-
-
 def get_playlist_videos(playlist_id):
-    youtube = build('youtube', 'v3', developerKey=YOUTUBE_API_KEY, static_discovery=False)
+    youtube = get_authenticated_service()
 
     # Fetch the playlist items
     playlist_items = []
@@ -84,10 +95,10 @@ def get_playlist_videos(playlist_id):
             id=video_id
         )
         video_response = video_request.execute()
-        try :
-          video_duration = video_response['items'][0]['contentDetails']['duration']
+        try:
+            video_duration = video_response['items'][0]['contentDetails']['duration']
         except IndexError:
-          video_duration = "N/a"
+            video_duration = "N/a"
         formatted_duration = convert_duration(video_duration)
         video_title = item['snippet']['title']
 
@@ -99,8 +110,6 @@ def get_playlist_videos(playlist_id):
         })
 
     return videos
-
-
 
 
 
