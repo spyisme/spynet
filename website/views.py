@@ -215,12 +215,12 @@ def get_song_duration(song_filename):
 def random_song():
     ip_address = request.headers.get('CF-Connecting-IP', request.remote_addr)
 
-    if ip_address in ip_song_mapping and time.time() < ip_song_mapping[ip_address]['expiration_time']:
+    if ip_address in ip_song_mapping and datetime.now() < ip_song_mapping[ip_address]['expiration_time']:
         song = ip_song_mapping[ip_address]['song']
     else:
         song = get_random_song()
         song_duration = get_song_duration(song)
-        expiration_time = time.time() + song_duration
+        expiration_time = datetime.now() + timedelta(seconds=song_duration)
         ip_song_mapping[ip_address] = {'song': song, 'expiration_time': expiration_time}
 
     return redirect(f"https://spysnet.com/static/music/{song}.mp3")
