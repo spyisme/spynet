@@ -1,16 +1,13 @@
 // Song.js
 var audio = document.getElementById("backgroundAudio");
 
+
+
 // Check if the audio element exists on the page
 if (audio) {
-    // Load the music state from local storage
-    var musicOn = localStorage.getItem("musicOn");
-
-    if (musicOn === "true") {
-        // Play the audio if music is on
-        audio.volume = 0.5;
-        audio.play();
-    }
+    // Play the audio as soon as the script loads
+    audio.volume = 0.5;
+    audio.play();
 
     // Save the current time when leaving the page
     window.addEventListener("beforeunload", function () {
@@ -34,20 +31,10 @@ if (audio) {
     });
 }
 
-function toggleMusic() {
+function playAudio() {
     if (audio) {
-        var musicOn = localStorage.getItem("musicOn");
-
-        if (musicOn === "true") {
-            // Turn off the music
-            audio.pause();
-            localStorage.setItem("musicOn", "false");
-        } else {
-            // Turn on the music
-            audio.volume = 0.5;
-            audio.play();
-            localStorage.setItem("musicOn", "true");
-        }
+        audio.volume = 0.5;
+        audio.play();
 
         // Save the current time when leaving the page
         window.addEventListener("beforeunload", function () {
@@ -56,9 +43,8 @@ function toggleMusic() {
     }
 }
 
-// Add an event listener for the "click" event to toggle music
 document.addEventListener("click", function () {
-    toggleMusic();
-    // Remove the click event listener after toggling music
-    document.removeEventListener("click", toggleMusic);
+    playAudio();
+    // Remove the click event listener after playing the audio
+    document.removeEventListener("click", playAudio);
 });
