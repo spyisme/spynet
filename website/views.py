@@ -187,8 +187,8 @@ def ashraf():
 
 
 songs = [
-    "iknow",
     "slowdown",
+    "iknow",
     "afraid",
 ]
 
