@@ -18,6 +18,14 @@ if (audio) {
             audio.currentTime = parseFloat(savedTime);
         }
     });
+
+    // Add an event listener for the "ended" event
+    audio.addEventListener("ended", function () {
+        // Refresh the src to play a new song or restart the same one
+        audio.src = "/random_song";
+        audio.load();
+        audio.play();
+    });
 }
 
 function playAudio() {
@@ -31,9 +39,6 @@ function playAudio() {
         });
     }
 }
-
-
-
 
 document.addEventListener("click", function () {
     playAudio();
