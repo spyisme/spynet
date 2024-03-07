@@ -13,4 +13,5 @@ pycryptodome
 waitress
 flask-socketio
 flask-cors
-pydub
+pydubsong
+ffmpeg-python
