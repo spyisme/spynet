@@ -19,17 +19,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
     <script src="static/java/connection.js"></script>
-<style>
-  #backgroundAudio {
-    display: none;
-  }
-</style>
 
-  <script src="static/java/song.js"></script>
-
-  <audio id="backgroundAudio" controls autoplay loop>
-    <source src="static/iknow.mp3" type="audio/mp3">
-</audio>
 
 
 </head>
@@ -60,7 +50,17 @@
 
 
             </div>
-
+            <style>
+              #backgroundAudio {
+                display: none;
+              }
+            </style>
+            
+              <script src="static/java/song.js"></script>
+            
+              <audio id="backgroundAudio" controls autoplay loop>
+                <source src="static/iknow.mp3" type="audio/mp3">
+            </audio>
 
    <ul>
     {% for name, data in teacher_links.items() %}
