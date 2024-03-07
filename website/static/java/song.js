@@ -1,7 +1,4 @@
-// Song.js
 var audio = document.getElementById("backgroundAudio");
-
-
 
 // Check if the audio element exists on the page
 if (audio) {
