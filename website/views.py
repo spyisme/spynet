@@ -217,14 +217,22 @@ def random_song():
     ip_address = request.headers.get('CF-Connecting-IP', request.remote_addr)
 
     if ip_address in ip_song_mapping and datetime.now() < ip_song_mapping[ip_address]['expiration_time']:
+        # If the expiration time hasn't passed, use the last played song
         song = ip_song_mapping[ip_address]['song']
     else:
-        song = get_random_song()
+        # Generate a new random song excluding the last played song
+        last_played_song = ip_song_mapping.get(ip_address, {}).get('song')
+        songs_without_last_played = [s for s in songs if s != last_played_song]
+        
+        # If all songs have been played, just pick a random one
+        song = random.choice(songs_without_last_played) if songs_without_last_played else get_random_song()
+        
         song_duration = get_song_duration(song)
         expiration_time = datetime.now() + timedelta(seconds=song_duration)
         ip_song_mapping[ip_address] = {'song': song, 'expiration_time': expiration_time}
-        print(ip_song_mapping[ip_address])
+
     return redirect(f"https://spysnet.com/static/music/{song}.mp3")
+
 
 
 
