@@ -57,8 +57,11 @@ function toggleMusic() {
 }
 
 // Add an event listener for the "click" event to toggle music
-document.addEventListener("click", function () {
-    toggleMusic();
-    // Remove the click event listener after toggling music
-    document.removeEventListener("click", toggleMusic);
-});
+var musicOn = localStorage.getItem("musicOn");
+if (musicOn === "true") {
+    document.addEventListener("click", function () {
+        audio.play()
+        // Remove the click event listener after toggling music
+        document.removeEventListener("click");
+    });
+}
