@@ -200,44 +200,30 @@ songs = [
     "margret",
     "Lunakaram",
     "everymangetshiswish",
-
 ]
-
 ip_song_mapping = {}
 
 def get_random_song():
     return random.choice(songs)
-
 def get_song_duration(song_filename):
-    # Load the song file and get its duration in seconds
     try:
         song = AudioSegment.from_file(f"website/static/music/{song_filename}.mp3", format="mp3")
-
     except:
         song = AudioSegment.from_file(f"website/static/music/{song_filename}.mp3", format="mp4")
-
-
-    return len(song) / 1000  # Convert milliseconds to seconds
+    return len(song) / 1000 
 
 @views.route('/random_song')
 def random_song():
     ip_address = request.headers.get('CF-Connecting-IP', request.remote_addr)
-
     if ip_address in ip_song_mapping and datetime.now() < ip_song_mapping[ip_address]['expiration_time']:
-        # If the expiration time hasn't passed, use the last played song
         song = ip_song_mapping[ip_address]['song']
     else:
-        # Generate a new random song excluding the last played song
         last_played_song = ip_song_mapping.get(ip_address, {}).get('song')
         songs_without_last_played = [s for s in songs if s != last_played_song]
-        
-        # If all songs have been played, just pick a random one
         song = random.choice(songs_without_last_played) if songs_without_last_played else get_random_song()
-        
         song_duration = get_song_duration(song)
         expiration_time = datetime.now() + timedelta(seconds=song_duration)
         ip_song_mapping[ip_address] = {'song': song, 'expiration_time': expiration_time}
-
     return redirect(f"https://spysnet.com/static/music/{song}.mp3")
 
 
