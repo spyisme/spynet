@@ -5,6 +5,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // Check if the audio element exists on the page
     if (audio) {
         // Play the audio as soon as the page loads
+        audio.volume = 0.5;
+
         audio.play();
 
         // Save the current time when leaving the page
@@ -16,6 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
         window.addEventListener("load", function () {
             var savedTime = localStorage.getItem("audioTime");
             if (savedTime) {
+
                 audio.currentTime = parseFloat(savedTime);
             }
         });
