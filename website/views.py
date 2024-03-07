@@ -14,6 +14,8 @@ from flask import jsonify
 import hashlib
 from flask_login import login_user , current_user , logout_user
 from .models import User , db
+from pydub import AudioSegment
+from io import BytesIO
 
 views = Blueprint('views', __name__)
 
@@ -200,16 +202,22 @@ ip_song_mapping = {}
 def get_random_song():
     return random.choice(songs)
 
+def get_song_duration(song_filename):
+    # Load the song file and get its duration in seconds
+    song = AudioSegment.from_file(f"https://spysnet.com/static/music/{song_filename}.mp3", format="mp3")
+    return len(song) / 1000  # Convert milliseconds to seconds
+
 @views.route('/random_song')
 def random_song():
     ip_address = request.headers.get('CF-Connecting-IP', request.remote_addr)
 
-
-    if ip_address in ip_song_mapping and time.time() - ip_song_mapping[ip_address]['timestamp'] < 240:
+    if ip_address in ip_song_mapping and time.time() < ip_song_mapping[ip_address]['expiration_time']:
         song = ip_song_mapping[ip_address]['song']
     else:
         song = get_random_song()
-        ip_song_mapping[ip_address] = {'song': song, 'timestamp': time.time()}
+        song_duration = get_song_duration(song)
+        expiration_time = time.time() + song_duration
+        ip_song_mapping[ip_address] = {'song': song, 'expiration_time': expiration_time}
 
     return redirect(f"https://spysnet.com/static/music/{song}.mp3")
 
