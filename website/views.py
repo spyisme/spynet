@@ -204,7 +204,7 @@ def get_random_song():
 
 def get_song_duration(song_filename):
     # Load the song file and get its duration in seconds
-    song = AudioSegment.from_file(f"https://spysnet.com/static/music/{song_filename}.mp3", format="mp3")
+    song = AudioSegment.from_file(f"website/static/music/{song_filename}.mp3", format="mp3")
     return len(song) / 1000  # Convert milliseconds to seconds
 
 @views.route('/random_song')
