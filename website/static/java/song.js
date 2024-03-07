@@ -1,11 +1,20 @@
-// static/script.js
+// static/java/song.js
 document.addEventListener("DOMContentLoaded", function () {
     var audio = document.getElementById("backgroundAudio");
+    var startButton = document.getElementById("startButton");
+    var stopButton = document.getElementById("stopButton");
 
-    // Check if the audio element exists on the page
-    if (audio) {
-        // Play the audio as soon as the page loads
-        audio.play();
+    // Check if the audio element and buttons exist on the page
+    if (audio && startButton && stopButton) {
+        // Play the audio when the "Start Music" button is clicked
+        startButton.addEventListener("click", function () {
+            audio.play();
+        });
+
+        // Pause the audio when the "Stop Music" button is clicked
+        stopButton.addEventListener("click", function () {
+            audio.pause();
+        });
 
         // Save the current time when leaving the page
         window.addEventListener("beforeunload", function () {
