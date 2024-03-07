@@ -6,17 +6,20 @@ var musicOn = localStorage.getItem("musicOn");
 
 
 document.getElementById("toggle").onclick = function () {
-    console.log("ss")
+    var musicOn = localStorage.getItem("musicOn");
+
     if (musicOn === "true") {
+        // Turn off the music
         localStorage.setItem("musicOn", "false");
-        location.reload();
-    }
-    if (musicOn === "false") {
+    } else {
+        // Turn on the music
         localStorage.setItem("musicOn", "true");
-        location.reload();
     }
 
+    // Refresh the page
+    location.reload();
 };
+
 
 if (musicOn === "true") {
         // Check if the audio element exists on the page
