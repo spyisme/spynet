@@ -1085,8 +1085,8 @@ def salama():
     })
  
 
-    teacher_links["Course 25"] = ("/salamach25", "Course 25", True)
-    teacher_links["Course 26"] = ("/salamach26", "Course 26", True)
+    teacher_links["Course 25"] = ("/salamach25", "Course 25", "New")
+    teacher_links["Course 26"] = ("/salamach26", "Course 26", "New")
 
     teachername = "Math"
     return render_template('used_pages/teacher.html', teacher_links=teacher_links, teachername=teachername, imgs="yes")
