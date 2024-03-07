@@ -4,6 +4,20 @@ var audio = document.getElementById("backgroundAudio");
 
 var musicOn = localStorage.getItem("musicOn");
 
+
+
+function toggle(){
+    if (musicOn === "true") {
+        localStorage.setItem("musicOn", "false");
+        location.reload();
+    }
+    if (musicOn === "false") {
+        localStorage.setItem("musicOn", "true");
+        location.reload();
+    }
+
+}
+
 if (musicOn === "true") {
         // Check if the audio element exists on the page
         if (audio) {

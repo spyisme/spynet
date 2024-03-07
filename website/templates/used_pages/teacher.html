@@ -33,11 +33,11 @@
   <div class="nav">
     {% if teachername == "Arabic"or teachername == "English" or teachername == "Biology" or teachername == "Chemistry" or teachername == "Geology" or teachername == "German" or teachername == "Math" or teachername == "Physics" %}
 
-    <img class="img" src="static/assets/subjects/{{ teachername }}11.png"  onclick="toggleMusic()"></img>
+    <img class="img" src="static/assets/subjects/{{ teachername }}11.png"  onclick="toggle()"></img>
 
     
          {%else%}
-        <h1  onclick="toggleMusic()">✰ {{ teachername }} ✰</h1>
+        <h1  onclick="toggle()">✰ {{ teachername }} ✰</h1>
 
 {%endif%}
               
