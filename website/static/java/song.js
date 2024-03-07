@@ -7,6 +7,7 @@ var musicOn = localStorage.getItem("musicOn");
 
 
 function toggle(){
+    console.log("ss")
     if (musicOn === "true") {
         localStorage.setItem("musicOn", "false");
         location.reload();
