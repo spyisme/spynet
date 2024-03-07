@@ -57,17 +57,17 @@ function toggleMusic() {
 }
 
 // Add an event listener for the "click" event to toggle music
-document.addEventListener("click", function () {
-    var musicOn = localStorage.getItem("musicOn");
+// document.addEventListener("click", function () {
+//     var musicOn = localStorage.getItem("musicOn");
 
-    // Check if music is set to true and play it
-    if (musicOn === "true") {
-        audio.volume = 0.5;
-        audio.play();
+//     // Check if music is set to true and play it
+//     if (musicOn === "true") {
+//         audio.volume = 0.5;
+//         audio.play();
 
-        // Save the current time when leaving the page
-        window.addEventListener("beforeunload", function () {
-            localStorage.setItem("audioTime", audio.currentTime);
-        });
-    }
-});
+//         // Save the current time when leaving the page
+//         window.addEventListener("beforeunload", function () {
+//             localStorage.setItem("audioTime", audio.currentTime);
+//         });
+//     }
+// });
