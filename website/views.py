@@ -186,6 +186,50 @@ def ashraf():
 
 
 
+songs = [
+    "iknow",
+    "slowdown",
+    "afraid",
+]
+
+ip_song_mapping = {}
+
+def get_random_song():
+    return random.choice(songs)
+
+@views.route('/random_song')
+def random_song():
+    ip_address = request.headers.get('CF-Connecting-IP', request.remote_addr)
+
+
+    if ip_address in ip_song_mapping and time.time() - ip_song_mapping[ip_address]['timestamp'] < 240:
+        song = ip_song_mapping[ip_address]['song']
+    else:
+        song = get_random_song()
+        ip_song_mapping[ip_address] = {'song': song, 'timestamp': time.time()}
+
+    return redirect(f"https://spysnet.com/static/music/{song}.mp3")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
