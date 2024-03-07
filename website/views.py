@@ -209,6 +209,7 @@ def get_song_duration(song_filename):
 
     except:
         song = AudioSegment.from_file(f"website/static/music/{song_filename}.mp3", format="mp4")
+    print(len(song))
     return len(song) / 1000  # Convert milliseconds to seconds
 
 @views.route('/random_song')
