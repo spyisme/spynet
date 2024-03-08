@@ -2,7 +2,13 @@ var audio = document.getElementById("backgroundAudio");
 
 
 
+document.addEventListener('DOMContentLoaded', function () {
+    // Get the audio element
+    var audio = document.getElementById('backgroundAudio');
 
+    // Set the volume to 0.5 (50%)
+    audio.volume = 0.5;
+});
 
 
 
