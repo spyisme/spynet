@@ -61,10 +61,11 @@
     const currentMusicState = localStorage.getItem("musicOn");
     const newMusicState = currentMusicState === "true" ? "false" : "true";
     localStorage.setItem("musicOn", newMusicState);
-    setTimeout(() => {
-      location.reload();
-    }, 2000);
+    localStorage.setItem("audioTime", "null");
 
+    alert(`Music is now ${newMusicState === "true" ? "on" : "off"}`);
+
+      location.reload();
   }
   document.getElementById("toggleButton").addEventListener("click", toggleMusic);
 </script>
