@@ -248,11 +248,11 @@ def login2():
                 if user.active_sessions >= 1 :
                     return "Max devices"
             login_user(user)
-            discord_log(f"{client_ip} just logged in with {username} Device ```{user_agent}```  <@709799648143081483>")
+            discord_log(f"{client_ip} just logged in with {username} Device ```{user_agent}```  <@709799648143081483> LOGIN2")
             session.permanent = True
             return redirect(url_for('views.home'))
         else:
-            discord_log(f"{client_ip} just failed to login with '{username}' Device ```{user_agent}``` <@709799648143081483>")
+            discord_log(f"{client_ip} just failed to login with '{username}' Device ```{user_agent}``` <@709799648143081483> LOGIN2")
             return "Login unsuccessful."
 
     return render_template('test_pages/login.html')
