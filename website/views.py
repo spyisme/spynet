@@ -170,19 +170,21 @@ def login():
            return jsonify(message="Error 403"), 403
 
         if client_ip not in whitelist_ips :
-            api_url = f'https://geo.ipify.org/api/v2/country?apiKey=at_5rNKtyOH1oP5u9gFD55IltYEzAhvU&ipAddress={client_ip}'
+            api_url = f'https://ipinfo.io/{client_ip}?token=8f8d5a48b50694'
             response = requests.get(api_url)
             data = response.json()
 
-            if 'location' in data and 'country' in data['location']:
-                country_code = data['location']['country']
-                if country_code != 'EG':
-                    blacklist_ips.add(client_ip)
-                    return jsonify(message="Error 403"), 403
-
+            if 'country' in data:
+                    country_code = data['country']
+                    if country_code != 'EG':
+                        # Add the client's IP to the blacklist
+                        blacklist_ips.add(client_ip)
+                        return jsonify(message="Please disable vpn/proxy."), 403
             else:
+            # Unable to determine the country, add IP to the blacklist
                 blacklist_ips.add(client_ip)
                 return jsonify(message="Unable to determine the country. Login failed."), 403
+                            
     whitelist_ips.add(client_ip)
 
     if request.method == 'POST':
