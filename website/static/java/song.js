@@ -8,7 +8,6 @@ var musicOn = localStorage.getItem("musicOn");
 
 
 if (musicOn === "true") {
-    if (audioTime != "null"){
         // Check if the audio element exists on the page
         if (audio) {
             // Play the audio as soon as the script loads
@@ -54,5 +53,4 @@ if (musicOn === "true") {
             // Remove the click event listener after playing the audio
             document.removeEventListener("click", playAudio);
         });
-}
 }

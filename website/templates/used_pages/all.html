@@ -38,7 +38,7 @@
         <!-- <p>Yarab amr ygeb 90%</p> -->
         <p><a href="https://mathdf.com/" target="_blank" style="color: white; "><u>Mathdf</u></a></p>
 
-      <u> <p id="toggleButton">Toggle Music</p> </u> 
+      <u> <p id="toggleButton">Toggle Music</u>(Refresh after clicking)</p> 
 
   </div>
 
@@ -61,7 +61,6 @@
     const currentMusicState = localStorage.getItem("musicOn");
     const newMusicState = currentMusicState === "true" ? "false" : "true";
     localStorage.setItem("musicOn", newMusicState);
-    localStorage.setItem("audioTime", "null");
 
     alert(`Music is now ${newMusicState === "true" ? "on" : "off"}`);
 
