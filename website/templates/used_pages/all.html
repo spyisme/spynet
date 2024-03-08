@@ -34,7 +34,7 @@
 
     
   <div class="nav">
-        <img class ="img" src="static/assets/ss.png">
+        <img class ="img" src="static/assets/ss.png" id ="toggleButton">
         <!-- <p>Yarab amr ygeb 90%</p> -->
         <p><a href="https://mathdf.com/" target="_blank" style="color: white; "><u>Mathdf</u></a></p>
 
@@ -54,7 +54,15 @@
 </audio>
 
 
-
+<script>
+  function toggleMusic() {
+    const currentMusicState = localStorage.getItem("musicOn");
+    const newMusicState = currentMusicState === "true" ? "false" : "true";
+    localStorage.setItem("musicOn", newMusicState);
+    location.reload();
+  }
+  document.getElementById("toggleButton").addEventListener("click", toggleMusic);
+</script>
 
   <br><br>
   <div class="textcont">

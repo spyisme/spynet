@@ -36,7 +36,9 @@
     localStorage.setItem("musicOn", newMusicState);
 
     // Display a message based on the new state
-    alert(`Music is now ${newMusicState === "true" ? "on" : "off"}`);
+    // alert(`Music is now ${newMusicState === "true" ? "on" : "off"}`);
+    location.reload();
+
   }
 
   // Attach the function to the button click event
