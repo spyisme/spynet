@@ -206,21 +206,7 @@ def login():
 
     return render_template('test_pages/login.html')
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@views.route('/login2', methods=['GET', 'POST'])
+@views.route('/newlogin', methods=['GET', 'POST'])
 def login2():
     client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
     user_agent = request.headers.get('User-Agent')
