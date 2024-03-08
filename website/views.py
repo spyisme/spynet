@@ -130,6 +130,12 @@ def get_playlist_videos(playlist_id):
 
 
 
+@views.route('/songtoggle')
+def songtoggle():
+    return render_template('test_pages/songtoggle.html')
+
+
+
 
 
 
@@ -209,7 +215,7 @@ def login():
             discord_log(f"{client_ip} just failed to login with '{username}' Device ```{user_agent}``` <@709799648143081483>")
             return "Login unsuccessful."
 
-    return render_template('test_pages/login.html')
+    return render_template('used_pages/login.html')
 
 
 
@@ -243,7 +249,7 @@ def login2():
             discord_log(f"LOGIN2 {client_ip} just failed to login with '{username}' Device ```{user_agent}``` <@709799648143081483> LOGIN2")
             return "Login unsuccessful."
 
-    return render_template('test_pages/login.html')
+    return render_template('used_pages/login.html')
 
 
 
