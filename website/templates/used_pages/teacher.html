@@ -33,11 +33,11 @@
   <div class="nav">
     {% if teachername == "Arabic"or teachername == "English" or teachername == "Biology" or teachername == "Chemistry" or teachername == "Geology" or teachername == "German" or teachername == "Math" or teachername == "Physics" %}
 
-    <img class="img" src="static/assets/subjects/{{ teachername }}11.png"  onclick="toggle()"></img>
+    <img class="img" src="static/assets/subjects/{{ teachername }}11.png"></img>
 
     
          {%else%}
-        <h1  onclick="toggle()">✰ {{ teachername }} ✰</h1>
+        <h1  >✰ {{ teachername }} ✰</h1>
 
 {%endif%}
               
@@ -50,7 +50,7 @@
 
 
             </div>
-            <style>
+            <!-- <style>
               #backgroundAudio {
                 display: none;
               }
@@ -61,7 +61,7 @@
               <audio id="backgroundAudio" controls autoplay>
                 <source src="/random_song" type="audio/mp3">
 
-            </audio>
+            </audio> -->
 
    <ul>
     {% for name, data in teacher_links.items() %}
