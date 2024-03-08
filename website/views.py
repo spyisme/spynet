@@ -149,7 +149,8 @@ def discord_log(message):
 
 
 
-saved_ips =  set()  
+blacklist_ips =  set()  
+whitelist_ips =  set()  
 
 @views.route('/login', methods=['GET', 'POST'])
 def login():
@@ -159,9 +160,10 @@ def login():
     if request.method == 'GET':
         if current_user.is_authenticated:
             return redirect(url_for('views.home'))
-        
-        if client_ip not in saved_ips :
-            saved_ips.add(client_ip)
+        if client_ip in blacklist_ips :
+           return jsonify(message="Error 403"), 403
+
+        if client_ip not in whitelist_ips :
             api_url = f'https://geo.ipify.org/api/v2/country?apiKey=at_5rNKtyOH1oP5u9gFD55IltYEzAhvU&ipAddress={client_ip}'
             response = requests.get(api_url)
             data = response.json()
@@ -169,11 +171,14 @@ def login():
             if 'location' in data and 'country' in data['location']:
                 country_code = data['location']['country']
                 if country_code != 'EG':
+                    blacklist_ips.add(client_ip)
                     return jsonify(message="Error 403"), 403
-            else:
-                return jsonify(message="Unable to determine the country. Login failed."), 403
 
-    
+            else:
+                blacklist_ips.add(client_ip)
+                return jsonify(message="Unable to determine the country. Login failed."), 403
+    whitelist_ips.add(client_ip)
+
     if request.method == 'POST':
         username = request.form.get('username')
         user = User.query.filter_by(username=username).first()
@@ -205,6 +210,9 @@ def login():
             return "Login unsuccessful."
 
     return render_template('test_pages/login.html')
+
+
+
 
 @views.route('/login2', methods=['GET', 'POST'])
 def login2():
