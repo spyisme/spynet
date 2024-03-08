@@ -7,7 +7,7 @@ var musicOn = localStorage.getItem("musicOn");
 
 
 
-if (musicOn === "true") {
+while (musicOn === "true") {
         // Check if the audio element exists on the page
         if (audio) {
             // Play the audio as soon as the script loads
