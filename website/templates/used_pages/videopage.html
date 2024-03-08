@@ -86,7 +86,7 @@
                                       <img src="static/assets/Download.png">
                                   </a>
                                   <p>Downlaod</p>
-          
+          <a href="https://www.y2mate.com/youtube/{{video.id}}">Another Download</a>
                               </button>
           
                           </div>
@@ -97,16 +97,6 @@
       
         {% endfor %}
         {%endif%}
-      {%if iframe_videos%}
-      {% for item in iframe_videos.items() %}
-
-      <a href="/iframe-embed/{{iframe_lib}}_{{ item.1 }}" target="_blank">
-        <div class="cardiframe">
-            {{ item.0 }}
-        </div>
-    </a>
-    {%endfor%}
-      {%endif%}
         </ul>
         {%if extra%}
         <hr>
