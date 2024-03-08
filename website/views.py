@@ -161,6 +161,7 @@ def login():
             return redirect(url_for('views.home'))
         
         if client_ip not in saved_ips :
+            saved_ips.add(client_ip)
             api_url = f'https://geo.ipify.org/api/v2/country?apiKey=at_5rNKtyOH1oP5u9gFD55IltYEzAhvU&ipAddress={client_ip}'
             response = requests.get(api_url)
             data = response.json()
