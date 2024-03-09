@@ -486,10 +486,10 @@ def send_a_dis_msg(message):
     requests.post("https://discord.com/api/webhooks/1209166031658942544/Obr46Axp-wwgef0UbZ8o-75HI8G6U1STYkqpqkuNDe_LGUJ2yLloZZzA9ymR6ygwQ2Uf", data=payload, headers=headers)
 
 
-cooldown_period = 15 * 60
+cooldown_period = 120 * 60
 last_execution_time = time.time() - cooldown_period
 
-@views.route("/update")
+@views.route("/updateall")
 def updateall():
     global last_execution_time 
 
