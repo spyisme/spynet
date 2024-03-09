@@ -1138,14 +1138,6 @@ def sherbodynamicsupdate():
 # views.config['UPLOAD_FOLDER_2'] = UPLOAD_FOLDER_2
 
 
-ALLOWED_EXTENSIONS = {'jpg'}
-
-
-
-def allowed_file(filename):
-    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
-
 def load_salama_info():
     with open('website/playlists/Backend/salama_info.json', 'r') as file:
         salama_info = json.load(file)
@@ -1161,7 +1153,7 @@ def save_salama_info(salama_info):
 
 def add_course(course_name, course_id, course_image):
     salama_info = load_salama_info()
-    if course_image and allowed_file(course_image.filename):
+    if course_image:
         filename = course_name + '.jpg'
         upload_path = os.path.join('website/static/assets/Math/', filename)
         course_image.save(upload_path)
