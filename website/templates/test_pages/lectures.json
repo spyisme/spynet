@@ -49,7 +49,8 @@
       "part_d_video": "8a3c2b3e39b147078f0753097cbfbb31",
       "part_e_video": "9e5247b6145044e295b4dc631211a8b7",
       "part_f_video": "1d35437db79d46c983dbe9aeab4a57ba",
-      "part_g_video": "9596f1ed5d904267bea5c95fef6b7793"
+      "part_g_video": "9596f1ed5d904267bea5c95fef6b7793",
+      "part_s_video": "b3a9790e221a4b0093668ec7ef7fa0c8"
     },
     {
       "id": "6",
@@ -69,7 +70,8 @@
       "part_d_video": "c8d55046a3b14f5d875e4cecfb702148",
       "part_e_video": "f95580d10bdc483b917026e87ed6b35f",
       "part_f_video": "d3884277615745a49eb2e052ba82048a",
-      "part_g_video": "cf9531587f464bc2bf1bf05577139611"
+      "part_g_video": "cf9531587f464bc2bf1bf05577139611",
+      "part_s_video": "22efe5e49d9642919ed842fed1667cc5"
     },
     {
       "id": "8",
@@ -90,7 +92,8 @@
       "part_c_video": "258cd0aed8ea402fbd2738b516ba4b84",
       "part_d_video": "ba3bbf0e58214c1387d6d99430290cff",
       "part_e_video": "c65b5cc1f9894feca7de7166d79be94a",
-      "part_f_video": "15542575ad7c4697a9bf2042873541c0"
+      "part_f_video": "15542575ad7c4697a9bf2042873541c0",
+      "part_s_video": "69f130ce8c18466c9216654a7741b378"
     },
     {
       "id": "10",
@@ -112,7 +115,8 @@
       "part_d_video": "a4ee6c4f7edf4746a384c0592e77f793",
       "part_e_video": "c16e1eeac6a94550b00c03f344600213",
       "part_f_video": "22a4b9209825447cb768cdb1c1a36b5c",
-      "part_g_video": "996f1de97f214e0eab41363e137b2491"
+      "part_g_video": "996f1de97f214e0eab41363e137b2491",
+      "part_s_video": "7bd25bd2a1124e01a66086fda7d5ef2a"
     },
     {
       "id": "12",
@@ -128,7 +132,7 @@
     },
     {
       "id": "13",
-      "title": "CH1L5 Solving of the last HW in chapter 1",
+      "title": "CH1L5 \u00a0Solving of the last HW \u00a0in chapter 1",
       "part_a_video": "3681774ad1be49e1821b7cb70e736e70"
     },
     {
@@ -177,7 +181,8 @@
       "part_b_video": "e38c71e2c448414eabd18d347106bf0d",
       "part_c_video": "6b22abe34dca4e8889fb13d3144b31f0",
       "part_d_video": "fcc2de7590084cdc96fdec2c156b87e3",
-      "part_e_video": "4e31896d9e7440088f93057c150a844f"
+      "part_e_video": "4e31896d9e7440088f93057c150a844f",
+      "part_s_video": "69528357f6ac47c1a29751d680e7b26f"
     },
     {
       "id": "19",
@@ -201,7 +206,8 @@
       "part_e_video": "899d8b0645eb41f7b6ecd0e5fe8b9cf5",
       "part_f_video": "82cf389c71b94ed08dde7baef0b2e609",
       "part_g_video": "e24617d2dd65455f920a0c8ab7f6dc1b",
-      "part_h_video": "4a3c2e724d2648be8b6912ca1a54d038"
+      "part_h_video": "4a3c2e724d2648be8b6912ca1a54d038",
+      "part_s_video": "c7c38a9b656d4241869275c66b5c3ae5"
     },
     {
       "id": "21",
@@ -224,7 +230,8 @@
       "part_e_video": "3cf7a396c8f94734b8c4c7704c39142c",
       "part_f_video": "9c66d71c2a2f417c908f912e503d7b06",
       "part_g_video": "b29b0897bb9f4e6d9a0fa010e6270dbd",
-      "part_h_video": "a752806c785445d1b918a4f6b56f26df"
+      "part_h_video": "a752806c785445d1b918a4f6b56f26df",
+      "part_s_video": "8706b051a4724826a47704eb969b7beb"
     },
     {
       "id": "23",
@@ -240,7 +247,7 @@
     },
     {
       "id": "24",
-      "title": "CH2L4 Solving of the last HW in chapter 2",
+      "title": "CH2L4 \u00a0Solving of the last HW \u00a0in chapter 2",
       "part_a_video": "f266aa9f035348bb8c6194e6055ea897"
     },
     {
@@ -293,7 +300,8 @@
       "part_d_video": "a59fad3a482d4a1e901d391fd8466407",
       "part_e_video": "46c883025bd54c50b9e3e8d6337d9608",
       "part_f_video": "eeca78d70caa44ceb2d47f02093c088b",
-      "part_g_video": "4feab783f5014788a2410420265f9fc6"
+      "part_g_video": "4feab783f5014788a2410420265f9fc6",
+      "part_s_video": "eb01cb2e9ad3414ead03a61e09486559"
     },
     {
       "id": "30",
@@ -315,7 +323,8 @@
       "part_d_video": "6d15a38c920c44b5acc2029407f30a43",
       "part_e_video": "f772d81940cd4c28b00712b30124c26a",
       "part_f_video": "a7529fbb20b74fe5b85606ea8b39305b",
-      "part_g_video": "3762434ca58b4892a39af5e480d8e228"
+      "part_g_video": "3762434ca58b4892a39af5e480d8e228",
+      "part_s_video": "fa122eb6cb4443f5821d9eb30931cbb5"
     },
     {
       "id": "32",
@@ -340,7 +349,8 @@
       "part_g_video": "f9df7919a32d45d1963551d53b368784",
       "part_h_video": "6470f2386c364fd483454e3ca0661eaa",
       "part_i_video": "85ec403f70314453a48b3053696018b1",
-      "part_j_video": "79e33d2e00d64ea0a266f03206a50933"
+      "part_j_video": "79e33d2e00d64ea0a266f03206a50933",
+      "part_s_video": "33c66e00ffee4bb1b03cc22d93b953a6"
     },
     {
       "id": "34",
@@ -355,12 +365,12 @@
     },
     {
       "id": "35",
-      "title": "CH3L4 Solving of the last HW in chapter 3",
+      "title": "CH3L4 \u00a0Solving of the last HW \u00a0in chapter 3",
       "part_a_video": "8485cbd226d74fd9bf5db725bf9caa55"
     },
     {
       "id": "36",
-      "title": "Revision for Chapter 3 [ Part A ] ( 5 sections)",
+      "title": "Revision for Chapter \u00a03 \u00a0[ Part A ] ( 5 sections)",
       "part_a_video": "f0e980f7249640e090c35e98042fbf3b",
       "part_b_video": "ebbc9e0f7f6f44afa47014c6162b85c0",
       "part_c_video": "39add80ac85f4111aa13d4fe6f6f7f2a",
@@ -369,7 +379,7 @@
     },
     {
       "id": "37",
-      "title": "Revision for Chapter 3 [ Part B ] ( 5 sections)",
+      "title": "Revision for Chapter \u00a03 \u00a0[ Part B ] ( 5 sections)",
       "part_a_video": "e76e1f7ce0814879b76cd761e97b42c4",
       "part_b_video": "c3e23841c1b44d5abf4d44e1104177d9",
       "part_c_video": "5bee0fdf7335456b96a6d6480c01e8a1",
@@ -385,7 +395,7 @@
     },
     {
       "id": "39",
-      "title": "CH4L1(part B) Galvanic cell (5 sections)",
+      "title": "CH4L1(part B) \u00a0Galvanic cell\u00a0 (5 sections)",
       "part_a_video": "a92bb0660fcb44089edb89b1aae7ab19",
       "part_b_video": "e94db265a84e468795d35edc31c3cdb5",
       "part_c_video": "4595d53631bd4119b95f56d7930979d0",
@@ -402,7 +412,8 @@
       "part_e_video": "cdbbd17f5ee146329a8c9c6095b847fa",
       "part_f_video": "021314fb2f2f4b17b077c47af11a73dd",
       "part_g_video": "884ee8758eca458089ad0fabaa9b36b0",
-      "part_h_video": "c4d780e486ee439e98aac5b88a92bb17"
+      "part_h_video": "c4d780e486ee439e98aac5b88a92bb17",
+      "part_s_video": "5a6803fb30a4476ab4c34ac2319a290f"
     },
     {
       "id": "41",
@@ -421,7 +432,8 @@
       "part_c_video": "9a69ca85950f44d68e51bec444636699",
       "part_d_video": "8d64d8ee76e845a9baa589e48531c6eb",
       "part_e_video": "b36c25888d284fdb86c2d01b86765d34",
-      "part_f_video": "73b14fef1b8141c7988d6ff51b678a16"
+      "part_f_video": "73b14fef1b8141c7988d6ff51b678a16",
+      "part_s_video": "30e4976ab1954b9b97f82b0262af13b4"
     },
     {
       "id": "43",
@@ -443,7 +455,8 @@
       "part_c_video": "a02855651b9c43e9bbbcfa264ba52c20",
       "part_d_video": "90c9cc1b3b1340689428d28eeae283b1",
       "part_e_video": "f0da27fc18b04fb0a564e765f196397e",
-      "part_f_video": "33bc13fca9a741fdbbb6946e50f24fc0"
+      "part_f_video": "33bc13fca9a741fdbbb6946e50f24fc0",
+      "part_s_video": "7b2dfff7fc454d92afcfa879e7f3dee9"
     },
     {
       "id": "45",
@@ -458,12 +471,12 @@
     },
     {
       "id": "46",
-      "title": "CH4L4 Solving of the last HW in chapter 4",
+      "title": "CH4L4 \u00a0Solving of the last HW \u00a0in chapter 4",
       "part_a_video": "2f60f93c96ad40c98a3a1781c9f50549"
     },
     {
       "id": "47",
-      "title": "Revision for Chapter 4  Galvanic cell  [ Part A ] ( 6 sections)",
+      "title": "Revision for Chapter \u00a04  Galvanic cell  \u00a0[ Part A ] ( 6 sections)",
       "part_a_video": "816dda781ac1401497cf9553f1cff1aa",
       "part_b_video": "8083b30ff5a04179a8b3a0f6d474714a",
       "part_c_video": "156145b6d2464690a114b72e92d6a1fa",
@@ -473,7 +486,7 @@
     },
     {
       "id": "48",
-      "title": "Revision for Chapter 4  [ Part B ] ( 5 sections)",
+      "title": "Revision for Chapter \u00a04  [ Part B ] ( 5 sections)",
       "part_a_video": "78f0ab0590ed476e9f9e2977ae60a910",
       "part_b_video": "f3c400fb584f4de299f627ab7e01fb8d",
       "part_c_video": "584ded559e114c4dbcf17417f2789e38",
@@ -509,7 +522,8 @@
       "part_a_video": "c56d4c698ce94edb9779882abb7e640e",
       "part_b_video": "78c1c090e7d049fcbbfda3011bf067d8",
       "part_c_video": "b326f4598bd349948fb33474e9c3bb62",
-      "part_d_video": "1a4cb6c60064463d8351be1d8b1396a5"
+      "part_d_video": "1a4cb6c60064463d8351be1d8b1396a5",
+      "part_s_video": "9f065d4e56794ca6abb09785830db620"
     },
     {
       "id": "52",
@@ -520,6 +534,39 @@
       "part_d_video": "bd65688ffbe74e80816bd63f9bc98e42",
       "part_e_video": "e12ad66fd93b4597a9b133abafe9dd68",
       "part_f_video": "0565e50b700442f2bc781dfd1567309d"
+    },
+    {
+      "id": "53",
+      "title": "CH5L3 (part A) Methane gas ( 4 sections)",
+      "part_a_video": "f0179275c77e493bacbf6fff9971247f",
+      "part_b_video": "79a8e2db219a4a219824a8614184b800",
+      "part_c_video": "f01871c9070a4a30a779605fae7cde50",
+      "part_d_video": "662b1876cd264326914f6e09c28adc33",
+      "part_s_video": "ad0a3dc06a7345908f2e24a6d1127fc6"
+    },
+    {
+      "id": "54",
+      "title": "CH5L3 (part B) chemical properties of alkane - Nomenclature of alkenes (  9 sections)",
+      "part_a_video": "76b0d69ff42c4451b1cd35f26192ef0c",
+      "part_b_video": "27efc389284f4ddeaac4f305fd2e0625",
+      "part_c_video": "bde7cb37e7db4940a570d5f8d340279d",
+      "part_d_video": "5444f6ef81ae42f3984b554b5978f0b9",
+      "part_e_video": "c9427cf1ab064043ab0fde840006bee2",
+      "part_f_video": "098665f950bd4411b92e3100c7265989",
+      "part_g_video": "8332566c2a934bf7b39c4d3dd6fb12de",
+      "part_h_video": "b27a2442d06e4a1995618c0cb057c0d4",
+      "part_i_video": "165993418e174f458ac918dbbd9d932c"
+    },
+    {
+      "id": "55",
+      "title": "CH5L4 (part A) Properties of alkenes ( 6 sections)",
+      "part_a_video": "06a5a78411ae4a01b9fc1e628b841b70",
+      "part_b_video": "a231045e81404fd9bef089614b698821",
+      "part_c_video": "62a46fd30879454a9f9cff7988d049e6",
+      "part_d_video": "7d075cd96845454d843d16dd9944587a",
+      "part_e_video": "2e43184ab18640858b29bdf07daf01f5",
+      "part_f_video": "edd603441d504247ae87276f7294bdad",
+      "part_s_video": "52a1074a5cc74559bb9496eac96b8aba"
     }
   ]
 }
