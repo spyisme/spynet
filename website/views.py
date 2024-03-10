@@ -4,7 +4,7 @@ import os
 import ast
 import json
 import requests
-import time 
+import time
 import random
 import string
 from datetime import datetime, timedelta
@@ -816,22 +816,14 @@ def nawarch4rev():
   with open("website/playlists/nawarch4rev.txt", 'r', encoding='utf-8') as file:
         content = file.read()
         videos = ast.literal_eval(content)
-  iframe_videos = {"Part 1" : "430c06cb-92a8-4667-93e1-c518c0c81a59" , 
-                   "Part 2" : "d82e8951-da93-41af-b9d8-d3a99452e261", 
-                   "Part 3" : "9ecf9c43-12fd-4fb1-8bbc-1feedaccb5f2",
-                   "Part 4" : "f1b5c498-6da3-41be-8e19-5c068521137f",
-                   "Part 5" : "fc54ebac-316b-4f58-8484-420756a84086",
-                   "Part 6" : "eff1a183-cbd1-4e8e-a345-2c070b1f3e44",
-                }
+
 
   folder = "https://drive.google.com/drive/folders/17NFLXuiVUMRhdzcSjXAKtiAzwmpwu_wn?usp=drive_link"     
   return render_template('used_pages/videopage.html',
                          playlist_id = playlist_id,
                          videos = videos,
                          teachername=teachername,
-                         folder = folder,
-                         iframe_videos = iframe_videos,
-                          iframe_lib = iframe_lib)
+                         folder = folder)
 
 @views.route("/nawarch4revupdate")
 def nawarch4revupdate():
