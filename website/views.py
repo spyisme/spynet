@@ -1122,13 +1122,7 @@ def sherbodynamicsupdate():
     return createtxtfile("sherbodynamics" , "PLM-GVlebsoPWZdGWOOOqg4W9K9AgoXC2M")
 
 
-
-
-
-
-
-# UPLOAD_FOLDER_2 = 'path/to/upload/folder2'
-# views.config['UPLOAD_FOLDER_2'] = UPLOAD_FOLDER_2
+# Salama --------------------------------------------------------
 
 
 def load_salama_info():
@@ -1170,18 +1164,6 @@ def add_course_route():
     return render_template('backend_pages/add-course.html')    
 
 
-@views.route("/Prestudy")
-def Prestudy():
-    playlist_id = 'PLM-GVlebsoPVEULTnn90gqVL0AL99KtU0'
-    teachername= "Prestudy"
-    with open("website/playlists/Prestudy.txt", 'r', encoding='utf-8') as file:
-        content = file.read()
-        videos = ast.literal_eval(content)
-    return render_template('used_pages/videopage.html',
-                           videos=videos,
-                           playlist_id=playlist_id,
-                           teachername=teachername)
-
 
 @views.route("/salamach<int:course_number>update")
 def salamacoursesupdate(course_number):
@@ -1191,59 +1173,41 @@ def salamacoursesupdate(course_number):
         return redirect(url_for('views.display_links'))
     playlist_id = salama_info[course_key]["id"]
 
-    return  createtxtfile(f"salama{course_key}", playlist_id)
-
-
-
+    return createtxtfile(f"salama{course_key}", playlist_id)
 
 
 @views.route('/salama')
 def salama():
     salama_info = load_salama_info()
-    teacher_links = { "PreStudy": ( "Prestudy", "Pre-Study Course"),}
 
-    teacher_links.update({
-        course: (f"/salamach{i}", course)
-        for i, (course, _) in enumerate(salama_info.items(), start=1)
-    })
- 
-
-    teacher_links["Course 25"] = ("/salamach25", "Course 25", "New")
-    teacher_links["Course 26"] = ("/salamach26", "Course 26", "New")
-
+    teacher_links = {
+        course: (f"/c/{salama_info[course]['url']}", course)
+        for course in salama_info
+    }
+    # teacher_links["Course 25"] = ("/salamach25", "Course 25", "New")
+    # teacher_links["Course 26"] = ("/salamach26", "Course 26", "New")
     teachername = "Math"
     return render_template('used_pages/teacher.html', teacher_links=teacher_links, teachername=teachername, imgs="yes")
 
 
-
-
-
-
-
-
-@views.route("/salamach<int:course_number>")
-def salamach(course_number):
+@views.route("/salama/<custom_url>")
+def salamach(custom_url):
     extra = None
     salama_info = load_salama_info()
-    course_key = f"Course {course_number}"
-    teachername = course_key
-    playlist_id = salama_info[course_key]["id"]
-    with open(f"website/playlists/salama{course_key}.txt", 'r', encoding='utf-8') as file:
-        content = file.read()
-        videos = ast.literal_eval(content)
-    if course_key == "Course 6" :
+    course_info = next((info for info in salama_info.values() if info['url'] == f"/salama/{custom_url}"), None)
+    course_name = next((name for name, info in salama_info.items() if info['url'] == f"/salama/{custom_url}"), None)
+    teachername = course_name
+    playlist_id = course_info["id"]
+    with open(f"website/playlists/salama{course_name}.txt", 'r', encoding='utf-8') as file:
+            content = file.read()
+            videos = ast.literal_eval(content)
+    if course_name  == "Course 6" :
        extra={"Pdf 1" :"https://drive.google.com/file/d/18mnyKrmeiNNZMBdaJ0sD8VAkAzLbM15r/view?usp=drive_link" , "Pdf 2" : "https://drive.google.com/file/d/1JLwNyWB8lOVSdVi8IvA6zb1D1iVQ8H3l/view?usp=drive_link"}   
-    elif course_key == "Course 17" :
+    elif course_name  == "Course 17" :
         extra = {"Pdf 1" : "https://drive.google.com/file/d/1Ng8UkfF48_Cj1ZjiMn8NPfkWEONh3vJD/view?usp=drive_link"}
-    elif course_key == "Course 19":
+    elif course_name  == "Course 19":
         extra={"Pdf 1" :"https://drive.google.com/file/d/1a-56mRMP3nYSts90itOfINMtmrb8z6rr/view?usp=drive_link" , "Pdf 2" : "https://drive.google.com/file/d/1O21TqOmEJv2R9zUJmMw0BFnHsjCtqEVF/view?usp=drive_link"}   
     return render_template('used_pages/videopage.html', videos=videos, playlist_id=playlist_id, teachername=teachername ,extra = extra)
-
-
-
-
-
-
 
 
 

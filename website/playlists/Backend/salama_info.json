@@ -1,83 +1,110 @@
 {
   "Course 1": {
-    "id": "PLM-GVlebsoPWfuCf4h_ucKPOBKjH6No-W"
+    "id": "PLM-GVlebsoPWfuCf4h_ucKPOBKjH6No-W",
+    "url": "/c1"
   },
   "Course 2": {
-    "id": "PLM-GVlebsoPUubsCYnPGc27tihI0pz4hi"
+    "id": "PLM-GVlebsoPUubsCYnPGc27tihI0pz4hi",
+    "url": "/c2"
   },
   "Course 3": {
-    "id": "PLM-GVlebsoPUSSsoABHH059FBapcSjvGg"
+    "id": "PLM-GVlebsoPUSSsoABHH059FBapcSjvGg",
+    "url": "/c3"
   },
   "Course 4": {
-    "id": "PLM-GVlebsoPXWSZDCjeDfvdMV5QXYwg4x"
+    "id": "PLM-GVlebsoPXWSZDCjeDfvdMV5QXYwg4x",
+    "url": "/c4"
   },
   "Course 5": {
-    "id": "PLM-GVlebsoPWEGxQu5D0hVrUCJjTMqYvd"
+    "id": "PLM-GVlebsoPWEGxQu5D0hVrUCJjTMqYvd",
+    "url": "/c5"
   },
   "Course 6": {
-    "id": "PLM-GVlebsoPWZKrvX8MvfJxfxXhKXvqR3"
+    "id": "PLM-GVlebsoPWZKrvX8MvfJxfxXhKXvqR3",
+    "url": "/c6"
   },
   "Course 7": {
-    "id": "PLM-GVlebsoPUobUeuNIWsitKeP-aHOwif"
+    "id": "PLM-GVlebsoPUobUeuNIWsitKeP-aHOwif",
+    "url": "/c7"
   },
   "Course 8": {
-    "id": "PLM-GVlebsoPUqwS3-Ij-pHBq4_aoEAwMZ"
+    "id": "PLM-GVlebsoPUqwS3-Ij-pHBq4_aoEAwMZ",
+    "url": "/c8"
   },
   "Course 9": {
-    "id": "PLM-GVlebsoPXe2kZo_cM06BZWXwdSxQ7B"
+    "id": "PLM-GVlebsoPXe2kZo_cM06BZWXwdSxQ7B",
+    "url": "/c9"
   },
   "Course 10": {
-    "id": "PLM-GVlebsoPXZmghd3uMqZWx6wlLZDiiu"
+    "id": "PLM-GVlebsoPXZmghd3uMqZWx6wlLZDiiu",
+    "url": "/c10"
   },
   "Course 11": {
-    "id": "PLM-GVlebsoPVB0u2fWqO9ep3cuBp_8zTW"
+    "id": "PLM-GVlebsoPVB0u2fWqO9ep3cuBp_8zTW",
+    "url": "/c11"
   },
   "Course 12": {
-    "id": "PLM-GVlebsoPU0BwzCsqsPQfKMSPZauuFl"
+    "id": "PLM-GVlebsoPU0BwzCsqsPQfKMSPZauuFl",
+    "url": "/c12"
   },
   "Course 13": {
-    "id": "PLM-GVlebsoPURAU8nu_tU2dphnGXxZeMM"
+    "id": "PLM-GVlebsoPURAU8nu_tU2dphnGXxZeMM",
+    "url": "/c13"
   },
   "Course 14": {
-    "id": "PLM-GVlebsoPXnRQBjkDqUUAXDKyUJqK9-"
+    "id": "PLM-GVlebsoPXnRQBjkDqUUAXDKyUJqK9-",
+    "url": "/c14"
   },
   "Course 15": {
-    "id": "PLM-GVlebsoPWCqnSBAANAy8Wn89lbLmqt"
+    "id": "PLM-GVlebsoPWCqnSBAANAy8Wn89lbLmqt",
+    "url": "/c15"
   },
   "Course 16": {
-    "id": "PLM-GVlebsoPUF0Px3a00jPzFLwJwkpgBw"
+    "id": "PLM-GVlebsoPUF0Px3a00jPzFLwJwkpgBw",
+    "url": "/c16"
   },
   "Course 17": {
-    "id": "PLM-GVlebsoPXMiQ12yf0u8yXhwuFTAR0h"
+    "id": "PLM-GVlebsoPXMiQ12yf0u8yXhwuFTAR0h",
+    "url": "/c17"
   },
   "Course 18": {
-    "id": "PLM-GVlebsoPV0RRzBKVtugIVlvEKmmHQn"
+    "id": "PLM-GVlebsoPV0RRzBKVtugIVlvEKmmHQn",
+    "url": "/c18"
   },
   "Course 19": {
-    "id": "PLM-GVlebsoPW0boxDQxqLZz8gbmxhGZvP"
+    "id": "PLM-GVlebsoPW0boxDQxqLZz8gbmxhGZvP",
+    "url": "/c19"
   },
   "Course 20": {
-    "id": "PLM-GVlebsoPVe61apiwj3BNUJZgRxPx7R"
+    "id": "PLM-GVlebsoPVe61apiwj3BNUJZgRxPx7R",
+    "url": "/c20"
   },
   "Course 21": {
-    "id": "PLM-GVlebsoPW08Jvd51hPJlzAuWZW779p"
+    "id": "PLM-GVlebsoPW08Jvd51hPJlzAuWZW779p",
+    "url": "/c21"
   },
   "Course 22": {
-    "id": "PLM-GVlebsoPV167FUPTP329rzQmG6PG-G"
+    "id": "PLM-GVlebsoPV167FUPTP329rzQmG6PG-G",
+    "url": "/c22"
   },
   "Course 23": {
-    "id": "PLM-GVlebsoPWqsj4eyVs60lxIi1MpjkM3"
+    "id": "PLM-GVlebsoPWqsj4eyVs60lxIi1MpjkM3",
+    "url": "/c23"
   },
   "Course 24": {
-    "id": "PLM-GVlebsoPWocAUzJuZXJz1LmGaDE32p"
+    "id": "PLM-GVlebsoPWocAUzJuZXJz1LmGaDE32p",
+    "url": "/c24"
   },
   "Course 25": {
-    "id": "PLM-GVlebsoPXmDYTJOG_SUX7clrqVcWgy"
+    "id": "PLM-GVlebsoPXmDYTJOG_SUX7clrqVcWgy",
+    "url": "/c25"
   },
   "Course 26": {
-    "id": "PLM-GVlebsoPWh3oOrqBPNJCTEAEOklhb6"
+    "id": "PLM-GVlebsoPWh3oOrqBPNJCTEAEOklhb6",
+    "url": "/c26"
   },
   "Course 27": {
-    "id": "PLM-GVlebsoPU3qMvlZlSlcllE5Fs_jVmH"
+    "id": "PLM-GVlebsoPU3qMvlZlSlcllE5Fs_jVmH",
+    "url": "/c27"
   }
 }
