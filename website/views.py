@@ -280,64 +280,12 @@ def login2():
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-def iframevideo(video_id , library_id):
-    def SHA256_HEX(input_str):
-        hash_value = hashlib.sha256(input_str.encode()).hexdigest()
-        return hash_value
-
-    expiration_time = 10800 # 3 hours
-
-    expires = str(int(time.time() + expiration_time))
-    input_str = IFRAME_API_KEY + video_id + expires
-    token = SHA256_HEX(input_str)
-    url = f'https://iframe.mediadelivery.net/embed/{library_id}/{video_id}?token={token}&expires={expires}'
-    return url
-
-
 @views.route('/redirect/<path:link>')
 def redirectlinks(link):
       link =  link.replace('questionmark', '?')
       link =  link.replace('andsympol', '&')
 
       return redirect(f"{link}") 
-
-
-
-@views.route('/iframe-embed/<video>')
-def iframe_embed(video):
-    if video :
-        library_id = video.split('_')[0]
-        video_id = video.split('_')[1]
-        url = iframevideo(video_id ,library_id )
-        return render_template('test_pages/iframe.html' , url = url)
-    else :
-        return redirect(url_for('views.home'))
-
-
-
-#https://iframe.mediadelivery.net/embed/205370/1ebbabbd-150f-4292-aa34-59b7a3b11f27
-
-
 
 
 
@@ -375,77 +323,43 @@ def ashraf():
 
 
 
+# songs = [
+#     "slowdown",
+#     "iknow",
+#     "afraid",
+#     "Sound_motion_picturetrack_cas",
+#     "openarms",
+#     "Stargirl",
+#     "playboi_titani",
+#     "outofmyleague",
+#     "margret",
+#     "Lunakaram",
+#     "everymangetshiswish",
+# ]
+# ip_song_mapping = {}
 
+# def get_random_song():
+#     return random.choice(songs)
+# def get_song_duration(song_filename):
+#     try:
+#         song = AudioSegment.from_file(f"website/static/music/{song_filename}.mp3", format="mp3")
+#     except:
+#         song = AudioSegment.from_file(f"website/static/music/{song_filename}.mp3", format="mp4")
+#     return len(song) / 1000 
 
-
-songs = [
-    "slowdown",
-    "iknow",
-    "afraid",
-    "Sound_motion_picturetrack_cas",
-    "openarms",
-    "Stargirl",
-    "playboi_titani",
-    "outofmyleague",
-    "margret",
-    "Lunakaram",
-    "everymangetshiswish",
-]
-ip_song_mapping = {}
-
-def get_random_song():
-    return random.choice(songs)
-def get_song_duration(song_filename):
-    try:
-        song = AudioSegment.from_file(f"website/static/music/{song_filename}.mp3", format="mp3")
-    except:
-        song = AudioSegment.from_file(f"website/static/music/{song_filename}.mp3", format="mp4")
-    return len(song) / 1000 
-
-@views.route('/random_song')
-def random_song():
-    ip_address = request.headers.get('CF-Connecting-IP', request.remote_addr)
-    if ip_address in ip_song_mapping and datetime.now() < ip_song_mapping[ip_address]['expiration_time']:
-        song = ip_song_mapping[ip_address]['song']
-    else:
-        last_played_song = ip_song_mapping.get(ip_address, {}).get('song')
-        songs_without_last_played = [s for s in songs if s != last_played_song]
-        song = random.choice(songs_without_last_played) if songs_without_last_played else get_random_song()
-        song_duration = get_song_duration(song)
-        expiration_time = datetime.now() + timedelta(seconds=song_duration)
-        ip_song_mapping[ip_address] = {'song': song, 'expiration_time': expiration_time}
-    return redirect(f"https://spysnet.com/static/music/{song}.mp3")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@views.route('/new')
-def new():
-    discord_log("/new clicked <@709799648143081483>")  
-    return '<a href="https://t.me/amrayman_n">Telegram</a>'
-
+# @views.route('/random_song')
+# def random_song():
+#     ip_address = request.headers.get('CF-Connecting-IP', request.remote_addr)
+#     if ip_address in ip_song_mapping and datetime.now() < ip_song_mapping[ip_address]['expiration_time']:
+#         song = ip_song_mapping[ip_address]['song']
+#     else:
+#         last_played_song = ip_song_mapping.get(ip_address, {}).get('song')
+#         songs_without_last_played = [s for s in songs if s != last_played_song]
+#         song = random.choice(songs_without_last_played) if songs_without_last_played else get_random_song()
+#         song_duration = get_song_duration(song)
+#         expiration_time = datetime.now() + timedelta(seconds=song_duration)
+#         ip_song_mapping[ip_address] = {'song': song, 'expiration_time': expiration_time}
+#     return redirect(f"https://spysnet.com/static/music/{song}.mp3")
 
 
 
@@ -1129,13 +1043,6 @@ def load_salama_info():
     return salama_info
 
 
-
-def save_salama_info(salama_info):
-    with open('website/playlists/Backend/salama_info.json', 'w') as file:
-        json.dump(salama_info, file, indent=2)
-
-
-
 def add_course(course_name, course_id, course_image):
     salama_info = load_salama_info()
     if course_image:
@@ -1144,38 +1051,35 @@ def add_course(course_name, course_id, course_image):
         course_image.save(upload_path)
         new_course = {"id": course_id}
         salama_info[course_name] = new_course
-        save_salama_info(salama_info)
-        print(f"Course '{course_name}' added successfully.")
+        with open('website/playlists/Backend/salama_info.json', 'w') as file:
+            json.dump(salama_info, file, indent=2)
+        return f"Course '{course_name}' added successfully."
     else:
-        print("Invalid file format or no file provided.")
+        return "Invalid file format or no file provided."
 
-
-
-@views.route("/add-course", methods=['GET', 'POST'])
+@views.route("/salama/add-course", methods=['GET', 'POST'])
 def add_course_route():
-    if request.method == 'POST':       
+    if current_user.username in ['spy', 'skailler']:
+        if request.method == 'POST':       
+            
+            input1 = request.form.get('input1')
+            input2 = request.form.get('input2')  
+            course_image = request.files['course_image']
+            add_course(input1, input2, course_image)
+            return add_course(input1, input2, course_image)
         
-        input1 = request.form.get('input1')
-        input2 = request.form.get('input2')  
-        course_image = request.files['course_image']
-        add_course(input1, input2, course_image)
-    return render_template('backend_pages/add-course.html')    
-
+    return render_template('backend_pages/add-course.html')
+    
 
 
 @views.route("/salama/<custom_url>/update")
 def salamacoursesupdate(custom_url):
     salama_info = load_salama_info()
-    # course_info = next((info for info in salama_info.values() if info['url'] == f"/{custom_url}"), None)
     course_key = next((name for name, info in salama_info.items() if info['url'] == f"/{custom_url}"), None)
-
     if course_key not in salama_info:
         return redirect(url_for('views.display_links'))
     playlist_id = salama_info[course_key]["id"]
-
     return createtxtfile(f"salama{course_key}", playlist_id)
-
-
 @views.route('/salama')
 def salama():
     salama_info = load_salama_info()
@@ -1188,8 +1092,6 @@ def salama():
     # teacher_links["Course 26"] = ("/salamach26", "Course 26", "New")
     teachername = "Math"
     return render_template('used_pages/teacher.html', teacher_links=teacher_links, teachername=teachername, imgs="yes")
-
-
 @views.route("/salama/<custom_url>")
 def salamaroutes(custom_url):
     extra = None
@@ -1208,7 +1110,6 @@ def salamaroutes(custom_url):
     elif course_name  == "Course 19":
         extra={"Pdf 1" :"https://drive.google.com/file/d/1a-56mRMP3nYSts90itOfINMtmrb8z6rr/view?usp=drive_link" , "Pdf 2" : "https://drive.google.com/file/d/1O21TqOmEJv2R9zUJmMw0BFnHsjCtqEVF/view?usp=drive_link"}   
     return render_template('used_pages/videopage.html', videos=videos, playlist_id=playlist_id, teachername=teachername ,extra = extra)
-
 
 
 #Arabic --------------------------------------------------------------------------------------------------------------------------
