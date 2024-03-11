@@ -35,9 +35,10 @@
                 alert('Invalid starting index. Please enter a valid index.');
             }
         }
+        const accsPath = '{{ accs }}';
 
         // Load the JSON data from the file
-        fetch('finalsec3.json')
+        fetch(accsPath)
             .then(response => response.json())
             .then(data => {
                 // Store the credentials in a variable

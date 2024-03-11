@@ -1,31 +1,18 @@
-from flask import Blueprint, render_template, request, redirect,  url_for ,current_app
+from flask import Blueprint, render_template, request, redirect,  url_for 
 from googleapiclient.discovery import build
 import os
 import ast
 import json
 import requests
-import time
-import random
-import string
-from datetime import datetime, timedelta
-from datetime import datetime
 from flask import session
 from flask import jsonify
-import hashlib
-from flask_login import login_user , current_user , logout_user
+from flask_login import login_user , current_user 
 from .models import User , db
-from pydub import AudioSegment
-from io import BytesIO
+from google.oauth2.credentials import Credentials
+from googleapiclient.discovery import build
 
 views = Blueprint('views', __name__)
 
-
-#Iframe key
-IFRAME_API_KEY = "5b5af6a3-ecd3-4ca2-8427-d68a74a8ecca"
-iframe_lib = "210329"
-
-from google.oauth2.credentials import Credentials
-from googleapiclient.discovery import build
 
 SCOPES = ['https://www.googleapis.com/auth/youtube.readonly']
 
@@ -112,47 +99,14 @@ def get_playlist_videos(playlist_id):
 
     return videos
 
-
-
-
-
-
-
+#Main function to /update (Youtube file create)
 def createtxtfile(name ,playlist_id ):
     videos = get_playlist_videos(playlist_id)
     with open(f"website/playlists/{name}.txt", 'w' , encoding='utf-8') as file:
         file.write(str(videos))
     return videos  
 
-
-
-
-
-
-
-
-
-
-
-
-
-@views.route('/songtoggle')
-def songtoggle():
-    return render_template('test_pages/songtoggle.html')
-
-
-
-
-
-
-
-
-@views.route('/monitor')
-def monitor():
-      return "Working"
-
-
-
+# Send a discord message (Log to #logs)
 def discord_log(message):
     messageeeee = { 'content': message }
     payload = json.dumps(messageeeee)
@@ -160,6 +114,14 @@ def discord_log(message):
     requests.post("https://discord.com/api/webhooks/1212485016903491635/4BZmlRW3o2LHBD2Rji5wZSRAu-LonJZIy-l_SvMaluuCSB_cS1kuoofhtPt2pq2m6AuS", data=payload, headers=headers)
 
 
+#Uptime robot 
+@views.route('/monitor')
+def monitor():
+      return "Working"
+
+
+
+#Login route (whitelist_ips is from EG)
 
 blacklist_ips =  set()  
 whitelist_ips =  set()  
@@ -168,50 +130,36 @@ whitelist_ips =  set()
 def login():
     client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
     user_agent = request.headers.get('User-Agent')
+    if current_user.is_authenticated:
+        return redirect(url_for('views.home'))
+    if client_ip in blacklist_ips :
+        return jsonify(message="Error 403"), 403
 
-    if request.method == 'GET':
-        if current_user.is_authenticated:
-            return redirect(url_for('views.home'))
-        if client_ip in blacklist_ips :
-           return jsonify(message="Error 403"), 403
+    if client_ip not in whitelist_ips :
+        api_url = f'https://ipinfo.io/{client_ip}?token=8f8d5a48b50694'
+        response = requests.get(api_url)
+        data = response.json()
 
-        if client_ip not in whitelist_ips :
-            api_url = f'https://ipinfo.io/{client_ip}?token=8f8d5a48b50694'
-            response = requests.get(api_url)
-            data = response.json()
-
-            if 'country' in data:
-                    country_code = data['country']
-                    if country_code != 'EG':
-                        # Add the client's IP to the blacklist
-                        blacklist_ips.add(client_ip)
-                        return jsonify(message="Please disable vpn/proxy."), 403
-            else:
-            # Unable to determine the country, add IP to the blacklist
-                blacklist_ips.add(client_ip)
-                return jsonify(message="Unable to determine the country. Login failed."), 403
+        if 'country' in data:
+                country_code = data['country']
+                if country_code != 'EG':
+                    blacklist_ips.add(client_ip)
+                    return jsonify(message="Please disable vpn/proxy."), 403
+        else:
+            blacklist_ips.add(client_ip)
+            return jsonify(message="Unable to determine the country. Login failed."), 403
                             
     whitelist_ips.add(client_ip)
 
     if request.method == 'POST':
         username = request.form.get('username')
         user = User.query.filter_by(username=username).first()
-
-        if user or username == "Amoor2025":
-
-            if username == "spy":
-                return "Login unsuccessful."
-            
-            if username == "Amoor2025":
-                user = User.query.filter_by(username="spy").first()
-                username = "spy"
-
-            if username not in ["spy" , "ss" , "skailler" , "feteera"]:
-                if user.active_sessions >= 1 :
-                    return "Max devices"
-                    
-        
-                
+        if username == "spy":
+            return "Login unsuccessful."
+        if username == "Amoor2025":
+            user = User.query.filter_by(username="spy").first()
+            username = "spy"
+        if user :
             login_user(user)
             user.active_sessions += 1
             db.session.commit()
@@ -226,7 +174,7 @@ def login():
     return render_template('used_pages/login.html')
 
 
-
+#Login 2 For proxy / outside EG (Doesnt add to the active sessions)
 
 @views.route('/login2', methods=['GET', 'POST'])
 def login2():
@@ -260,26 +208,7 @@ def login2():
     return render_template('used_pages/login.html')
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#All links works with this
 @views.route('/redirect/<path:link>')
 def redirectlinks(link):
       link =  link.replace('questionmark', '?')
@@ -287,195 +216,35 @@ def redirectlinks(link):
 
       return redirect(f"{link}") 
 
-
-
-
-
-
-# songs = [
-#     "slowdown",
-#     "iknow",
-#     "afraid",
-#     "Sound_motion_picturetrack_cas",
-#     "openarms",
-#     "Stargirl",
-#     "playboi_titani",
-#     "outofmyleague",
-#     "margret",
-#     "Lunakaram",
-#     "everymangetshiswish",
-# ]
-# ip_song_mapping = {}
-
-# def get_random_song():
-#     return random.choice(songs)
-# def get_song_duration(song_filename):
-#     try:
-#         song = AudioSegment.from_file(f"website/static/music/{song_filename}.mp3", format="mp3")
-#     except:
-#         song = AudioSegment.from_file(f"website/static/music/{song_filename}.mp3", format="mp4")
-#     return len(song) / 1000 
-
-# @views.route('/random_song')
-# def random_song():
-#     ip_address = request.headers.get('CF-Connecting-IP', request.remote_addr)
-#     if ip_address in ip_song_mapping and datetime.now() < ip_song_mapping[ip_address]['expiration_time']:
-#         song = ip_song_mapping[ip_address]['song']
-#     else:
-#         last_played_song = ip_song_mapping.get(ip_address, {}).get('song')
-#         songs_without_last_played = [s for s in songs if s != last_played_song]
-#         song = random.choice(songs_without_last_played) if songs_without_last_played else get_random_song()
-#         song_duration = get_song_duration(song)
-#         expiration_time = datetime.now() + timedelta(seconds=song_duration)
-#         ip_song_mapping[ip_address] = {'song': song, 'expiration_time': expiration_time}
-#     return redirect(f"https://spysnet.com/static/music/{song}.mp3")
-
-
-
-
-
-@views.route('/spyaccs')
-def spyleakedaccs():
-    if current_user.username not in ['spy', 'skailler']:
-        print(current_user.username)
-        return redirect(url_for('views.home'))
-    else:
-        return render_template('spyaccs/index.html')
-
-@views.route('/finalsec3.json')
-def finalsec3json():
-    if current_user.username in ['spy', 'skailler']:
-        with open('website/templates/spyaccs/finalsec3.json') as json_file:
-            lectures = json.load(json_file)
-        return jsonify(lectures)
-    else :
-        return redirect(url_for('views.home'))
-
-@views.route('/lectures.json')
-def lecturesjson():
-    with open('website/templates/test_pages/lectures.json') as json_file:
-        lectures = json.load(json_file)
-
-    return jsonify(lectures)
-
-
-
-
-def send_a_dis_msg(message):
-    messageeeee = { 'content': message }
-    payload = json.dumps(messageeeee)
-    headers = {'Content-Type': 'application/json'}
-    requests.post("https://discord.com/api/webhooks/1209166031658942544/Obr46Axp-wwgef0UbZ8o-75HI8G6U1STYkqpqkuNDe_LGUJ2yLloZZzA9ymR6ygwQ2Uf", data=payload, headers=headers)
-
-
-# cooldown_period = 120 * 60
-# last_execution_time = time.time() - cooldown_period
-
-# @views.route("/updateall")
-# def updateall():
-#     global last_execution_time 
-
-#     elapsed_time = time.time() - last_execution_time
-#     if elapsed_time < cooldown_period:
-#         remaining_time = cooldown_period - elapsed_time
-#         return f"On cooldown. Time remaining: {remaining_time:.2f} seconds"
-
-#     last_execution_time = time.time()
-
-#     files = os.listdir("website/playlists/ids/")
-#     total_start_time = time.time()  
-
-#     for file_name in files:
-#         start_time = time.time()  
-#         with open(f"website/playlists/ids/{file_name}", 'r') as file:
-#             name = file.read()
-#             createtxtfile(name, file_name)
-#             end_time = time.time()  
-#             time_taken = end_time - start_time
-
-#             send_a_dis_msg(f"{name} Updated! Time taken: {time_taken:.2f} seconds")
-
-#     total_end_time = time.time()
-#     total_time_taken = total_end_time - total_start_time
-
-#     send_a_dis_msg(f"Done with total time: {total_time_taken:.2f} seconds")
-    
-#     return "Done"
-
-
-# @views.route("/salamaupdate")
-# def salamaallupdate():
-#     files = os.listdir("website/playlists/salamaids/")
-#     total_start_time = time.time()  
-#     for file_name in files:
-#         start_time = time.time()  
-#         with open(f"website/playlists/salamaids/{file_name}", 'r') as file:
-#             name = file.read()
-#             createtxtfile(name, file_name)
-#             end_time = time.time()  
-#             time_taken = end_time - start_time
-
-#             send_a_dis_msg(f"{name} Updated! Time taken: {time_taken:.2f} seconds")
-
-#     total_end_time = time.time()
-#     total_time_taken = total_end_time - total_start_time
-
-#     send_a_dis_msg(f"Done with total time: {total_time_taken:.2f} seconds")
-    
-#     return "Done"
-
-
-
-
-
-
-
-
-
-
-
-
-
+#Home
 @views.route("/")
 def home():
     lines = ["physics", "chemistry","maths" , "arabic", "german" , "english" ,"biology", "geology", 'adby']
-
-
     return render_template('used_pages/all.html', lines=lines , teachername="All")
 
 
-
-
-@views.route("/adby")
-def adby():
-  teachername = "Adby"
-  playlist_id = 'PLM-GVlebsoPWZG7j5kRK479fragOS83By'
-  with open("website/playlists/adby.txt", 'r', encoding='utf-8') as file:
-        content = file.read()
-        videos = ast.literal_eval(content)
-  return render_template('used_pages/videopage.html',
-                         videos=videos,
-                         playlist_id=playlist_id,
-                         teachername=teachername)
-
-
-@views.route("/adbyupdate")
-def adbyupdate():
-    return createtxtfile("adby" , "PLM-GVlebsoPWZG7j5kRK479fragOS83By")
-
-
-
-
-
+#Favicon
 
 @views.route('/favicon.ico')
 def favicon():
     return redirect("/static/favicon.ico") 
 
 
+#accs(accounts) 
+@views.route('/spyaccs')
+def spyleakedaccs():
+    if current_user.username not in ['spy', 'skailler']:
+        return redirect(url_for('views.home'))
+    else:
+        with open('website/templates/spyaccs/accs.json') as json_file:
+            accs = json.load(json_file)
+        return render_template('spyaccs/index.html' , accs = accs)
+  
 
 
 
+#Subjects from here =================================================================================================
+#====================================================================================================================
 
 #Physics --------------------------------------------------------------------------------------------------------------------------
 @views.route('/physics')
@@ -514,10 +283,6 @@ def tamerelkadyupdate():
 
 
 
-
-
-
-
 @views.route('/nawar')
 def nawar():
   teacher_links = {
@@ -530,7 +295,6 @@ def nawar():
     "Nawar Chapter 3 Revision": ("nawarch3rev", "Revision 3"),
     "Nawar Chapter 4": ("nawarch4", "Chapter 4"),
     "Nawar Chapter 4 Revision": ("nawarch4rev", "Revision 4"),
-
     "Nawar Chapter 5": ("nawarch5", "Chapter 5"),
     "Nawar Chapter 6": ("nawarch6", "Chapter 6" , "New"),
     "Nawar Chapter 7": ("nawarch7", "Chapter 7" , "New"),
@@ -556,18 +320,9 @@ def nawarch1():
                          teachername=teachername,)
 
 
-
-
-
-
-
-
-
 @views.route("/nawarch1update")
 def nawarch1update():
     return createtxtfile("nawarch1" , "PLM-GVlebsoPXpGe3wzMN7SKYvmTr0jACa")
-
-
 
 
 
@@ -583,12 +338,9 @@ def nawarch1rev():
                          playlist_id=playlist_id,
                          teachername=teachername)
 
-
 @views.route("/nawarch1revupdate")
 def nawarch1revupdate():
     return createtxtfile("nawarch1rev" , "PLM-GVlebsoPXELEhVJi-nBm-oZXpE85K2")
-
-
 
 @views.route("/nawarch2rev")
 def nawarch2rev():
@@ -607,7 +359,6 @@ def nawarch2revupdate():
     return createtxtfile("nawarch2rev" , "PLM-GVlebsoPVAd_O1EYC8ORRkYGQ_latH")
 
 
-
 @views.route("/nawarch2")
 def nawarch2():
   teachername = "Chapter 2"
@@ -620,15 +371,9 @@ def nawarch2():
                          playlist_id=playlist_id,
                          teachername=teachername)
 
-
 @views.route("/nawarch2update")
 def nawarch2update():
     return createtxtfile("nawarch2" , "PLM-GVlebsoPWU4v5bcndzPBt6e7PsiCwQ")
-
-
-
-
-
 
 @views.route("/nawarch3")
 def nawarch3():
@@ -642,13 +387,9 @@ def nawarch3():
                          playlist_id=playlist_id,
                          teachername=teachername)
 
-
 @views.route("/nawarch3update")
 def nawarch3update():
     return createtxtfile("nawarch3" , "PLM-GVlebsoPXwGQGxiTBmNCzD4E_BgDCo")
-
-
-
 
 @views.route("/nawarch3rev")
 def nawarch3rev():
@@ -666,10 +407,6 @@ def nawarch3rev():
 def nawarch3revupdate():
     return createtxtfile("nawarch3rev" , "PLM-GVlebsoPWLrRKXf3LyU_f7fNxLjxlM")
 
-
-
-
-
 @views.route("/nawarch4")
 def nawarch4():
   teachername = "Chapter 4"
@@ -682,13 +419,9 @@ def nawarch4():
                          playlist_id=playlist_id,
                          teachername=teachername)
 
-
 @views.route("/nawarch4update")
 def nawarch4update():
     return createtxtfile("nawarch4" , "PLM-GVlebsoPXGEHpNDaKTOy_0DHROCh86")
-
-
-
 
 
 @views.route("/nawarch4rev")
@@ -710,16 +443,6 @@ def nawarch4rev():
 @views.route("/nawarch4revupdate")
 def nawarch4revupdate():
     return createtxtfile("nawarch4rev" , "PLM-GVlebsoPVs7IPfPTh0g12M0MAlJSqi")
-
-
-
-
-
-
-
-
-
-
 
 
 @views.route("/nawarch5")
@@ -1440,6 +1163,26 @@ def germann():
 @views.route("/germannupdate")
 def germannupdate():
     return createtxtfile("germann" , "PLM-GVlebsoPWNh__WI8QAIN2xQjawgB4i")
+
+
+
+@views.route("/adby")
+def adby():
+  teachername = "Adby"
+  playlist_id = 'PLM-GVlebsoPWZG7j5kRK479fragOS83By'
+  with open("website/playlists/adby.txt", 'r', encoding='utf-8') as file:
+        content = file.read()
+        videos = ast.literal_eval(content)
+  return render_template('used_pages/videopage.html',
+                         videos=videos,
+                         playlist_id=playlist_id,
+                         teachername=teachername)
+
+
+@views.route("/adbyupdate")
+def adbyupdate():
+    return createtxtfile("adby" , "PLM-GVlebsoPWZG7j5kRK479fragOS83By")
+
 
 
 
