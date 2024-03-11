@@ -862,9 +862,7 @@ def chem():
 
 
 
-
-
-
+#Ashraf youtube -----------------------------------------------------------------------------
 
 
 @views.route("/ashrafelshnawy")
@@ -880,29 +878,31 @@ def ashrafelshnawy():
                          teachername=teachername)
 
 
+
+
 @views.route("/ashrafelshnawyupdate")
 def ashrafelshnawyupdate():
     return createtxtfile("ashrafelshnawy" , "PLM-GVlebsoPW0BYrJMns3WklFGZHzNtmV")
 
+# Nasser --------------------------------------------------------------
 
 
 
+def load_nasser_info():
+    with open('website/Backend/nasser.json', 'r') as file:
+        nasser_info = json.load(file)
+    return nasser_info
 
-
-nasserlinks = {
-    "Nasser-El-Batal Chapter 1": ("nasserch1", "Chapter 1", "PLM-GVlebsoPXWpBDCzn4h0L36UNRYuFb2"),
-    "Nasser-El-Batal Chapter 2": ("nasserch2", "Chapter 2", "PLM-GVlebsoPVYwDkN3DxFcyS1QWCKfAjv"),
-    "Nasser-El-Batal Chapter 3": ("nasserch3", "Chapter 3", "PLM-GVlebsoPVXmash3q9sfG5bsD3Mt88x"),
-    "Nasser-El-Batal Chapter 4": ("nasserch4", "Chapter 4", "PLM-GVlebsoPXBmTFLVyH4mWaxQELcIQ8C"),
-    "Nasser-El-Batal Chapter 5": ("nasserch5", "Chapter 5 Organic", "PLM-GVlebsoPWKGDwOpso7OBFUzlJ8SzwW"),
-
-}
 
 
 @views.route('/nasser')
 def nasser():
-  teacher_links = {key: (value[0], value[1]) for key, value in nasserlinks.items()}
-#   teacher_links["Nasser-El-Batal Files"] = ("chempdfs", "Google Drive")
+  nasser_info = load_nasser_info()
+
+  teacher_links = {
+        f"Nasser-El-Batal {course}": (f"/nasser{nasser_info[course]['url']}", nasser_info[course]['description'])
+        for course in nasser_info
+    }
   teachername = "Chemistry"
   return render_template('used_pages/teacher.html',
                          teacher_links=teacher_links,
@@ -910,38 +910,57 @@ def nasser():
                          imgs="yes")
 
 
-@views.route("/nasserch<int:i>update")
-def chemupdate(i):
-    chapter_name = f"nasserch{i}"
-    playlist_id = nasserlinks.get(f"Nasser-El-Batal Chapter {i}", ("", "", ""))[2]
-
-    return createtxtfile(chapter_name, playlist_id)
-
-
-@views.route("/nasserch<int:i>")
-def nasservids(i):
-  teachername = f"Chapter {i}"
-  extra = None
-  playlist_id = nasserlinks.get(f"Nasser-El-Batal Chapter {i}", ("", "", ""))[2]
-  with open(f"website/playlists/nasserch{i}.txt", 'r', encoding='utf-8') as file:
-        content = file.read()
-        videos = ast.literal_eval(content)
-  teacher_pdf_mapping = {
-    "Chapter 1": "https://drive.google.com/drive/folders/1otLcK6atSsKhZGIo7Cz0hRxoZ7gbN8nz?usp=drive_link",
-    "Chapter 2": "https://drive.google.com/drive/folders/1yY4NSy-guuvbtSUGuRg6uXh6nxi4XXmY?usp=drive_link",
-    "Chapter 3": "https://drive.google.com/drive/folders/1CqVC871-_kgNxNuJtpXAkp8BMHWL0cqU?usp=drive_link",
-    "Chapter 4": "https://drive.google.com/drive/folders/1xtEHPFPHAiyXaQ62Ou2MRkklZmBvWzZd?usp=drive_link",
-    "Chapter 5": "https://drive.google.com/drive/folders/1zda1ANurONO44MTBIo2tm4wkhGahtUUn?usp=drive_link",
+@views.route("/nasser/<custom_url>/update")
+def chemupdate(custom_url):
+    nasser_info = load_nasser_info()
+    course_key = next((name for name, info in nasser_info.items() if info['url'] == f"/{custom_url}"), None)
+    if course_key not in nasser_info:
+        return redirect(url_for('views.display_links'))
+    playlist_id = nasser_info[course_key]["id"]
+    return createtxtfile(f"nasser{course_key}", playlist_id)
 
 
-    }
-  if teachername in teacher_pdf_mapping:
-    folder = teacher_pdf_mapping[teachername]
-  return render_template('used_pages/videopage.html',
+
+
+
+@views.route("/nasser/<custom_url>")
+def nasservids(custom_url):
+    extra = None
+    nasser_info = load_nasser_info()
+    course_info = next((info for info in nasser_info.values() if info['url'] == f"/{custom_url}"), None)
+    course_name = next((name for name, info in nasser_info.items() if info['url'] == f"/{custom_url}"), None)
+    teachername = course_name
+    playlist_id = course_info["id"]
+    with open(f"website/playlists/nasser{course_name}.txt", 'r', encoding='utf-8') as file:
+            content = file.read()
+            videos = ast.literal_eval(content)
+
+        
+    teacher_pdf_mapping = {
+        "Chapter 1": "https://drive.google.com/drive/folders/1otLcK6atSsKhZGIo7Cz0hRxoZ7gbN8nz?usp=drive_link",
+        "Chapter 2": "https://drive.google.com/drive/folders/1yY4NSy-guuvbtSUGuRg6uXh6nxi4XXmY?usp=drive_link",
+        "Chapter 3": "https://drive.google.com/drive/folders/1CqVC871-_kgNxNuJtpXAkp8BMHWL0cqU?usp=drive_link",
+        "Chapter 4": "https://drive.google.com/drive/folders/1xtEHPFPHAiyXaQ62Ou2MRkklZmBvWzZd?usp=drive_link",
+        "Chapter 5": "https://drive.google.com/drive/folders/1zda1ANurONO44MTBIo2tm4wkhGahtUUn?usp=drive_link",
+
+
+        }
+    if course_name in teacher_pdf_mapping:
+        folder = teacher_pdf_mapping[teachername]
+
+
+    return render_template('used_pages/videopage.html',
                          videos=videos,
                          playlist_id=playlist_id,
                          teachername=teachername,
                          folder = folder)
+
+
+
+
+
+
+
 
 
 
@@ -982,7 +1001,7 @@ def sherbo():
                          imgs="yes")
 
 def load_sherbo_info():
-    with open('website/playlists/Backend/sherbo.json', 'r') as file:
+    with open('website/Backend/sherbo.json', 'r') as file:
         sherbo_info = json.load(file)
     return sherbo_info
 
@@ -1048,7 +1067,7 @@ def salama():
 
 
 def load_salama_info():
-    with open('website/playlists/Backend/salama_info.json', 'r') as file:
+    with open('website/Backend/salama_info.json', 'r') as file:
         salama_info = json.load(file)
     return salama_info
 
@@ -1061,7 +1080,7 @@ def add_course(course_name, course_id, course_image):
         course_image.save(upload_path)
         new_course = {"id": course_id}
         salama_info[course_name] = new_course
-        with open('website/playlists/Backend/salama_info.json', 'w') as file:
+        with open('website/Backend/salama_info.json', 'w') as file:
             json.dump(salama_info, file, indent=2)
         return f"Course '{course_name}' added successfully."
     else:
