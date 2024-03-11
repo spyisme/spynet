@@ -1192,15 +1192,19 @@ def salama():
 
 @views.route("/salama/<custom_url>")
 def salamach(custom_url):
-    extra = None
-    salama_info = load_salama_info()
-    course_info = next((info for info in salama_info.values() if info['url'] == f"/{custom_url}"), None)
-    course_name = next((name for name, info in salama_info.items() if info['url'] == f"/{custom_url}"), None)
-    teachername = course_name
-    playlist_id = course_info["id"]
-    with open(f"website/playlists/salama{course_name}.txt", 'r', encoding='utf-8') as file:
-            content = file.read()
-            videos = ast.literal_eval(content)
+    # extra = None
+    # salama_info = load_salama_info()
+    # course_info = next((info for info in salama_info.values() if info['url'] == f"/{custom_url}"), None)
+    # course_name = next((name for name, info in salama_info.items() if info['url'] == f"/{custom_url}"), None)
+    # teachername = course_name
+    # playlist_id = course_info["id"]
+    # with open(f"website/playlists/salama{course_name}.txt", 'r', encoding='utf-8') as file:
+    #         content = file.read()
+    #         videos = ast.literal_eval(content)
+
+    videos = ""
+    playlist_id = ""
+    teachername =""
     # if course_name  == "Course 6" :
     #    extra={"Pdf 1" :"https://drive.google.com/file/d/18mnyKrmeiNNZMBdaJ0sD8VAkAzLbM15r/view?usp=drive_link" , "Pdf 2" : "https://drive.google.com/file/d/1JLwNyWB8lOVSdVi8IvA6zb1D1iVQ8H3l/view?usp=drive_link"}   
     # elif course_name  == "Course 17" :
