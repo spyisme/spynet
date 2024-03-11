@@ -1190,8 +1190,8 @@ def salama():
     return render_template('used_pages/teacher.html', teacher_links=teacher_links, teachername=teachername, imgs="yes")
 
 
-@views.route("/salama/<custom_url>")
-def salamaroutes(custom_url):
+@views.route("/salama2")
+def salamaroutes():
     # extra = None
     # salama_info = load_salama_info()
     # course_info = next((info for info in salama_info.values() if info['url'] == f"/{custom_url}"), None)
