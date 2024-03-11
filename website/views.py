@@ -1159,46 +1159,9 @@ def add_course(course_name, course_id, course_image):
 
 
 
-def create_and_writpassword_createe_password(length=12, file_path='website/password.txt'):
-    characters = string.ascii_uppercase + string.digits
-    random_string = ''.join(random.choice(characters) for _ in range(length))
-    
-    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    content = random_string + '.' + timestamp
-
-
-    with open(file_path, 'w') as file:
-        file.write(content)
-
-    return content
-
-
-
-@views.route("/create-password")
-def create_password():
-    password = create_and_writpassword_createe_password()
-    send_a_dis_msg(f"Password = {password}")
-    return "Done"
-
-
-
 @views.route("/add-course", methods=['GET', 'POST'])
 def add_course_route():
-    if request.method == 'POST':
-        userinput_password = request.form.get('userinput_password')
-        with open("website/password.txt", 'r') as file:
-            password = file.read()
-
-        timestamp_str = password.split('.')[1].strip()
-        timestamp = datetime.strptime(timestamp_str, "%Y-%m-%d %H:%M:%S")
-        current_time = datetime.now()
-
-        if current_time - timestamp > timedelta(minutes=15): 
-            password = ""
-    
-        if password != userinput_password :
-            return "Expired/Wrong password."
-        
+    if request.method == 'POST':       
         
         input1 = request.form.get('input1')
         input2 = request.form.get('input2')  
@@ -1265,7 +1228,6 @@ def salamach(course_number):
     course_key = f"Course {course_number}"
     teachername = course_key
     playlist_id = salama_info[course_key]["id"]
-    # videos = get_playlist_videos(playlist_id)
     with open(f"website/playlists/salama{course_key}.txt", 'r', encoding='utf-8') as file:
         content = file.read()
         videos = ast.literal_eval(content)
