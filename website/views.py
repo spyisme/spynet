@@ -1181,7 +1181,7 @@ def salama():
     salama_info = load_salama_info()
 
     teacher_links = {
-        course: (f"/c/{salama_info[course]['url']}", course)
+        course: (f"/salama{salama_info[course]['url']}", course)
         for course in salama_info
     }
     # teacher_links["Course 25"] = ("/salamach25", "Course 25", "New")
