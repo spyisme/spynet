@@ -843,7 +843,7 @@ def ashraf():
 
 
 
-@views.route('/ashraf/<video_id>', methods = ['GET', 'POST'])
+@views.route('/ashraf/<video_id>', methods = ['POST'])
 def ashrafpost(video_id):
     if request.method == 'POST' :
         try:
