@@ -1191,7 +1191,7 @@ def salama():
 
 
 @views.route("/salama/<custom_url>")
-def salamach(custom_url):
+def salamaroutes(custom_url):
     # extra = None
     # salama_info = load_salama_info()
     # course_info = next((info for info in salama_info.values() if info['url'] == f"/{custom_url}"), None)
