@@ -65,6 +65,7 @@ def convert_duration(duration):
 
 def get_playlist_videos(playlist_id):
     youtube = get_authenticated_service()
+    discord_log(f"Using youtube api to fetch : https://www.youtube.com/playlist?list={playlist_id} <@709799648143081483>")
 
     # Fetch the playlist items
     playlist_items = []
