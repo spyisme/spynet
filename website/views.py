@@ -965,7 +965,7 @@ def sherbo():
   sherbo_info = load_sherbo_info()
 
   teacher_links = {
-        course: (f"/salama{sherbo_info[course]['url']}", course)
+        course: (f"/sherbo{sherbo_info[course]['url']}", course)
         for course in sherbo_info
     }
   teachername = "Math"
@@ -995,7 +995,6 @@ def sherporoutes(custom_url):
     sherbo_info = load_sherbo_info()
     course_info = next((info for info in sherbo_info.values() if info['url'] == f"/{custom_url}"), None)
     course_name = next((name for name, info in sherbo_info.items() if info['url'] == f"/{custom_url}"), None)
-    return f"{course_info}"
     teachername = course_name
     playlist_id = course_info["id"]
     with open(f"website/playlists/sherbo{course_name}.txt", 'r', encoding='utf-8') as file:
