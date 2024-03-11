@@ -1196,7 +1196,7 @@ def salamach(custom_url):
     salama_info = load_salama_info()
     
     # Find the course based on the provided custom URL
-    course_info = next((info for info in salama_info.values() if info['url'] == f"/salama/{custom_url}"), None)
+    course_info = next((info for info in salama_info.values() if info['url'] == f"/{custom_url}"), None)
     return f"{course_info}"
     # if course_info:
     #     # Retrieve other information as needed
