@@ -290,37 +290,6 @@ def redirectlinks(link):
 
 
 
-@views.route('/ashraf', methods = ['GET', 'POST'])
-def ashraf():
-    if request.method == 'POST' :
-        try:
-            video_id = request.form.get('video_id')
-            student_name = request.form.get('student_name')
-
-            url = "https://api.csacademyzone.com/video/otp"
-            params = {"student_name": student_name, "video_id": video_id}
-            headers = {"Content-type": "application/x-www-form-urlencoded", "sessionToken": "imcool"}
-
-            response = requests.post(url, data=params, headers=headers)
-
-            if response.status_code == 401:
-                data = response.json()
-                otp = data.get("otp")
-                playback_info = data.get("playbackInfo")
-
-                return jsonify({"otp": otp, "playbackInfo": playback_info})
-            else:
-                return jsonify({"error": f"Failed to get OTP. Status code: {response.status_code}"}), 500
-
-        except Exception as e:
-            return jsonify({"error": str(e)}), 500
-    else:
-        with open('website/templates/test_pages/lectures.json', 'r') as file:
-            lectures_data = json.load(file)
-        return render_template('test_pages/ashraf.html' , lectures_data = lectures_data)
-
-
-
 
 
 # songs = [
@@ -862,7 +831,37 @@ def chem():
 
 
 
-#Ashraf youtube -----------------------------------------------------------------------------
+#Ashraf -----------------------------------------------------------------------------
+
+
+@views.route('/ashraf', methods = ['GET', 'POST'])
+def ashraf():
+    if request.method == 'POST' :
+        try:
+            video_id = request.form.get('video_id')
+            student_name = "spy"
+
+            url = "https://api.csacademyzone.com/video/otp"
+            params = {"student_name": student_name, "video_id": video_id}
+            headers = {"Content-type": "application/x-www-form-urlencoded", "sessionToken": "imcool"}
+
+            response = requests.post(url, data=params, headers=headers)
+
+            if response.status_code == 401:
+                data = response.json()
+                otp = data.get("otp")
+                playback_info = data.get("playbackInfo")
+
+                return jsonify({"otp": otp, "playbackInfo": playback_info})
+            else:
+                return jsonify({"error": f"Failed to get OTP. Status code: {response.status_code}"}), 500
+
+        except Exception as e:
+            return jsonify({"error": str(e)}), 500
+    else:
+        with open('website/templates/test_pages/lectures.json', 'r') as file:
+            lectures_data = json.load(file)
+        return render_template('test_pages/ashraf.html' , lectures_data = lectures_data)
 
 
 @views.route("/ashrafelshnawy")
@@ -894,7 +893,6 @@ def load_nasser_info():
     return nasser_info
 
 
-
 @views.route('/nasser')
 def nasser():
   nasser_info = load_nasser_info()
@@ -909,7 +907,6 @@ def nasser():
                          teachername=teachername,
                          imgs="yes")
 
-
 @views.route("/nasser/<custom_url>/update")
 def chemupdate(custom_url):
     nasser_info = load_nasser_info()
@@ -920,12 +917,8 @@ def chemupdate(custom_url):
     return createtxtfile(f"nasser{course_key}", playlist_id)
 
 
-
-
-
 @views.route("/nasser/<custom_url>")
 def nasservids(custom_url):
-    extra = None
     nasser_info = load_nasser_info()
     course_info = next((info for info in nasser_info.values() if info['url'] == f"/{custom_url}"), None)
     course_name = next((name for name, info in nasser_info.items() if info['url'] == f"/{custom_url}"), None)
@@ -954,12 +947,6 @@ def nasservids(custom_url):
                          playlist_id=playlist_id,
                          teachername=teachername,
                          folder = folder)
-
-
-
-
-
-
 
 
 
