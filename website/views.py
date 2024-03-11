@@ -958,83 +958,80 @@ def math():
                          teacher_links=teacher_links,
                          teachername=teachername,
                          imgs="yes")
+
+
 @views.route('/sherbo')
 def sherbo():
-  teacher_links = {
-    "Sherbo Statics": ("sherbostatics", "Statics"),
-    "Sherbo Calculus": ("sherbocalc", "Calculus"),
-    "Sherbo Dynamics": ("sherbodynamics", "Dynamics"),
+  sherbo_info = load_sherbo_info()
 
-    # "Sherbo Files": ("sherbopdfs", "Google Drive")
-  }
+  teacher_links = {
+        course: (f"/salama{sherbo_info[course]['url']}", course)
+        for course in sherbo_info
+    }
   teachername = "Math"
   return render_template('used_pages/teacher.html',
                          teacher_links=teacher_links,
                          teachername=teachername,
                          imgs="yes")
-@views.route("/sherbostatics")
-def sherbostatics():
-  teachername = "Sherbo Statics"
-  playlist_id="PLM-GVlebsoPX_3mlaOeWIjCPY8jH8MpfJ"
-  with open("website/playlists/sherbostatics.txt", 'r', encoding='utf-8') as file:
-        content = file.read()
-        videos = ast.literal_eval(content)
-  folder =   "https://drive.google.com/drive/folders/192Zd0BMB0-ohwV2dYsSJvFB651d7qXAS?usp=drive_link"  
-  return render_template('used_pages/videopage.html',
-                         videos=videos,
-                         playlist_id=playlist_id,
-                         teachername=teachername ,
-                         folder = folder)
 
-@views.route("/sherbostaticsupdate")
-def sherbostaticsupdate():
-    return createtxtfile("sherbostatics" , "PLM-GVlebsoPX_3mlaOeWIjCPY8jH8MpfJ")
+def load_sherbo_info():
+    with open('website/playlists/Backend/sherbo.json', 'r') as file:
+        sherbo_info = json.load(file)
+    return sherbo_info
 
 
+@views.route("/sherbo/<custom_url>/update")
+def sherboupdates(custom_url):
+    sherbo_info = load_sherbo_info()
+    course_key = next((name for name, info in sherbo_info.items() if info['url'] == f"/{custom_url}"), None)
+    if course_key not in sherbo_info:
+        return redirect(url_for('views.display_links'))
+    playlist_id = sherbo_info[course_key]["id"]
+    return createtxtfile(f"sherbo{course_key}", playlist_id)
 
-@views.route("/sherbocalc")
-def sherbocalc():
-  teachername = "Sherbo Calculus"
-  playlist_id = 'PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq'
-  with open("website/playlists/sherbocalc.txt", 'r', encoding='utf-8') as file:
-        content = file.read()
-        videos = ast.literal_eval(content)
-  folder = "https://drive.google.com/drive/folders/142TCiyG-oCmkpgeLpEnHmGaRSmnN6Och?usp=drive_link" 
+@views.route("/sherbo/<custom_url>")
+def sherporoutes(custom_url):
+    extra = None
+    sherbo_info = load_sherbo_info()
+    course_info = next((info for info in sherbo_info.values() if info['url'] == f"/{custom_url}"), None)
+    course_name = next((name for name, info in sherbo_info.items() if info['url'] == f"/{custom_url}"), None)
+    teachername = course_name
+    playlist_id = course_info["id"]
+    with open(f"website/playlists/sherbo{course_name}.txt", 'r', encoding='utf-8') as file:
+            content = file.read()
+            videos = ast.literal_eval(content)
 
-  return render_template('used_pages/videopage.html',
-                         videos=videos,
-                         playlist_id=playlist_id,
-                         teachername=teachername , folder= folder )
-
-@views.route("/sherbocalcupdate")
-def sherbocalcupdate():
-    return createtxtfile("sherbocalc" , "PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq")
+    if course_name  == "Dynamics" :
+        extra = {"S1.pdf" : "https://drive.google.com/file/d/1pdTVxYtcEqfaWZb3laZeWXJjsrOh36SH/view?usp=drive_link" , "S2.pdf" : "https://drive.google.com/file/d/1EiLz7HXdDspctVpna-8LRaL0w7wFDAC-/view?usp=drive_link" , "S3.pdf" : "https://drive.google.com/file/d/1RA0zMCf9KPUaCf_8BR4XcLGV_43YJKpI/view?usp=drive_link" , "S4.pdf" : "https://drive.google.com/file/d/1s9vH8ddCXxgI5Zq9305NaRA6XmXoB7Xf/view?usp=drive_link"} 
+        folder = "https://drive.google.com/drive/folders/1SBpcOBHoGSsxnROkQWVmFOuIxuxKhK8S?usp=drive_link"
 
 
+    elif course_name  == "Calculus":
+        folder = "https://drive.google.com/drive/folders/142TCiyG-oCmkpgeLpEnHmGaRSmnN6Och?usp=drive_link" 
 
 
-@views.route("/sherbodynamics")
-def sherbodynamics():
-  teachername = "Sherbo Dynamics"
-  playlist_id = 'PLM-GVlebsoPWZdGWOOOqg4W9K9AgoXC2M'
-  with open("website/playlists/sherbodynamics.txt", 'r', encoding='utf-8') as file:
-        content = file.read()
-        videos = ast.literal_eval(content)
-  extra = {"S1.pdf" : "https://drive.google.com/file/d/1pdTVxYtcEqfaWZb3laZeWXJjsrOh36SH/view?usp=drive_link" , "S2.pdf" : "https://drive.google.com/file/d/1EiLz7HXdDspctVpna-8LRaL0w7wFDAC-/view?usp=drive_link" , "S3.pdf" : "https://drive.google.com/file/d/1RA0zMCf9KPUaCf_8BR4XcLGV_43YJKpI/view?usp=drive_link" , "S4.pdf" : "https://drive.google.com/file/d/1s9vH8ddCXxgI5Zq9305NaRA6XmXoB7Xf/view?usp=drive_link"} 
-  folder = "https://drive.google.com/drive/folders/1SBpcOBHoGSsxnROkQWVmFOuIxuxKhK8S?usp=drive_link"
-  return render_template('used_pages/videopage.html',
-                         videos=videos,
-                         playlist_id=playlist_id,
-                         teachername=teachername,
-                         extra = extra,
-                         folder= folder)
+    elif course_name  == "Statics" :
+        folder =   "https://drive.google.com/drive/folders/192Zd0BMB0-ohwV2dYsSJvFB651d7qXAS?usp=drive_link"  
 
-@views.route("/sherbodynamicsupdate")
-def sherbodynamicsupdate():
-    return createtxtfile("sherbodynamics" , "PLM-GVlebsoPWZdGWOOOqg4W9K9AgoXC2M")
+    return render_template('used_pages/videopage.html', videos=videos, playlist_id=playlist_id, teachername=teachername ,extra = extra , folder =folder)
+
+
+
+
 
 
 # Salama --------------------------------------------------------
+@views.route('/salama')
+def salama():
+    salama_info = load_salama_info()
+
+    teacher_links = {
+        course: (f"/salama{salama_info[course]['url']}", course)
+        for course in salama_info
+    }
+    teachername = "Math"
+    return render_template('used_pages/teacher.html', teacher_links=teacher_links, teachername=teachername, imgs="yes")
+
 
 
 def load_salama_info():
@@ -1080,18 +1077,7 @@ def salamacoursesupdate(custom_url):
         return redirect(url_for('views.display_links'))
     playlist_id = salama_info[course_key]["id"]
     return createtxtfile(f"salama{course_key}", playlist_id)
-@views.route('/salama')
-def salama():
-    salama_info = load_salama_info()
 
-    teacher_links = {
-        course: (f"/salama{salama_info[course]['url']}", course)
-        for course in salama_info
-    }
-    # teacher_links["Course 25"] = ("/salamach25", "Course 25", "New")
-    # teacher_links["Course 26"] = ("/salamach26", "Course 26", "New")
-    teachername = "Math"
-    return render_template('used_pages/teacher.html', teacher_links=teacher_links, teachername=teachername, imgs="yes")
 @views.route("/salama/<custom_url>")
 def salamaroutes(custom_url):
     extra = None
