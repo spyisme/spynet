@@ -836,11 +836,18 @@ def chem():
 
 @views.route('/ashraf', methods = ['GET', 'POST'])
 def ashraf():
+    with open('website/templates/test_pages/lectures.json', 'r') as file:
+        lectures_data = json.load(file)
+    return render_template('test_pages/ashraf.html' , lectures_data = lectures_data)
+
+
+
+
+@views.route('/ashraf/<video_id>', methods = ['GET', 'POST'])
+def ashrafpost(video_id):
     if request.method == 'POST' :
         try:
-            video_id = request.form.get('video_id')
             student_name = "spy"
-
             url = "https://api.csacademyzone.com/video/otp"
             params = {"student_name": student_name, "video_id": video_id}
             headers = {"Content-type": "application/x-www-form-urlencoded", "sessionToken": "imcool"}
@@ -858,10 +865,9 @@ def ashraf():
 
         except Exception as e:
             return jsonify({"error": str(e)}), 500
-    else:
-        with open('website/templates/test_pages/lectures.json', 'r') as file:
-            lectures_data = json.load(file)
-        return render_template('test_pages/ashraf.html' , lectures_data = lectures_data)
+        
+
+
 
 
 @views.route("/ashrafelshnawy")
