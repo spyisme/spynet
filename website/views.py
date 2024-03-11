@@ -487,61 +487,61 @@ def send_a_dis_msg(message):
     requests.post("https://discord.com/api/webhooks/1209166031658942544/Obr46Axp-wwgef0UbZ8o-75HI8G6U1STYkqpqkuNDe_LGUJ2yLloZZzA9ymR6ygwQ2Uf", data=payload, headers=headers)
 
 
-cooldown_period = 120 * 60
-last_execution_time = time.time() - cooldown_period
+# cooldown_period = 120 * 60
+# last_execution_time = time.time() - cooldown_period
 
-@views.route("/updateall")
-def updateall():
-    global last_execution_time 
+# @views.route("/updateall")
+# def updateall():
+#     global last_execution_time 
 
-    elapsed_time = time.time() - last_execution_time
-    if elapsed_time < cooldown_period:
-        remaining_time = cooldown_period - elapsed_time
-        return f"On cooldown. Time remaining: {remaining_time:.2f} seconds"
+#     elapsed_time = time.time() - last_execution_time
+#     if elapsed_time < cooldown_period:
+#         remaining_time = cooldown_period - elapsed_time
+#         return f"On cooldown. Time remaining: {remaining_time:.2f} seconds"
 
-    last_execution_time = time.time()
+#     last_execution_time = time.time()
 
-    files = os.listdir("website/playlists/ids/")
-    total_start_time = time.time()  
+#     files = os.listdir("website/playlists/ids/")
+#     total_start_time = time.time()  
 
-    for file_name in files:
-        start_time = time.time()  
-        with open(f"website/playlists/ids/{file_name}", 'r') as file:
-            name = file.read()
-            createtxtfile(name, file_name)
-            end_time = time.time()  
-            time_taken = end_time - start_time
+#     for file_name in files:
+#         start_time = time.time()  
+#         with open(f"website/playlists/ids/{file_name}", 'r') as file:
+#             name = file.read()
+#             createtxtfile(name, file_name)
+#             end_time = time.time()  
+#             time_taken = end_time - start_time
 
-            send_a_dis_msg(f"{name} Updated! Time taken: {time_taken:.2f} seconds")
+#             send_a_dis_msg(f"{name} Updated! Time taken: {time_taken:.2f} seconds")
 
-    total_end_time = time.time()
-    total_time_taken = total_end_time - total_start_time
+#     total_end_time = time.time()
+#     total_time_taken = total_end_time - total_start_time
 
-    send_a_dis_msg(f"Done with total time: {total_time_taken:.2f} seconds")
+#     send_a_dis_msg(f"Done with total time: {total_time_taken:.2f} seconds")
     
-    return "Done"
+#     return "Done"
 
 
-@views.route("/salamaupdate")
-def salamaallupdate():
-    files = os.listdir("website/playlists/salamaids/")
-    total_start_time = time.time()  
-    for file_name in files:
-        start_time = time.time()  
-        with open(f"website/playlists/salamaids/{file_name}", 'r') as file:
-            name = file.read()
-            createtxtfile(name, file_name)
-            end_time = time.time()  
-            time_taken = end_time - start_time
+# @views.route("/salamaupdate")
+# def salamaallupdate():
+#     files = os.listdir("website/playlists/salamaids/")
+#     total_start_time = time.time()  
+#     for file_name in files:
+#         start_time = time.time()  
+#         with open(f"website/playlists/salamaids/{file_name}", 'r') as file:
+#             name = file.read()
+#             createtxtfile(name, file_name)
+#             end_time = time.time()  
+#             time_taken = end_time - start_time
 
-            send_a_dis_msg(f"{name} Updated! Time taken: {time_taken:.2f} seconds")
+#             send_a_dis_msg(f"{name} Updated! Time taken: {time_taken:.2f} seconds")
 
-    total_end_time = time.time()
-    total_time_taken = total_end_time - total_start_time
+#     total_end_time = time.time()
+#     total_time_taken = total_end_time - total_start_time
 
-    send_a_dis_msg(f"Done with total time: {total_time_taken:.2f} seconds")
+#     send_a_dis_msg(f"Done with total time: {total_time_taken:.2f} seconds")
     
-    return "Done"
+#     return "Done"
 
 
 
