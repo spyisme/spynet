@@ -77,7 +77,7 @@
                           <div class="popup-buttons">
                               <button class="popupbtn">
                                 <a href="/redirect/https://www.youtube.com/watchquestionmarkv={{ video.id }}andsympollist={{playlist_id}}" target="_blank">
-                                      <img src="static/assets/Play.png">
+                                      <img src="{{ url_for('static', filename='assets/Play.png') }}">
                                   </a>
                                   <p>Play</p>
                               </button>
@@ -87,7 +87,7 @@
                                   <!-- <a href="/redirect/https://ytsnag.com/downloadquestionmarkv=https://www.youtube.com/watchquestionmarkv={{ video.id }}" target="_blank"> -->
                                   <a href="/redirect/https://www.y2mate.com/youtube/{{ video.id }}" target="_blank">
                                      
-                                    <img src="static/assets/Download.png">
+                                    <img src="{{ url_for('static', filename='assets/Download.png') }}">
                                   </a>
                                   <p>Downlaod</p>
                               </button>
@@ -123,7 +123,7 @@
     
      <a href="/redirect/https://www.youtube.com/playlistquestionmarklist={{playlist_id}}" target="_blank">   
         <div class="card">
-            <img src="static/assets/yt.png" loading="lazy"></img>
+            <img src="{{ url_for('static', filename='assets/yt.png') }}" loading="lazy"></img>
             <br> Open Playlist
         </div>
      </a>
@@ -131,7 +131,7 @@
      {% if folder %}
      <a href="/redirect/{{folder}}" target="_blank">   
       <div class="card">
-          <img src="static/assets/drive.jpg" loading="lazy"></img>
+          <img src="{{ url_for('static', filename='assets/drive.png') }}" loading="lazy"></img>
           <br> Open Drive
       </div>
    </a>
