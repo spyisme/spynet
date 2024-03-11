@@ -50,10 +50,19 @@ height: 230px;
 .card p {
     font-size: 22px; /* Increase text size */
 }
+.card-description {
+font-size: 14px;
+color: black;
+margin-top: 10px;
+position: relative;
+overflow: hidden;
+}
 
-  .card-description {
+.card-description {
     position: relative;
+    overflow: hidden; /* Added overflow: hidden */
     z-index: 1; /* Added z-index to ensure the text is above the shine effect */
+
   }
   
   .card-description::after {
@@ -66,8 +75,7 @@ height: 230px;
     height: 100%;
     background: linear-gradient(to right, transparent 0%, #ffffff 50%, transparent 100%);
     animation: shine 2s linear infinite;
-    transform: translateX(-100%);
-    z-index: -1; /* Added z-index to position the shine effect below the text */
+    transform: translateX(-100%); /* Added to start outside the text */
   }
   
   @keyframes shine {
