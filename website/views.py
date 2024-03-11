@@ -972,7 +972,7 @@ def sherbo():
   sherbo_info = load_sherbo_info()
 
   teacher_links = {
-        course: (f"/sherbo{sherbo_info[course]['url']}", "description" , "pop-up")
+        course: (f"/sherbo{sherbo_info[course]['url']}", sherbo_info[course]['description'])
         for course in sherbo_info
     }
   teachername = "Math"
