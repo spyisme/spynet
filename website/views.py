@@ -1417,7 +1417,6 @@ def englishhupdate():
 def german():
   teacher_links = {
      "German": ("germann", "Abd El Moez"),
-    #  "German Files": ("germanpdfs", "Google Drive"),
 
   }
   teachername = "German"
@@ -1444,24 +1443,3 @@ def germannupdate():
 
 
 
-
-
-
-
-
-def request_discord_msg(message):
-    messageeeee = { 'content': message }
-    payload = json.dumps(messageeeee)
-    headers = {'Content-Type': 'application/json'}
-    requests.post("https://discord.com/api/webhooks/1212155004379594762/9uRgepLGE03lrQxknuQyEGdHl-ci7cozlqnJSEbBdA3PzEk5OKvy-xBITTwkOEXOVMWv", data=payload, headers=headers)
-
-
-
-
-@views.route("/request-videos", methods=['GET', 'POST'])
-def requestvideos():
-    if request.method == 'POST':
-        user_input = request.form.get('user_input')  
-        request_discord_msg(user_input)
-        return "Sent!"
-    return render_template("test_pages/request.html")
