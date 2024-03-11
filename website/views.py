@@ -960,12 +960,19 @@ def math():
                          imgs="yes")
 
 
+
+
+
+
+#Sherbo ------------------------
+
+ 
 @views.route('/sherbo')
 def sherbo():
   sherbo_info = load_sherbo_info()
 
   teacher_links = {
-        course: (f"/sherbo{sherbo_info[course]['url']}", course)
+        course: (f"/sherbo{sherbo_info[course]['url']}", course , "des")
         for course in sherbo_info
     }
   teachername = "Math"
