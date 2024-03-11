@@ -118,6 +118,11 @@ def get_playlist_videos(playlist_id):
 
 
 
+def createtxtfile(name ,playlist_id ):
+    videos = get_playlist_videos(playlist_id)
+    with open(f"website/playlists/{name}.txt", 'w' , encoding='utf-8') as file:
+        file.write(str(videos))
+    return videos  
 
 
 
@@ -470,13 +475,6 @@ def lecturesjson():
 
     return jsonify(lectures)
 
-def createtxtfile(name ,playlist_id ):
-    videos = get_playlist_videos(playlist_id)
-    with open(f"website/playlists/{name}.txt", 'w' , encoding='utf-8') as file:
-        file.write(str(videos))
-    with open(f"website/playlists/ids/{playlist_id}", 'w' , encoding='utf-8') as f :
-        f.write(name)
-    return videos  
 
 
 
