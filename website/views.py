@@ -1165,10 +1165,12 @@ def add_course_route():
 
 
 
-@views.route("/salamach<int:course_number>update")
-def salamacoursesupdate(course_number):
+@views.route("/salama/<custom_url>/update")
+def salamacoursesupdate(custom_url):
     salama_info = load_salama_info()
-    course_key = f"Course {course_number}"
+    # course_info = next((info for info in salama_info.values() if info['url'] == f"/{custom_url}"), None)
+    course_key = next((name for name, info in salama_info.items() if info['url'] == f"/{custom_url}"), None)
+
     if course_key not in salama_info:
         return redirect(url_for('views.display_links'))
     playlist_id = salama_info[course_key]["id"]
