@@ -334,18 +334,18 @@ def redirectlinks(link):
 
 
 
-@views.route('/spyleakedaccs')
+@views.route('/spyaccs')
 def spyleakedaccs():
     if current_user.username not in ['spy', 'skailler']:
         print(current_user.username)
         return redirect(url_for('views.home'))
     else:
-        return render_template('leaked/index.html')
+        return render_template('spyaccs/index.html')
 
 @views.route('/finalsec3.json')
 def finalsec3json():
     if current_user.username in ['spy', 'skailler']:
-        with open('website/templates/leaked/finalsec3.json') as json_file:
+        with open('website/templates/spyaccs/finalsec3.json') as json_file:
             lectures = json.load(json_file)
         return jsonify(lectures)
     else :
@@ -836,9 +836,9 @@ def chem():
 
 @views.route('/ashraf', methods = ['GET', 'POST'])
 def ashraf():
-    with open('website/templates/test_pages/lectures.json', 'r') as file:
+    with open('website/Backend/ashraf.json', 'r') as file:
         lectures_data = json.load(file)
-    return render_template('test_pages/ashraf.html' , lectures_data = lectures_data)
+    return render_template('used_pages/ashraf.html' , lectures_data = lectures_data)
 
 
 
