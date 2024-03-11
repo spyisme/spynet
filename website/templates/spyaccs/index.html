@@ -22,7 +22,7 @@
 
     <script>
         let startIndex = 0; // Default starting index
-        let credentials = {{ accs|tojson|safe }}; // Directly pass the JSON content from Flask
+        let credentials = "{{ accs|tojson|safe }}"; // Directly pass the JSON content from Flask
 
 
         function startFromIndex() {
