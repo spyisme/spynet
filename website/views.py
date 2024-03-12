@@ -641,7 +641,7 @@ def salama_edit_course_route():
 
 
 
-            return "Done!"
+            return f"Edited {selected_course} !"
         
         with open('website/Backend/salama.json', 'r') as file:
             courses = json.load(file)
