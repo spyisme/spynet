@@ -296,9 +296,9 @@ def nawar():
     "Nawar Chapter 4": ("nawarch4", "Chapter 4"),
     "Nawar Chapter 4 Revision": ("nawarch4rev", "Revision 4"),
     "Nawar Chapter 5": ("nawarch5", "Chapter 5"),
-    "Nawar Chapter 6": ("nawarch6", "Chapter 6" , "New"),
-    "Nawar Chapter 7": ("nawarch7", "Chapter 7" , "New"),
-    "Nawar Chapter 8": ("nawarch8", "Chapter 8" , "New"),
+    "Nawar Chapter 6": ("nawarch6", "Chapter 6" ),
+    "Nawar Chapter 7": ("nawarch7", "Chapter 7" ),
+    "Nawar Chapter 8": ("nawarch8", "Chapter 8" ),
   }
   teachername = "Physics"
   return render_template('used_pages/teacher.html',
