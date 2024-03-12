@@ -99,7 +99,8 @@
 
             // Additional logic to load and display the selected course image if available
             // You may need to adjust the image path based on your project structure
-            var imagePath = {{ url_for('static')}} +'/assets/Math/' + selectedCourse.toLowerCase() + '.jpg';
+            var imagePath = "{{ url_for('static', filename='assets/Math/' + selectedCourse.toLowerCase() + '.jpg') }}";
+
             document.getElementById('selectedImage').src = imagePath;
             document.getElementById('selectedImage').style.display = 'block';
         });
