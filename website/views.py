@@ -916,7 +916,9 @@ def daifvids(custom_url):
 @views.route('/english')
 def english():
   teacher_links = {
-     "English": ("englishh", "Ahmed Salah"),
+     "Ahmed Salah": ("english/ahmadsalah", "Ahmed Salah"),
+     "Hossam Sameh": ("english/hossamsameh", "The leader" , "Neww"),
+
 
   }
   teachername = "English"
@@ -926,11 +928,11 @@ def english():
                          imgs="yes")
 
 
-@views.route("/englishh")
-def englishh():
-  teachername = "English"
+@views.route("/english/ahmadsalah")
+def ahmadsalah():
+  teachername = "Ahmad Salah"
   playlist_id = 'PLM-GVlebsoPUWOjoc9DyO2Jh8mclaRY1Q'
-  with open("website/playlists/englishh.txt", 'r', encoding='utf-8') as file:
+  with open("website/playlists/ahmadsalah.txt", 'r', encoding='utf-8') as file:
         content = file.read()
         videos = ast.literal_eval(content)
   return render_template('used_pages/videopage.html',
@@ -938,9 +940,26 @@ def englishh():
                          playlist_id=playlist_id,
                          teachername=teachername)
 
-@views.route("/englishhupdate")
-def englishhupdate():
-    return createtxtfile("englishh" , "PLM-GVlebsoPUWOjoc9DyO2Jh8mclaRY1Q")
+@views.route("/english/ahmadsalah/update")
+def ahmadsalahupdate():
+    return createtxtfile("ahmadsalah" , "PLM-GVlebsoPUWOjoc9DyO2Jh8mclaRY1Q")
+
+
+@views.route("/english/hossamsameh")
+def hossamsameh():
+  teachername = "Hossam Sameh"
+  playlist_id = 'PLM-GVlebsoPWGSfDq2_C801iLUl3RKWCK'
+  with open("website/playlists/hossamsameh.txt", 'r', encoding='utf-8') as file:
+        content = file.read()
+        videos = ast.literal_eval(content)
+  return render_template('used_pages/videopage.html',
+                         videos=videos,
+                         playlist_id=playlist_id,
+                         teachername=teachername)
+
+@views.route("/english/hossamsameh/update")
+def hossamsamehupdate():
+    return createtxtfile("hossamsameh" , "PLM-GVlebsoPWGSfDq2_C801iLUl3RKWCK")
 
 
 
