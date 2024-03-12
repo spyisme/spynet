@@ -605,8 +605,8 @@ def salama_add_course_route():
             input3 = request.form.get('input3')  
 
             course_image = request.files['course_image']
-            add_course(input1, input2,input3, course_image)
-            return add_course(input1, input2, course_image)
+            return add_course(input1, input2,input3, course_image)
+
         
     return render_template('backend_pages/add-course.html')
     
