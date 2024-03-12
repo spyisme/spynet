@@ -215,7 +215,7 @@ def redirectlinks(link):
 #Home
 @views.route("/")
 def home():
-    lines = ["physics", "chemistry","maths" , "arabic", "german" , "english" ,"biology", "geology", 'adby']
+    lines = ["physics", "chemistry","maths" , "arabic", "german" , "english" ,"biology", "geology"]
     return render_template('used_pages/all.html', lines=lines , teachername="All")
 
 
