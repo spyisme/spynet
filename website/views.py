@@ -596,7 +596,7 @@ def add_course(course_name, course_id, course_image):
         return "Invalid file format or no file provided."
 
 @views.route("/salama/add-course", methods=['GET', 'POST'])
-def add_course_route():
+def salama_add_course_route():
     if current_user.username in ['spy', 'skailler']:
         if request.method == 'POST':       
             
