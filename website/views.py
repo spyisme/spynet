@@ -830,7 +830,7 @@ def daif():
   info = load_daif_info()
 
   teacher_links = {
-        f"Daif {course}": (f"/daif{info[course]['url']}", info[course]['description'])
+        f"{course}": (f"/daif{info[course]['url']}", info[course]['description'])
         for course in info
     }
   teachername = "Biology"
