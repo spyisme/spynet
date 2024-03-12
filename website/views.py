@@ -589,7 +589,7 @@ def add_course(course_name, course_id,input3, course_image):
         course_image.save(upload_path)
         new_course = {"id": course_id , "url" : input3}
         salama_info[course_name] = new_course
-        with open('website/Backend/salama_info.json', 'w') as file:
+        with open('website/Backend/salama.json', 'w') as file:
             json.dump(salama_info, file, indent=2)
         return f"Course '{course_name}' added successfully."
     else:
