@@ -618,8 +618,29 @@ def salama_add_course_route():
 @views.route("/salama/edit-course", methods=['GET', 'POST'])
 def salama_edit_course_route():
     if current_user.username in ['spy', 'skailler']:
-        if request.method == 'POST':       
-      
+        if request.method == 'POST':
+            selected_course = request.form.get('course_select')
+            new_course_id = request.form.get('course_id')
+            new_course_url = request.form.get('course_url')
+
+            with open('website/Backend/salama.json', 'r') as file:
+                your_courses_data = json.load(file)
+
+            if selected_course in your_courses_data:
+                your_courses_data[selected_course]['id'] = new_course_id
+                your_courses_data[selected_course]['url'] = new_course_url
+
+                with open('website/Backend/salama.json', 'w') as file:
+                    json.dump(your_courses_data, file, indent=2)
+
+            uploaded_file = request.files.get('image_upload')
+            if uploaded_file:
+                filename = selected_course + '.jpg'
+                upload_path = os.path.join('website/static/assets/Math/', filename)
+                uploaded_file.save(upload_path)
+
+
+
             return "Post"
         
         with open('website/Backend/salama.json', 'r') as file:
