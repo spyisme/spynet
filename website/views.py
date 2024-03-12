@@ -612,6 +612,32 @@ def salama_add_course_route():
     
 
 
+
+
+
+@views.route("/salama/edit-course", methods=['GET', 'POST'])
+def salama_edit_course_route():
+    if current_user.username in ['spy', 'skailler']:
+        if request.method == 'POST':       
+      
+            return "Post"
+        
+        with open('website/Backend/salama.json', 'r') as file:
+            your_courses_data = json.load(file)
+
+        return render_template('backend_pages/edit-course.html', your_courses_data=your_courses_data)
+    
+    return render_template('backend_pages/edit-course.html')
+
+
+
+
+
+
+
+
+
+
 @views.route("/salama/<custom_url>/update")
 def salamacoursesupdate(custom_url):
     salama_info = load_salama_info()
