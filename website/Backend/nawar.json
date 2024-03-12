@@ -4,16 +4,17 @@
         "url": "/chapter1",
         "description": "Chapter 1"
     },
-    "Chapter 2": {
-        "id": "PLM-GVlebsoPWU4v5bcndzPBt6e7PsiCwQ",
-        "url": "/chapter2",
-        "description": "Chapter 2"
-    },
     "Revision 1": {
         "id": "PLM-GVlebsoPXELEhVJi-nBm-oZXpE85K2",
         "url": "/nawarch1rev",
         "description": "Revision 1"
     },
+    "Chapter 2": {
+        "id": "PLM-GVlebsoPWU4v5bcndzPBt6e7PsiCwQ",
+        "url": "/chapter2",
+        "description": "Chapter 2"
+    },
+
     "Revision 2": {
         "id": "PLM-GVlebsoPVAd_O1EYC8ORRkYGQ_latH",
         "url": "/nawarch2rev",
