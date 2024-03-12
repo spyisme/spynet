@@ -1,4 +1,9 @@
 {
+    "Workshops": {
+        "id": "PLM-GVlebsoPX5utZzxatuUWlx-8kbDrh4",
+        "url": "/workshops",
+        "description": "Workshops"
+    },
     "Chapter 1": {
         "id": "PLM-GVlebsoPXpGe3wzMN7SKYvmTr0jACa",
         "url": "/chapter1",
@@ -59,10 +64,5 @@
         "id": "PLM-GVlebsoPX81dKF8g7-iQsstk0ytxxk",
         "url": "/nawarch8",
         "description": "Chapter 8"
-    },
-    "Workshops": {
-        "id": "PLM-GVlebsoPX5utZzxatuUWlx-8kbDrh4",
-        "url": "/workshops",
-        "description": "Workshops"
     }
 }
