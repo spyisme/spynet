@@ -286,17 +286,17 @@ def tamerelkadyupdate():
 
 def load_nawar_info():
     with open('website/Backend/nawar.json', 'r') as file:
-        nawar_info = json.load(file)
-    return nawar_info
+        info = json.load(file)
+    return info
 
 
 @views.route('/nawar')
 def nawar():
-  nawar_info = load_nawar_info()
+  info = load_nawar_info()
 
   teacher_links = {
-        f"Nawar {course}": (f"/nawar{nawar_info[course]['url']}", nawar_info[course]['description'])
-        for course in nawar_info
+        f"Nawar {course}": (f"/nawar{info[course]['url']}", info[course]['description'])
+        for course in info
     }
   teachername = "Physics"
   return render_template('used_pages/teacher.html',
@@ -306,19 +306,19 @@ def nawar():
 
 @views.route("/nawar/<custom_url>/update")
 def nawarupdate(custom_url):
-    nawar_info = load_nawar_info()
-    course_key = next((name for name, info in nawar_info.items() if info['url'] == f"/{custom_url}"), None)
-    if course_key not in nawar_info:
+    info = load_nawar_info()
+    course_key = next((name for name, info in info.items() if info['url'] == f"/{custom_url}"), None)
+    if course_key not in info:
         return redirect(url_for('views.display_links'))
-    playlist_id = nawar_info[course_key]["id"]
+    playlist_id = info[course_key]["id"]
     return createtxtfile(f"nawar{course_key}", playlist_id)
 
 
 @views.route("/nawar/<custom_url>")
 def nawarvids(custom_url):
-    nawar_info = load_nawar_info()
-    course_info = next((info for info in nawar_info.values() if info['url'] == f"/{custom_url}"), None)
-    course_name = next((name for name, info in nawar_info.items() if info['url'] == f"/{custom_url}"), None)
+    info = load_nawar_info()
+    course_info = next((info for info in info.values() if info['url'] == f"/{custom_url}"), None)
+    course_name = next((name for name, info in info.items() if info['url'] == f"/{custom_url}"), None)
     teachername = course_name
     playlist_id = course_info["id"]
     with open(f"website/playlists/nawar{course_name}.txt", 'r', encoding='utf-8') as file:
@@ -735,82 +735,55 @@ def geology():
                           teachername=teachername,
                           imgs="yes")
 
-sameh_links = {
-    "Sameh Nash2t Chapter 1": ("samehh1", "Chapter 1", "PLM-GVlebsoPXd5COr54fuG-1lNCfpDdwl"),
-    "Sameh Nash2t Chapter 2": ("samehh2", "Chapter 2", "PLM-GVlebsoPUckTjXcvKP483XHykKHH-m"),
-    "Sameh Nash2t Chapter 3": ("samehh3", "Chapter 3", "PLM-GVlebsoPX1xJ0JSvE7gLfkPEKIo3kA"),
-    "Sameh Nash2t Chapter 4": ("samehh4", "Chapter 4", "PLM-GVlebsoPX_zFeoKW57nOoPlLUMlxZR"),
-    "Sameh Nash2t Chapter 4": ("samehh4", "Chapter 4", "PLM-GVlebsoPX_zFeoKW57nOoPlLUMlxZR"),
-    "Sameh Nash2t Chapter 5": ("samehh5", "Chapter 5", "PLM-GVlebsoPXPvaZNTiuHYTeSNv30gF3s"),
-}
+
+
+def load_sameh_info():
+    with open('website/Backend/sameh.json', 'r') as file:
+        info = json.load(file)
+    return info
 
 
 @views.route('/sameh')
 def sameh():
-    teacher_links = { "Sameh Nash2t Workshops": ( "samehworkshop", "Chapter 4"),}
-    teacher_links.update({key: (value[0], value[1]) for key, value in sameh_links.items()})
+  info = load_sameh_info()
 
-    teachername = "Geology"
-    return render_template('used_pages/teacher.html',
-                           teacher_links=teacher_links,
-                           teachername=teachername,
-                           imgs="yes")
+  teacher_links = {
+        f"Sameh Nash2t {course}": (f"/sameh{info[course]['url']}", info[course]['description'])
+        for course in info
+    }
+  teachername = "Geology"
+  return render_template('used_pages/teacher.html',
+                         teacher_links=teacher_links,
+                         teachername=teachername,
+                         imgs="yes")
+
+@views.route("/sameh/<custom_url>/update")
+def samehupdate(custom_url):
+    info = load_sameh_info()
+    course_key = next((name for name, info in info.items() if info['url'] == f"/{custom_url}"), None)
+    if course_key not in info:
+        return redirect(url_for('views.display_links'))
+    playlist_id = info[course_key]["id"]
+    return createtxtfile(f"sameh{course_key}", playlist_id)
 
 
-@views.route("/samehworkshop")
-def samehworkshop():
-  teachername = "Workshops Chapter 4"
-  playlist_id = 'PLM-GVlebsoPXfNbgeeoFcDy1k3YWKxuAw'
-  with open("website/playlists/samehworkshop.txt", 'r', encoding='utf-8') as file:
-        content = file.read()
-        videos = ast.literal_eval(content) 
-  return render_template('used_pages/videopage.html',
+@views.route("/sameh/<custom_url>")
+def samehvids(custom_url):
+    info = load_sameh_info()
+    course_info = next((info for info in info.values() if info['url'] == f"/{custom_url}"), None)
+    course_name = next((name for name, info in info.items() if info['url'] == f"/{custom_url}"), None)
+    teachername = course_name
+    playlist_id = course_info["id"]
+    with open(f"website/playlists/sameh{course_name}.txt", 'r', encoding='utf-8') as file:
+            content = file.read()
+            videos = ast.literal_eval(content)
+
+    return render_template('used_pages/videopage.html',
                          videos=videos,
                          playlist_id=playlist_id,
                          teachername=teachername)
 
 
-
-@views.route("/samehworkshopupdate")
-def samehworkshopupdate():
-    return createtxtfile("samehworkshop" , "PLM-GVlebsoPXfNbgeeoFcDy1k3YWKxuAw")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@views.route("/samehh<int:i>")
-def samehh(i):
-    teachername = f"Chapter {i}"
-    playlist_id = sameh_links.get(f"Sameh Nash2t Chapter {i}", ("", "", ""))[2]
-    with open(f"website/playlists/samehh{i}.txt", 'r', encoding='utf-8') as file:
-        content = file.read()
-        videos = ast.literal_eval(content) 
-    return render_template('used_pages/videopage.html',
-                           videos=videos,
-                           playlist_id=playlist_id,
-                           teachername=teachername)
-
-
-@views.route("/samehh<int:i>update")
-def samehupdate(i):
-    chapter_name = f"samehh{i}"
-    playlist_id = sameh_links.get(f"Sameh Nash2t Chapter {i}", ("", "", ""))[2]
-    return createtxtfile(chapter_name, playlist_id)
 
 
 
@@ -833,11 +806,6 @@ def giomagedupdate():
     return createtxtfile("giomaged" , "PLM-GVlebsoPXh1obVV3aWysV7wXlN3yET")
 
 
-
-
-
-
-
 #Biology----------------------------------------------------------------------------------------------------------------------
 @views.route('/biology')
 def bio():
@@ -851,46 +819,51 @@ def bio():
                          imgs="yes")
 
 
-bio_links = {
-    "Chapter 1": ("bioch1", "S2 Not Available", "PLM-GVlebsoPWYFgg9hks2GaWKC2kI1r7X"),
-    "Chapter 2": ("bioch2", "Chapter 2", "PLM-GVlebsoPVXxEs5mtOyS-4QLolBXjlX"),
-    "Chapter 3": ("bioch3", "Chapter 3", "PLM-GVlebsoPV0ylAbm7LFlKCD9_X0CGEK"),
-    "Chapter 4": ("bioch4", "Chapter 4", "PLM-GVlebsoPWuIcYhH_qPOcwtJPiRJLI_"),
+def load_daif_info():
+    with open('website/Backend/daif.json', 'r') as file:
+        info = json.load(file)
+    return info
 
-}
 
 @views.route('/daif')
-def biology():
-    teacher_links = {key: (value[0], value[1]) for key, value in bio_links.items()}
-    # teacher_links["Daif Files"] = ("biopdfs", "Google Drive") 
-    teachername = "Biology"
-    return render_template('used_pages/teacher.html',
-                           teacher_links=teacher_links,
-                           teachername=teachername,
-                           imgs="yes")
+def daif():
+  info = load_daif_info()
+
+  teacher_links = {
+        f"Daif {course}": (f"/daif{info[course]['url']}", info[course]['description'])
+        for course in info
+    }
+  teachername = "Biology"
+  return render_template('used_pages/teacher.html',
+                         teacher_links=teacher_links,
+                         teachername=teachername,
+                         imgs="yes")
+
+@views.route("/daif/<custom_url>/update")
+def daifupdates(custom_url):
+    info = load_daif_info()
+    course_key = next((name for name, info in info.items() if info['url'] == f"/{custom_url}"), None)
+    if course_key not in info:
+        return redirect(url_for('views.display_links'))
+    playlist_id = info[course_key]["id"]
+    return createtxtfile(f"daif{course_key}", playlist_id)
 
 
-@views.route("/bioch<int:i>")
-def bioch(i):
-    teachername = f"Chapter {i}"
-    playlist_id = bio_links.get(f"Chapter {i}", ("", "", ""))[2]
-    with open(f"website/playlists/bioch{i}.txt", 'r', encoding='utf-8') as file:
-        content = file.read()
-        videos = ast.literal_eval(content)
+@views.route("/daif/<custom_url>")
+def daifvids(custom_url):
+    info = load_daif_info()
+    course_info = next((info for info in info.values() if info['url'] == f"/{custom_url}"), None)
+    course_name = next((name for name, info in info.items() if info['url'] == f"/{custom_url}"), None)
+    teachername = course_name
+    playlist_id = course_info["id"]
+    with open(f"website/playlists/daif{course_name}.txt", 'r', encoding='utf-8') as file:
+            content = file.read()
+            videos = ast.literal_eval(content)
+
     return render_template('used_pages/videopage.html',
-                           videos=videos,
-                           playlist_id=playlist_id,
-                           teachername=teachername)
-
-
-@views.route("/bioch<int:i>update")
-def bioupdate(i):
-    chapter_name = f"bioch{i}"
-    playlist_id = bio_links.get(f"Chapter {i}", ("", "", ""))[2]
-
-    return createtxtfile(chapter_name, playlist_id)
-
-
+                         videos=videos,
+                         playlist_id=playlist_id,
+                         teachername=teachername)
 
 
 #-----------------------------------------------------------------------------------------------------------
@@ -923,10 +896,6 @@ def englishh():
 @views.route("/englishhupdate")
 def englishhupdate():
     return createtxtfile("englishh" , "PLM-GVlebsoPUWOjoc9DyO2Jh8mclaRY1Q")
-
-
-
-
 
 
 
