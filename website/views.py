@@ -282,256 +282,53 @@ def tamerelkadyupdate():
 
 
 
+#Nawar -------------------------------------------
+
+def load_nawar_info():
+    with open('website/Backend/nawar.json', 'r') as file:
+        nawar_info = json.load(file)
+    return nawar_info
+
 
 @views.route('/nawar')
 def nawar():
+  nawar_info = load_nawar_info()
+
   teacher_links = {
-    "Nawar WorkShops": ("nawarworkshops", "WorkShops"),
-    "Nawar Chapter 1": ("nawarch1", "Chapter 1"),
-    "Nawar Chapter 1 Revision": ("nawarch1rev", "Revision 1"),
-    "Nawar Chapter 2": ("nawarch2", "Chapter 2"),
-    "Nawar Chapter 2 Revision": ("nawarch2rev", "Revision 2"),
-    "Nawar Chapter 3": ("nawarch3", "Chapter 3"),
-    "Nawar Chapter 3 Revision": ("nawarch3rev", "Revision 3"),
-    "Nawar Chapter 4": ("nawarch4", "Chapter 4"),
-    "Nawar Chapter 4 Revision": ("nawarch4rev", "Revision 4"),
-    "Nawar Chapter 5": ("nawarch5", "Chapter 5"),
-    "Nawar Chapter 6": ("nawarch6", "Chapter 6" ),
-    "Nawar Chapter 7": ("nawarch7", "Chapter 7" ),
-    "Nawar Chapter 8": ("nawarch8", "Chapter 8" ),
-  }
+        f"Nawar {course}": (f"/nawar{nawar_info[course]['url']}", nawar_info[course]['description'])
+        for course in nawar_info
+    }
   teachername = "Physics"
   return render_template('used_pages/teacher.html',
                          teacher_links=teacher_links,
                          teachername=teachername,
                          imgs="yes")
 
-@views.route("/nawarch1")
-def nawarch1():
-  teachername = "Chapter 1"
-  playlist_id = 'PLM-GVlebsoPXpGe3wzMN7SKYvmTr0jACa'
-  with open("website/playlists/nawarch1.txt", 'r', encoding='utf-8') as file:
-        content = file.read()
-        videos = ast.literal_eval(content) 
-
-  return render_template('used_pages/videopage.html',
-                         videos=videos,
-                         playlist_id=playlist_id,
-                         teachername=teachername,)
+@views.route("/nawar/<custom_url>/update")
+def nawarupdate(custom_url):
+    nawar_info = load_nawar_info()
+    course_key = next((name for name, info in nawar_info.items() if info['url'] == f"/{custom_url}"), None)
+    if course_key not in nawar_info:
+        return redirect(url_for('views.display_links'))
+    playlist_id = nawar_info[course_key]["id"]
+    return createtxtfile(f"nawar{course_key}", playlist_id)
 
 
-@views.route("/nawarch1update")
-def nawarch1update():
-    return createtxtfile("nawarch1" , "PLM-GVlebsoPXpGe3wzMN7SKYvmTr0jACa")
+@views.route("/nawar/<custom_url>")
+def nawarvids(custom_url):
+    nawar_info = load_nawar_info()
+    course_info = next((info for info in nawar_info.values() if info['url'] == f"/{custom_url}"), None)
+    course_name = next((name for name, info in nawar_info.items() if info['url'] == f"/{custom_url}"), None)
+    teachername = course_name
+    playlist_id = course_info["id"]
+    with open(f"website/playlists/nawar{course_name}.txt", 'r', encoding='utf-8') as file:
+            content = file.read()
+            videos = ast.literal_eval(content)
 
-
-
-@views.route("/nawarch1rev")
-def nawarch1rev():
-  teachername = "Revision 1"
-  playlist_id = 'PLM-GVlebsoPXELEhVJi-nBm-oZXpE85K2'
-  with open("website/playlists/nawarch1rev.txt", 'r', encoding='utf-8') as file:
-        content = file.read()
-        videos = ast.literal_eval(content)
-  return render_template('used_pages/videopage.html',
+    return render_template('used_pages/videopage.html',
                          videos=videos,
                          playlist_id=playlist_id,
                          teachername=teachername)
-
-@views.route("/nawarch1revupdate")
-def nawarch1revupdate():
-    return createtxtfile("nawarch1rev" , "PLM-GVlebsoPXELEhVJi-nBm-oZXpE85K2")
-
-@views.route("/nawarch2rev")
-def nawarch2rev():
-  teachername = "Revision 2"
-  playlist_id = 'PLM-GVlebsoPVAd_O1EYC8ORRkYGQ_latH'
-  with open("website/playlists/nawarch2rev.txt", 'r', encoding='utf-8') as file:
-        content = file.read()
-        videos = ast.literal_eval(content)
-  return render_template('used_pages/videopage.html',
-                         videos=videos,
-                         playlist_id=playlist_id,
-                         teachername=teachername)
-
-@views.route("/nawarch2revupdate")
-def nawarch2revupdate():
-    return createtxtfile("nawarch2rev" , "PLM-GVlebsoPVAd_O1EYC8ORRkYGQ_latH")
-
-
-@views.route("/nawarch2")
-def nawarch2():
-  teachername = "Chapter 2"
-  playlist_id = 'PLM-GVlebsoPWU4v5bcndzPBt6e7PsiCwQ'
-  with open("website/playlists/nawarch2.txt", 'r', encoding='utf-8') as file:
-        content = file.read()
-        videos = ast.literal_eval(content)
-  return render_template('used_pages/videopage.html',
-                         videos=videos,
-                         playlist_id=playlist_id,
-                         teachername=teachername)
-
-@views.route("/nawarch2update")
-def nawarch2update():
-    return createtxtfile("nawarch2" , "PLM-GVlebsoPWU4v5bcndzPBt6e7PsiCwQ")
-
-@views.route("/nawarch3")
-def nawarch3():
-  teachername = "Chapter 3"
-  playlist_id = 'PLM-GVlebsoPXwGQGxiTBmNCzD4E_BgDCo'
-  with open("website/playlists/nawarch3.txt", 'r', encoding='utf-8') as file:
-        content = file.read()
-        videos = ast.literal_eval(content)
-  return render_template('used_pages/videopage.html',
-                         videos=videos,
-                         playlist_id=playlist_id,
-                         teachername=teachername)
-
-@views.route("/nawarch3update")
-def nawarch3update():
-    return createtxtfile("nawarch3" , "PLM-GVlebsoPXwGQGxiTBmNCzD4E_BgDCo")
-
-@views.route("/nawarch3rev")
-def nawarch3rev():
-  teachername = "Revision 3"
-  playlist_id = 'PLM-GVlebsoPWLrRKXf3LyU_f7fNxLjxlM'
-  with open("website/playlists/nawarch3rev.txt", 'r', encoding='utf-8') as file:
-        content = file.read()
-        videos = ast.literal_eval(content)
-  return render_template('used_pages/videopage.html',
-                         videos=videos,
-                         playlist_id=playlist_id,
-                         teachername=teachername)
-
-@views.route("/nawarch3revupdate")
-def nawarch3revupdate():
-    return createtxtfile("nawarch3rev" , "PLM-GVlebsoPWLrRKXf3LyU_f7fNxLjxlM")
-
-@views.route("/nawarch4")
-def nawarch4():
-  teachername = "Chapter 4"
-  playlist_id = 'PLM-GVlebsoPXGEHpNDaKTOy_0DHROCh86'
-  with open("website/playlists/nawarch4.txt", 'r', encoding='utf-8') as file:
-        content = file.read()
-        videos = ast.literal_eval(content)
-  return render_template('used_pages/videopage.html',
-                         videos=videos,
-                         playlist_id=playlist_id,
-                         teachername=teachername)
-
-@views.route("/nawarch4update")
-def nawarch4update():
-    return createtxtfile("nawarch4" , "PLM-GVlebsoPXGEHpNDaKTOy_0DHROCh86")
-
-
-@views.route("/nawarch4rev")
-def nawarch4rev():
-  teachername = "Revision 4"
-  playlist_id = 'PLM-GVlebsoPVs7IPfPTh0g12M0MAlJSqi'
-  with open("website/playlists/nawarch4rev.txt", 'r', encoding='utf-8') as file:
-        content = file.read()
-        videos = ast.literal_eval(content)
-
-
-  folder = "https://drive.google.com/drive/folders/17NFLXuiVUMRhdzcSjXAKtiAzwmpwu_wn?usp=drive_link"     
-  return render_template('used_pages/videopage.html',
-                         playlist_id = playlist_id,
-                         videos = videos,
-                         teachername=teachername,
-                         folder = folder)
-
-@views.route("/nawarch4revupdate")
-def nawarch4revupdate():
-    return createtxtfile("nawarch4rev" , "PLM-GVlebsoPVs7IPfPTh0g12M0MAlJSqi")
-
-
-@views.route("/nawarch5")
-def nawarch5():
-  teachername = "Chapter 5"
-  playlist_id = 'PLM-GVlebsoPWzOheA-_DOYpbwXNdCeE_7'
-  with open("website/playlists/nawarch5.txt", 'r', encoding='utf-8') as file:
-        content = file.read()
-        videos = ast.literal_eval(content)
-  return render_template('used_pages/videopage.html',
-                         videos=videos,
-                         playlist_id=playlist_id,
-                         teachername=teachername)
-
-
-@views.route("/nawarch5update")
-def nawarch5update():
-    return createtxtfile("nawarch5" , "PLM-GVlebsoPWzOheA-_DOYpbwXNdCeE_7")
-    
-
-@views.route("/nawarch6")
-def nawarch6():
-  teachername = "Chapter 6"
-  playlist_id = 'PLM-GVlebsoPWFcc7lshGJRcdqZR59ZOCm'
-  with open("website/playlists/nawarch6.txt", 'r', encoding='utf-8') as file:
-        content = file.read()
-        videos = ast.literal_eval(content)
-  return render_template('used_pages/videopage.html',
-                         videos=videos,
-                         playlist_id=playlist_id,
-                         teachername=teachername)
-
-
-@views.route("/nawarch6update")
-def nawarch6update():
-    return createtxtfile("nawarch6" , "PLM-GVlebsoPWFcc7lshGJRcdqZR59ZOCm")
-
-
-@views.route("/nawarch7")
-def nawarch7():
-  teachername = "Chapter 7"
-  playlist_id = 'PLM-GVlebsoPVb4wGHYzfZwrBS9v61oNG0'
-  with open("website/playlists/nawarch7.txt", 'r', encoding='utf-8') as file:
-        content = file.read()
-        videos = ast.literal_eval(content)
-  return render_template('used_pages/videopage.html',
-                         videos=videos,
-                         playlist_id=playlist_id,
-                         teachername=teachername)
-
-
-@views.route("/nawarch7update")
-def nawarch7update():
-    return createtxtfile("nawarch7" , "PLM-GVlebsoPVb4wGHYzfZwrBS9v61oNG0")
-
-@views.route("/nawarch8")
-def nawarch8():
-  teachername = "Chapter 8"
-  playlist_id = 'PLM-GVlebsoPX81dKF8g7-iQsstk0ytxxk'
-  with open("website/playlists/nawarch8.txt", 'r', encoding='utf-8') as file:
-        content = file.read()
-        videos = ast.literal_eval(content)
-  return render_template('used_pages/videopage.html',
-                         videos=videos,
-                         playlist_id=playlist_id,
-                         teachername=teachername)
-
-
-@views.route("/nawarch8update")
-def nawarch8update():
-    return createtxtfile("nawarch8" , "PLM-GVlebsoPX81dKF8g7-iQsstk0ytxxk")
-
-
-@views.route("/nawarworkshops")
-def nawarworkshops():
-  teachername = "WorkShops"
-  playlist_id = 'PLM-GVlebsoPX5utZzxatuUWlx-8kbDrh4'
-  with open("website/playlists/WorkShops.txt", 'r', encoding='utf-8') as file:
-        content = file.read()
-        videos = ast.literal_eval(content)
-  return render_template('used_pages/videopage.html',
-                         videos=videos,
-                         playlist_id=playlist_id,
-                         teachername=teachername)
-
-
-@views.route("/nawarworkshopsupdate")
-def nawarworkshopsupdate():
-    return createtxtfile("WorkShops" , "PLM-GVlebsoPX5utZzxatuUWlx-8kbDrh4")
 
 
 
@@ -637,7 +434,7 @@ def nasser():
                          imgs="yes")
 
 @views.route("/nasser/<custom_url>/update")
-def chemupdate(custom_url):
+def nasserupdate(custom_url):
     nasser_info = load_nasser_info()
     course_key = next((name for name, info in nasser_info.items() if info['url'] == f"/{custom_url}"), None)
     if course_key not in nasser_info:
