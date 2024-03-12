@@ -633,7 +633,7 @@ def salama_edit_course_route():
                 with open('website/Backend/salama.json', 'w') as file:
                     json.dump(your_courses_data, file, indent=2)
 
-            uploaded_file = request.files.get('image_upload')
+            uploaded_file = request.files.get('course_image')
             filename = selected_course + '.jpg'
             upload_path = os.path.join('website/static/assets/Math/', filename)
             uploaded_file.save(upload_path)
