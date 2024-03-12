@@ -69,7 +69,10 @@
     <form method="post" action="{{ url_for('views.salama_edit_course_route') }}">
         <label for="course_select">Select Course:</label>
         <select id="course_select" name="course_select" required>
+            <option value="">None</option>  <!-- Added None option -->
+
             {% for course_name, course_data in courses.items() %}
+            
                 <option value="{{ course_name }}">{{ course_name }}</option>
             {% endfor %}
         </select>
