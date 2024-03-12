@@ -580,7 +580,7 @@ def salama():
 
 
 def load_salama_info():
-    with open('website/Backend/salama_info.json', 'r') as file:
+    with open('website/Backend/salama.json', 'r') as file:
         salama_info = json.load(file)
     return salama_info
 
