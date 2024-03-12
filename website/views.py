@@ -623,9 +623,9 @@ def salama_edit_course_route():
             return "Post"
         
         with open('website/Backend/salama.json', 'r') as file:
-            your_courses_data = json.load(file)
+            courses = json.load(file)
 
-        return render_template('backend_pages/edit-course.html', your_courses_data=your_courses_data)
+        return render_template('backend_pages/edit-course.html', courses =courses)
     
     return render_template('backend_pages/edit-course.html')
 
