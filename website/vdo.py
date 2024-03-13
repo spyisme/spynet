@@ -338,9 +338,13 @@ import base64
 
 @vdo.route('/shahid', methods=['GET', 'POST'])
 def shahid():
-    license_url = request.args.get('url')
+    licurl = request.args.get('url')
+    mpd = request.args.get('mpd')
+     
     pssh = base64.b64decode(request.args.get('pssh'))
     pssh = pssh.decode('utf-8')
+
+
     api_url = "https://keysdb.net/api"
     headers = {
         "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (Ktesttemp, like Gecko) Chrome/90.0.4430.85 Safari/537.36",
@@ -348,7 +352,7 @@ def shahid():
         "X-API-Key": 'c13cf813a7a384b56f5b5249d6fc0d113e3d981b3af7ee3b1409ff33fe452b15',
     }
     payload = {
-        "license_url": license_url,
+        "license_url": licurl,
         "pssh": pssh,
     }
     r = requests.post(api_url, headers=headers, json=payload).text
