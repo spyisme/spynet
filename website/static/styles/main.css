@@ -3,7 +3,7 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-    zoom: 90%;
+    zoom: 81%;
     overflow: auto;
     cursor: url('/static/cursor.png'), auto;
 }
