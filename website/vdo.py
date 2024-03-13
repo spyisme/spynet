@@ -340,11 +340,8 @@ import base64
 def shahid():
     licurl = request.args.get('licurl')
     mpd = request.args.get('mpd')
-     
     pssh = base64.b64decode(request.args.get('pssh'))
     pssh = pssh.decode('utf-8')
-
-
     api_url = "https://keysdb.net/api"
     headers = {
         "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (Ktesttemp, like Gecko) Chrome/90.0.4430.85 Safari/537.36",
@@ -365,10 +362,7 @@ def shahid():
     parts = key_value.split(":")
     if len(parts) == 2:
         ckvaluetobeused[parts[0]] = parts[1]
-
     keysbase64 = base64.urlsafe_b64encode(str(ckvaluetobeused).encode()).decode()   
-
-
     if request.method == 'POST':
         name =  request.form.get('name')
         msg = f'```app {mpd} --key {key_value} --save-name {name} -M format=mp4 --no-log  & move {name}.mp4 ./output``` {name} ```watch now``` {mpd}&ck={keysbase64}'
