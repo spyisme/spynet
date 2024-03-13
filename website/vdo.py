@@ -221,7 +221,7 @@ def index():
 
     discord_log(url)
     options = ['Else','Nawar','Nasser-El-Batal', 'MoSalama', 'Gedo' , 'Bio']
-
+    
     if request.method == 'POST':
         name =  request.form.get('vidname')
         teacher =  request.form.get('dropdown')
