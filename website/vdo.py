@@ -227,7 +227,7 @@ def index():
     old = request.args.get('old')
 
     if old != "true" :
-        status  = "old"
+        status  = "new"
         if request.method == 'POST':
             name =  request.form.get('vidname')
             teacher =  request.form.get('dropdown')
@@ -251,7 +251,7 @@ def index():
             requests.post(webhook_url, data=payload, headers=headers)
             return 'Message Sent!'
         
-    status  = "new"
+    status  = "old"
     return render_template('backend_pages/vdo.html' , content_key = content_key , mpd = mpd ,options = options, result= result , url = url , status = status )
 
 

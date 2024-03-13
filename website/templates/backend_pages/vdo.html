@@ -126,13 +126,13 @@ select option {
     <br><br>
     <h1 class="center">SpyNet</h1>
     <div class="center">
-        {%if status== "new"%}
+        {%if status== "old"%}
     <form method="POST" action="/form">
-
+<h1>Old</h1>
     {%else%}
     <form method="POST">
 
-    {%else%}
+    {%endif%}
         <br>
         <label for="vidname">Video Name:</label>
         <input type="text" id="vidname" name="vidname" required="" autocomplete="off" oninput="validateInput(this)">
