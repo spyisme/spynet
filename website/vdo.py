@@ -194,7 +194,6 @@ def index():
 
     content_key_lines = '\n'.join([f'--key {key}' for key in content_key])
     result = mpd + '\n' + content_key_lines 
-    options = ['Else','Nawar','Nasser-El-Batal', 'MoSalama', 'Gedo' , 'Bio']
     used_tokens.add(mytoken)
     session['result'] = result
 
@@ -219,7 +218,30 @@ def index():
     session['urlopen'] = url
 
     discord_log(url)
+    options = ['Else','Nawar','Nasser-El-Batal', 'MoSalama', 'Gedo' , 'Bio']
 
+    if request.method == 'POST':
+        name =  request.form.get('vidname')
+        result = result.replace("\n", " ")
+        teacher = request.args.get('teacher')
+        message = {
+                'content': f'```app {result} --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output``` {name} ```watch now``` {url}'
+            }
+        payload = json.dumps(message)
+        userinput = f"app {result} --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output"
+        cmds_queue.append(userinput)
+        headers = {'Content-Type': 'application/json'}
+        teacher_webhooks = {
+            "Nawar": Nawar,
+            "Nasser-El-Batal": Nasser,
+            "MoSalama": Salama,
+            "Bio": Bio,
+            "Gedo": Gedo,
+        }
+        webhook_url = teacher_webhooks.get(teacher, Else)
+        requests.post(webhook_url, data=payload, headers=headers)
+
+        return 'Message Sent!'
     return render_template('backend_pages/vdo.html' , content_key = content_key , mpd = mpd ,options = options, result= result , url = url)
 
 
@@ -232,43 +254,43 @@ cmds_queue = []
 
 
 
-@vdo.route('/form', methods=['POST'])
-def form():
-    options = ['Nawar', 'Nasser-El-Batal', 'MoSalama' , 'Bio', 'Else']
-    if request.method == 'POST':
-        user_data = {
-            'teacher' : request.form.get('dropdown'),
-            'name': request.form['vidname']
-        }
-        return redirect(url_for('vdo.discord', **user_data))
-    return render_template('index.html' , option = options)
+# @vdo.route('/form', methods=['POST'])
+# def form():
+#     options = ['Nawar', 'Nasser-El-Batal', 'MoSalama' , 'Bio', 'Else']
+#     if request.method == 'POST':
+#         user_data = {
+#             'teacher' : request.form.get('dropdown'),
+#             'name': request.form['vidname']
+#         }
+#         return redirect(url_for('vdo.discord', **user_data))
+#     return render_template('index.html' , option = options)
 
 
-@vdo.route('/vdodiscord', methods=['GET', 'POST'])
-def discord():
-    result = session.get('result')
-    urlopen = session.get('urlopen')
-    name = request.args.get('name')
-    result = result.replace("\n", " ")
-    teacher = request.args.get('teacher')
-    message = {
-            'content': f'```app {result} --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output``` {name} ```watch now``` {urlopen}'
-        }
-    payload = json.dumps(message)
-    userinput = f"app {result} --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output"
-    cmds_queue.append(userinput)
-    headers = {'Content-Type': 'application/json'}
-    teacher_webhooks = {
-        "Nawar": Nawar,
-        "Nasser-El-Batal": Nasser,
-        "MoSalama": Salama,
-        "Bio": Bio,
-        "Gedo": Gedo,
-    }
-    webhook_url = teacher_webhooks.get(teacher, Else)
-    requests.post(webhook_url, data=payload, headers=headers)
+# @vdo.route('/vdodiscord', methods=['GET', 'POST'])
+# def discord():
+#     result = session.get('result')
+#     urlopen = session.get('urlopen')
+#     name = request.args.get('name')
+#     result = result.replace("\n", " ")
+#     teacher = request.args.get('teacher')
+#     message = {
+#             'content': f'```app {result} --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output``` {name} ```watch now``` {urlopen}'
+#         }
+#     payload = json.dumps(message)
+#     userinput = f"app {result} --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output"
+#     cmds_queue.append(userinput)
+#     headers = {'Content-Type': 'application/json'}
+#     teacher_webhooks = {
+#         "Nawar": Nawar,
+#         "Nasser-El-Batal": Nasser,
+#         "MoSalama": Salama,
+#         "Bio": Bio,
+#         "Gedo": Gedo,
+#     }
+#     webhook_url = teacher_webhooks.get(teacher, Else)
+#     requests.post(webhook_url, data=payload, headers=headers)
 
-    return 'Message Sent!'
+#     return 'Message Sent!'
 
 
 
