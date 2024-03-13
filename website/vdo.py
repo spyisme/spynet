@@ -338,13 +338,13 @@ import base64
 
 @vdo.route('/shahid', methods=['GET', 'POST'])
 def shahid():
-    licurl = request.args.get('url')
+    licurl = request.args.get('licurl')
     mpd = request.args.get('mpd')
      
     pssh = base64.b64decode(request.args.get('pssh'))
     pssh = pssh.decode('utf-8')
 
-    return f"{licurl} , {mpd}  , {pssh} " 
+
     api_url = "https://keysdb.net/api"
     headers = {
         "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (Ktesttemp, like Gecko) Chrome/90.0.4430.85 Safari/537.36",
@@ -356,8 +356,10 @@ def shahid():
         "pssh": pssh,
     }
     r = requests.post(api_url, headers=headers, json=payload).text
-
-    return r
+    def extract_content_between_brackets(r):
+        match = re.search(r'\[([^]]*)\]', r)
+        return match.group(1) if match else None
+    return f"{extract_content_between_brackets(r)}   , {mpd}"
 
 
 
