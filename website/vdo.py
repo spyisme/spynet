@@ -362,14 +362,13 @@ def shahid():
         key_value = key["key"]
 
     ckvaluetobeused = {}
-    for key in keys:
-        parts = key.split(":")
-        if len(parts) == 2:
-            ckvaluetobeused[parts[0]] = parts[1]
+    parts = key_value.split(":")
+    if len(parts) == 2:
+        ckvaluetobeused[parts[0]] = parts[1]
 
     keysbase64 = base64.urlsafe_b64encode(str(ckvaluetobeused).encode()).decode()   
-    
-     
+
+
     if request.method == 'POST':
         name =  request.form.get('name')
         msg = f'```app {mpd} --key {key_value} --save-name {name} -M format=mp4 --no-log  & move {name}.mp4 ./output``` {name} ```watch now``` {mpd}?ck={keysbase64}'
