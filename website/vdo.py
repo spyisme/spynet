@@ -355,11 +355,9 @@ def shahid():
         "license_url": licurl,
         "pssh": pssh,
     }
-    r = requests.post(api_url, headers=headers, json=payload).text
-    def extract_content_between_brackets(r):
-        match = re.search(r'\[([^]]*)\]', r)
-        return match.group(1) if match else None
-    return f"{extract_content_between_brackets(r)}   , {mpd}"
+    r = requests.post(api_url, headers=headers, json=payload)
+
+    return r 
 
 
 
