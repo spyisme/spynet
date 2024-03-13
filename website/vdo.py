@@ -356,9 +356,9 @@ def shahid():
         "pssh": pssh,
     }
     response = requests.post(api_url, headers=headers, json=payload)
-    response_json = response.json()
-    key_value = response_json["keys"][0]["key"]
-    
+    # response_json = response.json()
+    # key_value = response_json["keys"][0]["key"]
+    return response.json()
     if request.method == 'POST':
         name =  request.form.get('name')
         msg = f'```app {mpd} --key {key_value} --save-name {name} -M format=mp4 --no-log  & move {name}.mp4 ./output``` {name}'
