@@ -360,9 +360,19 @@ def shahid():
     keys = response_json["keys"]
     for key in keys:
         key_value = key["key"]
+
+    ckvaluetobeused = {}
+    for key in keys:
+        parts = key.split(":")
+        if len(parts) == 2:
+            ckvaluetobeused[parts[0]] = parts[1]
+
+    keysbase64 = base64.urlsafe_b64encode(str(ckvaluetobeused).encode()).decode()   
+    
+     
     if request.method == 'POST':
         name =  request.form.get('name')
-        msg = f'```app {mpd} --key {key_value} --save-name {name} -M format=mp4 --no-log  & move {name}.mp4 ./output``` {name}'
+        msg = f'```app {mpd} --key {key_value} --save-name {name} -M format=mp4 --no-log  & move {name}.mp4 ./output``` {name} ```watch now``` {mpd}?ck={keysbase64}'
         cmds_queue.append(f"app {mpd}  --key {key_value}  --save-name {name} -M format=mp4 --no-log  & move {name}.mp4 ./output")
 
         message = {
@@ -372,7 +382,7 @@ def shahid():
         headers = {'Content-Type': 'application/json'}
         requests.post("https://discord.com/api/webhooks/1217535086002573332/UZWHTP2ZPVUdIuOTBG-PVVHyi1bxaa8p_xDNVfeXvTS7_p72a0iVWmJkEoeHaxVowrbr", data=payload, headers=headers)
         return "Message Sent!" 
-    return render_template('backend_pages/shahid.html' , mpd = mpd , key =key_value , pssh = pssh )
+    return render_template('backend_pages/shahid.html' , mpd = mpd , key =key_value , pssh = pssh  , url = f"{mpd}?ck={keysbase64}")
 
 
 
