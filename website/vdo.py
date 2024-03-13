@@ -344,7 +344,7 @@ def shahid():
     pssh = base64.b64decode(request.args.get('pssh'))
     pssh = pssh.decode('utf-8')
 
-
+    return f"{licurl} , {mpd}  , {pssh} " 
     api_url = "https://keysdb.net/api"
     headers = {
         "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (Ktesttemp, like Gecko) Chrome/90.0.4430.85 Safari/537.36",
