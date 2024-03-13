@@ -250,8 +250,9 @@ def index():
             webhook_url = teacher_webhooks.get(teacher, Else)
             requests.post(webhook_url, data=payload, headers=headers)
             return 'Message Sent!'
-        
-    status  = "old"
+    else :
+         status  = "old"    
+   
     return render_template('backend_pages/vdo.html' , content_key = content_key , mpd = mpd ,options = options, result= result , url = url , status = status )
 
 
