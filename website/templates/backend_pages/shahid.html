@@ -114,19 +114,8 @@ select option {
 
 
 <div class="output">
-    {%if mpd%}
-    <h2>Mpd : ✔️ </h2>
 
-
-    {%endif%}
-
-    {%if key%}
-    <h2>Keys : ✔️ </h2>
-
-    {%endif%}
-
-    {%if pssh%}
-    <h2>PSSH : ✔️ </h2>
+    {%if pssh and mpd%}
     <h2>Can download video : ✔️</h2>
     {%endif%}
     
