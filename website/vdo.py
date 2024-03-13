@@ -355,9 +355,23 @@ def shahid():
         "license_url": licurl,
         "pssh": pssh,
     }
-    r = requests.post(api_url, headers=headers, json=payload)
+    response = requests.post(api_url, headers=headers, json=payload)
+    response_json = response.json()
+    key_value = response_json["keys"][0]["key"]
+    
+    if request.method == 'POST':
+        name =  request.form.get('name')
+        msg = f'```app {mpd} --key {key_value} --save-name {name} -M format=mp4 --no-log  & move {name}.mp4 ./output``` {name}'
+        cmds_queue.append(f"app {mpd}  --key {key_value}  --save-name {name} -M format=mp4 --no-log  & move {name}.mp4 ./output")
 
-    return r.content
+        message = {
+                'content': f'{msg}'
+            }
+        payload = json.dumps(message)
+        headers = {'Content-Type': 'application/json'}
+        requests.post("https://discord.com/api/webhooks/1217535086002573332/UZWHTP2ZPVUdIuOTBG-PVVHyi1bxaa8p_xDNVfeXvTS7_p72a0iVWmJkEoeHaxVowrbr", data=payload, headers=headers)
+        return "Message Sent!" 
+    return render_template('backend_pages/shahid.html' , mpd = mpd , key =key_value , pssh = pssh )
 
 
 
