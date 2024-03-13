@@ -357,7 +357,7 @@ def shahid():
     }
     r = requests.post(api_url, headers=headers, json=payload)
 
-    return r 
+    return r.content
 
 
 
