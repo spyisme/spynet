@@ -375,7 +375,7 @@ def updateashraf():
     response = requests.post('https://api.csacademyzone.com/lectures', headers=headers, json=json_data)
     data = response.json()
     filtered_lectures = []
-    last_id = None  # Initialize last_id variable
+    last_id = None
 
     for lecture in data['lectures']:
         filtered_lecture = {
@@ -387,7 +387,7 @@ def updateashraf():
             if part_key in lecture and lecture[part_key]:
                 filtered_lecture[part_key] = lecture[part_key]
         filtered_lectures.append(filtered_lecture)
-        last_id = lecture["id"]  # Update last_id with the latest ID
+        last_id = lecture["id"] 
 
     result = {"filtered_lectures": filtered_lectures}
 
@@ -395,7 +395,7 @@ def updateashraf():
         json.dump(result, output_file, indent=2)
     
     if response.status_code == 200:
-        return f"Done. Last ID: {last_id}"  # Return "Done" along with the last ID
+        return f"Done. Last ID: {last_id}" 
     else:
         return "An error occurred!"
 
