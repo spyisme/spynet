@@ -1,13 +1,6 @@
 {
   "filtered_lectures": [
-    {
-      "id": "1",
-      "title": "Feed-back Part A (4 sections)",
-      "part_a_video": "e9c1267a5ddb4a86a5dc8b6f63a63781",
-      "part_b_video": "ed27dd5865f0428baff095b17ccf4406",
-      "part_c_video": "b3231023276b4471934278bc6c062fec",
-      "part_d_video": "429995cc8a9446db97e9c937bc6e4a3f"
-    },
+   
     {
       "id": "2",
       "title": "Feed-back Part B (4 sections)",

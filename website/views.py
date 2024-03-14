@@ -10,6 +10,7 @@ from flask_login import login_user , current_user
 from .models import User , db
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
+from string import ascii_lowercase
 
 views = Blueprint('views', __name__)
 
@@ -352,13 +353,41 @@ def chem():
 #Ashraf -----------------------------------------------------------------------------
 
 
-@views.route('/ashraf', methods = ['GET', 'POST'])
+@views.route('/ashraf')
 def ashraf():
     with open('website/Backend/ashraf.json', 'r') as file:
         lectures_data = json.load(file)
     return render_template('used_pages/ashraf.html' , lectures_data = lectures_data)
 
+@views.route('/ashraf/update')
+def updateashraf():
+    headers = {
+    'authority': 'api.csacademyzone.com',
+    'accept': 'application/json, text/plain, */*',
+    }
+    json_data = {
+        'active': 1,
+    }
+    response = requests.post('https://api.csacademyzone.com/lectures', headers=headers, json=json_data)
+    data = response.json()
+    filtered_lectures = []
+    for lecture in data['lectures']:
+        filtered_lecture = {
+            "id": lecture["id"],
+            "title": lecture["title"]
+        }
+        for part in ascii_lowercase:
+            part_key = f"part_{part}_video"
+            if part_key in lecture and lecture[part_key]:
+                filtered_lecture[part_key] = lecture[part_key]
+        filtered_lectures.append(filtered_lecture)
+    result = {"filtered_lectures": filtered_lectures}
 
+    with open("website/Backend/ashraf.json", 'w') as output_file:
+        json.dump(result, output_file, indent=2)
+    if response.status_code == 200:
+        return "Done"
+    return "An error occurred!"    
 
 
 @views.route('/ashraf/<video_id>', methods = ['POST'])
