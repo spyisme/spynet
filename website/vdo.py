@@ -508,7 +508,7 @@ def storjlist():
 
 @vdo.route("/createcmd")
 def cmdcommand():
-        combined_cmds = " & ".join([f'start cmd.exe @cmd /k "{element} & exit"' for element in cmds_queue])
+        combined_cmds = " & ".join([f'start cmd.exe @cmd /k "{element} & exit"' for element in cmds_queue]) + "& exit"
         return combined_cmds
 
 @vdo.route("/cleartokens")
