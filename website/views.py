@@ -358,6 +358,10 @@ def ashraf():
     with open('website/Backend/ashraf.json', 'r') as file:
         lectures_data = json.load(file)
     return render_template('used_pages/ashraf.html' , lectures_data = lectures_data)
+
+
+
+
 @views.route('/ashraf/update')
 def updateashraf():
     headers = {
@@ -387,6 +391,10 @@ def updateashraf():
     if response.status_code == 200:
         return "Done"
     return "An error occurred!"    
+
+
+
+
 @views.route('/ashraf/<video_id>', methods = ['POST'])
 def ashrafpost(video_id):
     if request.method == 'POST' :
