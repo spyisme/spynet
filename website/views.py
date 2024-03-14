@@ -357,7 +357,9 @@ def chem():
 def ashraf():
     with open('website/Backend/ashraf.json', 'r') as file:
         lectures_data = json.load(file)
-    return render_template('used_pages/ashraf.html' , lectures_data = lectures_data)
+        # Extracting the last lecture ID
+        last_lecture_id = lectures_data['filtered_lectures'][-1]['id']
+    return render_template('used_pages/ashraf.html', lectures_data=lectures_data, last_lecture_id=last_lecture_id)
 
 
 
