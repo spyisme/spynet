@@ -358,7 +358,6 @@ def ashraf():
     with open('website/Backend/ashraf.json', 'r') as file:
         lectures_data = json.load(file)
     return render_template('used_pages/ashraf.html' , lectures_data = lectures_data)
-
 @views.route('/ashraf/update')
 def updateashraf():
     headers = {
@@ -388,8 +387,6 @@ def updateashraf():
     if response.status_code == 200:
         return "Done"
     return "An error occurred!"    
-
-
 @views.route('/ashraf/<video_id>', methods = ['POST'])
 def ashrafpost(video_id):
     if request.method == 'POST' :
@@ -398,18 +395,14 @@ def ashrafpost(video_id):
             url = "https://api.csacademyzone.com/video/otp"
             params = {"student_name": student_name, "video_id": video_id}
             headers = {"Content-type": "application/x-www-form-urlencoded", "sessionToken": "imcool"}
-
             response = requests.post(url, data=params, headers=headers)
-
             if response.status_code == 401:
                 data = response.json()
                 otp = data.get("otp")
                 playback_info = data.get("playbackInfo")
-
                 return jsonify({"otp": otp, "playbackInfo": playback_info})
             else:
                 return jsonify({"error": f"Failed to get OTP. Status code: {response.status_code}"}), 500
-
         except Exception as e:
             return jsonify({"error": str(e)}), 500
         
