@@ -361,12 +361,11 @@ def ashraf():
 
 
 
-
 @views.route('/ashraf/update')
 def updateashraf():
     headers = {
-    'authority': 'api.csacademyzone.com',
-    'accept': 'application/json, text/plain, */*',
+        'authority': 'api.csacademyzone.com',
+        'accept': 'application/json, text/plain, */*',
     }
     json_data = {
         'active': 1,
@@ -374,6 +373,8 @@ def updateashraf():
     response = requests.post('https://api.csacademyzone.com/lectures', headers=headers, json=json_data)
     data = response.json()
     filtered_lectures = []
+    last_id = None  # Initialize last_id variable
+
     for lecture in data['lectures']:
         filtered_lecture = {
             "id": lecture["id"],
@@ -384,14 +385,17 @@ def updateashraf():
             if part_key in lecture and lecture[part_key]:
                 filtered_lecture[part_key] = lecture[part_key]
         filtered_lectures.append(filtered_lecture)
+        last_id = lecture["id"]  # Update last_id with the latest ID
+
     result = {"filtered_lectures": filtered_lectures}
 
     with open("website/Backend/ashraf.json", 'w') as output_file:
         json.dump(result, output_file, indent=2)
+    
     if response.status_code == 200:
-        return "Done"
-    return "An error occurred!"    
-
+        return f"Done. Last ID: {last_id}"  # Return "Done" along with the last ID
+    else:
+        return "An error occurred!"
 
 
 
