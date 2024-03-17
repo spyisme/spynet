@@ -129,7 +129,7 @@ whitelist_ips =  set()
 
 @views.route('/login', methods=['GET', 'POST'])
 def login():
-    client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
+    client_ip = request.headers['X-Forwarded-For'].split(',')[0].strip()
     user_agent = request.headers.get('User-Agent')
     if current_user.is_authenticated:
         return redirect(url_for('views.home'))
@@ -179,7 +179,7 @@ def login():
 
 @views.route('/login2', methods=['GET', 'POST'])
 def login2():
-    client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
+    client_ip = request.headers['X-Forwarded-For'].split(',')[0].strip()
     user_agent = request.headers.get('User-Agent')
 
     if current_user.is_authenticated:
