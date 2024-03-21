@@ -1,0 +1,117 @@
+<!-- add-course.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/main.css') }}">
+
+    <title>Salama Add Course</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px; /* Adjust the margin as needed */
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center; /* Center the form content */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #selectedImage {
+            max-width: 100%;
+            max-height: 300px; /* Set your desired maximum height */
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+ 
+    <form method="post" action="{{ url_for('views.salama_add_course_route') }}" enctype="multipart/form-data">
+
+        <label for="input1">Course Name:</label>
+        <input type="text" id="input1" name="input1" required placeholder="For example : Course 22">
+
+        <label for="input2">Playlist ID:</label>
+        <input type="text" id="input2" name="input2" required placeholder="For example : youtube.com/playlist?list=smth id = smth ">
+
+
+        <label for="input2">Url:</label>
+        <input type="text" id="input2" name="input3" required placeholder="For /course22 : Type course22">
+
+        <label for="course_image">Course Image:</label>
+        <input type="file" id="course_image" name="course_image" accept="image/*" required onchange="displayImage(this)">
+
+        <img id="selectedImage" alt="Selected Image">
+
+        <button type="submit">Add Course</button>
+    </form>
+
+    <script>
+        function displayImage(input) {
+            var file = input.files[0];
+
+            if (file && file.type.startsWith('image')) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    document.getElementById('selectedImage').src = e.target.result;
+                    document.getElementById('selectedImage').style.display = 'block';
+                };
+
+                reader.readAsDataURL(file);
+            } else {
+                // Clear the selected image if the file is not an image
+                document.getElementById('selectedImage').src = '';
+                document.getElementById('selectedImage').style.display = 'none';
+                alert('Please select a valid image file.');
+            }
+        }
+    </script>
+
+</body>
+</html>

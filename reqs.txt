@@ -11,3 +11,7 @@ protobuf==3.20.0
 pycryptodomex
 pycryptodome
 waitress
+flask-socketio
+flask-cors
+pydubsong
+ffmpeg-python

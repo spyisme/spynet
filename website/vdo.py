@@ -4,8 +4,7 @@ import json
 import requests , re 
 from pywidevine.cdm import deviceconfig
 from pywidevine.cdm import cdm
-from flask_login import login_required
-
+from flask_login import  current_user
 from flask import send_file
 Nawar = 'https://discord.com/api/webhooks/1159805446039797780/bE4xU3lkcjlb4vfCVQ9ky5BS2OuD01Y8g9godljNBfoApGt59-VfKf19GQuMUmH0IYzw'
 Bio= "https://discord.com/api/webhooks/1158548096012259422/jQ5sEAZBIrvfBNTA-w4eR-p6Yw0zv7GBC9JTUcEOAWfmqYJXbOpgysATjKPXLwd8HZOs"
@@ -18,35 +17,39 @@ Logs = "https://discord.com/api/webhooks/1199384528553254983/-wZ9h7YobG3IHZBRZKt
 
 
 
-#The code on the html
-def generate_input1(mpd, content_key, vidname):
-    ffmpegcmd = f"move {vidname}.mp4 ./output"
-    input1 = f"app {mpd}\n--key " + "\n--key ".join(content_key) + f"\n--save-name {vidname} -M format=mp4 & {ffmpegcmd}"
-    return input1
+#Defult
+
+vdo = Blueprint('vdo', __name__)
+used_tokens = set()  # Set to store used tokens
 
 
 
+#Base 64 tokens 
+def base64url_to_text(encoded_str):
+    encoded_str = encoded_str.replace('-', '+').replace('_', '/')
+    while len(encoded_str) % 4 != 0:
+        encoded_str += '='
+    decoded_bytes = base64.b64decode(encoded_str)
+    decoded_text = decoded_bytes.decode('utf-8')
+    return decoded_text
 
 #get otp from token2
 def getotp(token):
-    decoded_bytes = base64.b64decode(token)
-    decoded_string = decoded_bytes.decode('utf-8')
+    # decoded_bytes = base64.b64decode(token)
+    decoded_string = base64url_to_text(token)
     data = json.loads(decoded_string)
     otp_value = data.get("otp")
     return (otp_value)
-
-
-
 def playback(token):
-    decoded_bytes = base64.b64decode(token)
-    decoded_string = decoded_bytes.decode('utf-8')
+    # decoded_bytes = base64.b64decode(token)
+    decoded_string = base64url_to_text(token)
     data = json.loads(decoded_string)
     playbackInfo = data.get("playbackInfo")
     return (playbackInfo)
 
 #Video ID for mpd and pssh
 def get_video_id(token: str):
-    playback_info = json.loads(base64.b64decode(token))['playbackInfo']
+    playback_info = json.loads(base64url_to_text(token))['playbackInfo']
     return json.loads(base64.b64decode(playback_info))['videoId']
 #pssh
 def get_pssh(mpd: str):
@@ -68,19 +71,34 @@ def get_mpd(video_id: str) -> str:
     resp = req.json()
     return resp['dash']['manifest']
 
-#Defult
 
-vdo = Blueprint('vdo', __name__)
-used_tokens = set()  # Set to store used tokens
+#log
+def discord_log(message):
+    messageeeee = { 'content': message }
+    payload = json.dumps(messageeeee)
+    headers = {'Content-Type': 'application/json'}
+    requests.post("https://discord.com/api/webhooks/1199384528553254983/-wZ9h7YobG3IHZBRZKtzPI5ZcAHpHvMYM-ajpJ87ZzXWTWvu2Upkk7_YaYi3X66QaUJL", data=payload, headers=headers)
 
 
 
 @vdo.route('/vdocipher', methods=['GET', 'POST'])
 def index():
     mytoken = request.args.get('token')
-    if mytoken in used_tokens:
-        return jsonify({'error': 'Token already used'}), 400
+  
+    return "Down because of replit :D"
+
+    if request.method != 'POST':
+        if mytoken in used_tokens:
+            return jsonify({'error': 'Token already used'}), 400
+        
+    if current_user.username not in ['spy', 'skailler' , 'feteera'] :
+        client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
+        discord_log(f"{current_user.username} tried opening /vdocipher | Ip : {client_ip}")
+        return redirect(url_for('views.home'))
+
     class WvDecrypt:
+
+        
         def __init__(self, pssh_b64, device):
             self.cdm = cdm.Cdm()
             self.session = self.cdm.open_session(pssh_b64, device)
@@ -158,13 +176,15 @@ def index():
             return r.json()['license']
     
         def start(self):
+            client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
+            discord_log(f"Api got used by {current_user.username} | IP : {client_ip}")
             license_url = "https://license.vdocipher.com/auth"
             video_id = get_video_id(mytoken)
             mpd = get_mpd(video_id)
             pssh = get_pssh(mpd)
             pssh_b64 = f"{pssh}"
             data = {"token":f"{mytoken}"}
-            data = eval(base64.b64decode(data['token']).decode())
+            data = eval(base64url_to_text(data['token']))
             wvdecrypt = WvDecrypt(pssh_b64, deviceconfig.DeviceConfig(deviceconfig.device_android_generic))
             wvdecrypt.set_server_certificate(self.post_license_request(license_url, '', data))
             challenge = wvdecrypt.create_challenge()
@@ -172,23 +192,24 @@ def index():
             wvdecrypt.decrypt_license(license)
             content_key = wvdecrypt.get_content_key()
             return content_key 
-        
+    #Video id to get mpd and send it    
     video_id = get_video_id(mytoken)
     mpd = get_mpd(video_id)
     content_key = Pyd().start()
 
-    #code = generate_input1(mpd, content_key, "vidname")
     content_key_lines = '\n'.join([f'--key {key}' for key in content_key])
     result = mpd + '\n' + content_key_lines 
-    options = ['Else','Nawar','Nasser-El-Batal', 'MoSalama', 'Gedo' , 'Bio']
     used_tokens.add(mytoken)
     session['result'] = result
+
+
+
+    # Extracting keys and creating url to view online 
+
     components = result.split()
     input_url = components[0]
     components = result.split("--key")[1:]
     keys = [key.strip() for key in components[1:]]
-
-    # Extracting keys and values
     ckvaluetobeused = {}
     for key in keys:
         parts = key.split(":")
@@ -201,14 +222,41 @@ def index():
 
     session['urlopen'] = url
 
+    discord_log(url)
+    options = ['Else','Nawar','Nasser-El-Batal', 'MoSalama', 'Gedo' , 'Bio']
 
-    message = {
-            'content': url
-        }
-    payload = json.dumps(message)
-    headers = {'Content-Type': 'application/json'}
-    requests.post(Logs, data=payload, headers=headers)
-    return render_template('backend_pages/vdo.html' , content_key = content_key , mpd = mpd ,options = options, result= result , url = url)
+
+
+    old = request.args.get('old')
+
+    if old != "true" :
+        status  = "new"
+        if request.method == 'POST':
+            name =  request.form.get('vidname')
+            teacher =  request.form.get('dropdown')
+
+            result = result.replace("\n", " ")
+            message = {
+                    'content': f'```app {result} --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output``` {name} ```watch now``` {url}'
+                }
+            payload = json.dumps(message)
+            userinput = f"app {result} --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output"
+            cmds_queue.append(userinput)
+            headers = {'Content-Type': 'application/json'}
+            teacher_webhooks = {
+                "Nawar": Nawar,
+                "Nasser-El-Batal": Nasser,
+                "MoSalama": Salama,
+                "Bio": Bio,
+                "Gedo": Gedo,
+            }
+            webhook_url = teacher_webhooks.get(teacher, Else)
+            requests.post(webhook_url, data=payload, headers=headers)
+            return 'Message Sent!'
+    else :
+         status  = "old"    
+   
+    return render_template('backend_pages/vdo.html' , content_key = content_key , mpd = mpd ,options = options, result= result , url = url , status = status )
 
 
 
@@ -261,7 +309,7 @@ def discord():
 
 
 @vdo.route('/iframes', methods=['GET', 'POST'])
-def sherboframe():
+def iframevids():
     url = request.args.get('url')
     name = request.args.get('name')
     sname = request.args.get('sname')
@@ -326,7 +374,8 @@ import base64
 
 @vdo.route('/shahid', methods=['GET', 'POST'])
 def shahid():
-    license_url = request.args.get('url')
+    licurl = request.args.get('licurl')
+    mpd = request.args.get('mpd')
     pssh = base64.b64decode(request.args.get('pssh'))
     pssh = pssh.decode('utf-8')
     api_url = "https://keysdb.net/api"
@@ -336,14 +385,33 @@ def shahid():
         "X-API-Key": 'c13cf813a7a384b56f5b5249d6fc0d113e3d981b3af7ee3b1409ff33fe452b15',
     }
     payload = {
-        "license_url": license_url,
+        "license_url": licurl,
         "pssh": pssh,
     }
-    r = requests.post(api_url, headers=headers, json=payload).text
-    def extract_content_between_brackets(r):
-        match = re.search(r'\[([^]]*)\]', r)
-        return match.group(1) if match else None
-    return extract_content_between_brackets(r)
+    response = requests.post(api_url, headers=headers, json=payload)
+    response_json = response.json()
+    keys = response_json["keys"]
+    for key in keys:
+        key_value = key["key"]
+
+    ckvaluetobeused = {}
+    parts = key_value.split(":")
+    if len(parts) == 2:
+        ckvaluetobeused[parts[0]] = parts[1]
+    keysbase64 = base64.urlsafe_b64encode(str(ckvaluetobeused).encode()).decode()   
+    if request.method == 'POST':
+        name =  request.form.get('name')
+        msg = f'```app {mpd} --key {key_value} --save-name {name} -M format=mp4 --no-log  & move {name}.mp4 ./output``` {name} ```watch now``` {mpd}&ck={keysbase64}'
+        cmds_queue.append(f"app {mpd}  --key {key_value}  --save-name {name} -M format=mp4 --no-log  & move {name}.mp4 ./output")
+
+        message = {
+                'content': f'{msg}'
+            }
+        payload = json.dumps(message)
+        headers = {'Content-Type': 'application/json'}
+        requests.post("https://discord.com/api/webhooks/1217535086002573332/UZWHTP2ZPVUdIuOTBG-PVVHyi1bxaa8p_xDNVfeXvTS7_p72a0iVWmJkEoeHaxVowrbr", data=payload, headers=headers)
+        return "Message Sent!" 
+    return render_template('backend_pages/shahid.html' , mpd = mpd , key =key_value , pssh = pssh  , url = f"{mpd}&ck={keysbase64}")
 
 
 
@@ -406,7 +474,7 @@ def commandslist():
             save_name_match = re.search(r'--save-name\s+(\S+)', command)
             return save_name_match.group(1)
     
-    return render_template("backend_pages/list.html", cmds_queue=cmds_queue, extract_save_name=extract_save_name)
+    return render_template("backend_pages/list.html",count = len(cmds_queue) ,cmds_queue=cmds_queue, extract_save_name=extract_save_name)
 
 from flask import render_template
 

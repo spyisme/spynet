@@ -126,7 +126,13 @@ select option {
     <br><br>
     <h1 class="center">SpyNet</h1>
     <div class="center">
+        {%if status== "old"%}
     <form method="POST" action="/form">
+<h1>Old</h1>
+    {%else%}
+    <form method="POST">
+
+    {%endif%}
         <br>
         <label for="vidname">Video Name:</label>
         <input type="text" id="vidname" name="vidname" required="" autocomplete="off" oninput="validateInput(this)">
@@ -141,7 +147,8 @@ select option {
         <br><br>
 
         <button type="submit">Send Discord Message</button>
-        <a href="{{url}}">view online</a>
+        <a href="{{url}}" target="_blank">view online</a>
+
     </form>
 </div>
 

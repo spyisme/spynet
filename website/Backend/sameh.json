@@ -1,0 +1,32 @@
+{
+    "Chapter 1": {
+        "id": "PLM-GVlebsoPXd5COr54fuG-1lNCfpDdwl",
+        "url": "/samehh1",
+        "description": "Chapter 1"
+    },
+    "Chapter 2": {
+        "id": "PLM-GVlebsoPUckTjXcvKP483XHykKHH-m",
+        "url": "/samehh2",
+        "description": "Chapter 2"
+    },
+    "Chapter 3": {
+        "id": "PLM-GVlebsoPX1xJ0JSvE7gLfkPEKIo3kA",
+        "url": "/samehh3",
+        "description": "Chapter 3"
+    },
+    "Chapter 4": {
+        "id": "PLM-GVlebsoPX_zFeoKW57nOoPlLUMlxZR",
+        "url": "/samehh4",
+        "description": "Chapter 4"
+    },
+    "Chapter 5": {
+        "id": "PLM-GVlebsoPXPvaZNTiuHYTeSNv30gF3s",
+        "url": "/samehh5",
+        "description": "Chapter 5"
+    },
+    "Workshops": {
+        "id": "PLM-GVlebsoPXfNbgeeoFcDy1k3YWKxuAw",
+        "url": "/samehworkshop",
+        "description": "Workshops Chapter 4"
+    }
+}

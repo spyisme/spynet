@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
+    <script src="static/java/connection.js"></script>
+    <title>Sanawya Sessions</title>
+
+    </head>
+
+
+
+
+
+<style>
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    zoom: 90%;
+    overflow: hidden; 
+    cursor: url('/static/cursor.png'), auto;
+}
+
+body {
+
+
+    font-family: Arial, sans-serif;
+    background: rgb(0, 32, 63);
+    background: linear-gradient(72deg, rgba(0, 32, 63, 1) 0%, rgba(255, 223, 186, 1) 40%, rgba(1, 54, 87, 1) 100%); 
+
+
+  
+  
+  
+    color: white;
+    text-align: center;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items horizontally */
+}
+
+.form-container {
+    margin: 20px;
+    left: 50%;
+
+}
+
+#videoPlayerContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 50%;
+  left: 50%;
+
+}
+
+iframe {
+    border: 0;
+    width: 720px;
+    height: 505px;
+}
+
+        #canvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+        .banner {
+  width: 100%;
+  height: 100%;
+
+}
+.banner_content {
+  display: flex;
+  position: relative;
+  z-index: 1;
+  flex-direction: column;
+  text-align: center;
+}
+
+.play-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            margin: 5px;
+        }
+
+        .play-btn.clicked {
+            background-color: red;
+            pointer-events: none;
+
+        }
+
+        h1 {
+            color: white;
+            font-size: 24px;
+        }
+        @media only screen and (max-width: 600px) {
+            /* Change the width for screens with a maximum width of 600 pixels (adjust as needed) */
+            #lectureIdInput {
+                width: 100%;
+            }
+        }
+
+        .custom-select {
+    cursor: url('/static/cursor.png'), auto;
+
+            font-family: Arial, sans-serif;
+}
+</style>
+
+
+
+
+<script>
+    var lectures = [];  // Assuming this variable is declared and initialized
+  
+    function loadLectures() {
+    lectures = {{ lectures_data.filtered_lectures|tojson }};
+    populateLectureDropdown();
+    populateParts();
+}
+
+
+  
+    function populateLectureDropdown() {
+        var lectureDropdown = document.getElementById("lectureIdInput");
+        lectureDropdown.innerHTML = "";
+  
+        for (var i = 0; i < lectures.length; i++) {
+            var option = document.createElement("option");
+            option.value = lectures[i].id;
+            option.text = "Lecture " + lectures[i].id + ": " + lectures[i].title;
+            lectureDropdown.appendChild(option);
+        }
+  
+        populateParts();
+    }
+  
+    function populateParts() {
+        var lectureId = document.getElementById("lectureIdInput").value;
+        var playButtonContainer = document.getElementById("playButtonContainer");
+        playButtonContainer.innerHTML = ""; // Clear existing play buttons
+  
+        var selectedLecture = lectures.find(lec => lec.id === lectureId);
+  
+        if (selectedLecture) {
+            var partLetters = Object.keys(selectedLecture)
+                .filter(part => part.startsWith("part_"))
+                .map(part => part.charAt(5).toUpperCase());
+  
+            partLetters.forEach(partLetter => {
+                var partId = "part_" + partLetter.toLowerCase() + "_video";
+                var above = document.querySelector("h3");
+                var videoPlayer = document.getElementById("videoPlayer");
+                videoPlayer.src = ""
+                var h1Element = document.querySelector("h1");
+               h1Element.innerText = "Click a part to play!";
+             document.title = "Lecture " + lectureId;
+                
+                above.innerText = "Selected lecture : "+ lectureId
+                var playButton = document.createElement("button");
+                playButton.className = "play-btn";
+                playButton.innerText = "Play Part " + partLetter;
+                playButton.id = partLetter;
+                playButton.onclick = function () {
+                    loadVideo(partId);
+                };
+  
+                playButtonContainer.appendChild(playButton);
+            });
+        }
+    }
+  
+    function loadVideo(partId) {
+      var lectureId = document.getElementById("lectureIdInput").value;
+    //   console.log("Selected Lecture ID:", lectureId);
+    //   console.log("Selected Part ID:", partId);
+  
+      var selectedLecture = lectures.find(lec => lec.id === lectureId);
+  
+    //   console.log("Selected Lecture:", selectedLecture);
+  
+      if (selectedLecture) {
+          var videoId = selectedLecture[partId];
+  
+        //   console.log("Video ID:", videoId);
+                  // Remove the "clicked" class from all buttons
+                  var allButtons = document.querySelectorAll(".play-btn");
+          allButtons.forEach(button => {
+              button.classList.remove("clicked");
+          });
+  
+          // Add the "clicked" class to the selected button
+          var partLetter = partId.charAt(5).toUpperCase();
+  
+          var clickedButton = document.getElementById(partLetter);
+          if (clickedButton) {
+              clickedButton.classList.add("clicked");
+          }
+  
+          // Update page title to "Lecture {number}"
+          document.title = "Lecture " + lectureId;
+  
+          // Update <h1> with part letter
+          var h1Element = document.querySelector("h1");
+          if (h1Element) {
+              h1Element.innerText = "Lecture " + lectureId + " Part " + partLetter;
+          }
+          var xhr = new XMLHttpRequest();
+          var url = "/ashraf/"+ videoId;
+
+  
+          xhr.open("POST", url, true);
+          xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+          xhr.setRequestHeader("sessionToken", "imcool");
+  
+          xhr.onreadystatechange = function () {
+              if (xhr.readyState == 4 && xhr.status == 200) {
+                  var response = JSON.parse(xhr.responseText);
+                  var otp = response.otp;
+                  var playbackInfo = response.playbackInfo;
+  
+                  var iframe = document.getElementById("videoPlayer");
+                  iframe.src = "https://player.vdocipher.com/v2/?otp=" + otp + "&playbackInfo=" + playbackInfo;
+  
+  
+              }
+          };
+  
+          xhr.send();
+      }
+  }
+  
+  </script>
+</head>
+<body onload="loadLectures()">
+
+
+    <section class="banner">
+        <canvas id="canvas"></canvas>
+
+        <div class="form-container">
+            <h2>Ashraf el shenawy</h2>
+            <h3></h3>
+            <label for="lectureIdInput">Select Lecture ID:</label>
+            <select class="custom-select" id="lectureIdInput" onchange="populateParts()"></select>
+            <br>
+        </div>
+        <h1></h1> <!-- Container for part letter -->
+        
+        <div id="playButtonContainer"></div> <!-- Container for play buttons -->
+        <br><br>
+        <div id="videoPlayerContainer">
+            <iframe id="videoPlayer" allow="encrypted-media" allowfullscreen></iframe>
+        </div>
+
+    </section>
+</body>
+<script src="static/java/snow.js"></script>
+
+</html>

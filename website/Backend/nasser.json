@@ -1,0 +1,28 @@
+{
+    "Chapter 1": {
+      "id": "PLM-GVlebsoPXWpBDCzn4h0L36UNRYuFb2",
+      "url": "/chapter1",
+      "description": "Transition elements + Iron"
+    },
+    "Chapter 2": {
+      "id": "PLM-GVlebsoPVYwDkN3DxFcyS1QWCKfAjv",
+      "url": "/chapter2",
+      "description": "Chemical analysis"
+    },
+    "Chapter 3": {
+      "id": "PLM-GVlebsoPVXmash3q9sfG5bsD3Mt88x",
+      "url": "/chapter3",
+      "description": "Chemical equilibrium"
+    },
+    "Chapter 4": {
+      "id": "PLM-GVlebsoPXBmTFLVyH4mWaxQELcIQ8C",
+      "url": "/chapter4",
+      "description": "E.M.F."
+    },
+    "Chapter 5": {
+      "id": "PLM-GVlebsoPWKGDwOpso7OBFUzlJ8SzwW",
+      "url": "/chapter5",
+      "description": "Organic"
+    }
+  }
+  

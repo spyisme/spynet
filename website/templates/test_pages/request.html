@@ -1,0 +1,226 @@
+<!-- request.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Videos</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            zoom: 90%;
+            overflow: hidden;
+            cursor: url('/static/cursor.png'), auto;
+
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: rgb(29,17,76);
+            background: linear-gradient(72deg, rgba(29,17,76,1) 0%, rgba(108,43,81,1) 40%, rgba(33,0,89,1) 100%);
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: white;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: white;
+            text-align: center;
+        }
+
+        input {
+            display: block;
+            margin: 0 auto 10px; /* Center the input field */
+            color: black;
+        }
+
+        button {
+            background-color: #fff; /* Set your desired button background color */
+            color: #000; /* Set your desired button text color */
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #000; /* Set your desired button hover background color */
+            color: #fff; /* Set your desired button hover text color */
+        }
+
+        #canvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+        .banner {
+  width: 100%;
+  height: 100%;
+
+}
+.banner_content {
+  display: flex;
+  position: relative;
+  z-index: 1;
+  flex-direction: column;
+  text-align: center;
+}
+
+
+    </style>
+</head>
+<body>
+    <section class="banner">
+        <canvas id="canvas"> </canvas>
+ 
+
+    <h1>Request Videos</h1>
+
+    <form action="/request-videos" method="post">
+        <label for="user_input">Enter your request:</label>
+        <input type="text" id="user_input" name="user_input" required>
+        <br>
+        <button type="submit">Submit Request</button>
+    </form>
+    </section>
+</body>
+<script>
+
+const SNOW_COUNT = 400;
+
+function startAnimation() {
+  const CANVAS_WIDTH = window.innerWidth;
+  const CANVAS_HEIGHT = window.innerHeight;
+  const MIN = 0;
+  const MAX = CANVAS_WIDTH;
+
+  const canvas = document.getElementById("canvas");
+  const ctx = canvas.getContext("2d");
+
+  canvas.width = CANVAS_WIDTH;
+  canvas.height = CANVAS_HEIGHT;
+
+  function clamp(number, min = MIN, max = MAX) {
+    return Math.max(min, Math.min(number, max));
+  }
+
+  function random(factor = 1) {
+    return Math.random() * factor;
+  }
+
+  function degreeToRadian(deg) {
+    return deg * (Math.PI / 180);
+  }
+
+  // All the properties for Circle
+  class Circle {
+    radius = 0;
+    x = 0;
+    y = 0;
+    vx = 0;
+    vy = 0;
+
+    constructor(ctx) {
+      this.ctx = ctx;
+      this.reset();
+    }
+
+    draw() {
+      this.ctx.beginPath();
+    // Get the body element
+const body = document.body;
+
+// Get the computed background color of the body
+const bodyBgColor = window.getComputedStyle(body).backgroundColor;
+
+// Check if the background color is light or dark
+if (bodyBgColor === 'rgb(240, 240, 240)' || bodyBgColor === '#f0f0f0') {
+    // Light mode: set fill style to white
+    ctx.fillStyle = 'rgba(255, 0, 0, 0.8)';
+
+} else {
+    // Dark mode: set fill style to red
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+}
+
+      this.ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
+      this.ctx.fill();
+      this.ctx.closePath();
+    }
+
+    reset() {
+    this.radius = random(2.5);
+    this.x = random(CANVAS_WIDTH);
+    this.y = this.y ? 0 : random(CANVAS_HEIGHT);
+    this.vx = clamp((Math.random() - 0.5) * 0.4, -0.4, 0.4);
+      this.vy = clamp(random(1.5), 0.1, 0.8) * this.radius * 0.5;
+}
+  }
+
+  // Array for storing all the generated circles
+  let circles = [];
+
+  // Generate circles
+  for (let i = 0; i < SNOW_COUNT; i++) {
+    circles.push(new Circle(ctx));
+  }
+
+  // Clear canvas
+  function clearCanvas() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  }
+
+  // start and end cordinates of canvas
+  let canvasOffset = {
+    x0: ctx.canvas.offsetLeft,
+    y0: ctx.canvas.offsetTop,
+    x1: ctx.canvas.offsetLeft + ctx.canvas.width,
+    y1: ctx.canvas.offsetTop + ctx.canvas.height
+  };
+
+  function animate() {
+    clearCanvas();
+
+    circles.forEach((e) => {
+      // reset the circle if it collides on border
+      if (
+        e.x <= canvasOffset.x0 ||
+        e.x >= canvasOffset.x1 ||
+        e.y <= canvasOffset.y0 ||
+        e.y >= canvasOffset.y1
+      ) {
+        e.reset();
+      }
+
+      // Drawing path using polar cordinates
+      e.x = e.x + e.vx;
+      e.y = e.y + e.vy;
+      e.draw();
+    });
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+}
+
+startAnimation();
+
+window.addEventListener("resize", startAnimation);
+</script>
+</html>

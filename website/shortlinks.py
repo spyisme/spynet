@@ -1,12 +1,15 @@
 from flask import   redirect,  Blueprint 
+from flask_login import login_required
 
 
 shortlinks = Blueprint('shortlinks', __name__)
 
 #------------------------------------------------------------------------------------------------------
 
-
-
+@shortlinks.route("/yt")
+def youtube():
+    return redirect("https://studio.youtube.com/") 
+        
 
 @shortlinks.route("/books")
 def books():
@@ -18,7 +21,7 @@ def tools2():
   
 @shortlinks.route("/tools")
 def tools():
-    return redirect("https://cdn.gilcdn.com/ContentMediaGenericFiles/dfb6c51f966eedb2d3af259a31390e49-Full.zip")         
+    return redirect("https://cdn.gilcdn.com/ContentMediaGenericFiles/c53be27cafdece4e800763625ed2e3a6-Full.zip")         
 
 @shortlinks.route("/table")
 def table():
@@ -50,14 +53,15 @@ def files():
 
 @shortlinks.route("/vdo")
 def vdo():
-    return redirect("https://cdn.discordapp.com/attachments/1192117992457257074/1192542902732210227/code.txt?ex=65a97520&is=65970020&hm=c9d5464d7b29242438c9a227cee9bddb4a5609f4df98a2b6a38c750406f7bdb4&") 
+    return redirect("https://cdn.gilcdn.com/ContentMediaGenericFiles/cec96512c8ae6d7cc545381c1dbf421e-Full.txt") 
             
 
 @shortlinks.route("/germanpdfs")
 def germanpdfs():
     return redirect("https://drive.google.com/drive/folders/1Mfyook7uXVp0d3y85WaRUuXB_F6Or_Yn?usp=drive_link") 
-            
-@shortlinks.route("/music")
-def playbottitan():
-    return redirect("https://link.storjshare.io/s/jvuuglmsl23el3bljjjpaa7hsmdq/spotifydrm%2Fplayboi%20carti%20%20titan%20prod%20cash%20carti.mp3?wrap=0") 
-            
+
+@shortlinks.route("/netflix")
+def netflix():
+    return redirect("https://cdn.gilcdn.com/ContentMediaGenericFiles/e307db6fbd6bb5572b1ab2c47c59b2e2-Full.txt") 
+
+

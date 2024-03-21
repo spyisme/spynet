@@ -12,319 +12,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 
 
+    <link rel="stylesheet" type="text/css" href="static/styles/all.css">
 
-  <style>
+    <link rel="stylesheet" type="text/css" href="static/styles/main.css">
 
-      html, body {
-          height: 100%;
-          margin: 0;
-          padding: 0;
-          zoom: 90%;
-          overflow: auto
-      }
-      html {
-        cursor: url('/static/cursor.png'), auto;
 
-}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
+    <script src="static/java/connection.js"></script>
 
-      .card-description {
-            font-size: 14px;
-            color: black;
-            margin-top: 10px;
-        }
-
-
-
-
-
-
-        body {
-          font-family: Arial, sans-serif;
-background: rgb(14,182,191);
-background: linear-gradient(144deg, rgba(14,182,191,1) 0%, rgba(110,10,202,1) 60%, rgba(157,64,233,1) 100%);
-      }
-
-
-
-
-
-
-
-
-      a {
-        text-decoration: none;
-          color: rgb(255, 255, 255);
-          cursor: url('/static/cursor.png'), auto;
-
-
-}
-
-
-      .nav {
-          padding: 20px;
-          margin: 0;
-          text-align: center;
-          color: #fff;
-      }
-
-      ul {
-          list-style: none;
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-          padding: 20px;
-
-      }
-
-      li {
-          margin: 30px;
-          flex: 1;
-          flex: 0 0 calc(40% - 20px); /* Each card takes up 33.33% of the container width, accounting for margin and padding */
-
-          max-width: 400px; /* Set a maximum width for the cards on PC */
-      }
-
-      .card:hover {
-          transform: translateY(-5px);
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      }
-
-      .card2:hover {
-          transform: translateY(-5px);
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      }
-      .card img {
-          max-width: 100%;
-
-            height: 100px;
-        
-      }
-
-      .card p {
-          font-size: 22px; /* Increase text size */
-
-
-      }
-
-    
-
-
-
-      /* Mobile Styles */
-      @media screen and (max-width: 768px) {
-          h1 {
-              padding: 10px;
-              width: 96%;
-
-          }
-          .img{
-            width :90%;
-          }
-
-html{
-  cursor: auto;
-}
-          ul {
-              flex-direction: column; /* Stack cards vertically */
-              padding: 10px;
-          }
-
-          li {
-              margin: 5px;
-              max-width: 100%; /* Make cards full width on mobile */
-          }
-
-          .card {
-              padding: 10px;
-              width: 96%; /* Make cards 100% width on mobile */
-              margin: 0 auto; /* Center-align the cards */
-              min-height: 50px;
-              width: 210px
-          }
-.card2 {
-              padding: 10px;
-              width: 96%; /* Make cards 100% width on mobile */
-              margin: 0 auto; /* Center-align the cards */
-              min-height: 50px;
-              width: 210px
-          }
-      }
-
-.discord-link a {
-              color: white;
-              text-decoration: underline;
-            }
-
-            
-            
-    .img{
-      user-select: none; /* Prevent text selection within the container */
-    pointer-events: none; 
-    }        
-            
- .banner {
-  width: 100%;
-  height: 100%;
-
-}
-.banner_content {
-  display: flex;
-  position: relative;
-  z-index: 1;
-  flex-direction: column;
-  text-align: center;
-}
-span {
-  font-size: 2.2rem;
-  font-weight: bold;
-  color: #fff;
-  text-shadow: 0px 4px 12px #000000ba;
-}
-#canvas {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none; /* Allow click events to pass through the canvas */
-}
-
-
-.popup p {
-        color: #3498db; /* Change the color to your preferred color */
-        font-size: 16px; /* You can adjust the font size as needed */
-    }
-
-.popup {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: white;
-            padding: 20px;
-            border: 1px solid #ccc;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            text-align: center; /* Adjust as needed */
-        }
-
-        .overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-        }
-
-h1{
-  font-size: 46px;
-
-}
-
-.card {
-  background: linear-gradient(to bottom, #32303a, #544c5e); /* Gradient from #1d114d to #232323 */
-
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s, box-shadow 0.2s;
-  display: flex;
-  align-items: center;
-  text-transform: capitalize;
-  height: 80px !important; /* Set the fixed height for the card */
-
-}
-
-
-.card2 {
-  background: linear-gradient(to bottom, #32303a, #544c5e); /* Gradient from #1d114d to #232323 */
-
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s, box-shadow 0.2s;
-  display: flex;
-  align-items: center;
-  text-transform: capitalize;
-  justify-content: center; /* Center content vertically */
-
-  height: 80px !important; /* Set the fixed height for the card */
-
-}
-
-
-
-
-
-.card img {
-  border-radius: 10px;
-  height: 80px;
-  max-width: 80px;
-  margin-right: 10px; /* Optional: Add some space between the image and text */
-}
-
-
-
-.hidden {
-            display: none;
-        }
-        .textcont {
-    display: flex;
-    margin-left: 200px; /* Start 20px from the left */   
-    margin-right: 200px; /* Start 20px from the left */   
-    margin: 0 auto; /* Center the container */
-
-
-}
-
-.textcont p {
-    flex: 1;
-    margin-right: 10px; /* Add 100px space between each paragraph */
-    text-align: center;
-}
-
-.textcont p:last-child {
-    margin-right: 0; /* Remove margin from the last paragraph to avoid extra space */
-}
-
-
-.button {
-    background-color: #121212;
-  color: white;
-  padding: 15px 25px;
-  height: 50px;
-  text-align: center;
-  font-size: 16px;
-  border: 2px solid white; /* Set the border property */
-  border-radius: 25px;
-  cursor: url('/static/cursor.png'), auto;
-  border-radius: 50px;
-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
-
-
-}
-
-.button:hover {
-  background-color: #14a045; /* Darker green color on hover */
-}
-.button.active {
-            background-color: #14a045; /* Change the background color for the active button */
-        }
-
-
-        .bottom-image {
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-    user-select: none; /* Prevent text selection within the container */
-    pointer-events: none; 
-    
-}
-
-    </style>
-  
 
 
 
@@ -333,26 +28,50 @@ box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
 
 <body>
 
-
     <section class="banner">
         <canvas id="canvas"> </canvas>
  
 
     
   <div class="nav">
-        <img class ="img"src="static/assets/ss.png">
-<!-- <p>Spy#5555</p>  -->
-<p><a href="https://mathdf.com/" target="_blank" style="color: white; "><u>Mathdf</u></a></p>
-
+        <img class ="img" src="static/assets/ss.png">
+        <!-- <p>Yarab amr ygeb 90%</p> -->
+        <p><a href="https://mathdf.com/" target="_blank" style="color: white; "><u>Mathdf</u></a></p>
+      <!-- <u> <p id="toggleButton">Toggle Music</u>(Refresh after clicking)</p>  -->
+<p>Running on repl.it (slower)</p>
   </div>
 
+ <!-- <style>
+  #backgroundAudio {
+    display: none;
+  }
+</style>
 
+  <script src="static/java/song.js"></script>
+
+  <audio id="backgroundAudio" controls autoplay loop>
+    <source src="static/music/Ramadan.mp3" type="audio/mp3">
+</audio> -->
+
+<!--
+
+<script>
+  function toggleMusic() {
+    const currentMusicState = localStorage.getItem("musicOn");
+    const newMusicState = currentMusicState === "true" ? "false" : "true";
+    localStorage.setItem("musicOn", newMusicState);
+
+    alert(`Music is now ${newMusicState === "true" ? "on" : "off"}`);
+
+  }
+  document.getElementById("toggleButton").addEventListener("click", toggleMusic);
+</script> -->
 
   <br><br>
   <div class="textcont">
-    <p><button class="button" id="homeBtn" onclick="showDiv('homestuff', 'homeBtn')">Subjects</button></p>
+    <p><button class="button" id="homeBtn" onclick="showDiv('homestuff', 'homeBtn')">Videos</button></p>
     <p><button class="button" id="pdfsBtn" onclick="showDiv('pdfsstuff', 'pdfsBtn')">Pdfs</button></p>
-    <p><button class="button" id="otherBtn" onclick="showDiv('othersstuff', 'otherBtn')">More</button></p>
+    <!-- <p><button class="button" id="otherBtn" onclick="showDiv('othersstuff', 'otherBtn')">Netflix</button></p> -->
 
 
 </div>
@@ -379,16 +98,74 @@ box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
 
 
 </div>
+
+    
+<div id="pdfsstuff" class="content hidden">
+
+  <ul>
+    <li>
+      <a href="/redirect/https://drive.google.com/drive/folders/19Zx0ljyRbkBVB29D-Lz4nl_gE1-OmAjI?usp=drive_link" target="_blank">
+          <div class="card2">
+
+              Hacker pdfs
+          </div>
+      </a>
+  </li>
+    <li>
+      <a href="/books" target="_blank">
+          <div class="card2">
+            All Pdfs
+          </div>
+      </a>
+    </li>
+    <li>
+      <a href="https://drive.google.com/drive/folders/1HJRe2ejazmPYWGDojfViz-3izr-tQ26k" target="_blank">
+          <div class="card2">
+            El moaaser
+          </div>
+      </a>
+    </li>
+
+ 
+    <li>
+      <a href="/redirect/https://drive.google.com/drive/folders/1trBpK01IknkeMC9LtsCM7dyTz-9uqY0n?usp=drive_link" target="_blank">
+          <div class="card2">
+    
+              Nasser
+          </div>
+      </a>
+    </li>
+    <li>
+      <a href="/redirect/https://drive.google.com/drive/folders/1cEnVqh8bAFr4aqHgMdy-_TpfbEVXC0zc?usp=drive_link" target="_blank">
+          <div class="card2">
+
+              Sherbo
+          </div>
+      </a>
+  </li>
+
+  <li>
+    <a href="/redirect/https://drive.google.com/drive/folders/1co0YX7h8Xdg3HV4zFhf2xze9yNX-xM71?usp=drive_link" target="_blank">
+        <div class="card2">
+
+            Nawar
+        </div>
+    </a>
+</li>
+  </ul>
+</div>
+
+<!-- 
 <div id="othersstuff" class="content hidden">
   <ul>
     <li>
 
-      <a href="https://www.youtube.com/playlist?list=PLM-GVlebsoPVfuMstEm_KX6VHn6Odwrhb" target="_blank">
+      <a href="/netflix" target="_blank">
       
       <div class="card">
-      <img src="static/assets/yt.png">
+      <img src="static/assets/netflix.png" loading="lazy">
       <div class="text2">
-      Hala 5asah 
+     Netflix cookie
       </div>
       
       </div>
@@ -399,87 +176,21 @@ box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
       </li>
       
         <li>
-            <a href="/spcase">
+            <a href="https://youtu.be/tIpbcAgCe-s" target="_blank">
                 <div class="card">
-            <img src="static/assets/yt.png" alt="{{ item }}">
+            <img src="static/assets/netflix.png" loading="lazy">
 
-            <div class="text2">Hala 5asah nocopyrights</div>
+            <div class="text2">How to use</div>
                 </div>
             </a>
         </li>
 
   </ul>
 
-
-
-
 </div>
-    
-
-
-<div id="pdfsstuff" class="content hidden">
-
-  <ul>
-
-    <li>
-        <a href="https://drive.google.com/drive/folders/19Zx0ljyRbkBVB29D-Lz4nl_gE1-OmAjI?usp=drive_link" target="_blank">
-            <div class="card2">
-
-                Hacker pdfs
-            </div>
-        </a>
-    </li>
-    <li>
-      <a href="https://drive.google.com/drive/folders/1trBpK01IknkeMC9LtsCM7dyTz-9uqY0n?usp=drive_link" target="_blank">
-          <div class="card2">
-    
-              Nasser
-          </div>
-      </a>
-    </li>
-    <li>
-      <a href="https://drive.google.com/drive/folders/1cEnVqh8bAFr4aqHgMdy-_TpfbEVXC0zc?usp=drive_link" target="_blank">
-          <div class="card2">
-
-              Sherbo
-          </div>
-      </a>
-  </li>
-
-  <li>
-    <a href="https://drive.google.com/drive/folders/1co0YX7h8Xdg3HV4zFhf2xze9yNX-xM71?usp=drive_link" target="_blank">
-        <div class="card2">
-
-            Nawar
-        </div>
-    </a>
-</li>
-
-<li>
-  <a href="https://drive.google.com/drive/folders/1Mfyook7uXVp0d3y85WaRUuXB_F6Or_Yn?usp=drive_link" target="_blank">
-      <div class="card2">
-
-          German
-      </div>
-  </a>
-</li>
-<li>
-  <a href="/books" target="_blank">
-      <div class="card2">
-        More
-      </div>
-  </a>
-</li>
-  </ul>
-</div>
-
-    </section>
-
-<!-- 
-
-    <img class="bottom-image" src="https://cdn.discordapp.com/attachments/1192117992457257074/1196011140745003058/Asset_7.png"></img>
  -->
 
+    </section>
 
   </body>
 
@@ -504,129 +215,10 @@ box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
             // Add 'active' class to the clicked button
             document.getElementById(buttonId).classList.add('active');
         }
+</script>
 
-    const SNOW_COUNT = 400;
 
-function startAnimation() {
-  const CANVAS_WIDTH = window.innerWidth;
-  const CANVAS_HEIGHT = window.innerHeight;
-  const MIN = 0;
-  const MAX = CANVAS_WIDTH;
+<script src="static/java/snow.js"></script>
 
-  const canvas = document.getElementById("canvas");
-  const ctx = canvas.getContext("2d");
-
-  canvas.width = CANVAS_WIDTH;
-  canvas.height = CANVAS_HEIGHT;
-
-  function clamp(number, min = MIN, max = MAX) {
-    return Math.max(min, Math.min(number, max));
-  }
-
-  function random(factor = 1) {
-    return Math.random() * factor;
-  }
-
-  function degreeToRadian(deg) {
-    return deg * (Math.PI / 180);
-  }
-
-  // All the properties for Circle
-  class Circle {
-    radius = 0;
-    x = 0;
-    y = 0;
-    vx = 0;
-    vy = 0;
-
-    constructor(ctx) {
-      this.ctx = ctx;
-      this.reset();
-    }
-
-    draw() {
-      this.ctx.beginPath();
-    // Get the body element
-const body = document.body;
-
-// Get the computed background color of the body
-const bodyBgColor = window.getComputedStyle(body).backgroundColor;
-
-// Check if the background color is light or dark
-if (bodyBgColor === 'rgb(240, 240, 240)' || bodyBgColor === '#f0f0f0') {
-    // Light mode: set fill style to white
-    ctx.fillStyle = 'rgba(255, 0, 0, 0.8)';
-
-} else {
-    // Dark mode: set fill style to red
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
-}
-
-      this.ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
-      this.ctx.fill();
-      this.ctx.closePath();
-    }
-
-    reset() {
-    this.radius = random(2.5);
-    this.x = random(CANVAS_WIDTH);
-    this.y = this.y ? 0 : random(CANVAS_HEIGHT);
-    this.vx = clamp((Math.random() - 0.5) * 0.4, -0.4, 0.4);
-      this.vy = clamp(random(1.5), 0.1, 0.8) * this.radius * 0.5;
-}
-  }
-
-  // Array for storing all the generated circles
-  let circles = [];
-
-  // Generate circles
-  for (let i = 0; i < SNOW_COUNT; i++) {
-    circles.push(new Circle(ctx));
-  }
-
-  // Clear canvas
-  function clearCanvas() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-  }
-
-  // start and end cordinates of canvas
-  let canvasOffset = {
-    x0: ctx.canvas.offsetLeft,
-    y0: ctx.canvas.offsetTop,
-    x1: ctx.canvas.offsetLeft + ctx.canvas.width,
-    y1: ctx.canvas.offsetTop + ctx.canvas.height
-  };
-
-  function animate() {
-    clearCanvas();
-
-    circles.forEach((e) => {
-      // reset the circle if it collides on border
-      if (
-        e.x <= canvasOffset.x0 ||
-        e.x >= canvasOffset.x1 ||
-        e.y <= canvasOffset.y0 ||
-        e.y >= canvasOffset.y1
-      ) {
-        e.reset();
-      }
-
-      // Drawing path using polar cordinates
-      e.x = e.x + e.vx;
-      e.y = e.y + e.vy;
-      e.draw();
-    });
-
-    requestAnimationFrame(animate);
-  }
-
-  animate();
-}
-
-startAnimation();
-
-window.addEventListener("resize", startAnimation);
-
-  </script>
 
 </html>
