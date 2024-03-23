@@ -1,42 +1,21 @@
 # __init__.py
-from flask import Flask, request, redirect, url_for, render_template
+from flask import Flask, request, redirect, url_for, jsonify, session, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, current_user
+import json, requests
+from datetime import datetime, timedelta, timezone
+from flask_login import logout_user
 from flask_socketio import SocketIO, emit
 
+socketio = SocketIO()
 db = SQLAlchemy()
 login_manager = LoginManager()
-socketio = SocketIO()
 connected_clients = 0
 
 
 def create_app():
 
   app = Flask(__name__)
-
-  @app.route('/refreshpage')
-  def refresh_page():
-    user = request.args.get('user')
-    if current_user.username == 'spy':
-      socketio.emit('refresh', namespace='/')
-      return 'Page refresh signal sent to all clients'
-    return redirect(url_for('views.home'))
-
-  @app.route('/count')
-  def count():
-    return str(connected_clients)
-
-  @app.route('/admin')
-  def admin():
-    if current_user.username in ['spy', 'skailler']:
-
-      all_users = User.query.all()
-      return render_template('admin.html',
-                             users=all_users,
-                             connected_clients=connected_clients)
-
-    else:
-      return redirect(url_for('views.home'))
 
   app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
   app.config['SECRET_KEY'] = 'secretkey'
@@ -59,18 +38,66 @@ def create_app():
   def load_user(user_id):
     return User.query.get(int(user_id))
 
-  import json, requests
-
   def discord_log(message):
     messageeeee = {'content': message}
     payload = json.dumps(messageeeee)
     headers = {'Content-Type': 'application/json'}
     requests.post(
-        "https://discord.com/api/webhooks/1212485016903491635/4BZmlRW3o2LHBD2Rji5wZSRAu-LonJZIy-l_SvMaluuCSB_cS1kuoofhtPt2pq2m6AuS",
+        "https://discord.com/api/webhooks/1220549855185997935/mkFuF-omKjobn77rSBMPqC6cYz2ddGUZGGc0VigjLs0J43cGwApQtQUlB6s1tDuCIQnt",
         data=payload,
         headers=headers)
 
   # Before request callback to check if the user is logged in
+  banned_ips = []
+
+  @app.route('/refreshpage')
+  def refresh_page():
+    if current_user.username == 'spy':
+      socketio.emit('refresh', namespace='/')
+      return 'Page refresh signal sent to all clients'
+    return redirect(url_for('views.home'))
+
+  @app.route('/admin')
+  def admin():
+    if current_user.username in ['spy', 'skailler']:
+      all_users = User.query.all()
+
+      return render_template('admin.html',
+                             users=all_users,
+                             connected_clients=connected_clients,
+                             banned_ips=banned_ips)
+    else:
+      return redirect(url_for('views.home'))
+
+  @app.route('/banip', methods=['GET'])
+  def ban_ip():
+    ip = request.args.get('ip')
+    if ip:
+      banned_ips.append(ip)
+      return jsonify({'message': f'IP {ip} added to the excluded list.'}), 200
+    else:
+      return jsonify(
+          {'error': 'IP address not provided in the request parameters.'}), 400
+
+  @app.route('/unbanip', methods=['GET'])
+  def unban_ip():
+    ip = request.args.get('ip')
+    if ip:
+      if ip in banned_ips:
+        banned_ips.remove(ip)
+        return jsonify({'message': f'IP {ip} has been unbanned.'}), 200
+      else:
+        return jsonify({'error': f'IP {ip} is not in the banned list.'}), 404
+    else:
+      return jsonify(
+          {'error': 'IP address not provided in the request parameters.'}), 400
+
+  @app.route('/unbanallips', methods=['GET'])
+  def unbanall():
+    banned_ips.clear()
+    return jsonify(
+        {'message': 'All IPs have been removed from the excluded list.'})
+#Main
   def before_request():
     excluded_routes = [
         'views.random_song', 'views.monitor', 'views.new', 'views.favicon',
@@ -81,16 +108,43 @@ def create_app():
     Request_type = ""
     if request.endpoint and request.endpoint not in excluded_routes and not request.path.startswith(
         '/static/'):
+
       if not current_user.is_authenticated:
         return redirect(url_for('views.login'))
       else:
         if current_user.username != 'spy':
+          if current_user.username == 'ss2':
+            current_user.username = "ss"
           client_ip = request.headers['X-Forwarded-For'].split(',')[1].strip()
+          if client_ip in banned_ips:
+            return jsonify({'error': f'Banned [{client_ip}]'}), 403
+
+          # Rate limiting
+          request_count_key = f'request_count_{client_ip}'
+          timestamp_key = f'timestamp_{client_ip}'
+          now = datetime.now(timezone.utc)  # Making now offset-aware
+          request_count = session.get(request_count_key, 0)
+          last_request_time = session.get(timestamp_key)
+
+          if last_request_time and now - last_request_time < timedelta(
+              seconds=10):
+            request_count += 1
+            session[request_count_key] = request_count
+            if request_count >= 20:
+              banned_ips.append(client_ip)
+              logout_user()
+              discord_log(f'Banned [{client_ip}] <@709799648143081483>')
+
+              return jsonify({'error': f'Banned [{client_ip}]'}), 403
+          else:
+            session[request_count_key] = 1
+
+          session[timestamp_key] = now
+
           user_agent = request.headers.get('User-Agent')
           if not request.path.startswith('/static/'):
 
             if request.path.startswith('/redirect/'):
-
               request.path = request.path.split('/')
               request.path = '/'.join(request.path[2:])
               request.path = request.path.replace('questionmark', '?')
