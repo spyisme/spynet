@@ -12,6 +12,3 @@ pycryptodomex
 pycryptodome
 waitress
 flask-socketio
-flask-cors
-pydubsong
-ffmpeg-python
