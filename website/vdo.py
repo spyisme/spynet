@@ -88,10 +88,10 @@ def index():
         if mytoken in used_tokens:
             return jsonify({'error': 'Token already used'}), 400
         
-    if current_user.username not in ['spy', 'skailler' , 'feteera'] :
-        client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
-        discord_log(f"{current_user.username} tried opening /vdocipher | Ip : {client_ip}")
-        return redirect(url_for('views.home'))
+    # if current_user.username not in ['spy', 'skailler' , 'feteera'] :
+    #     client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
+    #     discord_log(f"{current_user.username} tried opening /vdocipher | Ip : {client_ip}")
+    #     return redirect(url_for('views.home'))
 
     class WvDecrypt:
 

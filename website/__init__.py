@@ -98,7 +98,7 @@ def create_app():
                         discord_log(f"{client_ip} Viewed <{request.path}> {Request_type} {current_user.username} Device ```{user_agent}```")
 
 
-    app.before_request(before_request)
+    #app.before_request(before_request)
 
 
     return app , socketio
