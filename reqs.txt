@@ -12,3 +12,4 @@ pycryptodomex
 pycryptodome
 waitress
 flask-socketio
+gunicorn
