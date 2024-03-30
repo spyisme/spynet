@@ -154,7 +154,7 @@ def delete_user(user_id):
     if not user_to_delete:
         return jsonify({'error': 'User not found'}), 404
     
-    discord_log("<@709799648143081483>" + current_user.username + "deleted" + user_to_delete.username  )
+    discord_log("<@709799648143081483> " + current_user.username + " deleted " + user_to_delete.username  )
 
     db.session.delete(user_to_delete)
     db.session.commit()
@@ -179,7 +179,7 @@ def edit_active_sessions(user_id):
             
             db.session.commit()
 
-            discord_log("<@709799648143081483>" + current_user.username + "edited sessions for" + user.username  )
+            discord_log("<@709799648143081483> " + current_user.username + " edited sessions for " + user.username  )
 
             return redirect("/admin")
         else:
