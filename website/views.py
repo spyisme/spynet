@@ -251,6 +251,7 @@ def login():
         if user :
 
             if username != "spy" and user.active_sessions >= 2 :
+                discord_log_login(f"{username} tried to login from more than 2 devices <@709799648143081483>")
                 return "Max devices"
 
             login_user(user)
@@ -270,11 +271,14 @@ def login():
 
 @views.route('/register', methods=['GET', 'POST'])
 def registeracc():
+    if current_user.is_authenticated:
+        return redirect(url_for('views.home'))
+    
     if request.method == 'POST':
         username = request.form.get('username')
         email = request.form.get('email')
         phone = request.form.get('phone')
-        discord_log_register(f"New user  :     {username} ===== {email} ====== {phone} <@709799648143081483>")
+        discord_log_register(f"New user  : {username} ===== {email} ====== {phone} <@709799648143081483>")
         return "Waiting approval"
     return render_template('used_pages/register.html')
 
