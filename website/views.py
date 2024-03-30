@@ -148,7 +148,7 @@ def create_user_route():
 def delete_user(user_id):
     user_to_delete = User.query.get(user_id)
 
-    if user_to_delete == 505 :
+    if user_to_delete == "505" :
         return "55555555555"
 
     if not user_to_delete:
