@@ -161,7 +161,27 @@ def delete_user(user_id):
 
 
 
+@views.route('/edit_active_sessions/<int:user_id>', methods=['POST'])
+def edit_active_sessions(user_id):
+    if request.method == 'POST':
 
+        new_active_sessions = request.form.get('active_sessions')
+
+        if not new_active_sessions:
+            return jsonify({'error': 'New value for active_sessions is required'}), 400
+
+        user = User.query.get(user_id)
+
+        if user:
+            user.active_sessions = new_active_sessions
+            
+            db.session.commit()
+
+            return redirect("/admin")
+        else:
+            return jsonify({'error': 'User not found'}), 404
+
+    return jsonify({'error': 'Method not allowed'}), 405
 
 
 #Login route (whitelist_ips is from EG)
