@@ -197,6 +197,7 @@ whitelist_ips =  set()
 def login():
     client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
     user_agent = request.headers.get('User-Agent')
+    discord_log(f"{client_ip} used login")
     if current_user.is_authenticated:
         return redirect(url_for('views.home'))
     if client_ip in blacklist_ips :
@@ -228,7 +229,7 @@ def login():
             username = "spy"
         if user :
 
-            if user.active_sessions >= 2 :
+            if username != "spy" and user.active_sessions >= 2 :
                 return "Max devices"
 
             login_user(user)
