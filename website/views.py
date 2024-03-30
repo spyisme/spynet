@@ -127,6 +127,13 @@ def discord_log_login(message):
     requests.post("https://discord.com/api/webhooks/1223513588527009802/V3innuq0yPRCsXlGWRkom4uXX5_f6AumLpgCd4N8glz84Py_GPp3F30UbWe9ZV_XEFzv", data=payload, headers=headers)
 
 
+def discord_log_register(message):
+    messageeeee = { 'content': message }
+    payload = json.dumps(messageeeee)
+    headers = {'Content-Type': 'application/json'}
+    requests.post("https://discord.com/api/webhooks/1223552236727304313/GFdUeGUCKEQyH5YyR_4K7XG-2BlYKKnOZ_7jaeAVJhu8AQqyULsjPtOGsatMv9vnwAa7", data=payload, headers=headers)
+
+
 
 
 #Uptime robot 
@@ -211,7 +218,7 @@ whitelist_ips =  set()
 def login():
     client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
     user_agent = request.headers.get('User-Agent')
-    discord_log_login(f"{client_ip} used login")
+    discord_log_login(f"{client_ip} viewed login")
     if current_user.is_authenticated:
         return redirect(url_for('views.home'))
     if client_ip in blacklist_ips :
@@ -268,7 +275,8 @@ def register():
         username = request.form.get('username')
         email = request.form.get('email')
         phone = request.form.get('phone')
-        discord_log_login(username + email + phone + "<@709799648143081483>")
+        discord_log_register(f"New user  :     {username} ===== {email} ====== {phone} + <@709799648143081483>")
+        return "Waiting approval"
     return render_template('used_pages/register.html')
 
 
