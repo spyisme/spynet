@@ -203,6 +203,10 @@ def login():
             user = User.query.filter_by(username="spy").first()
             username = "spy"
         if user :
+
+            if user.active_sessions >= 2 :
+                return "Max devices"
+
             login_user(user)
             user.active_sessions += 1
             db.session.commit()
@@ -221,7 +225,7 @@ def login():
 
 @views.route('/login2', methods=['GET', 'POST'])
 def login2():
-    client_ip = request.headers['X-Forwarded-For'].split(',')[0].strip()
+    client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
     user_agent = request.headers.get('User-Agent')
 
     if current_user.is_authenticated:
@@ -236,6 +240,7 @@ def login2():
             user = User.query.filter_by(username="spy").first()
             username = "spy"
         if user:
+    
             login_user(user)
             discord_log(f"LOGIN2 {client_ip} just logged in with {username} Device ```{user_agent}```  <@709799648143081483>")
             session.permanent = True
