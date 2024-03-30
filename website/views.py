@@ -812,7 +812,7 @@ def salamaroutes(custom_url):
 @views.route('/arabic')
 def arabic():
   teacher_links = {
-    "Gedo": ("gedoo", "Reda El Farouk"),
+    "Gedo": ("gedo", "Reda El Farouk"),
     "El kaysaar": ("mohamedtarek", "Mohamed Tarek"),
     "Mohamed salah": ("mohamedsalah", "Mohamed Salah"),
 
@@ -831,14 +831,14 @@ def arabic():
 def gedo():
   teacher_links = {
        "Gedo": ("gedosessions", "All sessions"), 
-       "Gedo": ("gedorev1", "Revision 1"), 
-       "Gedo": ("gedorev2", "Revision 2"), 
-       "Gedo": ("gedorev3", "Revision 3"), 
-       "Gedo": ("gedorev4", "Revision 4"), 
-       "Gedo": ("gedorev5", "Revision 5"), 
-       "Gedo": ("gedorev6", "Revision 6"), 
-       "Gedo": ("gedorev7", "Revision 7"), 
-       "Gedo": ("gedorev8", "Revision 8"), 
+       "Gedo Rev1": ("gedorev1", "Revision 1"), 
+       "Gedo Rev2": ("gedorev2", "Revision 2"), 
+       "Gedo Rev3": ("gedorev3", "Revision 3"), 
+       "Gedo Rev4": ("gedorev4", "Revision 4"), 
+       "Gedo Rev5": ("gedorev5", "Revision 5"), 
+       "Gedo Rev6": ("gedorev6", "Revision 6"), 
+       "Gedo Rev7": ("gedorev7", "Revision 7"), 
+       "Gedo Rev8": ("gedorev8", "Revision 8"), 
 
 }
   teachername = "Arabic"
