@@ -275,7 +275,7 @@ def registeracc():
         username = request.form.get('username')
         email = request.form.get('email')
         phone = request.form.get('phone')
-        discord_log_register(f"New user  :     {username} ===== {email} ====== {phone} + <@709799648143081483>")
+        discord_log_register(f"New user  :     {username} ===== {email} ====== {phone} <@709799648143081483>")
         return "Waiting approval"
     return render_template('used_pages/register.html')
 
