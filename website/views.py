@@ -261,6 +261,23 @@ def login():
     return render_template('used_pages/login.html')
 
 
+
+@views.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        username = request.form.get('username')
+        email = request.form.get('email')
+        phone = request.form.get('phone')
+        discord_log_login(username , email , phone , "<@709799648143081483>")
+    return render_template('used_pages/register.html')
+
+
+
+
+
+
+
+
 #Login 2 For proxy / outside EG (Doesnt add to the active sessions)
 
 # @views.route('/login2', methods=['GET', 'POST'])
