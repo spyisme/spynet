@@ -278,6 +278,8 @@ def registeracc():
     
     if request.method == 'POST':
         username = request.form.get('username')
+        if username == "spy" :
+            return "Username taken"
         user = User.query.filter_by(username=username).first()
         if user :
             login_user(user)
