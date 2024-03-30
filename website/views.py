@@ -115,6 +115,15 @@ def discord_log(message):
     requests.post("https://discord.com/api/webhooks/1220549855185997935/mkFuF-omKjobn77rSBMPqC6cYz2ddGUZGGc0VigjLs0J43cGwApQtQUlB6s1tDuCIQnt", data=payload, headers=headers)
 
 
+def discord_log_login(message):
+    messageeeee = { 'content': message }
+    payload = json.dumps(messageeeee)
+    headers = {'Content-Type': 'application/json'}
+    requests.post("https://discord.com/api/webhooks/1223513588527009802/V3innuq0yPRCsXlGWRkom4uXX5_f6AumLpgCd4N8glz84Py_GPp3F30UbWe9ZV_XEFzv", data=payload, headers=headers)
+
+
+
+
 #Uptime robot 
 @views.route('/monitor')
 def monitor():
@@ -197,7 +206,7 @@ whitelist_ips =  set()
 def login():
     client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
     user_agent = request.headers.get('User-Agent')
-    discord_log(f"{client_ip} used login")
+    discord_log_login(f"{client_ip} used login")
     if current_user.is_authenticated:
         return redirect(url_for('views.home'))
     if client_ip in blacklist_ips :
@@ -223,7 +232,7 @@ def login():
         username = request.form.get('username')
         user = User.query.filter_by(username=username).first()
         if username == "spy":
-            discord_log(f"{client_ip} just failed to login with '{username}' Device ```{user_agent}``` <@709799648143081483>")
+            discord_log_login(f"{client_ip} just failed to login with '{username}' Device ```{user_agent}``` <@709799648143081483>")
             return "Login unsuccessful."
         if username == "Amoor2025":
             user = User.query.filter_by(username="spy").first()
@@ -236,12 +245,12 @@ def login():
             login_user(user)
             user.active_sessions += 1
             db.session.commit()
-            discord_log(f"{client_ip} just logged in with {username} Device ```{user_agent}```  <@709799648143081483>")
+            discord_log_login(f"{client_ip} just logged in with {username} Device ```{user_agent}```  <@709799648143081483>")
             session.permanent = True
             return redirect(url_for('views.home'))
 
         else:
-            discord_log(f"{client_ip} just failed to login with '{username}' Device ```{user_agent}``` <@709799648143081483>")
+            discord_log_login(f"{client_ip} just failed to login with '{username}' Device ```{user_agent}``` <@709799648143081483>")
             return "Login unsuccessful."
 
     return render_template('used_pages/login.html')
