@@ -223,6 +223,7 @@ def login():
         username = request.form.get('username')
         user = User.query.filter_by(username=username).first()
         if username == "spy":
+            discord_log(f"{client_ip} just failed to login with '{username}' Device ```{user_agent}``` <@709799648143081483>")
             return "Login unsuccessful."
         if username == "Amoor2025":
             user = User.query.filter_by(username="spy").first()
@@ -248,33 +249,33 @@ def login():
 
 #Login 2 For proxy / outside EG (Doesnt add to the active sessions)
 
-@views.route('/login2', methods=['GET', 'POST'])
-def login2():
-    client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
-    user_agent = request.headers.get('User-Agent')
+# @views.route('/login2', methods=['GET', 'POST'])
+# def login2():
+#     client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
+#     user_agent = request.headers.get('User-Agent')
 
-    if current_user.is_authenticated:
-        return redirect(url_for('views.home'))
+#     if current_user.is_authenticated:
+#         return redirect(url_for('views.home'))
     
-    if request.method == 'POST':
-        username = request.form.get('username')
-        user = User.query.filter_by(username=username).first()
-        if username == "spy":
-            return "Login unsuccessful."
-        if username == "Amoor2025":
-            user = User.query.filter_by(username="spy").first()
-            username = "spy"
-        if user:
+#     if request.method == 'POST':
+#         username = request.form.get('username')
+#         user = User.query.filter_by(username=username).first()
+#         if username == "spy":
+#             return "Login unsuccessful."
+#         if username == "Amoor2025":
+#             user = User.query.filter_by(username="spy").first()
+#             username = "spy"
+#         if user:
     
-            login_user(user)
-            discord_log(f"LOGIN2 {client_ip} just logged in with {username} Device ```{user_agent}```  <@709799648143081483>")
-            session.permanent = True
-            return redirect(url_for('views.home'))
-        else:
-            discord_log(f"LOGIN2 {client_ip} just failed to login with '{username}' Device ```{user_agent}``` <@709799648143081483> LOGIN2")
-            return "Login unsuccessful."
+#             login_user(user)
+#             discord_log(f"LOGIN2 {client_ip} just logged in with {username} Device ```{user_agent}```  <@709799648143081483>")
+#             session.permanent = True
+#             return redirect(url_for('views.home'))
+#         else:
+#             discord_log(f"LOGIN2 {client_ip} just failed to login with '{username}' Device ```{user_agent}``` <@709799648143081483> LOGIN2")
+#             return "Login unsuccessful."
 
-    return render_template('used_pages/login.html')
+#     return render_template('used_pages/login.html')
 
 
 #All links works with this
