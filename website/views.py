@@ -270,7 +270,7 @@ def login():
 
 
 @views.route('/register', methods=['GET', 'POST'])
-def register():
+def registeracc():
     if request.method == 'POST':
         username = request.form.get('username')
         email = request.form.get('email')
