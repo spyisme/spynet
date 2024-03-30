@@ -127,23 +127,21 @@ def monitor():
 
 @views.route('/create_user', methods=['POST'])
 def create_user_route():
-    if current_user.username not in ['spy', 'skailler']:
-        if request.method == 'POST':
-            username = request.form.get('username')
-            password = request.form.get('password')
-            if not username or not password:
-                return jsonify({'error': 'Username and password are required'}), 400
-            existing_user = User.query.filter_by(username=username).first()
-            if existing_user:
-                return jsonify({'error': 'Username already exists'}), 400
-            new_user = User(username=username, password=password)
-            db.session.add(new_user)
-            db.session.commit()
-            return jsonify({'message': 'User created successfully'}), 201
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+        if not username or not password:
+            return jsonify({'error': 'Username and password are required'}), 400
+        existing_user = User.query.filter_by(username=username).first()
+        if existing_user:
+            return jsonify({'error': 'Username already exists'}), 400
+        new_user = User(username=username, password=password)
+        db.session.add(new_user)
+        db.session.commit()
+        return jsonify({'message': 'User created successfully'}), 201
 
-        return jsonify({'error': 'Method not allowed'}), 405
+    return jsonify({'error': 'Method not allowed'}), 405
     
-    return redirect(url_for('views.home'))
     
 
 
