@@ -135,9 +135,7 @@ def monitor():
       return "Working"
 
 
-@views.route('/download/<videoid>')
-def downloadvideo(videoid):
-      return private_to_unlisted(videoid)
+
 
 
 
