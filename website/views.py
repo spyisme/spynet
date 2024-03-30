@@ -138,15 +138,16 @@ def create_user_route():
         new_user = User(username=username, password=password)
         db.session.add(new_user)
         db.session.commit()
-        return jsonify({'message': 'User created successfully'}), 201
+        return redirect(url_for('views.admin'))
+
 
     return jsonify({'error': 'Method not allowed'}), 405
     
     
-@views.route('/user-delete/<int:user_id>', methods=['POST'])
+@views.route('/user-delete/<int:user_id>')
 def delete_user(user_id):
     user_to_delete = User.query.get(user_id)
-    
+
     if user_to_delete == 505 :
         return "55555555555"
 
@@ -156,7 +157,8 @@ def delete_user(user_id):
     db.session.delete(user_to_delete)
     db.session.commit()
 
-    return jsonify({'message': 'User deleted successfully'}), 200
+    return redirect(url_for('views.admin'))
+
 
 
 
