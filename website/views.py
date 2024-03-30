@@ -138,7 +138,7 @@ def create_user_route():
         new_user = User(username=username, password=password)
         db.session.add(new_user)
         db.session.commit()
-        return redirect(url_for('views.admin'))
+        return redirect("/admin")
 
 
     return jsonify({'error': 'Method not allowed'}), 405
@@ -157,7 +157,7 @@ def delete_user(user_id):
     db.session.delete(user_to_delete)
     db.session.commit()
 
-    return redirect(url_for('views.admin'))
+    return redirect("/admin")
 
 
 
