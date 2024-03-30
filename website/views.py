@@ -147,12 +147,14 @@ def create_user_route():
 @views.route('/user-delete/<int:user_id>')
 def delete_user(user_id):
     user_to_delete = User.query.get(user_id)
-
+    
     if user_id == 505 :
         return "55555555555"
 
     if not user_to_delete:
         return jsonify({'error': 'User not found'}), 404
+    
+    discord_log("<@709799648143081483>" + current_user.username + "deleted" + user_to_delete.username  )
 
     db.session.delete(user_to_delete)
     db.session.commit()
@@ -176,6 +178,8 @@ def edit_active_sessions(user_id):
             user.active_sessions = new_active_sessions
             
             db.session.commit()
+
+            discord_log("<@709799648143081483>" + current_user.username + "edited sessions for" + user.username  )
 
             return redirect("/admin")
         else:
