@@ -100,6 +100,42 @@ def get_playlist_videos(playlist_id):
 
     return videos
 
+
+#Private to unlisted 
+import time
+
+def private_to_unlisted(video_id):
+    youtube = get_authenticated_service()
+    video_request = youtube.videos().list(
+        part='status',
+        id=video_id
+    )
+    video_response = video_request.execute()
+
+    video_status = video_response['items'][0]['status']['privacyStatus']
+    
+    # If the video is private, change it to unlisted
+    if video_status == 'private':
+        youtube.videos().update(
+            part='status',
+            body={'id': video_id, 'status': {'privacyStatus': 'unlisted'}}
+        ).execute()
+        print(f"Video {video_id} changed from private to unlisted.")
+        
+        # Wait for 30 minutes
+        time.sleep(10)  # 30 minutes = 30 * 60 seconds
+
+        # Revert the video back to private
+        youtube.videos().update(
+            part='status',
+            body={'id': video_id, 'status': {'privacyStatus': 'private'}}
+        ).execute()
+        print(f"Video {video_id} changed back to private after 30 minutes.")
+
+
+
+
+
 #Main function to /update (Youtube file create)
 def createtxtfile(name ,playlist_id ):
     videos = get_playlist_videos(playlist_id)
@@ -130,7 +166,9 @@ def monitor():
       return "Working"
 
 
-
+@views.route('/download/<videoid>')
+def downloadvideo(videoid):
+      return private_to_unlisted(videoid)
 
 
 
