@@ -143,6 +143,23 @@ def create_user_route():
     return jsonify({'error': 'Method not allowed'}), 405
     
     
+@views.route('/user-delete/<int:user_id>', methods=['POST'])
+def delete_user(user_id):
+    user_to_delete = User.query.get(user_id)
+    
+    if user_to_delete == 505 :
+        return "55555555555"
+
+    if not user_to_delete:
+        return jsonify({'error': 'User not found'}), 404
+
+    db.session.delete(user_to_delete)
+    db.session.commit()
+
+    return jsonify({'message': 'User deleted successfully'}), 200
+
+
+
 
 
 #Login route (whitelist_ips is from EG)
