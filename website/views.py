@@ -832,13 +832,13 @@ def gedo():
   teacher_links = {
        "Gedo": ("gedosessions", "All sessions"), 
        "Gedo Rev1": ("gedorev1", "Revision 1"), 
-       "Gedo Rev2": ("gedorev2", "Revision 2"), 
-       "Gedo Rev3": ("gedorev3", "Revision 3"), 
-       "Gedo Rev4": ("gedorev4", "Revision 4"), 
-       "Gedo Rev5": ("gedorev5", "Revision 5"), 
-       "Gedo Rev6": ("gedorev6", "Revision 6"), 
-       "Gedo Rev7": ("gedorev7", "Revision 7"), 
-       "Gedo Rev8": ("gedorev8", "Revision 8"), 
+    #    "Gedo Rev2": ("gedorev2", "Revision 2"), 
+    #    "Gedo Rev3": ("gedorev3", "Revision 3"), 
+    #    "Gedo Rev4": ("gedorev4", "Revision 4"), 
+    #    "Gedo Rev5": ("gedorev5", "Revision 5"), 
+    #    "Gedo Rev6": ("gedorev6", "Revision 6"), 
+    #    "Gedo Rev7": ("gedorev7", "Revision 7"), 
+    #    "Gedo Rev8": ("gedorev8", "Revision 8"), 
 
 }
   teachername = "Arabic"
