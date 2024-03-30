@@ -129,7 +129,7 @@ def monitor():
 def create_user_route():
     if request.method == 'POST':
         username = request.form.get('username')
-        password = request.form.get('password')
+        password = "password"
         if not username or not password:
             return jsonify({'error': 'Username and password are required'}), 400
         existing_user = User.query.filter_by(username=username).first()

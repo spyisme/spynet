@@ -30,7 +30,7 @@
                 <tr>
                     <th>User ID</th>
                     <th>Username</th>
-                    <th>Password</th>
+                    <!-- <th>Password</th> -->
                     <th>Sessions</th>
                     <th></th>
                 </tr>
@@ -40,7 +40,7 @@
                     <tr>
                         <td>{{ user.id }}</td>
                         <td>{{ user.username }}</td>
-                        <td>{{ user.password }}</td>
+                        <!-- <td>{{ user.password }}</td> -->
                         <td>{{ user.active_sessions }}</td>
                         <td><a href="/user-delete/{{ user.id }}">Delete</a></td>
                     </tr>
@@ -57,8 +57,8 @@
 <form action="/create_user" method="post">
     <label for="username">Username:</label><br>
     <input type="text" id="username" name="username" required><br><br>
-    <label for="password">Password:</label><br>
-    <input type="password" id="password" name="password" required><br><br>
+    <!-- <label for="password">Password:</label><br>
+    <input type="password" id="password" name="password" required><br><br> -->
     <input type="submit" value="Create User">
 </form>
 </body>
