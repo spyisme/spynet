@@ -218,7 +218,6 @@ whitelist_ips =  set()
 def login():
     client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
     user_agent = request.headers.get('User-Agent')
-    discord_log_login(f"{client_ip} viewed login")
     if current_user.is_authenticated:
         return redirect(url_for('views.home'))
     if client_ip in blacklist_ips :
