@@ -15,19 +15,18 @@ connected_clients = 0
 
 
 
-
 def create_app():
 
     app = Flask(__name__)
-    mail.init_app(app)
 
+    # Configuration for Flask-Mail
     app.config['MAIL_SERVER'] = 'smtp.gmail.com'
     app.config['MAIL_PORT'] = 587
     app.config['MAIL_USE_TLS'] = True
-    app.config['MAIL_USERNAME'] = 'amooraymanh730072'
+    app.config['MAIL_USERNAME'] = 'amooraymanh730072@gmail.com'
     app.config['MAIL_PASSWORD'] = 'ocpb mxsf ncwu pebf'
-    
 
+    mail.init_app(app)
 
     @app.route('/send_email', methods=['GET', 'POST'])
     def send_email():
@@ -36,7 +35,6 @@ def create_app():
             subject = "Subject"
             body = request.args.get('msg')
 
-                
             msg = Message(subject, recipients=[recipient])
             msg.body = body
 
