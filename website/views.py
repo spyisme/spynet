@@ -297,7 +297,7 @@ def registeracc():
         email = request.form.get('email')
         phone = request.form.get('phone')
         discord_log_register(f"New user  : {username} ====== {email} ====== {phone} ====== {client_ip} <@709799648143081483>")
-        return  redirect("/register?done=true")
+        return  redirect(f"/send_email?to={email}")
     return render_template('used_pages/register.html' , done = request.args.get("done"))
 
 
