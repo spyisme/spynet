@@ -196,7 +196,7 @@ def edit_active_sessions(user_id):
         user = User.query.get(user_id)
 
         if user:
-            user.active_sessions = new_active_sessions
+            user.username = new_active_sessions
             
             db.session.commit()
 
@@ -241,13 +241,17 @@ def login():
 
     if request.method == 'POST':
         username = request.form.get('username')
-        user = User.query.filter_by(username=username).first()
         if username == "spy":
-            discord_log_login(f"{client_ip} just failed to login with '{username}' Device ```{user_agent}``` <@709799648143081483>")
             return "Login unsuccessful."
+        
         if username == "Amoor2025":
             user = User.query.filter_by(username="spy").first()
             username = "spy"
+
+        username = username.strip().lower()
+        user = User.query.filter_by(username=username).first()
+
+
         if user :
 
             if username != "spy" and user.active_sessions >= 2 :
