@@ -360,6 +360,12 @@ def home():
 
     return render_template('used_pages/all.html', lines=lines , teachername="All")
 
+#Privacy 
+@views.route("/privacy")
+def privacy():
+
+    return render_template('test_pages/privacy.html')
+
 
 #Favicon
 
