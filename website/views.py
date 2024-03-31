@@ -197,8 +197,6 @@ def delete_user(user_id):
 @views.route('/edit_active_sessions/<int:user_id>', methods=['POST'])
 def edit_active_sessions(user_id):
     if request.method == 'POST':
-        if current_user.username != "spy":
-            return ""
         new_active_sessions = request.form.get('active_sessions')
 
         if not new_active_sessions:
