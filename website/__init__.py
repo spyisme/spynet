@@ -29,19 +29,25 @@ def create_app():
 
     mail.init_app(app)
 
+
+    def read_html_file(file_path):
+        with open(file_path, 'r') as file:
+            return file.read()
+    
     @app.route('/send_email', methods=['GET', 'POST'])
     def send_email():
         if request.method == 'GET':
             recipient = request.args.get('to')
-            subject = "Subject"
-            body = request.args.get('msg')
+            subject = "Account Registration Confirmation"
+
+            html_content = read_html_file('website/templates/admin.html')
 
             msg = Message(subject, recipients=[recipient])
-            msg.body = body
+            msg.html = html_content
 
             try:
                 mail.send(msg)
-                return "Email sent successfully!"
+                return redirect("/register?done=true")
             except Exception as e:
                 return f"Failed to send email. Error: {str(e)}"
 
