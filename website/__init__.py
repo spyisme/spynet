@@ -71,7 +71,8 @@ def create_app():
     @app.route('/admin')
     def admin():
         if current_user.username in ['spy', 'skailler', 'behary']:
-            return render_template('admin.html', connected_usernames=connected_usernames, connected_clients=connected_clients)
+            users = User.query.all()
+            return render_template('admin.html',users = users , connected_usernames=connected_usernames, connected_clients=connected_clients)
         else:
             return redirect(url_for('views.home'))
 
