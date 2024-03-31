@@ -22,31 +22,34 @@
 
     <p>Connected Clients Count: <span id="connected_clients">{{ connected_clients }}</span></p>
     <p>Connected Users:</p>
-    <ul>
-        {% set counts = {} %}
+    <ul id="connected_users">
         {% for username in connected_usernames %}
-            {% if username not in counts %}
-                {% set _ = counts.update({username: 1}) %}
-            {% else %}
-                {% set _ = counts.update({username: counts[username] + 1}) %}
-            {% endif %}
-            <li>{{ username }}{% if counts[username] > 1 %} ({{ counts[username] }}){% endif %}</li>
+            <li>{{ username }}</li>
         {% endfor %}
-        
-        
     </ul>
     
     <!-- Add Socket.IO client script -->
     <script>
         var socket = io.connect('https://' + document.domain + ':' + location.port);
-
+    
         socket.on('update_clients', function(data) {
             // Update the UI with the new connected clients count
             document.getElementById('connected_clients').innerText = data.count;
+    
+            // Update the list of connected users
+            var userList = document.getElementById('connected_users');
+            userList.innerHTML = ''; // Clear the existing list
+            data.usernames.forEach(function(username) {
+                var listItem = document.createElement('li');
+                listItem.textContent = username;
+                userList.appendChild(listItem);
+            });
+    
             // Log the username of the connected session
             console.log('Connected Username:', data.username);
         });
     </script>
+    
     {% if users %}
         <table border="1">
             <thead>
