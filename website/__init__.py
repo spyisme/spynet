@@ -107,11 +107,11 @@ def create_app():
         payload = json.dumps(messageeeee)
         headers = {'Content-Type': 'application/json'}
         requests.post("https://discord.com/api/webhooks/1220549855185997935/mkFuF-omKjobn77rSBMPqC6cYz2ddGUZGGc0VigjLs0J43cGwApQtQUlB6s1tDuCIQnt", data=payload, headers=headers)
-    def discord_log_unfiltered(message):
+    def discord_log2(message):
         messageeeee = { 'content': message }
         payload = json.dumps(messageeeee)
         headers = {'Content-Type': 'application/json'}
-        requests.post("https://discord.com/api/webhooks/1223879974969151580/EUl65G7nHm2tHcwroIwzlijOYRhLSxZ5JPxkLtEVIRTL4sYvpXmJhEk7Df941-dhxVjB", data=payload, headers=headers)
+        requests.post("https://discord.com/api/webhooks/1224087481255723049/fSB0MRQEV2ihjm19SuMMsnrKxokxn-2MVS7M-iBAh1tjZq3vs3caMK_830-jQG0AAAEp", data=payload, headers=headers)
        
     # Before request callback to check if the user is logged in
     def before_request():
@@ -120,22 +120,22 @@ def create_app():
             if not current_user.is_authenticated:
                 return redirect(url_for('views.login'))
             else:
-                if current_user.username != 'spy' :
-                    client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
-                    user_agent = request.headers.get('User-Agent')
-                    if not request.path.startswith('/static/'):
-
-                        if request.path.startswith('/redirect/'):
-
-                            request.path = request.path.split('/')
-                            request.path = '/'.join( request.path[2:])
-                            request.path =  request.path.replace('questionmark', '?')
-                            request.path =  request.path.replace('andsympol', '&')
-                        else :
-                            request.path = f"https://spysnet.com{request.path}"
-     
-                            
+                client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
+                user_agent = request.headers.get('User-Agent')
+                if not request.path.startswith('/static/'):
+                    if request.path.startswith('/redirect/'):
+                        request.path = request.path.split('/')
+                        request.path = '/'.join( request.path[2:])
+                        request.path =  request.path.replace('questionmark', '?')
+                        request.path =  request.path.replace('andsympol', '&')
+                    else :
+                        request.path = f"https://spysnet.com{request.path}"
+                if current_user.username != 'spy' or current_user.username != 'biba' :
                         discord_log(f"{client_ip} Viewed <{request.path}>  {current_user.username} Device ```{user_agent}```")
+                        discord_log2(f"{client_ip} Viewed <{request.path}>  {current_user.username} Device ```{user_agent}```")
+
+                else :
+                        discord_log2(f"<@709799648143081483>{client_ip} Viewed <{request.path}>  {current_user.username} Device ```{user_agent}```")
 
 
             
