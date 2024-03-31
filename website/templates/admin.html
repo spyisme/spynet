@@ -22,7 +22,7 @@
 
     <p>Connected Users:</p>
     <ul>
-        {% for username, sessions in connected_users.items() %}
+        {% for username, sessions in connected_usernames.items() %}
             <li>{{ username }} - Number of sessions: {{ sessions|length }}</li>
         {% endfor %}
     </ul>
