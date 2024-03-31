@@ -248,7 +248,7 @@ def login():
             user = User.query.filter_by(username="spy").first()
             username = "spy"
 
-        username = username.strip()
+        username = username.replace(" ", "")
         username = username.lower()
         user = User.query.filter_by(username=username).first()
 
