@@ -143,22 +143,24 @@ def create_app():
 
     return app , socketio
 
-connected_usernames = set()
+connected_users = {}
 
 @socketio.on('connect', namespace='/')
 def handle_connect():
-    global connected_clients, connected_usernames
+    global connected_clients, connected_users
     connected_clients += 1
     username = current_user.username  # Assuming current_user.username is available
-    connected_usernames.add(username)  # Add the username to the set
+    connected_users[username] = connected_users.get(username, 0) + 1  # Increment the session count
     emit('update_clients', {'count': connected_clients, 'username': username}, broadcast=True)
     return
 
 @socketio.on('disconnect', namespace='/')
 def handle_disconnect():
-    global connected_clients, connected_usernames
+    global connected_clients, connected_users
     connected_clients -= 1
     username = current_user.username  # Assuming current_user.username is available
-    connected_usernames.remove(username)  # Remove the username from the set
+    connected_users[username] -= 1  # Decrement the session count
+    if connected_users[username] == 0:
+        del connected_users[username]  # Remove the user if no active sessions
     emit('update_clients', {'count': connected_clients, 'username': username}, broadcast=True)
     return

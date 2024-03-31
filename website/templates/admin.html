@@ -22,8 +22,8 @@
 
     <p>Connected Users:</p>
     <ul>
-        {% for username, sessions in connected_usernames.items() %}
-            <li>{{ username }} - Number of sessions: {{ sessions|length }}</li>
+        {% for username, sessions in connected_users.items() %}
+            <li>{{ username }} - Number of sessions: {{ sessions }}</li>
         {% endfor %}
     </ul>
     
@@ -43,7 +43,7 @@
             
             for (var username in connected_users) {
                 var userItem = document.createElement('li');
-                userItem.textContent = username + ' - Number of sessions: ' + connected_users[username].length;
+                userItem.textContent = username + ' - Number of sessions: ' + connected_users[username];
                 userList.appendChild(userItem);
             }
         }
