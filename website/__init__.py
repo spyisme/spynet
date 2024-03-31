@@ -3,7 +3,7 @@ from flask import Flask, request, redirect, url_for , render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, current_user
 from flask_socketio import SocketIO , emit
-from flask_mail import Mail
+from flask_mail import Mail , Message
 
 mail = Mail()
 
@@ -26,8 +26,31 @@ def create_app():
     app.config['MAIL_USE_TLS'] = True
     app.config['MAIL_USERNAME'] = 'amooraymanh730072'
     app.config['MAIL_PASSWORD'] = 'ocpb mxsf ncwu pebf'
-    app.config['MAIL_DEFAULT_SENDER'] = 'no-reply@spysnet.com'
     
+
+
+    @app.route('/send_email', methods=['GET', 'POST'])
+    def send_email():
+        if request.method == 'GET':
+            recipient = request.args.get('to')
+            subject = "Subject"
+            body = request.args.get('msg')
+
+                
+            msg = Message(subject, recipients=[recipient])
+            msg.body = body
+
+            try:
+                mail.send(msg)
+                return "Email sent successfully!"
+            except Exception as e:
+                return f"Failed to send email. Error: {str(e)}"
+
+        return "This endpoint only accepts GET requests."
+
+
+
+
     @app.route('/refreshpage')
     def refresh_page():
         user = request.args.get('user')
