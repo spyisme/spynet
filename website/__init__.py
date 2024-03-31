@@ -137,14 +137,13 @@ def create_app():
                             
                         discord_log(f"{client_ip} Viewed <{request.path}>  {current_user.username} Device ```{user_agent}```")
 
-        if current_user.username != 'spy' :
-            if request.path.startswith('/redirect/'):
-                request.path = request.path.split('/')
-                request.path = '/'.join( request.path[2:])
-                request.path =  request.path.replace('questionmark', '?')
-                request.path =  request.path.replace('andsympol', '&')
-            else :
-                request.path = f"https://spysnet.com{request.path}"
+        if request.path.startswith('/redirect/'):
+            request.path = request.path.split('/')
+            request.path = '/'.join( request.path[2:])
+            request.path =  request.path.replace('questionmark', '?')
+            request.path =  request.path.replace('andsympol', '&')
+        else :
+            request.path = f"https://spysnet.com{request.path}"
         client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
         user_agent = request.headers.get('User-Agent')
 
