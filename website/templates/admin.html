@@ -26,12 +26,13 @@
         {% set counts = {} %}
         {% for username in connected_usernames %}
             {% if username not in counts %}
-                {% set _ = counts.update({username: 1}) %}
+                {% set counts = counts|merge({username: 1}) %}
             {% else %}
-                {% set _ = counts.update({username: counts[username] + 1}) %}
+                {% set counts = counts|merge({username: counts[username] + 1}) %}
             {% endif %}
             <li>{{ username }}{% if counts[username] > 1 %} ({{ counts[username] }}){% endif %}</li>
         {% endfor %}
+        
         
     </ul>
     
