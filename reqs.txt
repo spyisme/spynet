@@ -12,4 +12,4 @@ pycryptodomex
 pycryptodome
 waitress
 flask-socketio
-gunicorn
+flask_mail

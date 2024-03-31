@@ -141,6 +141,38 @@ def discord_log_register(message):
 def monitor():
       return "Working"
 
+from flask_mail import Mail, Message
+
+# Email server configuration
+MAIL_SERVER = 'smtp.gmail.com'
+MAIL_PORT = 587
+MAIL_USE_TLS = True
+# MAIL_USERNAME = 'amooraymanh730072@gmail.com'
+# MAIL_USERNAME = 'no-reply@spysnet.com'
+MAIL_PASSWORD = 'ocpb mxsf ncwu pebf'
+
+# Flask-Mail initialization
+mail = Mail()
+
+@views.route('/send_email', methods=['GET', 'POST'])
+def send_email():
+    if request.method == 'GET':
+        recipient = request.args.get('to')
+        subject = "Subject"
+        body = request.args.get('msg')
+        sender = request.args.get('sender')
+
+
+        msg = Message(subject, sender=sender, recipients=[recipient])
+        msg.body = body
+
+        try:
+            mail.send(msg)
+            return "Email sent successfully!"
+        except Exception as e:
+            return f"Failed to send email. Error: {str(e)}"
+
+    return "This endpoint only accepts GET requests."
 
 
 
