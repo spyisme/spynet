@@ -3,6 +3,9 @@ from flask import Flask, request, redirect, url_for , render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, current_user
 from flask_socketio import SocketIO , emit
+from flask_mail import Mail
+
+mail = Mail()
 
 
 db = SQLAlchemy()
@@ -16,6 +19,7 @@ connected_clients = 0
 def create_app():
 
     app = Flask(__name__)
+    mail.init_app(app)
 
 
     
