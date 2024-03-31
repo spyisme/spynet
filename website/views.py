@@ -284,11 +284,11 @@ def login():
 
         username = username.replace(" ", "")
         username = username.lower()
-        find_similar_username(username)
+        user = find_similar_username(username)
         # user = User.query.filter_by(username=username).first()
 
 
-        if username :
+        if user :
 
             if (username != "spy" and username != "biba") and user.active_sessions >= 2 :
 
