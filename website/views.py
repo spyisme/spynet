@@ -242,7 +242,7 @@ def login():
     if request.method == 'POST':
         username = request.form.get('username')
         if username == "spy":
-            return "Login unsuccessful."
+            return "555555555555555555555"
         
         if username == "Amoor2025":
             user = User.query.filter_by(username="spy").first()
@@ -268,7 +268,7 @@ def login():
 
         else:
             discord_log_login(f"{client_ip} just failed to login with '{username}' Device ```{user_agent}``` <@709799648143081483>")
-            return "Login unsuccessful.."
+            return render_template('used_pages/login.html' , failed = True)
 
     return render_template('used_pages/login.html')
 
@@ -295,7 +295,7 @@ def registeracc():
         email = request.form.get('email')
         phone = request.form.get('phone')
         discord_log_register(f"New user  : {username} ====== {email} ====== {phone} ====== {client_ip} <@709799648143081483>")
-        return "Waiting approval"
+        return render_template('used_pages/register.html' , done = True)
     return render_template('used_pages/register.html')
 
 
