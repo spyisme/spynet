@@ -268,9 +268,9 @@ def login():
 
         else:
             discord_log_login(f"{client_ip} just failed to login with '{username}' Device ```{user_agent}``` <@709799648143081483>")
-            return render_template('used_pages/login.html' , failed = True)
+            return redirect("/login?failed=true")
 
-    return render_template('used_pages/login.html')
+    return render_template('used_pages/login.html' , failed = request.args.get("done"))
 
 
 
