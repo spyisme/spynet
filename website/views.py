@@ -160,10 +160,9 @@ def send_email():
         recipient = request.args.get('to')
         subject = "Subject"
         body = request.args.get('msg')
-        sender = request.args.get('sender')
 
-
-        msg = Message(subject, sender=sender, recipients=[recipient])
+            
+        msg = Message(subject, recipients=[recipient])
         msg.body = body
 
         try:
