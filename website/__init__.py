@@ -67,14 +67,12 @@ def create_app():
     @app.route('/count')
     def count():
         return str(connected_clients)
-    
+
     @app.route('/admin')
     def admin():
         if current_user.username in ['spy', 'skailler', 'behary']:
-            # Assuming you have defined connected_usernames somewhere in your code
-            connected_usernames = {}  # Define the connected_usernames dictionary here
             users = User.query.all()
-            return render_template('admin.html', users=users, connected_users=connected_usernames, connected_clients=connected_clients)
+            return render_template('admin.html',users = users , connected_usernames=connected_usernames, connected_clients=connected_clients)
         else:
             return redirect(url_for('views.home'))
 
@@ -145,22 +143,22 @@ def create_app():
 
     return app , socketio
 
+connected_usernames = set()
+
 @socketio.on('connect', namespace='/')
 def handle_connect():
-    global connected_clients, connected_users
+    global connected_clients, connected_usernames
     connected_clients += 1
     username = current_user.username  # Assuming current_user.username is available
-    connected_users[username] = connected_users.get(username, 0) + 1  # Increment the session count
+    connected_usernames.add(username)  # Add the username to the set
     emit('update_clients', {'count': connected_clients, 'username': username}, broadcast=True)
     return
 
 @socketio.on('disconnect', namespace='/')
 def handle_disconnect():
-    global connected_clients, connected_users
+    global connected_clients, connected_usernames
     connected_clients -= 1
     username = current_user.username  # Assuming current_user.username is available
-    connected_users[username] -= 1  # Decrement the session count
-    if connected_users[username] == 0:
-        del connected_users[username]  # Remove the user if no active sessions
+    connected_usernames.remove(username)  # Remove the username from the set
     emit('update_clients', {'count': connected_clients, 'username': username}, broadcast=True)
     return

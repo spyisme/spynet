@@ -20,33 +20,24 @@
     </style>
     <h1>Welcome to the Admin Page</h1>
 
+    <p>Connected Clients Count: <span id="connected_clients">{{ connected_clients }}</span></p>
     <p>Connected Users:</p>
     <ul>
-        {% for username, sessions in connected_users.items() %}
-            <li>{{ username }} - Number of sessions: {{ sessions }}</li>
+        {% for username in connected_usernames %}
+            <li>{{ username }}</li>
         {% endfor %}
     </ul>
     
     <!-- Add Socket.IO client script -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
     <script>
         var socket = io.connect('https://' + document.domain + ':' + location.port);
 
-        socket.on('refresh', function(data) {
-            // Update the UI with the new connected users and their sessions
-            updateConnectedUsers(data.connected_users);
+        socket.on('update_clients', function(data) {
+            // Update the UI with the new connected clients count
+            document.getElementById('connected_clients').innerText = data.count;
+            // Log the username of the connected session
+            console.log('Connected Username:', data.username);
         });
-
-        function updateConnectedUsers(connected_users) {
-            var userList = document.querySelector('ul');
-            userList.innerHTML = ''; // Clear the previous list
-            
-            for (var username in connected_users) {
-                var userItem = document.createElement('li');
-                userItem.textContent = username + ' - Number of sessions: ' + connected_users[username];
-                userList.appendChild(userItem);
-            }
-        }
     </script>
     {% if users %}
         <table border="1">
