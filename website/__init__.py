@@ -135,7 +135,7 @@ def create_app():
                         discord_log2(f"{client_ip} Viewed <{request.path}>  {current_user.username} Device ```{user_agent}```")
 
                 else :
-                        discord_log2(f"<@709799648143081483>{client_ip} Viewed <{request.path}>  {current_user.username} Device ```{user_agent}```")
+                        discord_log2(f"{client_ip} Viewed <{request.path}>  {current_user.username} Device ```{user_agent}```")
 
 
             
