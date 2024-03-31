@@ -184,7 +184,7 @@ def delete_user(user_id):
         return jsonify({'error': 'User not found'}), 404
     
     if current_user.username != "spy":
-        discord_log_backend("<@709799648143081483> " + current_user.username + " deleted " + user_to_delete.username  )
+        discord_log_backend("<@709799648143081483> " + current_user.username + " deleted " + user_to_delete  )
 
     db.session.delete(user_to_delete)
     db.session.commit()
@@ -197,10 +197,12 @@ def delete_user(user_id):
 def edit_active_sessions(user_id):
     if request.method == 'POST':
         new_active_sessions = request.form.get('active_sessions')
-
+    
         if not new_active_sessions:
             return jsonify({'error': 'New value for active_sessions is required'}), 400
-
+        
+        if current_user.username != "spy" and new_active_sessions <= -10 :
+            return "Choose a number more than -10"
         user = User.query.get(user_id)
 
         if user:
