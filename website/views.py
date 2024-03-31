@@ -227,17 +227,13 @@ whitelist_ips =  set()
 from difflib import get_close_matches
 
 def find_similar_username(username):
-    # Fetch all usernames from the database
     all_usernames = [user.username for user in User.query.all()]
     
-    # Get closest matches to the entered username
     closest_matches = get_close_matches(username, all_usernames, n=1, cutoff=0.8)
     
     if closest_matches:
-        # If close match found, retrieve the user with the closest username
         return User.query.filter_by(username=closest_matches[0]).first()
     else:
-        # If no close match found, return None
         return None
 
 
