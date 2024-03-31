@@ -148,13 +148,15 @@ def create_app():
 def handle_connect():
     global connected_clients
     connected_clients += 1
-    emit('update_clients', {'count': connected_clients}, broadcast=True)
+    url = request.url
+    emit('update_clients', {'count': connected_clients, 'url': url}, broadcast=True)
     return
 
 @socketio.on('disconnect', namespace='/')
 def handle_disconnect():
     global connected_clients
     connected_clients -= 1
-    emit('update_clients', {'count': connected_clients}, broadcast=True)
+    url = request.url
+    emit('update_clients', {'count': connected_clients, 'url': url}, broadcast=True)
     return
 

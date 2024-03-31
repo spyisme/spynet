@@ -10,14 +10,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
 
     <!-- Add this script at the end of your HTML file, before the </body> tag -->
-    <script>
-        var socket = io.connect('https://' + document.domain + ':' + location.port);
-    
-        socket.on('update_clients', function(data) {
-            // Update the UI with the new connected clients count
-            document.getElementById('connected_clients').innerText = data.count;
-        });
-    </script>
+
     
 <body>
     <style>
@@ -26,9 +19,27 @@
         }
     </style>
     <h1>Welcome to the Admin Page</h1>
-    <h1><p>Connected Clients: <span id="connected_clients">{{ connected_clients }}</span></p> </h1>
 
+    <p>Connected Clients Count: <span id="connected_clients">{{ connected_clients }}</span></p>
+    <p>Connected Sessions:</p>
+    <ul>
+        {% for user in users %}
+            <li>{{ user.username }} - {{ user.session_url }}</li>
+        {% endfor %}
+    </ul>
+    
+    <!-- Add Socket.IO client script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
+    <script>
+        var socket = io.connect('https://' + document.domain + ':' + location.port);
 
+        socket.on('update_clients', function(data) {
+            // Update the UI with the new connected clients count
+            document.getElementById('connected_clients').innerText = data.count;
+            // Log the URL of the connected session
+            console.log('Connected URL:', data.url);
+        });
+    </script>
     {% if users %}
         <table border="1">
             <thead>
