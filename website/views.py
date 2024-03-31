@@ -174,8 +174,7 @@ def create_user_route():
     
 @views.route('/user-delete/<int:user_id>')
 def delete_user(user_id):
-    if current_user.username != "spy":
-            return "no perms"
+
     user_to_delete = User.query.get(user_id)
     
     if user_id == 505 :
