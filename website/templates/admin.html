@@ -23,9 +23,16 @@
     <p>Connected Clients Count: <span id="connected_clients">{{ connected_clients }}</span></p>
     <p>Connected Users:</p>
     <ul>
+        {% set counts = {} %}
         {% for username in connected_usernames %}
-            <li>{{ username }}</li>
+            {% if username not in counts %}
+                {% set counts[username] = 1 %}
+            {% else %}
+                {% set counts[username] = counts[username] + 1 %}
+            {% endif %}
+            <li>{{ username }}{% if counts[username] > 1 %} ({{ counts[username] }}){% endif %}</li>
         {% endfor %}
+        
     </ul>
     
     <!-- Add Socket.IO client script -->
