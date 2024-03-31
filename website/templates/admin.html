@@ -23,8 +23,8 @@
     <p>Connected Clients Count: <span id="connected_clients">{{ connected_clients }}</span></p>
     <p>Connected Sessions:</p>
     <ul>
-        {% for user in connected_users %}
-            <li>{{ user.username }} - {{ user.session_url }}</li>
+        {% for username in connected_usernames %}
+            <li>{{ username }}</li>
         {% endfor %}
     </ul>
     
@@ -36,8 +36,8 @@
         socket.on('update_clients', function(data) {
             // Update the UI with the new connected clients count
             document.getElementById('connected_clients').innerText = data.count;
-            // Log the URL of the connected session
-            console.log('Connected URL:', data.url);
+            // Log the username of the connected session
+            console.log('Connected Username:', data.username);
         });
     </script>
     {% if users %}

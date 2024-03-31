@@ -71,11 +71,10 @@ def create_app():
     @app.route('/admin')
     def admin():
         if current_user.username in ['spy', 'skailler', 'behary']:
-            # Get connected users only
-            connected_users = User.query.filter_by(is_connected=True).all()
-            return render_template('admin.html', connected_users=connected_users, connected_clients=connected_clients)
+            return render_template('admin.html', connected_usernames=connected_usernames, connected_clients=connected_clients)
         else:
             return redirect(url_for('views.home'))
+
 
 
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
@@ -143,19 +142,22 @@ def create_app():
 
     return app , socketio
 
+connected_usernames = set()
+
 @socketio.on('connect', namespace='/')
 def handle_connect():
-    global connected_clients
+    global connected_clients, connected_usernames
     connected_clients += 1
-    url = request.url
-    emit('update_clients', {'count': connected_clients, 'url': url}, broadcast=True)
+    username = current_user.username  # Assuming current_user.username is available
+    connected_usernames.add(username)  # Add the username to the set
+    emit('update_clients', {'count': connected_clients, 'username': username}, broadcast=True)
     return
 
 @socketio.on('disconnect', namespace='/')
 def handle_disconnect():
-    global connected_clients
+    global connected_clients, connected_usernames
     connected_clients -= 1
-    url = request.url
-    emit('update_clients', {'count': connected_clients, 'url': url}, broadcast=True)
+    username = current_user.username  # Assuming current_user.username is available
+    connected_usernames.remove(username)  # Remove the username from the set
+    emit('update_clients', {'count': connected_clients, 'username': username}, broadcast=True)
     return
-
