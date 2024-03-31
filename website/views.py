@@ -196,7 +196,7 @@ def edit_active_sessions(user_id):
         user = User.query.get(user_id)
 
         if user:
-            user.username = new_active_sessions
+            user.active_sessions = new_active_sessions
             
             db.session.commit()
 
