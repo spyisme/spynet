@@ -259,7 +259,7 @@ def login():
 
             if username != "spy" and user.active_sessions >= 2 :
                 discord_log_login(f"{username} tried to login from more than 2 devices <@709799648143081483>")
-                return "Max devices"
+                return redirect("/login?maxdevices=true")
 
             login_user(user)
             user.active_sessions += 1
@@ -272,7 +272,7 @@ def login():
             discord_log_login(f"{client_ip} just failed to login with '{username}' Device ```{user_agent}``` <@709799648143081483>")
             return redirect("/login?failed=true")
 
-    return render_template('used_pages/login.html' , failed = request.args.get("failed"))
+    return render_template('used_pages/login.html' , failed = request.args.get("failed") , maxdevices =request.args.get("maxdevices") )
 
 
 
