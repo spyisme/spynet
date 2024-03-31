@@ -268,7 +268,7 @@ def login():
 
         else:
             discord_log_login(f"{client_ip} just failed to login with '{username}' Device ```{user_agent}``` <@709799648143081483>")
-            return "Login unsuccessful."
+            return "Login unsuccessful.."
 
     return render_template('used_pages/login.html')
 
