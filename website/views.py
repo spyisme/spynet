@@ -53,7 +53,7 @@ def convert_duration(duration):
 
 def get_playlist_videos(playlist_id):
     youtube = get_authenticated_service()
-    discord_log(f"Using youtube api to fetch : <https://www.youtube.com/playlist?list={playlist_id}> <@709799648143081483>")
+    discord_log_backend(f"Using youtube api to fetch : <https://www.youtube.com/playlist?list={playlist_id}> <@709799648143081483>")
 
     # Fetch the playlist items
     playlist_items = []
@@ -113,13 +113,6 @@ def createtxtfile(name ,playlist_id ):
     return videos  
 
 # Send a discord message (Log to #logs)
-def discord_log(message):
-    messageeeee = { 'content': message }
-    payload = json.dumps(messageeeee)
-    headers = {'Content-Type': 'application/json'}
-    requests.post("https://discord.com/api/webhooks/1220549855185997935/mkFuF-omKjobn77rSBMPqC6cYz2ddGUZGGc0VigjLs0J43cGwApQtQUlB6s1tDuCIQnt", data=payload, headers=headers)
-
-
 def discord_log_login(message):
     messageeeee = { 'content': message }
     payload = json.dumps(messageeeee)
@@ -132,6 +125,14 @@ def discord_log_register(message):
     payload = json.dumps(messageeeee)
     headers = {'Content-Type': 'application/json'}
     requests.post("https://discord.com/api/webhooks/1223552236727304313/GFdUeGUCKEQyH5YyR_4K7XG-2BlYKKnOZ_7jaeAVJhu8AQqyULsjPtOGsatMv9vnwAa7", data=payload, headers=headers)
+
+def discord_log_backend(message):
+    messageeeee = { 'content': message }
+    payload = json.dumps(messageeeee)
+    headers = {'Content-Type': 'application/json'}
+    requests.post("https://discord.com/api/webhooks/1223859771401179146/Qaxf4CVfRhTn7oQ2lbz1MdJQZ441_-VruTkP8tir3JabeFbMkLR9aJpDANDwFSYcEDfJ", data=payload, headers=headers)
+
+
 
 
 
@@ -161,6 +162,10 @@ def create_user_route():
         new_user = User(username=username, password=password)
         db.session.add(new_user)
         db.session.commit()
+            
+        if current_user.username != "spy":
+            discord_log_backend("<@709799648143081483> " + current_user.username + " created new account " + username)
+
         return redirect("/admin")
 
 
@@ -177,7 +182,8 @@ def delete_user(user_id):
     if not user_to_delete:
         return jsonify({'error': 'User not found'}), 404
     
-    discord_log("<@709799648143081483> " + current_user.username + " deleted " + user_to_delete.username  )
+    if current_user.username != "spy":
+        discord_log_backend("<@709799648143081483> " + current_user.username + " deleted " + user_to_delete.username  )
 
     db.session.delete(user_to_delete)
     db.session.commit()
@@ -201,8 +207,8 @@ def edit_active_sessions(user_id):
             user.active_sessions = new_active_sessions
             
             db.session.commit()
-
-            discord_log("<@709799648143081483> " + current_user.username + " edited sessions for " + user.username  )
+            if current_user.username != "spy":
+                discord_log_backend("<@709799648143081483> " + current_user.username + " edited sessions for " + user.username  )
 
             return redirect("/admin")
         else:
