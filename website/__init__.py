@@ -67,12 +67,14 @@ def create_app():
     @app.route('/count')
     def count():
         return str(connected_clients)
-
+    
     @app.route('/admin')
     def admin():
         if current_user.username in ['spy', 'skailler', 'behary']:
+            # Assuming you have defined connected_usernames somewhere in your code
+            connected_usernames = {}  # Define the connected_usernames dictionary here
             users = User.query.all()
-            return render_template('admin.html',users = users , connected_usernames=connected_usernames, connected_clients=connected_clients)
+            return render_template('admin.html', users=users, connected_users=connected_usernames, connected_clients=connected_clients)
         else:
             return redirect(url_for('views.home'))
 
@@ -142,8 +144,6 @@ def create_app():
 
 
     return app , socketio
-
-connected_users = {}
 
 @socketio.on('connect', namespace='/')
 def handle_connect():
