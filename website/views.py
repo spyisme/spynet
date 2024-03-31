@@ -290,7 +290,7 @@ def login():
 
         if user :
 
-            if (username != "spy" and username != "biba") and user.active_sessions >= 2 :
+            if (user.username != "spy" and user.username != "biba") and user.active_sessions >= 2 :
 
                 discord_log_login(f"{username} tried to login from more than 2 devices <@709799648143081483>")
                 return redirect("/login?maxdevices=true")
