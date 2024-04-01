@@ -39,9 +39,9 @@
             // Update the list of connected usernames
             var usernamesList = document.getElementById('usernamesList');
             usernamesList.innerHTML = ''; // Clear previous usernames
-            data.usernames.forEach(function(username) {
+            data.username.forEach(function(user) {
                 var li = document.createElement('li');
-                li.textContent = username;
+                li.textContent = user;
                 usernamesList.appendChild(li);
             });
         });
