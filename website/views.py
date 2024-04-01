@@ -725,7 +725,13 @@ def sherporoutes(custom_url):
 
 
     elif course_name  == "Statics" :
-        folder =   "https://drive.google.com/drive/folders/192Zd0BMB0-ohwV2dYsSJvFB651d7qXAS?usp=drive_link"  
+        folder =   "https://drive.google.com/drive/folders/192Zd0BMB0-ohwV2dYsSJvFB651d7qXAS?usp=drive_link" 
+
+    elif course_name == "Algebra" :
+        extra = { 
+            "S1.pdf" : "https://drive.google.com/file/d/1iNH3qEhAfpJa5QqHA6p7rarWA0Z7PRH8/view?usp=drive_link" ,
+                   } 
+        folder = "https://drive.google.com/drive/folders/1_BT42ym3-9BY3FQOlFUKce7T6Scntx5o?usp=drive_link"
 
     return render_template('used_pages/videopage.html', videos=videos, playlist_id=playlist_id, teachername=teachername ,extra = extra , folder =folder)
 
