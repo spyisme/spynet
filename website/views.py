@@ -103,8 +103,6 @@ def get_playlist_videos(playlist_id):
 
 
 
-
-
 #Main function to /update (Youtube file create)
 def createtxtfile(name ,playlist_id ):
     videos = get_playlist_videos(playlist_id)
@@ -141,10 +139,6 @@ def discord_log_backend(message):
 @views.route('/monitor')
 def monitor():
       return "Working"
-
-
-
-
 
 
 
@@ -233,12 +227,6 @@ def find_similar_username(username):
         return User.query.filter_by(username=closest_matches[0]).first()
     else:
         return None
-
-
-
-
-
-
 
 
 
@@ -332,38 +320,6 @@ def registeracc():
 
 
 
-
-
-
-#Login 2 For proxy / outside EG (Doesnt add to the active sessions)
-
-# @views.route('/login2', methods=['GET', 'POST'])
-# def login2():
-#     client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
-#     user_agent = request.headers.get('User-Agent')
-
-#     if current_user.is_authenticated:
-#         return redirect(url_for('views.home'))
-    
-#     if request.method == 'POST':
-#         username = request.form.get('username')
-#         user = User.query.filter_by(username=username).first()
-#         if username == "spy":
-#             return "Login unsuccessful."
-#         if username == "Amoor2025":
-#             user = User.query.filter_by(username="spy").first()
-#             username = "spy"
-#         if user:
-    
-#             login_user(user)
-#             discord_log(f"LOGIN2 {client_ip} just logged in with {username} Device ```{user_agent}```  <@709799648143081483>")
-#             session.permanent = True
-#             return redirect(url_for('views.home'))
-#         else:
-#             discord_log(f"LOGIN2 {client_ip} just failed to login with '{username}' Device ```{user_agent}``` <@709799648143081483> LOGIN2")
-#             return "Login unsuccessful."
-
-#     return render_template('used_pages/login.html')
 
 
 #All links works with this
@@ -505,7 +461,18 @@ def nawarvids(custom_url):
 def chem():
   teacher_links = {
      "Zoz": ("nasser", "Nasser-El-Batal"),
-     "Ashraf elshnawy": ("ashraf", "All sessions", "New"),
+     "Ashraf elshnawy": ("ashraf", "All sessions"),
+
+  }
+  teachername = "Chemistry"
+  return render_template('used_pages/teacher.html',
+                         teacher_links=teacher_links,
+                         teachername=teachername,
+                         imgs="yes")
+@views.route('/ashraf')
+def ashraf():
+  teacher_links = {
+      "Ashraf elshnawy": ("ashrafsessions", "All sessions", "New"),
      "Ashraf elshnawy(YT)": ("ashrafelshnawy", "Revision CH 1-4"),
 
   }
@@ -516,12 +483,11 @@ def chem():
                          imgs="yes")
 
 
-
 #Ashraf -----------------------------------------------------------------------------
 
 
-@views.route('/ashraf')
-def ashraf():
+@views.route('/ashrafsessions')
+def ashrafsessions():
     with open('website/Backend/ashraf.json', 'r') as file:
         lectures_data = json.load(file)
         # Extracting the last lecture ID
@@ -530,8 +496,8 @@ def ashraf():
 
 
 
-@views.route('/ashraf/update')
-def updateashraf():
+@views.route('/ashrafsessions/update')
+def ashrafsessionsupdate():
     headers = {
         'authority': 'api.csacademyzone.com',
         'accept': 'application/json, text/plain, */*',
