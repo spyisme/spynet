@@ -163,8 +163,7 @@ def create_user_route():
         db.session.add(new_user)
         db.session.commit()
             
-        if current_user.username != "spy":
-            discord_log_backend("<@709799648143081483> " + current_user.username + " created new account " + username)
+        discord_log_backend("<@709799648143081483> " + current_user.username + " created new account " + username)
 
         return redirect("/admin")
 
@@ -177,14 +176,13 @@ def delete_user(user_id):
 
     user_to_delete = User.query.get(user_id)
     
-    if user_id == 505 or user_id == 524:
+    if current_user.id != 505:
         return "55555555555"
 
     if not user_to_delete:
         return jsonify({'error': 'User not found'}), 404
-    
-    if current_user.username != "spy":
-        discord_log_backend("<@709799648143081483> " + current_user.username + " deleted " + user_to_delete  )
+
+    discord_log_backend("<@709799648143081483> " + current_user.username + " deleted " + user_to_delete  )
 
     db.session.delete(user_to_delete)
     db.session.commit()
