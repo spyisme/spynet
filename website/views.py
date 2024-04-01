@@ -472,7 +472,7 @@ def chem():
 @views.route('/ashraf')
 def ashraf():
   teacher_links = {
-      "Ashraf elshnawy": ("ashrafsessions", "All sessions", "New"),
+      "Ashraf elshnawy": ("ashrafsessions", "All sessions", "Not youtube"),
      "Ashraf elshnawy(YT)": ("ashrafelshnawy", "Revision CH 1-4"),
 
   }

@@ -16,5 +16,12 @@
       "description" : "Sherbo Dynamics"
 
     }
+    ,
+    "Algebra": {
+      "id": "PLM-GVlebsoPXA9V7VBUTiazxj2DQn_yxN",
+      "url": "/algebra",
+      "description" : "Sherbo Algebra"
+
+    }
   }
   
