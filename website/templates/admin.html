@@ -22,31 +22,24 @@
 
     <p>Connected Clients Count: <span id="connected_clients">{{ connected_clients }}</span></p>
     <p>Connected Users:</p>
-
-        <ul id="usernamesList">
-            <!-- Usernames will be dynamically added here -->
-        </ul>
-
+    <ul>
+        {% for username in connected_usernames %}
+            <li id ="usernames">{{ username }}</li>
+        {% endfor %}
+    </ul>
     
     <!-- Add Socket.IO client script -->
     <script>
         var socket = io.connect('https://' + document.domain + ':' + location.port);
-    
+
         socket.on('update_clients', function(data) {
             // Update the UI with the new connected clients count
             document.getElementById('connected_clients').innerText = data.count;
-    
-            // Update the list of connected usernames
-            var usernamesList = document.getElementById('usernamesList');
-            usernamesList.innerHTML = ''; // Clear previous usernames
-            data.username.forEach(function(user) {
-                var li = document.createElement('li');
-                li.textContent = user;
-                usernamesList.appendChild(li);
-            });
+
+            // Log the username of the connected session
+            console.log('Connected Username:', data.username);
         });
     </script>
-    
     {% if users %}
         <table border="1">
             <thead>
