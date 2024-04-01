@@ -399,7 +399,7 @@ def favicon():
 #accs(accounts) 
 @views.route('/spyaccs')
 def spyleakedaccs():
-    if current_user.username not in ['spy', 'skailler']:
+    if current_user.username not in ['spy']:
         return redirect(url_for('views.home'))
     else:
         with open('website/templates/spyaccs/accs.json') as json_file:
@@ -662,6 +662,8 @@ def nasservids(custom_url):
         "Chapter 3": "https://drive.google.com/drive/folders/1CqVC871-_kgNxNuJtpXAkp8BMHWL0cqU?usp=drive_link",
         "Chapter 4": "https://drive.google.com/drive/folders/1xtEHPFPHAiyXaQ62Ou2MRkklZmBvWzZd?usp=drive_link",
         "Chapter 5 Part 1": "https://drive.google.com/drive/folders/1zda1ANurONO44MTBIo2tm4wkhGahtUUn?usp=drive_link",
+        "Chapter 5 Part 2": "https://drive.google.com/drive/folders/1gQgsv5s3RiXeQ3dbCOlCKp3fR78_uv6M?usp=drive_link",
+
 
 
         }

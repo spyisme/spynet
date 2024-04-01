@@ -70,7 +70,7 @@ def create_app():
 
     @app.route('/admin')
     def admin():
-        if current_user.username in ['spy', 'skailler', 'behary']:
+        if current_user.username in ['spy']:
             users = User.query.all()
             return render_template('admin.html',users = users , connected_usernames=connected_usernames, connected_clients=connected_clients)
         else:
