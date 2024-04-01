@@ -151,7 +151,7 @@ def handle_connect():
     connected_clients += 1
     username = current_user.username  # Assuming current_user.username is available
     connected_usernames.add(username)  # Add the username to the set
-    emit('update_clients', {'count': connected_clients, 'usernames': username}, broadcast=True)
+    emit('update_clients', {'count': connected_clients, 'username': username}, broadcast=True)
     return
 
 @socketio.on('disconnect', namespace='/')
@@ -160,5 +160,5 @@ def handle_disconnect():
     connected_clients -= 1
     username = current_user.username  # Assuming current_user.username is available
     connected_usernames.remove(username)  # Remove the username from the set
-    emit('update_clients', {'count': connected_clients, 'usernames': username}, broadcast=True)
+    emit('update_clients', {'count': connected_clients, 'username': username}, broadcast=True)
     return
