@@ -35,7 +35,7 @@
         socket.on('update_clients', function(data) {
             // Update the UI with the new connected clients count
             document.getElementById('connected_clients').innerText = data.count;
-            document.getElementById('usernames').innerText = data.username;
+            document.getElementById('usernames').innerText = data.usernames;
 
             // Log the username of the connected session
             console.log('Connected Username:', data.username);
