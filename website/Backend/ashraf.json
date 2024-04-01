@@ -574,9 +574,68 @@
       "part_a_video": "62cccaac12f64084970faf90912ae205",
       "part_b_video": "bbbb2441b6c041a8a7b6667dec8b3578",
       "part_c_video": "15c698d8736348e7a2ed3bfcde57b345",
-      "part_d_video": "34b1905334fa4258a20c79a5e46dae59",
+      "part_d_video": "5f144095cc6943ea817b54a3ea944f6e",
       "part_e_video": "3538a99406934b978db6a4434c8a106c",
-      "part_f_video": "a33615cfd775415f928c290025fad7fa"
+      "part_f_video": "dcebd47054e74c73beb0bf3c6865239e"
+    },
+    {
+      "id": "57",
+      "title": "CH5L5 (part A) Alkynes ( 7 sections)",
+      "part_a_video": "5465b2f55a8a40278126edd9c311c236",
+      "part_b_video": "e77ea6cf3c6a4654ad49a1e5dcec5535",
+      "part_c_video": "519eb912110d424f95ac44f2658d02f2",
+      "part_d_video": "b46e15f30321464387d7f9b4f7a3d163",
+      "part_e_video": "4c8d9b70cb71493fa8477ad019a16e94",
+      "part_f_video": "5627963a8d5246eabc9500394ee1bfe0",
+      "part_g_video": "484bf4cc257c4416887a3a7d21f5c92f",
+      "part_s_video": "3ad0a4109cbc43f795b2e3b5276c6e0d"
+    },
+    {
+      "id": "58",
+      "title": "CH5L5 (part B) Cyclic hydrocarbons (  7 sections)",
+      "part_a_video": "06e464e0d3164a22ac2ef16ce8f71404",
+      "part_b_video": "a8ca9c19738949189e03265cec3ce797",
+      "part_c_video": "098cf6b2edc5416cbddd0b22ca8adb1b",
+      "part_d_video": "630bac9e62934701a2bb1e8951da67c1",
+      "part_e_video": "30b42663757d4e1c99c83c34c4055d81",
+      "part_f_video": "de5e990972874ff38fbe3367acfcad42",
+      "part_g_video": "ec09581c3c234dba93f34f4a435d2c02"
+    },
+    {
+      "id": "59",
+      "title": "CH5L6 (part A) Aromatic benzene ( 5 sections)",
+      "part_a_video": "243dbf2c437e43d1a0cb938e39b5b59f",
+      "part_b_video": "af8186a9dbf348ababeb38ab79cd2c5b",
+      "part_c_video": "39b5eaf745ca45adabef54ebe43945d5",
+      "part_d_video": "766b49734ffe4d1e83aa11a69c2ead6a",
+      "part_e_video": "ba624692c33245e19a803fb3beb8de70",
+      "part_s_video": "6668e92adb6249ad98debdced2c73a45"
+    },
+    {
+      "id": "60",
+      "title": "CH5L6 (part B) Follow: Aromatic benzene (  7 sections)",
+      "part_a_video": "6a2d9e35aece4bb8b05acf626926333a",
+      "part_b_video": "91b4498a23454c54b0f2d208736fff7f",
+      "part_c_video": "53ffe817760f49bb8cdb889944560266",
+      "part_d_video": "3319db3c57694f19b9a5a0d188e177e2",
+      "part_e_video": "592dfa2cb916433791e32316b2c764bb",
+      "part_f_video": "cbe5d7a1ce834ffe92b9660aaf00def1",
+      "part_g_video": "96969ab520ac48b38bbdb451f160e29a"
+    },
+    {
+      "id": "61",
+      "title": "CH5L6 \u00a0Solving homework of aromatic benzene (variable questions 23)",
+      "part_a_video": "cbe50f45aa114040855428ebf3236f99"
+    },
+    {
+      "id": "62",
+      "title": "CH5L7(part A) Functional groups & alcohols  (6 sections)",
+      "part_a_video": "d98655decae34052a0fd4d9660ca3bba",
+      "part_b_video": "5d6d59f0716b4991bf51181e7f9b8b0c",
+      "part_c_video": "5f2648be7c8f4095b205d4be57ade966",
+      "part_d_video": "0f4983f6279040cb911e2e07ae464211",
+      "part_e_video": "c796b7141c094c3db1847e6a9b8f4d96",
+      "part_f_video": "9d207feb1c184cf0875db16816ad4451"
     }
   ]
 }
