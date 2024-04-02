@@ -376,7 +376,7 @@ def send_email():
                 return redirect(url_for('views.home'))
             else :
                 return "Wrong otp"
-
+            
         return render_template('test_pages/verify.html')
 
 
