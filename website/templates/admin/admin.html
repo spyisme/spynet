@@ -58,12 +58,12 @@
                         <td>{{ user.username }}</td>
                         <!-- <td>{{ user.password }}</td> -->
                         <td>{{ user.active_sessions }}</td>
-                        
+
                         <td>{{user.email}}</td>
                         
                         <td>
                             <form action="/edit_email/{{ user.id }}" method="post">
-                                <input type="text" name="active_sessions" placeholder="New email" required>
+                                <input type="text" name="new_email" placeholder="New email" required>
                                 <button type="submit">Update</button>
                             </form>
                         </td>
