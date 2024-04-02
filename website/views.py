@@ -355,6 +355,9 @@ def read_html_file(file_path, **kwargs):
 
 @views.route('/verify', methods=['GET', 'POST'])
 def verifyemail():
+    if current_user.is_authenticated:
+        return redirect(url_for('views.home'))
+    
     client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
     user_agent = request.headers.get('User-Agent')
     username = request.args.get('user')
@@ -363,19 +366,19 @@ def verifyemail():
     if request.method == 'GET':
         if user :
             recipient = user.email
+            if recipient :
+                subject = "Account 2FA"
 
-            subject = "Account 2FA"
+                random_number = random.randint(100000, 999999)
 
-            random_number = random.randint(100000, 999999)
+                user.otp = random_number
+                db.session.commit()
 
-            user.otp = random_number
-            db.session.commit()
+                html_content = read_html_file('website/templates/test_pages/2fa.html' , otp = user.otp)
 
-            html_content = read_html_file('website/templates/test_pages/2fa.html' , otp = user.otp)
-
-            msg = Message(subject, recipients=[recipient])
-            msg.html = html_content
-            mail.send(msg)
+                msg = Message(subject, recipients=[recipient])
+                msg.html = html_content
+                mail.send(msg)
 
     if request.method == 'POST':
         otp = request.form.get('otp')
