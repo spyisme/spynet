@@ -170,7 +170,7 @@ def index():
                 'token': base64.b64encode(json.dumps(data).encode("utf-8")).decode('utf-8')
             }
             r = requests.post(link, json=payload_new, headers=headers())
-            return r.json()['license']
+            return r.json()
     
         def start(self):
             client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
