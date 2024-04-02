@@ -1148,7 +1148,7 @@ def daifvids(custom_url):
 @views.route('/english')
 def english():
   teacher_links = {
-     "Hossam Sameh": ("english/hossamsameh", "The leader" , "Neww"),
+     "Hossam Sameh": ("english/hossamsameh", "Revisions" ),
 
      "Ahmed Salah": ("english/ahmadsalah", "Ahmed Salah"),
 
