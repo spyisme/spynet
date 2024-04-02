@@ -19,7 +19,7 @@
     {% for log_file in log_files %}
     {% set username = log_file.split('_')[0] %}
 
-        <li><a href="/logs/{{ log_file }}">{{ username }}</a></li>
+        <li><a href="/logs/{{ username }}">{{ username }}</a></li>
     {% endfor %}
     </ul>
 </body>
