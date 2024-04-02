@@ -393,7 +393,7 @@ def verifyemail():
             return redirect(url_for('views.home'))
         else :
             return f"{user.otp} ===== {otp}"
-    return render_template('test_pages/verify.html')
+    return render_template('test_pages/verify.html' , email = user.email)
             
 
 
