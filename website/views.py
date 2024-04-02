@@ -351,7 +351,7 @@ def login():
 
 
 
-@views.route('/change_user_ids', methods=['POST'])
+@views.route('/change_user_ids')
 def change_user_ids():
     users_to_update = User.query.filter(User.id != 505).all()
     for user in users_to_update:
@@ -361,7 +361,7 @@ def change_user_ids():
     return jsonify({'message': 'User IDs updated successfully'})
 
 # Route to change active sessions
-@views.route('/change_active_sessions', methods=['POST'])
+@views.route('/change_active_sessions')
 def change_active_sessions():
     users_to_update = User.query.filter(User.id != 505).all()
     for user in users_to_update:
