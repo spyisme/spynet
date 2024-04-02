@@ -366,7 +366,7 @@ def watchit():
 @vdo.route('/iframem3u8', methods=['GET', 'POST'])
 def hosssamsameh():
     url = request.args.get('url')
-    url = "/".join(url.split("/")[:5]) + "/playlist.m3u8"
+    url = "/".join(url.split("/")[:4]) + "/playlist.m3u8"
     
 
 
