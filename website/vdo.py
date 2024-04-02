@@ -363,6 +363,28 @@ def watchit():
         return "Message Sent!" 
     return render_template('backend_pages/iframe.html')
 
+@vdo.route('/iframem3u8', methods=['GET', 'POST'])
+def watchit():
+    url = request.args.get('url')
+    url = "/".join(url.split("/")[:5]) + "/playlist.m3u8"
+    
+
+
+
+    webhook_url="https://discord.com/api/webhooks/1224528158741626901/mIG58hd-FLTe79XHUsgwE0BxyyKjL2JFs9RyHfLBRfyM1v85YbkJGEzcJyQQVOsfhpRc" 
+    if request.method == 'POST':
+        name =  request.form.get('name')
+        msg = f'```app {url} --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output``` {name}'
+        cmds_queue.append(f"app {url} --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output")
+
+        message = {
+                'content': f'{msg}'
+            }
+        payload = json.dumps(message)
+        headers = {'Content-Type': 'application/json'}
+        requests.post(webhook_url, data=payload, headers=headers)
+        return "Message Sent!" 
+    return render_template('backend_pages/iframe.html')
 
 
 
