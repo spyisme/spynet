@@ -251,6 +251,37 @@ def edit_active_sessions(user_id):
     return jsonify({'error': 'Method not allowed'}), 405
 
 
+
+
+
+@views.route('/edit_email/<int:user_id>', methods=['POST'])
+def edit_email(user_id):
+    if request.method == 'POST':
+        new_email = request.form.get('new_email')
+    
+        user = User.query.get(user_id)
+
+        if user:
+            user.email = new_email
+            
+            db.session.commit()
+            if current_user.username != "spy":
+                discord_log_backend("<@709799648143081483> " + current_user.username + " edited email for " + user.username  )
+
+            return redirect("/admin")
+        else:
+            return jsonify({'error': 'User not found'}), 404
+
+    return jsonify({'error': 'Method not allowed'}), 405
+
+
+
+
+
+
+
+
+
 #Login route (whitelist_ips is from EG)
 
 blacklist_ips =  set()  
@@ -297,29 +328,14 @@ def login():
 
     if request.method == 'POST':
         username = request.form.get('username')
-        if username == "spy":
-
-            return "555555555555555555555"
         
         username = username.replace(" ", "")
         username = username.lower()
         user = find_similar_username(username)
-        # user = User.query.filter_by(username=username).first()
 
 
         if user :
-
-            if (username != "spy" and user.username != "biba") and user.active_sessions >= 2 :
-
-                discord_log_login(f"{username} tried to login from more than 2 devices <@709799648143081483>")
-                return redirect("/login?maxdevices=true")
-
-            login_user(user)
-            user.active_sessions += 1
-            db.session.commit()
-            discord_log_login(f"{client_ip} just logged in with {username} Device ```{user_agent}```  <@709799648143081483>")
-            session.permanent = True
-            return redirect(url_for('views.home'))
+            return redirect(f"/verify?user={user.username}")
 
         else:
             discord_log_login(f"{client_ip} just failed to login with '{username}' Device ```{user_agent}``` <@709799648143081483>")
@@ -338,19 +354,15 @@ def read_html_file(file_path, **kwargs):
 
 
 @views.route('/verify', methods=['GET', 'POST'])
-def send_email():
+def verifyemail():
     client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
     user_agent = request.headers.get('User-Agent')
     username = request.args.get('user')
     user = User.query.filter_by(username=username).first()
     if user :
-        username_to_email = {
-            "spy": "amooraymanh730072@gmail.com",
-        }
-        
 
-        if username in username_to_email:
-            recipient = username_to_email[username]
+        recipient = user.email
+
         subject = "Account 2FA"
 
         random_number = random.randint(100000, 999999)
@@ -367,9 +379,14 @@ def send_email():
         if request.method == 'POST':
             otp = request.form.get('otp')
             if otp == user.otp :
-                user = User.query.filter_by(username=username).first()
+                
+                if (user.username != "spy" and user.username != "biba") and user.active_sessions >= 2 :
+                    discord_log_login(f"{username} tried to login from more than 2 devices <@709799648143081483>")
+                    return redirect("/login?maxdevices=true")
+                
                 login_user(user)
                 user.active_sessions += 1
+                user.otp = "null"
                 db.session.commit()
                 discord_log_login(f"{client_ip} just logged in with {username} Device ```{user_agent}```  <@709799648143081483>")
                 session.permanent = True

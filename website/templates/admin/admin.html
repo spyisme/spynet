@@ -45,6 +45,8 @@
                     <th>Username</th>
                     <!-- <th>Password</th> -->
                     <th>Sessions</th>
+                    <th>Email</th>
+                    <th></th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -56,6 +58,16 @@
                         <td>{{ user.username }}</td>
                         <!-- <td>{{ user.password }}</td> -->
                         <td>{{ user.active_sessions }}</td>
+                        
+                        <td>
+                            <form action="/edit_email/{{ user.id }}" method="post">
+                                <input type="text" name="active_sessions" placeholder="New email" required>
+                                <button type="submit">Update</button>
+                            </form>
+                        </td>
+
+
+
                         <td>
                             <form action="/edit_active_sessions/{{ user.id }}" method="post">
                                 <input type="text" name="active_sessions" placeholder="New sessions" required>
