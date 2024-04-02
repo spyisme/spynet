@@ -139,6 +139,11 @@ def create_app():
                         request.path = f"https://spysnet.com{request.path}"
                 if current_user and current_user.username != 'spy' and current_user.username != 'biba' and blueprint != "vdo" :
                         
+                        log_directory = os.path.join('logs', f"{current_user.username}_log.txt")
+                        if "/logs" not in request.path: 
+                            with open(log_directory, 'a') as log_file:
+                                log_file.write(log_message)
+
                         discord_log(f"{client_ip} Viewed <{request.path}>  {current_user.username} {device_type} ```{user_agent}```")
                         discord_log2(f"{client_ip} Viewed <{request.path}>  {current_user.username} {device_type} ```{user_agent}```")
 
