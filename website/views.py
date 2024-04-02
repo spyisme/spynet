@@ -345,7 +345,7 @@ def send_email():
     user = User.query.filter_by(username=username).first()
     if user :
         username_to_email = {
-            "spy": "amr@spysnet.com",
+            "spy": "spycode736x@gmail.com",
         }
         
 
