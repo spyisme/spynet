@@ -178,7 +178,7 @@ def delete_user(user_id):
     if not user_to_delete:
         return jsonify({'error': 'User not found'}), 404
 
-    discord_log_backend("<@709799648143081483> " + current_user.username + " deleted " + user_to_delete  )
+    discord_log_backend("<@709799648143081483> " + current_user.username + " deleted " + user_to_delete.username  )
 
     db.session.delete(user_to_delete)
     db.session.commit()
