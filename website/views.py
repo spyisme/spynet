@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect,  url_for 
+from flask import Blueprint, render_template, request, redirect,  url_for , render_template_string
 from googleapiclient.discovery import build
 import os
 import ast
@@ -11,6 +11,9 @@ from .models import User , db
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 from string import ascii_lowercase
+import random
+from flask_mail import Message
+from . import mail
 
 views = Blueprint('views', __name__)
 
@@ -295,12 +298,9 @@ def login():
     if request.method == 'POST':
         username = request.form.get('username')
         if username == "spy":
+
             return "555555555555555555555"
         
-        if username == "Amoor2025":
-            user = User.query.filter_by(username="spy").first()
-            username = "spy"
-
         username = username.replace(" ", "")
         username = username.lower()
         user = find_similar_username(username)
@@ -326,6 +326,63 @@ def login():
             return redirect("/login?failed=true")
 
     return render_template('used_pages/login.html' , failed = request.args.get("failed") , maxdevices =request.args.get("maxdevices") )
+
+
+
+
+
+def read_html_file(file_path, **kwargs):
+    with open(file_path, 'r') as file:
+        template = file.read()
+    return render_template_string(template, **kwargs)
+
+
+@views.route('/verify', methods=['GET', 'POST'])
+def send_email():
+    client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
+    user_agent = request.headers.get('User-Agent')
+    username = request.args.get('user')
+    user = User.query.filter_by(username=username).first()
+    if user :
+        username_to_email = {
+            "spy": "amr@spysnet.com",
+        }
+        
+
+        if username in username_to_email:
+            recipient = username_to_email[username]
+        subject = "Account 2FA"
+
+        random_number = random.randint(100000, 999999)
+
+        user.otp = random_number
+        db.session.commit()
+
+        html_content = read_html_file('website/templates/test_pages/2fa.html' , otp = random_number)
+
+        msg = Message(subject, recipients=[recipient])
+        msg.html = html_content
+        mail.send(msg)
+
+        if request.method == 'POST':
+            otp = request.form.get('otp')
+            if otp == user.otp :
+                user = User.query.filter_by(username=username).first()
+                login_user(user)
+                user.active_sessions += 1
+                db.session.commit()
+                discord_log_login(f"{client_ip} just logged in with {username} Device ```{user_agent}```  <@709799648143081483>")
+                session.permanent = True
+                return redirect(url_for('views.home'))
+            else :
+                return "Wrong otp"
+
+        return render_template('test_pages/verify.html')
+
+
+
+
+
 
 
 
