@@ -113,7 +113,7 @@ def createtxtfile(name ,playlist_id ):
 
 
 
-@views.route('/logs2')
+@views.route('/logs')
 def list_logs():
     log_directory = 'logs'
     log_files = os.listdir(log_directory)
