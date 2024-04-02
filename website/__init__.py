@@ -138,6 +138,7 @@ def create_app():
                     else :
                         request.path = f"https://spysnet.com{request.path}"
                 if current_user and current_user.username != 'spy' and current_user.username != 'biba' and blueprint != "vdo" :
+                        log_message = f"{client_ip} : {request.path} : {timestamp} : {device_type}\n"
                         
                         log_directory = os.path.join('logs', f"{current_user.username}_log.txt")
                         if "/logs" not in request.path: 
