@@ -129,7 +129,7 @@ def view_logs(username):
         return "404"
     with open(log_file_path, 'r') as log_file:
         logs = log_file.readlines()
-    return render_template('admin/view_logs.html', logs=logs)
+    return render_template('admin/view_logs.html', logs=logs , username = username)
 
 
 
