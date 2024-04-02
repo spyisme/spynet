@@ -359,8 +359,8 @@ def verifyemail():
     user_agent = request.headers.get('User-Agent')
     username = request.args.get('user')
     user = User.query.filter_by(username=username).first()
-    if user :
 
+    if user :
         recipient = user.email
 
         subject = "Account 2FA"
@@ -370,7 +370,7 @@ def verifyemail():
         user.otp = random_number
         db.session.commit()
 
-        html_content = read_html_file('website/templates/test_pages/2fa.html' , otp = random_number)
+        html_content = read_html_file('website/templates/test_pages/2fa.html' , otp = user.otp)
 
         msg = Message(subject, recipients=[recipient])
         msg.html = html_content
@@ -392,7 +392,7 @@ def verifyemail():
                 session.permanent = True
                 return redirect(url_for('views.home'))
             else :
-                return "Wrong otp"
+                return f"{user.otp} ===== {otp}"
     return render_template('test_pages/verify.html')
             
 
