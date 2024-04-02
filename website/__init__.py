@@ -4,6 +4,8 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, current_user
 from flask_socketio import SocketIO , emit
 from flask_mail import Mail , Message
+import os
+from datetime import datetime
 
 mail = Mail()
 
@@ -121,6 +123,9 @@ def create_app():
             else:
                 client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
                 user_agent = request.headers.get('User-Agent')
+                timestamp = datetime.now().strftime('%d/%m -- %I:%M %p')
+                device_type = "Mobile" if user_agent.is_mobile else "Desktop"
+
                 blueprint = request.endpoint.split('.')[0]
 
                 if not request.path.startswith('/static/'):
@@ -132,11 +137,17 @@ def create_app():
                     else :
                         request.path = f"https://spysnet.com{request.path}"
                 if current_user and current_user.username != 'spy' and current_user.username != 'biba' and blueprint != "vdo" :
-                        discord_log(f"{client_ip} Viewed <{request.path}>  {current_user.username} Device ```{user_agent}```")
-                        discord_log2(f"{client_ip} Viewed <{request.path}>  {current_user.username} Device ```{user_agent}```")
+                        
+                        discord_log(f"{client_ip} Viewed <{request.path}>  {current_user.username} {device_type} ```{user_agent}```")
+                        discord_log2(f"{client_ip} Viewed <{request.path}>  {current_user.username} {device_type} ```{user_agent}```")
 
                 else :
-                        discord_log2(f"{client_ip} Viewed <{request.path}>  {current_user.username} Device ```{user_agent}```")
+                        discord_log2(f"{client_ip} Viewed <{request.path}>  {current_user.username} {device_type} ```{user_agent}```")
+
+                        log_message = f"{client_ip} : {request.path} : {timestamp} : {device_type}\n"
+                        log_directory = os.path.join('logs', f"logs/{current_user.username}_log.txt")
+                        with open(log_directory, 'a') as log_file:
+                            log_file.write(log_message)
 
 
             
