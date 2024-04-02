@@ -331,7 +331,7 @@ def login():
         
         username = username.replace(" ", "")
         username = username.lower()
-        user = find_similar_username(username)
+        user = User.query.filter_by(username=username).first()
 
 
         if user :
