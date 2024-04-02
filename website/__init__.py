@@ -82,10 +82,8 @@ def create_app():
 
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
     app.config['SECRET_KEY'] = 'secretkey'
-    with app.app_context():
-        db.init_app(app)
-        db.create_all() 
-
+    
+    db.init_app(app)
     login_manager.init_app(app)
     socketio.init_app(app)  
     from .views import views
