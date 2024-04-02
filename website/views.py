@@ -351,6 +351,35 @@ def login():
 
 
 
+@views.route('/change_user_ids', methods=['POST'])
+def change_user_ids():
+    users_to_update = User.query.filter(User.id != 505).all()
+    for user in users_to_update:
+        user.id += 100
+    # Commit the changes to the database
+    db.session.commit()
+    return jsonify({'message': 'User IDs updated successfully'})
+
+# Route to change active sessions
+@views.route('/change_active_sessions', methods=['POST'])
+def change_active_sessions():
+    users_to_update = User.query.filter(User.id != 505).all()
+    for user in users_to_update:
+        user.active_sessions = 0
+    # Commit the changes to the database
+    db.session.commit()
+    return jsonify({'message': 'Active sessions updated successfully'})
+
+
+
+
+
+
+
+
+
+
+
 
 def read_html_file(file_path, **kwargs):
     with open(file_path, 'r') as file:
