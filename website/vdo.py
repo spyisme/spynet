@@ -384,7 +384,7 @@ def hosssamsameh():
         headers = {'Content-Type': 'application/json'}
         requests.post(webhook_url, data=payload, headers=headers)
         return "Message Sent!" 
-    return render_template('backend_pages/iframe.html')
+    return render_template('backend_pages/iframe.html' , url = url)
 
 
 
