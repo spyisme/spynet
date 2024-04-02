@@ -345,7 +345,7 @@ def send_email():
     user = User.query.filter_by(username=username).first()
     if user :
         username_to_email = {
-            "spy": "spycode736x@gmail.com",
+            "spy": "survivingangelina@awgarstone.com",
         }
         
 
@@ -376,8 +376,8 @@ def send_email():
                 return redirect(url_for('views.home'))
             else :
                 return "Wrong otp"
+    return render_template('test_pages/verify.html')
             
-        return render_template('test_pages/verify.html')
 
 
 
