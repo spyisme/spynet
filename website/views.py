@@ -360,39 +360,39 @@ def verifyemail():
     username = request.args.get('user')
     user = User.query.filter_by(username=username).first()
     
-        if request.method == 'GET':
-            if user :
-                recipient = user.email
+    if request.method == 'GET':
+        if user :
+            recipient = user.email
 
-                subject = "Account 2FA"
+            subject = "Account 2FA"
 
-                random_number = random.randint(100000, 999999)
+            random_number = random.randint(100000, 999999)
 
-                user.otp = random_number
-                db.session.commit()
+            user.otp = random_number
+            db.session.commit()
 
-                html_content = read_html_file('website/templates/test_pages/2fa.html' , otp = user.otp)
+            html_content = read_html_file('website/templates/test_pages/2fa.html' , otp = user.otp)
 
-                msg = Message(subject, recipients=[recipient])
-                msg.html = html_content
-                mail.send(msg)
+            msg = Message(subject, recipients=[recipient])
+            msg.html = html_content
+            mail.send(msg)
 
-        if request.method == 'POST':
-            otp = request.form.get('otp')
-            if otp == user.otp :
-                if (user.username != "spy" and user.username != "biba") and user.active_sessions >= 2 :
-                    discord_log_login(f"{username} tried to login from more than 2 devices <@709799648143081483>")
-                    return redirect("/login?maxdevices=true")
-                
-                login_user(user)
-                user.active_sessions += 1
-                user.otp = "null"
-                db.session.commit()
-                discord_log_login(f"{client_ip} just logged in with {username} Device ```{user_agent}```  <@709799648143081483>")
-                session.permanent = True
-                return redirect(url_for('views.home'))
-            else :
-                return f"{user.otp} ===== {otp}"
+    if request.method == 'POST':
+        otp = request.form.get('otp')
+        if otp == user.otp :
+            if (user.username != "spy" and user.username != "biba") and user.active_sessions >= 2 :
+                discord_log_login(f"{username} tried to login from more than 2 devices <@709799648143081483>")
+                return redirect("/login?maxdevices=true")
+            
+            login_user(user)
+            user.active_sessions += 1
+            user.otp = "null"
+            db.session.commit()
+            discord_log_login(f"{client_ip} just logged in with {username} Device ```{user_agent}```  <@709799648143081483>")
+            session.permanent = True
+            return redirect(url_for('views.home'))
+        else :
+            return f"{user.otp} ===== {otp}"
     return render_template('test_pages/verify.html')
             
 
