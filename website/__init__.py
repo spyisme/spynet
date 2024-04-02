@@ -124,7 +124,7 @@ def create_app():
                 client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
                 user_agent = request.headers.get('User-Agent')
                 timestamp = datetime.now().strftime('%d/%m -- %I:%M %p')
-                device_type = "Mobile" if user_agent.is_mobile else "Desktop"
+                device_type = "Desktop" if "Windows" in user_agent else "Mobile"
 
                 blueprint = request.endpoint.split('.')[0]
 
