@@ -155,6 +155,7 @@ def create_app():
             
     app.before_request(before_request)
 
+    db.create_all()
 
     return app , socketio
 
