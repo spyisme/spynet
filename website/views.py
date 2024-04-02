@@ -1168,14 +1168,12 @@ def ahmadsalah():
   with open("website/playlists/ahmadsalah.txt", 'r', encoding='utf-8') as file:
         content = file.read()
         videos = ast.literal_eval(content)
-  extra = {"Chapter 3.pdf" : "https://drive.google.com/file/d/1sCYoSYrY490BoSU0MPyrKBGELC7MdR6n/view?usp=drive_link",
-           "Chapter 4.pdf" : "https://drive.google.com/file/d/1FDjtIghK-f-NKmvIrrT1wqOZB7gOTRdk/view?usp=drive_link"}      
-  folder = "https://drive.google.com/drive/folders/1cqdZyL-Le9yYqlzhatHL4qvnjhhGyAOu?usp=drive_link"
+
   return render_template('used_pages/videopage.html',
                          videos=videos,
                          playlist_id=playlist_id,
-                         teachername=teachername,
-                         extra = extra , folder = folder)
+                         teachername=teachername)
+                     
 
 @views.route("/english/ahmadsalah/update")
 def ahmadsalahupdate():
@@ -1189,10 +1187,13 @@ def hossamsameh():
   with open("website/playlists/hossamsameh.txt", 'r', encoding='utf-8') as file:
         content = file.read()
         videos = ast.literal_eval(content)
+  extra = {"Chapter 3.pdf" : "https://drive.google.com/file/d/1sCYoSYrY490BoSU0MPyrKBGELC7MdR6n/view?usp=drive_link",
+           "Chapter 4.pdf" : "https://drive.google.com/file/d/1FDjtIghK-f-NKmvIrrT1wqOZB7gOTRdk/view?usp=drive_link"}      
+  folder = "https://drive.google.com/drive/folders/1cqdZyL-Le9yYqlzhatHL4qvnjhhGyAOu?usp=drive_link"  
   return render_template('used_pages/videopage.html',
                          videos=videos,
                          playlist_id=playlist_id,
-                         teachername=teachername)
+                         teachername=teachername , extra = extra , folder = folder)
 
 @views.route("/english/hossamsameh/update")
 def hossamsamehupdate():
