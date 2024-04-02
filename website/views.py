@@ -351,24 +351,24 @@ def login():
 
 
 
-@views.route('/change_user_ids')
-def change_user_ids():
-    users_to_update = User.query.filter(User.id != 505).all()
-    for user in users_to_update:
-        user.id += 100
-    # Commit the changes to the database
-    db.session.commit()
-    return jsonify({'message': 'User IDs updated successfully'})
+# @views.route('/change_user_ids')
+# def change_user_ids():
+#     users_to_update = User.query.filter(User.id != 505).all()
+#     for user in users_to_update:
+#         user.id += 100
+#     # Commit the changes to the database
+#     db.session.commit()
+#     return jsonify({'message': 'User IDs updated successfully'})
 
-# Route to change active sessions
-@views.route('/change_active_sessions')
-def change_active_sessions():
-    users_to_update = User.query.filter(User.id != 505).all()
-    for user in users_to_update:
-        user.active_sessions = 0
-    # Commit the changes to the database
-    db.session.commit()
-    return jsonify({'message': 'Active sessions updated successfully'})
+# # Route to change active sessions
+# @views.route('/change_active_sessions')
+# def change_active_sessions():
+#     users_to_update = User.query.filter(User.id != 505).all()
+#     for user in users_to_update:
+#         user.active_sessions = 0
+#     # Commit the changes to the database
+#     db.session.commit()
+#     return jsonify({'message': 'Active sessions updated successfully'})
 
 
 
