@@ -170,7 +170,7 @@ def delete_user(user_id):
 
     user_to_delete = User.query.get(user_id)
     
-    if current_user.id != 505:
+    if user_id == 505:
         return "55555555555"
 
     if not user_to_delete:
