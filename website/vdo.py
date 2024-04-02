@@ -351,8 +351,8 @@ def watchit():
     webhook_url="https://discord.com/api/webhooks/1197986558368825444/Q7kjJ3twI6GkOAqRAppGBlEtGR2I5egr98lX-Gh7D2JByHk1ePNBTVYKnjCtiHhIZ8U3" 
     if request.method == 'POST':
         name =  request.form.get('name')
-        msg = f'```app {url} --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output``` {name}'
-        cmds_queue.append(f"app {url} --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output")
+        msg = f'```app {url} --header "User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:102.0) Gecko/20100101 Firefox/102.0" --header "Referer: https://iframe.mediadelivery.net/" --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output``` {name}'
+        cmds_queue.append(f'app {url} --header "User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:102.0) Gecko/20100101 Firefox/102.0" --header "Referer: https://iframe.mediadelivery.net/" --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output')
 
         message = {
                 'content': f'{msg}'
