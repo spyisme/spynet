@@ -147,8 +147,9 @@ def create_app():
 
                         log_message = f"{client_ip} : {request.path} : {timestamp} : {device_type}\n"
                         log_directory = os.path.join('logs', f"{current_user.username}_log.txt")
-                        with open(log_directory, 'a') as log_file:
-                            log_file.write(log_message)
+                        if "/logs" not in request.path: 
+                            with open(log_directory, 'a') as log_file:
+                                log_file.write(log_message)
 
 
             
