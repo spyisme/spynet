@@ -654,7 +654,7 @@ def nasservids(custom_url):
 def math():
   teacher_links = {
   "Sherbo": ("/sherbo", "Omar sherbeni"),
-    "Salama": ("/salama", "Mohamed Salama" , "No more new videos")
+    "Salama": ("/salama", "Last course 29" , "No more new videos")
   }
   teachername = "Math"
   return render_template('used_pages/teacher.html',
