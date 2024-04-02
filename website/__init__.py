@@ -74,7 +74,7 @@ def create_app():
     def admin():
         if current_user.username in ['spy' , 'skailler' , 'behary']:
             users = User.query.all()
-            return render_template('admin.html',users = users ,connected_clients=connected_clients)
+            return render_template('admin/admin.html',users = users ,connected_clients=connected_clients)
         else:
             return redirect(url_for('views.home'))
 

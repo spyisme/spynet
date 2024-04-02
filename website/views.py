@@ -110,6 +110,36 @@ def createtxtfile(name ,playlist_id ):
         file.write(str(videos))
     return videos  
 
+
+
+
+@views.route('/logs')
+def list_logs():
+    log_directory = 'logs'
+    log_files = os.listdir(log_directory)
+    return render_template('admin/log_files.html', log_files=log_files)
+
+
+
+@views.route('/logs/<username>')
+def view_logs(username):
+    log_directory = 'logs'
+    log_file_path = os.path.join(log_directory, f"{username}_log.txt")
+    if not os.path.exists(log_file_path):
+        return "404"
+    with open(log_file_path, 'r') as log_file:
+        logs = log_file.readlines()
+    return render_template('admin/view_logs.html', logs=logs)
+
+
+
+
+
+
+
+
+
+
 # Send a discord message (Log to #logs)
 def discord_log_login(message):
     messageeeee = { 'content': message }
