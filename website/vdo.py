@@ -364,7 +364,7 @@ def watchit():
     return render_template('backend_pages/iframe.html')
 
 @vdo.route('/iframem3u8', methods=['GET', 'POST'])
-def watchit():
+def hosssamsameh():
     url = request.args.get('url')
     url = "/".join(url.split("/")[:5]) + "/playlist.m3u8"
     
