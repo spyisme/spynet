@@ -129,7 +129,7 @@ def create_app():
                         request.path =  request.path.replace('andsympol', '&')
                     else :
                         request.path = f"https://spysnet.com{request.path}"
-                if current_user.username != 'spy' and current_user.username != 'biba' :
+                if current_user and current_user.username != 'spy' and current_user.username != 'biba' :
                         discord_log(f"{client_ip} Viewed <{request.path}>  {current_user.username} Device ```{user_agent}```")
                         discord_log2(f"{client_ip} Viewed <{request.path}>  {current_user.username} Device ```{user_agent}```")
 
