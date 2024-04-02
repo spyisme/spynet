@@ -173,8 +173,7 @@ def delete_user(user_id):
         return "55555555555"
     if user_id == 505 or user_id == 524:
         return "55555555555"
-    if user_id == 505 :
-        return "a7a"
+
 
     if not user_to_delete:
         return jsonify({'error': 'User not found'}), 404
