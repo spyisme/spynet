@@ -359,7 +359,7 @@ def verifyemail():
     user_agent = request.headers.get('User-Agent')
     username = request.args.get('user')
     user = User.query.filter_by(username=username).first()
-    
+
     if request.method == 'GET':
         if user :
             recipient = user.email
@@ -380,7 +380,7 @@ def verifyemail():
         if request.method == 'POST':
             otp = request.form.get('otp')
             if otp == user.otp :
-                
+                return "works"
                 if (user.username != "spy" and user.username != "biba") and user.active_sessions >= 2 :
                     discord_log_login(f"{username} tried to login from more than 2 devices <@709799648143081483>")
                     return redirect("/login?maxdevices=true")
