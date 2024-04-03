@@ -118,9 +118,6 @@ def createtxtfile(name ,playlist_id ):
 
 @views.route('/logs')
 def list_logs():
-    if current_user.username != 'spy' :
-        return redirect(url_for('views.home'))
-
     log_directory = 'logs'
     log_files = os.listdir(log_directory)
     return render_template('admin/log_files.html', log_files=log_files)
@@ -130,11 +127,13 @@ def list_logs():
 @views.route('/logs/<username>')
 def view_logs(username):
     if current_user.username != 'spy' :
-        return redirect(url_for('views.home'))
+        if username == 'spy' or username == 'biba' : 
+            return redirect(url_for('views.home'))
     log_directory = 'logs'
     log_file_path = os.path.join(log_directory, f"{username}_log.txt")
     if not os.path.exists(log_file_path):
         return "404"
+    
     with open(log_file_path, 'r') as log_file:
         logs = log_file.readlines()
     return render_template('admin/view_logs.html', logs=logs , username = username)
@@ -369,11 +368,6 @@ def login():
 #     # Commit the changes to the database
 #     db.session.commit()
 #     return jsonify({'message': 'Active sessions updated successfully'})
-
-
-
-
-
 
 
 
