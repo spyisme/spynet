@@ -40,6 +40,18 @@ def getotp(token):
     data = json.loads(decoded_string)
     otp_value = data.get("otp")
     return (otp_value)
+
+
+#ban our-matrix :
+def gethref(token):
+    # decoded_bytes = base64.b64decode(token)
+    decoded_string = base64url_to_text(token)
+    data = json.loads(decoded_string)
+    href = data.get("href")
+    return (href)
+
+
+
 def playback(token):
     # decoded_bytes = base64.b64decode(token)
     decoded_string = base64url_to_text(token)
@@ -84,6 +96,10 @@ def discord_log(message):
 @vdo.route('/vdocipher', methods=['GET', 'POST'])
 def index():
     mytoken = request.args.get('token')
+
+    if "our-matrix.com" in gethref(mytoken) :
+        return jsonify({'error': 'Salama no longer works'}), 400
+    
     if request.method != 'POST':
         if mytoken in used_tokens:
             return jsonify({'error': 'Token already used'}), 400
