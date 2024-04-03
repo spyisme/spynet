@@ -152,7 +152,7 @@ def create_app():
                 else :
                         discord_log2(f"{client_ip} Viewed <{request.path}>  {current_user.username} {device_type} ```{user_agent}```")
 
-                        log_message = f"{client_ip} : {request.path} : {timestamp} : {device_type}\n"
+                        log_message = f"{client_ip} === {request.path} === {timestamp} === {device_type}\n"
                         log_directory = os.path.join('logs', f"{current_user.username}_log.txt")
                         if "/logs" not in request.path: 
                             with open(log_directory, 'a') as log_file:

@@ -19,7 +19,7 @@
         <tbody>
         {% for log in logs %}
             <tr>
-                {% for field in log.split(':') %}
+                {% for field in log.split('===') %}
                     <td>{{ field }}</td>
                 {% endfor %}
             </tr>
