@@ -101,6 +101,7 @@ def create_app():
     def load_user(user_id):
         return User.query.get(int(user_id))
     
+    
     import json , requests
 
     def discord_log(message):
