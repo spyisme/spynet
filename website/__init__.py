@@ -5,7 +5,8 @@ from flask_login import LoginManager, current_user
 from flask_socketio import SocketIO , emit
 from flask_mail import Mail , Message
 import os
-from datetime import datetime
+from datetime import datetime , timezone
+import pytz
 
 mail = Mail()
 
@@ -124,7 +125,13 @@ def create_app():
             else:
                 client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
                 user_agent = request.headers.get('User-Agent')
-                timestamp = datetime.now().strftime('%d/%m -- %I:%M %p')
+                # timestamp = datetime.now().strftime('%d/%m -- %I:%M %p')
+                utc_now = datetime.now(timezone.utc)
+
+                gmt2 = pytz.timezone('Etc/GMT+2')
+                gmt2_now = utc_now.replace(tzinfo=pytz.utc).astimezone(gmt2)
+                timestamp = gmt2_now.strftime('%d/%m -- %I:%M %p')
+
                 device_type = "Desktop" if "Windows" in user_agent else ("Macintosh" if "Macintosh" in user_agent else "Mobile")
 
 
