@@ -74,9 +74,9 @@ def create_app():
     @app.route('/admin')
     def admin():
         if current_user.username in ['spy' , 'skailler' , 'behary']:
-            users = User.query.filter(User.username != 'spy', User.username != 'biba').all()
+            users = User.query.filter(User.username != 'spy', User.username != 'biba' , User.username !='zeyadamr').all()
 
-            if current_user.username != 'spy' :
+            if current_user.username == 'spy' :
                 users = User.query.all()
 
             return render_template('admin/admin.html',users = users ,connected_clients=connected_clients)
