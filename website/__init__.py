@@ -128,7 +128,7 @@ def create_app():
                 # timestamp = datetime.now().strftime('%d/%m -- %I:%M %p')
                 utc_now = datetime.now(timezone.utc)
 
-                gmt2 = pytz.timezone('Etc/GMT+2')
+                gmt2 = pytz.timezone('Etc/GMT-2')
                 gmt2_now = utc_now.replace(tzinfo=pytz.utc).astimezone(gmt2)
                 timestamp = gmt2_now.strftime('%d/%m -- %I:%M %p')
 
