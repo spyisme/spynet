@@ -73,16 +73,13 @@ def create_app():
 
     @app.route('/admin')
     def admin():
-        if current_user.username in ['spy' , 'skailler' , 'behary']:
-            users = User.query.filter(User.username != 'spy', User.username != 'biba' , User.username !='zeyadamr').all()
+        if current_user.username != 'spy' :
+            users = User.query.filter(User.username != 'spy', User.username != 'biba').all()
 
-            if current_user.username == 'spy' :
-                users = User.query.all()
+        else :
+            users = User.query.all()
 
-            return render_template('admin/admin.html',users = users ,connected_clients=connected_clients)
-        else:
-            return redirect(url_for('views.home'))
-
+        return render_template('admin/admin.html',users = users ,connected_clients=connected_clients)
 
 
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
