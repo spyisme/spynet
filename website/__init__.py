@@ -43,7 +43,7 @@ def create_app():
             recipient = request.args.get('to')
             subject = "Account Registration Confirmation"
 
-            html_content = read_html_file('website/templates/email.html')
+            html_content = read_html_file('website/templates/users_pages/email.html')
 
             msg = Message(subject, recipients=[recipient])
             msg.html = html_content

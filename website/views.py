@@ -340,16 +340,15 @@ def login():
         if user :
             if user.username != "spy" and user.active_sessions >= 3 :
                 discord_log_login(f"{username} tried to login from more than 3 devices <@709799648143081483>")
-
                 return redirect("/login?maxdevices=yes")
-            discord_log_login(f"Sent an otp to : {user.username}")
+            
             return redirect(f"/verify?user={user.username}")
 
         else:
             discord_log_login(f"{client_ip} just failed to login with '{username}' Device ```{user_agent}``` <@709799648143081483>")
             return redirect("/login?failed=true")
 
-    return render_template('used_pages/login.html' , failed = request.args.get("failed") , maxdevices =request.args.get("maxdevices") )
+    return render_template('users_pages/login.html' , failed = request.args.get("failed") , maxdevices =request.args.get("maxdevices") )
 
 
 
@@ -393,6 +392,8 @@ def verifyemail():
     client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
     user_agent = request.headers.get('User-Agent')
     username = request.args.get('user')
+    msg = request.args.get('msg')
+
     user = User.query.filter_by(username=username).first()
     
     if request.method == 'GET':
@@ -406,11 +407,13 @@ def verifyemail():
                 user.otp = random_number
                 db.session.commit()
 
-                html_content = read_html_file('website/templates/test_pages/2fa.html' , otp = user.otp)
+                html_content = read_html_file('website/templates/users_pages/2fa.html' , otp = user.otp)
 
                 msg = Message(subject, recipients=[recipient])
                 msg.html = html_content
                 mail.send(msg)
+
+                discord_log_login(f"Sent an otp to : {user.username}")
 
     if request.method == 'POST':
         otp = request.form.get('otp')
@@ -427,8 +430,8 @@ def verifyemail():
             session.permanent = True
             return redirect(url_for('views.home'))
         else :
-            return f"{user.otp} ===== {otp}"
-    return render_template('test_pages/verify.html' , email = user.email)
+            return redirect('/verify?msg=failedtologin')
+    return render_template('users_pages/verify.html' , email = user.email , msg = msg)
             
 
 
@@ -460,7 +463,7 @@ def registeracc():
         phone = request.form.get('phone')
         discord_log_register(f"New user  : {username} ====== {email} ====== {phone} ====== {client_ip} <@709799648143081483>")
         return  redirect(f"/send_email?to={email}")
-    return render_template('used_pages/register.html' , done = request.args.get("done"))
+    return render_template('users_pages/register.html' , done = request.args.get("done"))
 
 
 

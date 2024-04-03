@@ -133,8 +133,12 @@
 
 
     <div class="title">2fa</div>
-    <div class="subtitle">Check your inbox : {{email}} ! ( <u><a href="#">Didnt receive an email refresh</a></u> )</div>
-
+    <div class="subtitle">Check your inbox : {{email}} !</div>
+    {%if msg%}
+    <br>
+        <div class="failed">Incorrect OTP. Please enter the most recent one.</div>
+    <br>
+    {%endif%}
 
     <div class="input-container ic2">
         <input placeholder="" type="text" class="input" id="otp" name="otp" required>
@@ -162,6 +166,8 @@
         });
     });
 </script>
+
+
 </body>
 </html>
 
