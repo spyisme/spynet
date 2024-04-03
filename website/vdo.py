@@ -96,8 +96,8 @@ def discord_log(message):
 @vdo.route('/vdocipher', methods=['GET', 'POST'])
 def index():
     mytoken = request.args.get('token')
-
-    if "our-matrix.com" in gethref(mytoken) :
+    tokenhref = gethref(mytoken)
+    if "our-matrix.com" in tokenhref :
         return jsonify({'error': 'Salama no longer works'}), 400
     
     if request.method != 'POST':
@@ -237,7 +237,18 @@ def index():
     session['urlopen'] = url
 
     discord_log(url)
-    options = ['Else','Nawar','Nasser-El-Batal', 'MoSalama', 'Gedo' , 'Bio']
+
+    options = ['Else','Nawar','Nasser-El-Batal', 'Gedo' , 'Bio']
+
+    if "chemistry" in tokenhref :
+        options = ['Nasser-El-Batal', 'Else','Nawar', 'Gedo' , 'Bio']
+    elif "mrredaelfarouk" in tokenhref :
+        options = ['Gedo','Nawar','Nasser-El-Batal', 'Else' , 'Bio']
+    elif "nawar" in tokenhref :
+        options = ['Nawar','Else','Nasser-El-Batal', 'Gedo' , 'Bio']
+
+
+
 
 
 
