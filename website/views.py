@@ -120,6 +120,9 @@ def createtxtfile(name ,playlist_id ):
 def list_logs():
     log_directory = 'logs'
     log_files = os.listdir(log_directory)
+    if current_user.username != 'spy' :
+        log_files = [file for file in os.listdir(log_directory) if 'zeyadamr' not in file]
+
     return render_template('admin/log_files.html', log_files=log_files)
 
 
@@ -127,8 +130,8 @@ def list_logs():
 @views.route('/logs/<username>')
 def view_logs(username):
     if current_user.username != 'spy' :
-        if username == 'spy' or username == 'biba' or username == 'nouramostfa' : 
-            return redirect(url_for('views.home'))
+        if username in ['spy' , 'biba' , 'nouramostfa'] : 
+            return "??"
     log_directory = 'logs'
     log_file_path = os.path.join(log_directory, f"{username}_log.txt")
     if not os.path.exists(log_file_path):
