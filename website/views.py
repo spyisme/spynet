@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect,  url_for , render_template_string , Response
+from flask import Blueprint, render_template, request, redirect,  url_for , render_template_string , send_file
 from googleapiclient.discovery import build
 import os
 import ast
@@ -513,11 +513,8 @@ def favicon():
 
 @views.route('/robots.txt')
 def robots_txt():
-    robots_txt_content = """
-    User-agent: *
-    Disallow: /
-    """
-    return Response(robots_txt_content, mimetype='text/plain')
+
+    return send_file('robots.txt', mimetype='text/plain')
 
 
 
