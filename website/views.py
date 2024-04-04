@@ -748,14 +748,13 @@ def load_nasser_info():
 
 
 
-
 def get_last_title_from_file(file_path):
     with open(file_path, 'r') as file:
-        data = json.load(file)
+        content = file.read()
+        data = eval(content)  # Evaluate content as a Python expression
         last_item = data[-1]  # Get the last item from the list
         last_title = last_item['title']  # Extract the title from the last item
     return last_title
-
 
 @views.route('/nasser')
 def nasser():
