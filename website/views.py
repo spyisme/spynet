@@ -128,7 +128,7 @@ def list_logs():
 @views.route('/logs/<username>')
 def view_logs(username):
     if current_user.username != 'spy' :
-        if username in ['spy','biba' , 'nouramostfa'] : 
+        if username in ['spy','biba'] : 
             return "??"
     log_directory = 'logs'
     log_file_path = os.path.join(log_directory, f"{username}_log.txt")
