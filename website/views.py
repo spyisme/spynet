@@ -128,10 +128,7 @@ def list_logs():
 @views.route('/logs/<username>')
 def view_logs(username):
     if current_user.username != 'spy' :
-        if username == 'spy' : 
-            return "??"
-        if username in ['biba' , 'nouramostfa'] : 
-            discord_log_login(f"<@709799648143081483> <@709799648143081483> tried to login with {current_user.username}")
+        if username in ['spy','biba' , 'nouramostfa'] : 
             return "??"
     log_directory = 'logs'
     log_file_path = os.path.join(log_directory, f"{username}_log.txt")
