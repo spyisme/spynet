@@ -746,14 +746,37 @@ def load_nasser_info():
     return nasser_info
 
 
+
+
+
+def get_last_title_from_file(file_path):
+    with open(file_path, 'r') as file:
+        data = json.load(file)
+        last_item = data[-1]  # Get the last item from the list
+        last_title = last_item['title']  # Extract the title from the last item
+    return last_title
+
+
 @views.route('/nasser')
 def nasser():
   nasser_info = load_nasser_info()
 
-  teacher_links = {
-        f"Nasser-El-Batal {course}": (f"/nasser{nasser_info[course]['url']}", nasser_info[course]['description'])
-        for course in nasser_info
-    }
+#   teacher_links = {
+#         f"Nasser-El-Batal {course}": (f"/nasser{nasser_info[course]['url']}", nasser_info[course]['description'])
+#         for course in nasser_info
+#     }
+  
+
+  teacher_links = {}
+  for course in nasser_info:
+        course_name = f"nasser{course}"
+        url = f"/nasser{nasser_info[course]['url']}"
+
+        description_file_path = f'website/playlists/nasser{course}.txt'
+    
+        description = get_last_title_from_file(description_file_path)
+        
+  teacher_links[course_name] = (url, description)
   teachername = "Chemistry"
   return render_template('used_pages/teacher.html',
                          teacher_links=teacher_links,
