@@ -746,44 +746,17 @@ def load_nasser_info():
     return nasser_info
 
 
-
-def get_last_item_from_json_file(file_path):
-    try:
-        with open(file_path, 'r', encoding='utf-8') as file:
-            json_str = file.read()  # Read the entire file content as a string
-            data = json.loads(json_str)  # Parse the JSON string into a Python object
-            if data and isinstance(data, list):
-                return data[-1]  # Get the last item from the list
-            else:
-                print("No data or data is not in the expected format.")
-                return None
-    except FileNotFoundError:
-        print(f"File '{file_path}' not found.")
-        return None
-    except json.JSONDecodeError as e:
-        print(f"Error decoding JSON: {e}")
-        return None
-
 @views.route('/nasser')
 def nasser():
   nasser_info = load_nasser_info()
 
-#   teacher_links = {
-#         f"Nasser-El-Batal {course}": (f"/nasser{nasser_info[course]['url']}", nasser_info[course]['description'])
-#         for course in nasser_info
-#     }
+  teacher_links = {
+        f"Nasser-El-Batal {course}": (f"/nasser{nasser_info[course]['url']}", nasser_info[course]['description'])
+        for course in nasser_info
+    }
   
 
-  teacher_links = {}
-  for course in nasser_info:
-        course_name = f"Nasser-El-Batal {course}"
-        url = f"/nasser{nasser_info[course]['url']}"
-        
-        # Read description from text file
-        description_file_path = f'website/playlists/nasser{course}.txt'
-        description = get_last_item_from_json_file(description_file_path)
-        
-  teacher_links[course_name] = (url, description)
+
   teachername = "Chemistry"
   return render_template('used_pages/teacher.html',
                          teacher_links=teacher_links,
