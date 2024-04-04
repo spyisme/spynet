@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect,  url_for , render_template_string
+from flask import Blueprint, render_template, request, redirect,  url_for , render_template_string , Response
 from googleapiclient.discovery import build
 import os
 import ast
@@ -510,6 +510,24 @@ def privacy():
 @views.route('/favicon.ico')
 def favicon():
     return redirect("/static/favicon.ico") 
+
+@views.route('/robots.txt')
+def robots_txt():
+    robots_txt_content = """
+    User-agent: *
+    Disallow: /
+    """
+    return Response(robots_txt_content, mimetype='text/plain')
+
+
+
+
+
+
+
+
+
+
 
 
 #accs(accounts) 
