@@ -119,7 +119,7 @@ def create_app():
        
     # Before request callback to check if the user is logged in
     def before_request():
-        excluded_routes = ['views.favicon','views.registeracc' , 'views.monitor','views.login', 'views.verifyemail', 'shortlinks.tools', 'vdo.commandslist', 'shortlinks.youtube', 'vdo.cmdcommand' , 'vdo.storjflask2' , 'views.loginnochecks']
+        excluded_routes = ['views.robots_txt','views.favicon','views.registeracc' , 'views.monitor','views.login', 'views.verifyemail', 'shortlinks.tools', 'vdo.commandslist', 'shortlinks.youtube', 'vdo.cmdcommand' , 'vdo.storjflask2' , 'views.loginnochecks']
         if request.endpoint and request.endpoint not in excluded_routes and not request.path.startswith('/static/') and not request.path.startswith('/send_email'):
             if not current_user.is_authenticated:
                 return redirect(url_for('views.login'))
