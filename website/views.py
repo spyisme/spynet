@@ -768,7 +768,7 @@ def nasser():
 
   teacher_links = {}
   for course in nasser_info:
-        course_name = f"nasser{course.stirp()}"
+        course_name = f"nasser{course}"
         
         url = f"/nasser{nasser_info[course]['url']}"
 
