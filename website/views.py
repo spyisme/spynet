@@ -747,21 +747,22 @@ def load_nasser_info():
 
 
 
-
-def get_last_item_from_file(file_path):
+def get_last_item_from_json_file(file_path):
     try:
         with open(file_path, 'r', encoding='utf-8') as file:
-            data = json.load(file)
-            if data:
+            json_str = file.read()  # Read the entire file content as a string
+            data = json.loads(json_str)  # Parse the JSON string into a Python object
+            if data and isinstance(data, list):
                 return data[-1]  # Get the last item from the list
             else:
-                print("The file is empty.")
+                print("No data or data is not in the expected format.")
                 return None
     except FileNotFoundError:
         print(f"File '{file_path}' not found.")
         return None
-
-
+    except json.JSONDecodeError as e:
+        print(f"Error decoding JSON: {e}")
+        return None
 
 @views.route('/nasser')
 def nasser():
@@ -780,7 +781,7 @@ def nasser():
         
         # Read description from text file
         description_file_path = f'website/playlists/nasser{course}.txt'
-        description = get_last_item_from_file(description_file_path)
+        description = get_last_item_from_json_file(description_file_path)
         
   teacher_links[course_name] = (url, description)
   teachername = "Chemistry"
