@@ -749,12 +749,31 @@ def load_nasser_info():
 
 
 
-def get_last_title_from_file(file_path):
-    with open(file_path, 'r') as file:
-        data = json.load(file)
-        last_item = data[-1]  # Get the last item from the list
-        last_title = last_item['title']  # Extract the title from the last item
-    return last_title
+def get_last_video(course_name):
+    # Ensure course_name has no leading or trailing whitespace
+    course_name = course_name.strip()
+
+    # Construct the file path
+    file_path = f"website/playlists/nasser{course_name}.txt"
+
+    try:
+        # Read the content of the file and evaluate it as a Python expression
+        with open(file_path, 'r', encoding='utf-8') as file:
+            content = file.read()
+            videos = ast.literal_eval(content)
+
+        # Extract the last item from the list of dictionaries
+        if videos:
+            last_item = videos[-1]  # Get the last item from the list
+            return last_item
+        else:
+            # Handle the case where the list is empty
+            print("No videos found in the file.")
+            return None
+    except FileNotFoundError:
+        # Handle the case where the file is not found
+        print(f"File '{file_path}' not found.")
+        return None
 
 
 @views.route('/nasser')
@@ -769,12 +788,12 @@ def nasser():
 
   teacher_links = {}
   for course in nasser_info:
-        course_name = f"nasser{course}"
+        course_name = f"Nasser-El-batal {course}"
         url = f"/nasser{nasser_info[course]['url']}"
 
-        description_file_path = f'website/playlists/nasser{course}.txt'
+        description = get_last_video(course)
     
-        description = get_last_title_from_file(description_file_path)
+        
         
   teacher_links[course_name] = (url, description)
   teachername = "Chemistry"
