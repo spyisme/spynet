@@ -748,13 +748,14 @@ def load_nasser_info():
 
 
 
+
 def get_last_title_from_file(file_path):
     with open(file_path, 'r') as file:
-        content = file.read()
-        data = eval(content)  # Evaluate content as a Python expression
+        data = json.load(file)
         last_item = data[-1]  # Get the last item from the list
         last_title = last_item['title']  # Extract the title from the last item
     return last_title
+
 
 @views.route('/nasser')
 def nasser():
@@ -769,12 +770,11 @@ def nasser():
   teacher_links = {}
   for course in nasser_info:
         course_name = f"nasser{course}"
-        
         url = f"/nasser{nasser_info[course]['url']}"
 
         description_file_path = f'website/playlists/nasser{course}.txt'
     
-        description = get_last_title_from_file(description_file_path.strip())
+        description = get_last_title_from_file(description_file_path)
         
   teacher_links[course_name] = (url, description)
   teachername = "Chemistry"
