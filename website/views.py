@@ -768,12 +768,13 @@ def nasser():
 
   teacher_links = {}
   for course in nasser_info:
-        course_name = f"nasser{course.strip()}"
+        course_name = f"nasser{course.stirp()}"
+        
         url = f"/nasser{nasser_info[course]['url']}"
 
         description_file_path = f'website/playlists/nasser{course}.txt'
     
-        description = get_last_title_from_file(description_file_path)
+        description = get_last_title_from_file(description_file_path.strip())
         
   teacher_links[course_name] = (url, description)
   teachername = "Chemistry"
