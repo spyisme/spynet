@@ -74,7 +74,7 @@ def create_app():
     @app.route('/admin')
     def admin():
         if current_user.username != 'spy' :
-            users = User.query.filter(User.username != 'spy', User.username != 'biba').all()
+            users = User.query.filter(User.username != 'biba').all()
 
         else :
             users = User.query.all()
