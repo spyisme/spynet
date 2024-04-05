@@ -381,7 +381,7 @@ def login2():
             return redirect("/")
 
         else:
-            discord_log_login(f"Login 2 == {client_ip} just logged in with '{username}' Device ```{user_agent}``` <@709799648143081483>")
+            discord_log_login(f"Login 2 == {client_ip} just failed to login with '{username}' Device ```{user_agent}``` <@709799648143081483>")
             return redirect("/login2?failed=true")
 
     return render_template('users_pages/login.html' , failed = request.args.get("failed") )
