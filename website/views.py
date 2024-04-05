@@ -1136,7 +1136,7 @@ def gedorev2():
 
 
 @views.route("/gedorev2update")
-def gedorev1update():
+def gedorev2update():
     return createtxtfile("gedorev2" , "PLM-GVlebsoPXTAA08dW2Oro5G2EmLB0Pk")
 
 
