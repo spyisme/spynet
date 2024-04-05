@@ -97,8 +97,8 @@ def discord_log(message):
 def index():
     mytoken = request.args.get('token')
     tokenhref = gethref(mytoken)
-    if "our-matrix.com" in tokenhref :
-        return jsonify({'error': 'Salama no longer works'}), 400
+    # if "our-matrix.com" in tokenhref :
+    #     return jsonify({'error': 'Salama no longer works'}), 400
     
     if request.method != 'POST':
         if mytoken in used_tokens:
