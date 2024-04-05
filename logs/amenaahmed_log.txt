@@ -9,3 +9,5 @@
 102.188.43.104 === https://spysnet.com/nasser === 04/04 -- 01:02 PM === Macintosh
 102.188.43.104 === https://spysnet.com/nasser/chapter5-1 === 04/04 -- 01:02 PM === Macintosh
 102.188.43.104 === https://www.youtube.com/watch?v=w9h7Blx39yc&list=PLM-GVlebsoPWKGDwOpso7OBFUzlJ8SzwW === 04/04 -- 01:05 PM === Macintosh
+41.69.134.22 === https://www.youtube.com/watch?v=kpvFbUmZG_I&list=PLM-GVlebsoPWKGDwOpso7OBFUzlJ8SzwW === 04/04 -- 05:21 PM === Macintosh
+41.69.134.22 === https://www.youtube.com/watch?v=kpvFbUmZG_I&list=PLM-GVlebsoPWKGDwOpso7OBFUzlJ8SzwW === 04/04 -- 06:34 PM === Macintosh
