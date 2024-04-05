@@ -1125,30 +1125,6 @@ def gedorev1update():
 
 
 
-
-
-@views.route("/mohamedsalah")
-def mohamedsalah():
-    playlist_id = 'PLM-GVlebsoPXv3dz0yaqJtvjkOAN6KNRc'
-    teachername= "Mohamed Salah"
-    with open("website/playlists/mohamedsalah.txt", 'r', encoding='utf-8') as file:
-        content = file.read()
-        videos = ast.literal_eval(content)
-    return render_template('used_pages/videopage.html',
-                           videos=videos,
-                           playlist_id=playlist_id,
-                           teachername=teachername)
-
-@views.route("/mohamedsalahupdate")
-def mohamedsalahupdate():
-    return createtxtfile("mohamedsalah" , "PLM-GVlebsoPXv3dz0yaqJtvjkOAN6KNRc")
-
-
-
-
-
-
-
 @views.route("/mohamedtarek")
 def mohamedtarek():
     playlist_id = 'PLM-GVlebsoPWeP1pGCJWmf20Uc2Cu4JWN'
