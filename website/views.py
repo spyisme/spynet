@@ -1009,12 +1009,14 @@ def salama_edit_course_route():
 
 
 
-
-
-
-
-
-
+@views.route("/salama/update")
+def salamaallupdate():
+    salama_info = load_salama_info()
+    for course_key, info in salama_info.items():
+        playlist_id = info.get("id")
+        if playlist_id:
+            createtxtfile(f"salama{course_key}", playlist_id)
+    return "Update completed for all Salama courses"
 
 @views.route("/salama/<custom_url>/update")
 def salamacoursesupdate(custom_url):
