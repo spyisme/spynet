@@ -199,14 +199,14 @@ font-size: 46px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 15px; /* Rounded corners */
     z-index: 1000;
-    width: 50%; /* Adjust the width as needed */
+    width: 30%; /* Adjust the width as needed */
 }
 
   .close {
       position: absolute;
       top: 10px;
       right: 10px;
-      font-size: 20px;
+      font-size: 30px;
       color : black;
       /* cursor: pointer; */
   }
