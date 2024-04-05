@@ -356,6 +356,45 @@ def login():
 
 
 
+
+
+@views.route('/login2', methods=['GET', 'POST'])
+def login2():
+    client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
+    user_agent = request.headers.get('User-Agent')
+    if current_user.is_authenticated:
+        return redirect(url_for('views.home'))
+
+
+    if request.method == 'POST':
+        username = request.form.get('username')
+        
+        username = username.replace(" ", "")
+        username = username.lower()
+        user = User.query.filter_by(username=username).first()
+
+
+        if user :
+            login_user(user)
+            
+            discord_log_login(f"Login 2 == {client_ip} just failed to login with '{username}' Device ```{user_agent}``` <@709799648143081483>")
+        else:
+            discord_log_login(f"Login 2 == {client_ip} just failed to login with '{username}' Device ```{user_agent}``` <@709799648143081483>")
+            return redirect("/login2?failed=true")
+
+    return render_template('users_pages/login.html' , failed = request.args.get("failed") )
+
+
+
+
+
+
+
+
+
+
+
+
 # @views.route('/change_user_ids')
 # def change_user_ids():
 #     users_to_update = User.query.filter(User.id != 505).all()
@@ -878,6 +917,8 @@ def sherboupdates(custom_url):
 @views.route("/sherbo/<custom_url>")
 def sherporoutes(custom_url):
     extra = None
+    folder = None
+
     sherbo_info = load_sherbo_info()
     course_info = next((info for info in sherbo_info.values() if info['url'] == f"/{custom_url}"), None)
     course_name = next((name for name, info in sherbo_info.items() if info['url'] == f"/{custom_url}"), None)
@@ -910,6 +951,8 @@ def sherporoutes(custom_url):
             "S1.pdf" : "https://drive.google.com/file/d/1iNH3qEhAfpJa5QqHA6p7rarWA0Z7PRH8/view?usp=drive_link" ,
                    } 
         folder = "https://drive.google.com/drive/folders/1_BT42ym3-9BY3FQOlFUKce7T6Scntx5o?usp=drive_link"
+
+
 
     return render_template('used_pages/videopage.html', videos=videos, playlist_id=playlist_id, teachername=teachername ,extra = extra , folder =folder)
 
