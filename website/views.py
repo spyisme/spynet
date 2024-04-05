@@ -643,7 +643,7 @@ def chem():
   return render_template('used_pages/teacher.html',
                          teacher_links=teacher_links,
                          teachername=teachername,
-                         imgs="yes")
+                         imgs="yes" ,  link = "https://periodic-table.tech/")
 @views.route('/ashraf')
 def ashraf():
   teacher_links = {
@@ -836,7 +836,7 @@ def math():
   return render_template('used_pages/teacher.html',
                          teacher_links=teacher_links,
                          teachername=teachername,
-                         imgs="yes")
+                         imgs="yes" , link = "https://mathdf.com")
 
 
 
