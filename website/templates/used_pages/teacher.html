@@ -41,9 +41,12 @@
         <h1  >✰ {{ teachername }} ✰</h1>
 
 {%endif%}
-              {%if link%}
-<p><a href="{{link}}" target="_blank" style="color: white; "><u>{{teachername}} site</u></a></p>
-      {%endif%}
+{% if link %}
+    {% for key, value in link.items() %}
+        <p><a href="{{ value }}" target="_blank" style="color: white;"><u>{{ key }}</u></a></p>
+    {% endfor %}
+{% endif %}
+
 
 
            </div>
