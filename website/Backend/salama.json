@@ -3,181 +3,181 @@
   "Drills": {
     "id": "PLM-GVlebsoPWo0biN3Xpn88rdBB4Oud1_",
     "url": "/drills"
-    ,"description": "lesson ( 1 ) and lesson ( 2 ) chapter ( 1 ) statics"
+    ,"description": "Drills"
     
   },
 "Course 1": {
     "id": "PLM-GVlebsoPWfuCf4h_ucKPOBKjH6No-W",
     "url": "/course1"
-    ,"description": "lesson ( 3 ) chapter ( 1 ) statics and lesson ( 1 ) chapter ( 1 ) analytic solid Geometry"
+    ,"description": "lesson 1,2 (Friction)"
 
   },
   "Course 2": {
     "id": "PLM-GVlebsoPUubsCYnPGc27tihI0pz4hi",
     "url": "/course2"
-    ,"description": "lesson ( 2 ) and lesson ( 3 ) chapter ( 1 ) analytic solid Geometry"
+    ,"description": "lesson 3 (Friction) and lesson 1 ASG"
 
   },
   "Course 3": {
     "id": "PLM-GVlebsoPUSSsoABHH059FBapcSjvGg",
     "url": "/course3"
-    ,"description": "Workshops"
+    ,"description": "lesson 2 and 3 chapter 1 ASG"
 
   },
   "Course 4": {
     "id": "PLM-GVlebsoPXWSZDCjeDfvdMV5QXYwg4x",
     "url": "/course4"
-    ,"description": "Workshops"
+    ,"description": "lesson 4 ASG and lesson 1 (Moments)"
 
   },
   "Course 5": {
     "id": "PLM-GVlebsoPWEGxQu5D0hVrUCJjTMqYvd",
     "url": "/course5"
-    ,"description": "Workshops"
+    ,"description": "lesson 2 and 3 (Moments)"
 
   },
   "Course 6": {
     "id": "PLM-GVlebsoPWZKrvX8MvfJxfxXhKXvqR3",
     "url": "/course6"
-    ,"description": "Workshops"
+    ,"description": "Revision"
 
   },
   "Course 7": {
     "id": "PLM-GVlebsoPUobUeuNIWsitKeP-aHOwif",
     "url": "/course7"
-    ,"description": "Workshops"
+    ,"description": "(Parallel Forces)"
 
   },
   "Course 8": {
     "id": "PLM-GVlebsoPUqwS3-Ij-pHBq4_aoEAwMZ",
     "url": "/course8"
-    ,"description": "Workshops"
+    ,"description": "Equation of straight line (ASG)"
 
   },
   "Course 9": {
     "id": "PLM-GVlebsoPXe2kZo_cM06BZWXwdSxQ7B",
     "url": "/course9"
-    ,"description": "Workshops"
+    ,"description": "General Equlibrum"
 
   },
   "Course 10": {
     "id": "PLM-GVlebsoPXZmghd3uMqZWx6wlLZDiiu",
     "url": "/course10"
-    ,"description": "Workshops"
+    ,"description": "lesson 1 and 2 (Diff)"
 
   },
   "Course 11": {
     "id": "PLM-GVlebsoPVB0u2fWqO9ep3cuBp_8zTW",
     "url": "/course11"
-    ,"description": "Workshops"
+    ,"description": "lesson 3 and 4 (Diff)"
 
   },
   "Course 12": {
     "id": "PLM-GVlebsoPU0BwzCsqsPQfKMSPZauuFl",
     "url": "/course12"
-    ,"description": "Workshops"
+    ,"description": "lesson 5 and 6 (Diff)"
 
   },
   "Course 13": {
     "id": "PLM-GVlebsoPURAU8nu_tU2dphnGXxZeMM",
     "url": "/course13"
-    ,"description": "Workshops"
+    ,"description": "Time Rates (Diff)"
 
   },
   "Course 14": {
     "id": "PLM-GVlebsoPXnRQBjkDqUUAXDKyUJqK9-",
     "url": "/course14"
-    ,"description": "Workshops"
+    ,"description": "Lesson 2 ch2 & Lesson 1 and 2 ch3"
 
   },
   "Course 15": {
     "id": "PLM-GVlebsoPWCqnSBAANAy8Wn89lbLmqt",
     "url": "/course15"
-    ,"description": "Workshops"
+    ,"description": "Couple (Statics)"
 
   },
   "Course 16": {
     "id": "PLM-GVlebsoPUF0Px3a00jPzFLwJwkpgBw",
     "url": "/course16"
-    ,"description": "Workshops"
+    ,"description": "Center of Gravity (Statics)"
 
   },
   "Course 17": {
     "id": "PLM-GVlebsoPXMiQ12yf0u8yXhwuFTAR0h",
     "url": "/course17"
-    ,"description": "Workshops"
+    ,"description": "last session in ASG and Revision"
 
   },
   "Course 18": {
     "id": "PLM-GVlebsoPV0RRzBKVtugIVlvEKmmHQn",
     "url": "/course18"
-    ,"description": "Workshops"
+    ,"description": "max and minimise & curve sketch (Diff)"
 
   },
   "Course 19": {
     "id": "PLM-GVlebsoPW0boxDQxqLZz8gbmxhGZvP",
     "url": "/course19"
-    ,"description": "Workshops"
+    ,"description": "Revision on Diff"
 
   },
   "Course 20": {
     "id": "PLM-GVlebsoPVe61apiwj3BNUJZgRxPx7R",
     "url": "/course20"
-    ,"description": "Workshops"
+    ,"description": "Integration"
 
   },
   "Course 21": {
     "id": "PLM-GVlebsoPW08Jvd51hPJlzAuWZW779p",
     "url": "/course21"
-    ,"description": "Workshops"
+    ,"description": "Integration by parts & by substitution"
 
   },
   "Course 22": {
     "id": "PLM-GVlebsoPV167FUPTP329rzQmG6PG-G",
     "url": "/course22"
-    ,"description": "Workshops"
+    ,"description": "Definite integration"
 
   },
   "Course 23": {
     "id": "PLM-GVlebsoPWqsj4eyVs60lxIi1MpjkM3",
     "url": "/course23"
-    ,"description": "Workshops"
+    ,"description": "Integration (Area & volume)"
 
   },
   "Course 24": {
     "id": "PLM-GVlebsoPWocAUzJuZXJz1LmGaDE32p",
     "url": "/course24"
-    ,"description": "Workshops"
+    ,"description": "Algebra"
 
   },
   "Course 25": {
     "id": "PLM-GVlebsoPXmDYTJOG_SUX7clrqVcWgy",
     "url": "/course25"
-    ,"description": "Workshops"
+    ,"description": "Binomial Theorem"
 
   },
   "Course 26": {
     "id": "PLM-GVlebsoPWh3oOrqBPNJCTEAEOklhb6",
     "url": "/course26"
-    ,"description": "Workshops"
+    ,"description": "Complex numbers"
 
   },
   "Course 27": {
     "id": "PLM-GVlebsoPU3qMvlZlSlcllE5Fs_jVmH",
     "url": "/course27"
-    ,"description": "Workshops"
+    ,"description": "omega & determinant"
 
   },
   "Course 28": {
     "id": "PLM-GVlebsoPWh5QbxlzrOhS9oh8xWwmWH",
     "url": "/course28"
-    ,"description": "Workshops"
+    ,"description": "Matrices"
 
   },
   "Course 29": {
     "id": "PLM-GVlebsoPWrrWnO5odT75WQrNuTciVW",
     "url": "/course29"
-    ,"description": "Workshops"
+    ,"description": "dynamics until momentum"
 
   }
 }
