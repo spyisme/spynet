@@ -225,14 +225,14 @@ font-size: 46px;
 }
 
 .button-wrapper img {
-    width: 50px; /* Adjust the width as needed */
+    width: 80px; /* Adjust the width as needed */
     height: auto;
     margin-bottom: 5px; /* Adjust the spacing between the image and text */
 }
 
 .button-wrapper p {
     margin: 0;
-    font-size: 30px;
+    font-size: 25px;
 
 }
 
