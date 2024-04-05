@@ -1,5 +1,10 @@
 {
-  "Course 1": {
+  
+  "Drills": {
+    "id": "PLM-GVlebsoPWo0biN3Xpn88rdBB4Oud1_",
+    "url": "/drills"
+  },
+"Course 1": {
     "id": "PLM-GVlebsoPWfuCf4h_ucKPOBKjH6No-W",
     "url": "/course1"
   },
@@ -114,9 +119,5 @@
   "Course 29": {
     "id": "PLM-GVlebsoPWrrWnO5odT75WQrNuTciVW",
     "url": "/course29"
-  },
-  "Drills": {
-    "id": "PLM-GVlebsoPWo0biN3Xpn88rdBB4Oud1_",
-    "url": "/drills"
   }
 }
