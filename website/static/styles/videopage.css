@@ -200,6 +200,7 @@ font-size: 46px;
     border-radius: 15px; /* Rounded corners */
     z-index: 1000;
     width: 30%; /* Adjust the width as needed */
+    height: 30%;
 }
 
   .close {
@@ -214,7 +215,6 @@ font-size: 46px;
   .popup-buttons {
       display: flex;
       justify-content: center;
-      width: 20%; /* Adjust the width as needed */
 
       margin-top: 20px;
       
