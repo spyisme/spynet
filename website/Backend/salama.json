@@ -3,19 +3,19 @@
   "Drills": {
     "id": "PLM-GVlebsoPWo0biN3Xpn88rdBB4Oud1_",
     "url": "/drills"
-    ,"description": "Workshops"
+    ,"description": "lesson ( 1 ) and lesson ( 2 ) chapter ( 1 ) statics"
     
   },
 "Course 1": {
     "id": "PLM-GVlebsoPWfuCf4h_ucKPOBKjH6No-W",
     "url": "/course1"
-    ,"description": "Workshops"
+    ,"description": "lesson ( 3 ) chapter ( 1 ) statics and lesson ( 1 ) chapter ( 1 ) analytic solid Geometry"
 
   },
   "Course 2": {
     "id": "PLM-GVlebsoPUubsCYnPGc27tihI0pz4hi",
     "url": "/course2"
-    ,"description": "Workshops"
+    ,"description": "lesson ( 2 ) and lesson ( 3 ) chapter ( 1 ) analytic solid Geometry"
 
   },
   "Course 3": {
