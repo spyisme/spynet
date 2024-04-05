@@ -153,31 +153,31 @@
   "Course 25": {
     "id": "PLM-GVlebsoPXmDYTJOG_SUX7clrqVcWgy",
     "url": "/course25"
-    ,"description": "Binomial Theorem"
+    ,"description": "Binomial Theorem (Algebra)"
 
   },
   "Course 26": {
     "id": "PLM-GVlebsoPWh3oOrqBPNJCTEAEOklhb6",
     "url": "/course26"
-    ,"description": "Complex numbers"
+    ,"description": "Complex numbers (Algebra)"
 
   },
   "Course 27": {
     "id": "PLM-GVlebsoPU3qMvlZlSlcllE5Fs_jVmH",
     "url": "/course27"
-    ,"description": "omega & determinant"
+    ,"description": "omega & determinant (Algebra)"
 
   },
   "Course 28": {
     "id": "PLM-GVlebsoPWh5QbxlzrOhS9oh8xWwmWH",
     "url": "/course28"
-    ,"description": "Matrices"
+    ,"description": "Matrices (Algebra)"
 
   },
   "Course 29": {
     "id": "PLM-GVlebsoPWrrWnO5odT75WQrNuTciVW",
     "url": "/course29"
-    ,"description": "dynamics until momentum"
+    ,"description": "dynamics until momentum (Algebra)"
 
   }
 }
