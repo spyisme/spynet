@@ -1050,7 +1050,7 @@ def salamaroutes(custom_url):
 def arabic():
   teacher_links = {
     "Gedo": ("gedo", "Reda El Farouk"),
-    "El kaysaar": ("#", "Mohamed Tarek"),
+    "Mohamed Tarek": ("#", "Soon.."),
     # "Mohamed salah": ("mohamedsalah", "Mohamed Salah"),
 
 
