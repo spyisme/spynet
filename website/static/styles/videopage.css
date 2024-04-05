@@ -213,12 +213,27 @@ font-size: 46px;
   }
 
   .popup-buttons {
-      display: flex;
-      justify-content: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
 
-      margin-top: 20px;
-      
-  }
+.button-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.button-wrapper img {
+    width: 50px; /* Adjust the width as needed */
+    height: auto;
+    margin-bottom: 5px; /* Adjust the spacing between the image and text */
+}
+
+.button-wrapper p {
+    margin: 0;
+}
+
 
   .popup-buttons button {
       padding: 10px;

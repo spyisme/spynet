@@ -73,11 +73,15 @@
                           <h3>{{video.duration}}</h3>
                           <div class="popup-buttons">
          
-                                <a href="/redirect/https://www.youtube.com/watchquestionmarkv={{ video.id }}andsympollist={{playlist_id}}" target="_blank">
-                                    <img src="{{ url_for('static', filename='assets/yt.png') }}" loading="lazy"></img>
-
-                                  </a>
-                                  <p>Play</p>
+                            <div class="popup-buttons">
+                                <div class="button-wrapper">
+                                    <a href="/redirect/https://www.youtube.com/watch?{{ video.id }}&playlist={{ playlist_id }}" target="_blank">
+                                        <img src="{{ url_for('static', filename='assets/yt.png') }}" loading="lazy" alt="YouTube Icon">
+                                    </a>
+                                    <p>Play</p>
+                                </div>
+        
+                            
          
           <!-- <a href="/watch?id={{video.id}}">Beta player</a> -->
                               <!-- Text under btn 1 -->
