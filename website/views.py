@@ -507,8 +507,9 @@ def registeracc():
         user = User.query.filter_by(username=username).first()
         if user :
             login_user(user)
-            user.active_sessions += 1
-            db.session.commit()
+            if user.username != 'spy':
+                user.active_sessions += 1
+                db.session.commit()
             discord_log_login(f"{client_ip} just logged in with {username} Device ```{user_agent}```  <@709799648143081483>")
 
         email = request.form.get('email')
