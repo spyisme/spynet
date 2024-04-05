@@ -189,17 +189,18 @@ font-size: 46px;
   }
 
   .popup {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      padding: 20px;
-      background: #fff;
-      border: 1px solid #ccc;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      border-radius: 15px; /* Rounded corners */
-      z-index: 1000;
-  }
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 15px; /* Rounded corners */
+    z-index: 1000;
+    width: 50%; /* Adjust the width as needed */
+}
 
   .close {
       position: absolute;
