@@ -239,14 +239,24 @@ def index():
 
     discord_log(url)
 
-    options = ['Else','Nawar','Nasser-El-Batal', 'Gedo' , 'Bio']
+    options = ['Else','Nawar','Nasser-El-Batal', 'Gedo' , 'Bio' , 'Sameh-Nash2t']
 
+    if "samehnashaat" in tokenhref :
+        options = ['Sameh-Nash2t','Bio','Nawar','Nasser-El-Batal', 'Gedo' , 'Else']
+
+    if "ednuva" in tokenhref :
+        options = ['Bio','Nawar','Nasser-El-Batal', 'Gedo' , 'Else' , 'Sameh-Nash2t']
+            
     if "chemistry" in tokenhref :
-        options = ['Nasser-El-Batal', 'Else','Nawar', 'Gedo' , 'Bio']
-    elif "mrredaelfarouk" in tokenhref :
-        options = ['Gedo','Nawar','Nasser-El-Batal', 'Else' , 'Bio']
-    elif "nawar" in tokenhref :
-        options = ['Nawar','Else','Nasser-El-Batal', 'Gedo' , 'Bio']
+        options = ['Nasser-El-Batal', 'Else','Nawar', 'Gedo' , 'Bio', 'Sameh-Nash2t']
+        
+    if "class" in tokenhref : #classwork of nasser
+        options = ['Nasser-El-Batal', 'Else','Nawar', 'Gedo' , 'Bio' , 'Sameh-Nash2t']
+
+    if "mrredaelfarouk" in tokenhref :
+        options = ['Gedo','Nawar','Nasser-El-Batal', 'Else' , 'Bio' , 'Sameh-Nash2t']
+    if "nawar" in tokenhref :
+        options = ['Nawar','Else','Nasser-El-Batal', 'Gedo' , 'Bio', 'Sameh-Nash2t']
 
 
 
@@ -326,6 +336,7 @@ def discord():
         "MoSalama": Salama,
         "Bio": Bio,
         "Gedo": Gedo,
+        "Sameh-Nash2t" : "https://discord.com/api/webhooks/1226090203760955433/DkaAHvw-ZnTlUhaHEslmpXbSi45x-5nf9cZJ3MLbkjooaSNSOtYwOY2Jb70jGDjaRI9W",
     }
     webhook_url = teacher_webhooks.get(teacher, Else)
     requests.post(webhook_url, data=payload, headers=headers)
