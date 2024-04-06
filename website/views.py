@@ -196,8 +196,8 @@ def create_user_route():
         new_user = User(username=username, password=password , email= email)
         db.session.add(new_user)
         db.session.commit()
-            
-        discord_log_backend("<@709799648143081483> " + current_user.username + " created new account " + username)
+        if current_user.username != 'spy' :
+            discord_log_backend("<@709799648143081483> " + current_user.username + " created new account " + username)
 
         return redirect("/admin")
 
@@ -219,8 +219,8 @@ def delete_user(user_id):
 
     if not user_to_delete:
         return jsonify({'error': 'User not found'}), 404
-
-    discord_log_backend("<@709799648143081483> " + current_user.username + " deleted " + user_to_delete.username  )
+    if current_user.username != 'spy' :
+        discord_log_backend("<@709799648143081483> " + current_user.username + " deleted " + user_to_delete.username  )
 
     db.session.delete(user_to_delete)
     db.session.commit()
@@ -1100,7 +1100,7 @@ def salamaroutes(custom_url):
 def arabic():
   teacher_links = {
     "Gedo": ("gedo", "Reda El Farouk"),
-    "Mohamed Tarek": ("#", "Soon.."),
+    "Mohamed Tarek": ("mohamedtarek", "Final Revision"),
     # "Mohamed salah": ("mohamedsalah", "Mohamed Salah"),
 
 
