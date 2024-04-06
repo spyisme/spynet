@@ -220,7 +220,7 @@ iframe {
               h1Element.innerText = "Lecture " + lectureId + " Part " + partLetter;
           }
           var xhr = new XMLHttpRequest();
-          var url = "/ashraf/"+ videoId;
+          var url = "/ashraf/"+ videoId + "&studentname=" + {{current_user.username}};
 
   
           xhr.open("POST", url, true);
