@@ -707,16 +707,6 @@ def ashraf():
 
 @views.route('/ashrafsessions')
 def ashrafsessions():
-    with open('website/Backend/ashraf.json', 'r') as file:
-        lectures_data = json.load(file)
-        # Extracting the last lecture ID
-        last_lecture_id = lectures_data['filtered_lectures'][-1]['title']
-    return render_template('used_pages/ashraf.html', lectures_data=lectures_data, last_lecture_id=last_lecture_id)
-
-
-
-@views.route('/ashrafsessions/update')
-def ashrafsessionsupdate():
     headers = {
         'authority': 'api.csacademyzone.com',
         'accept': 'application/json, text/plain, */*',
@@ -745,11 +735,13 @@ def ashrafsessionsupdate():
 
     with open("website/Backend/ashraf.json", 'w') as output_file:
         json.dump(result, output_file, indent=2)
-    
-    if response.status_code == 200:
-        return f"Done. Last ID: {last_id}" 
-    else:
-        return "An error occurred!"
+
+
+    with open('website/Backend/ashraf.json', 'r') as file:
+        lectures_data = json.load(file)
+        # Extracting the last lecture ID
+        last_lecture_id = lectures_data['filtered_lectures'][-1]['title']
+    return render_template('used_pages/ashraf.html', lectures_data=lectures_data, last_lecture_id=last_lecture_id)
 
 
 
