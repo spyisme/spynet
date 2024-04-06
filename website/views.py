@@ -185,13 +185,15 @@ def monitor():
 def create_user_route():
     if request.method == 'POST':
         username = request.form.get('username')
+        email = request.form.get('email')
+
         password = "password"
         if not username or not password:
             return jsonify({'error': 'Username and password are required'}), 400
         existing_user = User.query.filter_by(username=username).first()
         if existing_user:
             return jsonify({'error': 'Username already exists'}), 400
-        new_user = User(username=username, password=password)
+        new_user = User(username=username, password=password , email= email)
         db.session.add(new_user)
         db.session.commit()
             
