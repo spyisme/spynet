@@ -175,7 +175,7 @@ def index():
         def __init__(self) -> None:
             pass
 
-        def post_license_request(link, challenge, data, headers):
+        def post_license_request(self ,link, challenge, data):
                 if challenge == "":
                     encoded = base64.b64encode(challenge.encode()).decode()
                 else:
