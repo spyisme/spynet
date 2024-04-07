@@ -188,7 +188,7 @@ def index():
             }
             r = requests.post(link, json=payload_new, headers=headers())
             print(r)
-            discord_log(r)
+            discord_log(r.json())
             return r.json()['license']
     
         def start(self):
