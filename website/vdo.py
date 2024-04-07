@@ -188,12 +188,7 @@ def index():
             }
             r = requests.post(link, json=payload_new, headers=headers())
             print(r)
-            try:
-                license_data = r.json().get('license')
-                if not license_data:
-                    return r.status_code, r
-            except KeyError:
-                return "KeyErorr"
+
             return r.json()['license']
     
         def start(self):
