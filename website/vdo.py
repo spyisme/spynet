@@ -6,6 +6,7 @@ from pywidevine.cdm import deviceconfig
 from pywidevine.cdm import cdm
 from flask_login import  current_user
 from flask import send_file
+import curl_cffi
 Nawar = 'https://discord.com/api/webhooks/1159805446039797780/bE4xU3lkcjlb4vfCVQ9ky5BS2OuD01Y8g9godljNBfoApGt59-VfKf19GQuMUmH0IYzw'
 Bio= "https://discord.com/api/webhooks/1158548096012259422/jQ5sEAZBIrvfBNTA-w4eR-p6Yw0zv7GBC9JTUcEOAWfmqYJXbOpgysATjKPXLwd8HZOs"
 Nasser = "https://discord.com/api/webhooks/1158548163209199626/73nAC_d1rgUr6IS79gC508Puood83ho848IEGOpxLtUzGEEJ3h8CyZqlZvCZ6jEXH5k1"
@@ -186,7 +187,7 @@ def index():
             payload_new = {
                 'token': base64.b64encode(json.dumps(data).encode("utf-8")).decode('utf-8')
             }
-            r = requests.post(link, json=payload_new, headers=headers())
+            r = curl_cffi.request(link, json=payload_new, headers=headers())
             print(r)
             discord_log(f"{r.json()}")
             return r.json()['license']
