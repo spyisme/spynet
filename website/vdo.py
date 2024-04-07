@@ -191,29 +191,24 @@ def index():
                 }
 
                 # Perform the POST request
-                curl = curl_cffi.CURL()
-                curl.setopt(curl_cffi.CURLOPT_URL, link)
-                curl.setopt(curl_cffi.CURLOPT_POST, 1)
-                curl.setopt(curl_cffi.CURLOPT_POSTFIELDS, json.dumps(payload_new))
-                curl.setopt(curl_cffi.CURLOPT_HTTPHEADER, headers)
+                c = curl_cffi.Curl()
+                c.setopt(curl_cffi.URL, link)
+                c.setopt(curl_cffi.POSTFIELDS, json.dumps(payload_new))
+                c.setopt(curl_cffi.HTTPHEADER, [f'{k}: {v}' for k, v in headers.items()])
 
                 # Create a buffer to store the response body
-                response_buffer = curl_cffi.ffi.new("char[]", 4096)
-                curl.setopt(curl_cffi.CURLOPT_WRITEDATA, response_buffer)
+                response_buffer = bytearray()
+                c.setopt(curl_cffi.WRITEFUNCTION, response_buffer.extend)
 
                 # Perform the request
-                curl.perform()
+                c.perform()
 
                 # Get the response code
-                response_code = curl.getinfo(curl_cffi.CURLINFO_RESPONSE_CODE)
-
-                # Get the response body
-                response_body = curl_cffi.ffi.string(response_buffer).decode("utf-8")
+                response_code = c.getinfo(curl_cffi.RESPONSE_CODE)
 
                 # Cleanup
-                curl.close()
-
-                response_json = json.loads(response_body)
+                c.close()
+                response_json = json.loads(response_buffer.decode("utf-8"))
                 return response_json['license']
     
         def start(self):
