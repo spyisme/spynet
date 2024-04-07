@@ -6,7 +6,6 @@ from pywidevine.cdm import deviceconfig
 from pywidevine.cdm import cdm
 from flask_login import  current_user
 from flask import send_file
-import curl_cffi
 Nawar = 'https://discord.com/api/webhooks/1159805446039797780/bE4xU3lkcjlb4vfCVQ9ky5BS2OuD01Y8g9godljNBfoApGt59-VfKf19GQuMUmH0IYzw'
 Bio= "https://discord.com/api/webhooks/1158548096012259422/jQ5sEAZBIrvfBNTA-w4eR-p6Yw0zv7GBC9JTUcEOAWfmqYJXbOpgysATjKPXLwd8HZOs"
 Nasser = "https://discord.com/api/webhooks/1158548163209199626/73nAC_d1rgUr6IS79gC508Puood83ho848IEGOpxLtUzGEEJ3h8CyZqlZvCZ6jEXH5k1"
@@ -176,55 +175,21 @@ def index():
             pass
 
         def post_license_request(self, link, challenge, data):
-                headers = self.headers()
-
-                if challenge == "":
-                    encoded = base64.b64encode(challenge.encode()).decode()
-                else:
-                    encoded = base64.b64encode(challenge).decode()
-
-                # Assuming mytoken and getotp are defined somewhere
-                myotp = getotp(mytoken)
-                data['otp'] = f"{myotp}"
-                data["licenseRequest"] = encoded
-
-                payload_new = {
-                    'token': base64.b64encode(json.dumps(data).encode("utf-8")).decode('utf-8')
-                }
-
-                # Initialize curl
-                c = curl_cffi.Curl()
-
-                # Set URL
-                c.setopt(curl_cffi.OPT.URL, link)
-
-                # Set POST data
-                c.setopt(curl_cffi.OPT.POSTFIELDS, json.dumps(payload_new))
-
-                # Set HTTP headers
-                c.setopt(curl_cffi.OPT.HTTPHEADER, [f"{k}: {v}" for k, v in headers.items()])
-
-                # Create a buffer to store the response body
-                response_buffer = bytearray()
-                c.setopt(curl_cffi.OPT.WRITEFUNCTION, response_buffer.extend)
-
-                # Perform the request
-                c.perform()
-
-                # Get the response code
-                response_code = c.getinfo(curl_cffi.INFO.RESPONSE_CODE)
-
-                # Cleanup
-                c.close()
-
-                # Check if request was successful
-                if response_code == 200:
-                    # Parse the JSON response
-                    response_json = json.loads(response_buffer.decode("utf-8"))
-                    return response_json.get('license')
-                else:
-                    # Handle error
-                    return None
+            if challenge == "":
+                enoded = base64.b64encode(challenge.encode()).decode()
+            else:
+                enoded = base64.b64encode(challenge).decode()
+            myotp = getotp(mytoken)
+            data['otp'] = f"{myotp}"
+            data["licenseRequest"] = enoded
+            
+            payload_new = {
+                'token': base64.b64encode(json.dumps(data).encode("utf-8")).decode('utf-8')
+            }
+            r = requests.post(link, json=payload_new, headers=headers())
+            print(r)
+            discord_log(f"{r.json()}")
+            return r.json()['license']
     
         def start(self):
             client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
