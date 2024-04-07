@@ -175,22 +175,46 @@ def index():
         def __init__(self) -> None:
             pass
 
-        def post_license_request(self, link, challenge, data):
-            if challenge == "":
-                enoded = base64.b64encode(challenge.encode()).decode()
-            else:
-                enoded = base64.b64encode(challenge).decode()
-            myotp = getotp(mytoken)
-            data['otp'] = f"{myotp}"
-            data["licenseRequest"] = enoded
-            
-            payload_new = {
-                'token': base64.b64encode(json.dumps(data).encode("utf-8")).decode('utf-8')
-            }
-            r = curl_cffi.request(link, json=payload_new, headers=headers())
-            print(r)
-            discord_log(f"{r.json()}")
-            return r.json()['license']
+        def post_license_request(link, challenge, data, headers):
+                if challenge == "":
+                    encoded = base64.b64encode(challenge.encode()).decode()
+                else:
+                    encoded = base64.b64encode(challenge).decode()
+
+                # Assuming mytoken and getotp are defined somewhere
+                myotp = getotp(mytoken)
+                data['otp'] = f"{myotp}"
+                data["licenseRequest"] = encoded
+
+                payload_new = {
+                    'token': base64.b64encode(json.dumps(data).encode("utf-8")).decode('utf-8')
+                }
+
+                # Perform the POST request
+                curl = curl_cffi.CURL()
+                curl.setopt(curl_cffi.CURLOPT_URL, link)
+                curl.setopt(curl_cffi.CURLOPT_POST, 1)
+                curl.setopt(curl_cffi.CURLOPT_POSTFIELDS, json.dumps(payload_new))
+                curl.setopt(curl_cffi.CURLOPT_HTTPHEADER, headers)
+
+                # Create a buffer to store the response body
+                response_buffer = curl_cffi.ffi.new("char[]", 4096)
+                curl.setopt(curl_cffi.CURLOPT_WRITEDATA, response_buffer)
+
+                # Perform the request
+                curl.perform()
+
+                # Get the response code
+                response_code = curl.getinfo(curl_cffi.CURLINFO_RESPONSE_CODE)
+
+                # Get the response body
+                response_body = curl_cffi.ffi.string(response_buffer).decode("utf-8")
+
+                # Cleanup
+                curl.close()
+
+                response_json = json.loads(response_body)
+                return response_json['license']
     
         def start(self):
             client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
