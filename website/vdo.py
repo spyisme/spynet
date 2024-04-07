@@ -175,41 +175,54 @@ def index():
         def __init__(self) -> None:
             pass
 
-        def post_license_request(self ,link, challenge, data):
-                if challenge == "":
-                    encoded = base64.b64encode(challenge.encode()).decode()
-                else:
-                    encoded = base64.b64encode(challenge).decode()
+        def post_license_request(self, link, challenge, data):
+            if challenge == "":
+                encoded = base64.b64encode(challenge.encode()).decode()
+            else:
+                encoded = base64.b64encode(challenge).decode()
 
-                # Assuming mytoken and getotp are defined somewhere
-                myotp = getotp(mytoken)
-                data['otp'] = f"{myotp}"
-                data["licenseRequest"] = encoded
+            # Assuming mytoken and getotp are defined somewhere
+            myotp = getotp(mytoken)
+            data['otp'] = f"{myotp}"
+            data["licenseRequest"] = encoded
 
-                payload_new = {
-                    'token': base64.b64encode(json.dumps(data).encode("utf-8")).decode('utf-8')
-                }
+            payload_new = {
+                'token': base64.b64encode(json.dumps(data).encode("utf-8")).decode('utf-8')
+            }
 
-                # Perform the POST request
-                c = curl_cffi.Curl()
-                c.setopt(curl_cffi.URL, link)
-                c.setopt(curl_cffi.POSTFIELDS, json.dumps(payload_new))
-                c.setopt(curl_cffi.HTTPHEADER, [f'{k}: {v}' for k, v in headers.items()])
+            # Initialize curl
+            c = curl_cffi.Curl()
 
-                # Create a buffer to store the response body
-                response_buffer = bytearray()
-                c.setopt(curl_cffi.WRITEFUNCTION, response_buffer.extend)
+            # Set URL
+            c.setopt(curl_cffi.OPT_URL, link)
 
-                # Perform the request
-                c.perform()
+            # Set POST data
+            c.setopt(curl_cffi.OPT_POSTFIELDS, json.dumps(payload_new))
 
-                # Get the response code
-                response_code = c.getinfo(curl_cffi.RESPONSE_CODE)
+            # Set HTTP headers using self.headers()
+            c.setopt(curl_cffi.OPT_HTTPHEADER, [f"{k}: {v}" for k, v in self.headers().items()])
 
-                # Cleanup
-                c.close()
+            # Create a buffer to store the response body
+            response_buffer = bytearray()
+            c.setopt(curl_cffi.OPT_WRITEFUNCTION, response_buffer.extend)
+
+            # Perform the request
+            c.perform()
+
+            # Get the response code
+            response_code = c.getinfo(curl_cffi.RESPONSE_CODE)
+
+            # Cleanup
+            c.close()
+
+            # Check if request was successful
+            if response_code == 200:
+                # Parse the JSON response
                 response_json = json.loads(response_buffer.decode("utf-8"))
-                return response_json['license']
+                return response_json.get('license')
+            else:
+                # Handle error
+                return None
     
         def start(self):
             client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
