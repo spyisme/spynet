@@ -591,7 +591,7 @@ def spyleakedaccs():
 @views.route('/physics')
 def Physics():
   teacher_links = {
-  "Nawar": ("/nawar", "Ahmad Nawar"),
+  "Nawar": ("/nawar",  "Last chapter 7" , "No more new videos"),
   "Tamer-el-kady": ("/tamer-el-kady", "Tamer el kady"),
 
   }
