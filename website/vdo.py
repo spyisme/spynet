@@ -188,6 +188,8 @@ def index():
             }
             r = requests.post(link, json=payload_new, headers=headers())
             print(r)
+            if not r.json()['license'] :
+                return r.status_code , r 
             return r.json()['license']
     
         def start(self):
