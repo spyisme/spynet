@@ -458,9 +458,10 @@ def verifyemail():
     msgg = request.args.get('msg')
 
     user = User.query.filter_by(username=username).first()
-    
+    recipient =  ""
     if request.method == 'GET':
         if user :
+            
             recipient = user.email
             if recipient :
                 subject = "Account 2FA"
@@ -495,7 +496,7 @@ def verifyemail():
             return redirect(url_for('views.home'))
         else :
             return redirect('/verify?msg=failedtologin')
-    return render_template('users_pages/verify.html' , email = user.email , msg = msgg)
+    return render_template('users_pages/verify.html' , email = recipient , msg = msgg)
             
 
 
