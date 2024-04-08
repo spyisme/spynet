@@ -395,6 +395,8 @@ def login2():
 def logout():
     current_user.active_sessions -= 1
     db.session.commit()
+    discord_log_login(f"<@709799648143081483> {current_user.username} Logged out ")
+
     logout_user()
     return redirect(url_for('views.login'))
 
