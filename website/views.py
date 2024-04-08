@@ -6,7 +6,7 @@ import json
 import requests
 from flask import session
 from flask import jsonify
-from flask_login import login_user , current_user 
+from flask_login import login_user , current_user ,logout_user
 from .models import User , db
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
@@ -391,6 +391,12 @@ def login2():
 
 
 
+@views.route('/logout')
+def logout():
+    current_user.active_sessions -= 1
+    db.session.commit()
+    logout_user()
+    return redirect(url_for('views.login'))
 
 
 
