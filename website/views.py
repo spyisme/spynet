@@ -458,7 +458,6 @@ def verifyemail():
     msgg = request.args.get('msg')
 
     user = User.query.filter_by(username=username).first()
-    email = user.email
 
     if request.method == 'GET':
         if user :
@@ -496,10 +495,8 @@ def verifyemail():
             session.permanent = True
             return redirect(url_for('views.home'))
         else :
-            user =  User.query.filter_by(username=username).first()
-            email = user.email
-            return redirect('/verify?msg=failedtologin')
-    return render_template('users_pages/verify.html' , email = email , msg = msgg)
+            return redirect(f'/verify?msg=failedtologin&user={username}')
+    return render_template('users_pages/verify.html' , email = user.email , msg = msgg)
             
 
 
