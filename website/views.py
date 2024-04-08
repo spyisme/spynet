@@ -422,6 +422,9 @@ def logoutotherdevices(username):
 #     db.session.commit()
 #     return jsonify({'message': 'User IDs updated successfully'})
 
+
+
+
 # # Route to change active sessions
 # @views.route('/change_active_sessions')
 # def change_active_sessions():
