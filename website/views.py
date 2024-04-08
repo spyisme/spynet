@@ -442,7 +442,7 @@ def verifyemail():
     client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
     user_agent = request.headers.get('User-Agent')
     username = request.args.get('user')
-    msg = request.args.get('msg')
+    msgg = request.args.get('msg')
 
     user = User.query.filter_by(username=username).first()
     
@@ -482,7 +482,7 @@ def verifyemail():
             return redirect(url_for('views.home'))
         else :
             return redirect('/verify?msg=failedtologin')
-    return render_template('users_pages/verify.html' , email = user.email , msg = msg)
+    return render_template('users_pages/verify.html' , email = user.email , msg = msgg)
             
 
 
