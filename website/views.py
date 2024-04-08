@@ -700,6 +700,21 @@ def ashraf():
                          imgs="yes")
 
 
+
+@views.route('/samehtest')
+def samehtest():
+
+  return render_template('new.html')
+
+
+
+
+
+
+
+
+
+
 #Ashraf -----------------------------------------------------------------------------
 
 

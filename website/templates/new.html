@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Embedded Video</title>
+</head>
+<body>
+  <iframe id="vdo_player" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+
+  <script>
+    var playbackInfo = "eyJ2aWRlb0lkIjoiMGM4ZGU2MDM5YzMzNDQ3NTg0NTU5ZjY3YzFhYzUyNDIifQ==";
+    var otp = "20160313versUSE323JEMVLhGth3ZCeUcHR18yQr6PdCAQMIAvk3eIJKDPuYTT4v";
+
+    var iframe = document.getElementById('vdo_player');
+    iframe.src = "https://player.vdocipher.com/v2/?otp=" + otp + "&playbackInfo=" + playbackInfo;
+  </script>
+</body>
+</html>
