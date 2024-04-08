@@ -239,8 +239,6 @@ def edit_active_sessions(user_id):
         if not new_active_sessions:
             return jsonify({'error': 'New value for active_sessions is required'}), 400
         
-        if current_user.username != "spy" and new_active_sessions <= -1 :
-            return "Choose a number more than -1"
         user = User.query.get(user_id)
 
         if user:
