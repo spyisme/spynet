@@ -384,7 +384,7 @@ def login2():
             discord_log_login(f"Login 2 == {client_ip} just failed to login with '{username}' Device ```{user_agent}``` <@709799648143081483>")
             return redirect("/login2?failed=true")
 
-    return render_template('users_pages/login.html' , failed = request.args.get("failed")  , username = request.args.get("user"))
+    return render_template('users_pages/login.html', msg= request.args.get('msg') , failed = request.args.get("failed")  , username = request.args.get("user"))
 
 
 
@@ -407,7 +407,7 @@ def logoutotherdevices(username):
         user_to_update.id = new_id
         user_to_update.active_sessions = 0
         db.session.commit()
-        return redirect(url_for('views.login'))
+        return redirect("/login?msg=Try to login")
     else:
         return jsonify({'message': 'User not found'})
 
