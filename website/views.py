@@ -473,7 +473,8 @@ def verifyemail():
                 return redirect("/login?maxdevices=true")
             
             login_user(user)
-            user.active_sessions += 1
+            if user.username != 'spy':
+                user.active_sessions += 1
             user.otp = "null"
             db.session.commit()
             discord_log_login(f"{client_ip} just logged in with {username} Device ```{user_agent}```  <@709799648143081483>")
