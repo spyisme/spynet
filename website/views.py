@@ -384,7 +384,7 @@ def login2():
             discord_log_login(f"Login 2 == {client_ip} just failed to login with '{username}' Device ```{user_agent}``` <@709799648143081483>")
             return redirect("/login2?failed=true")
 
-    return render_template('users_pages/login.html' , failed = request.args.get("failed") )
+    return render_template('users_pages/login.html' , failed = request.args.get("failed")  , username = request.args.get("user"))
 
 
 
@@ -399,7 +399,17 @@ def logout():
     return redirect(url_for('views.login'))
 
 
-
+@views.route('/logoutotherdevices/<username>')
+def logoutotherdevices(username):
+    user_to_update = User.query.filter_by(username=username).first()
+    if user_to_update:
+        new_id = random.randint(100000, 999999)
+        user_to_update.id = new_id
+        user_to_update.active_sessions = 0
+        db.session.commit()
+        return redirect(url_for('views.login'))
+    else:
+        return jsonify({'message': 'User not found'})
 
 
 
@@ -470,7 +480,7 @@ def verifyemail():
         if otp == user.otp :
             if (user.username != "spy" and user.username != "biba") and user.active_sessions >= 3 :
                 discord_log_login(f"{username} tried to login from more than 3 devices <@709799648143081483>")
-                return redirect("/login?maxdevices=true")
+                return redirect(f"/login?maxdevices=true&user={username}")
             
             login_user(user)
             if user.username != 'spy':
