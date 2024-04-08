@@ -271,7 +271,7 @@ pointer-events: none;
     top: 20px;
     left: 20px;
     padding: 10px 20px;
-    background-color: #15172b; /* Change the background color as needed */
+    background-color: #cc0000; /* Change the background color as needed */
     color: #fff; /* Text color */
     text-decoration: none;
     border: none;
@@ -280,7 +280,7 @@ pointer-events: none;
 }
 
 .logout-button:hover {
-    background-color: #cc0000; /* Change the hover background color as needed */
+    background-color: #753939; /* Change the hover background color as needed */
     cursor: pointer;
 }
 
