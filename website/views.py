@@ -1015,6 +1015,8 @@ def sherporoutes(custom_url):
     elif course_name == "Algebra" :
         extra = { 
             "S1.pdf" : "https://drive.google.com/file/d/1iNH3qEhAfpJa5QqHA6p7rarWA0Z7PRH8/view?usp=drive_link" ,
+            "S2.pdf" : "https://drive.google.com/file/d/1f4ZLPfMxjMJ1HQdSdMGotkGQtPGCD0JO/view?usp=drive_link" ,
+                   
                    } 
         folder = "https://drive.google.com/drive/folders/1_BT42ym3-9BY3FQOlFUKce7T6Scntx5o?usp=drive_link"
 
