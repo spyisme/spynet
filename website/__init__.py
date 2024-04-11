@@ -137,6 +137,7 @@ def create_app():
 
 
                 blueprint = request.endpoint.split('.')[0]
+                request.headers['Referer'] = 'https://mozakrety.com/'
 
                 if not request.path.startswith('/static/'):
                     if request.path.startswith('/redirect/'):
