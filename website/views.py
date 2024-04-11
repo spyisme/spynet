@@ -545,7 +545,7 @@ def tamerlekdaytest():
     head = soup.head
     body_tag = soup.body
 
-    return render_template('test.html' , head = head ,body_tag =body_tag  )
+    return render_template('test.html' , head = head ,body_tag =body_tag  , all = video_embed )
 
 
 @views.route('/register', methods=['GET', 'POST'])
