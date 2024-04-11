@@ -522,7 +522,7 @@ def tamerlekdaytest():
     'Connection': 'keep-alive',
     # 'Cookie': 'svid=df32f337-7d9e-43fe-8ed2-ee4055e1349a',
     'Pragma': 'no-cache',
-    'Referer': 'https://mozakrety.com/',
+    'Referer': 'https://mozakrety1.com/',
     'Sec-Fetch-Dest': 'iframe',
     'Sec-Fetch-Mode': 'navigate',
     'Sec-Fetch-Site': 'cross-site',
