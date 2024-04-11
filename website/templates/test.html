@@ -1,3 +1,11 @@
-<h1>video</h1>
-
-{{vid}}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Embedded Video</title>
+</head>
+<body>
+    <h1>Embedded Video</h1>
+    <!-- Embed the video content without escaping it -->
+    {{ vid | safe }}
+</body>
+</html>
