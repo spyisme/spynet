@@ -543,7 +543,8 @@ def tamerlekdaytest():
 
     # Extract the head portion
     head = soup.head
-    body_tag = soup.body
+    body_tag = soup.prettify()
+
 
     return render_template('test.html' , head = head ,body_tag =body_tag  , all = video_embed )
 
