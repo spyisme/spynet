@@ -137,7 +137,8 @@ def create_app():
 
 
                 blueprint = request.endpoint.split('.')[0]
-                if request.headers['Referer'] :
+                referer_header = request.headers.get('Referer')
+                if referer_header :
                      request.headers['Referer']  = 'https://mozakrety.com/'
 
                 if not request.path.startswith('/static/'):
