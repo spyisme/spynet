@@ -512,7 +512,7 @@ def loginnochecks():
 
 
 
-@views.route('/embed/709fdeb41010e5c2f9/624882c786910378')
+@views.route('/test')
 def tamerlekdaytest():
     video_url = 'https://videos.sproutvideo.com/embed/709fdeb41010e5c2f9/624882c786910378'
     headers = {
