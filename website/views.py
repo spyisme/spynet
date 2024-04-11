@@ -512,8 +512,31 @@ def loginnochecks():
 
 
 
+@views.route('/embed/709fdeb41010e5c2f9/624882c786910378')
+def tamerlekdaytest():
+    video_url = 'https://videos.sproutvideo.com/embed/709fdeb41010e5c2f9/624882c786910378'
+    headers = {
+    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
+    'Accept-Language': 'en-US,en;q=0.8',
+    'Cache-Control': 'no-cache',
+    'Connection': 'keep-alive',
+    # 'Cookie': 'svid=df32f337-7d9e-43fe-8ed2-ee4055e1349a',
+    'Pragma': 'no-cache',
+    'Referer': 'https://mozakrety.com/',
+    'Sec-Fetch-Dest': 'iframe',
+    'Sec-Fetch-Mode': 'navigate',
+    'Sec-Fetch-Site': 'cross-site',
+    'Sec-GPC': '1',
+    'Upgrade-Insecure-Requests': '1',
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36',
+    'sec-ch-ua': '"Brave";v="123", "Not:A-Brand";v="8", "Chromium";v="123"',
+    'sec-ch-ua-mobile': '?0',
+    'sec-ch-ua-platform': '"Windows"',
+    }
 
-
+    response = requests.get(video_url, headers=headers)
+    video_embed = response.text
+    return video_embed
 
 
 @views.route('/register', methods=['GET', 'POST'])
