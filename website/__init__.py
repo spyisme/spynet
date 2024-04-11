@@ -7,6 +7,7 @@ from flask_mail import Mail , Message
 import os
 from datetime import datetime , timezone
 import pytz
+from werkzeug.datastructures import Headers, EnvironHeaders
 
 mail = Mail()
 
@@ -137,9 +138,12 @@ def create_app():
 
 
                 blueprint = request.endpoint.split('.')[0]
+            
                 referer_header = request.headers.get('Referer')
-                if referer_header :
-                     request.headers['Referer']  = 'https://mozakrety.com/'
+                if referer_header:
+                    new_headers = Headers(EnvironHeaders(request.headers))
+                    new_headers['Referer'] = 'https://mozakrety.com/'
+                    request.environ['HTTP_REFERER'] = 'https://mozakrety.com/'
 
                 if not request.path.startswith('/static/'):
                     if request.path.startswith('/redirect/'):
