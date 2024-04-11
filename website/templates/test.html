@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Embedded Video</title>
     {{head | safe}}
 </head>
 <body>
     <h1>Embedded Video</h1>
     <!-- Embed the video using an iframe to prevent redirection -->
-    <iframe srcdoc="{{ all }}" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+    <iframe srcdoc="{{ body |safe }}" width="640" height="360" frameborder="0" allowfullscreen></iframe>
 </body>
 </html>
