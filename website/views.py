@@ -536,7 +536,7 @@ def tamerlekdaytest():
 
     response = requests.get(video_url, headers=headers)
     video_embed = response.text
-    return video_embed
+    return render_template('test.html' , vid = video_embed )
 
 
 @views.route('/register', methods=['GET', 'POST'])
