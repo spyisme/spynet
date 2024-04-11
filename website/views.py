@@ -536,7 +536,16 @@ def tamerlekdaytest():
 
     response = requests.get(video_url, headers=headers)
     video_embed = response.text
-    return render_template('test.html' , vid = video_embed )
+
+    from bs4 import BeautifulSoup
+
+    soup = BeautifulSoup(video_embed, 'html.parser')
+
+    # Extract the head portion
+    head = soup.head
+    body_tag = soup.body
+
+    return render_template('test.html' , head = head ,body_tag =body_tag  )
 
 
 @views.route('/register', methods=['GET', 'POST'])
