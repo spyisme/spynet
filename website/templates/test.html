@@ -5,7 +5,7 @@
 </head>
 <body>
     <h1>Embedded Video</h1>
-    <!-- Embed the video content without escaping it -->
-    {{ vid | safe }}
+    <!-- Embed the video using an iframe to prevent redirection -->
+    <iframe srcdoc="{{ vid | safe }}" width="640" height="360" frameborder="0" allowfullscreen></iframe>
 </body>
 </html>
