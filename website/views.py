@@ -646,7 +646,7 @@ def spyleakedaccs():
 def Physics():
   teacher_links = {
   "Nawar": ("/nawar",  "Last chapter 7" , "No more new videos"),
-  "Tamer-el-kady": ("/tamer-el-kady", "Tamer el kady"),
+  "Tamer-el-kady": ("/tamer-el-kady", "Sessions" , "New vids uploaded!"),
 
   }
   teachername = "Physics"
