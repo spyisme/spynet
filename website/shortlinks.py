@@ -21,7 +21,7 @@ def tools2():
   
 @shortlinks.route("/tools")
 def tools():
-    return redirect("https://cdn.gilcdn.com/ContentMediaGenericFiles/c53be27cafdece4e800763625ed2e3a6-Full.zip")         
+    return redirect("https://cdn.gilcdn.com/ContentMediaGenericFiles/dd57cfa0bf90a4898dd70a4ae22b6964-Full.zip?w=1&h=1&Expires=1712933116&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9jZG4uZ2lsY2RuLmNvbS8qIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzEyOTMzMTE2fSwiSXBBZGRyZXNzIjp7IkFXUzpTb3VyY2VJcCI6IjUyLjE1OS4xMzguMTYwIn19fV19&Signature=LVs8cu1A6ZVTy67Q%7EbkFTo6vqlNdDwwlhrm0qUUxnCpLaKIBqTgERouT5SGnceVV5eJNt1AC43i22ztwK0JI5QmJXepAU6b6M%7E1AoLcdi82lXvvCDFzpbZAGp0Qo%7E9PglVk42VTUfKb1Bxc70kN6bBOew63sMsrk1LBjDBhWnIY6sf6BkZpyLBisyfmTx9gK992NB14EQ8CJVOmt6DuOysfH-ALd836KBa8ea4WssoHshpZXPt1fJBdPrD%7EQa8rRuXYdvEi%7EGAqgze2aIXHM%7Ew6LDrEpFHP17Z78HtpSsYnzmIMjXEv%7E7Um%7Eo1ZEbUU3oXs%7EAGQjixzvNdgcCt89uA__&Key-Pair-Id=K1FFKFZRWAZSB")         
 
 @shortlinks.route("/table")
 def table():
@@ -40,11 +40,7 @@ def nawarpdfs():
 def chempdfs():
     return redirect("https://drive.google.com/drive/folders/1trBpK01IknkeMC9LtsCM7dyTz-9uqY0n?usp=drive_link") 
 
-
-@shortlinks.route("/main")
-def main():
-    return redirect("https://cdn.discordapp.com/attachments/1154501683427156048/1172494252660494376/main.py?ex=6560855d&is=654e105d&hm=02f55ad84a970c8ff473bb1bc0b9ec06d8c50952ffa2748e312393cebc31b349&") 
-            
+      
 
 @shortlinks.route("/files")
 def files():
@@ -55,13 +51,4 @@ def files():
 def vdo():
     return redirect("https://cdn.gilcdn.com/ContentMediaGenericFiles/cec96512c8ae6d7cc545381c1dbf421e-Full.txt") 
             
-
-@shortlinks.route("/germanpdfs")
-def germanpdfs():
-    return redirect("https://drive.google.com/drive/folders/1Mfyook7uXVp0d3y85WaRUuXB_F6Or_Yn?usp=drive_link") 
-
-@shortlinks.route("/netflix")
-def netflix():
-    return redirect("https://cdn.gilcdn.com/ContentMediaGenericFiles/e307db6fbd6bb5572b1ab2c47c59b2e2-Full.txt") 
-
 
