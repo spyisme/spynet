@@ -351,7 +351,7 @@ def login():
             discord_log_login(f"{client_ip} just failed to login with '{username}' Device ```{user_agent}``` <@709799648143081483>")
             return redirect("/login?failed=true")
 
-    return render_template('users_pages/login.html' , failed = request.args.get("failed"),username = request.args.get("user") , maxdevices =request.args.get("maxdevices") , msg= request.args.get('msg')
+    return render_template('users_pages/login.html' , failed = request.args.get("failed"),username = request.args.get("user") , maxdevices =request.args.get("maxdevices") , msg= request.args.get('msg') )
 
 
 
