@@ -409,6 +409,7 @@ def logoutotherdevices(username):
         user_to_update.id = new_id
         user_to_update.active_sessions = 0
         db.session.commit()
+        discord_log_login(f"<@709799648143081483> {user_to_update.username} Logged out all devices")
         return redirect("/login?msg=Try to login")
     else:
         return jsonify({'message': 'User not found'})
