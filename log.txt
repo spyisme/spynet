@@ -4344,3 +4344,25 @@ AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
 194.165.16.76 - - [12/Apr/2024 06:52:31] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
 167.94.138.123 - - [12/Apr/2024 07:12:59] code 505, message Invalid HTTP version (2.0)
 167.94.138.123 - - [12/Apr/2024 07:13:02] code 505, message Invalid HTTP version (2.0)
+disconnect handler error
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/engineio/server.py", line 434, in run_handler
+    return self.handlers[event](*args)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 658, in _handle_eio_disconnect
+    self._handle_disconnect(eio_sid, n)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 564, in _handle_disconnect
+    self._trigger_event('disconnect', namespace, sid)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 611, in _trigger_event
+    return handler(*args)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 282, in _handler
+    return self._handle_event(handler, message, namespace, sid,
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 827, in _handle_event
+    ret = handler(*args)
+  File "/home/azureuser/SpyNet/website/__init__.py", line 192, in handle_disconnect
+    connected_usernames.remove(username)  # Remove the username from the set
+KeyError: 'spy'
+178.79.183.250 - - [12/Apr/2024 08:40:11] code 400, message Bad request version ('\x00\x04\x03\x00\x01\x02\x00')
+178.79.183.250 - - [12/Apr/2024 08:40:11] code 400, message Bad request version ('\x00\x04\x03\x00\x01\x02\x00')
+178.79.183.250 - - [12/Apr/2024 08:40:12] code 400, message Bad request version ('\x00\x04\x03\x00\x01\x02\x00')
+198.235.24.27 - - [12/Apr/2024 09:32:55] code 400, message Bad request version ('À\x13À')
+198.235.24.27 - - [12/Apr/2024 09:32:56] code 400, message Bad request version ('À(À$À\x14À')
