@@ -88,3 +88,10 @@
 41.69.160.48 === https://www.youtube.com/watch?v=mCAQvuT3jeY&playlist=PLM-GVlebsoPWprnMTrSvCa4QaEUK0TJLY === 11/04 -- 11:12 PM === Desktop
 41.69.160.48 === https://www.youtube.com/watch?v=5i2g_VBZI6I&playlist=PLM-GVlebsoPWprnMTrSvCa4QaEUK0TJLY === 12/04 -- 02:43 AM === Desktop
 41.69.160.48 === https://www.youtube.com/watch?v=73MPMhK0Kc8&playlist=PLM-GVlebsoPWprnMTrSvCa4QaEUK0TJLY === 12/04 -- 06:31 AM === Desktop
+105.39.247.204 === https://spysnet.com/ === 13/04 -- 10:47 PM === Mobile
+105.39.247.204 === https://spysnet.com/chemistry === 13/04 -- 10:47 PM === Mobile
+105.39.247.204 === https://spysnet.com/nasser === 13/04 -- 10:47 PM === Mobile
+105.39.247.204 === https://spysnet.com/nasser/chapter5-2 === 13/04 -- 10:47 PM === Mobile
+105.39.247.204 === https://www.youtube.com/watch?v=ZkoEr4eN6RA&list=PLM-GVlebsoPWprnMTrSvCa4QaEUK0TJLY === 13/04 -- 10:47 PM === Mobile
+105.39.247.204 === https://spysnet.com/nasser/chapter5-2 === 13/04 -- 11:22 PM === Mobile
+105.39.247.204 === https://www.youtube.com/watch?v=ZkoEr4eN6RA&list=PLM-GVlebsoPWprnMTrSvCa4QaEUK0TJLY === 13/04 -- 11:22 PM === Mobile
