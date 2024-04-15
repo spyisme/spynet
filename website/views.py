@@ -646,8 +646,9 @@ def spyleakedaccs():
 @views.route('/physics')
 def Physics():
   teacher_links = {
-  "Nawar": ("/nawar",  "Last chapter 7" , "No more new videos"),
   "Tamer-el-kady": ("/tamer-el-kady", "Sessions" , "New vids uploaded!"),
+   "Mo adel" : ("/mo-adel" , "Random Sessions"),   
+  "Nawar": ("/nawar",  "Last chapter 7" , "No more new videos"),
 
   }
   teachername = "Physics"
@@ -671,11 +672,36 @@ def tamerelkady():
                          teachername=teachername, folder=folder)    
 
 
+
 @views.route("/tamer-el-kadyupdate")
 def tamerelkadyupdate():
     return createtxtfile("tamerelkady" , "PLM-GVlebsoPXm9cPbwmEllBmG1cY3C5_t")
 
 
+
+
+
+
+
+
+@views.route('/mo-adel')
+def moadel():
+  teachername = "Mo adel"
+  playlist_id = 'PLM-GVlebsoPVwKxgg8SuRyocWxRQSbENF'
+  with open("website/playlists/moadel.txt", 'r', encoding='utf-8') as file:
+        content = file.read()
+        videos = ast.literal_eval(content)
+  return render_template('used_pages/videopage.html',
+                         videos=videos,
+                         playlist_id=playlist_id,
+                         teachername=teachername)    
+
+
+
+
+@views.route("/mo-adelupdate")
+def moadelupdate():
+    return createtxtfile("moadel" , "PLM-GVlebsoPVwKxgg8SuRyocWxRQSbENF")
 
 
 #Nawar -------------------------------------------
