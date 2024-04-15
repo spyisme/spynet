@@ -1191,7 +1191,7 @@ def arabic():
   teacher_links = {
     "Gedo": ("gedo", "Reda El Farouk"),
     "Mohamed Tarek": ("mohamedtarek", "Final Revision"),
-    # "Mohamed salah": ("mohamedsalah", "Mohamed Salah"),
+    "Mo Salah": ("mo-salah", "Mohamed Salah"),
 
 
 }
@@ -1281,7 +1281,22 @@ def gedorev2update():
 
 
 
+@views.route("/mo-salah")
+def mosalah():
+    playlist_id = 'PLM-GVlebsoPXv3dz0yaqJtvjkOAN6KNRc'
+    teachername= "Mo Salah"
+    with open("website/playlists/mohamedsalah.txt", 'r', encoding='utf-8') as file:
+        content = file.read()
+        videos = ast.literal_eval(content)
+    return render_template('used_pages/videopage.html',
+                           videos=videos,
+                           playlist_id=playlist_id,
+                           teachername=teachername)
 
+
+@views.route("/mo-salahupdate")
+def mosalahupdate():
+    return createtxtfile("mosalah" , "PLM-GVlebsoPXv3dz0yaqJtvjkOAN6KNRc")
 
 
 
