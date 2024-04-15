@@ -1285,7 +1285,7 @@ def gedorev2update():
 def mosalah():
     playlist_id = 'PLM-GVlebsoPXv3dz0yaqJtvjkOAN6KNRc'
     teachername= "Mo Salah"
-    with open("website/playlists/mohamedsalah.txt", 'r', encoding='utf-8') as file:
+    with open("website/playlists/mosalah.txt", 'r', encoding='utf-8') as file:
         content = file.read()
         videos = ast.literal_eval(content)
     return render_template('used_pages/videopage.html',
