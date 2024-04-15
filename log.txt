@@ -7498,3 +7498,103 @@ Traceback (most recent call last):
   File "/home/azureuser/SpyNet/website/__init__.py", line 191, in handle_disconnect
     username = current_user.username  # Assuming current_user.username is available
 AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+118.123.105.93 - - [15/Apr/2024 18:01:22] code 400, message Bad request version ('È(')
+118.123.105.93 - - [15/Apr/2024 18:01:33] code 400, message Bad request version ('À\x13À')
+118.123.105.93 - - [15/Apr/2024 18:01:34] code 400, message Bad request version ('À\x13À')
+118.123.105.93 - - [15/Apr/2024 18:01:37] code 400, message Bad request version ('À\x13À')
+118.123.105.93 - - [15/Apr/2024 18:01:37] code 400, message Bad request version ('À\x13À')
+118.123.105.93 - - [15/Apr/2024 18:01:41] code 400, message Bad request version ('À\x13À')
+118.123.105.93 - - [15/Apr/2024 18:01:41] code 400, message Bad request version ('÷¿º\x05~R')
+165.22.54.194 - - [15/Apr/2024 18:10:27] code 400, message Bad request version ('À\x13À')
+139.59.179.123 - - [15/Apr/2024 18:37:57] code 400, message Bad request version ('»Éuz_\x06\x10·\x15{.¶¨I\x00\x01<Ì\x14Ì\x13Ì\x15À0À,À(À$À\x14À')
+disconnect handler error
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/engineio/server.py", line 434, in run_handler
+    return self.handlers[event](*args)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 658, in _handle_eio_disconnect
+    self._handle_disconnect(eio_sid, n)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 564, in _handle_disconnect
+    self._trigger_event('disconnect', namespace, sid)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 611, in _trigger_event
+    return handler(*args)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 282, in _handler
+    return self._handle_event(handler, message, namespace, sid,
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 827, in _handle_event
+    ret = handler(*args)
+  File "/home/azureuser/SpyNet/website/__init__.py", line 192, in handle_disconnect
+    connected_usernames.remove(username)  # Remove the username from the set
+KeyError: 'hacker'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1488, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.8/dist-packages/engineio/middleware.py", line 63, in __call__
+    return self.engineio_app.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 430, in handle_request
+    return self.eio.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/engineio/server.py", line 272, in handle_request
+    socket = self._get_socket(sid)
+  File "/usr/local/lib/python3.8/dist-packages/engineio/base_server.py", line 229, in _get_socket
+    raise KeyError('Session is disconnected')
+KeyError: 'Session is disconnected'
+222.186.13.132 - - [15/Apr/2024 19:37:22] code 400, message Bad request version ('À\x13À')
+222.186.13.132 - - [15/Apr/2024 19:37:34] code 400, message Bad request version ('À\x13À')
+222.186.13.132 - - [15/Apr/2024 19:37:37] code 400, message Bad request version ('À\x13À')
+222.186.13.132 - - [15/Apr/2024 19:37:42] code 400, message Bad request version ('À\x13À')
+222.186.13.132 - - [15/Apr/2024 19:37:45] code 400, message Bad request version ('À\x13À')
+222.186.13.132 - - [15/Apr/2024 19:37:51] code 400, message Bad request version ('À\x13À')
+222.186.13.132 - - [15/Apr/2024 19:37:57] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00î\x01\x00\x00ê\x03\x03D£%|IÖ\x91×\x93\x0feÓ½Ø')
+192.155.90.220 - - [15/Apr/2024 19:49:11] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00')
+disconnect handler error
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/engineio/server.py", line 434, in run_handler
+    return self.handlers[event](*args)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 658, in _handle_eio_disconnect
+    self._handle_disconnect(eio_sid, n)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 564, in _handle_disconnect
+    self._trigger_event('disconnect', namespace, sid)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 611, in _trigger_event
+    return handler(*args)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 282, in _handler
+    return self._handle_event(handler, message, namespace, sid,
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 827, in _handle_event
+    ret = handler(*args)
+  File "/home/azureuser/SpyNet/website/__init__.py", line 192, in handle_disconnect
+    connected_usernames.remove(username)  # Remove the username from the set
+KeyError: '7amada'
+disconnect handler error
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/engineio/server.py", line 434, in run_handler
+    return self.handlers[event](*args)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 658, in _handle_eio_disconnect
+    self._handle_disconnect(eio_sid, n)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 564, in _handle_disconnect
+    self._trigger_event('disconnect', namespace, sid)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 611, in _trigger_event
+    return handler(*args)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 282, in _handler
+    return self._handle_event(handler, message, namespace, sid,
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 827, in _handle_event
+    ret = handler(*args)
+  File "/home/azureuser/SpyNet/website/__init__.py", line 192, in handle_disconnect
+    connected_usernames.remove(username)  # Remove the username from the set
+KeyError: 'skailler'
+disconnect handler error
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/engineio/server.py", line 434, in run_handler
+    return self.handlers[event](*args)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 658, in _handle_eio_disconnect
+    self._handle_disconnect(eio_sid, n)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 564, in _handle_disconnect
+    self._trigger_event('disconnect', namespace, sid)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 611, in _trigger_event
+    return handler(*args)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 282, in _handler
+    return self._handle_event(handler, message, namespace, sid,
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 827, in _handle_event
+    ret = handler(*args)
+  File "/home/azureuser/SpyNet/website/__init__.py", line 192, in handle_disconnect
+    connected_usernames.remove(username)  # Remove the username from the set
+KeyError: 'skailler'
+Invalid session UVr1fOilfZaazEvPAAAW (further occurrences of this error will be logged with level INFO)
