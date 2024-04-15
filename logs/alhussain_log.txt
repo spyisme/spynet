@@ -45,3 +45,8 @@
 197.57.43.40 === https://spysnet.com/german === 14/04 -- 03:22 PM === Desktop
 197.57.43.40 === https://spysnet.com/germann === 14/04 -- 03:22 PM === Desktop
 197.57.43.40 === https://www.youtube.com/watch?v=bB3_487aas8&list=PLM-GVlebsoPWNh__WI8QAIN2xQjawgB4i === 14/04 -- 03:23 PM === Desktop
+2c0f:fc89:111:f405:998d:3fde:37de:62d3 === https://spysnet.com/germann === 14/04 -- 08:41 PM === Mobile
+197.57.43.40 === https://spysnet.com/germann === 14/04 -- 11:22 PM === Mobile
+197.57.43.40 === https://spysnet.com/germann === 14/04 -- 11:35 PM === Mobile
+197.57.43.40 === https://spysnet.com/germann === 15/04 -- 12:56 AM === Mobile
+197.57.43.40 === https://spysnet.com/germann === 15/04 -- 01:16 AM === Mobile
