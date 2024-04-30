@@ -922,6 +922,7 @@ def nasserupdate(custom_url):
 
 @views.route("/nasser/<custom_url>")
 def nasservids(custom_url):
+    folder = None
     nasser_info = load_nasser_info()
     course_info = next((info for info in nasser_info.values() if info['url'] == f"/{custom_url}"), None)
     course_name = next((name for name, info in nasser_info.items() if info['url'] == f"/{custom_url}"), None)
@@ -930,19 +931,23 @@ def nasservids(custom_url):
     with open(f"website/playlists/nasser{course_name}.txt", 'r', encoding='utf-8') as file:
             content = file.read()
             videos = ast.literal_eval(content)
-
         
+
     teacher_pdf_mapping = {
-        "Chapter 1": "https://drive.google.com/drive/folders/1otLcK6atSsKhZGIo7Cz0hRxoZ7gbN8nz?usp=drive_link",
-        "Chapter 2": "https://drive.google.com/drive/folders/1yY4NSy-guuvbtSUGuRg6uXh6nxi4XXmY?usp=drive_link",
-        "Chapter 3": "https://drive.google.com/drive/folders/1CqVC871-_kgNxNuJtpXAkp8BMHWL0cqU?usp=drive_link",
-        "Chapter 4": "https://drive.google.com/drive/folders/1xtEHPFPHAiyXaQ62Ou2MRkklZmBvWzZd?usp=drive_link",
-        "Chapter 5 Part 1": "https://drive.google.com/drive/folders/1zda1ANurONO44MTBIo2tm4wkhGahtUUn?usp=drive_link",
-        "Chapter 5 Part 2": "https://drive.google.com/drive/folders/1gQgsv5s3RiXeQ3dbCOlCKp3fR78_uv6M?usp=drive_link",
-
-
-
-        }
+    "Chapter 1":
+    "https://drive.google.com/drive/folders/1otLcK6atSsKhZGIo7Cz0hRxoZ7gbN8nz?usp=drive_link",
+    "Chapter 2":
+    "https://drive.google.com/drive/folders/1yY4NSy-guuvbtSUGuRg6uXh6nxi4XXmY?usp=drive_link",
+    "Chapter 3":
+    "https://drive.google.com/drive/folders/1CqVC871-_kgNxNuJtpXAkp8BMHWL0cqU?usp=drive_link",
+    "Chapter 4":
+    "https://drive.google.com/drive/folders/1xtEHPFPHAiyXaQ62Ou2MRkklZmBvWzZd?usp=drive_link",
+    "Chapter 5 Part 1":
+    "https://drive.google.com/drive/folders/1zda1ANurONO44MTBIo2tm4wkhGahtUUn?usp=drive_link",
+    "Chapter 5 Part 2":
+    "https://drive.google.com/drive/folders/1gQgsv5s3RiXeQ3dbCOlCKp3fR78_uv6M?usp=drive_link",
+    "Final Revisions" :"https://drive.google.com/drive/folders/1B8SZ5RKPaALH2YICEePBwNGZWBWwqBpu?usp=drive_link",
+    }
     if course_name in teacher_pdf_mapping:
         folder = teacher_pdf_mapping[teachername]
 
