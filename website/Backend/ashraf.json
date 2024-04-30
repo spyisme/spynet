@@ -673,6 +673,65 @@
       "part_e_video": "50244ad4e0714e1fa02aa07047e30d69",
       "part_f_video": "e46bccfd61f24e6ca994c6a2fca2bfe9",
       "part_s_video": "48bf596568ed4f16a7c3fc6da60cbd42"
+    },
+    {
+      "id": "67",
+      "title": "CH5L9 (part B) Phenols (  5 sections)",
+      "part_a_video": "2d90ae11582d48fcbb065bbedbef7f25",
+      "part_b_video": "41347d72524f48daa6ce4d321c8ce597",
+      "part_c_video": "8e21903722ce49859b43acc175cc8a34",
+      "part_d_video": "e8e0da665d1b42c18a529955074bec7a",
+      "part_e_video": "2a8e3e45f4e04bf3883dc7f7e4d3f655"
+    },
+    {
+      "id": "68",
+      "title": "CH5L10 (part A) Aliphatic Carboxylic acids  ( 7 sections)",
+      "part_a_video": "55cd1d7093ca4cee953a698761efe886",
+      "part_b_video": "a06dac1ed0bb4c8a80225b4215703cb4",
+      "part_c_video": "853d9f5d8e034b0d9e0a36bc5740b725",
+      "part_d_video": "db46ed60b76946bdb1c7e55bf1bd1cf7",
+      "part_e_video": "182b6865ba4d4edea585affb5d1d25ec",
+      "part_f_video": "1fc4c971bbf7435f82ad46f12e548012",
+      "part_g_video": "937b80e369bc48969114940b6f19ae8c",
+      "part_s_video": "6516df41fca743bc8d951095d12ce2b5"
+    },
+    {
+      "id": "69",
+      "title": "CH5L10 (part B) Aromatic Carboxylic acids (  8 sections)",
+      "part_a_video": "212dcb8fb3184a87a4a5f2f6edbbf834",
+      "part_b_video": "a0bcfa894a924e87a8d35bc7241ff649",
+      "part_c_video": "dcf2bbfcc87149f48d349028bd7e87c6",
+      "part_d_video": "63ed6a4bdf0a49509ce792b38ea8c33d",
+      "part_e_video": "9c165d4d688343e998783a9803734876",
+      "part_f_video": "abcac9a161204e5e8b40d1accb942963",
+      "part_g_video": "b395f7c00ed948acb39ae446e164a9fb",
+      "part_h_video": "8154683f0a3c4d3e96cf607d6bee528a"
+    },
+    {
+      "id": "70",
+      "title": "CH5L11 (part A) Esters \u00a0( 6 sections)",
+      "part_a_video": "544d8d3b64ea4cc99df0bc0981191410",
+      "part_b_video": "7bb9f4b9fcd6464093f0e23f4e4fae6d",
+      "part_c_video": "ffbd6e7d206443efa62bae32c69c6312",
+      "part_d_video": "01ed4c9aa8eb4509850ae52b3cb48d4f",
+      "part_e_video": "f45b4f25ea2546ffb0367085a9a58401",
+      "part_f_video": "272a649f3ade4c10abbbdff09f1690a8",
+      "part_s_video": "683eab59fc404bfc97762864028962b0"
+    },
+    {
+      "id": "71",
+      "title": "CH5L11 (part B) Esters In our life (  6 sections)",
+      "part_a_video": "d506ac2e6a9c443593b139c113ca5775",
+      "part_b_video": "3983c7ad15cf49fb9b62297fea2d8928",
+      "part_c_video": "ed98d0bc4948473a8a8f477affd5af9c",
+      "part_d_video": "4bc8e2f112784ac88a46b0f53d0c54c2",
+      "part_e_video": "c3c4f8ba185240e58fe685abe49cf24d",
+      "part_f_video": "6f2a0f8e7bb44f00b7e66604232d357f"
+    },
+    {
+      "id": "72",
+      "title": "CH5L11 \u00a0Solving of the last HW \u00a0in chapter 5 (  1 section )",
+      "part_a_video": "d1cafe6ef1f4412dbffa6e3cac844d8f"
     }
   ]
 }
