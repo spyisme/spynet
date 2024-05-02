@@ -845,11 +845,9 @@ def ashrafsessions():
 def ashrafpost(video_id):
     if request.method == 'POST' :
         try:
-            student_name = request.args.get('studentname') 
-            if student_name :
-                student_name = student_name
-            else :
-                student_name = 'ss'    
+            student_name = request.args.get('studentname') or 'ss'
+
+ 
             url = "https://api.csacademyzone.com/video/otp"
             params = {"student_name": student_name, "video_id": video_id}
             headers = {"Content-type": "application/x-www-form-urlencoded", "sessionToken": "imcool"}
