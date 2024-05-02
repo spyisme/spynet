@@ -43,3 +43,8 @@
 41.239.161.84 === https://spysnet.com/arabic === 01/05 -- 06:06 AM === Desktop
 41.239.161.84 === https://spysnet.com/gedo === 01/05 -- 06:06 AM === Desktop
 41.239.161.84 === https://spysnet.com/gedorev1 === 01/05 -- 06:06 AM === Desktop
+41.239.163.253 === https://spysnet.com/ === 02/05 -- 04:45 AM === Desktop
+41.239.163.253 === https://spysnet.com/chemistry === 02/05 -- 04:47 AM === Desktop
+41.239.163.253 === https://spysnet.com/nasser === 02/05 -- 04:47 AM === Desktop
+41.239.163.253 === https://spysnet.com/nasser/chapter5-1 === 02/05 -- 04:47 AM === Desktop
+41.239.163.253 === https://www.youtube.com/watch?v=meXgS7XZmjg&list=PLM-GVlebsoPWKGDwOpso7OBFUzlJ8SzwW === 02/05 -- 04:47 AM === Desktop
