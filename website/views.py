@@ -849,7 +849,7 @@ def ashrafpost(video_id):
             if student_name :
                 student_name = student_name
             else :
-                student_name = '.'    
+                student_name = 'ss'    
             url = "https://api.csacademyzone.com/video/otp"
             params = {"student_name": student_name, "video_id": video_id}
             headers = {"Content-type": "application/x-www-form-urlencoded", "sessionToken": "imcool"}
