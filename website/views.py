@@ -898,7 +898,7 @@ def nasser():
   nasser_info = load_nasser_info()
 
   teacher_links = {
-        f"Nasser-El-Batal {course}": (f"/nasser{nasser_info[course]['url']}", nasser_info[course]['description'])
+        f" {course}": (f"/nasser{nasser_info[course]['url']}", nasser_info[course]['description'])
         for course in nasser_info
     }
   
