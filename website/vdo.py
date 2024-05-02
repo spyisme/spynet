@@ -407,8 +407,10 @@ def watchit():
 def hosssamsameh():
     url = request.args.get('url')
     # hossamsameh = request.args.get('hossamsameh')
-    # if hossamsameh : 
-    url = "/".join(url.split("/")[:4]) + "/playlist.m3u8"
+    if "interstellar" in url : 
+        url = url
+    else :
+        url = "/".join(url.split("/")[:4]) + "/playlist.m3u8"
     
 
 
