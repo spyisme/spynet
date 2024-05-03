@@ -268,7 +268,8 @@ def getkeys(video_url):
 @vdo.route('/vdocipher', methods=['GET', 'POST'])
 def index():
     mytoken = request.args.get('token')
-
+    client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
+    discord_log(f"Api got used by {current_user.username} | IP : {client_ip}")
 
     if mytoken in used_tokens:
         return jsonify({'error': 'Token already used'}), 400
