@@ -168,3 +168,6 @@
 217.53.156.40 === https://spysnet.com/gedo === 02/05 -- 05:29 PM === Desktop
 217.53.156.40 === https://spysnet.com/gedo === 02/05 -- 09:38 PM === Desktop
 217.53.156.40 === https://spysnet.com/gedo === 03/05 -- 09:07 AM === Desktop
+84.233.72.45 === https://spysnet.com/gedo === 03/05 -- 10:21 PM === Desktop
+84.233.72.45 === https://spysnet.com/gedorev3 === 03/05 -- 10:22 PM === Desktop
+154.238.245.36 === https://www.youtube.com/playlist?list=PLM-GVlebsoPX46KbmAnXFHKX5fZsv5XEV === 03/05 -- 11:10 PM === Desktop
