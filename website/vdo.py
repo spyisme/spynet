@@ -271,8 +271,8 @@ def index():
     mpd , c_keys = getkeys(mytoken)
     tokenhref = gethref(mytoken)
 
-    content_key_lines = '\n'.join([f'--key {key}' for key in c_keys])
-    result = mpd + '\n' + content_key_lines 
+
+    result = mpd + '\n' + c_keys 
     used_tokens.add(mytoken)
     session['result'] = result
 
