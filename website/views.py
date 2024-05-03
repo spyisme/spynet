@@ -1083,13 +1083,13 @@ def load_salama_info():
     return salama_info
 
 
-def add_course(course_name, course_id,input3, course_image):
+def add_course(course_name, course_id,input3, course_image , desc):
     salama_info = load_salama_info()
     if course_image:
         filename = course_name + '.jpg'
         upload_path = os.path.join('website/static/assets/Math/', filename)
         course_image.save(upload_path)
-        new_course = {"id": course_id , "url" : input3}
+        new_course = {"id": course_id , "url" : input3 , "description" : desc}
         salama_info[course_name] = new_course
         with open('website/Backend/salama.json', 'w') as file:
             json.dump(salama_info, file, indent=2)
@@ -1104,10 +1104,12 @@ def salama_add_course_route():
             
             input1 = request.form.get('input1')
             input2 = request.form.get('input2')  
+            desc = request.form.get('desc')  
+
             input3 = f"/{request.form.get('input3')}"  
 
             course_image = request.files['course_image']
-            return add_course(input1, input2,input3, course_image)
+            return add_course(input1, input2,input3, course_image , desc)
 
         
     return render_template('backend_pages/add-course.html')
