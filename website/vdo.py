@@ -306,24 +306,27 @@ def index():
 
     discord_log(url)
 
-    options = ['Else','Nawar','Nasser-El-Batal', 'Gedo' , 'Bio' , 'Sameh-Nash2t']
+    options_map = {
+        "samehnashaat": ['Sameh-Nash2t', 'Bio', 'Nawar', 'Nasser-El-Batal', 'Salama', 'Gedo', 'Else'],
+        "ednuva": ['Bio', 'Nawar', 'Nasser-El-Batal', 'Gedo', 'Else', 'Salama', 'Sameh-Nash2t'],
+        "chemistry": ['Nasser-El-Batal', 'Else', 'Nawar', 'Gedo', 'Bio', 'Salama', 'Sameh-Nash2t'],
+        "class": ['Nasser-El-Batal', 'Else', 'Nawar', 'Gedo', 'Bio', 'Salama', 'Sameh-Nash2t'],
+        "mrredaelfarouk": ['Gedo', 'Nawar', 'Nasser-El-Batal', 'Else', 'Bio', 'Salama', 'Sameh-Nash2t'],
+        "nawar": ['Nawar', 'Else', 'Nasser-El-Batal', 'Gedo', 'Bio', 'Salama', 'Sameh-Nash2t'],
+        "matrix": ['Salama', 'Else', 'Nasser-El-Batal', 'Gedo', 'Bio', 'Nawar', 'Sameh-Nash2t']
+    }
 
-    if "samehnashaat" in tokenhref :
-        options = ['Sameh-Nash2t','Bio','Nawar','Nasser-El-Batal', 'Gedo' , 'Else']
+    default_options = ['Else', 'Nawar', 'Salama', 'Nasser-El-Batal', 'Gedo', 'Bio', 'Sameh-Nash2t']
 
-    if "ednuva" in tokenhref :
-        options = ['Bio','Nawar','Nasser-El-Batal', 'Gedo' , 'Else' , 'Sameh-Nash2t']
-            
-    if "chemistry" in tokenhref :
-        options = ['Nasser-El-Batal', 'Else','Nawar', 'Gedo' , 'Bio', 'Sameh-Nash2t']
-        
-    if "class" in tokenhref : #classwork of nasser
-        options = ['Nasser-El-Batal', 'Else','Nawar', 'Gedo' , 'Bio' , 'Sameh-Nash2t']
+    for keyword, keyword_options in options_map.items():
+        if keyword in tokenhref:
+            options = keyword_options
+            break
+    else:
+        options = default_options
 
-    if "mrredaelfarouk" in tokenhref :
-        options = ['Gedo','Nawar','Nasser-El-Batal', 'Else' , 'Bio' , 'Sameh-Nash2t']
-    if "nawar" in tokenhref :
-        options = ['Nawar','Else','Nasser-El-Batal', 'Gedo' , 'Bio', 'Sameh-Nash2t']
+
+
 
 
 
