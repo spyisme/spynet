@@ -144,6 +144,12 @@
     "url": "/course28",
     "description": "Matrices (Algebra)"
   },
+  "Revision statics ( ch 1 , 2 , 3 )": {
+    "id": "PLM-GVlebsoPXK2YJNUof_NL6rYnJjVqjw",
+    "url": "/revstatics"
+    ,"description": ""
+
+  },
   "Course 29": {
     "id": "PLM-GVlebsoPWrrWnO5odT75WQrNuTciVW",
     "url": "/course29",
@@ -173,11 +179,5 @@
     "id": "PLM-GVlebsoPX2ILtYmljzIj-z2oqkOVGi",
     "url": "/course34",
     "description": ""
-  },
-  "Revision statics ( ch 1 , 2 , 3 )": {
-    "id": "PLM-GVlebsoPXK2YJNUof_NL6rYnJjVqjw",
-    "url": "/revstatics"
-    ,"description": ""
-
   }
 }
