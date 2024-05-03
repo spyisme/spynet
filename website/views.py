@@ -648,7 +648,7 @@ def Physics():
   teacher_links = {
   "Tamer-el-kady": ("/tamer-el-kady", "Sessions & revisions"),
    "Mo adel" : ("/mo-adel" , "Random Sessions & revisions"),   
-  "Nawar": ("/nawar",  "Last chapter 7" , "No more new videos"),
+  "Nawar": ("/nawar",  "(lw had m3ah acc b2a)" , "fucking back :))"),
 
   }
   teachername = "Physics"
@@ -969,7 +969,7 @@ def nasservids(custom_url):
 def math():
   teacher_links = {
   "Sherbo": ("/sherbo", "Omar sherbeni"),
-    "Salama": ("/salama", "Last course 29" , "No more new videos")
+    "Salama": ("/salama", "Mohamed salama" , "fucking back :))")
   }
   teachername = "Math"
   return render_template('used_pages/teacher.html',
@@ -1217,9 +1217,9 @@ def gedo():
        "Gedo": ("gedosessions", "All sessions"), 
        "Gedo Rev1": ("gedorev1", "Revision 1"), 
        "Gedo Rev2": ("gedorev2", "Revision 2"), 
-    #    "Gedo Rev3": ("gedorev3", "Revision 3"), 
-    #    "Gedo Rev4": ("gedorev4", "Revision 4"), 
-    #    "Gedo Rev5": ("gedorev5", "Revision 5"), 
+       "Gedo Rev3": ("gedorev3", "Revision 3"), 
+       "Gedo Rev4": ("gedorev4", "Revision 4"), 
+       "Gedo Rev5": ("gedorev5", "Revision 5"), 
     #    "Gedo Rev6": ("gedorev6", "Revision 6"), 
     #    "Gedo Rev7": ("gedorev7", "Revision 7"), 
     #    "Gedo Rev8": ("gedorev8", "Revision 8"), 
@@ -1285,6 +1285,42 @@ def gedorev2():
 @views.route("/gedorev2update")
 def gedorev2update():
     return createtxtfile("gedorev2" , "PLM-GVlebsoPXTAA08dW2Oro5G2EmLB0Pk")
+
+@views.route("/gedorev3")
+def gedorev3():
+    playlist_id = 'PLM-GVlebsoPX46KbmAnXFHKX5fZsv5XEV'
+    teachername= "Gedo"
+    with open("website/playlists/gedorev3.txt", 'r', encoding='utf-8') as file:
+        content = file.read()
+        videos = ast.literal_eval(content)
+    return render_template('used_pages/videopage.html',
+                           videos=videos,
+                           playlist_id=playlist_id,
+                           teachername=teachername)
+
+
+@views.route("/gedorev3update")
+def gedorev3update():
+    return createtxtfile("gedorev3" , "PLM-GVlebsoPX46KbmAnXFHKX5fZsv5XEV")
+
+
+@views.route("/gedorev4")
+def gedorev4():
+    playlist_id = 'PLM-GVlebsoPULzDXf_vfadcP--n-pfaXM'
+    teachername= "Gedo"
+    with open("website/playlists/gedorev4.txt", 'r', encoding='utf-8') as file:
+        content = file.read()
+        videos = ast.literal_eval(content)
+    return render_template('used_pages/videopage.html',
+                           videos=videos,
+                           playlist_id=playlist_id,
+                           teachername=teachername)
+
+
+@views.route("/gedorev4update")
+def gedorev4update():
+    return createtxtfile("gedorev4" , "PLM-GVlebsoPULzDXf_vfadcP--n-pfaXM")
+
 
 
 
