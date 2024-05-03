@@ -1322,6 +1322,23 @@ def gedorev4update():
     return createtxtfile("gedorev4" , "PLM-GVlebsoPULzDXf_vfadcP--n-pfaXM")
 
 
+@views.route("/gedorev5")
+def gedorev5():
+    playlist_id = 'PLM-GVlebsoPUnidZXcpQOMfq0Rj0sZO-5'
+    teachername= "Gedo"
+    with open("website/playlists/gedorev5.txt", 'r', encoding='utf-8') as file:
+        content = file.read()
+        videos = ast.literal_eval(content)
+    return render_template('used_pages/videopage.html',
+                           videos=videos,
+                           playlist_id=playlist_id,
+                           teachername=teachername)
+
+
+@views.route("/gedorev5update")
+def gedorev5update():
+    return createtxtfile("gedorev5" , "PLM-GVlebsoPUnidZXcpQOMfq0Rj0sZO-5")
+
 
 
 @views.route("/mo-salah")
