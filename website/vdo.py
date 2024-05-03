@@ -5,7 +5,12 @@ import requests , re
 from pywidevine.cdm import deviceconfig
 from pywidevine.cdm import cdm
 from flask_login import  current_user
-from flask import send_file
+# Import dependencies
+from pywidevine import PSSH
+from pywidevine import Cdm
+from pywidevine import Device
+import os
+
 Nawar = 'https://discord.com/api/webhooks/1159805446039797780/bE4xU3lkcjlb4vfCVQ9ky5BS2OuD01Y8g9godljNBfoApGt59-VfKf19GQuMUmH0IYzw'
 Bio= "https://discord.com/api/webhooks/1158548096012259422/jQ5sEAZBIrvfBNTA-w4eR-p6Yw0zv7GBC9JTUcEOAWfmqYJXbOpgysATjKPXLwd8HZOs"
 Nasser = "https://discord.com/api/webhooks/1158548163209199626/73nAC_d1rgUr6IS79gC508Puood83ho848IEGOpxLtUzGEEJ3h8CyZqlZvCZ6jEXH5k1"
@@ -22,9 +27,6 @@ Logs = "https://discord.com/api/webhooks/1199384528553254983/-wZ9h7YobG3IHZBRZKt
 vdo = Blueprint('vdo', __name__)
 used_tokens = set()  # Set to store used tokens
 
-
-
-#Base 64 tokens 
 def base64url_to_text(encoded_str):
     encoded_str = encoded_str.replace('-', '+').replace('_', '/')
     while len(encoded_str) % 4 != 0:
@@ -33,55 +35,12 @@ def base64url_to_text(encoded_str):
     decoded_text = decoded_bytes.decode('utf-8')
     return decoded_text
 
-#get otp from token2
-def getotp(token):
-    # decoded_bytes = base64.b64decode(token)
-    decoded_string = base64url_to_text(token)
-    data = json.loads(decoded_string)
-    otp_value = data.get("otp")
-    return (otp_value)
-
-
-#ban our-matrix :
 def gethref(token):
     # decoded_bytes = base64.b64decode(token)
     decoded_string = base64url_to_text(token)
     data = json.loads(decoded_string)
     href = data.get("href")
     return (href)
-
-
-
-def playback(token):
-    # decoded_bytes = base64.b64decode(token)
-    decoded_string = base64url_to_text(token)
-    data = json.loads(decoded_string)
-    playbackInfo = data.get("playbackInfo")
-    return (playbackInfo)
-
-#Video ID for mpd and pssh
-def get_video_id(token: str):
-    playback_info = json.loads(base64url_to_text(token))['playbackInfo']
-    return json.loads(base64.b64decode(playback_info))['videoId']
-#pssh
-def get_pssh(mpd: str):
-    req = None
-    req = requests.get(mpd)
-    return re.search('<cenc:pssh>(.*)</cenc:pssh>', req.text).group(1)
-
-
-#mpd
-def get_mpd(video_id: str) -> str:
-    headers = {
-        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36',
-        'origin': 'https://dev.vdocipher.com/',
-        'referer': 'https://dev.vdocipher.com/'
-    }
-    url = 'https://dev.vdocipher.com/api/meta/' + video_id
-    req = None
-    req = requests.get(url, headers=headers)
-    resp = req.json()
-    return resp['dash']['manifest']
 
 
 #log
@@ -91,129 +50,230 @@ def discord_log(message):
     headers = {'Content-Type': 'application/json'}
     requests.post("https://discord.com/api/webhooks/1199384528553254983/-wZ9h7YobG3IHZBRZKtzPI5ZcAHpHvMYM-ajpJ87ZzXWTWvu2Upkk7_YaYi3X66QaUJL", data=payload, headers=headers)
 
+def getkeys(video_url):
+    wvd = "./cdm.wvd"  # Set your preferred value for wvd
+    if wvd is None:
+        exit(f"No CDM! To use local decryption, place a .wvd in {os.getcwd()}/WVDs")
 
+
+    #Base 64 tokens 
+
+
+
+
+    url = gethref(video_url)
+    # url = input("Enter Url(site url change line 136 , 173): ")
+
+
+        
+    token = video_url
+
+
+    # Add padding if necessary
+    token += '=' * ((4 - len(token) % 4) % 4)
+
+    try:
+        # Decode the base64 string
+        decoded_bytes = base64.b64decode(token)
+        # Convert bytes to string using latin-1 encoding
+        decoded_string = decoded_bytes.decode('latin-1')
+
+        # Find the index of "otp":
+        otp_index = decoded_string.find('"otp":"')
+        playback_info_index = decoded_string.find('"playbackInfo":"')
+
+        if otp_index != -1:
+            # Extract the OTP substring
+            otp_start_index = otp_index + len('"otp":"')
+            otp_end_index = decoded_string.find('"', otp_start_index)
+            otp_match = decoded_string[otp_start_index:otp_end_index]
+            
+            
+        else:
+            print("No OTP found in the decoded string.")
+
+        if playback_info_index != -1:
+            # Extract the playbackInfo substring
+            playback_info_start_index = playback_info_index + len('"playbackInfo":"')
+            playback_info_end_index = decoded_string.find('"', playback_info_start_index)
+            playbackinfo_match = decoded_string[playback_info_start_index:playback_info_end_index]
+            
+        else:
+            print("No playbackInfo found in the decoded string.")
+
+    except UnicodeDecodeError:
+        print("Error: Unable to decode the input using latin-1 encoding.")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+
+
+    video_url = f"https://player.vdocipher.com/v2/?otp={otp_match}&playbackInfo={playbackinfo_match}"
+
+    # Try to find the OTP from the string
+    try:
+        otp_match = re.findall(r"otp: '(.*)',", video_url)[0]
+        playbackinfo_match = re.findall(r"playbackInfo: '(.*)',", video_url)[0]
+    except IndexError:
+        try:
+            otp_match = re.findall(r"otp=(.*)&", video_url)[0]
+            playbackinfo_match = re.findall(r"playbackInfo=(.*)", video_url)[0]
+        except IndexError:
+            print("\nAn error occurred while getting otp/playback")
+            exit()
+
+    # Get the video id from playbackinfo_match
+    video_id = json.loads(base64.b64decode(playbackinfo_match).decode())["videoId"]
+
+    # Send a get request to acquire the license URL
+    license_get_request = requests.get(url=f'https://dev.vdocipher.com/api/meta/{video_id}')
+
+    # Try to extract the license URL from the license get request
+    try:
+        license_url_match = license_get_request.json()["dash"]["licenseServers"]["com.widevine.alpha"].rsplit(":", 1)[0]
+        mpd = license_get_request.json()["dash"]["manifest"]
+        video_name = license_get_request.json()["title"]
+    except KeyError:
+        print("\nAn error occurred while getting mpd/license url")
+
+    # Send a get request to acquire the MPD
+    mpd_get_request = requests.get(url=mpd)
+
+    # Regular expression search the mpd get request for PSSH
+    input_pssh = re.search(r"<cenc:pssh>(.*)</cenc:pssh>", mpd_get_request.text).group(1)
+
+    # Prepare pssh
+    pssh = PSSH(input_pssh)
+    # Load device
+    device = Device.load(wvd)
+
+    # Load CDM from device
+    cdm = Cdm.from_device(device)
+
+    # Open CDM session
+    session_id = cdm.open()
+
+    headers = {
+        'Content-Type': 'application/json',
+        'vdo-sdk': 'Aegis/1.26.3-bp-zen-3',
+        'User-Agent': 'Dalvik/2.1.0 (Linux; U; Android 13; SM-E625F Build/TP1A.220624.014)',
+        'Host': 'license.vdocipher.com',
+        'Connection': 'Keep-Alive',
+        'Accept-Encoding': 'gzip',
+        #'Content-Length': '4320',
+    }
+
+    # Set service cert token
+    service_cert_token = {
+        "otp": otp_match,
+        "playbackInfo": playbackinfo_match,
+        "packageName": "com.vdocipher.zenplayer",
+        "tech": "wv",
+        "href":f"{url}",
+        "licenseRequest": f"{base64.b64encode(cdm.service_certificate_challenge).decode()}",
+        
+    }
+    token = base64.b64encode(json.dumps(service_cert_token).encode("utf-8")).decode()
+    # Convert service cert token to JSON
+    service_cert_json_data = {
+        'token': f'{token}',
+    }
+
+    # Get service certificate
+    service_cert = requests.post(
+        'https://license.vdocipher.com/auth',
+        headers=headers,
+        json=service_cert_json_data
+    )
+
+
+    if service_cert.status_code != 200:
+        print("Couldn't retrieve service cert")
+    else:
+        service_cert = service_cert.json()["license"]
+        cdm.set_service_certificate(session_id, cdm.common_privacy_cert)
+
+    # Generate license challenge
+    if service_cert:
+        challenge = cdm.get_license_challenge(session_id, pssh, privacy_mode=True)
+    else:
+        challenge = cdm.get_license_challenge(session_id, pssh)
+
+    # Declare token dictionary for license challenge
+    token = {
+            "otp": otp_match,
+            "playbackInfo": playbackinfo_match,
+            "packageName": "com.vdocipher.zenplayer",
+            "tech": "wv",
+            "href":f"{url}",
+            "licenseRequest": f"{base64.b64encode(challenge).decode()}",
+            
+        }
+
+        # Convert token dictionary into JSON data
+    json_data = {
+            'token': f'{base64.b64encode(json.dumps(token).encode("utf-8")).decode()}',
+        }
+
+    headers = {
+        'Content-Type': 'application/json',
+        'vdo-sdk': 'Aegis/1.26.3-bp-zen-3',
+        'User-Agent': 'Dalvik/2.1.0 (Linux; U; Android 13; SM-E625F Build/TP1A.220624.014)',
+        'Host': 'license.vdocipher.com',
+        'Connection': 'Keep-Alive',
+        'Accept-Encoding': 'gzip',
+        #'Content-Length': '4320',
+    }
+
+        # send license challenge
+    license = requests.post(
+            'https://license.vdocipher.com/auth',
+            headers=headers,
+            json=json_data
+        )
+
+    if license.status_code != 200:
+            print(license.content)
+            exit("Could not complete license challenge")
+
+        # Extract license from json dict
+    license = license.json()["license"]
+
+        # parse license challenge
+    cdm.parse_license(session_id, license)
+
+    '''
+        # assign variable for returned keys
+    returned_keys = ""
+    for key in cdm.get_keys(session_id):
+            if key.type != "SIGNING":
+                returned_keys += f"{key.kid.hex}:{key.key.hex()}\n"
+    '''
+
+    c_keys = ""
+    for key in cdm.get_keys(session_id):
+        if key.type != "SIGNING":
+            c_keys += f"--key {key.kid.hex}:{key.key.hex()} "
+
+        # close session, disposes of session data
+    cdm.close(session_id)
+
+        
+        # Print out the keys
+
+    # print("-----------------------\n\n\n")
+
+    # print(mpd)    
+    # print(f'\n{c_keys}')
+    return mpd , c_keys
 
 @vdo.route('/vdocipher', methods=['GET', 'POST'])
 def index():
     mytoken = request.args.get('token')
+    mpd , c_keys = getkeys(mytoken)
     tokenhref = gethref(mytoken)
-    if current_user != 'spy' :
-        if "our-matrix.com" in tokenhref :
-            return jsonify({'error': 'Salama no longer works'}), 400
-        
-    if request.method != 'POST':
-        if mytoken in used_tokens:
-            return jsonify({'error': 'Token already used'}), 400
-        
-    # if current_user.username not in ['spy', 'skailler' , 'feteera'] :
-    #     client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
-    #     discord_log(f"{current_user.username} tried opening /vdocipher | Ip : {client_ip}")
-    #     return redirect(url_for('views.home'))
 
-    class WvDecrypt:
-
-        
-        def __init__(self, pssh_b64, device):
-            self.cdm = cdm.Cdm()
-            self.session = self.cdm.open_session(pssh_b64, device)
-    
-        def create_challenge(self):
-            challenge = self.cdm.get_license_request(self.session)
-            return challenge
-    
-        def decrypt_license(self, license_b64):
-            if self.cdm.provide_license(self.session, license_b64) == 1:
-                raise ValueError
-    
-        def set_server_certificate(self, certificate_b64):
-            if self.cdm.set_service_certificate(self.session, certificate_b64) == 1:
-                raise ValueError
-    
-        def get_content_key(self):
-            content_keys = []
-            for key in self.cdm.get_keys(self.session):
-                if key.type == 'CONTENT':
-                    kid = key.kid.hex()
-                    key = key.key.hex()
-    
-                    content_keys.append('{}:{}'.format(kid, key))
-    
-            return content_keys
-    
-        def get_signing_key(self):
-            for key in self.cdm.get_keys(self.session):
-                if key.type == 'SIGNING':
-                    kid = key.kid.hex()
-                    key = key.key.hex()
-    
-                    signing_key = '{}:{}'.format(kid, key)
-                    return signing_key
-    
-    def headers():
-
-        return {
-        'Content-Type': "application/json",
-        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
-        "accept-encoding": "gzip, deflate, br",
-        "accept-language": "en-US,en;q=0.9",
-        "connection": "keep-alive",
-        "host": "player.vdocipher.com",
-    #   "referer": "https://dashboard.elhusseinyusmleprep.com/",
-        "sec-ch-ua-mobile": "?1",
-        "sec-ch-ua-platform": "Android",
-        "sec-fetch-dest": "iframe",
-        "sec-fetch-mode": "navigate",
-        "sec-fetch-site": "cross-site",
-        "sec-fetch-user": "?1",
-        "upgrade-insecure-requests": '1',
-        "user-agent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36"
-    }
-    
-    
-    class Pyd:
-        def __init__(self) -> None:
-            pass
-
-        def post_license_request(self, link, challenge, data):
-            if challenge == "":
-                enoded = base64.b64encode(challenge.encode()).decode()
-            else:
-                enoded = base64.b64encode(challenge).decode()
-            myotp = getotp(mytoken)
-            data['otp'] = f"{myotp}"
-            data["licenseRequest"] = enoded
-            
-            payload_new = {
-                'token': base64.b64encode(json.dumps(data).encode("utf-8")).decode('utf-8')
-            }
-            r = requests.post(link, json=payload_new, headers=headers())
-            print(r)
-            discord_log(f"{r.json()}")
-            return r.json()['license']
-    
-        def start(self):
-            client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
-            discord_log(f"Api got used by {current_user.username} | IP : {client_ip}")
-            license_url = "https://license.vdocipher.com/auth"
-            video_id = get_video_id(mytoken)
-            mpd = get_mpd(video_id)
-            pssh = get_pssh(mpd)
-            pssh_b64 = f"{pssh}"
-            data = {"token":f"{mytoken}"}
-            data = eval(base64url_to_text(data['token']))
-            wvdecrypt = WvDecrypt(pssh_b64, deviceconfig.DeviceConfig(deviceconfig.device_android_generic))
-            wvdecrypt.set_server_certificate(self.post_license_request(license_url, '', data))
-            challenge = wvdecrypt.create_challenge()
-            license = self.post_license_request(license_url, challenge, data)
-            wvdecrypt.decrypt_license(license)
-            content_key = wvdecrypt.get_content_key()
-            return content_key 
-    #Video id to get mpd and send it    
-    video_id = get_video_id(mytoken)
-    mpd = get_mpd(video_id)
-    content_key = Pyd().start()
-
-    content_key_lines = '\n'.join([f'--key {key}' for key in content_key])
+    content_key_lines = '\n'.join([f'--key {key}' for key in c_keys])
     result = mpd + '\n' + content_key_lines 
     used_tokens.add(mytoken)
     session['result'] = result
@@ -293,7 +353,7 @@ def index():
     else :
          status  = "old"    
    
-    return render_template('backend_pages/vdo.html' , content_key = content_key , mpd = mpd ,options = options, result= result , url = url , status = status )
+    return render_template('backend_pages/vdo.html' , content_key = c_keys , mpd = mpd ,options = options, result= result , url = url , status = status )
 
 
 
