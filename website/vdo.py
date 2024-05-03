@@ -270,9 +270,9 @@ def index():
     mytoken = request.args.get('token')
     client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
     discord_log(f"Api got used by {current_user.username} | IP : {client_ip}")
-
-    if mytoken in used_tokens:
-        return jsonify({'error': 'Token already used'}), 400
+    if request.method == 'GET':
+        if mytoken in used_tokens:
+            return jsonify({'error': 'Token already used'}), 400
     
     mpd , c_keys = getkeys(mytoken)
     tokenhref = gethref(mytoken)
