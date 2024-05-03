@@ -268,6 +268,11 @@ def getkeys(video_url):
 @vdo.route('/vdocipher', methods=['GET', 'POST'])
 def index():
     mytoken = request.args.get('token')
+
+
+    if mytoken in used_tokens:
+        return jsonify({'error': 'Token already used'}), 400
+    
     mpd , c_keys = getkeys(mytoken)
     tokenhref = gethref(mytoken)
 
@@ -278,7 +283,9 @@ def index():
 
 
 
-    # Extracting keys and creating url to view online 
+    # Extracting keys and creating url to view online
+    keys_content = re.findall(r"--key\s+(\S+)", c_keys)
+ 
 
     components = result.split()
     input_url = components[0]
@@ -351,7 +358,7 @@ def index():
     else :
          status  = "old"    
    
-    return render_template('backend_pages/vdo.html' , content_key = c_keys , mpd = mpd ,options = options, result= result , url = url , status = status )
+    return render_template('backend_pages/vdo.html' , content_key = keys_content , mpd = mpd ,options = options, result= result , url = url , status = status )
 
 
 
