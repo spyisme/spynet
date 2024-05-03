@@ -144,10 +144,10 @@
     "url": "/course28",
     "description": "Matrices (Algebra)"
   },
-  "Revision statics ( ch 1 , 2 , 3 )": {
+  "Statics Revision": {
     "id": "PLM-GVlebsoPXK2YJNUof_NL6rYnJjVqjw",
     "url": "/revstatics"
-    ,"description": ""
+    ,"description": " Ch 1 , 2 , 3"
 
   },
   "Course 29": {
@@ -158,26 +158,26 @@
   "Course 30": {
     "id": "PLM-GVlebsoPUs_qjtFfUIFd-aSQu60LA5",
     "url": "/course30",
-    "description": ""
+    "description": "Dynamics"
   },
   "Course 31": {
     "id": "PLM-GVlebsoPVOkxAC9qNAmVeY7tEPTEu2",
     "url": "/course31",
-    "description": ""
+    "description": "Dynamics"
   },
   "Course 32": {
     "id": "PLM-GVlebsoPUzsbMoQkhM5zuLWmYQ0IXF",
     "url": "/course32",
-    "description": ""
+    "description": "Dynamics"
   },
   "Course 33": {
     "id": "PLM-GVlebsoPWroMzteliRp8c7yeni-cyf",
     "url": "/course33",
-    "description": ""
+    "description": "Dynamics"
   },
   "Course 34": {
     "id": "PLM-GVlebsoPX2ILtYmljzIj-z2oqkOVGi",
     "url": "/course34",
-    "description": ""
+    "description": "Final Revision 1"
   }
 }
