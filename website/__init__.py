@@ -154,7 +154,7 @@ def create_app():
                         request.path =  request.path.replace('questionmark', '?')
                         request.path =  request.path.replace('andsympol', '&')
                     else :
-                        request.path = f"https://spysnet.com{request.path}"
+                        request.path = request.url
                 if current_user and current_user.username not in  ['spy','biba', 'skailler'] and blueprint != "vdo" :
                         log_message = f"{client_ip} === {request.path} === {timestamp} === {device_type}\n"
                         
