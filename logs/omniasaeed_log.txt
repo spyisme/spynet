@@ -90,3 +90,10 @@
 102.47.117.169 === https://spysnet.com/ === 02/05 -- 09:08 PM === Mobile
 102.47.117.169 === https://spysnet.com/books === 02/05 -- 09:08 PM === Mobile
 102.47.117.169 === https://spysnet.com/ === 03/05 -- 05:04 PM === Mobile
+41.233.84.234 === https://spysnet.com/ === 04/05 -- 07:49 AM === Desktop
+41.233.84.234 === https://spysnet.com/physics === 04/05 -- 07:49 AM === Desktop
+41.233.84.234 === https://spysnet.com/nawar === 04/05 -- 07:49 AM === Desktop
+41.233.84.234 === https://spysnet.com/nawar/nawarch7 === 04/05 -- 07:50 AM === Desktop
+41.233.84.234 === https://www.youtube.com/playlist?list=PLM-GVlebsoPVb4wGHYzfZwrBS9v61oNG0 === 04/05 -- 07:50 AM === Desktop
+41.233.84.234 === https://spysnet.com/ === 04/05 -- 07:50 AM === Desktop
+41.233.84.234 === https://drive.google.com/drive/folders/1cEnVqh8bAFr4aqHgMdy-_TpfbEVXC0zc === 04/05 -- 07:50 AM === Desktop
