@@ -119,8 +119,15 @@ select option {
         }
         .center{
             text-align: center;
+
+
+        }
+        .white{
         color: white;
 
+        }
+        .black{
+        color: black;
 
         }
     </style>
@@ -128,21 +135,21 @@ select option {
 <body>
 
     <br><br>
-    <h1 class="center">SpySnet</h1>
-    <div class="center">
+    <h1 class="center"class="white">SpySnet</h1>
+    <div class="center" >
         {%if status== "old"%}
     <form method="POST" action="/form">
-<h1>Old</h1>
+<h1 class="black">Old</h1>
     {%else%}
     <form method="POST">
 
     {%endif%}
         <br>
-        <label for="vidname">Video Name:</label>
+        <label for="vidname" class="black">Video Name:</label>
         <input type="text" id="vidname" name="vidname" required="" autocomplete="off" oninput="validateInput(this)">
         <br>
  
-        <label for="dropdown">Choose a Channel:</label>
+        <label for="dropdown"  class="black">Choose a Channel:</label>
         <select id="dropdown" name="dropdown">
             {% for option in options %}
                 <option value="{{ option }}">{{ option }}</option>
