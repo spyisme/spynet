@@ -14,6 +14,7 @@ Bio= "https://discord.com/api/webhooks/1158548096012259422/jQ5sEAZBIrvfBNTA-w4eR
 Nasser = "https://discord.com/api/webhooks/1158548163209199626/73nAC_d1rgUr6IS79gC508Puood83ho848IEGOpxLtUzGEEJ3h8CyZqlZvCZ6jEXH5k1"
 Salama = "https://discord.com/api/webhooks/1158548226971009115/qtBWD8plfY3JFMjCKYrcXwJ8ayMIbUnXFU3_XtbPeXdxGBzb794t8oSKB2WjoN05Lc-j"
 Gedo = "https://discord.com/api/webhooks/1158824183833309326/lOGuL_T9mAtYuGCkDRkVxRERIQAD1fHS3RTzxkRmS1ZlzT5yY4C7bi20XdK-1pSXcVzZ"
+Sameh = "https://discord.com/api/webhooks/1226090203760955433/DkaAHvw-ZnTlUhaHEslmpXbSi45x-5nf9cZJ3MLbkjooaSNSOtYwOY2Jb70jGDjaRI9W"
 Else = "https://discord.com/api/webhooks/1201174140770586655/d3VuNRT1j0xyTajwMC7gKIwfGDywENK1MaAtjhtJ02Okv-Xf0X5ROMuvhaAArEVG_iZc"
 Logs = "https://discord.com/api/webhooks/1199384528553254983/-wZ9h7YobG3IHZBRZKtzPI5ZcAHpHvMYM-ajpJ87ZzXWTWvu2Upkk7_YaYi3X66QaUJL"
 
@@ -353,6 +354,7 @@ def index():
                 "Nasser-El-Batal": Nasser,
                 "Salama": Salama,
                 "Bio": Bio,
+                    "Sameh-Nash2t": Sameh,
                 "Gedo": Gedo,
             }
             webhook_url = teacher_webhooks.get(teacher, Else)
@@ -405,7 +407,7 @@ def discord():
         "Salama": Salama,
         "Bio": Bio,
         "Gedo": Gedo,
-        "Sameh-Nash2t" : "https://discord.com/api/webhooks/1226090203760955433/DkaAHvw-ZnTlUhaHEslmpXbSi45x-5nf9cZJ3MLbkjooaSNSOtYwOY2Jb70jGDjaRI9W",
+        "Sameh-Nash2t" : Sameh,
     }
     webhook_url = teacher_webhooks.get(teacher, Else)
     requests.post(webhook_url, data=payload, headers=headers)
