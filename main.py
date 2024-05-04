@@ -15,7 +15,7 @@ def page_not_found(e):
 
 @app.errorhandler(Exception)
 def exception_handler(error):
-    return "!!!!"  + repr(error)
+    return render_template('used_pages/500.html' , error = error)
 
 
 if __name__ == "__main__":
