@@ -1046,10 +1046,13 @@ def sherporoutes(custom_url):
     elif course_name  == "Statics" :
         folder =   "https://drive.google.com/drive/folders/192Zd0BMB0-ohwV2dYsSJvFB651d7qXAS?usp=drive_link" 
 
-    elif course_name == "Algebra" :
+    elif course_name == "Algebra & Geometry" :
         extra = { 
             "S1.pdf" : "https://drive.google.com/file/d/1iNH3qEhAfpJa5QqHA6p7rarWA0Z7PRH8/view?usp=drive_link" ,
             "S2.pdf" : "https://drive.google.com/file/d/1f4ZLPfMxjMJ1HQdSdMGotkGQtPGCD0JO/view?usp=drive_link" ,
+            "S3.pdf" : "https://drive.google.com/file/d/18hncZ4-fVQ3acP5Qn8M8iFvO3jT-OnKw/view?usp=drive_link" ,
+            "SG-S1.pdf" : "https://drive.google.com/file/d/1RAmemfLG2bSVQD7ZCMpsp82X_4tLOxSg/view?usp=drive_link" ,
+            
                    
                    } 
         folder = "https://drive.google.com/drive/folders/1_BT42ym3-9BY3FQOlFUKce7T6Scntx5o?usp=drive_link"
