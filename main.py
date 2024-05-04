@@ -1,6 +1,6 @@
 from website import create_app
 import requests , json
-from flask import render_template
+from flask import render_template , request
 import logging
 from flask_login import  current_user 
 
@@ -26,7 +26,7 @@ def discord_log_backend(text):
 
 @app.errorhandler(Exception)
 def exception_handler(error):
-    discord_log_backend(f'User : {current_user.username} encountered an error ```{error}``` <@709799648143081483>')
+    discord_log_backend(f'User : {current_user.username} encountered an error while trying to access {request.url} ```{error}``` <@709799648143081483>')
     return render_template('used_pages/500.html' , error = error)
 
 
