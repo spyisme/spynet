@@ -648,7 +648,7 @@ def Physics():
   teacher_links = {
   "Tamer-el-kady": ("/tamer-el-kady", "Sessions & revisions"),
    "Mo adel" : ("/mo-adel" , "Random Sessions & revisions"),   
-  "Nawar": ("/nawar",  "(lw had m3ah acc b2a)" , "fucking back :))"),
+  "Nawar": ("/nawar",  "(lw had m3ah acc b2a)" , "Back :))"),
 
   }
   teachername = "Physics"
@@ -969,7 +969,7 @@ def nasservids(custom_url):
 def math():
   teacher_links = {
   "Sherbo": ("/sherbo", "Omar sherbeni"),
-    "Salama": ("/salama", "Mohamed salama" , "fucking back :))")
+    "Salama": ("/salama", "Mohamed salama" , "Back :))")
   }
   teachername = "Math"
   return render_template('used_pages/teacher.html',
