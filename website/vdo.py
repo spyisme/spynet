@@ -332,6 +332,7 @@ def index():
 
 
 
+    result = result.replace("\n", " ")
 
     old = request.args.get('old')
 
@@ -340,8 +341,6 @@ def index():
         if request.method == 'POST':
             name =  request.form.get('vidname')
             teacher =  request.form.get('dropdown')
-
-            result = result.replace("\n", " ")
             message = {
                     'content': f'```app {result} --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output``` {name} ```watch now``` {url}'
                 }
