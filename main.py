@@ -1,6 +1,6 @@
 from website import create_app
 
-from flask import redirect
+from flask import render_template
 import logging
 
 log = logging.getLogger('werkzeug')
@@ -11,7 +11,7 @@ app , socketio = create_app()
 
 @app.errorhandler(404)
 def page_not_found(e):
-    return redirect('/')
+    return render_template('used_pages/404.html')
 
 
 
