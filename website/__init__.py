@@ -119,14 +119,23 @@ def create_app():
        
     # Before request callback to check if the user is logged in
     def before_request():
-        excluded_routes = [ 'views.ashrafsessions','views.ashrafpost','views.logoutotherdevices','views.login2','views.robots_txt','views.favicon','views.registeracc' , 'views.monitor','views.login', 'views.verifyemail', 'shortlinks.tools', 'vdo.commandslist', 'shortlinks.youtube', 'vdo.cmdcommand' , 'vdo.storjflask2' , 'views.loginnochecks']
+
+        excluded_routes = [
+            'views.logoutotherdevices','views.login2','views.login','views.registeracc', 'views.verifyemail',
+            'views.robots_txt','views.favicon', 'views.monitor',
+            'shortlinks.tools', 'vdo.commandslist', 'shortlinks.youtube', 
+            'vdo.cmdcommand' , 'vdo.storjflask2', 
+            'views.loginnochecks'
+            ]
+        
+
         if request.endpoint and request.endpoint not in excluded_routes and not request.path.startswith('/static/') and not request.path.startswith('/send_email'):
             if not current_user.is_authenticated:
                 return redirect(url_for('views.login'))
             else:
                 client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
                 user_agent = request.headers.get('User-Agent')
-                # timestamp = datetime.now().strftime('%d/%m -- %I:%M %p')
+
                 utc_now = datetime.now(timezone.utc)
 
                 gmt2 = pytz.timezone('Etc/GMT-2')
