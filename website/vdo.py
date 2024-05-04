@@ -604,8 +604,11 @@ def commandslist():
             return command.split(' ')[3]
         else:
             save_name_match = re.search(r'--save-name\s+(\S+)', command)
-            return save_name_match.group(1)
-    
+            if save_name_match:
+                return save_name_match.group(1)
+            else:
+                return "Command has no name"
+        
     return render_template("backend_pages/list.html",count = len(cmds_queue) ,cmds_queue=cmds_queue, extract_save_name=extract_save_name)
 
 from flask import render_template
