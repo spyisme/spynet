@@ -198,3 +198,5 @@
 156.215.59.149 === https://spysnet.com/daif === 03/05 -- 12:58 AM === Desktop
 156.215.59.149 === https://spysnet.com/daif/finals === 03/05 -- 12:58 AM === Desktop
 156.215.59.149 === https://www.youtube.com/playlist?list=PLM-GVlebsoPWEsLtSUs6KjyAOvexuF2a5 === 03/05 -- 12:58 AM === Desktop
+156.215.94.180 === https://spysnet.com/chemistry === 04/05 -- 03:05 PM === Mobile
+156.215.94.180 === https://spysnet.com/chemistry === 04/05 -- 03:05 PM === Mobile
