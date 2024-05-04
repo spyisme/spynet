@@ -402,7 +402,7 @@ def discord():
     teacher_webhooks = {
         "Nawar": Nawar,
         "Nasser-El-Batal": Nasser,
-        "MoSalama": Salama,
+        "Salama": Salama,
         "Bio": Bio,
         "Gedo": Gedo,
         "Sameh-Nash2t" : "https://discord.com/api/webhooks/1226090203760955433/DkaAHvw-ZnTlUhaHEslmpXbSi45x-5nf9cZJ3MLbkjooaSNSOtYwOY2Jb70jGDjaRI9W",
