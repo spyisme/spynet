@@ -8,7 +8,7 @@
 
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Storj Form</title>
+    <title>Add to List</title>
 
     <style>
         body {
@@ -59,10 +59,17 @@
         button:hover {
             background-color: #0056b3;
         }
+        .new{
+            color:green;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
-    <h1>Commands</h1>
+    <h1>SpySnet</h1>
+    {%if newcmd%}
+<p class="new">Command added!</p>
+    {%endif%}
     <form method="post" action="{{ url_for('vdo.storjflask2') }}">
         <label for="userinput">Enter Command:</label>
         <input type="text" id="userinput" name="userinput" required autocomplete="off">

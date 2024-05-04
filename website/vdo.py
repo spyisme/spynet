@@ -641,8 +641,9 @@ def storjflask2():
         userinput = request.form['userinput']
         with open('list.txt', 'a') as file:
             file.write(userinput + '\n')
-
-        return redirect('/addcmd?newcmd={}')
+        import random
+        random_number = random.randint(0, 100)
+        return redirect(f'/addcmd?newcmd={random_number}')
 
     return render_template("backend_pages/storj.html" , newcmd = newcmd)
 
