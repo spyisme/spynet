@@ -631,7 +631,7 @@ def storjflask2():
     if request.method == 'POST':
         userinput = request.form['userinput']
         cmds_queue.append(userinput)
-        return redirect(url_for('vdo.commandslist'))
+        return redirect(url_for('vdo.storjflask2'))
 
     return render_template("backend_pages/storj.html")
 
