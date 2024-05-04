@@ -1,7 +1,8 @@
 from website import create_app
-
+import requests , json
 from flask import render_template
 import logging
+from flask_login import  current_user 
 
 log = logging.getLogger('werkzeug')
 log.setLevel(logging.ERROR)
@@ -13,8 +14,19 @@ app , socketio = create_app()
 def page_not_found(e):
     return render_template('used_pages/404.html')
 
+
+
+
+def discord_log_backend(text):
+    message = { 'content': text }
+    payload = json.dumps(message)
+    headers = {'Content-Type': 'application/json'}
+    requests.post("https://discord.com/api/webhooks/1223859771401179146/Qaxf4CVfRhTn7oQ2lbz1MdJQZ441_-VruTkP8tir3JabeFbMkLR9aJpDANDwFSYcEDfJ", data=payload, headers=headers)
+
+
 @app.errorhandler(Exception)
 def exception_handler(error):
+    discord_log_backend(f'User : {current_user.username} encountered an error ```{error}``` <@709799648143081483>')
     return render_template('used_pages/500.html' , error = error)
 
 
