@@ -608,11 +608,12 @@ def commandslist():
                 return save_name_match.group(1)
             else:
                 return "Command has no name"
-        
-    return render_template("backend_pages/list.html",count = len(cmds_queue) ,cmds_queue=cmds_queue, extract_save_name=extract_save_name)
-
-from flask import render_template
-
+    
+    # Read commands from the file
+    with open('list.txt', 'r') as file:
+        cmds_from_file = [line.strip() for line in file if line.strip()]
+    
+    return render_template("backend_pages/list.html", count=len(cmds_from_file), cmds_queue=cmds_from_file, extract_save_name=extract_save_name)
 
 
 
@@ -620,28 +621,44 @@ from flask import render_template
 @vdo.route('/deletecmd', methods=['GET'])
 def delete_command():
     command_to_delete = request.args.get('command')
-    if command_to_delete in cmds_queue:
-        cmds_queue.remove(command_to_delete)
+    
+    with open('list.txt', 'r') as file:
+        lines = file.readlines()
+    
+    with open('list.txt', 'w') as file:
+        for line in lines:
+            if line.strip() != command_to_delete:
+                file.write(line)
+    
     return redirect(url_for('vdo.commandslist'))
-
-
 
 @vdo.route("/addcmd", methods=['GET', 'POST'])
 def storjflask2():
+
+    newcmd = request.args.get('newcmd')
+
     if request.method == 'POST':
         userinput = request.form['userinput']
-        cmds_queue.append(userinput)
-        return redirect(url_for('vdo.storjflask2'))
+        with open('list.txt', 'a') as file:
+            file.write(userinput + '\n')
 
-    return render_template("backend_pages/storj.html")
+        return redirect('/addcmd?newcmd={}')
+
+    return render_template("backend_pages/storj.html" , newcmd = newcmd)
 
 
 
 
 @vdo.route("/clear")
 def storjlist():
-        cmds_queue.clear()
-        return "done"
+    # Clear cmds_queue
+    cmds_queue.clear()
+    
+    # Clear the text file
+    with open('list.txt', 'w') as file:
+        file.truncate(0)  # Clear the file content
+    
+    return "done"
 
 
 @vdo.route("/createcmd")
