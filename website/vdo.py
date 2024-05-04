@@ -651,7 +651,7 @@ def addtolist():
 
 
 @vdo.route("/clear")
-def storjlist():
+def clearlist():
 
     with open('list.txt', 'w') as file:
         file.truncate(0) 
