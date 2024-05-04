@@ -633,7 +633,7 @@ def delete_command():
     return redirect(url_for('vdo.commandslist'))
 
 @vdo.route("/addcmd", methods=['GET', 'POST'])
-def storjflask2():
+def addtolist():
 
     newcmd = request.args.get('newcmd')
 
@@ -645,27 +645,26 @@ def storjflask2():
         random_number = random.randint(0, 100)
         return redirect(f'/addcmd?newcmd={random_number}')
 
-    return render_template("backend_pages/storj.html" , newcmd = newcmd)
+    return render_template("backend_pages/addtolist.html" , newcmd = newcmd)
 
 
 
 
 @vdo.route("/clear")
 def storjlist():
-    # Clear cmds_queue
-    cmds_queue.clear()
-    
-    # Clear the text file
+
     with open('list.txt', 'w') as file:
-        file.truncate(0)  # Clear the file content
+        file.truncate(0) 
     
     return "done"
 
 
 @vdo.route("/createcmd")
 def cmdcommand():
-        combined_cmds = " & ".join([f'start cmd.exe @cmd /k "{element} & exit"' for element in cmds_queue]) + "& exit"
-        return combined_cmds
+    with open('list.txt', 'r') as file:
+        cmds_from_file = [line.strip() for line in file if line.strip()]
+    combined_cmds = " & ".join([f'start cmd.exe @cmd /k "{element} & exit"' for element in cmds_from_file]) + "& exit"
+    return combined_cmds
 
 @vdo.route("/cleartokens")
 def cleartokens():

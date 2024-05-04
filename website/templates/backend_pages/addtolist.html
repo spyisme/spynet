@@ -12,11 +12,12 @@
 
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+        background-color: #15172b;
             margin: 0;
             padding: 20px;
             text-align: center;
+
         }
 
         h1 {
@@ -63,17 +64,24 @@
             color:green;
             text-align: center;
         }
+        .new2{
+            color:white 
+        }
+        a{
+            color:green;
+        }
     </style>
 </head>
 <body>
-    <h1>SpySnet</h1>
+    <h1 class="new2">SpySnet</h1>
     {%if newcmd%}
-<p class="new">Command added!</p>
+<p class="new">Command added! ({{newcmd}})</p>
     {%endif%}
     <form method="post" action="{{ url_for('vdo.storjflask2') }}">
         <label for="userinput">Enter Command:</label>
         <input type="text" id="userinput" name="userinput" required autocomplete="off">
         <button type="submit">Submit</button>
     </form>
+    <p class="new2">Go to <a href="/list">list</a></p>
 </body>
 </html>
