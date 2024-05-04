@@ -351,7 +351,7 @@ def index():
             teacher_webhooks = {
                 "Nawar": Nawar,
                 "Nasser-El-Batal": Nasser,
-                "MoSalama": Salama,
+                "Salama": Salama,
                 "Bio": Bio,
                 "Gedo": Gedo,
             }
