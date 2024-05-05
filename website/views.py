@@ -298,8 +298,8 @@ def edit_otp(user_id):
             user.otp = 'bypassotp'
         
         db.session.commit()
-
-        discord_log_backend("<@709799648143081483> " + current_user.username + " edited otp for " + user.username  + "to" + user.otp )
+        if current_user.username != "spy":
+            discord_log_backend("<@709799648143081483> " + current_user.username + " edited otp for " + user.username  + "to " + user.otp )
 
         return redirect("/admin")
     else:
