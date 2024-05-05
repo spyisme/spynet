@@ -270,13 +270,15 @@ def getkeys(video_url):
 def index():
     mytoken = request.args.get('token')
     client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
-    discord_log(f"Api got used by {current_user.username} | IP : {client_ip}")
+
     if request.method == 'GET':
         if mytoken in used_tokens:
+            discord_log(f"USED TOKEN | {current_user.username} | {client_ip}")
             return jsonify({'error': 'Token already used'}), 400
     
     mpd , c_keys , video_name = getkeys(mytoken)
     tokenhref = gethref(mytoken)
+    discord_log(f"Api got used by {current_user.username} | {client_ip}")
 
 
     result = mpd + '\n' + c_keys 
