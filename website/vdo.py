@@ -347,7 +347,8 @@ def index():
                 }
             payload = json.dumps(message)
             userinput = f"app {result} --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output"
-            cmds_queue.append(userinput)
+            with open('list.txt', 'a') as file:
+                file.write(userinput + '\n')
             headers = {'Content-Type': 'application/json'}
             teacher_webhooks = {
                 "Nawar": Nawar,
@@ -399,7 +400,9 @@ def discord():
         }
     payload = json.dumps(message)
     userinput = f"app {result} --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output"
-    cmds_queue.append(userinput)
+
+    with open('list.txt', 'a') as file:
+                file.write(userinput + '\n')
     headers = {'Content-Type': 'application/json'}
     teacher_webhooks = {
         "Nawar": Nawar,
@@ -435,11 +438,15 @@ def iframevids():
             url = url.split('/')[4]
 
             msg = f'```python youtube.py https://www.youtube.com/watch?v={url} {name}``` {name}'
-            cmds_queue.append(f"python youtube.py https://www.youtube.com/watch?v={url} {name}")
+            command = f"python youtube.py https://www.youtube.com/watch?v={url} {name}"
+            with open('list.txt', 'a') as file:
+                file.write(command + '\n')
         else: 
             url = url.split('?')[0]
             msg = f'```python iframe.py {url} {name}``` {name}'
-            cmds_queue.append(f"python iframe.py {url} {name}")
+            command = f"python iframe.py {url} {name}"
+            with open('list.txt', 'a') as file:
+                file.write(command + '\n')
 
         message = {
                 'content': f'{msg}'
@@ -462,8 +469,9 @@ def watchit():
     if request.method == 'POST':
         name =  request.form.get('name')
         msg = f'```app {url} --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output``` {name}'
-        cmds_queue.append(f'app {url}  --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output')
-
+        command = (f'app {url}  --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output')
+        with open('list.txt', 'a') as file:
+            file.write(command + '\n')
         message = {
                 'content': f'{msg}'
             }
@@ -489,8 +497,9 @@ def hosssamsameh():
     if request.method == 'POST':
         name =  request.form.get('name')
         msg = f'```app {url} --header "User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:102.0) Gecko/20100101 Firefox/102.0" --header "Referer: https://iframe.mediadelivery.net/" --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output``` {name}'
-        cmds_queue.append(f'app {url} --header "User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:102.0) Gecko/20100101 Firefox/102.0" --header "Referer: https://iframe.mediadelivery.net/" --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output')
-
+        command= (f'app {url} --header "User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:102.0) Gecko/20100101 Firefox/102.0" --header "Referer: https://iframe.mediadelivery.net/" --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output')
+        with open('list.txt', 'a') as file:
+            file.write(command + '\n')
         message = {
                 'content': f'{msg}'
             }
@@ -536,8 +545,9 @@ def shahid():
     if request.method == 'POST':
         name =  request.form.get('name')
         msg = f'```app {mpd} --key {key_value} --save-name {name} -M format=mp4 --no-log  & move {name}.mp4 ./output``` {name} ```watch now``` {mpd}&ck={keysbase64}'
-        cmds_queue.append(f"app {mpd}  --key {key_value}  --save-name {name} -M format=mp4 --no-log  & move {name}.mp4 ./output")
-
+        command = (f"app {mpd}  --key {key_value}  --save-name {name} -M format=mp4 --no-log  & move {name}.mp4 ./output")
+        with open('list.txt', 'a') as file:
+            file.write(command + '\n')
         message = {
                 'content': f'{msg}'
             }
