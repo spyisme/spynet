@@ -6404,3 +6404,1524 @@ Traceback (most recent call last):
   File "/home/azureuser/SpyNet/website/__init__.py", line 191, in handle_connect
     username = current_user.username  # Assuming current_user.username is available
 AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+167.248.133.188 - - [04/May/2024 18:43:00] code 505, message Invalid HTTP version (2.0)
+167.248.133.188 - - [04/May/2024 18:43:03] code 505, message Invalid HTTP version (2.0)
+message handler error
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 823, in _handle_event
+    ret = handler(auth)
+TypeError: handle_connect() takes 0 positional arguments but 1 was given
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/engineio/server.py", line 434, in run_handler
+    return self.handlers[event](*args)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 640, in _handle_eio_message
+    self._handle_connect(eio_sid, pkt.namespace, pkt.data)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 534, in _handle_connect
+    success = self._trigger_event(
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 611, in _trigger_event
+    return handler(*args)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 282, in _handler
+    return self._handle_event(handler, message, namespace, sid,
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 825, in _handle_event
+    ret = handler()
+  File "/home/azureuser/SpyNet/website/__init__.py", line 191, in handle_connect
+    username = current_user.username  # Assuming current_user.username is available
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+message handler error
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 823, in _handle_event
+    ret = handler(auth)
+TypeError: handle_connect() takes 0 positional arguments but 1 was given
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/engineio/server.py", line 434, in run_handler
+    return self.handlers[event](*args)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 640, in _handle_eio_message
+    self._handle_connect(eio_sid, pkt.namespace, pkt.data)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 534, in _handle_connect
+    success = self._trigger_event(
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 611, in _trigger_event
+    return handler(*args)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 282, in _handler
+    return self._handle_event(handler, message, namespace, sid,
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 825, in _handle_event
+    ret = handler()
+  File "/home/azureuser/SpyNet/website/__init__.py", line 191, in handle_connect
+    username = current_user.username  # Assuming current_user.username is available
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+message handler error
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 823, in _handle_event
+    ret = handler(auth)
+TypeError: handle_connect() takes 0 positional arguments but 1 was given
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/engineio/server.py", line 434, in run_handler
+    return self.handlers[event](*args)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 640, in _handle_eio_message
+    self._handle_connect(eio_sid, pkt.namespace, pkt.data)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 534, in _handle_connect
+    success = self._trigger_event(
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 611, in _trigger_event
+    return handler(*args)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 282, in _handler
+    return self._handle_event(handler, message, namespace, sid,
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 825, in _handle_event
+    ret = handler()
+  File "/home/azureuser/SpyNet/website/__init__.py", line 191, in handle_connect
+    username = current_user.username  # Assuming current_user.username is available
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+disconnect handler error
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/engineio/server.py", line 434, in run_handler
+    return self.handlers[event](*args)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 658, in _handle_eio_disconnect
+    self._handle_disconnect(eio_sid, n)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 564, in _handle_disconnect
+    self._trigger_event('disconnect', namespace, sid)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 611, in _trigger_event
+    return handler(*args)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 282, in _handler
+    return self._handle_event(handler, message, namespace, sid,
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 827, in _handle_event
+    ret = handler(*args)
+  File "/home/azureuser/SpyNet/website/__init__.py", line 200, in handle_disconnect
+    username = current_user.username  # Assuming current_user.username is available
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 854, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 463, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 626, in match
+    raise MethodNotAllowed(valid_methods=list(e.have_match_for)) from None
+werkzeug.exceptions.MethodNotAllowed: 405 Method Not Allowed: The method is not allowed for the requested URL.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.8/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 765, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 740, in handle_http_exception
+    return self.ensure_sync(handler)(e)  # type: ignore[no-any-return]
+  File "/home/azureuser/SpyNet/main.py", line 29, in exception_handler
+    discord_log_backend(f'User : {current_user.username} encountered an error while trying to access {request.url} ```{error}``` <@709799648143081483>')
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 854, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 463, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 626, in match
+    raise MethodNotAllowed(valid_methods=list(e.have_match_for)) from None
+werkzeug.exceptions.MethodNotAllowed: 405 Method Not Allowed: The method is not allowed for the requested URL.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.8/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 765, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 740, in handle_http_exception
+    return self.ensure_sync(handler)(e)  # type: ignore[no-any-return]
+  File "/home/azureuser/SpyNet/main.py", line 29, in exception_handler
+    discord_log_backend(f'User : {current_user.username} encountered an error while trying to access {request.url} ```{error}``` <@709799648143081483>')
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+message handler error
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 823, in _handle_event
+    ret = handler(auth)
+TypeError: handle_connect() takes 0 positional arguments but 1 was given
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/engineio/server.py", line 434, in run_handler
+    return self.handlers[event](*args)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 640, in _handle_eio_message
+    self._handle_connect(eio_sid, pkt.namespace, pkt.data)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 534, in _handle_connect
+    success = self._trigger_event(
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 611, in _trigger_event
+    return handler(*args)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 282, in _handler
+    return self._handle_event(handler, message, namespace, sid,
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 825, in _handle_event
+    ret = handler()
+  File "/home/azureuser/SpyNet/website/__init__.py", line 191, in handle_connect
+    username = current_user.username  # Assuming current_user.username is available
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+disconnect handler error
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/engineio/server.py", line 434, in run_handler
+    return self.handlers[event](*args)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 658, in _handle_eio_disconnect
+    self._handle_disconnect(eio_sid, n)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 564, in _handle_disconnect
+    self._trigger_event('disconnect', namespace, sid)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 611, in _trigger_event
+    return handler(*args)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 282, in _handler
+    return self._handle_event(handler, message, namespace, sid,
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 827, in _handle_event
+    ret = handler(*args)
+  File "/home/azureuser/SpyNet/website/__init__.py", line 200, in handle_disconnect
+    username = current_user.username  # Assuming current_user.username is available
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+message handler error
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 823, in _handle_event
+    ret = handler(auth)
+TypeError: handle_connect() takes 0 positional arguments but 1 was given
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/engineio/server.py", line 434, in run_handler
+    return self.handlers[event](*args)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 640, in _handle_eio_message
+    self._handle_connect(eio_sid, pkt.namespace, pkt.data)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 534, in _handle_connect
+    success = self._trigger_event(
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 611, in _trigger_event
+    return handler(*args)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 282, in _handler
+    return self._handle_event(handler, message, namespace, sid,
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 825, in _handle_event
+    ret = handler()
+  File "/home/azureuser/SpyNet/website/__init__.py", line 191, in handle_connect
+    username = current_user.username  # Assuming current_user.username is available
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+disconnect handler error
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/engineio/server.py", line 434, in run_handler
+    return self.handlers[event](*args)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 658, in _handle_eio_disconnect
+    self._handle_disconnect(eio_sid, n)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 564, in _handle_disconnect
+    self._trigger_event('disconnect', namespace, sid)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 611, in _trigger_event
+    return handler(*args)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 282, in _handler
+    return self._handle_event(handler, message, namespace, sid,
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 827, in _handle_event
+    ret = handler(*args)
+  File "/home/azureuser/SpyNet/website/__init__.py", line 200, in handle_disconnect
+    username = current_user.username  # Assuming current_user.username is available
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+disconnect handler error
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/engineio/server.py", line 434, in run_handler
+    return self.handlers[event](*args)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 658, in _handle_eio_disconnect
+    self._handle_disconnect(eio_sid, n)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 564, in _handle_disconnect
+    self._trigger_event('disconnect', namespace, sid)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 611, in _trigger_event
+    return handler(*args)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 282, in _handler
+    return self._handle_event(handler, message, namespace, sid,
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 827, in _handle_event
+    ret = handler(*args)
+  File "/home/azureuser/SpyNet/website/__init__.py", line 201, in handle_disconnect
+    connected_usernames.remove(username)  # Remove the username from the set
+KeyError: 'manarabdelrahman'
+disconnect handler error
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/engineio/server.py", line 434, in run_handler
+    return self.handlers[event](*args)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 658, in _handle_eio_disconnect
+    self._handle_disconnect(eio_sid, n)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 564, in _handle_disconnect
+    self._trigger_event('disconnect', namespace, sid)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 611, in _trigger_event
+    return handler(*args)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 282, in _handler
+    return self._handle_event(handler, message, namespace, sid,
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 827, in _handle_event
+    ret = handler(*args)
+  File "/home/azureuser/SpyNet/website/__init__.py", line 201, in handle_disconnect
+    connected_usernames.remove(username)  # Remove the username from the set
+KeyError: 'manarabdelrahman'
+disconnect handler error
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/engineio/server.py", line 434, in run_handler
+    return self.handlers[event](*args)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 658, in _handle_eio_disconnect
+    self._handle_disconnect(eio_sid, n)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 564, in _handle_disconnect
+    self._trigger_event('disconnect', namespace, sid)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 611, in _trigger_event
+    return handler(*args)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 282, in _handler
+    return self._handle_event(handler, message, namespace, sid,
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 827, in _handle_event
+    ret = handler(*args)
+  File "/home/azureuser/SpyNet/website/__init__.py", line 201, in handle_disconnect
+    connected_usernames.remove(username)  # Remove the username from the set
+KeyError: 'manarabdelrahman'
+209.141.40.117 - - [04/May/2024 22:06:19] code 400, message Bad request syntax ('{"id":1,"jsonrpc":"2.0","method":"login","params":{"login":"44cbWk3V34xXkgZh8V75ghGbbBYf2v25mWMNg4JV7GRghN3rBEnhrpDSCikpraL6mSYRF1SZFm69N4sg2QRtSYZL4EutwYg","pass":"x"}}')
+78.153.140.179 - - [04/May/2024 22:08:33] code 400, message Bad request version ('\x00\x9eÀ(À$À\x14À')
+205.210.31.238 - - [04/May/2024 22:11:05] code 400, message Bad request version ('À\x13À')
+205.210.31.238 - - [04/May/2024 22:11:05] code 400, message Bad request version ('À(À$À\x14À')
+172.104.11.51 - - [04/May/2024 22:20:48] code 400, message Bad request version ('À\x14À')
+45.79.181.223 - - [04/May/2024 23:46:27] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00')
+message handler error
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 823, in _handle_event
+    ret = handler(auth)
+TypeError: handle_connect() takes 0 positional arguments but 1 was given
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/engineio/server.py", line 434, in run_handler
+    return self.handlers[event](*args)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 640, in _handle_eio_message
+    self._handle_connect(eio_sid, pkt.namespace, pkt.data)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 534, in _handle_connect
+    success = self._trigger_event(
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 611, in _trigger_event
+    return handler(*args)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 282, in _handler
+    return self._handle_event(handler, message, namespace, sid,
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 825, in _handle_event
+    ret = handler()
+  File "/home/azureuser/SpyNet/website/__init__.py", line 191, in handle_connect
+    username = current_user.username  # Assuming current_user.username is available
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+disconnect handler error
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/engineio/socket.py", line 16, in poll
+    packets = [self.queue.get(
+  File "/usr/lib/python3.8/queue.py", line 178, in get
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/engineio/socket.py", line 97, in handle_get_request
+    packets = self.poll()
+  File "/usr/local/lib/python3.8/dist-packages/engineio/socket.py", line 20, in poll
+    raise exceptions.QueueEmpty()
+engineio.exceptions.QueueEmpty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/engineio/server.py", line 434, in run_handler
+    return self.handlers[event](*args)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 658, in _handle_eio_disconnect
+    self._handle_disconnect(eio_sid, n)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 564, in _handle_disconnect
+    self._trigger_event('disconnect', namespace, sid)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 611, in _trigger_event
+    return handler(*args)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 282, in _handler
+    return self._handle_event(handler, message, namespace, sid,
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 827, in _handle_event
+    ret = handler(*args)
+  File "/home/azureuser/SpyNet/website/__init__.py", line 200, in handle_disconnect
+    username = current_user.username  # Assuming current_user.username is available
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+disconnect handler error
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/engineio/server.py", line 434, in run_handler
+    return self.handlers[event](*args)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 658, in _handle_eio_disconnect
+    self._handle_disconnect(eio_sid, n)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 564, in _handle_disconnect
+    self._trigger_event('disconnect', namespace, sid)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 611, in _trigger_event
+    return handler(*args)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 282, in _handler
+    return self._handle_event(handler, message, namespace, sid,
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 827, in _handle_event
+    ret = handler(*args)
+  File "/home/azureuser/SpyNet/website/__init__.py", line 201, in handle_disconnect
+    connected_usernames.remove(username)  # Remove the username from the set
+KeyError: 'hamsmohamed'
+disconnect handler error
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/engineio/server.py", line 434, in run_handler
+    return self.handlers[event](*args)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 658, in _handle_eio_disconnect
+    self._handle_disconnect(eio_sid, n)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 564, in _handle_disconnect
+    self._trigger_event('disconnect', namespace, sid)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 611, in _trigger_event
+    return handler(*args)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 282, in _handler
+    return self._handle_event(handler, message, namespace, sid,
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 827, in _handle_event
+    ret = handler(*args)
+  File "/home/azureuser/SpyNet/website/__init__.py", line 201, in handle_disconnect
+    connected_usernames.remove(username)  # Remove the username from the set
+KeyError: 'hamsmohamed'
+disconnect handler error
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/engineio/server.py", line 434, in run_handler
+    return self.handlers[event](*args)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 658, in _handle_eio_disconnect
+    self._handle_disconnect(eio_sid, n)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 564, in _handle_disconnect
+    self._trigger_event('disconnect', namespace, sid)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 611, in _trigger_event
+    return handler(*args)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 282, in _handler
+    return self._handle_event(handler, message, namespace, sid,
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 827, in _handle_event
+    ret = handler(*args)
+  File "/home/azureuser/SpyNet/website/__init__.py", line 201, in handle_disconnect
+    connected_usernames.remove(username)  # Remove the username from the set
+KeyError: 'hamsmohamed'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 854, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 463, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 626, in match
+    raise MethodNotAllowed(valid_methods=list(e.have_match_for)) from None
+werkzeug.exceptions.MethodNotAllowed: 405 Method Not Allowed: The method is not allowed for the requested URL.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.8/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 765, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 740, in handle_http_exception
+    return self.ensure_sync(handler)(e)  # type: ignore[no-any-return]
+  File "/home/azureuser/SpyNet/main.py", line 29, in exception_handler
+    discord_log_backend(f'User : {current_user.username} encountered an error while trying to access {request.url} ```{error}``` <@709799648143081483>')
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+message handler error
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 823, in _handle_event
+    ret = handler(auth)
+TypeError: handle_connect() takes 0 positional arguments but 1 was given
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/engineio/server.py", line 434, in run_handler
+    return self.handlers[event](*args)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 640, in _handle_eio_message
+    self._handle_connect(eio_sid, pkt.namespace, pkt.data)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 534, in _handle_connect
+    success = self._trigger_event(
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 611, in _trigger_event
+    return handler(*args)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 282, in _handler
+    return self._handle_event(handler, message, namespace, sid,
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 825, in _handle_event
+    ret = handler()
+  File "/home/azureuser/SpyNet/website/__init__.py", line 191, in handle_connect
+    username = current_user.username  # Assuming current_user.username is available
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+disconnect handler error
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/engineio/server.py", line 434, in run_handler
+    return self.handlers[event](*args)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 658, in _handle_eio_disconnect
+    self._handle_disconnect(eio_sid, n)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 564, in _handle_disconnect
+    self._trigger_event('disconnect', namespace, sid)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 611, in _trigger_event
+    return handler(*args)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 282, in _handler
+    return self._handle_event(handler, message, namespace, sid,
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 827, in _handle_event
+    ret = handler(*args)
+  File "/home/azureuser/SpyNet/website/__init__.py", line 200, in handle_disconnect
+    username = current_user.username  # Assuming current_user.username is available
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+172.210.39.221 - - [05/May/2024 02:10:40] code 400, message Bad request version ('RTSP/1.0')
+172.210.39.221 - - [05/May/2024 02:10:41] code 400, message Bad HTTP/0.9 request type ('l\x00')
+172.210.39.221 - - [05/May/2024 02:13:40] code 400, message Bad request version ('\x00/\x00')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 854, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 463, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 626, in match
+    raise MethodNotAllowed(valid_methods=list(e.have_match_for)) from None
+werkzeug.exceptions.MethodNotAllowed: 405 Method Not Allowed: The method is not allowed for the requested URL.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.8/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 765, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 740, in handle_http_exception
+    return self.ensure_sync(handler)(e)  # type: ignore[no-any-return]
+  File "/home/azureuser/SpyNet/main.py", line 29, in exception_handler
+    discord_log_backend(f'User : {current_user.username} encountered an error while trying to access {request.url} ```{error}``` <@709799648143081483>')
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+167.71.201.103 - - [05/May/2024 02:34:39] code 400, message Bad request version ('À\x13À')
+message handler error
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 823, in _handle_event
+    ret = handler(auth)
+TypeError: handle_connect() takes 0 positional arguments but 1 was given
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/engineio/server.py", line 434, in run_handler
+    return self.handlers[event](*args)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 640, in _handle_eio_message
+    self._handle_connect(eio_sid, pkt.namespace, pkt.data)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 534, in _handle_connect
+    success = self._trigger_event(
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 611, in _trigger_event
+    return handler(*args)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 282, in _handler
+    return self._handle_event(handler, message, namespace, sid,
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 825, in _handle_event
+    ret = handler()
+  File "/home/azureuser/SpyNet/website/__init__.py", line 191, in handle_connect
+    username = current_user.username  # Assuming current_user.username is available
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+disconnect handler error
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/engineio/server.py", line 434, in run_handler
+    return self.handlers[event](*args)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 658, in _handle_eio_disconnect
+    self._handle_disconnect(eio_sid, n)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 564, in _handle_disconnect
+    self._trigger_event('disconnect', namespace, sid)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 611, in _trigger_event
+    return handler(*args)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 282, in _handler
+    return self._handle_event(handler, message, namespace, sid,
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 827, in _handle_event
+    ret = handler(*args)
+  File "/home/azureuser/SpyNet/website/__init__.py", line 200, in handle_disconnect
+    username = current_user.username  # Assuming current_user.username is available
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+message handler error
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 823, in _handle_event
+    ret = handler(auth)
+TypeError: handle_connect() takes 0 positional arguments but 1 was given
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/engineio/server.py", line 434, in run_handler
+    return self.handlers[event](*args)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 640, in _handle_eio_message
+    self._handle_connect(eio_sid, pkt.namespace, pkt.data)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 534, in _handle_connect
+    success = self._trigger_event(
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 611, in _trigger_event
+    return handler(*args)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 282, in _handler
+    return self._handle_event(handler, message, namespace, sid,
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 825, in _handle_event
+    ret = handler()
+  File "/home/azureuser/SpyNet/website/__init__.py", line 191, in handle_connect
+    username = current_user.username  # Assuming current_user.username is available
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+disconnect handler error
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/engineio/server.py", line 434, in run_handler
+    return self.handlers[event](*args)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 658, in _handle_eio_disconnect
+    self._handle_disconnect(eio_sid, n)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 564, in _handle_disconnect
+    self._trigger_event('disconnect', namespace, sid)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 611, in _trigger_event
+    return handler(*args)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 282, in _handler
+    return self._handle_event(handler, message, namespace, sid,
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 827, in _handle_event
+    ret = handler(*args)
+  File "/home/azureuser/SpyNet/website/__init__.py", line 200, in handle_disconnect
+    username = current_user.username  # Assuming current_user.username is available
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+192.155.90.220 - - [05/May/2024 03:46:43] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00')
+165.154.33.91 - - [05/May/2024 04:14:05] code 400, message Bad request version ('F|¥ÖòYK?j¨R¼Ò¦êÜ\x07í"\x08\x14J\x9e\x01\x96\x0e\x12\x01\x82O\x11')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.8/dist-packages/engineio/middleware.py", line 63, in __call__
+    return self.engineio_app.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 430, in handle_request
+    return self.eio.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/engineio/server.py", line 292, in handle_request
+    socket = self._get_socket(sid)
+  File "/usr/local/lib/python3.8/dist-packages/engineio/base_server.py", line 229, in _get_socket
+    raise KeyError('Session is disconnected')
+KeyError: 'Session is disconnected'
+Invalid session kvVejlqMFKVbDCLLAACp (further occurrences of this error will be logged with level INFO)
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 854, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 463, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 626, in match
+    raise MethodNotAllowed(valid_methods=list(e.have_match_for)) from None
+werkzeug.exceptions.MethodNotAllowed: 405 Method Not Allowed: The method is not allowed for the requested URL.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.8/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 765, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 740, in handle_http_exception
+    return self.ensure_sync(handler)(e)  # type: ignore[no-any-return]
+  File "/home/azureuser/SpyNet/main.py", line 29, in exception_handler
+    discord_log_backend(f'User : {current_user.username} encountered an error while trying to access {request.url} ```{error}``` <@709799648143081483>')
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 854, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 463, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 626, in match
+    raise MethodNotAllowed(valid_methods=list(e.have_match_for)) from None
+werkzeug.exceptions.MethodNotAllowed: 405 Method Not Allowed: The method is not allowed for the requested URL.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.8/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 765, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 740, in handle_http_exception
+    return self.ensure_sync(handler)(e)  # type: ignore[no-any-return]
+  File "/home/azureuser/SpyNet/main.py", line 29, in exception_handler
+    discord_log_backend(f'User : {current_user.username} encountered an error while trying to access {request.url} ```{error}``` <@709799648143081483>')
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+134.209.178.173 - - [05/May/2024 05:22:09] code 400, message Bad request version ('À\x12§;øöí³`Ú\x96B\x00\x01<Ì\x14Ì\x13Ì\x15À0À,À(À$À\x14À')
+64.62.197.59 - - [05/May/2024 05:32:33] code 400, message Bad HTTP/0.9 request type ("\x16\x03\x01\x00{\x01\x00\x00w\x03\x03º,Bg'î!\x98½\x13ÿlqFÞ¦_Ûê\x0fÕxAö¹ÅVÏ@zX\xad\x00\x00\x1aÀ/À+À\x11À\x07À\x13À")
+disconnect handler error
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/engineio/server.py", line 434, in run_handler
+    return self.handlers[event](*args)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 658, in _handle_eio_disconnect
+    self._handle_disconnect(eio_sid, n)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 564, in _handle_disconnect
+    self._trigger_event('disconnect', namespace, sid)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 611, in _trigger_event
+    return handler(*args)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 282, in _handler
+    return self._handle_event(handler, message, namespace, sid,
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 827, in _handle_event
+    ret = handler(*args)
+  File "/home/azureuser/SpyNet/website/__init__.py", line 201, in handle_disconnect
+    connected_usernames.remove(username)  # Remove the username from the set
+KeyError: 'omniasaeed'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 854, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 463, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 626, in match
+    raise MethodNotAllowed(valid_methods=list(e.have_match_for)) from None
+werkzeug.exceptions.MethodNotAllowed: 405 Method Not Allowed: The method is not allowed for the requested URL.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.8/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 765, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 740, in handle_http_exception
+    return self.ensure_sync(handler)(e)  # type: ignore[no-any-return]
+  File "/home/azureuser/SpyNet/main.py", line 29, in exception_handler
+    discord_log_backend(f'User : {current_user.username} encountered an error while trying to access {request.url} ```{error}``` <@709799648143081483>')
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+disconnect handler error
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/engineio/server.py", line 434, in run_handler
+    return self.handlers[event](*args)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 658, in _handle_eio_disconnect
+    self._handle_disconnect(eio_sid, n)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 564, in _handle_disconnect
+    self._trigger_event('disconnect', namespace, sid)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 611, in _trigger_event
+    return handler(*args)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 282, in _handler
+    return self._handle_event(handler, message, namespace, sid,
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 827, in _handle_event
+    ret = handler(*args)
+  File "/home/azureuser/SpyNet/website/__init__.py", line 201, in handle_disconnect
+    connected_usernames.remove(username)  # Remove the username from the set
+KeyError: 'hamsmohamed'
+disconnect handler error
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/engineio/server.py", line 434, in run_handler
+    return self.handlers[event](*args)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 658, in _handle_eio_disconnect
+    self._handle_disconnect(eio_sid, n)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 564, in _handle_disconnect
+    self._trigger_event('disconnect', namespace, sid)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 611, in _trigger_event
+    return handler(*args)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 282, in _handler
+    return self._handle_event(handler, message, namespace, sid,
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 827, in _handle_event
+    ret = handler(*args)
+  File "/home/azureuser/SpyNet/website/__init__.py", line 201, in handle_disconnect
+    connected_usernames.remove(username)  # Remove the username from the set
+KeyError: 'hamsmohamed'
+disconnect handler error
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/engineio/server.py", line 434, in run_handler
+    return self.handlers[event](*args)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 658, in _handle_eio_disconnect
+    self._handle_disconnect(eio_sid, n)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 564, in _handle_disconnect
+    self._trigger_event('disconnect', namespace, sid)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 611, in _trigger_event
+    return handler(*args)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 282, in _handler
+    return self._handle_event(handler, message, namespace, sid,
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 827, in _handle_event
+    ret = handler(*args)
+  File "/home/azureuser/SpyNet/website/__init__.py", line 201, in handle_disconnect
+    connected_usernames.remove(username)  # Remove the username from the set
+KeyError: 'hamsmohamed'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.8/dist-packages/engineio/middleware.py", line 63, in __call__
+    return self.engineio_app.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 430, in handle_request
+    return self.eio.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/engineio/server.py", line 272, in handle_request
+    socket = self._get_socket(sid)
+  File "/usr/local/lib/python3.8/dist-packages/engineio/base_server.py", line 229, in _get_socket
+    raise KeyError('Session is disconnected')
+KeyError: 'Session is disconnected'
+message handler error
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 823, in _handle_event
+    ret = handler(auth)
+TypeError: handle_connect() takes 0 positional arguments but 1 was given
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/engineio/server.py", line 434, in run_handler
+    return self.handlers[event](*args)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 640, in _handle_eio_message
+    self._handle_connect(eio_sid, pkt.namespace, pkt.data)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 534, in _handle_connect
+    success = self._trigger_event(
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 611, in _trigger_event
+    return handler(*args)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 282, in _handler
+    return self._handle_event(handler, message, namespace, sid,
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 825, in _handle_event
+    ret = handler()
+  File "/home/azureuser/SpyNet/website/__init__.py", line 191, in handle_connect
+    username = current_user.username  # Assuming current_user.username is available
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+disconnect handler error
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/engineio/socket.py", line 16, in poll
+    packets = [self.queue.get(
+  File "/usr/lib/python3.8/queue.py", line 178, in get
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/engineio/socket.py", line 97, in handle_get_request
+    packets = self.poll()
+  File "/usr/local/lib/python3.8/dist-packages/engineio/socket.py", line 20, in poll
+    raise exceptions.QueueEmpty()
+engineio.exceptions.QueueEmpty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/engineio/server.py", line 434, in run_handler
+    return self.handlers[event](*args)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 658, in _handle_eio_disconnect
+    self._handle_disconnect(eio_sid, n)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 564, in _handle_disconnect
+    self._trigger_event('disconnect', namespace, sid)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 611, in _trigger_event
+    return handler(*args)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 282, in _handler
+    return self._handle_event(handler, message, namespace, sid,
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 827, in _handle_event
+    ret = handler(*args)
+  File "/home/azureuser/SpyNet/website/__init__.py", line 200, in handle_disconnect
+    username = current_user.username  # Assuming current_user.username is available
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 854, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 463, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 626, in match
+    raise MethodNotAllowed(valid_methods=list(e.have_match_for)) from None
+werkzeug.exceptions.MethodNotAllowed: 405 Method Not Allowed: The method is not allowed for the requested URL.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.8/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 765, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 740, in handle_http_exception
+    return self.ensure_sync(handler)(e)  # type: ignore[no-any-return]
+  File "/home/azureuser/SpyNet/main.py", line 29, in exception_handler
+    discord_log_backend(f'User : {current_user.username} encountered an error while trying to access {request.url} ```{error}``` <@709799648143081483>')
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+162.243.129.30 - - [05/May/2024 08:01:48] code 400, message Bad request syntax ('MGLNDD_20.199.81.120_80')
+172.104.11.4 - - [05/May/2024 08:18:12] code 400, message Bad request version ('À\x14À')
+205.210.31.20 - - [05/May/2024 08:37:58] code 400, message Bad request version ('À\x13À')
+205.210.31.20 - - [05/May/2024 08:37:58] code 400, message Bad request version ('À(À$À\x14À')
+185.161.248.148 - - [05/May/2024 08:47:27] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+185.161.248.148 - - [05/May/2024 09:05:03] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+185.91.69.110 - - [05/May/2024 09:55:51] code 400, message Bad request version ("s\x10¶7h\x18\x19\x87åõ(°2\x9bý,ô\x92%5Ú\x8b\x98.w\x01£\x00>\x13\x02\x13\x03\x13\x01À,À0\x00\x9fÌ©Ì¨ÌªÀ+À/\x00\x9eÀ$À(\x00kÀ#À'\x00gÀ")
+185.91.69.110 - - [05/May/2024 09:55:51] code 400, message Bad request version ('["cpuminer/2.5.1"]}')
+185.91.69.110 - - [05/May/2024 09:55:52] code 400, message Bad request version ('"EthereumStratum/1.0.0"]}')
+185.91.69.110 - - [05/May/2024 09:55:52] code 400, message Bad request syntax ('{"id":1,"method":"eth_submitLogin","worker":"igwrcvap","params":["0xe4a791640e50afd8ca46cea8f2bd6deb5c7044a7","x"],"jsonrpc":"2.0"}')
+185.91.69.110 - - [05/May/2024 09:55:53] code 400, message Bad request version ('msvc/2019","algo":["cn/1","cn/2","cn/r","cn/fast","cn/half","cn/xao","cn/rto","cn/rwz","cn/zls","cn/double","cn/ccx","cn-lite/1","cn-heavy/0","cn-heavy/tube","cn-heavy/xhv","cn-pico","cn-pico/tlo","cn/upx2","rx/0","rx/wow","rx/arq","rx/graft","rx/sfx","rx/keva","argon2/chukwa","argon2/chukwav2","argon2/ninja","astrobwt"]}}')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 854, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 463, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 626, in match
+    raise MethodNotAllowed(valid_methods=list(e.have_match_for)) from None
+werkzeug.exceptions.MethodNotAllowed: 405 Method Not Allowed: The method is not allowed for the requested URL.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.8/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 765, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 740, in handle_http_exception
+    return self.ensure_sync(handler)(e)  # type: ignore[no-any-return]
+  File "/home/azureuser/SpyNet/main.py", line 29, in exception_handler
+    discord_log_backend(f'User : {current_user.username} encountered an error while trying to access {request.url} ```{error}``` <@709799648143081483>')
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 854, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 463, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 626, in match
+    raise MethodNotAllowed(valid_methods=list(e.have_match_for)) from None
+werkzeug.exceptions.MethodNotAllowed: 405 Method Not Allowed: The method is not allowed for the requested URL.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.8/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 765, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 740, in handle_http_exception
+    return self.ensure_sync(handler)(e)  # type: ignore[no-any-return]
+  File "/home/azureuser/SpyNet/main.py", line 29, in exception_handler
+    discord_log_backend(f'User : {current_user.username} encountered an error while trying to access {request.url} ```{error}``` <@709799648143081483>')
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 854, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 463, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 626, in match
+    raise MethodNotAllowed(valid_methods=list(e.have_match_for)) from None
+werkzeug.exceptions.MethodNotAllowed: 405 Method Not Allowed: The method is not allowed for the requested URL.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.8/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 765, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 740, in handle_http_exception
+    return self.ensure_sync(handler)(e)  # type: ignore[no-any-return]
+  File "/home/azureuser/SpyNet/main.py", line 29, in exception_handler
+    discord_log_backend(f'User : {current_user.username} encountered an error while trying to access {request.url} ```{error}``` <@709799648143081483>')
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 854, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 463, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 626, in match
+    raise MethodNotAllowed(valid_methods=list(e.have_match_for)) from None
+werkzeug.exceptions.MethodNotAllowed: 405 Method Not Allowed: The method is not allowed for the requested URL.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.8/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 765, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 740, in handle_http_exception
+    return self.ensure_sync(handler)(e)  # type: ignore[no-any-return]
+  File "/home/azureuser/SpyNet/main.py", line 29, in exception_handler
+    discord_log_backend(f'User : {current_user.username} encountered an error while trying to access {request.url} ```{error}``` <@709799648143081483>')
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+199.45.154.63 - - [05/May/2024 10:05:47] code 400, message Bad request version ('À\x14À')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 854, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 463, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 626, in match
+    raise MethodNotAllowed(valid_methods=list(e.have_match_for)) from None
+werkzeug.exceptions.MethodNotAllowed: 405 Method Not Allowed: The method is not allowed for the requested URL.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.8/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 765, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 740, in handle_http_exception
+    return self.ensure_sync(handler)(e)  # type: ignore[no-any-return]
+  File "/home/azureuser/SpyNet/main.py", line 29, in exception_handler
+    discord_log_backend(f'User : {current_user.username} encountered an error while trying to access {request.url} ```{error}``` <@709799648143081483>')
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+165.22.54.194 - - [05/May/2024 10:44:34] code 400, message Bad request version ('À\x13À')
+message handler error
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 823, in _handle_event
+    ret = handler(auth)
+TypeError: handle_connect() takes 0 positional arguments but 1 was given
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/engineio/server.py", line 434, in run_handler
+    return self.handlers[event](*args)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 640, in _handle_eio_message
+    self._handle_connect(eio_sid, pkt.namespace, pkt.data)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 534, in _handle_connect
+    success = self._trigger_event(
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 611, in _trigger_event
+    return handler(*args)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 282, in _handler
+    return self._handle_event(handler, message, namespace, sid,
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 825, in _handle_event
+    ret = handler()
+  File "/home/azureuser/SpyNet/website/__init__.py", line 191, in handle_connect
+    username = current_user.username  # Assuming current_user.username is available
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+disconnect handler error
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/engineio/server.py", line 434, in run_handler
+    return self.handlers[event](*args)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 658, in _handle_eio_disconnect
+    self._handle_disconnect(eio_sid, n)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 564, in _handle_disconnect
+    self._trigger_event('disconnect', namespace, sid)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 611, in _trigger_event
+    return handler(*args)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 282, in _handler
+    return self._handle_event(handler, message, namespace, sid,
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 827, in _handle_event
+    ret = handler(*args)
+  File "/home/azureuser/SpyNet/website/__init__.py", line 200, in handle_disconnect
+    username = current_user.username  # Assuming current_user.username is available
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+message handler error
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 823, in _handle_event
+    ret = handler(auth)
+TypeError: handle_connect() takes 0 positional arguments but 1 was given
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/engineio/server.py", line 434, in run_handler
+    return self.handlers[event](*args)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 640, in _handle_eio_message
+    self._handle_connect(eio_sid, pkt.namespace, pkt.data)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 534, in _handle_connect
+    success = self._trigger_event(
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 611, in _trigger_event
+    return handler(*args)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 282, in _handler
+    return self._handle_event(handler, message, namespace, sid,
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 825, in _handle_event
+    ret = handler()
+  File "/home/azureuser/SpyNet/website/__init__.py", line 191, in handle_connect
+    username = current_user.username  # Assuming current_user.username is available
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+disconnect handler error
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/engineio/server.py", line 434, in run_handler
+    return self.handlers[event](*args)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 658, in _handle_eio_disconnect
+    self._handle_disconnect(eio_sid, n)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 564, in _handle_disconnect
+    self._trigger_event('disconnect', namespace, sid)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 611, in _trigger_event
+    return handler(*args)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 282, in _handler
+    return self._handle_event(handler, message, namespace, sid,
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 827, in _handle_event
+    ret = handler(*args)
+  File "/home/azureuser/SpyNet/website/__init__.py", line 200, in handle_disconnect
+    username = current_user.username  # Assuming current_user.username is available
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+disconnect handler error
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/engineio/server.py", line 434, in run_handler
+    return self.handlers[event](*args)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 658, in _handle_eio_disconnect
+    self._handle_disconnect(eio_sid, n)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 564, in _handle_disconnect
+    self._trigger_event('disconnect', namespace, sid)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 611, in _trigger_event
+    return handler(*args)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 282, in _handler
+    return self._handle_event(handler, message, namespace, sid,
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 827, in _handle_event
+    ret = handler(*args)
+  File "/home/azureuser/SpyNet/website/__init__.py", line 201, in handle_disconnect
+    connected_usernames.remove(username)  # Remove the username from the set
+KeyError: 'skailler'
+disconnect handler error
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/engineio/server.py", line 434, in run_handler
+    return self.handlers[event](*args)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 658, in _handle_eio_disconnect
+    self._handle_disconnect(eio_sid, n)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 564, in _handle_disconnect
+    self._trigger_event('disconnect', namespace, sid)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 611, in _trigger_event
+    return handler(*args)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 282, in _handler
+    return self._handle_event(handler, message, namespace, sid,
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 827, in _handle_event
+    ret = handler(*args)
+  File "/home/azureuser/SpyNet/website/__init__.py", line 201, in handle_disconnect
+    connected_usernames.remove(username)  # Remove the username from the set
+KeyError: 'skailler'
+172.104.11.34 - - [05/May/2024 12:07:03] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 854, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 463, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 626, in match
+    raise MethodNotAllowed(valid_methods=list(e.have_match_for)) from None
+werkzeug.exceptions.MethodNotAllowed: 405 Method Not Allowed: The method is not allowed for the requested URL.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.8/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 765, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 740, in handle_http_exception
+    return self.ensure_sync(handler)(e)  # type: ignore[no-any-return]
+  File "/home/azureuser/SpyNet/main.py", line 29, in exception_handler
+    discord_log_backend(f'User : {current_user.username} encountered an error while trying to access {request.url} ```{error}``` <@709799648143081483>')
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+disconnect handler error
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/engineio/server.py", line 434, in run_handler
+    return self.handlers[event](*args)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 658, in _handle_eio_disconnect
+    self._handle_disconnect(eio_sid, n)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 564, in _handle_disconnect
+    self._trigger_event('disconnect', namespace, sid)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 611, in _trigger_event
+    return handler(*args)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 282, in _handler
+    return self._handle_event(handler, message, namespace, sid,
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 827, in _handle_event
+    ret = handler(*args)
+  File "/home/azureuser/SpyNet/website/__init__.py", line 201, in handle_disconnect
+    connected_usernames.remove(username)  # Remove the username from the set
+KeyError: 'skailler'
+disconnect handler error
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/engineio/server.py", line 434, in run_handler
+    return self.handlers[event](*args)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 658, in _handle_eio_disconnect
+    self._handle_disconnect(eio_sid, n)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 564, in _handle_disconnect
+    self._trigger_event('disconnect', namespace, sid)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 611, in _trigger_event
+    return handler(*args)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 282, in _handler
+    return self._handle_event(handler, message, namespace, sid,
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 827, in _handle_event
+    ret = handler(*args)
+  File "/home/azureuser/SpyNet/website/__init__.py", line 201, in handle_disconnect
+    connected_usernames.remove(username)  # Remove the username from the set
+KeyError: 'spy'
+disconnect handler error
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/engineio/server.py", line 434, in run_handler
+    return self.handlers[event](*args)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 658, in _handle_eio_disconnect
+    self._handle_disconnect(eio_sid, n)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 564, in _handle_disconnect
+    self._trigger_event('disconnect', namespace, sid)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 611, in _trigger_event
+    return handler(*args)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 282, in _handler
+    return self._handle_event(handler, message, namespace, sid,
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 827, in _handle_event
+    ret = handler(*args)
+  File "/home/azureuser/SpyNet/website/__init__.py", line 201, in handle_disconnect
+    connected_usernames.remove(username)  # Remove the username from the set
+KeyError: 'spy'
+disconnect handler error
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/engineio/server.py", line 434, in run_handler
+    return self.handlers[event](*args)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 658, in _handle_eio_disconnect
+    self._handle_disconnect(eio_sid, n)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 564, in _handle_disconnect
+    self._trigger_event('disconnect', namespace, sid)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 611, in _trigger_event
+    return handler(*args)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 282, in _handler
+    return self._handle_event(handler, message, namespace, sid,
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 827, in _handle_event
+    ret = handler(*args)
+  File "/home/azureuser/SpyNet/website/__init__.py", line 201, in handle_disconnect
+    connected_usernames.remove(username)  # Remove the username from the set
+KeyError: 'alimohamed'
+172.104.11.46 - - [05/May/2024 16:18:39] code 400, message Bad request version ('À\x14À')
+disconnect handler error
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/engineio/server.py", line 434, in run_handler
+    return self.handlers[event](*args)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 658, in _handle_eio_disconnect
+    self._handle_disconnect(eio_sid, n)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 564, in _handle_disconnect
+    self._trigger_event('disconnect', namespace, sid)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 611, in _trigger_event
+    return handler(*args)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 282, in _handler
+    return self._handle_event(handler, message, namespace, sid,
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 827, in _handle_event
+    ret = handler(*args)
+  File "/home/azureuser/SpyNet/website/__init__.py", line 201, in handle_disconnect
+    connected_usernames.remove(username)  # Remove the username from the set
+KeyError: 'omniasaeed'
+disconnect handler error
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/engineio/server.py", line 434, in run_handler
+    return self.handlers[event](*args)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 658, in _handle_eio_disconnect
+    self._handle_disconnect(eio_sid, n)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 564, in _handle_disconnect
+    self._trigger_event('disconnect', namespace, sid)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 611, in _trigger_event
+    return handler(*args)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 282, in _handler
+    return self._handle_event(handler, message, namespace, sid,
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 827, in _handle_event
+    ret = handler(*args)
+  File "/home/azureuser/SpyNet/website/__init__.py", line 201, in handle_disconnect
+    connected_usernames.remove(username)  # Remove the username from the set
+KeyError: 'omniasaeed'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 854, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 463, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 626, in match
+    raise MethodNotAllowed(valid_methods=list(e.have_match_for)) from None
+werkzeug.exceptions.MethodNotAllowed: 405 Method Not Allowed: The method is not allowed for the requested URL.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.8/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 765, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 740, in handle_http_exception
+    return self.ensure_sync(handler)(e)  # type: ignore[no-any-return]
+  File "/home/azureuser/SpyNet/main.py", line 29, in exception_handler
+    discord_log_backend(f'User : {current_user.username} encountered an error while trying to access {request.url} ```{error}``` <@709799648143081483>')
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.8/dist-packages/engineio/middleware.py", line 63, in __call__
+    return self.engineio_app.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 430, in handle_request
+    return self.eio.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/engineio/server.py", line 272, in handle_request
+    socket = self._get_socket(sid)
+  File "/usr/local/lib/python3.8/dist-packages/engineio/base_server.py", line 229, in _get_socket
+    raise KeyError('Session is disconnected')
+KeyError: 'Session is disconnected'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.8/dist-packages/engineio/middleware.py", line 63, in __call__
+    return self.engineio_app.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 430, in handle_request
+    return self.eio.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/engineio/server.py", line 272, in handle_request
+    socket = self._get_socket(sid)
+  File "/usr/local/lib/python3.8/dist-packages/engineio/base_server.py", line 229, in _get_socket
+    raise KeyError('Session is disconnected')
+KeyError: 'Session is disconnected'
+disconnect handler error
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/engineio/server.py", line 434, in run_handler
+    return self.handlers[event](*args)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 658, in _handle_eio_disconnect
+    self._handle_disconnect(eio_sid, n)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 564, in _handle_disconnect
+    self._trigger_event('disconnect', namespace, sid)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 611, in _trigger_event
+    return handler(*args)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 282, in _handler
+    return self._handle_event(handler, message, namespace, sid,
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 827, in _handle_event
+    ret = handler(*args)
+  File "/home/azureuser/SpyNet/website/__init__.py", line 201, in handle_disconnect
+    connected_usernames.remove(username)  # Remove the username from the set
+KeyError: 'spy'
+172.105.128.12 - - [05/May/2024 17:58:17] code 400, message Bad request version ('À\x14À')
+157.230.37.129 - - [05/May/2024 18:32:40] code 400, message Bad request version ('À\x13À')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 854, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 463, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 626, in match
+    raise MethodNotAllowed(valid_methods=list(e.have_match_for)) from None
+werkzeug.exceptions.MethodNotAllowed: 405 Method Not Allowed: The method is not allowed for the requested URL.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.8/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 765, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 740, in handle_http_exception
+    return self.ensure_sync(handler)(e)  # type: ignore[no-any-return]
+  File "/home/azureuser/SpyNet/main.py", line 29, in exception_handler
+    discord_log_backend(f'User : {current_user.username} encountered an error while trying to access {request.url} ```{error}``` <@709799648143081483>')
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+78.153.140.177 - - [05/May/2024 19:29:48] code 400, message Bad request version ('ó\x93Îc¥Ù¤§Âd´\x9dí\x9a¬ò\x0f-¢\x9fï®\x04ç:\x00b\x13\x02\x13\x03\x13\x01À,À0À+À/Ì©Ì¨\x00£\x00\x9f\x00¢\x00\x9eÌªÀ¯À\xadÀ$À(À')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 854, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 463, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 626, in match
+    raise MethodNotAllowed(valid_methods=list(e.have_match_for)) from None
+werkzeug.exceptions.MethodNotAllowed: 405 Method Not Allowed: The method is not allowed for the requested URL.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.8/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 765, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 740, in handle_http_exception
+    return self.ensure_sync(handler)(e)  # type: ignore[no-any-return]
+  File "/home/azureuser/SpyNet/main.py", line 29, in exception_handler
+    discord_log_backend(f'User : {current_user.username} encountered an error while trying to access {request.url} ```{error}``` <@709799648143081483>')
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+disconnect handler error
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/engineio/server.py", line 434, in run_handler
+    return self.handlers[event](*args)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 658, in _handle_eio_disconnect
+    self._handle_disconnect(eio_sid, n)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 564, in _handle_disconnect
+    self._trigger_event('disconnect', namespace, sid)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 611, in _trigger_event
+    return handler(*args)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 282, in _handler
+    return self._handle_event(handler, message, namespace, sid,
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 827, in _handle_event
+    ret = handler(*args)
+  File "/home/azureuser/SpyNet/website/__init__.py", line 201, in handle_disconnect
+    connected_usernames.remove(username)  # Remove the username from the set
+KeyError: 'manarabdelrahman'
+45.227.254.8 - - [05/May/2024 20:10:46] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')

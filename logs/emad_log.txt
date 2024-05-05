@@ -45,3 +45,8 @@
 41.236.182.178 === http://www.spysnet.com/salama === 04/05 -- 07:10 PM === Desktop
 41.236.182.178 === http://www.spysnet.com/salama/course34 === 04/05 -- 07:10 PM === Desktop
 41.236.182.178 === https://www.youtube.com/playlist?list=PLM-GVlebsoPX2ILtYmljzIj-z2oqkOVGi === 04/05 -- 07:10 PM === Desktop
+41.236.182.178 === http://www.spysnet.com/ === 04/05 -- 10:39 PM === Desktop
+41.236.182.178 === http://www.spysnet.com/chemistry === 04/05 -- 10:39 PM === Desktop
+41.236.182.178 === http://www.spysnet.com/nasser === 04/05 -- 10:39 PM === Desktop
+41.236.182.178 === http://www.spysnet.com/nasser/chapter5-2 === 04/05 -- 10:39 PM === Desktop
+41.236.182.178 === https://www.youtube.com/playlist?list=PLM-GVlebsoPWprnMTrSvCa4QaEUK0TJLY === 04/05 -- 10:40 PM === Desktop

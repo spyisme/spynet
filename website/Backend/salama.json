@@ -146,9 +146,8 @@
   },
   "Statics Revision": {
     "id": "PLM-GVlebsoPXK2YJNUof_NL6rYnJjVqjw",
-    "url": "/revstatics"
-    ,"description": " Ch 1 , 2 , 3"
-
+    "url": "/revstatics",
+    "description": " Ch 1 , 2 , 3"
   },
   "Course 29": {
     "id": "PLM-GVlebsoPWrrWnO5odT75WQrNuTciVW",
@@ -179,5 +178,10 @@
     "id": "PLM-GVlebsoPX2ILtYmljzIj-z2oqkOVGi",
     "url": "/course34",
     "description": "Final Revision 1"
+  },
+  "Course 35": {
+    "id": "PLM-GVlebsoPW6abpZllo93dVC1GocHVoK",
+    "url": "/course35",
+    "description": "Final Revision 2 (Calculus)"
   }
 }

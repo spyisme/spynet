@@ -106,3 +106,8 @@
 197.57.107.71 === https://www.youtube.com/watch?v=aPN9VZeA9k0&list=PLM-GVlebsoPWNh__WI8QAIN2xQjawgB4i === 04/05 -- 10:19 AM === Mobile
 197.57.211.36 === https://www.youtube.com/watch?v=zN2_Tbn7eNE&list=PLM-GVlebsoPWNh__WI8QAIN2xQjawgB4i === 04/05 -- 12:12 PM === Mobile
 197.57.211.36 === https://spysnet.com/germann === 04/05 -- 01:43 PM === Mobile
+102.46.153.104 === http://spysnet.com/germann === 05/05 -- 08:56 AM === Mobile
+102.46.153.104 === http://spysnet.com/germann === 05/05 -- 08:56 AM === Mobile
+2c0f:fc89:125:66ee:7dcf:92c8:cc0a:1f10 === https://www.youtube.com/playlist?list=PLM-GVlebsoPWNh__WI8QAIN2xQjawgB4i === 05/05 -- 10:02 AM === Mobile
+197.57.224.160 === http://spysnet.com/germann === 05/05 -- 06:44 PM === Mobile
+197.57.224.160 === https://www.youtube.com/watch?v=t_irGA4DOC4&list=PLM-GVlebsoPWNh__WI8QAIN2xQjawgB4i === 05/05 -- 06:45 PM === Mobile
