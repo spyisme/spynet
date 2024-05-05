@@ -301,7 +301,7 @@ def edit_otp(user_id):
         if current_user.username != "spy":
             discord_log_backend("<@709799648143081483> " + current_user.username + " edited otp for " + user.username  + "to " + user.otp )
 
-        return redirect("/admin")
+        return f"Set to : {user.otp} for user {user.username}"
     else:
         return jsonify({'error': 'User not found'}), 404
 
