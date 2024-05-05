@@ -138,6 +138,10 @@ select option {
 
     <br><br>
     <h1 class="white">SpySnet</h1>
+
+
+    {% if current_user.username in ['spy' , 'skailler' , 'feteera'] % }
+
     <div class="center" >
         {%if status== "old"%}
     <form method="POST" action="/form">
@@ -165,6 +169,10 @@ select option {
 
     </form>
 </div>
+
+{%endif%}
+
+
 
     <div class="output">
         <h2>Keys :</h2>
