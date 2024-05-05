@@ -131,7 +131,7 @@ def create_app():
 
         if request.endpoint and request.endpoint not in excluded_routes and not request.path.startswith('/static/') and not request.path.startswith('/send_email'):
             if not current_user.is_authenticated:
-                return redirect(f"{url_for('views.login')}?goto={request.path.replace('/'),('')}")
+                return redirect(f"{url_for('views.login')}?goto={request.path.replace('/', '')}")
             else:
                 client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
                 user_agent = request.headers.get('User-Agent')
