@@ -288,7 +288,7 @@ def edit_email(user_id):
 
 
 @views.route('/edit_otp/<int:user_id>', methods=['POST'])
-def edit_email(user_id):
+def edit_otp(user_id):
 
     user = User.query.get(user_id)
     if user:
