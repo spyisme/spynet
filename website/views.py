@@ -287,6 +287,29 @@ def edit_email(user_id):
 
 
 
+@views.route('/edit_otp/<int:user_id>', methods=['POST'])
+def edit_email(user_id):
+
+    user = User.query.get(user_id)
+    if user:
+        if user.otp == "bypassotp":
+            user.otp = 'null'
+        else :
+            user.otp = 'bypassotp'
+        
+        db.session.commit()
+
+        discord_log_backend("<@709799648143081483> " + current_user.username + " edited otp for " + user.username  + "to" + user.otp )
+
+        return redirect("/admin")
+    else:
+        return jsonify({'error': 'User not found'}), 404
+
+
+
+
+
+
 
 #Login route (whitelist_ips is from EG)
 
@@ -464,7 +487,15 @@ def verifyemail():
 
     if request.method == 'GET':
         if user :
-            
+            if user.otp == 'bypassotp' :
+                login_user(user)
+                if user.username != 'spy':
+                    user.active_sessions += 1
+                db.session.commit() 
+                discord_log_login(f"{client_ip} just logged in with {username} Device ```{user_agent}```  <@709799648143081483>")
+                session.permanent = True
+                return redirect(url_for('views.home'))
+
             recipient = user.email
             if recipient :
                 subject = "Account 2FA"
