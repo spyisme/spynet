@@ -625,7 +625,7 @@ def redirectlinks(link):
 #Home
 @views.route("/")
 def home():
-    lines = ["chemistry", "arabic","maths" , "physics", "german" , "english" ,"biology", "geology"]
+    lines = ["chemistry", "arabic","maths" , "physics", "german" , "english" ,"biology", "geology" , "adby"]
     # lines = ["chemistry", "english","maths" , "arabic", "german" , "physics" ,"biology", "geology"]
 
     return render_template('used_pages/all.html', lines=lines , teachername="All")
@@ -706,7 +706,7 @@ def tamerelkady():
 
 
 
-@views.route("/tamer-el-kadyupdate")
+@views.route("/tamer-el-kady/update")
 def tamerelkadyupdate():
     return createtxtfile("tamerelkady" , "PLM-GVlebsoPXm9cPbwmEllBmG1cY3C5_t")
 
@@ -732,7 +732,7 @@ def moadel():
 
 
 
-@views.route("/mo-adelupdate")
+@views.route("/mo-adel/update")
 def moadelupdate():
     return createtxtfile("moadel" , "PLM-GVlebsoPVwKxgg8SuRyocWxRQSbENF")
 
@@ -914,7 +914,7 @@ def ashrafelshnawy():
 
 
 
-@views.route("/ashrafelshnawyupdate")
+@views.route("/ashrafelshnawy/update")
 def ashrafelshnawyupdate():
     return createtxtfile("ashrafelshnawy" , "PLM-GVlebsoPW0BYrJMns3WklFGZHzNtmV")
 
@@ -1284,7 +1284,7 @@ def gedosessions():
                            teachername=teachername)
 
 
-@views.route("/gedosessionsupdate")
+@views.route("/gedosessions/update")
 def gedosessionsupdate():
     return createtxtfile("gedo" , "PLM-GVlebsoPXBcSNcLjkmcQG53hQYTvui")
 
@@ -1303,7 +1303,7 @@ def gedorev1():
                            teachername=teachername)
 
 
-@views.route("/gedorev1update")
+@views.route("/gedorev1/update")
 def gedorev1update():
     return createtxtfile("gedorev1" , "PLM-GVlebsoPXPD1eQbSocD0g3DLchpyC9")
 
@@ -1320,7 +1320,7 @@ def gedorev2():
                            teachername=teachername)
 
 
-@views.route("/gedorev2update")
+@views.route("/gedorev2/update")
 def gedorev2update():
     return createtxtfile("gedorev2" , "PLM-GVlebsoPXTAA08dW2Oro5G2EmLB0Pk")
 
@@ -1337,7 +1337,7 @@ def gedorev3():
                            teachername=teachername)
 
 
-@views.route("/gedorev3update")
+@views.route("/gedorev3/update")
 def gedorev3update():
     return createtxtfile("gedorev3" , "PLM-GVlebsoPX46KbmAnXFHKX5fZsv5XEV")
 
@@ -1355,7 +1355,7 @@ def gedorev4():
                            teachername=teachername)
 
 
-@views.route("/gedorev4update")
+@views.route("/gedorev4/update")
 def gedorev4update():
     return createtxtfile("gedorev4" , "PLM-GVlebsoPULzDXf_vfadcP--n-pfaXM")
 
@@ -1373,7 +1373,7 @@ def gedorev5():
                            teachername=teachername)
 
 
-@views.route("/gedorev5update")
+@views.route("/gedorev5/update")
 def gedorev5update():
     return createtxtfile("gedorev5" , "PLM-GVlebsoPUnidZXcpQOMfq0Rj0sZO-5")
 
@@ -1392,7 +1392,7 @@ def mosalah():
                            teachername=teachername)
 
 
-@views.route("/mo-salahupdate")
+@views.route("/mo-salah/update")
 def mosalahupdate():
     return createtxtfile("mosalah" , "PLM-GVlebsoPXv3dz0yaqJtvjkOAN6KNRc")
 
@@ -1422,7 +1422,7 @@ def mohamedtarek():
                            teachername=teachername)
 
 
-@views.route("/mohamedtarekupdate")
+@views.route("/mohamedtarek/update")
 def mohamedtarekupdate():
     return createtxtfile("mohamedtarek" , "PLM-GVlebsoPWeP1pGCJWmf20Uc2Cu4JWN")
 
@@ -1514,7 +1514,7 @@ def giomaged():
 
 
 
-@views.route("/giomagedupdate")
+@views.route("/giomaged/update")
 def giomagedupdate():
     return createtxtfile("giomaged" , "PLM-GVlebsoPXh1obVV3aWysV7wXlN3yET")
 
@@ -1666,7 +1666,7 @@ def germann():
                          playlist_id=playlist_id,
                          teachername=teachername)
 
-@views.route("/germannupdate")
+@views.route("/germann/update")
 def germannupdate():
     return createtxtfile("germann" , "PLM-GVlebsoPWNh__WI8QAIN2xQjawgB4i")
 
@@ -1685,7 +1685,7 @@ def adby():
                          teachername=teachername)
 
 
-@views.route("/adbyupdate")
+@views.route("/adby/update")
 def adbyupdate():
     return createtxtfile("adby" , "PLM-GVlebsoPWZG7j5kRK479fragOS83By")
 
