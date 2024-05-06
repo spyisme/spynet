@@ -47,8 +47,30 @@
 <br><br><br>
       <br><br><br><br>
   <br><br>
-     
+  <script>
+    // JavaScript code to adjust content padding to prevent it from overlapping with the fixed footer
+    function adjustContentPadding() {
+      var content = document.querySelector('.content');
+      var footer = document.querySelector('.footer');
+      var footerHeight = footer.offsetHeight;
+      content.style.paddingBottom = footerHeight + 'px';
+    }
+  
+    // Call the adjustContentPadding function initially and whenever the window is resized
+    adjustContentPadding();
+    window.addEventListener('resize', adjustContentPadding);
+  </script>
 <style>
+    .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+  }
   .countdown{
     color:white;
   }
@@ -269,7 +291,9 @@
 
 </div>
  -->
-
+ <div class="footer">
+  <p>This is the footer.</p>
+</div>
     </section>
 
   </body>
