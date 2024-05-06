@@ -13,7 +13,7 @@ app , socketio = create_app()
 @app.errorhandler(404)
 def page_not_found(e):
     if "update" in request.path :
-        return render_template('used_pages/404.html' , update = True)
+        return render_template('used_pages/404.html' , update = True , requested_url = request.path)
     return render_template('used_pages/404.html')
 
 
