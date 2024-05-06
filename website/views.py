@@ -120,6 +120,8 @@ def createtxtfile(name ,playlist_id ):
 def list_logs():
     log_directory = 'logs'
     log_files = os.listdir(log_directory)
+    if current_user.username != 'spy' :
+        log_files =  [file for file in log_files if "biba" not in file.lower()]
 
     return render_template('admin/log_files.html', log_files=log_files)
 
