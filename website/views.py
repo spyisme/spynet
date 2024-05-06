@@ -131,7 +131,7 @@ def list_logs():
 def view_logs(username):
     if current_user.username != 'spy' :
         if username in ['spy','biba'] : 
-            return "??"
+            return ""
     log_directory = 'logs'
     log_file_path = os.path.join(log_directory, f"{username}_log.txt")
     if not os.path.exists(log_file_path):
