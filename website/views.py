@@ -234,7 +234,7 @@ def edit_active_sessions(user_id):
     if request.method == 'POST':
         if current_user.username not in ['spy' , 'skailler' , 'behary']:
             return "..."
-        new_active_sessions = request.form.get('active_sessions')
+        new_active_sessions = request.form.get('value')
     
         if not new_active_sessions:
             return jsonify({'error': 'New value for active_sessions is required'}), 400
@@ -263,7 +263,7 @@ def edit_email(user_id):
     if request.method == 'POST':
         if current_user.username not in ['spy' , 'skailler' ]:
             return "..."
-        new_email = request.form.get('new_email')
+        new_email = request.form.get('value')
     
         user = User.query.get(user_id)
 
