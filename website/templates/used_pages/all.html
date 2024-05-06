@@ -15,7 +15,8 @@
 
     <link rel="stylesheet" type="text/css" href="static/styles/all.css">
 
-    <link rel="stylesheet" type="text/css" href="static/styles/main.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/main.css') }}">
+
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
@@ -137,19 +138,7 @@
  <div class="footer">
   <p id="countdown">Days till exams:  d  h  m  s</p>
 </div>
-<style>.footer{
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: #333;
-  color: #fff;
-  text-align: center;
-  padding: 10px 0;
-  }
-  .countdown{
-  color:white;
-  }</style>
+
     </section>
 
   </body>
