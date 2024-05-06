@@ -48,6 +48,7 @@
                     <!-- <th>Password</th> -->
                     <th>Sessions</th>
                     <th>Email</th>
+                    <th>OTP</th>
                     <!-- <th></th> -->
                     <th></th>
                     <th></th>
@@ -58,10 +59,11 @@
                     <tr>
                         <td>{{ user.id }}</td>
                         <td>{{ user.username }}</td>
-                        <!-- <td>{{ user.password }}</td> -->
                         <td>{{ user.active_sessions }}</td>
 
                         <td>{{user.email}}</td>
+                        <td>{{ user.otp }}</td>
+
 <!--                         
                         <td>
                             <form action="/edit_email/{{ user.id }}" method="post">
