@@ -366,7 +366,7 @@ def login():
 
 
         if user :
-            if user.username != "spy" and user.active_sessions >= 2 :
+            if user.username  not in  ['spy','biba']  and user.active_sessions >= 3 :
                 discord_log_login(f"{username} tried to login from more than 3 devices <@709799648143081483>")
                 return redirect(f"/login?maxdevices=yes&user={username}")
             
@@ -518,7 +518,7 @@ def verifyemail():
     if request.method == 'POST':
         otp = request.form.get('otp')
         if otp == user.otp :
-            if (user.username != "spy" and user.username != "biba") and user.active_sessions >= 2 :
+            if user.username  not in  ['spy','biba'] and user.active_sessions >= 3 :
                 discord_log_login(f"{username} tried to login from more than 3 devices <@709799648143081483>")
                 return redirect(f"/login?maxdevices=true&user={username}")
             
