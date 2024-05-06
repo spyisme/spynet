@@ -116,3 +116,10 @@
 156.213.156.46 === http://spysnet.com/ === 05/05 -- 06:51 PM === Desktop
 156.213.156.46 === https://drive.google.com/drive/folders/1cEnVqh8bAFr4aqHgMdy-_TpfbEVXC0zc === 05/05 -- 06:51 PM === Desktop
 156.213.156.46 === http://spysnet.com/ === 05/05 -- 08:46 PM === Mobile
+41.43.183.198 === http://spysnet.com/ === 06/05 -- 12:20 PM === Desktop
+41.43.183.198 === http://spysnet.com/physics === 06/05 -- 12:20 PM === Desktop
+41.43.183.198 === http://spysnet.com/nawar === 06/05 -- 12:20 PM === Desktop
+41.43.183.198 === http://spysnet.com/physics === 06/05 -- 12:20 PM === Desktop
+41.43.183.198 === http://spysnet.com/nawar === 06/05 -- 12:20 PM === Desktop
+41.43.183.198 === http://spysnet.com/nawar/nawarch7 === 06/05 -- 12:20 PM === Desktop
+41.43.183.198 === https://www.youtube.com/playlist?list=PLM-GVlebsoPVb4wGHYzfZwrBS9v61oNG0 === 06/05 -- 12:20 PM === Desktop
