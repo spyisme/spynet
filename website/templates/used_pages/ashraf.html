@@ -9,7 +9,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
     <script src="static/java/connection.js"></script>
-    <script src="{{ url_for('static', filename='java/connection.js') }}"></script>
+    <script src="{{ url_for('static', filename='java/countdown.js') }}"></script>
 
     <title>Sanawya Sessions</title>
     <script src="https://webkeyz.github.io/stand-with-palestine/dist/stand-with-palestine-widget.js"></script>
@@ -275,7 +275,19 @@ iframe {
         <div class="footer">
             <p id="countdown">Loading..</p>
           </div>
-    
+          <style>.footer{
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #3a6689;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            }
+          .countdown{
+            color:white;
+            }</style>
     </section>
 
 
