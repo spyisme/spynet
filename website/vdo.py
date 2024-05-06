@@ -276,7 +276,12 @@ def index():
             discord_log(f"USED TOKEN | {current_user.username} | {client_ip}")
             return jsonify({'error': 'Token already used'}), 400
     
-    mpd , c_keys , video_name = getkeys(mytoken)
+    try : 
+        mpd , c_keys , video_name = getkeys(mytoken)
+    except Exception as e:
+        
+        return str(e)
+       
     tokenhref = gethref(mytoken)
     discord_log(f"Api got used by {current_user.username} | {client_ip}")
 
