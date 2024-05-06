@@ -7,6 +7,14 @@ color:white;
   
 
 
+.nav {
+    padding: 20px;
+    margin: 0;
+    text-align: center;
+    color: #fff;
+
+
+}
 
 ul {
     list-style: none;
