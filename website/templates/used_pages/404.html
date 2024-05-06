@@ -50,7 +50,11 @@
 </head>
 <body>
     <div class="error-container">
+
         <div class="error-code">404</div>
+        {%if update%}
+        <div class="error-message">All update pages are changed to spysnet.com/smth/update</div>
+        {%endif%}
         <div class="error-message">Page Not Found</div>
         <a href="/" class="btn">Go Home</a>
     </div>
