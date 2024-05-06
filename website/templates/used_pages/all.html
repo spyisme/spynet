@@ -42,22 +42,8 @@
     <p>10/6/2024</p>
 
   </div>
-<br><br><br>
-      <br><br><br><br>
-  <br><br>
-  <script>
-    // JavaScript code to adjust content padding to prevent it from overlapping with the fixed footer
-    function adjustContentPadding() {
-      var content = document.querySelector('.content');
-      var footer = document.querySelector('.footer');
-      var footerHeight = footer.offsetHeight;
-      content.style.paddingBottom = footerHeight + 'px';
-    }
-  
-    // Call the adjustContentPadding function initially and whenever the window is resized
-    adjustContentPadding();
-    window.addEventListener('resize', adjustContentPadding);
-  </script>
+
+
 <style>
     .footer {
     position: fixed;
@@ -108,67 +94,9 @@
     font-size: 20px;
   }
 </style>
-<!-- <div id="popupContainer" class="popup-container">
-  <div class="popup-content">
-    <span class="close-btn" onclick="closePopup()">&times;</span>
-    <img class="popup-image" src="static/assets/exams.png" alt="Popup Image" width="800" height="800">
-  </div>
-</div> -->
 
-<script>
-  // Function to open the popup
-  function openPopup() {
-    var popup = document.getElementById('popupContainer');
-    popup.style.display = 'block';
 
-    // Close the popup when clicking outside of it
-    window.onclick = function(event) {
-      if (event.target == popup) {
-        popup.style.display = 'none';
-      }
-    }
-  }
 
-  // Function to close the popup
-  function closePopup() {
-    var popup = document.getElementById('popupContainer');
-    popup.style.display = 'none';
-  }
-
-  // Automatically open the popup when the page loads
-  window.onload = function() {
-    openPopup();
-  };
-</script>
-      <script>
-      // Set the date we're counting down to
-      var countDownDate = new Date("June 10, 2024 08:00:00 GMT+0200").getTime();
-
-      // Update the countdown every 1 second
-      var x = setInterval(function() {
-
-        // Get the current date and time
-        var now = new Date().getTime();
-
-        // Calculate the distance between now and the countdown date
-        var distance = countDownDate - now;
-
-        // Calculate days, hours, minutes and seconds
-        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        // Output the result in an element with id="countdown"
-        document.getElementById("countdown").innerHTML = "Days till exams: " + days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-
-        // If the countdown is over, display a message
-        if (distance < 0) {
-          clearInterval(x);
-          document.getElementById("countdown").innerHTML = "EXPIRED";
-        }
-      }, 1000);
-      </script>
   <div class="textcont">
     <p><button class="button" id="homeBtn" onclick="showDiv('homestuff', 'homeBtn')">Videos</button></p>
     <p><button class="button" id="pdfsBtn" onclick="showDiv('pdfsstuff', 'pdfsBtn')">Pdfs</button></p>
@@ -255,42 +183,8 @@
   </ul>
 </div>
 
-<!-- 
-<div id="othersstuff" class="content hidden">
-  <ul>
-    <li>
-
-      <a href="/netflix" target="_blank">
-      
-      <div class="card">
-      <img src="static/assets/netflix.png" loading="lazy">
-      <div class="text2">
-     Netflix cookie
-      </div>
-      
-      </div>
-      
-      </a>
-      
-      
-      </li>
-      
-        <li>
-            <a href="https://youtu.be/tIpbcAgCe-s" target="_blank">
-                <div class="card">
-            <img src="static/assets/netflix.png" loading="lazy">
-
-            <div class="text2">How to use</div>
-                </div>
-            </a>
-        </li>
-
-  </ul>
-
-</div>
- -->
  <div class="footer">
-  <p id="countdown">This is the footer.</p>
+  <p id="countdown">Days till exams:  d  h  m  s</p>
 </div>
     </section>
 
@@ -317,6 +211,67 @@
             // Add 'active' class to the clicked button
             document.getElementById(buttonId).classList.add('active');
         }
+          // Function to open the popup
+  function openPopup() {
+    var popup = document.getElementById('popupContainer');
+    popup.style.display = 'block';
+
+    // Close the popup when clicking outside of it
+    window.onclick = function(event) {
+      if (event.target == popup) {
+        popup.style.display = 'none';
+      }
+    }
+  }
+
+  // Function to close the popup
+  function closePopup() {
+    var popup = document.getElementById('popupContainer');
+    popup.style.display = 'none';
+  }
+
+  // Automatically open the popup when the page loads
+  window.onload = function() {
+    openPopup();
+  };
+        // Set the date we're counting down to
+        var countDownDate = new Date("June 10, 2024 08:00:00 GMT+0200").getTime();
+
+// Update the countdown every 1 second
+var x = setInterval(function() {
+
+  // Get the current date and time
+  var now = new Date().getTime();
+
+  // Calculate the distance between now and the countdown date
+  var distance = countDownDate - now;
+
+  // Calculate days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  // Output the result in an element with id="countdown"
+  document.getElementById("countdown").innerHTML = "Days till exams: " + days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+  // If the countdown is over, display a message
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("countdown").innerHTML = "EXPIRED";
+  }
+}, 1000);
+    // JavaScript code to adjust content padding to prevent it from overlapping with the fixed footer
+    function adjustContentPadding() {
+      var content = document.querySelector('.content');
+      var footer = document.querySelector('.footer');
+      var footerHeight = footer.offsetHeight;
+      content.style.paddingBottom = footerHeight + 'px';
+    }
+  
+    // Call the adjustContentPadding function initially and whenever the window is resized
+    adjustContentPadding();
+    window.addEventListener('resize', adjustContentPadding);
 </script>
 
 
