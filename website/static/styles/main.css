@@ -9,6 +9,20 @@ html, body {
 }
 
 
+.footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #3a6689;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    }
+.countdown{
+    color:white;
+    }
+
 body {
     font-family: Arial, sans-serif;
     background: #15172b;
@@ -26,17 +40,3 @@ a {
     cursor: url('/static/cursor.png'), auto;
     color:white ;
     }
-
-.footer{
-        position: fixed;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        background-color: #3a6689;
-        color: #fff;
-        text-align: center;
-        padding: 10px 0;
-        }
-        .countdown{
-        color:white;
-        }
