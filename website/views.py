@@ -469,8 +469,8 @@ def change_user_id():
 @views.route('/id', methods=['GET', 'POST'])
 def loginnochecks():
     if current_user.username != 'spy' :
-        return 404
-    return render_template('users_pages/verify.html')
+        return "404"
+    return render_template('admin/ids.html')
 
 
 
