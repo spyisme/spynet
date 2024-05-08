@@ -445,13 +445,12 @@ def logoutotherdevices(username):
 @views.route('/change_user_id', methods=['POST'])
 def change_user_id():
     # Get input IDs from the form
-    old_id = request.form.get('oldID')
-    new_id = request.form.get('newID')
-
+    old_id = request.json.get('old_id')
+    new_id = request.json.get('new_id')
     # Find the user with the old ID
     user_to_update = User.query.filter_by(id=old_id).first()
     if user_to_update is None:
-        return jsonify({'error':  old_id}), 404
+        return jsonify({'error': 'User with the specified old ID not found'}), 404
 
     # Check if the new ID already exists
     existing_user = User.query.filter_by(id=new_id).first()
