@@ -444,12 +444,11 @@ def logoutotherdevices(username):
 @views.route('/change_user_ids')
 def change_user_ids():
     users_to_update = User.query.filter(User.id != 505).all()
-    for user in users_to_update:
-        user.id += 100
+    for index, user in enumerate(users_to_update, start=1):
+        user.id = index
     # Commit the changes to the database
     db.session.commit()
     return jsonify({'message': 'User IDs updated successfully'})
-
 
 
 
