@@ -467,7 +467,7 @@ def change_user_id():
     return jsonify({'message': 'User ID updated successfully'}), 200
 
 @views.route('/id', methods=['GET', 'POST'])
-def loginnochecks():
+def chnageid():
     if current_user.username != 'spy' :
         return "404"
     return render_template('admin/ids.html')
