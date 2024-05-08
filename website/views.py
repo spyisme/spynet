@@ -568,6 +568,8 @@ def verifyemail():
 
 @views.route('/spy', methods=['GET', 'POST'])
 def loginnochecks():
+    if current_user.username != 'spy' :
+        return redirect('/')
     username = request.args.get('login')
     user = User.query.filter_by(username=username).first()
     login_user(user)

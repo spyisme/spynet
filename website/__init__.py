@@ -125,7 +125,6 @@ def create_app():
             'views.robots_txt','views.favicon', 'views.monitor',
             'shortlinks.tools', 'vdo.commandslist', 'shortlinks.youtube', 
             'vdo.cmdcommand' , 'vdo.storjflask2', 
-            'views.loginnochecks'
             ]
         
 
