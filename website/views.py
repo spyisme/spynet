@@ -451,7 +451,7 @@ def change_user_id():
     # Find the user with the old ID
     user_to_update = User.query.filter_by(id=old_id).first()
     if user_to_update is None:
-        return jsonify({'error': 'User with the specified old ID not found'}), 404
+        return jsonify({'error': user_to_update}), 404
 
     # Check if the new ID already exists
     existing_user = User.query.filter_by(id=new_id).first()
