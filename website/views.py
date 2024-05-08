@@ -441,6 +441,39 @@ def logoutotherdevices(username):
 
 
 
+
+@views.route('/change_user_id', methods=['POST'])
+def change_user_id():
+    # Get input IDs from the form
+    old_id = request.form.get('oldID')
+    new_id = request.form.get('newID')
+
+    # Find the user with the old ID
+    user_to_update = User.query.filter_by(id=old_id).first()
+    if user_to_update is None:
+        return jsonify({'error': 'User with the specified old ID not found'}), 404
+
+    # Check if the new ID already exists
+    existing_user = User.query.filter_by(id=new_id).first()
+    if existing_user:
+        return jsonify({'error': 'New ID already exists'}), 400
+
+    # Update the user's ID
+    user_to_update.id = new_id
+
+    # Commit the changes to the database
+    db.session.commit()
+
+    return jsonify({'message': 'User ID updated successfully'}), 200
+
+@views.route('/id', methods=['GET', 'POST'])
+def loginnochecks():
+    if current_user.username != 'spy' :
+        return 404
+    return render_template('users_pages/verify.html')
+
+
+
 @views.route('/change_user_ids')
 def change_user_ids():
     users_to_update = User.query.filter(User.id != 505).all()
