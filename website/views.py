@@ -1024,19 +1024,17 @@ def math():
  
 @views.route('/sherbo')
 def sherbo():
-    sherbo_info = load_sherbo_info()
+  sherbo_info = load_sherbo_info()
 
-    teacher_links = [
-        [course, [f"/sherbo{sherbo_info[course]['url']}", sherbo_info[course]['description']]]
+  teacher_links = {
+        course: (f"/sherbo{sherbo_info[course]['url']}", sherbo_info[course]['description'])
         for course in sherbo_info
-    ]
-    
-    teachername = "Math"
-    return render_template('used_pages/teacher.html',
-                           teacher_links=teacher_links,
-                           teachername=teachername,
-                           imgs="yes")
-
+    }
+  teachername = "Math"
+  return render_template('used_pages/teacher.html',
+                         teacher_links=teacher_links,
+                         teachername=teachername,
+                         imgs="yes")
 
 def load_sherbo_info():
     with open('website/Backend/sherbo.json', 'r') as file:
