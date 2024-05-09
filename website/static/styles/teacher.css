@@ -179,3 +179,32 @@ user-select: none; /* Prevent text selection within the container */
 pointer-events: none; 
 }
 
+.btn-prev,
+.btn-next {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.btn-prev {
+  margin-right: 10px; /* Add margin to separate prev and next buttons */
+}
+
+.btn-prev:hover,
+.btn-next:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
+.btn-prev:disabled,
+.btn-next:disabled {
+  background-color: #ccc; /* Gray for disabled buttons */
+  cursor: not-allowed;
+}
