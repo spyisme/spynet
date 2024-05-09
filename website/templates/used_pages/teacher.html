@@ -2,89 +2,94 @@
 <html>
 <head>
   <meta name="robots" content="noindex">
-  <title>{{ teachername }}</title>
-  <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
-  <meta name="description" content="Spynet">
-  <meta name="keywords" content="spy, spynet, spysnet">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-  <link rel="stylesheet" type="text/css" href="static/styles/teacher.css">
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/main.css') }}">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
-  <script src="static/java/connection.js"></script>
+
+    <title>{{ teachername }}</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+
+
+
+    <meta name="description" content="Spynet">
+    <meta name="keywords" content="spy, spynet, spysnet">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+    <link rel="stylesheet" type="text/css" href="static/styles/teacher.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/main.css') }}">
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
+    <script src="static/java/connection.js"></script>
+
+    <!-- <script src="https://webkeyz.github.io/stand-with-palestine/dist/stand-with-palestine-widget.js"></script> -->
+
 </head>
+
+
 <body onload="startCountdown()">
+
   <section class="banner">
     <canvas id="canvas"> </canvas>
-    <div class="nav">
-      {% if teachername == "Arabic" or teachername == "English" or teachername == "Biology" or teachername == "Chemistry" or teachername == "Geology" or teachername == "German" or teachername == "Math" or teachername == "Physics" %}
-        <img class="img" src="static/assets/subjects/{{ teachername }}11.png"></img>
-      {% else %}
-        <h1>✰ {{ teachername }} ✰</h1>
-      {% endif %}
-    </div>
-    <ul id="teacher-links">
-      {% for course, data in teacher_links.items() %}
-      <li>
-        <a href="{{ data[0] }}">
-          <div class="card">
-            <img src="static/assets/{{ teachername }}/{{ data[0] }}.jpg" loading="lazy">
-            <p>{{ course }}</p>
-            <span class="card-description">{{ data[1] }}</span>
-          </div>
-        </a>
-      </li>
-      {% endfor %}
-    </ul>
-    <div class="pagination">
-      <button id="prevBtn" onclick="prevPage()">◄ Prev</button>
-      <button id="nextBtn" onclick="nextPage()">Next ►</button>
-    </div>
-    <br>
-    <br>
-    <br>
+
+  <div class="nav">
+    {% if teachername == "Arabic"or teachername == "English" or teachername == "Biology" or teachername == "Chemistry" or teachername == "Geology" or teachername == "German" or teachername == "Math" or teachername == "Physics" %}
+
+    <img class="img" src="static/assets/subjects/{{ teachername }}11.png"></img>
+
     
-    <div class="footer">
-      <p id="countdown">Loading..</p>
-    </div>
-  </section>
-</body>
+         {%else%}
+        <h1  >✰ {{ teachername }} ✰</h1>
+
+{%endif%}
+{% if link %}
+    {% for key, value in link.items() %}
+        <p><a href="{{ value }}" target="_blank" style="color: white;"><u>{{ key }}</u></a></p>
+    {% endfor %}
+{% endif %}
+
+
+
+           </div>
+
+            
+
+   <ul>
+    {% for name, data in teacher_links.items() %}
+
+
+
+          <li>
+    
+            <a href="{{ data[0] }}">
+
+
+                  <div class="card">
+                    {% if data|length > 2 and data[2] %}
+                    <div class="card-new-badge"> {{data[2]}} </div>
+                    {% endif %}
+
+                      <img src="static/assets/{{ teachername }}/{{ name }}.jpg" loading="lazy">
+                      <p>{{ name }}</p>
+                <span class="card-description">{{ data[1] }}</span>
+                </div>
+
+              </a>
+          </li>
+          {% endfor %}
+      </ul>
+
+      <div class="footer">
+        <p id="countdown">Countdown</p>
+      </div>
+
+    </section>
+
+    </body>
+
+
 <script src="static/java/snow.js"></script>
 <script src="static/java/countdown.js"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    var teacherLinks = document.getElementById('teacher-links');
-    var currentPage = 0;
-    var itemsPerPage = 10;
+ 
 
-    function showPage(page) {
-      var start = page * itemsPerPage;
-      var end = start + itemsPerPage;
-      var lis = teacherLinks.getElementsByTagName("li");
-      for (var i = 0; i < lis.length; i++) {
-        if (i >= start && i < end) {
-          lis[i].style.display = "block";
-        } else {
-          lis[i].style.display = "none";
-        }
-      }
-    }
-
-    function nextPage() {
-      var lis = teacherLinks.getElementsByTagName("li");
-      if ((currentPage + 1) * itemsPerPage < lis.length) {
-        currentPage++;
-        showPage(currentPage);
-      }
-    }
-
-    function prevPage() {
-      if (currentPage > 0) {
-        currentPage--;
-        showPage(currentPage);
-      }
-    }
-
-    showPage(currentPage);
-  });
-</script>
 </html>
