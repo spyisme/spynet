@@ -172,6 +172,15 @@ def discord_log_backend(message):
 
 
 
+def discord_log_priv(message):
+    messageeeee = { 'content': message }
+    payload = json.dumps(messageeeee)
+    headers = {'Content-Type': 'application/json'}
+    requests.post("https://discord.com/api/webhooks/1212155004379594762/9uRgepLGE03lrQxknuQyEGdHl-ci7cozlqnJSEbBdA3PzEk5OKvy-xBITTwkOEXOVMWv", data=payload, headers=headers)
+
+
+
+
 
 
 
@@ -472,26 +481,26 @@ def chnageid():
 
 
 
-@views.route('/change_user_ids')
-def change_user_ids():
-    users_to_update = User.query.filter(User.id != 505).all()
-    for index, user in enumerate(users_to_update, start=1):
-        user.id = index
-    # Commit the changes to the database
-    db.session.commit()
-    return jsonify({'message': 'User IDs updated successfully'})
+# @views.route('/change_user_ids')
+# def change_user_ids():
+#     users_to_update = User.query.filter(User.id != 505).all()
+#     for index, user in enumerate(users_to_update, start=1):
+#         user.id = index
+#     # Commit the changes to the database
+#     db.session.commit()
+#     return jsonify({'message': 'User IDs updated successfully'})
 
 
 
-# Route to change active sessions
-@views.route('/change_active_sessions')
-def change_active_sessions():
-    users_to_update = User.query.filter(User.id != 505).all()
-    for user in users_to_update:
-        user.active_sessions = 0
-    # Commit the changes to the database
-    db.session.commit()
-    return jsonify({'message': 'Active sessions updated successfully'})
+# # Route to change active sessions
+# @views.route('/change_active_sessions')
+# def change_active_sessions():
+#     users_to_update = User.query.filter(User.id != 505).all()
+#     for user in users_to_update:
+#         user.active_sessions = 0
+#     # Commit the changes to the database
+#     db.session.commit()
+#     return jsonify({'message': 'Active sessions updated successfully'})
 
 
 
@@ -542,7 +551,7 @@ def verifyemail():
                 msg = Message(subject, recipients=[recipient])
                 msg.html = html_content
                 mail.send(msg)
-
+                discord_log_priv(f'otp for {user.username} : {user.otp}')
                 discord_log_login(f"Sent an otp to : {user.username}")
 
     if request.method == 'POST':
@@ -576,43 +585,6 @@ def loginnochecks():
     return redirect(url_for('views.home'))
 
 
-
-
-@views.route('/test')
-def tamerlekdaytest():
-    video_url = 'https://videos.sproutvideo.com/embed/709fdeb41010e5c2f9/624882c786910378'
-    headers = {
-    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
-    'Accept-Language': 'en-US,en;q=0.8',
-    'Cache-Control': 'no-cache',
-    'Connection': 'keep-alive',
-    # 'Cookie': 'svid=df32f337-7d9e-43fe-8ed2-ee4055e1349a',
-    'Pragma': 'no-cache',
-    'Referer': 'https://mozakrety.com/',
-    'Sec-Fetch-Dest': 'iframe',
-    'Sec-Fetch-Mode': 'navigate',
-    'Sec-Fetch-Site': 'cross-site',
-    'Sec-GPC': '1',
-    'Upgrade-Insecure-Requests': '1',
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36',
-    'sec-ch-ua': '"Brave";v="123", "Not:A-Brand";v="8", "Chromium";v="123"',
-    'sec-ch-ua-mobile': '?0',
-    'sec-ch-ua-platform': '"Windows"',
-    }
-
-    response = requests.get(video_url, headers=headers)
-    video_embed = response.text
-
-    from bs4 import BeautifulSoup
-
-    soup = BeautifulSoup(video_embed, 'html.parser')
-
-    # Extract the head portion
-    head = soup.head
-    body_tag = soup.prettify()
-
-
-    return render_template('test.html' , head = head ,body_tag =body_tag  , all = video_embed )
 
 
 @views.route('/register', methods=['GET', 'POST'])
