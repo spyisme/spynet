@@ -41,7 +41,8 @@
 <script src="static/java/countdown.js"></script>
 <script>
     var currentPage = 0;
-    var itemsPerPage = 10; // Define itemsPerPage within the scope
+    var itemsPerPage = 10;
+    var teacherData; // Declare teacherData in the global scope
   
     function nextPage() {
       if ((currentPage + 1) * itemsPerPage < teacherData.length) {
@@ -59,7 +60,7 @@
   
     document.addEventListener('DOMContentLoaded', function() {
       var teacherLinks = document.getElementById('teacher-links');
-      var teacherData = {{ teacher_links | tojson }};
+      teacherData = {{ teacher_links | tojson }}; // Assign value to teacherData
   
       function showPage(page) {
         console.log("Current page:", page);
@@ -102,6 +103,7 @@
       showPage(currentPage);
     });
   </script>
+  
   
   
   
