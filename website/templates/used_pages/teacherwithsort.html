@@ -40,6 +40,20 @@
 <script src="static/java/snow.js"></script>
 <script src="static/java/countdown.js"></script>
 <script>
+    function nextPage() {
+      if ((currentPage + 1) * itemsPerPage < teacherData.length) {
+        currentPage++;
+        showPage(currentPage);
+      }
+    }
+  
+    function prevPage() {
+      if (currentPage > 0) {
+        currentPage--;
+        showPage(currentPage);
+      }
+    }
+  
     document.addEventListener('DOMContentLoaded', function() {
       var teacherLinks = document.getElementById('teacher-links');
       var teacherData = {{ teacher_links | tojson }};
@@ -84,22 +98,9 @@
         }
       }
   
-      function nextPage() {
-        if ((currentPage + 1) * itemsPerPage < teacherData.length) {
-          currentPage++;
-          showPage(currentPage);
-        }
-      }
-  
-      function prevPage() {
-        if (currentPage > 0) {
-          currentPage--;
-          showPage(currentPage);
-        }
-      }
-  
       showPage(currentPage);
     });
   </script>
+  
   
 </html>
