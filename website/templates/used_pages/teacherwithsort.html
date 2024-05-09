@@ -42,7 +42,7 @@
 <script>
     var currentPage = 0;
     var itemsPerPage = 10;
-    var teacherData; // Declare teacherData in the global scope
+    var teacherData;
   
     function nextPage() {
       if ((currentPage + 1) * itemsPerPage < teacherData.length) {
@@ -58,48 +58,45 @@
       }
     }
   
-    document.addEventListener('DOMContentLoaded', function() {
+    function showPage(page) {
       var teacherLinks = document.getElementById('teacher-links');
-      teacherData = {{ teacher_links | tojson }}; // Assign value to teacherData
-  
-      function showPage(page) {
-        console.log("Current page:", page);
-        console.log("Teacher data:", teacherData);
-        teacherLinks.innerHTML = '';
-        var start = page * itemsPerPage;
-        var end = start + itemsPerPage;
-        for (var i = start; i < end && i < teacherData.length; i++) {
-          var name = teacherData[i][0];
-          var data = teacherData[i][1];
-          var listItem = document.createElement('li');
-          var link = document.createElement('a');
-          link.href = data[0];
-          var card = document.createElement('div');
-          card.className = 'card';
-          if (data.length > 2 && data[2]) {
-            var cardNewBadge = document.createElement('div');
-            cardNewBadge.className = 'card-new-badge';
-            cardNewBadge.textContent = data[2];
-            card.appendChild(cardNewBadge);
-          }
-          var image = document.createElement('img');
-          image.src = 'static/assets/{{ teachername }}/' + name + '.jpg';
-          image.loading = 'lazy';
-          var p = document.createElement('p');
-          p.textContent = name;
-          var span = document.createElement('span');
-          span.className = 'card-description';
-          span.textContent = data[1];
-  
-          card.appendChild(image);
-          card.appendChild(p);
-          card.appendChild(span);
-          link.appendChild(card);
-          listItem.appendChild(link);
-          teacherLinks.appendChild(listItem);
+      teacherLinks.innerHTML = '';
+      var start = page * itemsPerPage;
+      var end = start + itemsPerPage;
+      for (var i = start; i < end && i < teacherData.length; i++) {
+        var name = teacherData[i][0];
+        var data = teacherData[i][1];
+        var listItem = document.createElement('li');
+        var link = document.createElement('a');
+        link.href = data[0];
+        var card = document.createElement('div');
+        card.className = 'card';
+        if (data.length > 2 && data[2]) {
+          var cardNewBadge = document.createElement('div');
+          cardNewBadge.className = 'card-new-badge';
+          cardNewBadge.textContent = data[2];
+          card.appendChild(cardNewBadge);
         }
-      }
+        var image = document.createElement('img');
+        image.src = 'static/assets/{{ teachername }}/' + name + '.jpg';
+        image.loading = 'lazy';
+        var p = document.createElement('p');
+        p.textContent = name;
+        var span = document.createElement('span');
+        span.className = 'card-description';
+        span.textContent = data[1];
   
+        card.appendChild(image);
+        card.appendChild(p);
+        card.appendChild(span);
+        link.appendChild(card);
+        listItem.appendChild(link);
+        teacherLinks.appendChild(listItem);
+      }
+    }
+  
+    document.addEventListener('DOMContentLoaded', function() {
+      teacherData = {{ teacher_links | tojson }};
       showPage(currentPage);
     });
   </script>
