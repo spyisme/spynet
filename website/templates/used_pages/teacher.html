@@ -1,84 +1,96 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ teachername }}</title>
-  <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
-  <link rel="stylesheet" type="text/css" href="static/styles/teacher.css">
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/main.css') }}">
-  <style>
-    /* Additional CSS styles can be added here */
-  </style>
+  <meta name="robots" content="noindex">
+
+    <title>{{ teachername }}</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+
+
+
+    <meta name="description" content="Spynet">
+    <meta name="keywords" content="spy, spynet, spysnet">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+    <link rel="stylesheet" type="text/css" href="static/styles/teacher.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/main.css') }}">
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
+    <script src="static/java/connection.js"></script>
+
+    <!-- <script src="https://webkeyz.github.io/stand-with-palestine/dist/stand-with-palestine-widget.js"></script> -->
+
 </head>
+
+
 <body onload="startCountdown()">
+
   <section class="banner">
-    <canvas id="canvas"></canvas>
-    <div class="nav">
-      {% if teachername in ["Arabic", "English", "Biology", "Chemistry", "Geology", "German", "Math", "Physics"] %}
-        <img class="img" src="static/assets/subjects/{{ teachername }}11.png" alt="{{ teachername }}">
-      {% else %}
-        <h1>✰ {{ teachername }} ✰</h1>
-      {% endif %}
-      {% if link %}
-        {% for key, value in link.items() %}
-          <p><a href="{{ value }}" target="_blank" style="color: white;"><u>{{ key }}</u></a></p>
-        {% endfor %}
-      {% endif %}
-    </div>
+    <canvas id="canvas"> </canvas>
 
-    <ul id="teacher-links"></ul>
-    <br>
-    <br>
-    <br>
-    <div class="footer">
-      <p id="countdown">Loading..</p>
-    </div>
-  </section>
+  <div class="nav">
+    {% if teachername == "Arabic"or teachername == "English" or teachername == "Biology" or teachername == "Chemistry" or teachername == "Geology" or teachername == "German" or teachername == "Math" or teachername == "Physics" %}
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
-  <script src="static/java/connection.js"></script>
-  <script src="static/java/snow.js"></script>
-  <script src="static/java/countdown.js"></script>
-  <script>
-    // JavaScript logic to populate teacher links
-    document.addEventListener('DOMContentLoaded', function() {
-      var teacherLinks = document.getElementById('teacher-links');
+    <img class="img" src="static/assets/subjects/{{ teachername }}11.png"></img>
 
-      // Assuming teacher_links is a JSON object containing teacher data
-      var teacherData = {{ teacher_links | tojson }};
+    
+         {%else%}
+        <h1  >✰ {{ teachername }} ✰</h1>
 
-      // Loop through teacher data and create list items
-      for (var name in teacherData) {
-        var data = teacherData[name];
-        var listItem = document.createElement('li');
-        var link = document.createElement('a');
-        link.href = data[0];
-        var card = document.createElement('div');
-        card.className = 'card';
-        if (data.length > 2 && data[2]) {
-          var cardNewBadge = document.createElement('div');
-          cardNewBadge.className = 'card-new-badge';
-          cardNewBadge.textContent = data[2];
-          card.appendChild(cardNewBadge);
-        }
-        var image = document.createElement('img');
-        image.src = 'static/assets/{{ teachername }}/' + name + '.jpg';
-        image.loading = 'lazy';
-        var p = document.createElement('p');
-        p.textContent = name;
-        var span = document.createElement('span');
-        span.className = 'card-description';
-        span.textContent = data[1];
+{%endif%}
+{% if link %}
+    {% for key, value in link.items() %}
+        <p><a href="{{ value }}" target="_blank" style="color: white;"><u>{{ key }}</u></a></p>
+    {% endfor %}
+{% endif %}
 
-        card.appendChild(image);
-        card.appendChild(p);
-        card.appendChild(span);
-        link.appendChild(card);
-        listItem.appendChild(link);
-        teacherLinks.appendChild(listItem);
-      }
-    });
-  </script>
-</body>
+
+
+           </div>
+
+            
+
+   <ul>
+    {% for name, data in teacher_links.items() %}
+
+
+
+          <li>
+    
+            <a href="{{ data[0] }}">
+
+
+                  <div class="card">
+                    {% if data|length > 2 and data[2] %}
+                    <div class="card-new-badge"> {{data[2]}} </div>
+                    {% endif %}
+
+                      <img src="static/assets/{{ teachername }}/{{ name }}.jpg" loading="lazy">
+                      <p>{{ name }}</p>
+                <span class="card-description">{{ data[1] }}</span>
+                </div>
+
+              </a>
+          </li>
+          {% endfor %}
+      </ul>
+
+      <br>
+      <br><br>      <div class="footer">
+        <p id="countdown">Loading..</p>
+      </div>
+
+    </section>
+
+    </body>
+
+
+<script src="static/java/snow.js"></script>
+<script src="static/java/countdown.js"></script>
+ 
+
 </html>
