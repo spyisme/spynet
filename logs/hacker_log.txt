@@ -640,3 +640,16 @@
 105.36.73.190 === http://spysnet.com/english === 09/05 -- 09:57 AM === Mobile
 105.36.73.190 === http://spysnet.com/english/hossamsameh === 09/05 -- 09:57 AM === Mobile
 105.36.73.190 === https://www.youtube.com/watch?v=HX5-bGE2J4g&list=PLM-GVlebsoPWGSfDq2_C801iLUl3RKWCK === 09/05 -- 09:57 AM === Mobile
+41.234.38.231 === http://spysnet.com/ === 09/05 -- 09:16 PM === Desktop
+41.234.38.231 === http://spysnet.com/english === 09/05 -- 09:17 PM === Desktop
+41.234.38.231 === http://spysnet.com/english/hossamsameh === 09/05 -- 09:17 PM === Desktop
+41.234.38.231 === http://spysnet.com/ === 09/05 -- 09:59 PM === Desktop
+41.234.38.231 === http://spysnet.com/chemistry === 09/05 -- 09:59 PM === Desktop
+41.234.38.231 === http://spysnet.com/nasser === 09/05 -- 09:59 PM === Desktop
+41.234.38.231 === http://spysnet.com/nasser/finals === 09/05 -- 10:00 PM === Desktop
+41.234.38.231 === http://spysnet.com/ === 09/05 -- 10:08 PM === Desktop
+41.234.38.231 === http://spysnet.com/physics === 09/05 -- 10:08 PM === Desktop
+41.234.38.231 === http://spysnet.com/mo-adel === 09/05 -- 10:08 PM === Desktop
+41.234.38.231 === http://spysnet.com/physics === 09/05 -- 10:08 PM === Desktop
+41.234.38.231 === http://spysnet.com/mo-adel === 09/05 -- 10:08 PM === Desktop
+41.234.38.231 === https://www.youtube.com/playlist?list=PLM-GVlebsoPVwKxgg8SuRyocWxRQSbENF === 09/05 -- 10:08 PM === Desktop

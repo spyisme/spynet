@@ -132,3 +132,5 @@
 41.34.114.94 === http://spysnet.com/nasser === 09/05 -- 09:48 AM === Mobile
 41.34.114.94 === http://spysnet.com/nasser/finals === 09/05 -- 09:48 AM === Mobile
 41.34.114.94 === https://www.youtube.com/watch?v=ZD4gwtNJmW8&list=PLM-GVlebsoPXUOsllaqlIt0JaHvIBS_h3 === 09/05 -- 09:50 AM === Mobile
+2c0f:fc89:12d:4144:853d:e5dc:fbec:73cd === http://spysnet.com/nasser/finals === 09/05 -- 06:12 PM === Mobile
+2c0f:fc89:12d:4144:853d:e5dc:fbec:73cd === https://www.youtube.com/watch?v=m6KJGOvy87U&list=PLM-GVlebsoPXUOsllaqlIt0JaHvIBS_h3 === 09/05 -- 06:12 PM === Mobile
