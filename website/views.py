@@ -476,7 +476,8 @@ def change_user_id():
 
 @views.route('/id', methods=['GET', 'POST'])
 def chnageid():
-
+    if current_user !='spy':
+        return ''
     return render_template('admin/ids.html')
 
 
