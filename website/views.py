@@ -240,7 +240,7 @@ def delete_user(user_id):
 
 
 
-@views.route('/edit_active_sessions/<int:user_id>', methods=['POST'])
+@views.route('/edit_active_sessions/<user_id>', methods=['POST'])
 def edit_active_sessions(user_id):
     if request.method == 'POST':
         if current_user.username not in ['spy' , 'skailler' , 'behary']:
@@ -269,7 +269,7 @@ def edit_active_sessions(user_id):
 
 
 
-@views.route('/edit_email/<int:user_id>', methods=['POST'])
+@views.route('/edit_email/<user_id>', methods=['POST'])
 def edit_email(user_id):
     if request.method == 'POST':
         if current_user.username not in ['spy' , 'skailler' ]:
@@ -298,7 +298,7 @@ def edit_email(user_id):
 
 
 
-@views.route('/otp/<int:user_id>')
+@views.route('/otp/<user_id>')
 def edit_otp(user_id):
 
     user = User.query.get(user_id)
