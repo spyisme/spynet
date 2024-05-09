@@ -179,18 +179,3 @@ user-select: none; /* Prevent text selection within the container */
 pointer-events: none; 
 }
 
-.footer{
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: #3a6689;
-    color: #fff;
-    text-align: center;
-    padding: 10px 0;
-    z-index: 2; /* Higher z-index value than shine */
-
-    }
-.countdown{
-    color:white;
-    }

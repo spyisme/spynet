@@ -18,6 +18,8 @@ html, body {
     color: #fff;
     text-align: center;
     padding: 10px 0;
+    z-index: 2; /* Higher z-index value than shine */
+
     }
 .countdown{
     color:white;
