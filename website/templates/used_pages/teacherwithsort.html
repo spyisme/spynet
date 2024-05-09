@@ -40,63 +40,66 @@
 <script src="static/java/snow.js"></script>
 <script src="static/java/countdown.js"></script>
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    var teacherLinks = document.getElementById('teacher-links');
-    var teacherData = {{ teacher_links | tojson }};
-    var currentPage = 0;
-    var itemsPerPage = 10;
-
-    function showPage(page) {
-      teacherLinks.innerHTML = '';
-      var start = page * itemsPerPage;
-      var end = start + itemsPerPage;
-      for (var i = start; i < end && i < teacherData.length; i++) {
-        var name = teacherData[i][0];
-        var data = teacherData[i][1];
-        var listItem = document.createElement('li');
-        var link = document.createElement('a');
-        link.href = data[0];
-        var card = document.createElement('div');
-        card.className = 'card';
-        if (data.length > 2 && data[2]) {
-          var cardNewBadge = document.createElement('div');
-          cardNewBadge.className = 'card-new-badge';
-          cardNewBadge.textContent = data[2];
-          card.appendChild(cardNewBadge);
+    document.addEventListener('DOMContentLoaded', function() {
+      var teacherLinks = document.getElementById('teacher-links');
+      var teacherData = {{ teacher_links | tojson }};
+      var currentPage = 0;
+      var itemsPerPage = 10;
+  
+      function showPage(page) {
+        console.log("Current page:", page);
+        console.log("Teacher data:", teacherData);
+        teacherLinks.innerHTML = '';
+        var start = page * itemsPerPage;
+        var end = start + itemsPerPage;
+        for (var i = start; i < end && i < teacherData.length; i++) {
+          var name = teacherData[i][0];
+          var data = teacherData[i][1];
+          var listItem = document.createElement('li');
+          var link = document.createElement('a');
+          link.href = data[0];
+          var card = document.createElement('div');
+          card.className = 'card';
+          if (data.length > 2 && data[2]) {
+            var cardNewBadge = document.createElement('div');
+            cardNewBadge.className = 'card-new-badge';
+            cardNewBadge.textContent = data[2];
+            card.appendChild(cardNewBadge);
+          }
+          var image = document.createElement('img');
+          image.src = 'static/assets/{{ teachername }}/' + name + '.jpg';
+          image.loading = 'lazy';
+          var p = document.createElement('p');
+          p.textContent = name;
+          var span = document.createElement('span');
+          span.className = 'card-description';
+          span.textContent = data[1];
+  
+          card.appendChild(image);
+          card.appendChild(p);
+          card.appendChild(span);
+          link.appendChild(card);
+          listItem.appendChild(link);
+          teacherLinks.appendChild(listItem);
         }
-        var image = document.createElement('img');
-        image.src = 'static/assets/{{ teachername }}/' + name + '.jpg';
-        image.loading = 'lazy';
-        var p = document.createElement('p');
-        p.textContent = name;
-        var span = document.createElement('span');
-        span.className = 'card-description';
-        span.textContent = data[1];
-
-        card.appendChild(image);
-        card.appendChild(p);
-        card.appendChild(span);
-        link.appendChild(card);
-        listItem.appendChild(link);
-        teacherLinks.appendChild(listItem);
       }
-    }
-
-    function nextPage() {
-      if ((currentPage + 1) * itemsPerPage < teacherData.length) {
-        currentPage++;
-        showPage(currentPage);
+  
+      function nextPage() {
+        if ((currentPage + 1) * itemsPerPage < teacherData.length) {
+          currentPage++;
+          showPage(currentPage);
+        }
       }
-    }
-
-    function prevPage() {
-      if (currentPage > 0) {
-        currentPage--;
-        showPage(currentPage);
+  
+      function prevPage() {
+        if (currentPage > 0) {
+          currentPage--;
+          showPage(currentPage);
+        }
       }
-    }
-
-    showPage(currentPage);
-  });
-</script>
+  
+      showPage(currentPage);
+    });
+  </script>
+  
 </html>
