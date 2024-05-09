@@ -40,6 +40,8 @@
 <script src="static/java/snow.js"></script>
 <script src="static/java/countdown.js"></script>
 <script>
+    var currentPage = 0; // Declare currentPage outside the event listener
+  
     function nextPage() {
       if ((currentPage + 1) * itemsPerPage < teacherData.length) {
         currentPage++;
@@ -57,7 +59,6 @@
     document.addEventListener('DOMContentLoaded', function() {
       var teacherLinks = document.getElementById('teacher-links');
       var teacherData = {{ teacher_links | tojson }};
-      var currentPage = 0;
       var itemsPerPage = 10;
   
       function showPage(page) {
@@ -101,6 +102,7 @@
       showPage(currentPage);
     });
   </script>
+  
   
   
 </html>
