@@ -127,3 +127,10 @@
 2c0f:fc89:806f:a25e:89b:99d2:8cf9:a9af === http://spysnet.com/chemistry === 06/05 -- 09:28 PM === Mobile
 2c0f:fc89:806f:a25e:89b:99d2:8cf9:a9af === http://spysnet.com/nasser === 06/05 -- 09:28 PM === Mobile
 2c0f:fc89:806f:a25e:89b:99d2:8cf9:a9af === http://spysnet.com/nasser/finals === 06/05 -- 09:28 PM === Mobile
+102.47.119.66 === http://spysnet.com/chemistry === 07/05 -- 06:36 PM === Desktop
+102.47.119.66 === http://spysnet.com/nasser === 07/05 -- 06:36 PM === Desktop
+102.47.119.66 === http://spysnet.com/nasser/finals === 07/05 -- 06:36 PM === Desktop
+41.43.183.198 === http://spysnet.com/nawar/nawarch7 === 07/05 -- 09:06 PM === Desktop
+41.233.93.156 === http://spysnet.com/nawar/nawarch7 === 08/05 -- 08:32 AM === Desktop
+41.233.93.156 === http://spysnet.com/nawar/nawarch7 === 08/05 -- 03:06 PM === Desktop
+102.47.119.66 === http://spysnet.com/nasser/finals === 08/05 -- 05:31 PM === Desktop
