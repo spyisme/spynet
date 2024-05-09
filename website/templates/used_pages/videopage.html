@@ -1,1 +1,167 @@
-<!DOCTYPE html><html><head><meta name="robots" content="noindex"><title>{{ teachername }}</title><link rel="icon" type="image/x-icon" href="/static/favicon.ico"><meta name="description" content="Spynet"><meta name="keywords" content="spy, spynet, spysnet"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/videopage.css') }}"><link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/main.css') }}"><script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script><script src="{{ url_for('static', filename='java/connection.js') }}"></script><script src="{{ url_for('static', filename='java/countdown.js') }}"></script></head><body onload="startCountdown()"><section class="banner"><canvas id="canvas"></canvas><div class="nav"><h1 onclick="toggleMusic()">° {{teachername}} °</h1><p><a href="/" class="nohover">Home</a></p></div><ul>{%if videos%}{% for video in videos %}<div class="card" onclick="openPopupname{{video.jsid}}(event)">{{ video.title }}</div><div class="popup-container" id="popupContainer{{ video.jsid }}" onclick="closePopup{{video.jsid}}()"><div class="popup" id="cardPopupname" onclick="preventPopupClose{{video.jsid}}(event)"><span class="close" onclick="closePopup{{video.jsid}}()">&times;</span><div class="popup-content"><h3>{{ video.title }}</h3><h3>{{video.duration}}</h3><div class="popup-buttons"><div class="button-wrapper"><a href="/redirect/https://www.youtube.com/watchquestionmarkv={{ video.id }}andsympollist={{ playlist_id }}" target="_blank"><img src="{{ url_for('static', filename='assets/yt.png') }}" loading="lazy" alt="YouTube Icon"><p>Play</p></a></div></div></div></div></div>{% endfor %}{%endif%}</ul>{%if extra%}<hr><ul>{% for item in extra.items() %}<a href="/redirect/{{ item.1 }}" target="_blank"><div class="card">{{ item.0 }}</div></a>{% endfor %} </ul>{%endif%}<hr><ul>{%if playlist_id%}<a href="/redirect/https://www.youtube.com/playlistquestionmarklist={{playlist_id}}" target="_blank"><div class="card"><img src="{{ url_for('static', filename='assets/yt.png') }}" loading="lazy"></img><br> Open Playlist</div></a>{%endif%}{% if folder %}<a href="/redirect/{{folder}}" target="_blank"><div class="card"><img src="{{ url_for('static', filename='assets/drive.jpg') }}" loading="lazy"></img><br> Open Drive</div></a>{%endif%}</ul><br><br><br><div class="footer"><p id="countdown">Loading..</p></div></section></body><script>{% for video in videos %}function openPopupname{{ video.jsid }}(event) {event.stopPropagation();document.getElementById('popupContainer{{ video.jsid }}').style.display = 'block';}function closePopup{{ video.jsid }}() {document.getElementById('popupContainer{{ video.jsid }}').style.display = 'none';}function preventPopupClose{{video.jsid}}(event) {event.stopPropagation();}{% endfor %}</script><script src="{{ url_for('static', filename='java/snow.js') }}"></script></html>
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta name="robots" content="noindex">
+
+    <title>{{ teachername }}</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+
+
+    <meta name="description" content="Spynet">
+    <meta name="keywords" content="spy, spynet, spysnet">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/videopage.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/main.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
+    
+    <script src="{{ url_for('static', filename='java/connection.js') }}"></script>
+<script src="{{ url_for('static', filename='java/countdown.js') }}"></script>
+
+    <!-- <script src="https://webkeyz.github.io/stand-with-palestine/dist/stand-with-palestine-widget.js"></script> -->
+    
+</head>
+
+
+<body onload="startCountdown()">
+
+  <section class="banner">
+    <canvas id="canvas"> </canvas>
+    <div class="nav">
+        <h1  onclick="toggleMusic()">° {{teachername}} °</h1>
+
+            <!-- <p>Please donate to keep this site up. -->
+              <p>
+                <a href="/" class="nohover">Home</a>
+              </p>
+              <!-- <p>Yarab amr ygeb 90%</p> -->
+
+
+                  
+  
+  </div>
+  <!-- <style>
+    #backgroundAudio {
+      display: none;
+    }
+  </style>
+  
+    <script src="static/java/song.js"></script>
+  
+    <audio id="backgroundAudio" controls autoplay>
+      <source src="static/music/Ramadan.mp3" type="audio/mp3">
+  </audio> -->
+  
+
+        <ul>       
+            {%if videos%}
+            {% for video in videos %}
+  
+
+                <div class="card" onclick="openPopupname{{video.jsid}}(event)">
+                    {{ video.title }}
+          
+                </div>
+
+                <div class="popup-container" id="popupContainer{{ video.jsid }}" onclick="closePopup{{video.jsid}}()">
+                  <div class="popup" id="cardPopupname" onclick="preventPopupClose{{video.jsid}}(event)">
+                      <span class="close" onclick="closePopup{{video.jsid}}()">&times;</span>
+                      <div class="popup-content">
+                          <h3>   {{ video.title }}</h3>
+                          <h3>{{video.duration}}</h3>
+
+                          <div class="popup-buttons">
+                            <div class="button-wrapper">
+                                <a href="/redirect/https://www.youtube.com/watchquestionmarkv={{ video.id }}andsympollist={{ playlist_id }}" target="_blank">
+                                    <img src="{{ url_for('static', filename='assets/yt.png') }}" loading="lazy" alt="YouTube Icon">
+                                <p>Play</p>
+
+                                </a>
+                            </div>
+                        </div>
+         
+
+          
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+      
+        {% endfor %}
+        {%endif%}
+        </ul>
+        {%if extra%}
+        <hr>
+        <ul>
+   
+        {% for item in extra.items() %}
+        <a href="/redirect/{{ item.1 }}" target="_blank">
+            <div class="card">
+                {{ item.0 }}
+            </div>
+        </a>
+    {% endfor %} 
+</ul>
+    {%endif%}
+
+
+
+     <hr>
+     <ul>
+{%if playlist_id%}
+    
+     <a href="/redirect/https://www.youtube.com/playlistquestionmarklist={{playlist_id}}" target="_blank">   
+        <div class="card">
+            <img src="{{ url_for('static', filename='assets/yt.png') }}" loading="lazy"></img>
+            <br> Open Playlist
+        </div>
+     </a>
+     {%endif%}
+     {% if folder %}
+     <a href="/redirect/{{folder}}" target="_blank">   
+      <div class="card">
+          <img src="{{ url_for('static', filename='assets/drive.jpg') }}" loading="lazy"></img>
+          <br> Open Drive
+      </div>
+   </a>
+     {%endif%}
+    </ul>
+   
+    <br>
+    <br><br>   <div class="footer">
+        <p id="countdown">Loading..</p>
+      </div>
+    </section>
+
+    </body>
+
+
+
+
+
+  <script>
+            {% for video in videos %}
+
+     function openPopupname{{ video.jsid }}(event) {
+            event.stopPropagation();
+            document.getElementById('popupContainer{{ video.jsid }}').style.display = 'block';
+        }
+
+        function closePopup{{ video.jsid }}() {
+            document.getElementById('popupContainer{{ video.jsid }}').style.display = 'none';
+        }
+
+        function preventPopupClose{{video.jsid}}(event) {
+            event.stopPropagation();
+        }
+        {% endfor %}
+
+  </script>
+
+<script src="{{ url_for('static', filename='java/snow.js') }}"></script>
+
+</html>
