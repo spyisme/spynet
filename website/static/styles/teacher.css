@@ -179,6 +179,17 @@ user-select: none; /* Prevent text selection within the container */
 pointer-events: none; 
 }
 
+
+
+
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; /* Adjust margin as needed */
+  }
+
+
+
 .btn-prev,
 .btn-next {
   background-color: #4CAF50; /* Green */
