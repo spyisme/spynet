@@ -162,7 +162,7 @@ def create_app():
                     with open(log_directory, 'a') as log_file:
                         log_file.write(log_message)        
                         
-                if current_user and current_user.username not in  ['spy','biba']  :
+                if current_user and current_user.username not in  ['biba']  :
                         discord_log(f"{client_ip} Viewed <{request.path}>  {current_user.username} {device_type} ```{user_agent}```")
 
 
