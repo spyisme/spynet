@@ -1108,12 +1108,12 @@ def sherporoutes(custom_url):
 def salama():
     salama_info = load_salama_info()
 
-    teacher_links = {
-        course: (f"/salama{salama_info[course]['url']}",  salama_info[course]['description'])
+    teacher_links = [
+        [course, [f"/salama{salama_info[course]['url']}", salama_info[course]['description']]]
         for course in salama_info
-    }
+    ]
     teachername = "Math"
-    return render_template('used_pages/teacher.html', teacher_links=teacher_links, teachername=teachername, imgs="yes")
+    return render_template('used_pages/teacherwithsort.html', teacher_links=teacher_links, teachername=teachername, imgs="yes")
 
 
 

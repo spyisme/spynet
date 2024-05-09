@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="robots" content="noindex">
+  <title>{{ teachername }}</title>
+  <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+  <meta name="description" content="Spynet">
+  <meta name="keywords" content="spy, spynet, spysnet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link rel="stylesheet" type="text/css" href="static/styles/teacher.css">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/main.css') }}">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
+  <script src="static/java/connection.js"></script>
+</head>
+<body onload="startCountdown()">
+  <section class="banner">
+    <canvas id="canvas"> </canvas>
+    <div class="nav">
+      {% if teachername == "Arabic"or teachername == "English" or teachername == "Biology" or teachername == "Chemistry" or teachername == "Geology" or teachername == "German" or teachername == "Math" or teachername == "Physics" %}
+        <img class="img" src="static/assets/subjects/{{ teachername }}11.png"></img>
+      {% else %}
+        <h1>✰ {{ teachername }} ✰</h1>
+      {% endif %}
+      {% if link %}
+        {% for key, value in link.items() %}
+          <p><a href="{{ value }}" target="_blank" style="color: white;"><u>{{ key }}</u></a></p>
+        {% endfor %}
+      {% endif %}
+    </div>
+    <ul id="teacher-links"></ul>
+    <div class="pagination">
+      <button id="prevBtn" onclick="prevPage()">◄ Prev</button>
+      <button id="nextBtn" onclick="nextPage()">Next ►</button>
+    </div>
+    <div class="footer">
+      <p id="countdown">Loading..</p>
+    </div>
+  </section>
+</body>
+<script src="static/java/snow.js"></script>
+<script src="static/java/countdown.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var teacherLinks = document.getElementById('teacher-links');
+    var teacherData = {{ teacher_links | tojson }};
+    var currentPage = 0;
+    var itemsPerPage = 10;
+
+    function showPage(page) {
+      teacherLinks.innerHTML = '';
+      var start = page * itemsPerPage;
+      var end = start + itemsPerPage;
+      for (var i = start; i < end && i < teacherData.length; i++) {
+        var name = teacherData[i][0];
+        var data = teacherData[i][1];
+        var listItem = document.createElement('li');
+        var link = document.createElement('a');
+        link.href = data[0];
+        var card = document.createElement('div');
+        card.className = 'card';
+        if (data.length > 2 && data[2]) {
+          var cardNewBadge = document.createElement('div');
+          cardNewBadge.className = 'card-new-badge';
+          cardNewBadge.textContent = data[2];
+          card.appendChild(cardNewBadge);
+        }
+        var image = document.createElement('img');
+        image.src = 'static/assets/{{ teachername }}/' + name + '.jpg';
+        image.loading = 'lazy';
+        var p = document.createElement('p');
+        p.textContent = name;
+        var span = document.createElement('span');
+        span.className = 'card-description';
+        span.textContent = data[1];
+
+        card.appendChild(image);
+        card.appendChild(p);
+        card.appendChild(span);
+        link.appendChild(card);
+        listItem.appendChild(link);
+        teacherLinks.appendChild(listItem);
+      }
+    }
+
+    function nextPage() {
+      if ((currentPage + 1) * itemsPerPage < teacherData.length) {
+        currentPage++;
+        showPage(currentPage);
+      }
+    }
+
+    function prevPage() {
+      if (currentPage > 0) {
+        currentPage--;
+        showPage(currentPage);
+      }
+    }
+
+    showPage(currentPage);
+  });
+</script>
+</html>
