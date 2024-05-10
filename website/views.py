@@ -433,7 +433,7 @@ def login():
                 return redirect(f"/login?maxdevices=yes&user={username}")
             
 
-            if user.password != 'not-set' :
+            if user.password != 'not-set' and  user.password != 'password' :
                 if password == user.password :
                     login_user(user)
                     if user.username != 'spy':
