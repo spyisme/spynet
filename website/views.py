@@ -646,7 +646,7 @@ def verifyemail():
             db.session.commit()
             discord_log_login(f"{client_ip} just logged in with {username} Device ```{user_agent}```  <@709799648143081483>")
             session.permanent = True
-            return redirect('/')
+            return redirect('/options')
         else :
             return redirect(f'/verify?msg=failedtologin&user={username}')
     return render_template('users_pages/verify.html' , email = user.email , msg = msgg)
