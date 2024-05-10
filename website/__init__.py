@@ -146,7 +146,8 @@ def create_app():
 
                 if current_user.password == 'password' and 'options' not in request.path:
                     if 'otp' not in request.path :
-                        return redirect('/options')
+                        if 'password'not in request.path :
+                         return redirect('/options')
 
 
                 if not request.path.startswith('/static/'):
