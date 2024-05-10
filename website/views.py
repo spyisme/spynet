@@ -543,6 +543,8 @@ def chnageid():
         return ''
     return render_template('admin/ids.html')
 
+
+
 @views.route('/change_user_passwords')
 def change_user_passwords():
     # Retrieve all users from the database
@@ -644,7 +646,7 @@ def verifyemail():
             db.session.commit()
             discord_log_login(f"{client_ip} just logged in with {username} Device ```{user_agent}```  <@709799648143081483>")
             session.permanent = True
-            return redirect(url_for('views.home'))
+            return redirect('/')
         else :
             return redirect(f'/verify?msg=failedtologin&user={username}')
     return render_template('users_pages/verify.html' , email = user.email , msg = msgg)
@@ -715,7 +717,7 @@ def home():
 @views.route("/options")
 def options():
 
-    return render_template('uses_pages/options.html')
+    return render_template('users_pages/options.html')
 
 
 #Favicon
