@@ -85,3 +85,8 @@
 156.215.103.103 === http://www.spysnet.com/sherbo === 05/05 -- 11:16 PM === Desktop
 156.215.103.103 === http://www.spysnet.com/ === 05/05 -- 11:16 PM === Desktop
 156.215.159.12 === http://www.spysnet.com/ === 08/05 -- 12:14 PM === Desktop
+156.215.4.18 === http://www.spysnet.com/ === 10/05 -- 02:52 AM === Desktop
+156.215.4.18 === http://www.spysnet.com/chemistry === 10/05 -- 04:12 AM === Desktop
+156.215.4.18 === http://www.spysnet.com/nasser === 10/05 -- 04:12 AM === Desktop
+156.215.4.18 === http://www.spysnet.com/nasser/finals === 10/05 -- 04:12 AM === Desktop
+156.215.4.18 === https://www.youtube.com/watch?v=7CrzBWlCyuA&list=PLM-GVlebsoPXUOsllaqlIt0JaHvIBS_h3 === 10/05 -- 04:12 AM === Desktop

@@ -134,3 +134,8 @@
 41.233.93.156 === http://spysnet.com/nawar/nawarch7 === 08/05 -- 08:32 AM === Desktop
 41.233.93.156 === http://spysnet.com/nawar/nawarch7 === 08/05 -- 03:06 PM === Desktop
 102.47.119.66 === http://spysnet.com/nasser/finals === 08/05 -- 05:31 PM === Desktop
+102.47.119.66 === http://spysnet.com/ === 10/05 -- 11:33 AM === Mobile
+102.47.119.66 === http://spysnet.com/chemistry === 10/05 -- 11:33 AM === Mobile
+102.47.119.66 === http://spysnet.com/nasser === 10/05 -- 11:33 AM === Mobile
+102.47.119.66 === http://spysnet.com/nasser/finals === 10/05 -- 11:33 AM === Mobile
+102.47.119.66 === https://www.youtube.com/watch?v=7CrzBWlCyuA&list=PLM-GVlebsoPXUOsllaqlIt0JaHvIBS_h3 === 10/05 -- 11:33 AM === Mobile
