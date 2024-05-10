@@ -556,7 +556,8 @@ def change_user_passwords():
     
     # Set all user passwords to a "not-set" value
     for user in users_to_update:
-        user.password = "not-set"
+        if user.password == "not-set":
+            user.password = "password"
     
     # Commit the changes to the database
     db.session.commit()
