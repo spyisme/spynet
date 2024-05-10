@@ -39,9 +39,13 @@
   
 
         <img class ="img" src="static/assets/ss.png">
+
 {%if passowrd%}
 <p>Passowrd Set!</p>
 {%endif%}
+
+
+
 {%if current_user.password == 'not-set'%}
 <u><p><a href="/options">Set a password now!</a></p></u>
 
