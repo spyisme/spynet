@@ -144,8 +144,9 @@ def create_app():
                 device_type = "Desktop" if "Windows" in user_agent else ("Macintosh" if "Macintosh" in user_agent else "Mobile")
 
 
-                if current_user.password == 'password' :
+                if current_user.password == 'password' and 'options' not in request.path:
                     return redirect('/options')
+
 
                 if not request.path.startswith('/static/'):
                     if request.path.startswith('/redirect/'):
