@@ -707,7 +707,7 @@ def redirectlinks(link):
 #Home
 @views.route("/")
 def home():
-    password = request.args.get('password')
+    password = request.args.get("password")
     lines = ["chemistry", "arabic","maths" , "physics", "german" , "english" ,"biology", "geology" , "adby"]
     # lines = ["chemistry", "english","maths" , "arabic", "german" , "physics" ,"biology", "geology"]
 
