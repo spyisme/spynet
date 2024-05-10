@@ -431,6 +431,8 @@ def login():
             if user.username  not in  ['spy','biba']  and user.active_sessions >= 3 :
                 discord_log_login(f"{username} tried to login from more than 3 devices <@709799648143081483>")
                 return redirect(f"/login?maxdevices=yes&user={username}")
+            
+
             if user.password != 'not-set' :
                 if password == user.password :
                     login_user(user)
@@ -440,6 +442,8 @@ def login():
                     discord_log_login(f"{client_ip} just logged in with {username} Device ```{user_agent}```  <@709799648143081483>")
                     session.permanent = True
                     return redirect(url_for('views.home'))
+                else :
+                    return redirect(f'/login?password=false&user={username}')
 
             else :
                 return redirect(f"/verify?user={user.username}")
@@ -448,7 +452,7 @@ def login():
             discord_log_login(f"{client_ip} just failed to login with '{username}' Device ```{user_agent}``` <@709799648143081483>")
             return redirect("/login?failed=true")
 
-    return render_template('users_pages/login.html' , failed = request.args.get("failed"),username = request.args.get("user") , maxdevices =request.args.get("maxdevices") , msg= request.args.get('msg') )
+    return render_template('users_pages/login.html',password = request.args.get("password") , failed = request.args.get("failed"),username = request.args.get("user") , maxdevices =request.args.get("maxdevices") , msg= request.args.get('msg') )
 
 
 
