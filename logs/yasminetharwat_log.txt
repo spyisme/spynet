@@ -162,3 +162,12 @@
 156.223.128.122 === http://spysnet.com/ === 10/05 -- 12:10 PM === Desktop
 156.223.128.122 === http://spysnet.com/chemistry === 10/05 -- 12:10 PM === Desktop
 156.223.128.122 === http://spysnet.com/nasser === 10/05 -- 12:10 PM === Desktop
+156.223.128.122 === http://spysnet.com/nasser/finals === 10/05 -- 03:50 PM === Desktop
+156.223.128.122 === https://www.youtube.com/watch?v=7CrzBWlCyuA&list=PLM-GVlebsoPXUOsllaqlIt0JaHvIBS_h3 === 10/05 -- 03:50 PM === Desktop
+156.223.128.122 === http://spysnet.com/nasser === 10/05 -- 03:58 PM === Desktop
+156.223.128.122 === http://spysnet.com/chemistry === 10/05 -- 03:58 PM === Desktop
+156.223.128.122 === http://spysnet.com/ === 10/05 -- 03:58 PM === Desktop
+156.223.128.122 === http://spysnet.com/biology === 10/05 -- 03:58 PM === Desktop
+156.223.128.122 === http://spysnet.com/daif === 10/05 -- 03:58 PM === Desktop
+156.223.128.122 === http://spysnet.com/daif/finals === 10/05 -- 03:58 PM === Desktop
+156.223.128.122 === https://www.youtube.com/watch?v=LkRr1FiTf1w&list=PLM-GVlebsoPWEsLtSUs6KjyAOvexuF2a5 === 10/05 -- 04:02 PM === Desktop

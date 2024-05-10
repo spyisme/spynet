@@ -123,3 +123,11 @@
 41.239.171.170 === http://spysnet.com/nasser === 10/05 -- 12:58 PM === Desktop
 41.239.171.170 === http://spysnet.com/nasser/chapter5-1 === 10/05 -- 12:58 PM === Desktop
 41.239.171.170 === https://www.youtube.com/watch?v=eEjCc5d0B7Q&list=PLM-GVlebsoPWKGDwOpso7OBFUzlJ8SzwW === 10/05 -- 12:58 PM === Desktop
+41.239.171.170 === http://spysnet.com/nasser === 10/05 -- 02:14 PM === Desktop
+41.239.171.170 === http://spysnet.com/nasser/finals === 10/05 -- 02:16 PM === Desktop
+41.239.171.170 === https://www.youtube.com/watch?v=SjsSSVxXulo&list=PLM-GVlebsoPXUOsllaqlIt0JaHvIBS_h3 === 10/05 -- 02:16 PM === Desktop
+41.46.144.163 === http://spysnet.com/ === 10/05 -- 04:00 PM === Desktop
+41.46.144.163 === http://spysnet.com/chemistry === 10/05 -- 04:01 PM === Desktop
+41.46.144.163 === http://spysnet.com/nasser === 10/05 -- 04:01 PM === Desktop
+41.46.144.163 === http://spysnet.com/nasser/finals === 10/05 -- 04:01 PM === Desktop
+41.46.144.163 === https://www.youtube.com/watch?v=81c46kJixDA&list=PLM-GVlebsoPXUOsllaqlIt0JaHvIBS_h3 === 10/05 -- 04:01 PM === Desktop

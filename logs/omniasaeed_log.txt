@@ -139,3 +139,4 @@
 102.47.119.66 === http://spysnet.com/nasser === 10/05 -- 11:33 AM === Mobile
 102.47.119.66 === http://spysnet.com/nasser/finals === 10/05 -- 11:33 AM === Mobile
 102.47.119.66 === https://www.youtube.com/watch?v=7CrzBWlCyuA&list=PLM-GVlebsoPXUOsllaqlIt0JaHvIBS_h3 === 10/05 -- 11:33 AM === Mobile
+102.47.119.66 === http://spysnet.com/nasser/finals === 10/05 -- 06:09 PM === Mobile
