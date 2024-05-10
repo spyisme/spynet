@@ -49,7 +49,9 @@
                     <th>Sessions</th>
                     <th>Email</th>
                     <th>OTP</th>
+                    {%if current_user.username == 'spy'%}
                     <th>Password</th>
+                    {%endif%}
                     <!-- <th></th> -->
                     <th></th>
                     <th></th>
@@ -64,8 +66,10 @@
 
                         <td>{{user.email}}</td>
                         <td>{{ user.otp }}</td>
-                        <td>{{user.password}}</td>
+                    {%if current_user.username == 'spy'%}
 
+                        <td>{{user.password}}</td>
+{%endif%}
 <!--                         
                         <td>
                             <form action="/edit_email/{{ user.id }}" method="post">
