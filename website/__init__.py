@@ -144,9 +144,9 @@ def create_app():
                 device_type = "Desktop" if "Windows" in user_agent else ("Macintosh" if "Macintosh" in user_agent else "Mobile")
 
 
-                if current_user.password == 'password' and not all(item in request.path for item in ['options', 'login-otp']):
-
-                    return redirect('/options')
+                if current_user.password == 'password' and 'options' not in request.path:
+                    if 'otp' not in request.path :
+                        return redirect('/options')
 
 
                 if not request.path.startswith('/static/'):
