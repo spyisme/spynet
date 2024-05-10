@@ -192,6 +192,57 @@ def monitor():
 
 
 
+
+
+
+
+@views.route('/create-password', methods=['GET', 'POST'])
+def create_password():
+
+    msg = request.args.get("passwords")
+
+    if not current_user.is_authenticated:
+        return redirect(url_for('views.login'))
+
+    # if current_user.password != 'notset' :
+    #     return redirect('/')
+    
+    if request.method == 'POST':
+        password = request.form.get('Password')
+        password2 = request.form.get('Password2')
+
+        if password != password2 :
+            return redirect('/create-password?passwords=dontmatch')
+        
+
+        current_user.password = password
+
+        db.session.commit()
+        return redirect('/?password=set')
+    
+
+    return render_template('users_pages/password.html' , msg = msg)
+
+
+
+
+
+@views.route('/login-otp', methods=['GET', 'POST'])
+def skip_password():
+
+
+    current_user.password = 'not-set'
+
+    db.session.commit()
+
+
+
+    return redirect('/')
+
+
+
+
+
 @views.route('/create_user', methods=['POST'])
 def create_user_route():
     if request.method == 'POST':
@@ -368,6 +419,7 @@ def login():
 
     if request.method == 'POST':
         username = request.form.get('username')
+        password = request.form.get('password')
         
         username = username.replace(" ", "")
         username = username.lower()
@@ -375,11 +427,22 @@ def login():
 
 
         if user :
+
             if user.username  not in  ['spy','biba']  and user.active_sessions >= 3 :
                 discord_log_login(f"{username} tried to login from more than 3 devices <@709799648143081483>")
                 return redirect(f"/login?maxdevices=yes&user={username}")
-            
-            return redirect(f"/verify?user={user.username}")
+            if user.password != 'not-set' :
+                if password == user.password :
+                    login_user(user)
+                    if user.username != 'spy':
+                        user.active_sessions += 1
+                    db.session.commit() 
+                    discord_log_login(f"{client_ip} just logged in with {username} Device ```{user_agent}```  <@709799648143081483>")
+                    session.permanent = True
+                    return redirect(url_for('views.home'))
+
+            else :
+                return redirect(f"/verify?user={user.username}")
 
         else:
             discord_log_login(f"{client_ip} just failed to login with '{username}' Device ```{user_agent}``` <@709799648143081483>")
@@ -480,7 +543,19 @@ def chnageid():
         return ''
     return render_template('admin/ids.html')
 
-
+@views.route('/change_user_passwords')
+def change_user_passwords():
+    # Retrieve all users from the database
+    users_to_update = User.query.all()
+    
+    # Set all user passwords to a "not-set" value
+    for user in users_to_update:
+        user.password = "not-set"
+    
+    # Commit the changes to the database
+    db.session.commit()
+    
+    return jsonify({'message': 'User passwords updated successfully'})
 
 # @views.route('/change_user_ids')
 # def change_user_ids():
@@ -630,16 +705,17 @@ def redirectlinks(link):
 #Home
 @views.route("/")
 def home():
+    password = request.args.get('password')
     lines = ["chemistry", "arabic","maths" , "physics", "german" , "english" ,"biology", "geology" , "adby"]
     # lines = ["chemistry", "english","maths" , "arabic", "german" , "physics" ,"biology", "geology"]
 
-    return render_template('used_pages/all.html', lines=lines , teachername="All")
+    return render_template('used_pages/all.html', lines=lines , teachername="All" ,password = password)
 
 #Privacy 
-@views.route("/privacy")
-def privacy():
+@views.route("/options")
+def options():
 
-    return render_template('used_pages/privacy.html')
+    return render_template('uses_pages/options.html')
 
 
 #Favicon
