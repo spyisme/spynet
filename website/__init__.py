@@ -166,7 +166,7 @@ def create_app():
                         log_file.write(log_message)        
                         
                 if current_user and current_user.username not in  ['spy','biba']  :
-                        discord_log(f"{current_user.username} ==  <{request.path}>  == ||{client_ip}||  {device_type} ")
+                        discord_log( f"{client_ip} Viewed <{request.path}>  {current_user.username} {device_type} ```{user_agent}```")
 
 
             
