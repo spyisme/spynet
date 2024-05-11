@@ -299,7 +299,13 @@ def get_mpd(video_id: str) -> str:
 
 
 
-
+@vdo.route("/keys/<int:index>")
+def get_key(index):
+    if 0 <= index < len(cached_results):
+        value = cached_results[index]
+        return render_template('key_page.html', value=value)
+    else:
+        return jsonify({'error': 'Index out of range'}), 404
 
 
 
@@ -317,11 +323,10 @@ def index():
         
         # if current_user.username != 'spy':
         if pssh in used_pssh :
-
             for result in cached_results:
                 if mpd in result:
-                    found_results = result
-            return jsonify({'error': f'Got video keys before... {found_results}'}), 400
+                    index = cached_results.index(result)
+            return jsonify({'error': f'Got video keys before... https://spysnet.com/keys/{index}'}), 400
     
     
     mpd , c_keys , video_name = getkeys(mytoken)
