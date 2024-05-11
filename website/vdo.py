@@ -299,13 +299,15 @@ def get_mpd(video_id: str) -> str:
 
 
 
-@vdo.route("/keys/<int:index>")
+@app.route("/keys/<int:index>")
 def get_key(index):
-    if 0 <= index < len(cached_results):
-        value = cached_results[index]
+    cached_list = list(cached_results)
+    if 0 <= index < len(cached_list):
+        value = cached_list[index]
         return render_template('key_page.html', value=value)
     else:
         return jsonify({'error': 'Index out of range'}), 404
+
 
 
 
