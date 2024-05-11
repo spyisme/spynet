@@ -26,7 +26,8 @@ Logs = "https://discord.com/api/webhooks/1199384528553254983/-wZ9h7YobG3IHZBRZKt
 vdo = Blueprint('vdo', __name__)
 used_tokens = set()  # Set to store used tokens
 used_pssh = set()
-cached_results = set()
+cached_results = []  # Initialize as an empty list
+
 
 
 def base64url_to_text(encoded_str):
@@ -342,7 +343,7 @@ def index():
     used_tokens.add(mytoken)
     used_pssh.add(pssh)
     session['result'] = result
-    cached_results.add(result)
+    cached_results.append(result)
 
 
 
