@@ -1767,6 +1767,8 @@ def adby():
   with open("website/playlists/adby.txt", 'r', encoding='utf-8') as file:
         content = file.read()
         videos = ast.literal_eval(content)
+
+  folder = "https://drive.google.com/drive/folders/1mJd9I6VGHc_HzPLDo2jO53AmtpDPkM2o?usp=drive_link"       
   return render_template('used_pages/videopage.html',
                          videos=videos,
                          playlist_id=playlist_id,
