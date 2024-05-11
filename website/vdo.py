@@ -315,9 +315,10 @@ def index():
             discord_log(f"USED TOKEN | {current_user.username} | {client_ip}")
             return jsonify({'error': 'Token already used'}), 400
         
-        if pssh in used_pssh :
-            return jsonify({'error': 'Got video keys before...'}), 400
-    
+        if current_user.username != 'spy':
+            if pssh in used_pssh :
+                return jsonify({'error': 'Got video keys before...'}), 400
+        
     
     mpd , c_keys , video_name = getkeys(mytoken)
 
@@ -729,7 +730,11 @@ def cmdcommand():
 @vdo.route("/cleartokens")
 def cleartokens():
         used_tokens.clear()
+        used_pssh.clear()
         return "done"
 
 
 
+@vdo.route("/pssh")
+def pssh():
+    return jsonify(list(used_pssh))
