@@ -318,8 +318,9 @@ def index():
         # if current_user.username != 'spy':
         if pssh in used_pssh :
 
-            found_results = [result for result in cached_results if mpd in result]
-
+            for result in cached_results:
+                if mpd in result:
+                    found_results = result
             return jsonify({'error': f'Got video keys before... {found_results}'}), 400
     
     
