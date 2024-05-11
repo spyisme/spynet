@@ -25,6 +25,9 @@ Logs = "https://discord.com/api/webhooks/1199384528553254983/-wZ9h7YobG3IHZBRZKt
 
 vdo = Blueprint('vdo', __name__)
 used_tokens = set()  # Set to store used tokens
+used_pssh = set()
+
+
 
 def base64url_to_text(encoded_str):
     encoded_str = encoded_str.replace('-', '+').replace('_', '/')
@@ -266,15 +269,55 @@ def getkeys(video_url):
     # print(f'\n{c_keys}')
     return mpd , c_keys , video_name
 
+
+# Video ID for mpd and pssh
+def get_video_id(token: str):
+    playback_info = json.loads(base64url_to_text(token))['playbackInfo']
+    return json.loads(base64.b64decode(playback_info))['videoId']
+
+# pssh
+def get_pssh(mpd: str):
+    req = None
+    req = requests.get(mpd)
+    return re.search('<cenc:pssh>(.*)</cenc:pssh>', req.text).group(1)
+
+
+# mpd
+def get_mpd(video_id: str) -> str:
+    headers = {
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36',
+        'origin': 'https://dev.vdocipher.com/',
+        'referer': 'https://dev.vdocipher.com/'
+    }
+    url = 'https://dev.vdocipher.com/api/meta/' + video_id
+    req = None
+    req = requests.get(url, headers=headers)
+    resp = req.json()
+    return resp['dash']['manifest']
+
+
+
+
+
+
+
+
+
 @vdo.route('/vdocipher', methods=['GET', 'POST'])
 def index():
     mytoken = request.args.get('token')
     client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
+    mpd = get_mpd(get_video_id(mytoken))
+    pssh = get_pssh(mpd)
 
     if request.method == 'GET':
         if mytoken in used_tokens:
             discord_log(f"USED TOKEN | {current_user.username} | {client_ip}")
             return jsonify({'error': 'Token already used'}), 400
+        
+        if pssh in used_pssh :
+            return jsonify({'error': 'Got video keys before...'}), 400
+    
     
     mpd , c_keys , video_name = getkeys(mytoken)
 
@@ -285,6 +328,7 @@ def index():
 
     result = mpd + '\n' + c_keys 
     used_tokens.add(mytoken)
+    used_pssh.add(pssh)
     session['result'] = result
 
 
