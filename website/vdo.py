@@ -299,7 +299,7 @@ def get_mpd(video_id: str) -> str:
 
 
 
-@app.route("/keys/<int:index>")
+@vdo.route("/keys/<int:index>")
 def get_key(index):
     cached_list = list(cached_results)
     if 0 <= index < len(cached_list):
