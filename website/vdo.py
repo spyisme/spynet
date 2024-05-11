@@ -26,7 +26,7 @@ Logs = "https://discord.com/api/webhooks/1199384528553254983/-wZ9h7YobG3IHZBRZKt
 vdo = Blueprint('vdo', __name__)
 used_tokens = set()  # Set to store used tokens
 used_pssh = set()
-
+cached_results = set()
 
 
 def base64url_to_text(encoded_str):
@@ -317,7 +317,10 @@ def index():
         
         if current_user.username != 'spy':
             if pssh in used_pssh :
-                return jsonify({'error': 'Got video keys before...'}), 400
+
+                found_results = [result for result in cached_results if mpd in result]
+
+                return jsonify({'error': f'Got video keys before... {found_results}'}), 400
         
     
     mpd , c_keys , video_name = getkeys(mytoken)
@@ -331,6 +334,7 @@ def index():
     used_tokens.add(mytoken)
     used_pssh.add(pssh)
     session['result'] = result
+    cached_results.add(result)
 
 
 
