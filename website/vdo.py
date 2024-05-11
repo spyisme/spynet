@@ -315,13 +315,13 @@ def index():
             discord_log(f"USED TOKEN | {current_user.username} | {client_ip}")
             return jsonify({'error': 'Token already used'}), 400
         
-        if current_user.username != 'spy':
-            if pssh in used_pssh :
+        # if current_user.username != 'spy':
+        if pssh in used_pssh :
 
-                found_results = [result for result in cached_results if mpd in result]
+            found_results = [result for result in cached_results if mpd in result]
 
-                return jsonify({'error': f'Got video keys before... {found_results}'}), 400
-        
+            return jsonify({'error': f'Got video keys before... {found_results}'}), 400
+    
     
     mpd , c_keys , video_name = getkeys(mytoken)
 
