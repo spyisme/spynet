@@ -346,7 +346,7 @@ def index():
 
 
     def append_to_json(video_id, result):
-        data = {video_id: {"cached_result": result}}
+        data = f',{video_id}: {"cached_result": {result}}'
         
         # Open the file in append mode
         with open("cached_results.json", "a") as json_file:
