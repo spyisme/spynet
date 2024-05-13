@@ -25,7 +25,7 @@ Logs = "https://discord.com/api/webhooks/1199384528553254983/-wZ9h7YobG3IHZBRZKt
 
 vdo = Blueprint('vdo', __name__)
 used_tokens = set()  # Set to store used tokens
-used_video_id = set()
+used_pssh = set()
 cached_results = []  # Initialize as an empty list
 
 
@@ -316,8 +316,8 @@ def get_key(index):
 def index():
     mytoken = request.args.get('token')
     client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
-    video_id = get_video_id(mytoken)
-
+    mpd = get_video_id(mytoken)
+    pssh = get_pssh(mpd)
 
     if request.method == 'GET':
         if mytoken in used_tokens:
@@ -325,7 +325,7 @@ def index():
             return jsonify({'error': 'Token already used'}), 400
         
         # if current_user.username != 'spy':
-        if video_id in used_video_id :
+        if pssh in used_pssh :
             for result in cached_results:
                 if mpd in result:
                     index = cached_results.index(result)
@@ -341,31 +341,8 @@ def index():
 
     result = mpd + '\n' + c_keys 
     used_tokens.add(mytoken)
-    used_video_id.add(pssh)
+    used_pssh.add(pssh)
     session['result'] = result
-
-
-    def append_to_json(data):
-        # Open the file in append mode and write the data
-        with open("cached_results.json", "a") as json_file:
-            json.dump(data, json_file, indent=4)
-            # Add a newline character to separate entries
-            json_file.write('\n')
-
-    # Sample function that returns JSON-like data
-    def generate_data(video_id, result):
-        return {
-            video_id: {
-                "cached_result": result
-            }
-        }
-    
-    data_1 = generate_data(video_id , result)
-    append_to_json(data_1)
-
-
-
-
     cached_results.append(result)
 
 
