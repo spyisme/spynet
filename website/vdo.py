@@ -316,7 +316,8 @@ def get_key(index):
 def index():
     mytoken = request.args.get('token')
     client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
-    mpd = get_video_id(mytoken)
+    mpd = get_mpd(get_video_id(mytoken))
+
     pssh = get_pssh(mpd)
 
     if request.method == 'GET':
