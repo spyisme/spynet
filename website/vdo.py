@@ -345,18 +345,24 @@ def index():
     session['result'] = result
 
 
-    def append_to_json(video_id, result):
-        data = f',{video_id}: {"cached_result": {result}}'
-        
-        # Open the file in append mode
+    def append_to_json(data):
+        # Open the file in append mode and write the data
         with open("cached_results.json", "a") as json_file:
-            # Write the data to the file
             json.dump(data, json_file, indent=4)
             # Add a newline character to separate entries
             json_file.write('\n')
 
+    # Sample function that returns JSON-like data
+    def generate_data(video_id, result):
+        return {
+            video_id: {
+                "cached_result": result
+            }
+        }
+    
+    data_1 = generate_data(video_id , result)
+    append_to_json(data_1)
 
-    append_to_json(video_id, result)
 
 
 
