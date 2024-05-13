@@ -1772,7 +1772,7 @@ def adby():
   return render_template('used_pages/videopage.html',
                          videos=videos,
                          playlist_id=playlist_id,
-                         teachername=teachername ,folder =folder)
+                         teachername=teachername ,folder =folder )
 
 
 @views.route("/adby/update")
