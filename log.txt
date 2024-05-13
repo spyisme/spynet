@@ -1,37 +1,114 @@
  * Serving Flask app 'website'
  * Debug mode: on
-85.90.246.159 - - [09/May/2024 23:09:58] code 400, message Bad request version ('À\x14À')
-45.79.181.179 - - [10/May/2024 00:03:25] code 400, message Bad request version ('À\x14À')
-20.3.131.163 - - [10/May/2024 02:11:33] code 400, message Bad request version ('RTSP/1.0')
-20.3.131.163 - - [10/May/2024 02:11:34] code 400, message Bad HTTP/0.9 request type ('l\x00')
-20.3.131.163 - - [10/May/2024 02:15:37] code 400, message Bad request version ('\x00/\x00')
-192.155.90.220 - - [10/May/2024 02:15:40] code 400, message Bad request version ('¶)ÌèZ!\x0e;æáM~\x9dÌ')
-179.60.147.136 - - [10/May/2024 02:46:42] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
-78.153.140.177 - - [10/May/2024 03:42:29] code 400, message Bad request version ('¢\x19\x176þ\x17P>)ÅÒæß²ñ\x00b\x13\x02\x13\x03\x13\x01À,À0À+À/Ì©Ì¨\x00£\x00\x9f\x00¢\x00\x9eÌªÀ¯À\xadÀ$À(À')
-178.79.144.158 - - [10/May/2024 06:02:53] code 400, message Bad request version ('\x00\x04\x03\x00\x01\x02\x00')
-178.79.144.158 - - [10/May/2024 06:02:54] code 400, message Bad request version ('\x00\x04\x03\x00\x01\x02\x00')
-178.79.144.158 - - [10/May/2024 06:02:54] code 400, message Bad request version ('\x9bòÉÄ/')
-66.175.213.4 - - [10/May/2024 06:27:04] code 400, message Bad request version ('À\x14À')
-80.75.212.75 - - [10/May/2024 07:30:35] code 400, message Bad request syntax ('\x05\x01\x00')
-167.94.138.40 - - [10/May/2024 08:38:34] code 505, message Invalid HTTP version (2.0)
-167.94.138.40 - - [10/May/2024 08:38:43] code 505, message Invalid HTTP version (2.0)
-64.62.197.234 - - [10/May/2024 09:41:26] code 400, message Bad request version ('À\x14À')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 854, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 463, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 626, in match
+    raise MethodNotAllowed(valid_methods=list(e.have_match_for)) from None
+werkzeug.exceptions.MethodNotAllowed: 405 Method Not Allowed: The method is not allowed for the requested URL.
+
+During handling of the above exception, another exception occurred:
+
 Traceback (most recent call last):
   File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1498, in __call__
     return self.wsgi_app(environ, start_response)
   File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 43, in __call__
     return super(_SocketIOMiddleware, self).__call__(environ,
-  File "/usr/local/lib/python3.8/dist-packages/engineio/middleware.py", line 63, in __call__
-    return self.engineio_app.handle_request(environ, start_response)
-  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 430, in handle_request
-    return self.eio.handle_request(environ, start_response)
-  File "/usr/local/lib/python3.8/dist-packages/engineio/server.py", line 272, in handle_request
-    socket = self._get_socket(sid)
-  File "/usr/local/lib/python3.8/dist-packages/engineio/base_server.py", line 229, in _get_socket
-    raise KeyError('Session is disconnected')
-KeyError: 'Session is disconnected'
-167.71.201.103 - - [10/May/2024 10:33:50] code 400, message Bad request version ('À\x13À')
-185.122.204.179 - - [10/May/2024 10:51:03] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+  File "/usr/local/lib/python3.8/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 765, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 740, in handle_http_exception
+    return self.ensure_sync(handler)(e)  # type: ignore[no-any-return]
+  File "/home/azureuser/SpyNet/main.py", line 35, in exception_handler
+    discord_log_backend(f'User : {current_user.username} encountered an error while trying to access {request.url} ```{error}``` <@709799648143081483>')
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+167.248.133.182 - - [11/May/2024 18:18:13] code 505, message Invalid HTTP version (2.0)
+167.248.133.182 - - [11/May/2024 18:18:17] code 505, message Invalid HTTP version (2.0)
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 854, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 463, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 626, in match
+    raise MethodNotAllowed(valid_methods=list(e.have_match_for)) from None
+werkzeug.exceptions.MethodNotAllowed: 405 Method Not Allowed: The method is not allowed for the requested URL.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.8/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 765, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 740, in handle_http_exception
+    return self.ensure_sync(handler)(e)  # type: ignore[no-any-return]
+  File "/home/azureuser/SpyNet/main.py", line 35, in exception_handler
+    discord_log_backend(f'User : {current_user.username} encountered an error while trying to access {request.url} ```{error}``` <@709799648143081483>')
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+45.76.35.106 - - [11/May/2024 19:21:32] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00¡\x01\x00\x00\x9d\x03\x03=\xad¸3®¶¥\x97zEfÑ\x00Â\x1b')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 854, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 463, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 626, in match
+    raise MethodNotAllowed(valid_methods=list(e.have_match_for)) from None
+werkzeug.exceptions.MethodNotAllowed: 405 Method Not Allowed: The method is not allowed for the requested URL.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.8/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 765, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 740, in handle_http_exception
+    return self.ensure_sync(handler)(e)  # type: ignore[no-any-return]
+  File "/home/azureuser/SpyNet/main.py", line 35, in exception_handler
+    discord_log_backend(f'User : {current_user.username} encountered an error while trying to access {request.url} ```{error}``` <@709799648143081483>')
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+45.79.181.251 - - [11/May/2024 20:18:54] code 400, message Bad request version ('7')
 Traceback (most recent call last):
   File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
     rv = self.dispatch_request()
@@ -81,80 +158,7 @@ Traceback (most recent call last):
   File "/usr/local/lib/python3.8/dist-packages/engineio/base_server.py", line 229, in _get_socket
     raise KeyError('Session is disconnected')
 KeyError: 'Session is disconnected'
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 854, in dispatch_request
-    self.raise_routing_exception(req)
-  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 463, in raise_routing_exception
-    raise request.routing_exception  # type: ignore[misc]
-  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 362, in match_request
-    result = self.url_adapter.match(return_rule=True)  # type: ignore
-  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 626, in match
-    raise MethodNotAllowed(valid_methods=list(e.have_match_for)) from None
-werkzeug.exceptions.MethodNotAllowed: 405 Method Not Allowed: The method is not allowed for the requested URL.
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1498, in __call__
-    return self.wsgi_app(environ, start_response)
-  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 43, in __call__
-    return super(_SocketIOMiddleware, self).__call__(environ,
-  File "/usr/local/lib/python3.8/dist-packages/engineio/middleware.py", line 74, in __call__
-    return self.wsgi_app(environ, start_response)
-  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1476, in wsgi_app
-    response = self.handle_exception(e)
-  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 765, in handle_user_exception
-    return self.handle_http_exception(e)
-  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 740, in handle_http_exception
-    return self.ensure_sync(handler)(e)  # type: ignore[no-any-return]
-  File "/home/azureuser/SpyNet/main.py", line 35, in exception_handler
-    discord_log_backend(f'User : {current_user.username} encountered an error while trying to access {request.url} ```{error}``` <@709799648143081483>')
-AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
-Invalid session cJ_f_lh86Hc2B1i3AABe (further occurrences of this error will be logged with level INFO)
-199.45.154.26 - - [10/May/2024 14:05:34] code 505, message Invalid HTTP version (2.0)
-199.45.154.26 - - [10/May/2024 14:05:39] code 505, message Invalid HTTP version (2.0)
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 854, in dispatch_request
-    self.raise_routing_exception(req)
-  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 463, in raise_routing_exception
-    raise request.routing_exception  # type: ignore[misc]
-  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 362, in match_request
-    result = self.url_adapter.match(return_rule=True)  # type: ignore
-  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 626, in match
-    raise MethodNotAllowed(valid_methods=list(e.have_match_for)) from None
-werkzeug.exceptions.MethodNotAllowed: 405 Method Not Allowed: The method is not allowed for the requested URL.
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1498, in __call__
-    return self.wsgi_app(environ, start_response)
-  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 43, in __call__
-    return super(_SocketIOMiddleware, self).__call__(environ,
-  File "/usr/local/lib/python3.8/dist-packages/engineio/middleware.py", line 74, in __call__
-    return self.wsgi_app(environ, start_response)
-  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1476, in wsgi_app
-    response = self.handle_exception(e)
-  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 765, in handle_user_exception
-    return self.handle_http_exception(e)
-  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 740, in handle_http_exception
-    return self.ensure_sync(handler)(e)  # type: ignore[no-any-return]
-  File "/home/azureuser/SpyNet/main.py", line 35, in exception_handler
-    discord_log_backend(f'User : {current_user.username} encountered an error while trying to access {request.url} ```{error}``` <@709799648143081483>')
-AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
-172.104.11.46 - - [10/May/2024 14:33:34] code 400, message Bad request version ('À\x14À')
+Invalid session mu9jst3YPqOUi_j4AAA4 (further occurrences of this error will be logged with level INFO)
 Traceback (most recent call last):
   File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1498, in __call__
     return self.wsgi_app(environ, start_response)
@@ -204,4 +208,922 @@ Traceback (most recent call last):
   File "/home/azureuser/SpyNet/main.py", line 35, in exception_handler
     discord_log_backend(f'User : {current_user.username} encountered an error while trying to access {request.url} ```{error}``` <@709799648143081483>')
 AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
-172.105.128.12 - - [10/May/2024 16:16:57] code 400, message Bad request version ('À\x14À')
+185.216.71.4 - - [11/May/2024 21:16:41] code 400, message Bad request version ("üý×28I1w\x8bQ\x08\x11ÝCa!L\x7fþ,|×íx:\x00>\x13\x02\x13\x03\x13\x01À,À0\x00\x9fÌ©Ì¨ÌªÀ+À/\x00\x9eÀ$À(\x00kÀ#À'\x00gÀ")
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 854, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 463, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 626, in match
+    raise MethodNotAllowed(valid_methods=list(e.have_match_for)) from None
+werkzeug.exceptions.MethodNotAllowed: 405 Method Not Allowed: The method is not allowed for the requested URL.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.8/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 765, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 740, in handle_http_exception
+    return self.ensure_sync(handler)(e)  # type: ignore[no-any-return]
+  File "/home/azureuser/SpyNet/main.py", line 35, in exception_handler
+    discord_log_backend(f'User : {current_user.username} encountered an error while trying to access {request.url} ```{error}``` <@709799648143081483>')
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+78.153.140.177 - - [12/May/2024 01:16:53] code 400, message Bad request version ('&$}\x1bY\x88£1u¬â¡,¨\x18\x13à@J\x00b\x13\x02\x13\x03\x13\x01À,À0À+À/Ì©Ì¨\x00£\x00\x9f\x00¢\x00\x9eÌªÀ¯À\xadÀ$À(À')
+4.242.65.177 - - [12/May/2024 02:01:26] code 400, message Bad request version ('RTSP/1.0')
+4.242.65.177 - - [12/May/2024 02:01:28] code 400, message Bad HTTP/0.9 request type ('l\x00')
+4.242.65.177 - - [12/May/2024 02:06:04] code 400, message Bad request version ('\x00/\x00')
+198.235.24.215 - - [12/May/2024 02:10:30] code 400, message Bad request version ('À\x13À')
+198.235.24.215 - - [12/May/2024 02:10:30] code 400, message Bad request version ('À(À$À\x14À')
+66.175.213.4 - - [12/May/2024 02:12:08] code 400, message Bad request version ('À\x14À')
+194.165.16.76 - - [12/May/2024 02:36:54] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+157.230.45.135 - - [12/May/2024 02:42:31] code 400, message Bad request version ('À\x13À')
+165.154.41.50 - - [12/May/2024 04:27:13] code 400, message Bad request version ('À\x13À')
+165.154.41.50 - - [12/May/2024 04:27:14] code 400, message Bad HTTP/0.9 request type ('t3')
+152.32.149.206 - - [12/May/2024 05:10:21] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x01\x17\x01\x00\x01\x13\x03\x03Äø¢\x14GU&Ô`RMäWæ´ú\x8eäöÂßla\x96\x7fû®m´\x11f¢')
+206.189.126.52 - - [12/May/2024 05:18:21] code 400, message Bad request syntax ('\x16\x03\x01\x01ü\x01\x00\x01ø\x03\x03&@¨\x91k\x8e\x80Ã^\x8e\x94ø:z»ß\x8fÌlçYÐ^Í"2\x88·e1kÃ\x00\x01<Ì\x14Ì\x13Ì\x15À0À,À(À$À\x14À')
+205.210.31.31 - - [12/May/2024 05:34:33] code 400, message Bad request syntax ("\x16\x03\x01\x00î\x01\x00\x00ê\x03\x03k\x8c6\x82\x8fÊ.}\x03×'u\x06¦Ú@\x9bû")
+205.210.31.31 - - [12/May/2024 05:34:33] code 400, message Bad request syntax ('\x16\x03\x01\x00Ê\x01\x00\x00Æ\x03\x03y\x9a\x12Âß¾')
+45.79.181.179 - - [12/May/2024 06:28:53] code 400, message Bad request version ('À\x14À')
+216.218.206.66 - - [12/May/2024 07:13:32] code 400, message Bad request version ('À\x14À')
+172.104.11.46 - - [12/May/2024 08:11:11] code 400, message Bad request version ('À\x14À')
+50.31.21.10 - - [12/May/2024 09:38:50] code 400, message Bad request version ('RTSP/1.0')
+50.31.21.10 - - [12/May/2024 09:38:55] code 400, message Bad HTTP/0.9 request type ('l\x00')
+50.31.21.10 - - [12/May/2024 09:39:01] code 400, message Bad request version ('\x00\x01\x97|\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00')
+50.31.21.10 - - [12/May/2024 09:39:06] code 400, message Bad HTTP/0.9 request type ('\x00')
+50.31.21.10 - - [12/May/2024 09:39:11] code 400, message Bad HTTP/0.9 request type ('\x00')
+50.31.21.10 - - [12/May/2024 09:39:11] code 400, message Bad request syntax ('HELP')
+50.31.21.10 - - [12/May/2024 09:39:12] code 400, message Bad request syntax ('\x16\x03\x00\x00S\x01\x00\x00O\x03\x00?G×÷º,îê²`~ó\x00ý\x82{¹Õ\x96Èw\x9bæÄÛ<=Ûoï\x10n\x00\x00(\x00\x16\x00\x13\x00')
+50.31.21.10 - - [12/May/2024 09:39:12] code 400, message Bad request version ('\x00/\x00')
+50.31.21.10 - - [12/May/2024 09:39:12] code 400, message Bad request syntax ('\x00\x00\x00qj\x81n0\x81k¡\x03\x02\x01\x05¢\x03\x02\x01')
+50.31.21.10 - - [12/May/2024 09:39:17] code 400, message Bad request version ('0.12\x00')
+50.31.21.10 - - [12/May/2024 09:39:17] code 400, message Bad request syntax ('\x01default')
+50.31.21.10 - - [12/May/2024 09:39:17] code 400, message Bad request syntax ('0\x84\x00\x00\x00-\x02\x01\x07c\x84\x00\x00\x00$\x04\x00')
+50.31.21.10 - - [12/May/2024 09:39:23] code 400, message Bad HTTP/0.9 request type ('0')
+50.31.21.10 - - [12/May/2024 09:39:23] code 400, message Bad request version ('SIP/2.0')
+50.31.21.10 - - [12/May/2024 09:39:28] code 400, message Bad request syntax ('TNMP\x04\x00\x00\x00TNME\x00\x00\x04\x00')
+50.31.21.10 - - [12/May/2024 09:39:33] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00')
+50.31.21.10 - - [12/May/2024 09:39:38] code 400, message Bad request syntax ('DmdT\x00\x00\x00\x17\x00\x00\x00\x01\x00\x00\x00\x00\x11\x11\x00ÿ\x01ÿ\x13')
+50.31.21.10 - - [12/May/2024 09:39:43] code 400, message Bad HTTP/0.9 request type (':\x00\x00\x00/\x00\x00\x00\x02\x00\x00@\x02\x0f\x00\x01\x00=\x05\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00/\x00\x00\x00\x00\x00\x00\x00\x00\x00@')
+50.31.21.10 - - [12/May/2024 09:39:48] code 400, message Bad request syntax ('JRMI\x00\x02K')
+50.31.21.10 - - [12/May/2024 09:39:53] code 400, message Bad request version ('\x00{\x000\x000\x000\x000\x00A\x00A\x000\x000\x00-\x000\x00A\x000\x000\x00-\x000\x000\x00a\x000\x00-\x00A\x00A\x000\x00A\x00-\x000\x000\x000\x000\x00A\x000\x00A\x00A\x000\x00A\x00A\x000\x00}\x00\x00\x00àmß_')
+50.31.21.10 - - [12/May/2024 09:39:59] code 400, message Bad HTTP/0.9 request type ('\x00Z\x00\x00\x01\x00\x00\x00\x016\x01,\x00\x00\x08\x00\x7fÿ\x7f\x08\x00\x00\x00\x01\x00')
+50.31.21.10 - - [12/May/2024 09:40:04] code 400, message Bad request version ('\x03\x00(\x00\x04ÿ\x08\x00\x01U\x00\x00\x00MSSQLServer\x00H\x0f\x00\x00')
+50.31.21.10 - - [12/May/2024 09:40:09] code 400, message Bad request syntax ('\x00\x03\x00\x01\x00\x00\x00\x00\x00\x00\x00\x02\x00\x00\x00\x00\x0f\x00')
+50.31.21.10 - - [12/May/2024 09:40:14] code 400, message Bad request syntax ('GIOP\x01\x00\x01\x00$\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x01\x00\x00\x00\x06\x00\x00\x00abcdef\x00\x00\x04\x00\x00\x00get\x00\x00\x00\x00\x00')
+50.31.21.10 - - [12/May/2024 09:40:50] code 400, message Bad HTTP/0.9 request type ('t3')
+165.22.54.194 - - [12/May/2024 10:41:12] code 400, message Bad request version ('À\x13À')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 854, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 463, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 626, in match
+    raise MethodNotAllowed(valid_methods=list(e.have_match_for)) from None
+werkzeug.exceptions.MethodNotAllowed: 405 Method Not Allowed: The method is not allowed for the requested URL.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.8/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 765, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 740, in handle_http_exception
+    return self.ensure_sync(handler)(e)  # type: ignore[no-any-return]
+  File "/home/azureuser/SpyNet/main.py", line 35, in exception_handler
+    discord_log_backend(f'User : {current_user.username} encountered an error while trying to access {request.url} ```{error}``` <@709799648143081483>')
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+45.33.80.243 - - [12/May/2024 12:05:25] code 400, message Bad request version ('À\x14À')
+64.227.97.195 - - [12/May/2024 12:53:50] code 400, message Bad HTTP/0.9 request type ('\x00\x0e8ìRº')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 854, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 463, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 626, in match
+    raise MethodNotAllowed(valid_methods=list(e.have_match_for)) from None
+werkzeug.exceptions.MethodNotAllowed: 405 Method Not Allowed: The method is not allowed for the requested URL.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.8/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 765, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 740, in handle_http_exception
+    return self.ensure_sync(handler)(e)  # type: ignore[no-any-return]
+  File "/home/azureuser/SpyNet/main.py", line 35, in exception_handler
+    discord_log_backend(f'User : {current_user.username} encountered an error while trying to access {request.url} ```{error}``` <@709799648143081483>')
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+179.60.147.136 - - [12/May/2024 14:04:10] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+45.79.128.205 - - [12/May/2024 14:13:03] code 400, message Bad request version ('À\x14À')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 854, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 463, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 626, in match
+    raise MethodNotAllowed(valid_methods=list(e.have_match_for)) from None
+werkzeug.exceptions.MethodNotAllowed: 405 Method Not Allowed: The method is not allowed for the requested URL.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.8/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 765, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 740, in handle_http_exception
+    return self.ensure_sync(handler)(e)  # type: ignore[no-any-return]
+  File "/home/azureuser/SpyNet/main.py", line 35, in exception_handler
+    discord_log_backend(f'User : {current_user.username} encountered an error while trying to access {request.url} ```{error}``` <@709799648143081483>')
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 854, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 463, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 626, in match
+    raise MethodNotAllowed(valid_methods=list(e.have_match_for)) from None
+werkzeug.exceptions.MethodNotAllowed: 405 Method Not Allowed: The method is not allowed for the requested URL.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.8/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 765, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 740, in handle_http_exception
+    return self.ensure_sync(handler)(e)  # type: ignore[no-any-return]
+  File "/home/azureuser/SpyNet/main.py", line 35, in exception_handler
+    discord_log_backend(f'User : {current_user.username} encountered an error while trying to access {request.url} ```{error}``` <@709799648143081483>')
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+172.105.128.12 - - [12/May/2024 16:03:26] code 400, message Bad request version ('À\x14À')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 854, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 463, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 626, in match
+    raise MethodNotAllowed(valid_methods=list(e.have_match_for)) from None
+werkzeug.exceptions.MethodNotAllowed: 405 Method Not Allowed: The method is not allowed for the requested URL.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.8/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 765, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 740, in handle_http_exception
+    return self.ensure_sync(handler)(e)  # type: ignore[no-any-return]
+  File "/home/azureuser/SpyNet/main.py", line 35, in exception_handler
+    discord_log_backend(f'User : {current_user.username} encountered an error while trying to access {request.url} ```{error}``` <@709799648143081483>')
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+45.79.181.179 - - [12/May/2024 17:59:14] code 400, message Bad request version ('À\x14À')
+157.230.45.135 - - [12/May/2024 18:39:46] code 400, message Bad request version ('À\x13À')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 854, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 463, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 626, in match
+    raise MethodNotAllowed(valid_methods=list(e.have_match_for)) from None
+werkzeug.exceptions.MethodNotAllowed: 405 Method Not Allowed: The method is not allowed for the requested URL.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.8/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 765, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 740, in handle_http_exception
+    return self.ensure_sync(handler)(e)  # type: ignore[no-any-return]
+  File "/home/azureuser/SpyNet/main.py", line 35, in exception_handler
+    discord_log_backend(f'User : {current_user.username} encountered an error while trying to access {request.url} ```{error}``` <@709799648143081483>')
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 854, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 463, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 626, in match
+    raise MethodNotAllowed(valid_methods=list(e.have_match_for)) from None
+werkzeug.exceptions.MethodNotAllowed: 405 Method Not Allowed: The method is not allowed for the requested URL.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.8/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 765, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 740, in handle_http_exception
+    return self.ensure_sync(handler)(e)  # type: ignore[no-any-return]
+  File "/home/azureuser/SpyNet/main.py", line 35, in exception_handler
+    discord_log_backend(f'User : {current_user.username} encountered an error while trying to access {request.url} ```{error}``` <@709799648143081483>')
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+45.79.181.104 - - [12/May/2024 20:30:33] code 400, message Bad request version ('À\x14À')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/home/azureuser/SpyNet/website/views.py", line 657, in verifyemail
+    return render_template('users_pages/verify.html' , email = user.email , msg = msgg)
+AttributeError: 'NoneType' object has no attribute 'email'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.8/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 772, in handle_user_exception
+    return self.ensure_sync(handler)(e)  # type: ignore[no-any-return]
+  File "/home/azureuser/SpyNet/main.py", line 35, in exception_handler
+    discord_log_backend(f'User : {current_user.username} encountered an error while trying to access {request.url} ```{error}``` <@709799648143081483>')
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/home/azureuser/SpyNet/website/views.py", line 657, in verifyemail
+    return render_template('users_pages/verify.html' , email = user.email , msg = msgg)
+AttributeError: 'NoneType' object has no attribute 'email'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.8/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 772, in handle_user_exception
+    return self.ensure_sync(handler)(e)  # type: ignore[no-any-return]
+  File "/home/azureuser/SpyNet/main.py", line 35, in exception_handler
+    discord_log_backend(f'User : {current_user.username} encountered an error while trying to access {request.url} ```{error}``` <@709799648143081483>')
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 854, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 463, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 626, in match
+    raise MethodNotAllowed(valid_methods=list(e.have_match_for)) from None
+werkzeug.exceptions.MethodNotAllowed: 405 Method Not Allowed: The method is not allowed for the requested URL.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.8/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 765, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 740, in handle_http_exception
+    return self.ensure_sync(handler)(e)  # type: ignore[no-any-return]
+  File "/home/azureuser/SpyNet/main.py", line 35, in exception_handler
+    discord_log_backend(f'User : {current_user.username} encountered an error while trying to access {request.url} ```{error}``` <@709799648143081483>')
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 854, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 463, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 626, in match
+    raise MethodNotAllowed(valid_methods=list(e.have_match_for)) from None
+werkzeug.exceptions.MethodNotAllowed: 405 Method Not Allowed: The method is not allowed for the requested URL.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.8/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 765, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 740, in handle_http_exception
+    return self.ensure_sync(handler)(e)  # type: ignore[no-any-return]
+  File "/home/azureuser/SpyNet/main.py", line 35, in exception_handler
+    discord_log_backend(f'User : {current_user.username} encountered an error while trying to access {request.url} ```{error}``` <@709799648143081483>')
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 854, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 463, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 626, in match
+    raise MethodNotAllowed(valid_methods=list(e.have_match_for)) from None
+werkzeug.exceptions.MethodNotAllowed: 405 Method Not Allowed: The method is not allowed for the requested URL.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.8/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 765, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 740, in handle_http_exception
+    return self.ensure_sync(handler)(e)  # type: ignore[no-any-return]
+  File "/home/azureuser/SpyNet/main.py", line 35, in exception_handler
+    discord_log_backend(f'User : {current_user.username} encountered an error while trying to access {request.url} ```{error}``` <@709799648143081483>')
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 854, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 463, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 626, in match
+    raise MethodNotAllowed(valid_methods=list(e.have_match_for)) from None
+werkzeug.exceptions.MethodNotAllowed: 405 Method Not Allowed: The method is not allowed for the requested URL.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.8/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 765, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 740, in handle_http_exception
+    return self.ensure_sync(handler)(e)  # type: ignore[no-any-return]
+  File "/home/azureuser/SpyNet/main.py", line 35, in exception_handler
+    discord_log_backend(f'User : {current_user.username} encountered an error while trying to access {request.url} ```{error}``` <@709799648143081483>')
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+45.79.181.223 - - [13/May/2024 00:01:24] code 400, message Bad request version ('À\x14À')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 854, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 463, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 626, in match
+    raise MethodNotAllowed(valid_methods=list(e.have_match_for)) from None
+werkzeug.exceptions.MethodNotAllowed: 405 Method Not Allowed: The method is not allowed for the requested URL.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.8/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 765, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 740, in handle_http_exception
+    return self.ensure_sync(handler)(e)  # type: ignore[no-any-return]
+  File "/home/azureuser/SpyNet/main.py", line 35, in exception_handler
+    discord_log_backend(f'User : {current_user.username} encountered an error while trying to access {request.url} ```{error}``` <@709799648143081483>')
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+172.203.171.205 - - [13/May/2024 00:51:19] code 400, message Bad request version ('RTSP/1.0')
+172.203.171.205 - - [13/May/2024 00:51:20] code 400, message Bad HTTP/0.9 request type ('l\x00')
+172.203.171.205 - - [13/May/2024 00:54:34] code 400, message Bad request version ('\x00/\x00')
+162.243.150.41 - - [13/May/2024 01:59:05] code 400, message Bad request syntax ('MGLNDD_20.199.81.120_80')
+179.60.147.136 - - [13/May/2024 02:19:05] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 854, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 463, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 626, in match
+    raise MethodNotAllowed(valid_methods=list(e.have_match_for)) from None
+werkzeug.exceptions.MethodNotAllowed: 405 Method Not Allowed: The method is not allowed for the requested URL.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.8/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 765, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 740, in handle_http_exception
+    return self.ensure_sync(handler)(e)  # type: ignore[no-any-return]
+  File "/home/azureuser/SpyNet/main.py", line 35, in exception_handler
+    discord_log_backend(f'User : {current_user.username} encountered an error while trying to access {request.url} ```{error}``` <@709799648143081483>')
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+167.71.201.103 - - [13/May/2024 02:34:19] code 400, message Bad request version ('À\x13À')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 854, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 463, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 626, in match
+    raise MethodNotAllowed(valid_methods=list(e.have_match_for)) from None
+werkzeug.exceptions.MethodNotAllowed: 405 Method Not Allowed: The method is not allowed for the requested URL.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.8/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 765, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 740, in handle_http_exception
+    return self.ensure_sync(handler)(e)  # type: ignore[no-any-return]
+  File "/home/azureuser/SpyNet/main.py", line 35, in exception_handler
+    discord_log_backend(f'User : {current_user.username} encountered an error while trying to access {request.url} ```{error}``` <@709799648143081483>')
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+199.45.155.38 - - [13/May/2024 03:11:36] code 505, message Invalid HTTP version (2.0)
+199.45.155.38 - - [13/May/2024 03:11:46] code 505, message Invalid HTTP version (2.0)
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 854, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 463, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 626, in match
+    raise MethodNotAllowed(valid_methods=list(e.have_match_for)) from None
+werkzeug.exceptions.MethodNotAllowed: 405 Method Not Allowed: The method is not allowed for the requested URL.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.8/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 765, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 740, in handle_http_exception
+    return self.ensure_sync(handler)(e)  # type: ignore[no-any-return]
+  File "/home/azureuser/SpyNet/main.py", line 35, in exception_handler
+    discord_log_backend(f'User : {current_user.username} encountered an error while trying to access {request.url} ```{error}``` <@709799648143081483>')
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+45.79.181.179 - - [13/May/2024 06:15:42] code 400, message Bad request version ('À\x14À')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 854, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 463, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 626, in match
+    raise MethodNotAllowed(valid_methods=list(e.have_match_for)) from None
+werkzeug.exceptions.MethodNotAllowed: 405 Method Not Allowed: The method is not allowed for the requested URL.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.8/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 765, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 740, in handle_http_exception
+    return self.ensure_sync(handler)(e)  # type: ignore[no-any-return]
+  File "/home/azureuser/SpyNet/main.py", line 35, in exception_handler
+    discord_log_backend(f'User : {current_user.username} encountered an error while trying to access {request.url} ```{error}``` <@709799648143081483>')
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+205.210.31.145 - - [13/May/2024 07:05:00] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00î\x01\x00\x00ê\x03\x03Htj¸@bò¡O~\x9aã\x81y\x06¾Ã\x98Ñê§\x06*\x9c\x8b06(æâTA')
+205.210.31.145 - - [13/May/2024 07:05:00] code 400, message Bad request version ('À(À$À\x14À')
+184.105.247.195 - - [13/May/2024 07:12:21] code 400, message Bad request version ('À\x14À')
+194.165.16.10 - - [13/May/2024 07:20:38] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+45.79.172.21 - - [13/May/2024 07:53:48] code 400, message Bad request version ('ðJÏÒiçA8-;N|,')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 854, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 463, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 626, in match
+    raise MethodNotAllowed(valid_methods=list(e.have_match_for)) from None
+werkzeug.exceptions.MethodNotAllowed: 405 Method Not Allowed: The method is not allowed for the requested URL.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.8/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 765, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 740, in handle_http_exception
+    return self.ensure_sync(handler)(e)  # type: ignore[no-any-return]
+  File "/home/azureuser/SpyNet/main.py", line 35, in exception_handler
+    discord_log_backend(f'User : {current_user.username} encountered an error while trying to access {request.url} ```{error}``` <@709799648143081483>')
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+205.210.31.83 - - [13/May/2024 08:43:02] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00î\x01\x00\x00ê\x03\x03\x16A\x80')
+205.210.31.83 - - [13/May/2024 08:43:03] code 400, message Bad request version ('À(À$À\x14À')
+181.214.166.113 - - [13/May/2024 09:19:39] code 400, message Bad HTTP/0.9 request type ('î\x8c')
+34.88.48.66 - - [13/May/2024 09:57:13] code 400, message Bad request version ('Éå©\x89m')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 854, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 463, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 626, in match
+    raise MethodNotAllowed(valid_methods=list(e.have_match_for)) from None
+werkzeug.exceptions.MethodNotAllowed: 405 Method Not Allowed: The method is not allowed for the requested URL.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.8/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 765, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 740, in handle_http_exception
+    return self.ensure_sync(handler)(e)  # type: ignore[no-any-return]
+  File "/home/azureuser/SpyNet/main.py", line 35, in exception_handler
+    discord_log_backend(f'User : {current_user.username} encountered an error while trying to access {request.url} ```{error}``` <@709799648143081483>')
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+167.71.202.190 - - [13/May/2024 10:46:09] code 400, message Bad request version ('À\x13À')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 854, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 463, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 626, in match
+    raise MethodNotAllowed(valid_methods=list(e.have_match_for)) from None
+werkzeug.exceptions.MethodNotAllowed: 405 Method Not Allowed: The method is not allowed for the requested URL.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.8/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 765, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 740, in handle_http_exception
+    return self.ensure_sync(handler)(e)  # type: ignore[no-any-return]
+  File "/home/azureuser/SpyNet/main.py", line 35, in exception_handler
+    discord_log_backend(f'User : {current_user.username} encountered an error while trying to access {request.url} ```{error}``` <@709799648143081483>')
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+167.94.138.123 - - [13/May/2024 11:56:20] code 505, message Invalid HTTP version (2.0)
+167.94.138.123 - - [13/May/2024 11:56:24] code 505, message Invalid HTTP version (2.0)
+66.175.213.4 - - [13/May/2024 12:35:09] code 400, message Bad request version ('À\x14À')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 854, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 463, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 626, in match
+    raise MethodNotAllowed(valid_methods=list(e.have_match_for)) from None
+werkzeug.exceptions.MethodNotAllowed: 405 Method Not Allowed: The method is not allowed for the requested URL.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.8/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 765, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 740, in handle_http_exception
+    return self.ensure_sync(handler)(e)  # type: ignore[no-any-return]
+  File "/home/azureuser/SpyNet/main.py", line 35, in exception_handler
+    discord_log_backend(f'User : {current_user.username} encountered an error while trying to access {request.url} ```{error}``` <@709799648143081483>')
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+172.105.128.11 - - [13/May/2024 13:53:20] code 400, message Bad request version ('À\x14À')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 854, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 463, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing/map.py", line 626, in match
+    raise MethodNotAllowed(valid_methods=list(e.have_match_for)) from None
+werkzeug.exceptions.MethodNotAllowed: 405 Method Not Allowed: The method is not allowed for the requested URL.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.8/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 765, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 740, in handle_http_exception
+    return self.ensure_sync(handler)(e)  # type: ignore[no-any-return]
+  File "/home/azureuser/SpyNet/main.py", line 35, in exception_handler
+    discord_log_backend(f'User : {current_user.username} encountered an error while trying to access {request.url} ```{error}``` <@709799648143081483>')
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.8/dist-packages/engineio/middleware.py", line 63, in __call__
+    return self.engineio_app.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/socketio/server.py", line 430, in handle_request
+    return self.eio.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/engineio/server.py", line 272, in handle_request
+    socket = self._get_socket(sid)
+  File "/usr/local/lib/python3.8/dist-packages/engineio/base_server.py", line 229, in _get_socket
+    raise KeyError('Session is disconnected')
+KeyError: 'Session is disconnected'
