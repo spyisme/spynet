@@ -22,7 +22,7 @@ SCOPES = ['https://www.googleapis.com/auth/youtube.readonly']
 
 REDIRECT_URI = 'http://localhost:8080/oauth2callback'
 
-TOKEN_FILE = 'token.json'
+TOKEN_FILE = '.website/token.json'
 
 
 def get_authenticated_service():
@@ -140,11 +140,6 @@ def view_logs(username):
     with open(log_file_path, 'r') as log_file:
         logs = log_file.readlines()
     return render_template('admin/view_logs.html', logs=logs , username = username)
-
-
-
-
-
 
 
 
