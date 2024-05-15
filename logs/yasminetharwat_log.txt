@@ -183,3 +183,16 @@
 156.223.128.122 === http://spysnet.com/nasser/chapter5-2 === 11/05 -- 06:09 PM === Desktop
 156.223.128.122 === http://spysnet.com/nasser/chapter5-2 === 11/05 -- 08:23 PM === Desktop
 156.223.128.122 === http://spysnet.com/nasser/chapter5-2 === 12/05 -- 11:29 PM === Desktop
+156.223.108.35 === http://spysnet.com/nasser/chapter5-2 === 13/05 -- 10:34 PM === Desktop
+156.223.108.35 === https://www.youtube.com/watch?v=nWgpRQUfSeg&list=PLM-GVlebsoPWprnMTrSvCa4QaEUK0TJLY === 13/05 -- 10:34 PM === Desktop
+197.46.207.233 === http://spysnet.com/nasser/chapter5-2 === 15/05 -- 01:05 AM === Desktop
+197.46.207.233 === http://spysnet.com/nasser === 15/05 -- 01:06 AM === Desktop
+197.46.207.233 === http://spysnet.com/chemistry === 15/05 -- 01:06 AM === Desktop
+197.46.207.233 === http://spysnet.com/ === 15/05 -- 01:06 AM === Desktop
+197.46.207.233 === http://spysnet.com/biology === 15/05 -- 01:06 AM === Desktop
+197.46.207.233 === http://spysnet.com/daif === 15/05 -- 01:07 AM === Desktop
+197.46.207.233 === http://spysnet.com/daif/bioch5 === 15/05 -- 01:07 AM === Desktop
+197.46.207.233 === https://www.youtube.com/watch?v=c8b_HUhwoVc&list=PLM-GVlebsoPU6uHQAAUhs7VT2XTAltkCW === 15/05 -- 01:07 AM === Desktop
+197.46.207.233 === http://spysnet.com/ === 15/05 -- 02:14 AM === Mobile
+197.46.207.233 === http://spysnet.com/chemistry === 15/05 -- 02:14 AM === Mobile
+197.46.207.233 === http://spysnet.com/nasser === 15/05 -- 02:14 AM === Mobile

@@ -143,3 +143,8 @@
 41.46.144.163 === http://spysnet.com/english === 11/05 -- 11:23 AM === Mobile
 41.46.144.163 === http://spysnet.com/english/hossamsameh === 11/05 -- 11:23 AM === Mobile
 41.46.144.163 === https://www.youtube.com/watch?v=93eM41HYZ44&list=PLM-GVlebsoPWGSfDq2_C801iLUl3RKWCK === 11/05 -- 11:23 AM === Mobile
+41.46.144.163 === http://spysnet.com/ === 15/05 -- 10:30 AM === Desktop
+41.46.144.163 === http://spysnet.com/chemistry === 15/05 -- 10:30 AM === Desktop
+41.46.144.163 === http://spysnet.com/nasser === 15/05 -- 10:30 AM === Desktop
+41.46.144.163 === http://spysnet.com/nasser/finals === 15/05 -- 10:30 AM === Desktop
+41.46.144.163 === https://www.youtube.com/watch?v=eApH7Aa2bHE&list=PLM-GVlebsoPXUOsllaqlIt0JaHvIBS_h3 === 15/05 -- 10:31 AM === Desktop
