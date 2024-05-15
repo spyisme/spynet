@@ -1346,9 +1346,9 @@ def gedo():
        "Gedo Rev3": ("gedorev3", "Revision 3"), 
        "Gedo Rev4": ("gedorev4", "Revision 4"), 
        "Gedo Rev5": ("gedorev5", "Revision 5"), 
-    #    "Gedo Rev6": ("gedorev6", "Revision 6"), 
-    #    "Gedo Rev7": ("gedorev7", "Revision 7"), 
-    #    "Gedo Rev8": ("gedorev8", "Revision 8"), 
+       "Gedo Rev6": ("gedorev6", "Revision 6"), 
+       "Gedo Rev7": ("gedorev7", "Revision 7"), 
+       "Gedo Rev8": ("gedorev8", "Revision 8"), 
 
 }
   teachername = "Arabic"
@@ -1464,6 +1464,68 @@ def gedorev5():
 @views.route("/gedorev5/update")
 def gedorev5update():
     return createtxtfile("gedorev5" , "PLM-GVlebsoPUnidZXcpQOMfq0Rj0sZO-5")
+
+
+
+@views.route("/gedorev6")
+def gedorev6():
+    playlist_id = 'PLM-GVlebsoPW-ByMIpaHRcQoQAINlFJ2I'
+    teachername= "Gedo"
+    with open("website/playlists/gedorev6.txt", 'r', encoding='utf-8') as file:
+        content = file.read()
+        videos = ast.literal_eval(content)
+    return render_template('used_pages/videopage.html',
+                           videos=videos,
+                           playlist_id=playlist_id,
+                           teachername=teachername)
+
+
+@views.route("/gedorev6/update")
+def gedorev6update():
+    return createtxtfile("gedorev6" , "PLM-GVlebsoPW-ByMIpaHRcQoQAINlFJ2I")
+
+
+
+@views.route("/gedorev7")
+def gedorev7():
+    playlist_id = 'PLM-GVlebsoPXaUej1euRJvw65n6UFarhs'
+    teachername= "Gedo"
+    with open("website/playlists/gedorev7.txt", 'r', encoding='utf-8') as file:
+        content = file.read()
+        videos = ast.literal_eval(content)
+    return render_template('used_pages/videopage.html',
+                           videos=videos,
+                           playlist_id=playlist_id,
+                           teachername=teachername)
+
+
+@views.route("/gedorev7/update")
+def gedorev7update():
+    return createtxtfile("gedorev7" , "PLM-GVlebsoPXaUej1euRJvw65n6UFarhs")
+
+
+
+
+
+@views.route("/gedorev8")
+def gedorev8():
+    playlist_id = 'PLM-GVlebsoPUZb1vaHdLrCWK-xzilPY_A'
+    teachername= "Gedo"
+    with open("website/playlists/gedorev8.txt", 'r', encoding='utf-8') as file:
+        content = file.read()
+        videos = ast.literal_eval(content)
+    return render_template('used_pages/videopage.html',
+                           videos=videos,
+                           playlist_id=playlist_id,
+                           teachername=teachername)
+
+
+@views.route("/gedorev8/update")
+def gedorev8update():
+    return createtxtfile("gedorev8" , "PLM-GVlebsoPUZb1vaHdLrCWK-xzilPY_A")
+
+
+
 
 
 
