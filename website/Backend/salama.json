@@ -183,5 +183,10 @@
     "id": "PLM-GVlebsoPW6abpZllo93dVC1GocHVoK",
     "url": "/course35",
     "description": "Final Revision 2 (Calculus)"
+  },
+  "Final Exams": {
+    "id": "PLM-GVlebsoPXHMd4hCa8eusH1wKgSBmXb",
+    "url": "/exams",
+    "description": "Final Exams"
   }
 }

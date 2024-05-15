@@ -183,3 +183,12 @@
 156.215.24.130 === http://spysnet.com/nasser/finals === 13/05 -- 05:55 PM === Desktop
 156.215.24.130 === https://www.youtube.com/watch?v=OKFH_b87vfw&list=PLM-GVlebsoPXUOsllaqlIt0JaHvIBS_h3 === 13/05 -- 05:55 PM === Desktop
 156.215.24.130 === http://spysnet.com/nasser === 13/05 -- 09:07 PM === Desktop
+41.43.64.47 === http://spysnet.com/nasser === 15/05 -- 04:14 PM === Desktop
+41.43.64.47 === http://spysnet.com/chemistry === 15/05 -- 04:14 PM === Desktop
+41.43.64.47 === http://spysnet.com/ === 15/05 -- 04:15 PM === Desktop
+41.43.64.47 === http://spysnet.com/biology === 15/05 -- 04:15 PM === Desktop
+41.43.64.47 === http://spysnet.com/daif === 15/05 -- 04:15 PM === Desktop
+41.43.64.47 === http://spysnet.com/daif/finals === 15/05 -- 04:15 PM === Desktop
+41.43.64.47 === http://spysnet.com/daif === 15/05 -- 04:15 PM === Desktop
+41.43.64.47 === http://spysnet.com/biology === 15/05 -- 04:15 PM === Desktop
+41.43.64.47 === http://spysnet.com/daif === 15/05 -- 09:03 PM === Desktop
