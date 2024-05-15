@@ -767,9 +767,10 @@ def spyleakedaccs():
 @views.route('/physics')
 def Physics():
   teacher_links = {
-  "Tamer-el-kady": ("/tamer-el-kady", "Sessions & revisions"),
    "Mo adel" : ("/mo-adel" , "Random Sessions & revisions"),   
-  "Nawar": ("/nawar",  "(lw had m3ah acc b2a)" , "Back :))"),
+    
+  "Tamer-el-kady": ("/tamer-el-kady", "Sessions & revisions"),  
+  "Nawar": ("/nawar",  "(lw had m3ah acc b2a)"),
 
   }
   teachername = "Physics"
@@ -1090,7 +1091,7 @@ def nasservids(custom_url):
 def math():
   teacher_links = {
   "Sherbo": ("/sherbo", "Omar sherbeni"),
-    "Salama": ("/salama", "Mohamed salama" , "Back :))")
+    "Salama": ("/salama", "Mohamed salama" )
   }
   teachername = "Math"
   return render_template('used_pages/teacher.html',

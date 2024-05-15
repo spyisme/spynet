@@ -144,11 +144,7 @@
     "url": "/course28",
     "description": "Matrices (Algebra)"
   },
-  "Statics Revision": {
-    "id": "PLM-GVlebsoPXK2YJNUof_NL6rYnJjVqjw",
-    "url": "/revstatics",
-    "description": " Ch 1 , 2 , 3"
-  },
+
   "Course 29": {
     "id": "PLM-GVlebsoPWrrWnO5odT75WQrNuTciVW",
     "url": "/course29",
@@ -174,15 +170,20 @@
     "url": "/course33",
     "description": "Dynamics"
   },
-  "Course 34": {
+  "Final revision 1": {
     "id": "PLM-GVlebsoPX2ILtYmljzIj-z2oqkOVGi",
     "url": "/course34",
-    "description": "Final Revision 1"
+    "description": "Alg & solid geometry revision"
   },
-  "Course 35": {
+  "Final revision 2": {
     "id": "PLM-GVlebsoPW6abpZllo93dVC1GocHVoK",
     "url": "/course35",
-    "description": "Final Revision 2 (Calculus)"
+    "description": "Calculus revision"
+  },
+  "Final revision 3": {
+    "id": "PLM-GVlebsoPXK2YJNUof_NL6rYnJjVqjw",
+    "url": "/revstatics",
+    "description": "Statics revision"
   },
   "Final Exams": {
     "id": "PLM-GVlebsoPXHMd4hCa8eusH1wKgSBmXb",
