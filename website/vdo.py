@@ -9,6 +9,7 @@ from pywidevine import Cdm
 from pywidevine import Device
 import os
 
+
 Nawar = 'https://discord.com/api/webhooks/1159805446039797780/bE4xU3lkcjlb4vfCVQ9ky5BS2OuD01Y8g9godljNBfoApGt59-VfKf19GQuMUmH0IYzw'
 Bio= "https://discord.com/api/webhooks/1158548096012259422/jQ5sEAZBIrvfBNTA-w4eR-p6Yw0zv7GBC9JTUcEOAWfmqYJXbOpgysATjKPXLwd8HZOs"
 Nasser = "https://discord.com/api/webhooks/1158548163209199626/73nAC_d1rgUr6IS79gC508Puood83ho848IEGOpxLtUzGEEJ3h8CyZqlZvCZ6jEXH5k1"
@@ -330,7 +331,9 @@ def index():
             for result in cached_results:
                 if mpd in result:
                     index = cached_results.index(result)
-            return jsonify({'error': f'Got video keys before... https://spysnet.com/keys/{index}'}), 400
+                    discord_log(f"USED VIDEO | {current_user.username} | {client_ip}")
+
+            return redirect(f'https://spysnet.com/keys/{index}')
     
     
     mpd , c_keys , video_name = getkeys(mytoken)
@@ -346,9 +349,6 @@ def index():
     session['result'] = result
     cached_results.append(result)
 
-
-
-    # Extracting keys and creating url to view online
     keys_content = re.findall(r"--key\s+(\S+)", c_keys)
  
 
@@ -390,12 +390,6 @@ def index():
         options = default_options
 
 
-
-
-
-
-
-
     result = result.replace("\n", " ")
 
     old = request.args.get('old')
@@ -428,14 +422,6 @@ def index():
          status  = "old"    
    
     return render_template('backend_pages/vdo.html' , content_key = keys_content , mpd = mpd ,options = options, result= result , url = url , status = status  , video_name = video_name)
-
-
-
-
-cmds_queue = []
-
-#Discord webhook , The webpage
-
 
 
 
@@ -552,9 +538,6 @@ def hosssamsameh():
         url = url
     else :
         url = "/".join(url.split("/")[:4]) + "/playlist.m3u8"
-    
-
-
 
     webhook_url="https://discord.com/api/webhooks/1224528158741626901/mIG58hd-FLTe79XHUsgwE0BxyyKjL2JFs9RyHfLBRfyM1v85YbkJGEzcJyQQVOsfhpRc" 
     if request.method == 'POST':
@@ -573,9 +556,6 @@ def hosssamsameh():
     return render_template('backend_pages/iframe.html' , url = url)
 
 
-
-
-import base64
 
 
 @vdo.route('/shahid', methods=['GET', 'POST'])
@@ -619,53 +599,6 @@ def shahid():
         requests.post("https://discord.com/api/webhooks/1217535086002573332/UZWHTP2ZPVUdIuOTBG-PVVHyi1bxaa8p_xDNVfeXvTS7_p72a0iVWmJkEoeHaxVowrbr", data=payload, headers=headers)
         return "Message Sent!" 
     return render_template('backend_pages/shahid.html' , mpd = mpd , key =key_value , pssh = pssh  , url = f"{mpd}&ck={keysbase64}")
-
-
-
-
-
-
-# from pywidevine.L3.cdm import cdm, deviceconfig
-# from base64 import b64encode
-# from pywidevine.L3.getPSSH import get_pssh
-# from pywidevine.L3.decrypt.wvdecryptcustom import WvDecrypt
-
-
-# @vdo.route('/spotify', methods=['GET', 'POST'])
-# def spotify():
-#     lic_url = "https://gew1-spclient.spotify.com/widevine-license/v1/audio/license"
-
-#     pssh = base64.b64decode(request.args.get('pssh'))
-#     pssh = pssh.decode('utf-8')
-#     auth = base64.b64decode(request.args.get('auth'))
-#     auth = auth.decode('utf-8')
-
-#     headers = {'Authorization': f'{auth}'}
-
-#     def WV_Function(pssh, lic_url ,cert_b64=None):
-#         wvdecrypt = WvDecrypt(init_data_b64=pssh, cert_data_b64=cert_b64, device=deviceconfig.device_android_generic)                   
-#         widevine_license = requests.post(url=lic_url, headers=headers, data=wvdecrypt.get_challenge())
-
-#         print(widevine_license.text)
-
-
-#         license_b64 = b64encode(widevine_license.content)
-
-#         wvdecrypt.update_license(license_b64)
-
-#         Correct, keyswvdecrypt = wvdecrypt.start_process()
-
-#         if Correct:
-#             return Correct, keyswvdecrypt   
-#     keys = WV_Function(pssh, lic_url)
-
-#     return keys
-
-
-
-
-
-#-------------------------------------------------------------------------------------
 
 
 
@@ -727,10 +660,8 @@ def addtolist():
 
 @vdo.route("/clear")
 def clearlist():
-
     with open('list.txt', 'w') as file:
         file.truncate(0) 
-    
     return "done"
 
 
