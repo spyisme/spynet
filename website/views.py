@@ -693,9 +693,9 @@ def registeracc():
 @views.route('/redirect/<path:link>')
 def redirectlinks(link):
     link = link.replace('questionmark', '?')
-    link = link.replace('andsympol', '&')
+    link = link.replace('andsympol', '&').replace(':', ':/')  #For iphone
 
-    return redirect(f"{link}")
+    return redirect(link)
 
 
 #Home
@@ -1176,6 +1176,10 @@ def sherporoutes(custom_url):
             "https://drive.google.com/file/d/1RAmemfLG2bSVQD7ZCMpsp82X_4tLOxSg/view?usp=drive_link",
         }
         folder = "https://drive.google.com/drive/folders/1_BT42ym3-9BY3FQOlFUKce7T6Scntx5o?usp=drive_link"
+    elif course_name == "Final rev":
+        folder = "https://drive.google.com/drive/folders/1Y6Kd4UAV8yxR6dchDE50yLt3WkIs4V6n?usp=drive_link"
+    elif course_name == "Kol el fro3 revisions":
+        folder = "https://drive.google.com/drive/folders/1xiJWM6qrULUPVSuf_Ae1e4oeTrmqhsqX?usp=drive_link"
 
     return render_template('used_pages/videopage.html',
                            videos=videos,
