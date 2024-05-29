@@ -10,12 +10,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
     <script src="static/java/connection.js"></script>
     <script src="{{ url_for('static', filename='java/countdown.js') }}"></script>
-    <script src="{{ url_for('static', filename='css/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='styles/main.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/main.css') }}">
+
 
 
     <title>Sanawya Sessions</title>
     </head>
-
 
 
 
@@ -63,8 +64,8 @@ body {
 
 iframe {
     border: 0;
-    width: 720px;
-    height: 505px;
+    width: 935.18px;
+height: 655px;
 }
 
         #canvas {
@@ -153,6 +154,7 @@ iframe {
     }
   
     function populateParts() {
+        
         var lectureId = document.getElementById("lectureIdInput").value;
         var playButtonContainer = document.getElementById("playButtonContainer");
         playButtonContainer.innerHTML = ""; // Clear existing play buttons
@@ -171,7 +173,7 @@ iframe {
                 videoPlayer.src = ""
                 var h1Element = document.querySelector("h1");
                h1Element.innerText = "Click a part to play!";
-             document.title = "Lecture " + lectureId;
+             document.title = "Ashraf el shnawy";
                 
                 above.innerText = "Selected lecture : "+ lectureId
                 var playButton = document.createElement("button");
@@ -270,6 +272,8 @@ iframe {
         <br><br>
         <div id="videoPlayerContainer">
             <iframe id="videoPlayer" allow="encrypted-media" allowfullscreen></iframe>
+            <div id="partsContainer"></div> <!-- This div is added to contain parts buttons -->
+
         </div>
 
 

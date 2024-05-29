@@ -31,14 +31,11 @@ def discord_log_backend(text):
 
 @app.errorhandler(Exception)
 def exception_handler(error):
-    if current_user : 
+    if current_user.username != 'spy' : 
         discord_log_backend(f'User : {current_user.username} encountered an error while trying to access {request.url} ```{error}``` <@709799648143081483>')
-
-    else:
-        discord_log_backend(f'Encountered an error while trying to access {request.url} ```{error}``` <@709799648143081483>')
+        return render_template('used_pages/500.html' , error = error)
 
 
-    return render_template('used_pages/500.html' , error = error)
 
 
 if __name__ == "__main__":

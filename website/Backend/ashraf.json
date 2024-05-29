@@ -773,8 +773,38 @@
       "part_g_video": "8ba4bbf2be0f4a609299986fc8aa58c3",
       "part_h_video": "26f8057059484253af5d0d9f6360a69d",
       "part_i_video": "9f889b2566c243f59cfe73e8d84ad295",
-      "part_j_video": "9f889b25336c243f59cfe73e8d84ad295",
+      "part_j_video": "2762a80f453145eca12a2e897ee457a5",
       "part_s_video": "badf76f0068345048123f8eb4f47205a"
+    },
+    {
+      "id": "76",
+      "title": "Final revision for Chapter 4 (Electrochemistry)",
+      "part_a_video": "d87e29ad0fa14dbebfccd74b72fdbca3",
+      "part_b_video": "a34a408bf3474732a6facfe2a7219bde",
+      "part_c_video": "47878e67306a42808eca8e66f64565cf",
+      "part_d_video": "1eecc38ec16b4e3db0695b6506ea5aa6",
+      "part_e_video": "6af209cbf75345b697f5e508181c6e3c",
+      "part_f_video": "732b2455878847ed9dc84df2c3b40da3",
+      "part_g_video": "4e14b6a38b5848a8a1045ecea63e5691",
+      "part_h_video": "9635b9ba83a94cfa93b24647be3d3eda",
+      "part_i_video": "69a87616ec784568991f3256a4bb2a23",
+      "part_j_video": "6579c25e392c4de58d937fc646d953bc",
+      "part_s_video": "fba6a8f8869e4ac2b8f03b8a904af7d1"
+    },
+    {
+      "id": "77",
+      "title": "Final Revision For Chapter Five Part (I) (Hydrocarbons)",
+      "part_a_video": "87feadb2848343aa8467df96843210bf",
+      "part_b_video": "730f9da571474e929dbfb3dd2b4bde66",
+      "part_c_video": "fda731a4d8d04c8ca8f5a406448e926c",
+      "part_d_video": "4f787a8956214fa5b7da2f76c6d90aec",
+      "part_e_video": "f099cd390609469da55bdf8e8278f9c7",
+      "part_f_video": "7054777694924cfdb53ef285c47c6b7d",
+      "part_g_video": "87f7131f4e9a45ad9af0438c4ea0d149",
+      "part_h_video": "a061c76d62ac45059747aa76789bf3d4",
+      "part_i_video": "794d91c7d75c40b29613448ff049527a",
+      "part_j_video": "58b8da1b646c45c6bf5c2cf1d6e84a9e",
+      "part_s_video": "1783d044d88d4e509ef7543df7a85828"
     }
   ]
 }

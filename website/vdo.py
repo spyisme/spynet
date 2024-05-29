@@ -351,16 +351,16 @@ def index():
 
     keys_content = re.findall(r"--key\s+(\S+)", c_keys)
  
-    # file_path = "keys.json"
+    file_path = "keys.json"
 
 
-    # with open(file_path, "r") as file:
-    #     existing_data = json.load(file)
+    with open(file_path, "r") as file:
+        existing_data = json.load(file)
 
-    # existing_data.append({get_video_id(mytoken): result})
+    existing_data.append({get_video_id(mytoken): result})
 
-    # with open(file_path, "w") as file:
-    #     json.dump(existing_data, file)
+    with open(file_path, "w") as file:
+        json.dump(existing_data, file)
 
 
     components = result.split()

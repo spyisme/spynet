@@ -7,10 +7,10 @@ google-api-python-client
 pytube
 youtube_dl
 lxml
-protobuf==3.20.0
 pycryptodomex
 pycryptodome
 waitress
 flask-socketio
 flask_mail
 pytz
+pywidevine

@@ -14,6 +14,7 @@ from string import ascii_lowercase
 import random
 from flask_mail import Message
 from . import mail
+from google.auth.exceptions import GoogleAuthError
 
 views = Blueprint('views', __name__)
 
@@ -22,7 +23,7 @@ SCOPES = ['https://www.googleapis.com/auth/youtube.readonly']
 
 REDIRECT_URI = 'http://localhost:8080/oauth2callback'
 
-TOKEN_FILE = '.website/token.json'
+TOKEN_FILE = 'token.json'
 
 
 def get_authenticated_service():
@@ -30,8 +31,8 @@ def get_authenticated_service():
 
     try:
         credentials = Credentials.from_authorized_user_file(TOKEN_FILE, SCOPES)
-    except FileNotFoundError:
-        print("Coulndt login")
+    except GoogleAuthError as e:
+        print(f"Couldn't log in: {e}")
 
     youtube = build('youtube', 'v3', credentials=credentials)
     return youtube
