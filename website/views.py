@@ -1,4 +1,5 @@
-from flask import Blueprint, render_template, request, redirect,  url_for , render_template_string , send_file
+from flask import Blueprint, render_template, request, redirect,  url_for , render_template_string , send_file, current_app
+
 from googleapiclient.discovery import build
 import os
 import ast
@@ -746,12 +747,27 @@ def robots_txt():
 #accs(accounts) 
 @views.route('/spyaccs')
 def spyleakedaccs():
-    if current_user.username not in ['spy']:
-        return redirect(url_for('views.home'))
-    else:
-        with open('website/templates/spyaccs/accs.json') as json_file:
-            accs = json.load(json_file)
-        return render_template('spyaccs/index.html' , accs = accs)
+    try:
+        if current_user.username not in ['spy']:
+            return redirect(url_for('views.home'))
+        
+        try:
+            with open('website/templates/spyaccs/accs.json', encoding='utf-8') as json_file:
+                accs = json.load(json_file)
+        except FileNotFoundError:
+            current_app.logger.error("accs.json file not found")
+            return "Error: accs.json file not found", 500
+        except json.JSONDecodeError:
+            current_app.logger.error("Error decoding JSON from accs.json")
+            return "Error: JSON decoding error", 500
+        except UnicodeDecodeError as e:
+            current_app.logger.error(f"Unicode decode error: {e}")
+            return "Error: Unicode decode error", 500
+        
+        return render_template('spyaccs/index.html', accs=accs)
+    except Exception as e:
+        current_app.logger.error(f"Unexpected error: {e}")
+        return "An unexpected error occurred", 500
   
 
 

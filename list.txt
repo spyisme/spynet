@@ -1,2 +1,2 @@
-python iframe.py https://iframe.mediadelivery.net/embed/33074/33f19f32-242a-4552-9b2d-e61f7d812b96 SavemyCalculusPart5
-python iframe.py https://iframe.mediadelivery.net/embed/33074/7758cbfd-ff9e-4a4c-a66d-268c833a031c SavemyCalculusPart6
+app https://resources.interstellarseries.com/hls/8733545492/a903d185f0dc4bafbbc43144395b23f2.m3u8 --header "User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:102.0) Gecko/20100101 Firefox/102.0" --header "Referer: https://iframe.mediadelivery.net/" --save-name Exam2021session1 -M format=mp4 --auto-select --no-log  & move Exam2021session1.mp4 ./output
+app https://resources.interstellarseries.com/hls/6672872654/dc5e5733cc4e4d5d9e3725a7336ec61e.m3u8 --header "User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:102.0) Gecko/20100101 Firefox/102.0" --header "Referer: https://iframe.mediadelivery.net/" --save-name Exam2022session1 -M format=mp4 --auto-select --no-log  & move Exam2022session1.mp4 ./output
