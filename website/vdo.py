@@ -326,14 +326,14 @@ def index():
             discord_log(f"USED TOKEN | {current_user.username} | {client_ip}")
             return jsonify({'error': 'Token already used'}), 400
         
-        # if current_user.username != 'spy':
-        if pssh in used_pssh :
-            for result in cached_results:
-                if mpd in result:
-                    index = cached_results.index(result)
-                    discord_log(f"USED VIDEO | {current_user.username} | {client_ip}")
+        if current_user.username != 'spy':
+            if pssh in used_pssh :
+                for result in cached_results:
+                    if mpd in result:
+                        index = cached_results.index(result)
+                        discord_log(f"USED VIDEO | {current_user.username} | {client_ip}")
 
-            return redirect(f'https://spysnet.com/keys/{index}')
+                return redirect(f'/keys/{index}')
     
     
     mpd , c_keys , video_name = getkeys(mytoken)
