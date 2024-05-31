@@ -317,9 +317,6 @@ def get_key(index):
 def index():
     mytoken = request.args.get('token')
     client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
-    mpd = get_mpd(get_video_id(mytoken))
-
-    pssh = get_pssh(mpd)
 
     if request.method == 'GET':
         if mytoken in used_tokens:
@@ -327,20 +324,25 @@ def index():
             return jsonify({'error': 'Token already used'}), 400
         
         if current_user.username != 'spy':
+            mpd = get_mpd(get_video_id(mytoken))
+
+            pssh = get_pssh(mpd)
+
             if pssh in used_pssh :
                 for result in cached_results:
                     if mpd in result:
                         index = cached_results.index(result)
                         discord_log(f"USED VIDEO | {current_user.username} | {client_ip}")
 
-                return redirect(f'/keys/{index}')
-    
+                return f"/keys/{index}"
+            else:
+                discord_log(f"Api got used by {current_user.username} | {client_ip}")
+
     
     mpd , c_keys , video_name = getkeys(mytoken)
 
        
     tokenhref = gethref(mytoken)
-    discord_log(f"Api got used by {current_user.username} | {client_ip}")
 
 
     result = mpd + '\n' + c_keys 
