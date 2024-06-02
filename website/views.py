@@ -945,26 +945,27 @@ def ashrafsessions():
         'active': 1,
     }
     response = requests.post('https://api.csacademyzone.com/lectures', headers=headers, json=json_data)
-    data = response.json()
-    filtered_lectures = []
-    last_id = None
+    if response.status == 200 :
+        data = response.json()
+        filtered_lectures = []
+        last_id = None
+        
+        for lecture in data['lectures']:
+            filtered_lecture = {
+                "id": lecture["id"],
+                "title": lecture["title"]
+            }
+            for part in ascii_lowercase:
+                part_key = f"part_{part}_video"
+                if part_key in lecture and lecture[part_key]:
+                    filtered_lecture[part_key] = lecture[part_key]
+            filtered_lectures.append(filtered_lecture)
+            last_id = lecture["id"] 
 
-    for lecture in data['lectures']:
-        filtered_lecture = {
-            "id": lecture["id"],
-            "title": lecture["title"]
-        }
-        for part in ascii_lowercase:
-            part_key = f"part_{part}_video"
-            if part_key in lecture and lecture[part_key]:
-                filtered_lecture[part_key] = lecture[part_key]
-        filtered_lectures.append(filtered_lecture)
-        last_id = lecture["id"] 
+        result = {"filtered_lectures": filtered_lectures}
 
-    result = {"filtered_lectures": filtered_lectures}
-
-    with open("website/Backend/ashraf.json", 'w') as output_file:
-        json.dump(result, output_file, indent=2)
+        with open("website/Backend/ashraf.json", 'w') as output_file:
+            json.dump(result, output_file, indent=2)
 
 
     with open('website/Backend/ashraf.json', 'r') as file:
