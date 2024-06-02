@@ -55,7 +55,7 @@ def discord_log(message):
     requests.post("https://discord.com/api/webhooks/1199384528553254983/-wZ9h7YobG3IHZBRZKtzPI5ZcAHpHvMYM-ajpJ87ZzXWTWvu2Upkk7_YaYi3X66QaUJL", data=payload, headers=headers)
 
 def getkeys(video_url):
-    wvd = r"/root/spysnet/cdm.wvd"  # Set your preferred value for wvd
+    wvd = "cdm.wvd"  # Set your preferred value for wvd
     if wvd is None:
         exit(f"No CDM! To use local decryption, place a .wvd in {os.getcwd()}/WVDs")
 
