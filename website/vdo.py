@@ -54,6 +54,18 @@ def discord_log(message):
     headers = {'Content-Type': 'application/json'}
     requests.post("https://discord.com/api/webhooks/1199384528553254983/-wZ9h7YobG3IHZBRZKtzPI5ZcAHpHvMYM-ajpJ87ZzXWTWvu2Upkk7_YaYi3X66QaUJL", data=payload, headers=headers)
 
+
+
+@vdo.route('/check_file/<path:filename>')
+def check_file(filename):
+
+    if os.path.isfile(filename):
+        return f'{filename} exists!'
+    else:
+        return f'{filename} does not exist.'
+
+
+
 def getkeys(video_url):
     wvd = "cdm.wvd"  # Set your preferred value for wvd
     if wvd is None:
