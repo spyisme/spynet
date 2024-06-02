@@ -937,6 +937,7 @@ def samehtest():
 
 @views.route('/ashrafsessions')
 def ashrafsessions():
+    return " "
     headers = {
         'authority': 'api.csacademyzone.com',
         'accept': 'application/json, text/plain, */*',
