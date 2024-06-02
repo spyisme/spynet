@@ -67,7 +67,7 @@ def check_file(filename):
 
 
 def getkeys(video_url):
-    wvd = "/cdm.wvd"  # Set your preferred value for wvd
+    wvd = "cdm.wvd"  # Set your preferred value for wvd
     if wvd is None:
         exit(f"No CDM! To use local decryption, place a .wvd in {os.getcwd()}/WVDs")
 
