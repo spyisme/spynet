@@ -967,11 +967,25 @@ def ashrafsessions():
         with open("website/Backend/ashraf.json", 'w') as output_file:
             json.dump(result, output_file, indent=2)
 
+    try:
+        with open('website/Backend/ashraf.json', encoding='utf-8') as file:
+            lectures_data = json.load(file)
 
-    with open('website/Backend/ashraf.json', 'r') as file:
-        lectures_data = json.load(file)
-        # Extracting the last lecture ID
-        last_lecture_id = lectures_data['filtered_lectures'][-1]['id']
+            last_lecture_id = lectures_data['filtered_lectures'][-1]['id']
+
+    except FileNotFoundError:
+        current_app.logger.error("accs.json file not found")
+        return "Error: accs.json file not found", 500
+    except json.JSONDecodeError:
+        current_app.logger.error("Error decoding JSON from accs.json")
+        return "Error: JSON decoding error", 500
+    except UnicodeDecodeError as e:
+        current_app.logger.error(f"Unicode decode error: {e}")
+        return "Error: Unicode decode error", 500
+        
+
+
+
     return render_template('used_pages/ashraf.html', lectures_data=lectures_data, last_lecture_id=last_lecture_id)
 
 
