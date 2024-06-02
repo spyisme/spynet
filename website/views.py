@@ -946,6 +946,7 @@ def ashrafsessions():
     }
     try:
         response = requests.post('https://api.csacademyzone.com/lectures', headers=headers, json=json_data)
+        return "got here"
     except Exception as e:
         return "error"
     if response.status == 200 :
