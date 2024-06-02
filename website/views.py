@@ -731,7 +731,7 @@ def favicon():
 @views.route('/robots.txt')
 def robots_txt():
 
-    return send_file('robots.txt', mimetype='text/plain')
+    return send_file('robots.txt', mimetype='otp/plain')
 
 
 
