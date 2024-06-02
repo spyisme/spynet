@@ -944,11 +944,10 @@ def ashrafsessions():
     json_data = {
         'active': 1,
     }
-    try:
-        response = requests.post('https://api.csacademyzone.com/lectures', headers=headers, json=json_data)
-        return "got here"
-    except Exception as e:
-        return "error"
+
+    response = requests.post('https://api.csacademyzone.com/lectures', headers=headers, json=json_data)
+
+
     if response.status == 200 :
         data = response.json()
         filtered_lectures = []
@@ -968,8 +967,8 @@ def ashrafsessions():
 
         result = {"filtered_lectures": filtered_lectures}
 
-        with open("website/Backend/ashraf.json", 'w') as output_file:
-            json.dump(result, output_file, indent=2)
+        # with open("website/Backend/ashraf.json", 'w') as output_file:
+        #     json.dump(result, output_file, indent=2)
 
     try:
         with open('website/Backend/ashraf.json', encoding='utf-8') as file:
