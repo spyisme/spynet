@@ -937,7 +937,6 @@ def samehtest():
 
 @views.route('/ashrafsessions')
 def ashrafsessions():
-    return " "
     headers = {
         'authority': 'api.csacademyzone.com',
         'accept': 'application/json, text/plain, */*',
@@ -945,7 +944,10 @@ def ashrafsessions():
     json_data = {
         'active': 1,
     }
-    response = requests.post('https://api.csacademyzone.com/lectures', headers=headers, json=json_data)
+    try:
+        response = requests.post('https://api.csacademyzone.com/lectures', headers=headers, json=json_data)
+    except Exception as e:
+        return "error"
     if response.status == 200 :
         data = response.json()
         filtered_lectures = []
