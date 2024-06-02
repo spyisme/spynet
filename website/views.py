@@ -946,7 +946,7 @@ def ashrafsessions():
     }
 
     response = requests.post('https://api.csacademyzone.com/lectures', headers=headers, json=json_data)
-    return response
+    return response.text
 
     data = response.json()
     filtered_lectures = []
