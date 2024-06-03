@@ -26,7 +26,7 @@ Logs = "https://discord.com/api/webhooks/1199384528553254983/-wZ9h7YobG3IHZBRZKt
 
 vdo = Blueprint('vdo', __name__)
 used_tokens = set()  # Set to store used tokens
-used_pssh = set()
+used_ids = set()
 cached_results = []  # Initialize as an empty list
 
 
@@ -335,20 +335,19 @@ def index():
             discord_log(f"USED TOKEN | {current_user.username} | {client_ip}")
             return jsonify({'error': 'Token already used'}), 400
         
-
-    mpd = get_mpd(get_video_id(mytoken))
-
-    pssh = get_pssh(mpd)
-
-    if pssh in used_pssh :
-        for result in cached_results:
-            if mpd in result:
-                index = cached_results.index(result)
-                discord_log(f"USED VIDEO | {current_user.username} | {client_ip}")
-
-        return redirect(f"/keys/{index}")
-    else:
-        discord_log(f"Api got used by {current_user.username} | {client_ip}")
+        video_id = get_video_id(mytoken)
+        
+        if video_id in used_ids :
+            mpd = get_mpd(video_id)
+            for result in cached_results:
+                if mpd in result:
+                    index = cached_results.index(result)
+                    discord_log(f"USED VIDEO | {current_user.username} | {client_ip}")
+                    return redirect(f"/keys/{index}")
+                else :
+                    return "error??"
+        else:
+            discord_log(f"Api got used by {current_user.username} | {client_ip}")
 
     
     mpd , c_keys , video_name = getkeys(mytoken)
@@ -359,7 +358,9 @@ def index():
 
     result = mpd + '\n' + c_keys 
     used_tokens.add(mytoken)
-    used_pssh.add(pssh)
+
+    used_ids.add(video_id)
+
     session['result'] = result
     cached_results.append(result)
 
@@ -690,11 +691,11 @@ def cmdcommand():
 @vdo.route("/cleartokens")
 def cleartokens():
         used_tokens.clear()
-        used_pssh.clear()
+        used_ids.clear()
         return "done"
 
 
 
 @vdo.route("/pssh")
 def pssh():
-    return jsonify(list(used_pssh))
+    return jsonify(list(used_ids))
