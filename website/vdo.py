@@ -346,7 +346,7 @@ def index():
                 index = cached_results.index(result)
                 discord_log(f"USED VIDEO | {current_user.username} | {client_ip}")
 
-        return f"/keys/{index}"
+        return redirect(f"/keys/{index}")
     else:
         discord_log(f"Api got used by {current_user.username} | {client_ip}")
 
