@@ -347,6 +347,7 @@ def index():
                 else :
                     return "error??"
         else:
+            used_ids.add(video_id)
             discord_log(f"Api got used by {current_user.username} | {client_ip}")
 
     
@@ -359,7 +360,6 @@ def index():
     result = mpd + '\n' + c_keys 
     used_tokens.add(mytoken)
 
-    used_ids.add(video_id)
 
     session['result'] = result
     cached_results.append(result)
