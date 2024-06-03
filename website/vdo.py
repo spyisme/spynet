@@ -386,12 +386,13 @@ def index():
 
     options_map = {
         "samehnashaat": ['Sameh-Nash2t', 'Bio', 'Nawar', 'Nasser-El-Batal', 'Salama', 'Gedo', 'Else'],
-        "ednuva": ['Bio', 'Nawar', 'Nasser-El-Batal', 'Gedo', 'Else', 'Salama', 'Sameh-Nash2t'],
-        "chemistry": ['Nasser-El-Batal', 'Else', 'Nawar', 'Gedo', 'Bio', 'Salama', 'Sameh-Nash2t'],
+        "chapter": ['Nasser-El-Batal', 'Else', 'Nawar', 'Gedo', 'Bio', 'Salama', 'Sameh-Nash2t'],
         "class": ['Nasser-El-Batal', 'Else', 'Nawar', 'Gedo', 'Bio', 'Salama', 'Sameh-Nash2t'],
         "mrredaelfarouk": ['Gedo', 'Nawar', 'Nasser-El-Batal', 'Else', 'Bio', 'Salama', 'Sameh-Nash2t'],
         "nawar": ['Nawar', 'Else', 'Nasser-El-Batal', 'Gedo', 'Bio', 'Salama', 'Sameh-Nash2t'],
-        "matrix": ['Salama', 'Else', 'Nasser-El-Batal', 'Gedo', 'Bio', 'Nawar', 'Sameh-Nash2t']
+        "matrix": ['Salama', 'Else', 'Nasser-El-Batal', 'Gedo', 'Bio', 'Nawar', 'Sameh-Nash2t'],
+        "ednuva": ['Bio', 'Nawar', 'Nasser-El-Batal', 'Gedo', 'Else', 'Salama', 'Sameh-Nash2t']
+
     }
 
     default_options = ['Else', 'Nawar', 'Salama', 'Nasser-El-Batal', 'Gedo', 'Bio', 'Sameh-Nash2t']
