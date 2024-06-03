@@ -144,7 +144,6 @@
     "url": "/course28",
     "description": "Matrices (Algebra)"
   },
-
   "Course 29": {
     "id": "PLM-GVlebsoPWrrWnO5odT75WQrNuTciVW",
     "url": "/course29",
@@ -189,5 +188,20 @@
     "id": "PLM-GVlebsoPXHMd4hCa8eusH1wKgSBmXb",
     "url": "/exams",
     "description": "Final Exams"
+  },
+  "Final Revision 4": {
+    "id": "PLM-GVlebsoPU6AmEJV8JsnluKGUodSG3X",
+    "url": "/course37",
+    "description": "Dynamics Revision "
+  },
+  "Final Revision 5": {
+    "id": "PLM-GVlebsoPXspMKkXLfrWlojVxWVXkbO",
+    "url": "/course38",
+    "description": "Dynamics Revision "
+  },
+  "Course 39": {
+    "id": "PLM-GVlebsoPXUxF01k6UlpmqRIwpyEx6c",
+    "url": "/course38",
+    "description": "Statics + Calc + Alg Problems"
   }
 }
