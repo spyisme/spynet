@@ -825,10 +825,13 @@ def moadel():
   with open("website/playlists/moadel.txt", 'r', encoding='utf-8') as file:
         content = file.read()
         videos = ast.literal_eval(content)
+
+  folder = "https://drive.google.com/drive/folders/1Goxe2Odi_qg0MPeoU8Zn8kpVJq8JKNLg?usp=drive_link"    
+  extra = {"Part 1 answers" : "https://drive.google.com/file/d/1VnoHxdDcqexTAglXQ0Rc2xHwreTUXg25/view?usp=drive_link" , "Part 2 answers" : "https://drive.google.com/file/d/1pZZCwjEGHP8G4gXmdYj-bbel6CZK5qtN/view?usp=drive_link"} 
   return render_template('used_pages/videopage.html',
                          videos=videos,
                          playlist_id=playlist_id,
-                         teachername=teachername)    
+                         teachername=teachername , extra = extra , folder = folder)    
 
 
 
@@ -1209,6 +1212,8 @@ def sherporoutes(custom_url):
         folder = "https://drive.google.com/drive/folders/1_BT42ym3-9BY3FQOlFUKce7T6Scntx5o?usp=drive_link"
 
 
+    elif course_name == "Final rev":
+        folder = "https://drive.google.com/drive/folders/1xiJWM6qrULUPVSuf_Ae1e4oeTrmqhsqX?usp=drive_link"
 
     return render_template('used_pages/videopage.html', videos=videos, playlist_id=playlist_id, teachername=teachername ,extra = extra , folder =folder)
 
