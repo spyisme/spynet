@@ -937,9 +937,9 @@ def samehtest():
 
 #Ashraf -----------------------------------------------------------------------------
 
+@views.route('/ashrafsessions/update')
+def ashrafsessionsupdate():
 
-@views.route('/ashrafsessions')
-def ashrafsessions():
     headers = {
         'authority': 'api.csacademyzone.com',
         'accept': 'application/json, text/plain, */*',
@@ -948,29 +948,33 @@ def ashrafsessions():
         'active': 1,
     }
 
-    # response = requests.post('https://api.csacademyzone.com/lectures', headers=headers, json=json_data)
-    # # return response.text
+    response = requests.post('https://api.csacademyzone.com/lectures', headers=headers, json=json_data)
 
-    # data = response.json()
-    # filtered_lectures = []
-    # last_id = None
+    data = response.json()
+    filtered_lectures = []
+    last_id = None
     
-    # for lecture in data['lectures']:
-    #     filtered_lecture = {
-    #         "id": lecture["id"],
-    #         "title": lecture["title"]
-    #     }
-    #     for part in ascii_lowercase:
-    #         part_key = f"part_{part}_video"
-    #         if part_key in lecture and lecture[part_key]:
-    #             filtered_lecture[part_key] = lecture[part_key]
-    #     filtered_lectures.append(filtered_lecture)
-    #     last_id = lecture["id"] 
+    for lecture in data['lectures']:
+        filtered_lecture = {
+            "id": lecture["id"],
+            "title": lecture["title"]
+        }
+        for part in ascii_lowercase:
+            part_key = f"part_{part}_video"
+            if part_key in lecture and lecture[part_key]:
+                filtered_lecture[part_key] = lecture[part_key]
+        filtered_lectures.append(filtered_lecture)
+        last_id = lecture["id"] 
 
-    # result = {"filtered_lectures": filtered_lectures}
+    result = {"filtered_lectures": filtered_lectures}
 
-    # with open("website/Backend/ashraf.json", 'w') as output_file:
-    #     json.dump(result, output_file, indent=2)
+    with open("website/Backend/ashraf.json", 'w') as output_file:
+        json.dump(result, output_file, indent=2)
+
+    return "Done!"
+
+@views.route('/ashrafsessions')
+def ashrafsessions():
 
     try:
         with open('website/Backend/ashraf.json', encoding='utf-8') as file:
@@ -995,26 +999,26 @@ def ashrafsessions():
 
 
 
-@views.route('/ashraf/<video_id>', methods = ['POST'])
-def ashrafpost(video_id):
-    if request.method == 'POST' :
-        try:
-            student_name = request.args.get('studentname') or 'ss'
+# @views.route('/ashraf/<video_id>', methods = ['POST'])
+# def ashrafpost(video_id):
+#     if request.method == 'POST' :
+#         try:
+#             student_name = request.args.get('studentname') or 'ss'
 
  
-            url = "https://api.csacademyzone.com/video/otp"
-            params = {"student_name": student_name, "video_id": video_id}
-            headers = {"Content-type": "application/x-www-form-urlencoded", "sessionToken": "imcool"}
-            response = requests.post(url, data=params, headers=headers)
-            if response.status_code == 401:
-                data = response.json()
-                otp = data.get("otp")
-                playback_info = data.get("playbackInfo")
-                return jsonify({"otp": otp, "playbackInfo": playback_info})
-            else:
-                return jsonify({"error": f"Failed to get OTP. Status code: {response.status_code}"}), 500
-        except Exception as e:
-            return jsonify({"error": str(e)}), 500
+#             url = "https://api.csacademyzone.com/video/otp"
+#             params = {"student_name": student_name, "video_id": video_id}
+#             headers = {"Content-type": "application/x-www-form-urlencoded", "sessionToken": "imcool"}
+#             response = requests.post(url, data=params, headers=headers)
+#             if response.status_code == 401:
+#                 data = response.json()
+#                 otp = data.get("otp")
+#                 playback_info = data.get("playbackInfo")
+#                 return jsonify({"otp": otp, "playbackInfo": playback_info})
+#             else:
+#                 return jsonify({"error": f"Failed to get OTP. Status code: {response.status_code}"}), 500
+#         except Exception as e:
+#             return jsonify({"error": str(e)}), 500
         
 
 
