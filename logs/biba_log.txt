@@ -49,3 +49,7 @@
 156.215.134.218 === https://www.youtube.com/watch?v=hbuChemHug4&list=PLM-GVlebsoPW4d-get6gqC2HkppsoAiOe === 03/06 -- 03:45 PM === Desktop
 156.215.134.218 === http://spysnet.com/sherbo/final-kol-el-fro3 === 03/06 -- 03:52 PM === Desktop
 156.215.134.218 === https://www.youtube.com/watch?v=tOn5hSq2YHg&list=PLM-GVlebsoPVMIxkFSGnXOA_PRfduRvhH === 03/06 -- 03:52 PM === Desktop
+41.46.139.235 === http://spysnet.com/ === 04/06 -- 03:49 PM === Mobile
+41.46.139.235 === http://spysnet.com/maths === 04/06 -- 03:49 PM === Mobile
+41.46.139.235 === http://spysnet.com/sherbo === 04/06 -- 03:49 PM === Mobile
+41.46.139.235 === http://spysnet.com/sherbo/algebra === 04/06 -- 03:49 PM === Mobile
