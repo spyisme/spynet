@@ -343,9 +343,8 @@ def index():
                 if mpd in result:
                     index = cached_results.index(result)
                     discord_log(f"USED VIDEO | {current_user.username} | {client_ip}")
-                    return redirect(f"/keys/{index}")
-                else :
-                    return "error??"
+                return redirect(f"/keys/{index}")
+  
         else:
             used_ids.add(video_id)
             discord_log(f"Api got used by {current_user.username} | {client_ip}")
