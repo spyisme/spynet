@@ -224,29 +224,42 @@ height: 655px;
           if (h1Element) {
               h1Element.innerText = "Lecture " + lectureId + " Part " + partLetter;
           }
+
+ 
+
           var xhr = new XMLHttpRequest();
-          var url = "/ashraf/" + videoId + "?studentname=" + '{{ current_user.username }}';
+          
+            var url = "https://api.csacademyzone.com/video/otp";
 
+            xhr.open("POST", url, true);
 
+            xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+
+            xhr.setRequestHeader("Referer", "https://csacademyzone.com/");
   
-          xhr.open("POST", url, true);
-          xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-          xhr.setRequestHeader("sessionToken", "imcool");
-  
-          xhr.onreadystatechange = function () {
-              if (xhr.readyState == 4 && xhr.status == 200) {
-                  var response = JSON.parse(xhr.responseText);
+            xhr.setRequestHeader("sec-fetch-dest", "empty");
+            xhr.setRequestHeader("sec-fetch-mode", "cors");
+
+            xhr.setRequestHeader("sessionToken", "ss");
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+            
+                    var response = JSON.parse(xhr.responseText);
                   var otp = response.otp;
                   var playbackInfo = response.playbackInfo;
   
                   var iframe = document.getElementById("videoPlayer");
                   iframe.src = "https://player.vdocipher.com/v2/?otp=" + otp + "&playbackInfo=" + playbackInfo;
-  
-  
-              }
-          };
-  
-          xhr.send();
+                }
+            };
+
+            var data = JSON.stringify({
+                'student_name': 'ss',
+                'video_id': videoId
+            });
+
+            xhr.send(data);
       }
   }
   
