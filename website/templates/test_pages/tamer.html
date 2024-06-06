@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Change User ID</title>
+    <title>Tamer</title>
 </head>
 <body>
     <h2>Tamer El kady sessions</h2>
@@ -18,7 +18,7 @@
         document.getElementById("changeUserIDForm").addEventListener("submit", function(event) {
             event.preventDefault();
             var oldID = document.getElementById("oldID").value;
-            var data = { "old_id": oldID};
+            var data = { "id": oldID};
 
             fetch("/tamervidspost", {
                 method: "POST",
