@@ -13,7 +13,7 @@
     </form>
 
     <div id="message"></div>
-    <div id="message2"></div>
+    <div id="videos"></div>
 
     <script>
         document.getElementById("changeUserIDForm").addEventListener("submit", function(event) {
@@ -36,7 +36,14 @@
             })
             .then(data => {
                 document.getElementById("message").innerText = data.name;
-                document.getElementById("message2").innerText = data.link.json();
+                var videosDiv = document.getElementById("videos");
+        data.links.forEach(function(link) {
+            var videoLink = document.createElement("a");
+            videoLink.href = link;
+            videoLink.textContent = link;
+            videoLink.style.display = "block";
+            videosDiv.appendChild(videoLink);
+        });
 
             })
             .catch(error => {
