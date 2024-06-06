@@ -31,8 +31,7 @@
                 if (!response.ok) {
                     throw new Error("Network response was not ok");
                 }
-                console.log(response.text)
-                return response.text;
+                return response.json();
             })
             .then(data => {
                 document.getElementById("message").innerText = data;
