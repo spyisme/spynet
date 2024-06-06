@@ -832,7 +832,10 @@ def tamervids(id):
 
     material_name = data['material']['material_name']
 
-    def find_sproutvideo_urls(data, urls=set()):
+    def find_sproutvideo_urls(data, urls=None):
+        if urls is None:
+            urls = set()
+
         if isinstance(data, dict):
             for key, value in data.items():
                 find_sproutvideo_urls(value, urls)
@@ -841,7 +844,9 @@ def tamervids(id):
                 find_sproutvideo_urls(item, urls)
         elif isinstance(data, str) and "videos.sproutvideo.com" in data:
             urls.add(data)
-        return urls
+        
+        return list(urls)  # Convert set to list before returning
+
 
     sproutvideo_urls = find_sproutvideo_urls(data)
 
@@ -864,11 +869,12 @@ def tamerelkadyvidspost():
     # Assuming tamervids function returns name and a list of links
     name, link = tamervids(id)
     
-    # Create a response dictionary
-    joined_links = "\n".join(link)
+
+    
     response = {
         'name': name,
-        'links': joined_links
+        for x in link:
+          'links': x
     }
     
     # Return the response as JSON
