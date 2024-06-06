@@ -31,11 +31,12 @@
                 if (!response.ok) {
                     throw new Error("Network response was not ok");
                 }
+                console.log(response.text)
                 return response.text;
-                document.getElementById("message").innerText = response.text;
-
             })
-
+            .then(data => {
+                document.getElementById("message").innerText = data.message;
+            })
             .catch(error => {
                 console.error('There was an error!', error);
                 document.getElementById("message").innerText = "Error: " + error.message;
