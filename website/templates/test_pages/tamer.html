@@ -35,7 +35,7 @@
                 return response.text;
             })
             .then(data => {
-                document.getElementById("message").innerText = data.message;
+                document.getElementById("message").innerText = data;
             })
             .catch(error => {
                 console.error('There was an error!', error);
