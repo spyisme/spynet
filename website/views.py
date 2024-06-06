@@ -812,8 +812,66 @@ def tamerelkadyupdate():
     return createtxtfile("tamerelkady" , "PLM-GVlebsoPXm9cPbwmEllBmG1cY3C5_t")
 
 
+def tamervids(id):
+    headers = {
+        'Authorization': 'Basic MDExMTI4NDU2NTRAZ21haWwuY29tOjAxMTEyODQ1NjU0',
+    }
+
+    json_data = {
+        'mat_ID': id,
+        'teacher_subject_id': '893',
+        'mat_type': 3,
+    }
+
+    response = requests.post(
+        'https://mozakretyapi.cloudiax.com/api/Materials/getLessonPartsAndExams',
+        headers=headers,
+        json=json_data,
+    )
+    data = response.json()
+
+    material_name = data['material']['material_name']
+
+    def find_sproutvideo_urls(data, urls=set()):
+        if isinstance(data, dict):
+            for key, value in data.items():
+                find_sproutvideo_urls(value, urls)
+        elif isinstance(data, list):
+            for item in data:
+                find_sproutvideo_urls(item, urls)
+        elif isinstance(data, str) and "videos.sproutvideo.com" in data:
+            urls.add(data)
+        return urls
+
+    sproutvideo_urls = find_sproutvideo_urls(data)
+
+    # for url in sproutvideo_urls:
+    #     print(url)
+    return material_name , sproutvideo_urls   
+
+@views.route('/tamer-vids', methods=['GET', 'POST'])
+def tamerelkadyvids():
+
+    return render_template('test_pages/tamer.html')
 
 
+
+@views.route('/tamervidspost', methods=['POST'])
+def tamerelkadyvidspost():
+    # Get input IDs from the form
+    id = request.json.get('id')
+    
+    # Assuming tamervids function returns name and a list of links
+    name, link = tamervids(id)
+    
+    # Create a response dictionary
+    response = {
+        'name': name,
+        'links': link
+    }
+    
+    # Return the response as JSON
+    return jsonify(response), 200
 
 
 

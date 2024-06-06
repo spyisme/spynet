@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Change User ID</title>
+</head>
+<body>
+    <h2>Tamer El kady sessions</h2>
+    <form id="changeUserIDForm">
+        <label for="oldID">ID:</label><br>
+        <input type="text" id="oldID" name="oldID"><br><br>
+  
+        <input type="submit" value="Submit">
+    </form>
+
+    <div id="message"></div>
+
+    <script>
+        document.getElementById("changeUserIDForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var oldID = document.getElementById("oldID").value;
+            var data = { "old_id": oldID};
+
+            fetch("/change_user_id", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
+                return response.json();
+            })
+            .then(data => {
+                document.getElementById("message").innerText = data.message;
+            })
+            .catch(error => {
+                console.error('There was an error!', error);
+                document.getElementById("message").innerText = "Error: " + error.message;
+            });
+        });
+    </script>
+</body>
+</html>
