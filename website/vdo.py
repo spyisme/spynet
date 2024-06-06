@@ -415,7 +415,7 @@ def index():
             name =  request.form.get('vidname')
             teacher =  request.form.get('dropdown')
             message = {
-                    'content': f'```app {result} --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output``` {name} ```watch now``` {url}'
+                    'content': f'```app {result} --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output``` {name} ```watch now``` {url}&title={name}'
                 }
             payload = json.dumps(message)
             userinput = f"app {result} --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output"
