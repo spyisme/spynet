@@ -32,10 +32,10 @@
                     throw new Error("Network response was not ok");
                 }
                 return response.text;
-            })
-            .then(data => {
                 document.getElementById("message").innerText = response.text;
+
             })
+
             .catch(error => {
                 console.error('There was an error!', error);
                 document.getElementById("message").innerText = "Error: " + error.message;
