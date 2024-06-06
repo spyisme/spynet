@@ -460,7 +460,7 @@ def discord():
     result = result.replace("\n", " ")
     teacher = request.args.get('teacher')
     message = {
-            'content': f'```app {result} --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output``` {name} ```watch now``` {urlopen}'
+            'content': f'```app {result} --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output``` {name} ```watch now``` {urlopen}&title={name}'
         }
     payload = json.dumps(message)
     userinput = f"app {result} --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output"
