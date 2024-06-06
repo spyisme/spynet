@@ -24,3 +24,5 @@
 156.215.165.103 === http://spysnet.com/gedorev2 === 12/05 -- 07:57 AM === Mobile
 156.215.165.103 === https://www.youtube.com/watch?v=AVMfQnUK92Q&list=PLM-GVlebsoPXTAA08dW2Oro5G2EmLB0Pk === 12/05 -- 07:58 AM === Mobile
 156.215.165.103 === http://spysnet.com/gedorev2 === 12/05 -- 11:26 AM === Mobile
+102.42.50.37 === http://spysnet.com/sameh/revisions === 06/06 -- 08:56 AM === Mobile
+102.42.50.37 === https://www.youtube.com/watch?v=kqGLWXJvpcI&list=PLM-GVlebsoPVUltbPkgnKVQw43iAI-G3h === 06/06 -- 08:56 AM === Mobile
