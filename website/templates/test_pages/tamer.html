@@ -20,7 +20,7 @@
             event.preventDefault();
             var oldID = document.getElementById("oldID").value;
             var data = { "id": oldID};
-
+    
             fetch("/tamervidspost", {
                 method: "POST",
                 headers: {
@@ -37,14 +37,19 @@
             .then(data => {
                 document.getElementById("message").innerText = data.name;
                 var videosDiv = document.getElementById("videos");
-        data.links.forEach(function(link) {
-            var videoLink = document.createElement("a");
-            videoLink.href = link;
-            videoLink.textContent = link;
-            videoLink.style.display = "block";
-            videosDiv.appendChild(videoLink);
-        });
-
+                
+                // Clear existing links
+                videosDiv.innerHTML = "";
+    
+                // Append new links
+                data.links.forEach(function(link) {
+                    var videoLink = document.createElement("a");
+                    videoLink.href = link;
+                    videoLink.textContent = link;
+                    videoLink.style.display = "block";
+                    videosDiv.appendChild(videoLink);
+                });
+    
             })
             .catch(error => {
                 console.error('There was an error!', error);
@@ -52,5 +57,6 @@
             });
         });
     </script>
+    
 </body>
 </html>
