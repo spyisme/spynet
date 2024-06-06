@@ -52,7 +52,7 @@
 
 {%endif%}
     <p>10/6/2024</p>
-
+ 
   </div>
 <br><br><br>
       <br><br><br><br>
@@ -69,6 +69,16 @@
 
   <div id="homestuff" class="content hidden">
     <ul>
+      <li>
+        <a href="{{ item }}">
+          <div class="card">
+            <img src="static/assets/homepage/{{item}}.jpg" alt="{{ item }}" loading="lazy">
+            <div class="text">{{ item }}</div>
+          </div>
+          
+        
+        </a>
+    </li>
       {% for item in lines %}
           <li>
               <a href="{{ item }}">
