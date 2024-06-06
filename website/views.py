@@ -865,9 +865,10 @@ def tamerelkadyvidspost():
     name, link = tamervids(id)
     
     # Create a response dictionary
+    joined_links = "\n".join(link)
     response = {
         'name': name,
-        # 'links': link
+        'links': joined_links
     }
     
     # Return the response as JSON
