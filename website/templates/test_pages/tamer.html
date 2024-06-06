@@ -31,7 +31,7 @@
                 if (!response.ok) {
                     throw new Error("Network response was not ok");
                 }
-                return response;
+                return response.text;
             })
             .then(data => {
                 document.getElementById("message").innerText = data.message;
