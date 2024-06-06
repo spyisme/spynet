@@ -36,7 +36,7 @@
             })
             .then(data => {
                 document.getElementById("message").innerText = data.name;
-                document.getElementById("message2").innerText = data.link;
+                document.getElementById("message2").innerText = data.link.json();
 
             })
             .catch(error => {
