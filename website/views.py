@@ -867,7 +867,7 @@ def tamerelkadyvidspost():
     # Create a response dictionary
     response = {
         'name': name,
-        'links': link
+        # 'links': link
     }
     
     # Return the response as JSON
