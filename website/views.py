@@ -873,8 +873,8 @@ def tamerelkadyvidspost():
     
     response = {
         'name': name,
-        for x in link:
-          'links': x
+
+          'links': link
     }
     
     # Return the response as JSON
