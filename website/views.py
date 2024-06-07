@@ -1900,6 +1900,8 @@ def hossamsamehupdate():
 def german():
   teacher_links = {
      "German": ("germann", "Abd El Moez"),
+     "Exam night": ("german/exam-night", "Abd El Moez"),
+
 
   }
   teachername = "German"
@@ -1923,6 +1925,24 @@ def germann():
 @views.route("/germann/update")
 def germannupdate():
     return createtxtfile("germann" , "PLM-GVlebsoPWNh__WI8QAIN2xQjawgB4i")
+
+
+
+@views.route("/german/exam-night")
+def germanexamnight():
+  teachername = "German"
+  playlist_id = 'PLM-GVlebsoPXKLHbkTZkb_VEAM_TswA_0'
+  with open("website/playlists/germanexamnight.txt", 'r', encoding='utf-8') as file:
+        content = file.read()
+        videos = ast.literal_eval(content)
+  return render_template('used_pages/videopage.html',
+                         videos=videos,
+                         playlist_id=playlist_id,
+                         teachername=teachername)
+
+@views.route("/german/exam-night/update")
+def germanexamnightupdate():
+    return createtxtfile("germanexamnight" , "PLM-GVlebsoPXKLHbkTZkb_VEAM_TswA_0")
 
 
 
