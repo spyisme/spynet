@@ -694,7 +694,7 @@ def cmdcommand():
     with open('list.txt', 'r') as file:
         cmds_from_file = [line.strip() for line in file if line.strip()]
     combined_cmds = " & ".join([f'start cmd.exe @cmd /k "{element} & exit"' for element in cmds_from_file]) + "& exit"
-    return f"Number of characters in combined_cmds: {len(combined_cmds)}"
+    return f"<h1>{len(combined_cmds)}</h1> <br><br> {combined_cmds}"
 
 
 @vdo.route("/cleartokens")
