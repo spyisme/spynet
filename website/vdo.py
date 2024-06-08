@@ -352,6 +352,8 @@ def index():
   
         else:
             discord_log(f"Api got used by {current_user.username} | {client_ip}")
+            used_ids.add(video_id)
+
 
     
     mpd , c_keys , video_name = getkeys(mytoken)
@@ -366,7 +368,6 @@ def index():
 
     session['result'] = result
     cached_results.append(result)
-    used_ids.add(video_id)
 
     keys_content = re.findall(r"--key\s+(\S+)", c_keys)
 
