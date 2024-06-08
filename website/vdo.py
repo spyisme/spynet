@@ -342,10 +342,10 @@ def index():
         if video_id in used_ids:
             mpd = get_mpd(video_id)
             for index, result in enumerate(cached_results):
-                discord_log(f"USED VIDEO | {current_user.username} | {client_ip} | {index}")
-                return redirect(f"/keys/{index}")
-
-  
+                if mpd in cached_results:
+                    discord_log(f"USED VIDEO | {current_user.username} | {client_ip} | {index}")
+                    return redirect(f"/keys/{index}")
+            
         else:
             discord_log(f"Api got used by {current_user.username} | {client_ip}")
 
