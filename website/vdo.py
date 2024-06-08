@@ -67,7 +67,7 @@ def check_file(filename):
 
 
 def getkeys(video_url):
-    wvd = "cdm.wvd"  # Set your preferred value for wvd
+    wvd = "realme.wvd"  # Set your preferred value for wvd
     if wvd is None:
         exit(f"No CDM! To use local decryption, place a .wvd in {os.getcwd()}/WVDs")
 
@@ -202,7 +202,7 @@ def getkeys(video_url):
         json=service_cert_json_data
     )
 
-
+    discord_log(service_cert.text)
     if service_cert.status_code != 200:
         print("Couldn't retrieve service cert")
     else:
@@ -247,7 +247,9 @@ def getkeys(video_url):
             headers=headers,
             json=json_data
         )
-
+    
+    discord_log(license.text)
+    
     if license.status_code != 200:
             print(license.content)
             exit("Could not complete license challenge")
@@ -340,9 +342,8 @@ def index():
         if video_id in used_ids :
             mpd = get_mpd(video_id)
             for result in cached_results:
-                if mpd in result:
-                    index = cached_results.index(result)
-                    discord_log(f"USED VIDEO | {current_user.username} | {client_ip}")
+                index = cached_results.index(result)
+                discord_log(f"USED VIDEO | {current_user.username} | {client_ip} | {index}")
                 return redirect(f"/keys/{index}")
   
         else:
