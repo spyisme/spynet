@@ -342,11 +342,14 @@ def index():
         if video_id in used_ids :
 
             mpd2 = get_mpd(video_id)
-            for result2 in cached_results:
-                if mpd2 in result2:
-                    index = cached_results.index(result2)
-            return jsonify({'error': f'Got video keys before... https://spysnet.com/keys/{index}'}), 400
-    
+
+            for x in cached_results:
+                if mpd2 in x:
+                    index = cached_results.index(x)
+                    discord_log(f"USED VIDEO | {current_user.username} | {client_ip} | {index}")
+                    return redirect(f"/keys/{index}")
+
+  
         else:
             discord_log(f"Api got used by {current_user.username} | {client_ip}")
 
