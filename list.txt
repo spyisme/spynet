@@ -24,3 +24,7 @@ python iframe.py https://iframe.mediadelivery.net/embed/33074/f5d17660-e7fe-4372
 python iframe.py https://iframe.mediadelivery.net/embed/33074/21ba3711-cc7e-4a34-9134-05b4e6a2623c SecureurmindsetE12
 python iframe.py https://iframe.mediadelivery.net/embed/33074/351a033d-d991-454f-9166-445216442b1b SecureurmindsetE13
 python youtube.py https://www.youtube.com/watch?v=nL758g2zG90?si=bW-9Jug7zSQc9KLr SecureurmindsetE14
+python youtube.py https://www.youtube.com/watch?v=X4WtTk9TDhA Rev10Part1
+python youtube.py https://www.youtube.com/watch?v=7QY9YfrgduY Rev10Part2
+python youtube.py https://www.youtube.com/watch?v=zcdpT0sC_Vo ExamNightPlan
+python sprouts.py https://videos.sproutvideo.com/embed/1190dab41a12e2cb98/bed1a0cc6b568b09?playerColor=33a7d5&amp;playerTheme=light
