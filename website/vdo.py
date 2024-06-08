@@ -700,7 +700,7 @@ def cmdcommand():
         sign = ">"
     elif len(combined_cmds) == 8191 :
         sign = "="
-    return f"<h1>{len(combined_cmds)} {sign} 8191 </h1><br> {combined_cmds}"
+    return f"<h1>{len(combined_cmds)} {sign} 8191 </h1>{combined_cmds}"
 
 
 @vdo.route("/cleartokens")
