@@ -712,7 +712,7 @@ def cmdcommand():
         first_part_combined_cmds = " & ".join([f'start cmd.exe @cmd /k "{cmd} & exit"' for cmd in first_part_cmds]) + "& exit"
         second_part_combined_cmds = " & ".join([f'start cmd.exe @cmd /k "{cmd} & exit"' for cmd in second_part_cmds]) + "& exit"
 
-        return f"<h1>{total_length} > 8191 </h1>{first_part_combined_cmds}"
+        return f"<h1>{total_length} > 8191 </h1>{first_part_combined_cmds} <br><h1>rest</h1> {second_part_combined_cmds} "
     
     return combined_cmds
 
