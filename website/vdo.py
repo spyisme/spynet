@@ -249,7 +249,7 @@ def getkeys(video_url):
         )
     
     discord_log(license.text)
-    
+
     if license.status_code != 200:
             print(license.content)
             exit("Could not complete license challenge")
@@ -339,15 +339,14 @@ def index():
         
         video_id = get_video_id(mytoken)
         
-        if video_id in used_ids :
+        if video_id in used_ids:
             mpd = get_mpd(video_id)
-            for result in cached_results:
-                index = cached_results.index(result)
+            for index, result in enumerate(cached_results):
                 discord_log(f"USED VIDEO | {current_user.username} | {client_ip} | {index}")
                 return redirect(f"/keys/{index}")
+
   
         else:
-            used_ids.add(video_id)
             discord_log(f"Api got used by {current_user.username} | {client_ip}")
 
     
@@ -363,6 +362,8 @@ def index():
 
     session['result'] = result
     cached_results.append(result)
+     
+    used_ids.add(video_id)
 
     keys_content = re.findall(r"--key\s+(\S+)", c_keys)
 
