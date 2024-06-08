@@ -629,7 +629,10 @@ def shahid():
 def commandslist():
     def extract_save_name(command):
         if command.startswith("python"):
-            return command.split(' ')[3]
+            if "sprouts" not in command :
+                return command.split(' ')[3]
+            else :
+                save_name_match = "Tamer-El-Kady video"
         else:
             save_name_match = re.search(r'--save-name\s+(\S+)', command)
             if save_name_match:
