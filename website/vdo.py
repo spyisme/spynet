@@ -694,13 +694,30 @@ def cmdcommand():
     with open('list.txt', 'r') as file:
         cmds_from_file = [line.strip() for line in file if line.strip()]
     combined_cmds = " & ".join([f'start cmd.exe @cmd /k "{element} & exit"' for element in cmds_from_file]) + "& exit"
-    if len(combined_cmds) < 8191 :
-        sign = "<"
-    elif len(combined_cmds) > 8191 :
-        sign = ">"
-    elif len(combined_cmds) == 8191 :
-        sign = "="
-    return f"<h1>{len(combined_cmds)} {sign} 8191 </h1>{combined_cmds}"
+    
+    if len(combined_cmds) > 8191 :
+        total_length = sum(len(cmd) for cmd in cmds_from_file)
+        split_point = 0
+        current_length = 0
+        for i, cmd in enumerate(cmds_from_file):
+            current_length += len(cmd)
+            if current_length > total_length // 2:
+                split_point = i
+                break
+
+        # Split commands
+        first_part_cmds = cmds_from_file[:split_point]
+        second_part_cmds = cmds_from_file[split_point:]
+
+        first_part_combined_cmds = " & ".join([f'start cmd.exe @cmd /k "{cmd} & exit"' for cmd in first_part_cmds]) + "& exit"
+        second_part_combined_cmds = " & ".join([f'start cmd.exe @cmd /k "{cmd} & exit"' for cmd in second_part_cmds]) + "& exit"
+
+        return f"<h1>{total_length} > 8191 </h1>{first_part_combined_cmds}", second_part_combined_cmds
+    
+    return combined_cmds
+
+
+    
 
 
 @vdo.route("/cleartokens")
