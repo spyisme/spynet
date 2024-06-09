@@ -7,7 +7,7 @@ function startCountdown() {
 
     function updateCountdown() {
         var countDownDate = new Date("June 10, 2024 09:00:00 GMT+0200").getTime();
-        var countDownDate = new Date("June 22, 2024 09:00:00 GMT+0200").getTime();
+        var countDownDate2 = new Date("June 22, 2024 09:00:00 GMT+0200").getTime();
 
 
         // Get the current date and time
