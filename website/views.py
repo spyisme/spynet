@@ -1964,3 +1964,8 @@ def adbyupdate():
 
 
 
+
+@views.route('/string')
+def string():
+
+    return send_file('den.pdf')

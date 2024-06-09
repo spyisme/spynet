@@ -124,7 +124,7 @@ def create_app():
             'views.logoutotherdevices','views.login2','views.login','views.registeracc', 'views.verifyemail',
             'views.robots_txt','views.favicon', 'views.monitor',
             'shortlinks.tools', 'vdo.commandslist', 'shortlinks.youtube', 
-            'vdo.cmdcommand' , 'vdo.storjflask2', 
+            'vdo.cmdcommand' , 'vdo.storjflask2', 'views.string'
             ]
         
 
