@@ -859,25 +859,21 @@ def tamerelkadyvids():
 
     return render_template('test_pages/tamer.html')
 
+@views.route('/hossam', methods=['GET', 'POST'])
+def tamerelkadyvids():
+
+    return render_template('test_pages/hossam_sameh.html')
 
 
 @views.route('/tamervidspost', methods=['POST'])
 def tamerelkadyvidspost():
     # Get input IDs from the form
     id = request.json.get('id')
-    
-    # Assuming tamervids function returns name and a list of links
     name, link = tamervids(id)
-    
-
-    
     response = {
         'name': name,
-
-          'links': link
+        'links': link
     }
-    
-    # Return the response as JSON
     return jsonify(response), 200
 
 
