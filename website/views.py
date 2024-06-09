@@ -860,7 +860,7 @@ def tamerelkadyvids():
     return render_template('test_pages/tamer.html')
 
 @views.route('/hossam', methods=['GET', 'POST'])
-def tamerelkadyvids():
+def hossamvall():
 
     return render_template('test_pages/hossam_sameh.html')
 
