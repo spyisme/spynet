@@ -456,33 +456,33 @@ def login():
 
 
 
-@views.route('/login2', methods=['GET', 'POST'])
-def login2():
-    client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
-    user_agent = request.headers.get('User-Agent')
-    if current_user.is_authenticated:
-        return redirect(url_for('views.home'))
+# @views.route('/login2', methods=['GET', 'POST'])
+# def login2():
+#     client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
+#     user_agent = request.headers.get('User-Agent')
+#     if current_user.is_authenticated:
+#         return redirect(url_for('views.home'))
 
 
-    if request.method == 'POST':
-        username = request.form.get('username')
+#     if request.method == 'POST':
+#         username = request.form.get('username')
         
-        username = username.replace(" ", "")
-        username = username.lower()
-        user = User.query.filter_by(username=username).first()
+#         username = username.replace(" ", "")
+#         username = username.lower()
+#         user = User.query.filter_by(username=username).first()
 
 
-        if user :
-            login_user(user)
+#         if user :
+#             login_user(user)
             
-            discord_log_login(f"Login 2 == {client_ip} just logined with '{username}' Device ```{user_agent}``` <@709799648143081483>")
-            return redirect("/")
+#             discord_log_login(f"Login 2 == {client_ip} just logined with '{username}' Device ```{user_agent}``` <@709799648143081483>")
+#             return redirect("/")
 
-        else:
-            discord_log_login(f"Login 2 == {client_ip} just failed to login with '{username}' Device ```{user_agent}``` <@709799648143081483>")
-            return redirect("/login2?failed=true")
+#         else:
+#             discord_log_login(f"Login 2 == {client_ip} just failed to login with '{username}' Device ```{user_agent}``` <@709799648143081483>")
+#             return redirect("/login2?failed=true")
 
-    return render_template('users_pages/login.html', msg= request.args.get('msg') , failed = request.args.get("failed")  , username = request.args.get("user"))
+#     return render_template('users_pages/login.html', msg= request.args.get('msg') , failed = request.args.get("failed")  , username = request.args.get("user"))
 
 
 
