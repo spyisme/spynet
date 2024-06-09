@@ -800,3 +800,5 @@
 41.36.83.125 === http://spysnet.com/physics === 06/06 -- 11:21 PM === Desktop
 41.36.83.125 === http://spysnet.com/tamer-el-kady === 06/06 -- 11:21 PM === Desktop
 41.36.83.125 === https://www.youtube.com/playlist?list=PLM-GVlebsoPXm9cPbwmEllBmG1cY3C5_t === 06/06 -- 11:21 PM === Desktop
+41.36.83.125 === http://spysnet.com/?password=set === 08/06 -- 10:55 PM === Desktop
+41.36.83.125 === https://drive.google.com/drive/folders/19Zx0ljyRbkBVB29D-Lz4nl_gE1-OmAjI === 08/06 -- 10:55 PM === Desktop

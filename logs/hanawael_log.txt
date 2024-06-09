@@ -171,3 +171,10 @@
 197.46.220.123 === http://spysnet.com/chemistry === 07/06 -- 02:37 AM === Desktop
 197.46.220.123 === http://spysnet.com/nasser === 07/06 -- 02:37 AM === Desktop
 197.46.220.123 === http://spysnet.com/nasser/chapter5-2 === 07/06 -- 02:37 AM === Desktop
+197.46.220.123 === http://spysnet.com/ === 08/06 -- 08:03 PM === Desktop
+197.46.220.123 === http://spysnet.com/chemistry === 08/06 -- 10:55 PM === Desktop
+197.46.220.123 === http://spysnet.com/nasser === 08/06 -- 10:55 PM === Desktop
+197.46.220.123 === http://spysnet.com/nasser/chapter3 === 08/06 -- 10:55 PM === Desktop
+197.46.220.123 === https://www.youtube.com/watch?v=hsBouMMLAAs&list=PLM-GVlebsoPVXmash3q9sfG5bsD3Mt88x === 08/06 -- 10:55 PM === Desktop
+197.46.220.123 === http://spysnet.com/ === 09/06 -- 12:56 AM === Desktop
+197.46.220.123 === http://spysnet.com/ === 09/06 -- 03:33 AM === Desktop
