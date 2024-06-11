@@ -289,3 +289,8 @@
 156.215.17.228 === http://spysnet.com/daif/finals === 08/06 -- 11:29 PM === Desktop
 156.215.17.228 === https://www.youtube.com/playlist?list=PLM-GVlebsoPWEsLtSUs6KjyAOvexuF2a5 === 08/06 -- 11:29 PM === Desktop
 156.215.17.228 === http://spysnet.com/ === 10/06 -- 10:19 PM === Desktop
+156.215.17.228 === http://spysnet.com/daif/finals === 11/06 -- 03:12 PM === Desktop
+156.215.17.228 === http://spysnet.com/ === 11/06 -- 03:12 PM === Desktop
+156.215.17.228 === http://spysnet.com/chemistry === 11/06 -- 05:16 PM === Desktop
+156.215.17.228 === http://spysnet.com/ashraf === 11/06 -- 05:16 PM === Desktop
+156.215.17.228 === http://spysnet.com/ashrafsessions === 11/06 -- 05:17 PM === Desktop
