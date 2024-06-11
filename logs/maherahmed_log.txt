@@ -65,3 +65,7 @@
 156.215.168.230 === http://spysnet.com/german === 06/06 -- 06:47 PM === Mobile
 156.215.168.230 === http://spysnet.com/physics === 06/06 -- 06:47 PM === Mobile
 156.215.168.230 === http://spysnet.com/tamer-el-kady === 06/06 -- 06:47 PM === Mobile
+41.239.162.42 === http://spysnet.com/ === 11/06 -- 10:35 PM === Mobile
+41.239.162.42 === http://spysnet.com/chemistry === 11/06 -- 10:35 PM === Mobile
+41.239.162.42 === http://spysnet.com/nasser === 11/06 -- 10:35 PM === Mobile
+41.239.162.42 === http://spysnet.com/nasser/finals === 11/06 -- 10:35 PM === Mobile
