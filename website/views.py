@@ -1881,7 +1881,7 @@ def hossamsameh():
   return render_template('used_pages/videopage.html',
                          videos=videos,
                          playlist_id=playlist_id,
-                         teachername=teachername , extra = extra , folder = folder)
+                         teachername=teachername , folder = folder)
 
 @views.route("/english/hossamsameh/update")
 def hossamsamehupdate():
