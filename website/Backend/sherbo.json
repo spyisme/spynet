@@ -36,10 +36,10 @@
     "description" : "Save my"
 
   },
-  "Statistics": {
-    "id": "PLM-GVlebsoPXvm2-mAvzfe4tNC1n5r1Nt",
-    "url": "/e7sa",
-    "description" : "E7sa"
+  "Exams": {
+    "id": "PLM-GVlebsoPXn-oDb_aTjq5qlkbqlfrlg",
+    "url": "/exams",
+    "description" : "Solving Exams"
 
   }
   }
