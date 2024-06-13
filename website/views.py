@@ -395,24 +395,24 @@ def login():
     user_agent = request.headers.get('User-Agent')
     if current_user.is_authenticated:
         return redirect(url_for('views.home'))
-    if client_ip in blacklist_ips :
-        return jsonify(message="Error 403"), 403
+    # if client_ip in blacklist_ips :
+    #     return jsonify(message="Error 403"), 403
 
-    if client_ip not in whitelist_ips :
-        api_url = f'https://ipinfo.io/{client_ip}?token=8f8d5a48b50694'
-        response = requests.get(api_url)
-        data = response.json()
+    # if client_ip not in whitelist_ips :
+    #     api_url = f'https://ipinfo.io/{client_ip}?token=8f8d5a48b50694'
+    #     response = requests.get(api_url)
+    #     data = response.json()
 
-        if 'country' in data:
-                country_code = data['country']
-                if country_code != 'EG':
-                    blacklist_ips.add(client_ip)
-                    return jsonify(message="Please disable vpn/proxy."), 403
-        else:
-            blacklist_ips.add(client_ip)
-            return jsonify(message="Unable to determine the country. Login failed."), 403
+    #     if 'country' in data:
+    #             country_code = data['country']
+    #             if country_code != 'EG':
+    #                 blacklist_ips.add(client_ip)
+    #                 return jsonify(message="Please disable vpn/proxy."), 403
+    #     else:
+    #         blacklist_ips.add(client_ip)
+    #         return jsonify(message="Unable to determine the country. Login failed."), 403
                             
-    whitelist_ips.add(client_ip)
+    # whitelist_ips.add(client_ip)
 
     if request.method == 'POST':
         username = request.form.get('username')
