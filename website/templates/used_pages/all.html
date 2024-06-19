@@ -1,192 +1,155 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta name="robots" content="noindex">
+    <head>
+        <meta name="robots" content="noindex" />
 
+        <title>Sanawya Sessions</title>
+        <link rel="icon" type="image/x-icon" href="/static/favicon.ico" />
 
-    <title>Sanawya Sessions</title>
-    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+        <meta name="description" content="Spynet" />
+        <meta name="keywords" content="spy, spynet, spysnet" />
 
-    <meta name="description" content="Spynet">
-    <meta name="keywords" content="spy, spynet, spysnet">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <link rel="stylesheet" type="text/css" href="static/styles/all.css" />
 
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/main.css') }}" />
 
-    <link rel="stylesheet" type="text/css" href="static/styles/all.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
+        <script src="static/java/connection.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/main.css') }}">
+        <!-- <script src="https://webkeyz.github.io/stand-with-palestine/dist/stand-with-palestine-widget.js"></script> -->
+    </head>
 
+    <body onload="startCountdown()">
+        <section class="banner">
+            <canvas id="canvas"> </canvas>
 
+            <div class="nav">
+                <img class="img" src="static/assets/ss.png" />
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
-    <script src="static/java/connection.js"></script>
+                {%if password%}
+                <p>Passowrd Set!</p>
 
+                {%endif%} {%if current_user.password == 'not-set'%}
+                <u>
+                    <p><a href="/options">Set a password now!</a></p>
+                </u>
 
-    <!-- <script src="https://webkeyz.github.io/stand-with-palestine/dist/stand-with-palestine-widget.js"></script> -->
+                {%endif%}
+                <p>22/6/2024</p>
+            </div>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
 
-</head>
+            <div class="textcont">
+                <p><button class="button" id="homeBtn" onclick="showDiv('homestuff', 'homeBtn')">Videos</button></p>
+                <p><button class="button" id="pdfsBtn" onclick="showDiv('pdfsstuff', 'pdfsBtn')">Pdfs</button></p>
+            </div>
 
-<body onload="startCountdown()">
+            <div id="homestuff" class="content hidden">
+                <ul>
+                    {% for item in lines %}
+                    <li>
+                        <a href="{{ item }}">
+                            <div class="card">
+                                <img src="static/assets/homepage/{{item}}.jpg" alt="{{ item }}" loading="lazy" />
+                                <div class="text">{{ item }}</div>
+                            </div>
+                        </a>
+                    </li>
 
-    <section class="banner">
-        <canvas id="canvas"> </canvas>
+                    {% endfor %}
+                </ul>
+            </div>
 
-    
+            <div id="pdfsstuff" class="content hidden">
+                <ul>
+                    <li>
+                        <a href="/redirect/https://drive.google.com/drive/folders/19Zx0ljyRbkBVB29D-Lz4nl_gE1-OmAjI?usp=drive_link" target="_blank">
+                            <div class="card2">
+                                Hacker pdfs
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/books" target="_blank">
+                            <div class="card2">
+                                All Pdfs
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/redirect/https://drive.google.com/drive/folders/1HJRe2ejazmPYWGDojfViz-3izr-tQ26k?usp=drive_link" target="_blank">
+                            <div class="card2">
+                                El moaaser
+                            </div>
+                        </a>
+                    </li>
 
+                    <li>
+                        <a href="/redirect/https://drive.google.com/drive/folders/1trBpK01IknkeMC9LtsCM7dyTz-9uqY0n?usp=drive_link" target="_blank">
+                            <div class="card2">
+                                Nasser
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/redirect/https://drive.google.com/drive/folders/1cEnVqh8bAFr4aqHgMdy-_TpfbEVXC0zc?usp=drive_link" target="_blank">
+                            <div class="card2">
+                                Sherbo
+                            </div>
+                        </a>
+                    </li>
 
-  <div class="nav">
-  
+                    <li>
+                        <a href="/redirect/https://drive.google.com/drive/folders/1co0YX7h8Xdg3HV4zFhf2xze9yNX-xM71?usp=drive_link" target="_blank">
+                            <div class="card2">
+                                Nawar
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <br />
+            <br />
 
-        <img class ="img" src="static/assets/ss.png">
+            <div class="footer">
+                <p id="countdown">Loading..</p>
+            </div>
+        </section>
+    </body>
 
-{%if password%}
-<p>Passowrd Set!</p>
-
-{%endif%}
-
-
-
-{%if current_user.password == 'not-set'%}
-<u><p><a href="/options">Set a password now!</a></p></u>
-
-{%endif%}
-    <p>22/6/2024</p>
- 
-  </div>
-<br><br><br>
-      <br><br><br><br>
-  <br><br>
-
-
-
-  <div class="textcont">
-    <p><button class="button" id="homeBtn" onclick="showDiv('homestuff', 'homeBtn')">Videos</button></p>
-    <p><button class="button" id="pdfsBtn" onclick="showDiv('pdfsstuff', 'pdfsBtn')">Pdfs</button></p>
-
-
-</div>
-
-  <div id="homestuff" class="content hidden">
-    <ul>
-
-      {% for item in lines %}
-          <li>
-              <a href="{{ item }}">
-                <div class="card">
-                  <img src="static/assets/homepage/{{item}}.jpg" alt="{{ item }}" loading="lazy">
-                  <div class="text">{{ item }}</div>
-                </div>
-                
-              
-              </a>
-          </li>
-  
-      {% endfor %}
-  
-    </ul>
-
-
-
-
-</div>
-
-    
-<div id="pdfsstuff" class="content hidden">
-
-  <ul>
-    <li>
-      <a href="/redirect/https://drive.google.com/drive/folders/19Zx0ljyRbkBVB29D-Lz4nl_gE1-OmAjI?usp=drive_link" target="_blank">
-          <div class="card2">
-
-              Hacker pdfs
-          </div>
-      </a>
-  </li>
-    <li>
-      <a href="/books" target="_blank">
-          <div class="card2">
-            All Pdfs
-          </div>
-      </a>
-    </li>
-    <li>
-      <a href="/redirect/https://drive.google.com/drive/folders/1HJRe2ejazmPYWGDojfViz-3izr-tQ26k?usp=drive_link" target="_blank">
-          <div class="card2">
-            El moaaser
-          </div>
-      </a>
-    </li>
-
- 
-    <li>
-      <a href="/redirect/https://drive.google.com/drive/folders/1trBpK01IknkeMC9LtsCM7dyTz-9uqY0n?usp=drive_link" target="_blank">
-          <div class="card2">
-    
-              Nasser
-          </div>
-      </a>
-    </li>
-    <li>
-      <a href="/redirect/https://drive.google.com/drive/folders/1cEnVqh8bAFr4aqHgMdy-_TpfbEVXC0zc?usp=drive_link" target="_blank">
-          <div class="card2">
-
-              Sherbo
-          </div>
-      </a>
-  </li>
-
-  <li>
-    <a href="/redirect/https://drive.google.com/drive/folders/1co0YX7h8Xdg3HV4zFhf2xze9yNX-xM71?usp=drive_link" target="_blank">
-        <div class="card2">
-
-            Nawar
-        </div>
-    </a>
-</li>
-  </ul>
-</div>
-<br>
-<br>
-
-
- <div class="footer">
-  <p id="countdown">Loading..</p>
-</div>
-
-    </section>
-
-  </body>
-
-  <script>
-  
-  function showDiv(divId, buttonId) {
+    <script>
+        function showDiv(divId, buttonId) {
             // Hide all divs first
-            var divs = document.querySelectorAll('.content');
+            var divs = document.querySelectorAll(".content");
             divs.forEach(function (div) {
-                div.classList.add('hidden');
+                div.classList.add("hidden");
             });
 
             // Remove 'active' class from all buttons
-            var buttons = document.querySelectorAll('.button');
+            var buttons = document.querySelectorAll(".button");
             buttons.forEach(function (button) {
-                button.classList.remove('active');
+                button.classList.remove("active");
             });
 
             // Show the selected div
-            document.getElementById(divId).classList.remove('hidden');
+            document.getElementById(divId).classList.remove("hidden");
 
             // Add 'active' class to the clicked button
-            document.getElementById(buttonId).classList.add('active');
+            document.getElementById(buttonId).classList.add("active");
         }
+    </script>
 
+    <script src="static/java/snow.js"></script>
 
-
-</script>
-
-
-<script src="static/java/snow.js"></script>
-
-<script src="static/java/countdown.js"></script>
-
+    <script src="static/java/countdown.js"></script>
 </html>

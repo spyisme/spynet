@@ -1,0 +1,103 @@
+    html, body {
+
+        margin: 0;
+        padding: 0;
+        zoom: 90%;
+
+    }
+    body {
+        cursor: url('/static/cursor.png'), auto;
+
+        font-family: Arial, sans-serif;
+        background: #15172b;
+        color: white;
+        text-align: center;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .form-container {
+        margin: 20px;
+        left: 50%;
+    }
+
+
+
+    .nohover{
+    cursor: url('/static/cursor.png'), auto;
+
+
+    color:white ;
+      text-decoration: underline;
+    }
+    #videoPlayerContainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        top: 50%;
+        left: 50%;
+    }
+    iframe {
+        border: 0;
+        width: 935.18px;
+        height: 655px;
+    }
+    #canvas {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+    }
+    .banner {
+        width: 100%;
+        height: 100%;
+    }
+    .banner_content {
+        display: flex;
+        position: relative;
+        z-index: 1;
+        flex-direction: column;
+        text-align: center;
+    }
+    .play-btn {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        margin: 5px;
+    }
+    .play-btn.clicked {
+        background-color: red;
+        pointer-events: none;
+    }
+    h1 {
+        color: white;
+        font-size: 24px;
+    }
+    @media only screen and (max-width: 600px) {
+        #lectureIdInput {
+            width: 100%;
+        }
+    }
+    .custom-select {
+        font-family: Arial, sans-serif;
+        background-color: whitesmoke;
+        border-radius: 10px;
+
+    }
+    .pdf-btn{
+      background-color: #6e1cda;
+        color: white;
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        margin: 5px;
+    }
