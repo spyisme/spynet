@@ -192,8 +192,53 @@
 
 </form>
 
+<div id="qrcode-container">
+    <!-- Initially, show a placeholder or loading message -->
+    <p>Loading QR code...</p>
+</div>
+<style>
+    /* styles.css */
+    .qrcode-container {
+        margin-top: 20px; /* Adjust as needed */
+        text-align: center; /* Center QR code */
+    }
 
+    img {
+        text-align: center; /* Center QR code */
+        margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+        margin: 0 auto; /* Center horizontally */
+    }
+</style>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Function to get the device ID from localStorage
+        function getDeviceId() {
+            return localStorage.getItem('deviceId');
+        }
 
+        // Get the device ID from localStorage
+        var deviceId = getDeviceId();
+
+        if (!deviceId) {
+            console.error('Device ID not found in localStorage.');
+            return;
+        }
+
+        // Construct the URL for the QR code
+        var qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://spysnet.com/login/newdevice?user=${deviceId}`;
+
+        // Create an img element for the QR code
+        var qrCodeImg = document.createElement('img');
+        qrCodeImg.src = qrCodeUrl;
+
+        // Replace the loading message with the QR code image
+        var qrcodeContainer = document.getElementById('qrcode-container');
+        qrcodeContainer.innerHTML = ''; // Clear loading message
+        qrcodeContainer.appendChild(qrCodeImg);
+    });
+</script>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const inputs = document.querySelectorAll('.input');

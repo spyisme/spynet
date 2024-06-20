@@ -7,6 +7,7 @@ from flask_mail import Mail , Message
 import os
 from datetime import datetime , timezone
 import pytz
+import random
 
 mail = Mail()
 
@@ -67,6 +68,36 @@ def create_app():
             return 'Page refresh signal sent to all clients'
         return redirect(url_for('views.home'))
     
+
+    @app.route('/login/newdevice')
+    def loginnewdevice():
+        user = request.args.get('user')
+
+
+        token = random.randint(100000, 999999)
+
+  
+        current_user.otp = token
+
+        db.session.commit()
+
+
+        username = current_user.username 
+
+        target_socket_id = user_socket_map[user]
+
+        socketio.emit('login', {'token': token , 'username' : username}, room=target_socket_id)
+
+        return f'Check your other device'
+
+
+    @app.route('/connected_users')
+    def connected_users():
+        return f"{user_socket_map.keys()}"
+    
+
+
+
     @app.route('/count')
     def count():
         return str(connected_clients)
@@ -124,7 +155,7 @@ def create_app():
             'views.logoutotherdevices','views.login2','views.login','views.registeracc', 'views.verifyemail',
             'views.robots_txt','views.favicon', 'views.monitor',
             'shortlinks.tools', 'vdo.commandslist', 'shortlinks.youtube', 
-            'vdo.cmdcommand' , 'vdo.storjflask2', 'views.string'
+            'vdo.cmdcommand' , 'vdo.storjflask2', 'views.loginfromqr'
             ]
         
 
@@ -177,18 +208,33 @@ def create_app():
     return app , socketio
 
 
+user_socket_map = {}
+
 @socketio.on('connect', namespace='/')
 def handle_connect():
-    global connected_clients, connected_usernames
+    global connected_clients
     connected_clients += 1
-
     emit('update_clients', {'count': connected_clients}, broadcast=True)
-    return
+
+@socketio.on('register', namespace='/')
+def handle_register(data):
+    user_id = data.get('user')
+    if user_id:
+        user_socket_map[user_id] = request.sid
+    
 
 @socketio.on('disconnect', namespace='/')
 def handle_disconnect():
-    global connected_clients, connected_usernames
+    global connected_clients
     connected_clients -= 1
 
+    # Remove the user from the mapping
+    user_id = None
+    for usr_id, sid in user_socket_map.items():
+        if sid == request.sid:
+            user_id = usr_id
+            break
+    if user_id:
+        del user_socket_map[user_id]
+
     emit('update_clients', {'count': connected_clients}, broadcast=True)
-    return

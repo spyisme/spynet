@@ -9,7 +9,7 @@
 </head>
 
 <!-- Add this inside the <head> tag of your HTML file -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
+
 
     <!-- Add this script at the end of your HTML file, before the </body> tag -->
 
@@ -22,21 +22,7 @@
     </style>
     <h1>Welcome to the Admin Page</h1>
 
-    <h1><p>Connected Clients Count: <span id="connected_clients">{{ connected_clients }}</span></p></h1>
 
-
-    <!-- Add Socket.IO client script -->
-    <script>
-        var socket = io.connect('https://' + document.domain + ':' + location.port);
-
-        socket.on('update_clients', function(data) {
-            // Update the UI with the new connected clients count
-            document.getElementById('connected_clients').innerText = data.count;
-
-            // Log the username of the connected session
-            console.log('Connected Username:', data.username);
-        });
-    </script>
     <a href="/logs">Logs</a>
     <br><br>
     {% if users %}
