@@ -53,7 +53,10 @@ function loadLectures() {
                 populateLectureDropdown(lectures.filtered_lectures);
                 populateParts(lectures.filtered_lectures[0]); // Initialize with the first lecture's parts
 
-
+                if (lectures.filtered_lectures.length > 0) {
+                    var lastLectureTitle = lectures.filtered_lectures[lectures.filtered_lectures.length - 1].title;
+                    document.getElementById("lastLectureTitle").innerText = "Last lecture uploaded  : " + lastLectureTitle;
+                }
 
 
             } else {

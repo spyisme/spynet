@@ -227,7 +227,7 @@
         }
 
         // Construct the URL for the QR code
-        var qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://spysnet.com/login/newdevice?user=${deviceId}`;
+        var qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${document.domain}/login/newdevice?user=${deviceId}`;
 
         // Create an img element for the QR code
         var qrCodeImg = document.createElement('img');

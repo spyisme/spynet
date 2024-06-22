@@ -189,8 +189,6 @@ def monitor():
     return "Working"
 
 
-
-
 @views.route('/create-password', methods=['GET', 'POST'])
 def create_password():
 
@@ -452,7 +450,6 @@ def loginfromqr():
     if current_user.is_authenticated:
         return redirect(url_for('views.home'))
 
-
     username = request.args.get('username')
 
     username = username.replace(" ", "")
@@ -460,7 +457,7 @@ def loginfromqr():
     user = User.query.filter_by(username=username).first()
 
     token = request.args.get('token')
-    if user :
+    if user:
         if token == user.otp:
 
             user.otp = random.randint(100000, 999999)
@@ -468,13 +465,17 @@ def loginfromqr():
 
             login_user(user)
 
-            discord_log_login(f"{client_ip} just logined using qr code with '{username}' Device ```{user_agent}``` <@709799648143081483>")
+            discord_log_login(
+                f"{client_ip} just logined using qr code with '{username}' Device ```{user_agent}``` <@709799648143081483>"
+            )
             return redirect("/")
 
         else:
-            discord_log_login(f"{client_ip} just failed to login using qr code with '{username}' Device ```{user_agent}``` <@709799648143081483>")
+            discord_log_login(
+                f"{client_ip} just failed to login using qr code with '{username}' Device ```{user_agent}``` <@709799648143081483>"
+            )
             return redirect(f"/login?password=false&user={username}")
-    else :
+    else:
         return 'tf?'
 
 
@@ -704,8 +705,8 @@ def redirectlinks(link):
 def home():
     password = request.args.get("password")
     lines = [
-        "chemistry", "arabic", "maths", "physics", "german", "english",
-        "biology", "geology", "adby"
+        "chemistry", "maths", "physics", "german", "english", "biology",
+        "geology", "adby"
     ]
     # lines = ["chemistry", "english","maths" , "arabic", "german" , "physics" ,"biology", "geology"]
 
