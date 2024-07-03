@@ -702,6 +702,8 @@ def redirectlinks(link):
 
 from datetime import datetime
 
+import pytz
+
 
 #Home
 @views.route("/")
@@ -709,13 +711,14 @@ def home():
     password = request.args.get("password")
 
     # Get the current date and time
-    now = datetime.now()
+    timezone = pytz.timezone('Etc/GMT-3')
+    now = datetime.now(timezone)
 
     # Define the date ranges
-    date_2_july = datetime(2024, 7, 2, 8, 0, 0)
-    date_6_july = datetime(2024, 7, 6, 8, 0, 0)
-    date_10_july = datetime(2024, 7, 10, 8, 0, 0)
-    date_17_july = datetime(2024, 7, 17, 8, 0, 0)
+    date_2_july = timezone.localize(datetime(2024, 7, 2, 9, 0, 0))
+    date_6_july = timezone.localize(datetime(2024, 7, 6, 9, 0, 0))
+    date_10_july = timezone.localize(datetime(2024, 7, 10, 9, 0, 0))
+    date_17_july = timezone.localize(datetime(2024, 7, 17, 9, 0, 0))
 
     # Determine the lines based on the current date
     if now < date_2_july:
