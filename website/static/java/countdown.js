@@ -19,10 +19,22 @@ function startCountdown() {
     var x = setInterval(updateCountdown, 1000);
 
     function updateCountdown() {
-        var countDownDate = countdownDates[currentIndex];
-
-        // Get the current date and time
         var now = new Date().getTime();
+
+        // Move to the next countdown date if the current one has expired
+        while (currentIndex < countdownDates.length && countdownDates[currentIndex] <= now) {
+            currentIndex++;
+        }
+
+        // If no more countdown dates, display "EXPIRED" message
+        if (currentIndex >= countdownDates.length) {
+            clearInterval(x);
+            document.getElementById("countdown").innerHTML = "EXPIRED";
+            document.getElementById("date").innerHTML = "";
+            return;
+        }
+
+        var countDownDate = countdownDates[currentIndex];
 
         // Calculate the distance between now and the countdown date
         var distance = countDownDate - now;
@@ -40,18 +52,6 @@ function startCountdown() {
         var currentTargetDate = new Date(countDownDate);
         var options = { year: 'numeric', month: 'long', day: 'numeric' };
         document.getElementById("date").innerHTML = currentTargetDate.toLocaleDateString(undefined, options);
-
-
-        // If the countdown is over, move to the next date or display a message
-        if (distance < 0) {
-            currentIndex++;
-            if (currentIndex < countdownDates.length) {
-                countDownDate = countdownDates[currentIndex];
-            } else {
-                clearInterval(x);
-                document.getElementById("countdown").innerHTML = "EXPIRED";
-            }
-        }
     }
 }
 
