@@ -1088,7 +1088,7 @@ def math():
         "Sherbo": ("/sherbo", "Omar sherbeni"),
         "Salama": ("/salama", "Mohamed salama")
     }
-    teachername = "Math"
+    teachername = "Maths"
     return render_template('used_pages/teacher.html',
                            teacher_links=teacher_links,
                            teachername=teachername,
@@ -1108,7 +1108,7 @@ def sherbo():
                  sherbo_info[course]['description'])
         for course in sherbo_info
     }
-    teachername = "Math"
+    teachername = "Maths"
     return render_template('used_pages/teacher.html',
                            teacher_links=teacher_links,
                            teachername=teachername,
@@ -1210,7 +1210,7 @@ def salama():
             salama_info[course]['description']
         ]
     ] for course in salama_info]
-    teachername = "Math"
+    teachername = "Maths"
     return render_template('used_pages/teacherwithsort.html',
                            teacher_links=teacher_links,
                            teachername=teachername,
@@ -1227,7 +1227,7 @@ def add_course(course_name, course_id, input3, course_image, desc):
     salama_info = load_salama_info()
     if course_image:
         filename = course_name + '.jpg'
-        upload_path = os.path.join('website/static/assets/Math/', filename)
+        upload_path = os.path.join('website/static/assets/Maths/', filename)
         course_image.save(upload_path)
         new_course = {"id": course_id, "url": input3, "description": desc}
         salama_info[course_name] = new_course
@@ -1276,7 +1276,7 @@ def salama_edit_course_route():
             uploaded_file = request.files.get('course_image')
             if uploaded_file:
                 filename = selected_course + '.jpg'
-                upload_path = os.path.join('website/static/assets/Math/',
+                upload_path = os.path.join('website/static/assets/Maths/',
                                            filename)
                 uploaded_file.save(upload_path)
 

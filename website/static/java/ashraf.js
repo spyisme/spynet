@@ -154,7 +154,7 @@ function loadVideo(videoId, partId) {
     };
 
     var data = JSON.stringify({
-        'student_name': 'spy',
+        'student_name': '-',
         'video_id': videoId
     });
 
