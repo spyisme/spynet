@@ -372,28 +372,29 @@ def find_similar_username(username):
 
 @views.route('/login', methods=['GET', 'POST'])
 def login():
-    client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
+    client_ip = request.headers['X-Forwarded-For'].split(',')[0].strip()
     user_agent = request.headers.get('User-Agent')
     if current_user.is_authenticated:
         return redirect(url_for('views.home'))
-    # if client_ip in blacklist_ips :
-    #     return jsonify(message="Error 403"), 403
+    if client_ip in blacklist_ips:
+        return jsonify(message="Error 403"), 403
 
-    # if client_ip not in whitelist_ips :
-    #     api_url = f'https://ipinfo.io/{client_ip}?token=8f8d5a48b50694'
-    #     response = requests.get(api_url)
-    #     data = response.json()
+    if client_ip not in whitelist_ips:
+        api_url = f'https://ipinfo.io/{client_ip}?token=8f8d5a48b50694'
+        response = requests.get(api_url)
+        data = response.json()
 
-    #     if 'country' in data:
-    #             country_code = data['country']
-    #             if country_code != 'EG':
-    #                 blacklist_ips.add(client_ip)
-    #                 return jsonify(message="Please disable vpn/proxy."), 403
-    #     else:
-    #         blacklist_ips.add(client_ip)
-    #         return jsonify(message="Unable to determine the country. Login failed."), 403
+        if 'country' in data:
+            country_code = data['country']
+            if country_code != 'EG':
+                blacklist_ips.add(client_ip)
+                return jsonify(message="Please disable vpn/proxy."), 403
+        else:
+            blacklist_ips.add(client_ip)
+            return jsonify(
+                message="Unable to determine the country. Login failed."), 403
 
-    # whitelist_ips.add(client_ip)
+    whitelist_ips.add(client_ip)
 
     if request.method == 'POST':
         username = request.form.get('username')
@@ -445,7 +446,7 @@ def login():
 
 @views.route('/loginfromqr')
 def loginfromqr():
-    client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
+    client_ip = request.headers['X-Forwarded-For'].split(',')[0].strip()
     user_agent = request.headers.get('User-Agent')
     if current_user.is_authenticated:
         return redirect(url_for('views.home'))
@@ -585,7 +586,7 @@ def verifyemail():
     if current_user.is_authenticated:
         return redirect(url_for('views.home'))
 
-    client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
+    client_ip = request.headers['X-Forwarded-For'].split(',')[0].strip()
     user_agent = request.headers.get('User-Agent')
     username = request.args.get('user')
     msgg = request.args.get('msg')
@@ -662,29 +663,28 @@ def loginnochecks():
 
 @views.route('/register', methods=['GET', 'POST'])
 def registeracc():
-    client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
+    client_ip = request.headers['X-Forwarded-For'].split(',')[0].strip()
     user_agent = request.headers.get('User-Agent')
     if current_user.is_authenticated:
         return redirect(url_for('views.home'))
 
     if request.method == 'POST':
         username = request.form.get('username')
-        if username == "spy":
-            return "555555555555555555555"
         user = User.query.filter_by(username=username).first()
         if user:
-            login_user(user)
-            if user.username != 'spy':
-                user.active_sessions += 1
-                db.session.commit()
-            discord_log_login(
-                f"{client_ip} just logged in with {username} Device ```{user_agent}```  <@709799648143081483>"
-            )
-
+            return "Username taken"
         email = request.form.get('email')
         phone = request.form.get('phone')
+        if email is None:
+            return 'Email is null'
+        if phone is None:
+            return 'Phone is null'
+        if '@' not in email:
+            return 'Invalid email'
+        if '0' not in phone:
+            return 'Invalid phone number'
         discord_log_register(
-            f"New user  : {username} ====== {email} ====== {phone} ====== {client_ip} <@709799648143081483>"
+            f"New user  : {username} ====== {email} ====== {phone} ====== {client_ip} {user_agent} <@709799648143081483>"
         )
         return redirect(f"/send_email?to={email}")
     return render_template('users_pages/register.html',
@@ -700,15 +700,34 @@ def redirectlinks(link):
     return redirect(f"{link}")
 
 
+from datetime import datetime
+
+
 #Home
 @views.route("/")
 def home():
     password = request.args.get("password")
-    lines = [
-        "chemistry", "maths", "physics", "german", "english", "biology",
-        "geology", "adby"
-    ]
-    # lines = ["chemistry", "english","maths" , "arabic", "german" , "physics" ,"biology", "geology"]
+
+    # Get the current date and time
+    now = datetime.now()
+
+    # Define the date ranges
+    date_2_july = datetime(2024, 7, 2, 8, 0, 0)
+    date_6_july = datetime(2024, 7, 6, 8, 0, 0)
+    date_10_july = datetime(2024, 7, 10, 8, 0, 0)
+    date_17_july = datetime(2024, 7, 17, 8, 0, 0)
+
+    # Determine the lines based on the current date
+    if now < date_2_july:
+        lines = ["english", "chemistry", "maths", "biology", "geology"]
+    elif date_2_july <= now < date_6_july:
+        lines = ["chemistry", "maths", "biology", "geology"]
+    elif date_6_july <= now < date_10_july:
+        lines = ["maths", "biology", "geology"]
+    elif date_10_july <= now < date_17_july:
+        lines = ["maths", "biology"]
+    else:
+        lines = ["maths"]
 
     return render_template('used_pages/all.html',
                            lines=lines,
@@ -772,9 +791,8 @@ def spyleakedaccs():
 @views.route('/physics')
 def Physics():
     teacher_links = {
-        "Mo adel": ("/mo-adel", "Random Sessions & revisions"),
+        "Mo adel": ("/mo-adel", "Exam Night"),
         "Tamer-el-kady": ("/tamer-el-kady", "Sessions & revisions"),
-        "Nawar": ("/nawar", "(lw had m3ah acc b2a)"),
     }
     teachername = "Physics"
     return render_template('used_pages/teacher.html',
@@ -870,29 +888,23 @@ def tamerelkadyvidspost():
 @views.route('/mo-adel')
 def moadel():
     teachername = "Mo adel"
-    playlist_id = 'PLM-GVlebsoPVwKxgg8SuRyocWxRQSbENF'
+    playlist_id = 'PLM-GVlebsoPWnPigZ2AseknDAedaryyn6'
     with open("website/playlists/moadel.txt", 'r', encoding='utf-8') as file:
         content = file.read()
         videos = ast.literal_eval(content)
 
     folder = "https://drive.google.com/drive/folders/1Goxe2Odi_qg0MPeoU8Zn8kpVJq8JKNLg?usp=drive_link"
-    extra = {
-        "Part 1 answers":
-        "https://drive.google.com/file/d/1VnoHxdDcqexTAglXQ0Rc2xHwreTUXg25/view?usp=drive_link",
-        "Part 2 answers":
-        "https://drive.google.com/file/d/1pZZCwjEGHP8G4gXmdYj-bbel6CZK5qtN/view?usp=drive_link"
-    }
+
     return render_template('used_pages/videopage.html',
                            videos=videos,
                            playlist_id=playlist_id,
                            teachername=teachername,
-                           extra=extra,
                            folder=folder)
 
 
 @views.route("/mo-adel/update")
 def moadelupdate():
-    return createtxtfile("moadel", "PLM-GVlebsoPVwKxgg8SuRyocWxRQSbENF")
+    return createtxtfile("moadel", "PLM-GVlebsoPWnPigZ2AseknDAedaryyn6")
 
 
 #Nawar -------------------------------------------
@@ -1585,7 +1597,6 @@ def mohamedtarekupdate():
 def geology():
     teacher_links = {
         "Sameh": ("sameh", "Sameh Nash2t"),
-        "Gio maged": ("giomaged", "Gio maged")
     }
     teachername = "Geology"
     return render_template('used_pages/teacher.html',

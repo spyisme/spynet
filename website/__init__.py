@@ -167,8 +167,8 @@ def create_app():
                     f"{url_for('views.login')}?goto={request.path.replace('/', '')}"
                 )
             else:
-                client_ip = request.headers.get('CF-Connecting-IP',
-                                                request.remote_addr)
+                client_ip = request.headers['X-Forwarded-For'].split(
+                    ',')[0].strip()
                 user_agent = request.headers.get('User-Agent')
 
                 utc_now = datetime.now(timezone.utc)

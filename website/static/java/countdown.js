@@ -1,4 +1,17 @@
 function startCountdown() {
+    // List of countdown dates
+    var countdownDates = [
+        new Date("July 2, 2024 08:00:00 GMT+0200").getTime(),
+        new Date("July 6, 2024 08:00:00 GMT+0200").getTime(),
+        new Date("July 10, 2024 08:00:00 GMT+0200").getTime(),
+        new Date("July 13, 2024 08:00:00 GMT+0200").getTime(),
+        new Date("July 17, 2024 08:00:00 GMT+0200").getTime(),
+        new Date("July 20, 2024 08:00:00 GMT+0200").getTime()
+    ];
+
+    // Index to keep track of the current countdown date
+    var currentIndex = 0;
+
     // Initial call to update countdown
     updateCountdown();
 
@@ -6,8 +19,7 @@ function startCountdown() {
     var x = setInterval(updateCountdown, 1000);
 
     function updateCountdown() {
-        var countDownDate = new Date("June 25, 2024 08:00:00 GMT+0200").getTime();
-
+        var countDownDate = countdownDates[currentIndex];
 
         // Get the current date and time
         var now = new Date().getTime();
@@ -15,7 +27,7 @@ function startCountdown() {
         // Calculate the distance between now and the countdown date
         var distance = countDownDate - now;
 
-        // Calculate days, hours, minutes and seconds
+        // Calculate days, hours, minutes, and seconds
         var days = Math.floor(distance / (1000 * 60 * 60 * 24));
         var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
@@ -24,10 +36,21 @@ function startCountdown() {
         // Output the result in an element with id="countdown"
         document.getElementById("countdown").innerHTML = "Days till exams: " + days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
 
-        // If the countdown is over, display a message
+        // Update the date element
+        var currentTargetDate = new Date(countDownDate);
+        var options = { year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById("date").innerHTML = currentTargetDate.toLocaleDateString(undefined, options);
+
+
+        // If the countdown is over, move to the next date or display a message
         if (distance < 0) {
-            clearInterval(x);
-            document.getElementById("countdown").innerHTML = "EXPIRED";
+            currentIndex++;
+            if (currentIndex < countdownDates.length) {
+                countDownDate = countdownDates[currentIndex];
+            } else {
+                clearInterval(x);
+                document.getElementById("countdown").innerHTML = "EXPIRED";
+            }
         }
     }
 }

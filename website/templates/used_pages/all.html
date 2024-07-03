@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta name="robots" content="noindex" />
+ 
 
         <title>Sanawya Sessions</title>
         <link rel="icon" type="image/x-icon" href="/static/favicon.ico" />
@@ -31,14 +31,18 @@
                 {%if password%}
                 <p>Passowrd Set!</p>
 
-                {%endif%} {%if current_user.password == 'not-set'%}
+                {%endif%} 
+                
+                {%if current_user.password == 'not-set'%}
                 <u>
                     <p><a href="/options">Set a password now!</a></p>
                 </u>
 
                 {%endif%}
-                <p>25/6/2024</p>
-                <p>No more skailler(3arbi هه)</p>
+                
+                <p id="date">Loading..</p>
+        
+             
             </div>
             <br />
             <br />
@@ -54,6 +58,7 @@
                 <p><button class="button" id="homeBtn" onclick="showDiv('homestuff', 'homeBtn')">Videos</button></p>
                 <p><button class="button" id="pdfsBtn" onclick="showDiv('pdfsstuff', 'pdfsBtn')">Pdfs</button></p>
             </div>
+            {% if current_user.is_authenticated %}
 
             <div id="homestuff" class="content hidden">
                 <ul>
@@ -119,7 +124,10 @@
                     </li>
                 </ul>
             </div>
-            <br />
+            {%else%}
+            <a href="/login">Please Login</a>
+            {%endif%}
+
             <br />
 
             <div class="footer">
