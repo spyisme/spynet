@@ -18,10 +18,10 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
         <script src="static/java/connection.js"></script>
 
-        <!-- <script src="https://webkeyz.github.io/stand-with-palestine/dist/stand-with-palestine-widget.js"></script> -->
+   
     </head>
 
-    <body onload="startCountdown()">
+    <body>
         <section class="banner">
             <canvas id="canvas"> </canvas>
 
@@ -40,7 +40,7 @@
 
                 {%endif%}
                 
-                <p id="date">Loading..</p>
+                <p id="date">Old content</p>
         
              
             </div>
@@ -58,7 +58,7 @@
                 <p><button class="button" id="homeBtn" onclick="showDiv('homestuff', 'homeBtn')">Videos</button></p>
                 <p><button class="button" id="pdfsBtn" onclick="showDiv('pdfsstuff', 'pdfsBtn')">Pdfs</button></p>
             </div>
-            {% if current_user.is_authenticated %}
+      
 
             <div id="homestuff" class="content hidden">
                 <ul>
@@ -98,14 +98,12 @@
     
                 </ul>
             </div>
-            {%else%}
-            <a href="/login">Please Login</a>
-            {%endif%}
+ 
 
             <br />
 
             <div class="footer">
-                <p id="countdown">Loading..</p>
+                <p id="countdown">Year of 2023/2024</p>
             </div>
         </section>
     </body>
@@ -134,5 +132,5 @@
 
     <script src="static/java/snow.js"></script>
 
-    <script src="static/java/countdown.js"></script>
+    <!-- <script src="static/java/countdown.js"></script> -->
 </html>

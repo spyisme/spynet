@@ -732,10 +732,30 @@ def home():
     else:
         lines = ["maths"]
 
+    #All lines
+    # lines = [
+    #     "chemistry", "maths", "physics", "english", "arabic", 'german',
+    #     'geology', 'biology', 'adby'
+    # ]
+
     return render_template('used_pages/all.html',
                            lines=lines,
                            teachername="All",
                            password=password)
+
+
+@views.route("/old")
+def homeold():
+
+    #All lines
+    lines = [
+        "chemistry", "maths", "physics", "english", "arabic", 'german',
+        'geology', 'biology', 'adby'
+    ]
+
+    return render_template('used_pages/all_old.html',
+                           lines=lines,
+                           teachername="All")
 
 
 #Privacy
@@ -1619,7 +1639,7 @@ def sameh():
     info = load_sameh_info()
 
     teacher_links = {
-        f"Sameh Nash2t {course}":
+        f"{course}":
         (f"/sameh{info[course]['url']}", info[course]['description'])
         for course in info
     }
