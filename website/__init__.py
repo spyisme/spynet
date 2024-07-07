@@ -8,12 +8,14 @@ import os
 from datetime import datetime, timezone
 import pytz
 import random
+import json, requests
 
 mail = Mail()
 
 db = SQLAlchemy()
 login_manager = LoginManager()
 socketio = SocketIO()
+
 connected_clients = 0
 
 
@@ -88,14 +90,6 @@ def create_app():
         else:
             return "Please Refresh the other device and scan the qr code again."
 
-    @app.route('/connected_users')
-    def connected_users():
-        return f"{user_socket_map.keys()}"
-
-    @app.route('/count')
-    def count():
-        return str(connected_clients)
-
     @app.route('/admin')
     def admin():
         if current_user.username != 'spy':
@@ -104,9 +98,7 @@ def create_app():
         else:
             users = User.query.all()
 
-        return render_template('admin/admin.html',
-                               users=users,
-                               connected_clients=connected_clients)
+        return render_template('admin/admin.html', users=users)
 
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
     app.config['SECRET_KEY'] = 'secretkey'
@@ -128,8 +120,6 @@ def create_app():
     @login_manager.user_loader
     def load_user(user_id):
         return User.query.get(int(user_id))
-
-    import json, requests
 
     def discord_log(message):
         messageeeee = {'content': message}

@@ -23,14 +23,16 @@ SCOPES = ['https://www.googleapis.com/auth/youtube.readonly']
 
 REDIRECT_URI = 'http://localhost:8080/oauth2callback'
 
-TOKEN_FILE = 'token.json'
+TOKEN_STRING = os.environ['Youtube']
 
 
 def get_authenticated_service():
     credentials = None
 
     try:
-        credentials = Credentials.from_authorized_user_file(TOKEN_FILE, SCOPES)
+        # Parse the JSON string
+        token_info = json.loads(TOKEN_STRING)
+        credentials = Credentials.from_authorized_user_info(token_info)
     except GoogleAuthError as e:
         print(f"Couldn't log in: {e}")
 
