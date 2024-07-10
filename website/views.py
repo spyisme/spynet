@@ -1143,6 +1143,26 @@ def sherbo():
 def load_sherbo_info():
     with open('website/Backend/sherbo.json', 'r') as file:
         sherbo_info = json.load(file)
+
+    timezone = pytz.timezone('Etc/GMT-3')
+    now = datetime.now(timezone)
+
+    date_10_july = timezone.localize(datetime(2024, 7, 10, 9, 0, 0))
+    date_13_july = timezone.localize(datetime(2024, 7, 13, 9, 0, 0))
+    date_17_july = timezone.localize(datetime(2024, 7, 17, 9, 0, 0))
+
+    if date_10_july <= now < date_13_july:
+
+        sherbo_info_items = list(sherbo_info.items())[1:]
+
+    elif date_13_july <= now < date_17_july:
+        sherbo_info_items = list(sherbo_info.items())[2:]
+
+    else:
+        sherbo_info_items = list(sherbo_info.items())[3:]
+
+    sherbo_info = dict(sherbo_info_items)
+
     return sherbo_info
 
 

@@ -1,15 +1,23 @@
 {
+  "Algebra & Geometry": {
+      "id": "PLM-GVlebsoPXA9V7VBUTiazxj2DQn_yxN",
+      "url": "/algebra",
+      "description" : "SG = Solid geometry"
+
+    }
+  ,
+  "Calculus": {
+    "id": "PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq",
+    "url": "/calculus",
+    "description" : "10 sessions + revisions"
+
+  },
     "Statics": {
       "id": "PLM-GVlebsoPX_3mlaOeWIjCPY8jH8MpfJ",
       "url": "/statics",
       "description" : "12 sessions + revisions"
     },
-    "Calculus": {
-      "id": "PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq",
-      "url": "/calculus",
-      "description" : "10 sessions + revisions"
 
-    },
     "Dynamics": {
       "id": "PLM-GVlebsoPWZdGWOOOqg4W9K9AgoXC2M",
       "url": "/dynamics",
@@ -17,13 +25,7 @@
 
     }
     ,
-    "Algebra & Geometry": {
-      "id": "PLM-GVlebsoPXA9V7VBUTiazxj2DQn_yxN",
-      "url": "/algebra",
-      "description" : "SG = Solid geometry"
-
-    }
-  ,
+   
   "Final rev": {
     "id": "PLM-GVlebsoPW4d-get6gqC2HkppsoAiOe",
     "url": "/final",
