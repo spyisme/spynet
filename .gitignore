@@ -160,3 +160,7 @@ cython_debug/
 #.idea/.replit
 poetry.lock
 pyproject.toml
+.replit
+poetry.lock
+pyproject.toml
+replit.nix
