@@ -24,25 +24,19 @@
       "description" : "5 sessions + revisions"
 
     }
-    ,
-   
-  "Final rev": {
-    "id": "PLM-GVlebsoPW4d-get6gqC2HkppsoAiOe",
-    "url": "/final",
-    "description" : "Secure your mindset"
-
-  } ,
-  "Kol el fro3 revisions": {
+  ,
+  "Save my": {
     "id": "PLM-GVlebsoPVMIxkFSGnXOA_PRfduRvhH",
     "url": "/final-kol-el-fro3",
-    "description" : "Save my"
+    "description" : "Statics , Dynamics"
 
   },
   "Exams": {
     "id": "PLM-GVlebsoPXn-oDb_aTjq5qlkbqlfrlg",
     "url": "/exams",
-    "description" : "Solving Exams"
+    "description" : "Exams (12 Statics , 11 Dynamics)"
 
   }
+ 
   }
   

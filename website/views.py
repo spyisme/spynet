@@ -1154,7 +1154,10 @@ def sherboupdates(custom_url):
 def sherporoutes(custom_url):
     extra = None
     folder = None
-
+    if custom_url == 'final':
+        return redirect(
+            'https://drive.google.com/file/d/1WEGpT_6U3yrM0cXFEniA1rqC9lUFFaW0/view?usp=drive_link'
+        )
     sherbo_info = load_sherbo_info()
     course_info = next(
         (info
