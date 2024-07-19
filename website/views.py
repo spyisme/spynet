@@ -1139,9 +1139,32 @@ def load_sherbo_info():
     return sherbo_info
 
 
+def load_sherbo_info_old():
+    with open('website/Backend/sherbo.json', 'r') as file:
+        sherbo_info = json.load(file)
+
+    return sherbo_info
+
+
+@views.route('/old/sherbo')
+def sherbo_old():
+    sherbo_info = load_sherbo_info_old()
+
+    teacher_links = {
+        course: (f"/sherbo{sherbo_info[course]['url']}",
+                 sherbo_info[course]['description'])
+        for course in sherbo_info
+    }
+    teachername = "Maths"
+    return render_template('used_pages/teacher.html',
+                           teacher_links=teacher_links,
+                           teachername=teachername,
+                           imgs="yes")
+
+
 @views.route("/sherbo/<custom_url>/update")
 def sherboupdates(custom_url):
-    sherbo_info = load_sherbo_info()
+    sherbo_info = load_sherbo_info_old()
     course_key = next((name for name, info in sherbo_info.items()
                        if info['url'] == f"/{custom_url}"), None)
     if course_key not in sherbo_info:
@@ -1158,13 +1181,15 @@ def sherporoutes(custom_url):
         return redirect(
             'https://drive.google.com/file/d/1WEGpT_6U3yrM0cXFEniA1rqC9lUFFaW0/view?usp=drive_link'
         )
-    sherbo_info = load_sherbo_info()
+    sherbo_info = load_sherbo_info_old()
     course_info = next(
         (info
          for info in sherbo_info.values() if info['url'] == f"/{custom_url}"),
         None)
     course_name = next((name for name, info in sherbo_info.items()
                         if info['url'] == f"/{custom_url}"), None)
+    if course_name is None:
+        return f'{custom_url} Doesnt exist'
     teachername = course_name
     playlist_id = course_info["id"]
     with open(f"website/playlists/sherbo{course_name}.txt",
@@ -1174,18 +1199,6 @@ def sherporoutes(custom_url):
         videos = ast.literal_eval(content)
 
     if course_name == "Dynamics":
-        extra = {
-            "S1.pdf":
-            "https://drive.google.com/file/d/1pdTVxYtcEqfaWZb3laZeWXJjsrOh36SH/view?usp=drive_link",
-            "S2.pdf":
-            "https://drive.google.com/file/d/1EiLz7HXdDspctVpna-8LRaL0w7wFDAC-/view?usp=drive_link",
-            "S3.pdf":
-            "https://drive.google.com/file/d/1RA0zMCf9KPUaCf_8BR4XcLGV_43YJKpI/view?usp=drive_link",
-            "S4.pdf":
-            "https://drive.google.com/file/d/1s9vH8ddCXxgI5Zq9305NaRA6XmXoB7Xf/view?usp=drive_link",
-            "S5.pdf":
-            "https://drive.google.com/file/d/1tLCq4hgMcC4NX3cXLkgpn-co0nbFmx4C/view?usp=drive_link",
-        }
 
         folder = "https://drive.google.com/drive/folders/1SBpcOBHoGSsxnROkQWVmFOuIxuxKhK8S?usp=drive_link"
 
@@ -1196,16 +1209,7 @@ def sherporoutes(custom_url):
         folder = "https://drive.google.com/drive/folders/192Zd0BMB0-ohwV2dYsSJvFB651d7qXAS?usp=drive_link"
 
     elif course_name == "Algebra & Geometry":
-        extra = {
-            "S1.pdf":
-            "https://drive.google.com/file/d/1iNH3qEhAfpJa5QqHA6p7rarWA0Z7PRH8/view?usp=drive_link",
-            "S2.pdf":
-            "https://drive.google.com/file/d/1f4ZLPfMxjMJ1HQdSdMGotkGQtPGCD0JO/view?usp=drive_link",
-            "S3.pdf":
-            "https://drive.google.com/file/d/18hncZ4-fVQ3acP5Qn8M8iFvO3jT-OnKw/view?usp=drive_link",
-            "SG-S1.pdf":
-            "https://drive.google.com/file/d/1RAmemfLG2bSVQD7ZCMpsp82X_4tLOxSg/view?usp=drive_link",
-        }
+
         folder = "https://drive.google.com/drive/folders/1_BT42ym3-9BY3FQOlFUKce7T6Scntx5o?usp=drive_link"
 
     elif course_name == "Final rev":

@@ -1,11 +1,4 @@
-[   {'id': 'UJHpfIHW2K8', 'title': 'Statics | Chapter 1', 'duration': '03:20:36', 'jsid': 11}, 
-   {'id': 'laEMXHXQW1E', 'title': 'Statics | Chapter 2 Part 1', 'duration': '01:36:33', 'jsid': 12},
-    {'id': 'eVxXUPAB2jE', 'title': 'Statics | Chapter 2 Part 2', 'duration': '01:56:51', 'jsid': 13}, 
-    {'id': '9AWxzCaXPpM', 'title': 'Statics | Chapter 3 Part 1', 'duration': '02:24:16', 'jsid': 14},
-     {'id': '2gSeBpZE4Ks', 'title': 'Statics | Chapter 3 Part 2', 'duration': '02:06:06', 'jsid': 15}, 
-     {'id': '8wqlwMbZp48', 'title': 'Statics | Chapter 4', 'duration': '03:59:14', 'jsid': 16}, 
-     {'id': 'z_3cvewGE6c', 'title': 'Statics | Chapter 6', 'duration': '03:33:58', 'jsid': 17}
-     ,{'id': 'tOn5hSq2YHg', 'title': "Dynamics 1 | Newton's laws", 'duration': '03:26:44', 'jsid': 0}, 
+[{'id': 'tOn5hSq2YHg', 'title': "Dynamics 1 | Newton's laws", 'duration': '03:26:44', 'jsid': 0}, 
 {'id': 'BcbqAfP0IL8', 'title': 'Dynamics 2 | Pulleys', 'duration': '02:57:57', 'jsid': 1}, 
 {'id': 'gn2MwshZcfA', 'title': 'Dynamics 3 | Impulse Collision', 'duration': '02:09:13', 'jsid': 2},
  {'id': 'a6QVITHCZj8', 'title': 'Dynamics 4 | Work & Energy', 'duration': '02:21:13', 'jsid': 3},

@@ -13,7 +13,7 @@
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 
-    <link rel="stylesheet" type="text/css" href="static/styles/teacher.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/teacher.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/main.css') }}">
 
 
@@ -30,11 +30,11 @@
 
   <section class="banner">
     <canvas id="canvas"> </canvas>
-
   <div class="nav">
     {% if teachername == "Arabic"or teachername == "English" or teachername == "Biology" or teachername == "Chemistry" or teachername == "Geology" or teachername == "German" or teachername == "Maths" or teachername == "Physics" %}
 
-    <img class="img" src="static/assets/subjects/{{ teachername }}.png"></img>
+    <img class="img" src="{{ url_for('static', filename='assets/subjects/' + teachername + '.png') }}" alt="Subjects Image">
+
 
     
          {%else%}
@@ -67,8 +67,10 @@
                     {% if data|length > 2 and data[2] %}
                     <div class="card-new-badge"> {{data[2]}} </div>
                     {% endif %}
+                   
+                    <img class="img" src="{{ url_for('static', filename='assets/' + teachername +'/' + name +'.jpg') }}" alt="Subjects Image">
 
-                      <img src="static/assets/{{ teachername }}/{{ name }}.jpg" loading="lazy">
+       
                       <p>{{ name }}</p>
                 <span class="card-description">{{ data[1] }}</span>
                 </div>
@@ -90,8 +92,8 @@
     </body>
 
 
-<script src="static/java/snow.js"></script>
-<script src="static/java/countdown.js"></script>
+<script src="   {{ url_for('static', filename='java/snow.js') }}"></script>
+<script src="   {{ url_for('static', filename='java/countdown.js') }}"></script>
  
 
 </html>
