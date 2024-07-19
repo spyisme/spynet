@@ -694,7 +694,7 @@ def home():
     date_6_july = timezone.localize(datetime(2024, 7, 6, 9, 0, 0))
     date_10_july = timezone.localize(datetime(2024, 7, 10, 9, 0, 0))
     date_17_july = timezone.localize(datetime(2024, 7, 17, 9, 0, 0))
-
+    date_20_july = timezone.localize(datetime(2024, 7, 20, 9, 0, 0))
     # Determine the lines based on the current date
     if now < date_2_july:
         lines = ["english", "chemistry", "maths", "biology", "geology"]
@@ -704,8 +704,10 @@ def home():
         lines = ["maths", "biology", "geology"]
     elif date_10_july <= now < date_17_july:
         lines = ["maths", "biology"]
-    else:
+    elif date_17_july <= now < date_20_july:
         lines = ["maths"]
+    else:
+        lines = []
 
     #All lines
     # lines = [

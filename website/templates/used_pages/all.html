@@ -62,6 +62,8 @@
 
             <div id="homestuff" class="content hidden">
                 <ul>
+                    {% if lines %}
+
                     {% for item in lines %}
                     <li>
                         <a href="{{ item }}">
@@ -73,11 +75,16 @@
                     </li>
 
                     {% endfor %}
+                    {% else %}
+                    <h1 style="color: white;">5ALSNAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</h1>
+                    {% endif %}
                 </ul>
             </div>
 
             <div id="pdfsstuff" class="content hidden">
                 <ul>
+                    {% if lines %}
+
                     <li>
                         <a href="/books" target="_blank">
                             <div class="card2">
@@ -94,7 +101,10 @@
                     </li>
                 
       
-      
+                    {% else %}
+                    <h1 style="color: white;">5ALSNAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</h1>
+
+                    {% endif %}
     
                 </ul>
             </div>
