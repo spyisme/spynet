@@ -23,7 +23,7 @@ SCOPES = ['https://www.googleapis.com/auth/youtube.readonly']
 
 REDIRECT_URI = 'http://localhost:8080/oauth2callback'
 
-TOKEN_STRING = os.environ['Youtube']
+TOKEN_STRING = os.environ['youtube']
 
 
 def get_authenticated_service():
