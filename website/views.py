@@ -465,8 +465,7 @@ def videos(subject, teacher_name, course_name):
 
 
 #get_playlist_videos(playlist id)
-@views.route(
-    "/subjects/<subject>/teacher/<teacher_name>/course/<course_name>/update")
+@views.route("/subjects/<subject>/teacher/<teacher_name>/course/<course_name>/update")
 def update(subject, teacher_name, course_name):
 
     with open('website/Backend/data.json') as f:
@@ -485,3 +484,56 @@ def update(subject, teacher_name, course_name):
                             json.dump(data, f, indent=4)
 
     return videos
+
+
+
+#Admin pages 
+
+
+
+@views.route('/test')
+def index():
+    return render_template('admin/mange.html')
+
+
+
+
+
+def load_data():
+    with open('website/Backend/data.json', 'r') as file:
+        return json.load(file)
+
+def save_data(data):
+    with open('website/Backend/data.json', 'w') as file:
+        json.dump(data, file, indent=4)
+
+
+
+
+@views.route('/get_data', methods=['GET'])
+def get_data():
+    data = load_data()
+    lines = list(data.keys())
+    return jsonify(lines)
+
+@views.route('/add_subject', methods=['POST'])
+def add_subject():
+    data = load_data()
+    subject = request.json['subject']
+    if subject not in data:
+        data[subject] = {"teachers": []}
+        save_data(data)
+        return jsonify({"message": f"Subject '{subject}' added successfully!"}), 201
+    else:
+        return jsonify({"message": f"Subject '{subject}' already exists!"}), 400
+
+@views.route('/remove_subject', methods=['POST'])
+def remove_subject():
+    data = load_data()
+    subject = request.json['subject']
+    if subject in data:
+        del data[subject]
+        save_data(data)
+        return jsonify({"message": f"Subject '{subject}' removed successfully!"})
+    else:
+        return jsonify({"message": f"Subject '{subject}' does not exist!"}), 400

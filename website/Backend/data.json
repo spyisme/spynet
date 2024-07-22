@@ -55,7 +55,6 @@
                 "name": "Mr. Mohamed Salama",
                 "link": "salama",
                 "description": "not cool teacher",
-
                 "courses": [
                     {
                         "name": "Geometry",
@@ -229,7 +228,6 @@
     },
     "german": {
         "teachers": [
-  
             {
                 "name": "Herr Abd El Moez",
                 "link": "abdelmoez",
@@ -278,7 +276,6 @@
     },
     "biology": {
         "teachers": [
-     
             {
                 "name": "Dr. Mohamed Daif",
                 "link": "daif",
