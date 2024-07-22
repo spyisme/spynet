@@ -22,7 +22,19 @@ SCOPES = ['https://www.googleapis.com/auth/youtube.readonly']
 
 REDIRECT_URI = 'http://localhost:8080/oauth2callback'
 
-TOKEN_STRING = {"token": "ya29.a0Ad52N38wmpNMPh55lHgtk8ou3TaUr9pO1rD8YQ4BIkNP6KdhmjsCLrOKPEGvPBHxnAAZpoM54Lxd2uXshy7YEutpFH1MjMHcPCtQVEmeKyp8nl7_29rE6zusVGHiUwKq8W6BASr1EYyAWUf_mLYNI2tselUPhUaMOsHNaCgYKAYASARASFQHGX2MiTRz94pflijZoACy4M5P5rQ0171", "refresh_token": "1//03ZAuoGB8P_PtCgYIARAAGAMSNwF-L9IrNJdAqry__XygiYCzsaV3pmjMiWGoGYRO76seff_ch2X9CyFxtYXPLhuEH5lddPA3uIM", "token_uri": "https://oauth2.googleapis.com/token", "client_id": "203680201166-nqeakc2q4vjsu20jmjmajcu68k3l5g43.apps.googleusercontent.com", "client_secret": "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", "scopes": ["https://www.googleapis.com/auth/youtube.readonly"], "universe_domain": "googleapis.com", "expiry": "2024-03-07T19:53:34.254535Z"}
+TOKEN_STRING = {
+    "token":
+    "ya29.a0Ad52N38wmpNMPh55lHgtk8ou3TaUr9pO1rD8YQ4BIkNP6KdhmjsCLrOKPEGvPBHxnAAZpoM54Lxd2uXshy7YEutpFH1MjMHcPCtQVEmeKyp8nl7_29rE6zusVGHiUwKq8W6BASr1EYyAWUf_mLYNI2tselUPhUaMOsHNaCgYKAYASARASFQHGX2MiTRz94pflijZoACy4M5P5rQ0171",
+    "refresh_token":
+    "1//03ZAuoGB8P_PtCgYIARAAGAMSNwF-L9IrNJdAqry__XygiYCzsaV3pmjMiWGoGYRO76seff_ch2X9CyFxtYXPLhuEH5lddPA3uIM",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "client_id":
+    "203680201166-nqeakc2q4vjsu20jmjmajcu68k3l5g43.apps.googleusercontent.com",
+    "client_secret": "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",
+    "scopes": ["https://www.googleapis.com/auth/youtube.readonly"],
+    "universe_domain": "googleapis.com",
+    "expiry": "2024-03-07T19:53:34.254535Z"
+}
 
 
 def get_authenticated_service():
@@ -108,8 +120,6 @@ def get_playlist_videos(playlist_id):
     return videos
 
 
-
-
 # Send a discord message (Log to #logs)
 def discord_log_login(message):
     messageeeee = {'content': message}
@@ -141,14 +151,10 @@ def discord_log_backend(message):
         headers=headers)
 
 
-
-
-
 #Uptime robot
 @views.route('/monitor')
 def monitor():
     return "Working"
-
 
 
 #Login route (whitelist_ips is from EG)
@@ -164,11 +170,10 @@ def login():
     if client_ip:
         client_ip = client_ip.split(',')[0].strip()
     else:
-        client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
+        client_ip = request.headers.get('CF-Connecting-IP',
+                                        request.remote_addr)
 
     user_agent = request.headers.get('User-Agent')
-    
-    
 
     # if current_user.is_authenticated:
     #     return redirect(url_for('views.home'))
@@ -202,8 +207,12 @@ def login():
 
         if user:
 
-            if user.username not in ['spy'] and user.active_sessions >= 3: #If he logged on more than 3 or 3 devices excpet []
-                discord_log_login(f"{username} tried to login from more than 3 devices <@709799648143081483>")
+            if user.username not in [
+                    'spy'
+            ] and user.active_sessions >= 3:  #If he logged on more than 3 or 3 devices excpet []
+                discord_log_login(
+                    f"{username} tried to login from more than 3 devices <@709799648143081483>"
+                )
                 return redirect(f"/login?maxdevices=yes&user={username}")
 
             if password == user.password:
@@ -216,8 +225,7 @@ def login():
                 )
                 session.permanent = True
                 return redirect(url_for('views.home'))
-  
- 
+
             else:
                 discord_log_login(
                     f"{client_ip} just failed to login with '{username}' Device ```{user_agent}``` <@709799648143081483>"
@@ -232,7 +240,6 @@ def login():
                            msg=request.args.get('msg'))
 
 
-
 @views.route('/logout')
 def logout():
     current_user.active_sessions -= 1
@@ -244,8 +251,7 @@ def logout():
     return redirect(url_for('views.login'))
 
 
-
-#Re do it 
+#Re do it
 @views.route('/verify', methods=['GET', 'POST'])
 def verifyemail():
     if current_user.is_authenticated:
@@ -314,12 +320,14 @@ def verifyemail():
                            email=user.email,
                            msg=msgg)
 
+
 def read_html_file(file_path, **kwargs):
     with open(file_path, 'r') as file:
         template = file.read()
     return render_template_string(template, **kwargs)
 
-#Re do it 
+
+#Re do it
 @views.route('/register', methods=['GET', 'POST'])
 def registeracc():
     client_ip = request.headers['X-Forwarded-For'].split(',')[0].strip()
@@ -350,9 +358,6 @@ def registeracc():
                            done=request.args.get("done"))
 
 
-
-
-
 #Dont edit
 @views.route('/redirect/<path:link>')
 def redirectlinks(link):
@@ -360,6 +365,7 @@ def redirectlinks(link):
     link = link.replace('andsympol', '&').replace(':', ':/')  #For iphone
 
     return redirect(f"{link}")
+
 
 @views.route('/favicon.ico')
 def favicon():
@@ -372,13 +378,8 @@ def robots_txt():
     return send_file('robots.txt', mimetype='otp/plain')
 
 
-
-
-
-
-
 #Home
-@views.route("/home")
+@views.route("/")
 def home():
     with open('website/Backend/data.json') as f:
         data = json.load(f)
@@ -387,6 +388,7 @@ def home():
                            lines=lines,
                            teachername="All")
 
+
 #Subjects
 @views.route("/subjects/<subject>")
 def subjects(subject):
@@ -394,24 +396,28 @@ def subjects(subject):
         data = json.load(f)
     if subject in data:
 
-      teachers = [
-    {
-        "name": teacher["name"],
-        "link": teacher["link"],
-        "description": teacher.get("description", "") or f"{len(teacher['courses'])} courses"
-    }
-    for teacher in data[subject]["teachers"]
-]
+        teachers = [{
+            "name":
+            teacher["name"],
+            "link":
+            teacher["link"],
+            "description":
+            teacher.get("description", "")
+            or f"{len(teacher['courses'])} courses"
+        } for teacher in data[subject]["teachers"]]
 
     else:
         return ""
 
     return render_template('used_pages/subjects.html',
-                           teachername=subject, teacher_links=teachers)
-#Teacher 
+                           teachername=subject,
+                           teacher_links=teachers)
+
+
+#Teacher
 @views.route("/subjects/<subject>/teacher/<teacher_name>")
-def teacher(subject , teacher_name):
-    
+def teacher(subject, teacher_name):
+
     with open('website/Backend/data.json') as f:
         data = json.load(f)
     if subject in data:
@@ -424,12 +430,15 @@ def teacher(subject , teacher_name):
     else:
         return ""
     return render_template('used_pages/teacher.html',
-                           teachername=subject, teacher_links=courses , teacher_name = teacher_name)
+                           teachername=subject,
+                           teacher_links=courses,
+                           teacher_name=teacher_name)
 
-#Videos 
+
+#Videos
 @views.route("/subjects/<subject>/teacher/<teacher_name>/course/<course_name>")
-def videos(subject , teacher_name , course_name):
-    
+def videos(subject, teacher_name, course_name):
+
     with open('website/Backend/data.json') as f:
         data = json.load(f)
     if subject in data:
@@ -441,25 +450,25 @@ def videos(subject , teacher_name , course_name):
                         # Return the course videos and playlist_id
                         videos = course.get('videos', '')
                         playlist_id = course.get('playlist_id', '')
-                        folder = course.get('folder' , '')
-                   
+                        folder = course.get('folder', '')
+
     else:
         return ""
-    
 
     teachername = course_name
 
     return render_template('used_pages/videopage.html',
-                        videos=videos,
-                        playlist_id=playlist_id,
-                        teachername=teachername,
-                        folder=folder)
+                           videos=videos,
+                           playlist_id=playlist_id,
+                           teachername=teachername,
+                           folder=folder)
 
 
 #get_playlist_videos(playlist id)
-@views.route("/subjects/<subject>/teacher/<teacher_name>/course/<course_name>/update")
-def update(subject , teacher_name , course_name):
-    
+@views.route(
+    "/subjects/<subject>/teacher/<teacher_name>/course/<course_name>/update")
+def update(subject, teacher_name, course_name):
+
     with open('website/Backend/data.json') as f:
         data = json.load(f)
     if subject in data:
@@ -474,5 +483,5 @@ def update(subject , teacher_name , course_name):
                         course['videos'] = videos
                         with open('website/Backend/data.json', 'w') as f:
                             json.dump(data, f, indent=4)
-            
+
     return videos
