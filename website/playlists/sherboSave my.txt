@@ -1,5 +1,0 @@
-[{'id': 'tOn5hSq2YHg', 'title': "Dynamics 1 | Newton's laws", 'duration': '03:26:44', 'jsid': 0}, 
-{'id': 'BcbqAfP0IL8', 'title': 'Dynamics 2 | Pulleys', 'duration': '02:57:57', 'jsid': 1}, 
-{'id': 'gn2MwshZcfA', 'title': 'Dynamics 3 | Impulse Collision', 'duration': '02:09:13', 'jsid': 2},
- {'id': 'a6QVITHCZj8', 'title': 'Dynamics 4 | Work & Energy', 'duration': '02:21:13', 'jsid': 3},
-  {'id': 'W1zsVF4kxKA', 'title': 'Dynamcs 5 | Graphs', 'duration': '03:30:43', 'jsid': 4}]

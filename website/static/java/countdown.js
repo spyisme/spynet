@@ -29,8 +29,8 @@ function startCountdown() {
         // If no more countdown dates, display "EXPIRED" message
         if (currentIndex >= countdownDates.length) {
             clearInterval(x);
-            document.getElementById("countdown").innerHTML = "5ALSNAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
-            document.getElementById("date").innerHTML = "5ALSNAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+            document.getElementById("countdown").innerHTML = "smth";
+            document.getElementById("date").innerHTML = "smth";
             return;
         }
 

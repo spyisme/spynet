@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>{{ teachername }}</title>
+
+    <script>
+      const capitalize=(word)=> {
+      return word[0].toUpperCase() + word.slice(1).toLowerCase();
+    }
+    let title= document.querySelector('title')
+    title.textContent=capitalize(title.textContent)
+    </script>
+
+
+
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+
+
+
+    <meta name="description" content="Spynet">
+    <meta name="keywords" content="spy, spynet, spysnet">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/teacher.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/main.css') }}">
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
+    <script src="static/java/connection.js"></script>
+
+    <!-- <script src="https://webkeyz.github.io/stand-with-palestine/dist/stand-with-palestine-widget.js"></script> -->
+
+</head>
+
+
+<body onload="startCountdown()">
+
+  <section class="banner">
+    <canvas id="canvas"> </canvas>
+  <div class="nav">
+    {% set valid_subjects = ["arabic", "english", "biology", "chemistry", "geology", "german", "maths", "physics"] %}
+
+    {% if teachername in valid_subjects %}
+        <img class="img" src="{{ url_for('static', filename='assets/subjects/' + teachername + '.png') }}" alt="Subjects Image">
+    {% else %}
+        <h1>✰ {{ teachername }} ✰</h1>
+    {% endif %}
+
+
+
+
+
+
+{% if link %}
+    {% for key, value in link.items() %}
+        <p><a href="{{ value }}" target="_blank" style="color: white;"><u>{{ key }}</u></a></p>
+    {% endfor %}
+{% endif %}
+
+
+
+           </div>
+
+            
+
+   <ul>
+    {% for x in teacher_links %}
+
+
+
+
+          <li>
+    
+            <a href="{{teachername}}/teacher/{{x.link}}">
+
+
+                  <div class="card">
+       
+                   
+                    <img class="img" src="{{ url_for('static', filename='assets/' + teachername +'/' + x.link +'.jpg') }}" alt="{{x.link}}">
+
+       
+                      <p>{{ x.name }}</p>
+
+                      <span class="card-description">{{x.description}}</span>
+
+                </div>
+
+              </a>
+          </li>
+          {% endfor %}
+
+      </ul>
+<br>
+<br>
+<br>
+      <div class="footer">
+        <p id="countdown">Loading..</p>
+      </div>
+
+    </section>
+
+    </body>
+
+
+<script src="   {{ url_for('static', filename='java/snow.js') }}"></script>
+<script src="   {{ url_for('static', filename='java/countdown.js') }}"></script>
+ 
+
+</html>

@@ -22,7 +22,7 @@ SCOPES = ['https://www.googleapis.com/auth/youtube.readonly']
 
 REDIRECT_URI = 'http://localhost:8080/oauth2callback'
 
-TOKEN_STRING = os.environ['youtube']  #type: ignore
+TOKEN_STRING = {"token": "ya29.a0Ad52N38wmpNMPh55lHgtk8ou3TaUr9pO1rD8YQ4BIkNP6KdhmjsCLrOKPEGvPBHxnAAZpoM54Lxd2uXshy7YEutpFH1MjMHcPCtQVEmeKyp8nl7_29rE6zusVGHiUwKq8W6BASr1EYyAWUf_mLYNI2tselUPhUaMOsHNaCgYKAYASARASFQHGX2MiTRz94pflijZoACy4M5P5rQ0171", "refresh_token": "1//03ZAuoGB8P_PtCgYIARAAGAMSNwF-L9IrNJdAqry__XygiYCzsaV3pmjMiWGoGYRO76seff_ch2X9CyFxtYXPLhuEH5lddPA3uIM", "token_uri": "https://oauth2.googleapis.com/token", "client_id": "203680201166-nqeakc2q4vjsu20jmjmajcu68k3l5g43.apps.googleusercontent.com", "client_secret": "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", "scopes": ["https://www.googleapis.com/auth/youtube.readonly"], "universe_domain": "googleapis.com", "expiry": "2024-03-07T19:53:34.254535Z"}
 
 
 def get_authenticated_service():
@@ -30,7 +30,7 @@ def get_authenticated_service():
 
     try:
         # Parse the JSON string
-        token_info = json.loads(TOKEN_STRING)
+        token_info = TOKEN_STRING
         credentials = Credentials.from_authorized_user_info(token_info)
     except GoogleAuthError as e:
         print(f"Couldn't log in: {e}")
@@ -108,12 +108,6 @@ def get_playlist_videos(playlist_id):
     return videos
 
 
-#Main function to /update (Youtube file create)
-def createtxtfile(name, playlist_id):
-    videos = get_playlist_videos(playlist_id)
-    with open(f"website/playlists/{name}.txt", 'w', encoding='utf-8') as file:
-        file.write(str(videos))
-    return videos
 
 
 # Send a discord message (Log to #logs)
@@ -147,14 +141,7 @@ def discord_log_backend(message):
         headers=headers)
 
 
-def discord_log_priv(message):
-    messageeeee = {'content': message}
-    payload = json.dumps(messageeeee)
-    headers = {'Content-Type': 'application/json'}
-    requests.post(
-        "https://discord.com/api/webhooks/1212155004379594762/9uRgepLGE03lrQxknuQyEGdHl-ci7cozlqnJSEbBdA3PzEk5OKvy-xBITTwkOEXOVMWv",
-        data=payload,
-        headers=headers)
+
 
 
 #Uptime robot
@@ -163,213 +150,47 @@ def monitor():
     return "Working"
 
 
-@views.route('/create-password', methods=['GET', 'POST'])
-def create_password():
-
-    msg = request.args.get("passwords")
-
-    if not current_user.is_authenticated:
-        return redirect(url_for('views.login'))
-
-    # if current_user.password != 'notset' :
-    #     return redirect('/')
-
-    if request.method == 'POST':
-        password = request.form.get('Password')
-        password2 = request.form.get('Password2')
-
-        if password != password2:
-            return redirect('/create-password?passwords=dontmatch')
-
-        current_user.password = password
-
-        db.session.commit()
-        return redirect('/?password=set')
-
-    return render_template('users_pages/password.html', msg=msg)
-
-
-@views.route('/login-otp', methods=['GET', 'POST'])
-def skip_password():
-
-    current_user.password = 'not-set'
-
-    db.session.commit()
-
-    return redirect('/')
-
-
-@views.route('/create_user', methods=['POST'])
-def create_user_route():
-    if request.method == 'POST':
-        username = request.form.get('username')
-        email = request.form.get('email')
-
-        password = "password"
-        if not username or not password:
-            return jsonify({'error':
-                            'Username and password are required'}), 400
-        existing_user = User.query.filter_by(username=username).first()
-        if existing_user:
-            return jsonify({'error': 'Username already exists'}), 400
-        new_user = User(username=username, password=password,
-                        email=email)  #type: ignore
-        db.session.add(new_user)
-        db.session.commit()
-        if current_user.username != 'spy':
-            discord_log_backend("<@709799648143081483> " +
-                                current_user.username +
-                                " created new account " + username)
-
-        return redirect("/admin")
-
-    return jsonify({'error': 'Method not allowed'}), 405
-
-
-@views.route('/user-delete/<user_id>')
-def delete_user(user_id):
-    if current_user.username not in ['spy', 'skailler']:
-        return "..."
-
-    user_to_delete = User.query.get(user_id)
-
-    if user_id == 505 or user_id == 524:
-        return "55555555555"
-
-    if not user_to_delete:
-        return jsonify({'error': 'User not found'}), 404
-    if current_user.username != 'spy':
-        discord_log_backend("<@709799648143081483> " + current_user.username +
-                            " deleted " + user_to_delete.username)
-
-    db.session.delete(user_to_delete)
-    db.session.commit()
-
-    return redirect("/admin")
-
-
-@views.route('/edit_active_sessions/<user_id>', methods=['POST'])
-def edit_active_sessions(user_id):
-    if request.method == 'POST':
-        if current_user.username not in ['spy', 'skailler', 'behary']:
-            return "..."
-        new_active_sessions = request.form.get('value')
-
-        if not new_active_sessions:
-            return jsonify(
-                {'error': 'New value for active_sessions is required'}), 400
-
-        user = User.query.get(user_id)
-
-        if user:
-            user.active_sessions = new_active_sessions
-
-            db.session.commit()
-            if current_user.username != "spy":
-                discord_log_backend("<@709799648143081483> " +
-                                    current_user.username +
-                                    " edited sessions for " + user.username)
-
-            return redirect("/admin")
-        else:
-            return jsonify({'error': 'User not found'}), 404
-
-    return jsonify({'error': 'Method not allowed'}), 405
-
-
-@views.route('/edit_email/<user_id>', methods=['POST'])
-def edit_email(user_id):
-    if request.method == 'POST':
-        if current_user.username not in ['spy', 'skailler']:
-            return "..."
-        new_email = request.form.get('value')
-
-        user = User.query.get(user_id)
-
-        if user:
-            user.email = new_email
-
-            db.session.commit()
-            if current_user.username != "spy":
-                discord_log_backend("<@709799648143081483> " +
-                                    current_user.username +
-                                    " edited email for " + user.username)
-
-            return redirect("/admin")
-        else:
-            return jsonify({'error': 'User not found'}), 404
-
-    return jsonify({'error': 'Method not allowed'}), 405
-
-
-@views.route('/otp/<user_id>')
-def edit_otp(user_id):
-
-    user = User.query.get(user_id)
-    if user:
-        if user.otp == "bypassotp":
-            user.otp = 'null'
-        else:
-            user.otp = 'bypassotp'
-
-        db.session.commit()
-        if current_user.username != "spy":
-            discord_log_backend("<@709799648143081483> " +
-                                current_user.username + " edited otp for " +
-                                user.username + "to " + user.otp)
-
-        return f"Set to : {user.otp} for user {user.username}"
-    else:
-        return jsonify({'error': 'User not found'}), 404
-
 
 #Login route (whitelist_ips is from EG)
 
 blacklist_ips = set()
 whitelist_ips = set()
 
-from difflib import get_close_matches
-
-
-def find_similar_username(username):
-    all_usernames = [user.username for user in User.query.all()]
-
-    closest_matches = get_close_matches(username,
-                                        all_usernames,
-                                        n=1,
-                                        cutoff=0.8)
-
-    if closest_matches:
-        return User.query.filter_by(username=closest_matches[0]).first()
-    else:
-        return None
-
 
 @views.route('/login', methods=['GET', 'POST'])
 def login():
-    client_ip = request.headers['X-Forwarded-For'].split(',')[0].strip()
+    client_ip = request.headers.get('X-Forwarded-For')
+
+    if client_ip:
+        client_ip = client_ip.split(',')[0].strip()
+    else:
+        client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
+
     user_agent = request.headers.get('User-Agent')
-    if current_user.is_authenticated:
-        return redirect(url_for('views.home'))
-    if client_ip in blacklist_ips:
-        return jsonify(message="Error 403"), 403
+    
+    
 
-    if client_ip not in whitelist_ips:
-        api_url = f'https://ipinfo.io/{client_ip}?token=8f8d5a48b50694'
-        response = requests.get(api_url)
-        data = response.json()
+    # if current_user.is_authenticated:
+    #     return redirect(url_for('views.home'))
+    # if client_ip in blacklist_ips:
+    #     return jsonify(message=f"Error 403 your ip is {client_ip}"), 403
 
-        if 'country' in data:
-            country_code = data['country']
-            if country_code != 'EG':
-                blacklist_ips.add(client_ip)
-                return jsonify(message="Please disable vpn/proxy."), 403
-        else:
-            blacklist_ips.add(client_ip)
-            return jsonify(
-                message="Unable to determine the country. Login failed."), 403
+    # if client_ip not in whitelist_ips:
+    #     api_url = f'https://ipinfo.io/{client_ip}?token=8f8d5a48b50694'
+    #     response = requests.get(api_url)
+    #     data = response.json()
 
-    whitelist_ips.add(client_ip)
+    #     if 'country' in data:
+    #         country_code = data['country']
+    #         if country_code != 'EG':
+    #             blacklist_ips.add(client_ip)
+    #             return jsonify(message="Please disable vpn/proxy."), 403
+    #     else:
+    #         blacklist_ips.add(client_ip)
+    #         return jsonify(
+    #             message="Unable to determine the country. Login failed."), 403
+
+    # whitelist_ips.add(client_ip)
 
     if request.method == 'POST':
         username = request.form.get('username')
@@ -381,35 +202,27 @@ def login():
 
         if user:
 
-            if user.username not in ['spy', 'biba'
-                                     ] and user.active_sessions >= 3:
-                discord_log_login(
-                    f"{username} tried to login from more than 3 devices <@709799648143081483>"
-                )
+            if user.username not in ['spy'] and user.active_sessions >= 3: #If he logged on more than 3 or 3 devices excpet []
+                discord_log_login(f"{username} tried to login from more than 3 devices <@709799648143081483>")
                 return redirect(f"/login?maxdevices=yes&user={username}")
 
-            if user.password != 'not-set' and user.password != 'password':
-                if password == user.password:
-                    login_user(user)
-                    if user.username != 'spy':
-                        user.active_sessions += 1
-                    db.session.commit()
-                    discord_log_login(
-                        f"{client_ip} just logged in with {username} Device ```{user_agent}```  <@709799648143081483>"
-                    )
-                    session.permanent = True
-                    return redirect(url_for('views.home'))
-                else:
-                    return redirect(f'/login?password=false&user={username}')
-
+            if password == user.password:
+                login_user(user)
+                if user.username != 'spy':
+                    user.active_sessions += 1
+                db.session.commit()
+                discord_log_login(
+                    f"{client_ip} just logged in with {username} Device ```{user_agent}```  <@709799648143081483>"
+                )
+                session.permanent = True
+                return redirect(url_for('views.home'))
+  
+ 
             else:
-                return redirect(f"/verify?user={user.username}")
-
-        else:
-            discord_log_login(
-                f"{client_ip} just failed to login with '{username}' Device ```{user_agent}``` <@709799648143081483>"
-            )
-            return redirect("/login?failed=true")
+                discord_log_login(
+                    f"{client_ip} just failed to login with '{username}' Device ```{user_agent}``` <@709799648143081483>"
+                )
+                return redirect("/login?failed=true")
 
     return render_template('users_pages/login.html',
                            password=request.args.get("password"),
@@ -418,41 +231,6 @@ def login():
                            maxdevices=request.args.get("maxdevices"),
                            msg=request.args.get('msg'))
 
-
-@views.route('/loginfromqr')
-def loginfromqr():
-    client_ip = request.headers['X-Forwarded-For'].split(',')[0].strip()
-    user_agent = request.headers.get('User-Agent')
-    if current_user.is_authenticated:
-        return redirect(url_for('views.home'))
-
-    username = request.args.get('username')
-
-    username = username.replace(" ", "")
-    username = username.lower()
-    user = User.query.filter_by(username=username).first()
-
-    token = request.args.get('token')
-    if user:
-        if token == user.otp:
-
-            user.otp = random.randint(100000, 999999)
-            db.session.commit()
-
-            login_user(user)
-
-            discord_log_login(
-                f"{client_ip} just logined using qr code with '{username}' Device ```{user_agent}``` <@709799648143081483>"
-            )
-            return redirect("/")
-
-        else:
-            discord_log_login(
-                f"{client_ip} just failed to login using qr code with '{username}' Device ```{user_agent}``` <@709799648143081483>"
-            )
-            return redirect(f"/login?password=false&user={username}")
-    else:
-        return 'tf?'
 
 
 @views.route('/logout')
@@ -466,96 +244,8 @@ def logout():
     return redirect(url_for('views.login'))
 
 
-@views.route('/logoutotherdevices/<username>')
-def logoutotherdevices(username):
-    user_to_update = User.query.filter_by(username=username).first()
-    if user_to_update:
-        new_id = random.randint(100000, 999999)
-        user_to_update.id = new_id
-        user_to_update.active_sessions = 0
-        db.session.commit()
-        discord_log_login(
-            f"<@709799648143081483> {user_to_update.username} Logged out all devices"
-        )
-        return redirect("/login?msg=Try to login")
-    else:
-        return jsonify({'message': 'User not found'})
 
-
-@views.route('/change_user_id', methods=['POST'])
-def change_user_id():
-    # Get input IDs from the form
-    old_id = request.json.get('old_id')
-    new_id = request.json.get('new_id')
-    # Find the user with the old ID
-    user_to_update = User.query.filter_by(id=old_id).first()
-    if user_to_update is None:
-        return jsonify({'error':
-                        'User with the specified old ID not found'}), 404
-
-    # Check if the new ID already exists
-    existing_user = User.query.filter_by(id=new_id).first()
-    if existing_user:
-        return jsonify({'error': 'New ID already exists'}), 400
-
-    # Update the user's ID
-    user_to_update.id = new_id
-
-    # Commit the changes to the database
-    db.session.commit()
-
-    return jsonify({'message': 'User ID updated successfully'}), 200
-
-
-@views.route('/id', methods=['GET', 'POST'])
-def chnageid():
-    if current_user.username != 'spy':
-        return ''
-    return render_template('admin/ids.html')
-
-
-@views.route('/change_user_passwords')
-def change_user_passwords():
-    # Retrieve all users from the database
-    users_to_update = User.query.all()
-
-    # Set all user passwords to a "not-set" value
-    for user in users_to_update:
-        if user.password == "not-set":
-            user.password = "password"
-
-    # Commit the changes to the database
-    db.session.commit()
-
-    return jsonify({'message': 'User passwords updated successfully'})
-
-
-# @views.route('/change_user_ids')
-# def change_user_ids():
-#     users_to_update = User.query.filter(User.id != 505).all()
-#     for index, user in enumerate(users_to_update, start=1):
-#         user.id = index
-#     # Commit the changes to the database
-#     db.session.commit()
-#     return jsonify({'message': 'User IDs updated successfully'})
-
-# # Route to change active sessions
-# @views.route('/change_active_sessions')
-# def change_active_sessions():
-#     users_to_update = User.query.filter(User.id != 505).all()
-#     for user in users_to_update:
-#         user.active_sessions = 0
-#     # Commit the changes to the database
-#     db.session.commit()
-#     return jsonify({'message': 'Active sessions updated successfully'})
-
-
-def read_html_file(file_path, **kwargs):
-    with open(file_path, 'r') as file:
-        template = file.read()
-    return render_template_string(template, **kwargs)
-
-
+#Re do it 
 @views.route('/verify', methods=['GET', 'POST'])
 def verifyemail():
     if current_user.is_authenticated:
@@ -596,7 +286,6 @@ def verifyemail():
                 msg = Message(subject, recipients=[recipient])
                 msg.html = html_content
                 mail.send(msg)
-                discord_log_priv(f'otp for {user.username} : {user.otp}')
                 discord_log_login(f"Sent an otp to : {user.username}")
 
     if request.method == 'POST':
@@ -625,17 +314,12 @@ def verifyemail():
                            email=user.email,
                            msg=msgg)
 
+def read_html_file(file_path, **kwargs):
+    with open(file_path, 'r') as file:
+        template = file.read()
+    return render_template_string(template, **kwargs)
 
-@views.route('/spy', methods=['GET', 'POST'])
-def loginnochecks():
-    if current_user.username != 'spy':
-        return redirect('/')
-    username = request.args.get('login')
-    user = User.query.filter_by(username=username).first()
-    login_user(user)
-    return redirect(url_for('views.home'))
-
-
+#Re do it 
 @views.route('/register', methods=['GET', 'POST'])
 def registeracc():
     client_ip = request.headers['X-Forwarded-For'].split(',')[0].strip()
@@ -666,84 +350,16 @@ def registeracc():
                            done=request.args.get("done"))
 
 
-#All links works with this
+
+
+
+#Dont edit
 @views.route('/redirect/<path:link>')
 def redirectlinks(link):
     link = link.replace('questionmark', '?')
     link = link.replace('andsympol', '&').replace(':', ':/')  #For iphone
 
     return redirect(f"{link}")
-
-
-from datetime import datetime
-
-import pytz
-
-
-#Home
-@views.route("/")
-def home():
-    password = request.args.get("password")
-
-    # Get the current date and time
-    timezone = pytz.timezone('Etc/GMT-3')
-    now = datetime.now(timezone)
-
-    # Define the date ranges
-    date_2_july = timezone.localize(datetime(2024, 7, 2, 9, 0, 0))
-    date_6_july = timezone.localize(datetime(2024, 7, 6, 9, 0, 0))
-    date_10_july = timezone.localize(datetime(2024, 7, 10, 9, 0, 0))
-    date_17_july = timezone.localize(datetime(2024, 7, 17, 9, 0, 0))
-    date_20_july = timezone.localize(datetime(2024, 7, 20, 9, 0, 0))
-    # Determine the lines based on the current date
-    if now < date_2_july:
-        lines = ["english", "chemistry", "maths", "biology", "geology"]
-    elif date_2_july <= now < date_6_july:
-        lines = ["chemistry", "maths", "biology", "geology"]
-    elif date_6_july <= now < date_10_july:
-        lines = ["maths", "biology", "geology"]
-    elif date_10_july <= now < date_17_july:
-        lines = ["maths", "biology"]
-    elif date_17_july <= now < date_20_july:
-        lines = ["maths"]
-    else:
-        lines = []
-
-    #All lines
-    # lines = [
-    #     "chemistry", "maths", "physics", "english", "arabic", 'german',
-    #     'geology', 'biology', 'adby'
-    # ]
-
-    return render_template('used_pages/all.html',
-                           lines=lines,
-                           teachername="All",
-                           password=password)
-
-
-@views.route("/old")
-def homeold():
-
-    #All lines
-    lines = [
-        "chemistry", "maths", "physics", "english", "arabic", 'german',
-        'geology', 'biology', 'adby'
-    ]
-
-    return render_template('used_pages/all_old.html',
-                           lines=lines,
-                           teachername="All")
-
-
-#Privacy
-@views.route("/options")
-def options():
-
-    return render_template('users_pages/options.html')
-
-
-#Favicon
-
 
 @views.route('/favicon.ico')
 def favicon():
@@ -756,1167 +372,107 @@ def robots_txt():
     return send_file('robots.txt', mimetype='otp/plain')
 
 
-#accs(accounts)
-@views.route('/spyaccs')
-def spyleakedaccs():
-    try:
-        if current_user.username not in ['spy']:
-            return redirect(url_for('views.home'))
-
-        try:
-            with open('website/templates/spyaccs/accs.json',
-                      encoding='utf-8') as json_file:
-                accs = json.load(json_file)
-        except FileNotFoundError:
-            current_app.logger.error("accs.json file not found")
-            return "Error: accs.json file not found", 500
-        except json.JSONDecodeError:
-            current_app.logger.error("Error decoding JSON from accs.json")
-            return "Error: JSON decoding error", 500
-        except UnicodeDecodeError as e:
-            current_app.logger.error(f"Unicode decode error: {e}")
-            return "Error: Unicode decode error", 500
-
-        return render_template('spyaccs/index.html', accs=accs)
-    except Exception as e:
-        current_app.logger.error(f"Unexpected error: {e}")
-        return "An unexpected error occurred", 500
 
 
-#Subjects from here ===============================================================================================
-#==================================================================================================================
 
 
-#Physics --------------------------------------------------------------------------------------------------------------------------
-@views.route('/physics')
-def Physics():
-    teacher_links = {
-        "Mo adel": ("/mo-adel", "Exam Night"),
-        "Tamer-el-kady": ("/tamer-el-kady", "Sessions & revisions"),
+
+#Home
+@views.route("/home")
+def home():
+    with open('website/Backend/data.json') as f:
+        data = json.load(f)
+    lines = list(data.keys())
+    return render_template('used_pages/all.html',
+                           lines=lines,
+                           teachername="All")
+
+#Subjects
+@views.route("/subjects/<subject>")
+def subjects(subject):
+    with open('website/Backend/data.json') as f:
+        data = json.load(f)
+    if subject in data:
+
+      teachers = [
+    {
+        "name": teacher["name"],
+        "link": teacher["link"],
+        "description": teacher.get("description", "") or f"{len(teacher['courses'])} courses"
     }
-    teachername = "Physics"
-    return render_template('used_pages/teacher.html',
-                           teacher_links=teacher_links,
-                           teachername=teachername,
-                           imgs="yes")
-
-
-@views.route('/tamer-el-kady')
-def tamerelkady():
-    teachername = "Tamer El Kady"
-    playlist_id = 'PLM-GVlebsoPXm9cPbwmEllBmG1cY3C5_t'
-    folder = "https://drive.google.com/drive/folders/1n1jJte2y40YEuxsq0TiohJGafP3rwj-W?usp=drive_link"
-    with open("website/playlists/tamerelkady.txt", 'r',
-              encoding='utf-8') as file:
-        content = file.read()
-        videos = ast.literal_eval(content)
-    return render_template('used_pages/videopage.html',
-                           videos=videos,
-                           playlist_id=playlist_id,
-                           teachername=teachername,
-                           folder=folder)
-
-
-@views.route("/tamer-el-kady/update")
-def tamerelkadyupdate():
-    return createtxtfile("tamerelkady", "PLM-GVlebsoPXm9cPbwmEllBmG1cY3C5_t")
-
-
-def tamervids(id):
-    headers = {
-        'Authorization': 'Basic MDExMTI4NDU2NTRAZ21haWwuY29tOjAxMTEyODQ1NjU0',
-    }
-
-    json_data = {
-        'mat_ID': id,
-        'teacher_subject_id': '893',
-        'mat_type': 3,
-    }
-
-    response = requests.post(
-        'https://mozakretyapi.cloudiax.com/api/Materials/getLessonPartsAndExams',
-        headers=headers,
-        json=json_data,
-    )
-    data = response.json()
-
-    material_name = data['material']['material_name']
-
-    def find_sproutvideo_urls(data, urls=None):
-        if urls is None:
-            urls = set()
-
-        if isinstance(data, dict):
-            for key, value in data.items():
-                find_sproutvideo_urls(value, urls)
-        elif isinstance(data, list):
-            for item in data:
-                find_sproutvideo_urls(item, urls)
-        elif isinstance(data, str) and "videos.sproutvideo.com" in data:
-            urls.add(data)
-
-        return list(urls)  # Convert set to list before returning
-
-    sproutvideo_urls = find_sproutvideo_urls(data)
-
-    # for url in sproutvideo_urls:
-    #     print(url)
-    return material_name, sproutvideo_urls
-
-
-@views.route('/tamer-vids', methods=['GET', 'POST'])
-def tamerelkadyvids():
-
-    return render_template('test_pages/tamer.html')
-
-
-@views.route('/hossam', methods=['GET', 'POST'])
-def hossamvall():
-
-    return render_template('test_pages/hossam_sameh.html')
-
-
-@views.route('/tamervidspost', methods=['POST'])
-def tamerelkadyvidspost():
-    # Get input IDs from the form
-    id = request.json.get('id')
-    name, link = tamervids(id)
-    response = {'name': name, 'links': link}
-    return jsonify(response), 200
-
-
-@views.route('/mo-adel')
-def moadel():
-    teachername = "Mo adel"
-    playlist_id = 'PLM-GVlebsoPWnPigZ2AseknDAedaryyn6'
-    with open("website/playlists/moadel.txt", 'r', encoding='utf-8') as file:
-        content = file.read()
-        videos = ast.literal_eval(content)
-
-    folder = "https://drive.google.com/drive/folders/1Goxe2Odi_qg0MPeoU8Zn8kpVJq8JKNLg?usp=drive_link"
-
-    return render_template('used_pages/videopage.html',
-                           videos=videos,
-                           playlist_id=playlist_id,
-                           teachername=teachername,
-                           folder=folder)
-
-
-@views.route("/mo-adel/update")
-def moadelupdate():
-    return createtxtfile("moadel", "PLM-GVlebsoPWnPigZ2AseknDAedaryyn6")
-
-
-#Nawar -------------------------------------------
-
-
-def load_nawar_info():
-    with open('website/Backend/nawar.json', 'r') as file:
-        info = json.load(file)
-    return info
-
-
-@views.route('/nawar')
-def nawar():
-    info = load_nawar_info()
-
-    teacher_links = {
-        f"Nawar {course}":
-        (f"/nawar{info[course]['url']}", info[course]['description'])
-        for course in info
-    }
-    teachername = "Physics"
-    return render_template('used_pages/teacher.html',
-                           teacher_links=teacher_links,
-                           teachername=teachername,
-                           imgs="yes")
-
-
-@views.route("/nawar/<custom_url>/update")
-def nawarupdate(custom_url):
-    info = load_nawar_info()
-    course_key = next(
-        (name
-         for name, info in info.items() if info['url'] == f"/{custom_url}"),
-        None)
-    if course_key not in info:
-        return redirect(url_for('views.display_links'))
-    playlist_id = info[course_key]["id"]
-    return createtxtfile(f"nawar{course_key}", playlist_id)
-
-
-@views.route("/nawar/<custom_url>")
-def nawarvids(custom_url):
-    info = load_nawar_info()
-    course_info = next(
-        (info for info in info.values() if info['url'] == f"/{custom_url}"),
-        None)
-    course_name = next(
-        (name
-         for name, info in info.items() if info['url'] == f"/{custom_url}"),
-        None)
-    teachername = course_name
-    playlist_id = course_info["id"]
-    with open(f"website/playlists/nawar{course_name}.txt",
-              'r',
-              encoding='utf-8') as file:
-        content = file.read()
-        videos = ast.literal_eval(content)
-
-    return render_template('used_pages/videopage.html',
-                           videos=videos,
-                           playlist_id=playlist_id,
-                           teachername=teachername)
-
-
-#Chemistry --------------------------------------------------------------------------------------------------------------------------
-@views.route('/chemistry')
-def chem():
-    teacher_links = {
-        "Zoz": ("nasser", "Nasser-El-Batal"),
-        "Ashraf elshnawy": ("ashrafsessions", "All sessions", "Not youtube"),
-    }
-    teachername = "Chemistry"
-    return render_template(
-        'used_pages/teacher.html',
-        teacher_links=teacher_links,
-        teachername=teachername,
-        imgs="yes",
-        link={"Periodic Table": "https://periodic-table.tech/"})
-
-
-@views.route('/samehtest')
-def samehtest():
-
-    return render_template('new.html')
-
-
-#Ashraf -----------------------------------------------------------------------------
-
-
-@views.route('/ashrafsessions')
-def ashrafsessions():
-
-    return render_template('used_pages/ashraf.html')
-
-
-# Nasser --------------------------------------------------------------
-
-
-def load_nasser_info():
-    with open('website/Backend/nasser.json', 'r') as file:
-        nasser_info = json.load(file)
-    return nasser_info
-
-
-@views.route('/nasser')
-def nasser():
-    nasser_info = load_nasser_info()
-
-    teacher_links = {
-        f"{course}": (f"/nasser{nasser_info[course]['url']}",
-                      nasser_info[course]['description'])
-        for course in nasser_info
-    }
-
-    teachername = "Chemistry"
-    return render_template('used_pages/teacher.html',
-                           teacher_links=teacher_links,
-                           teachername=teachername,
-                           imgs="yes")
-
-
-@views.route("/nasser/<custom_url>/update")
-def nasserupdate(custom_url):
-    nasser_info = load_nasser_info()
-    course_key = next((name for name, info in nasser_info.items()
-                       if info['url'] == f"/{custom_url}"), None)
-    if course_key not in nasser_info:
-        return redirect(url_for('views.display_links'))
-    playlist_id = nasser_info[course_key]["id"]
-    return createtxtfile(f"nasser{course_key}", playlist_id)
-
-
-@views.route("/nasser/<custom_url>")
-def nasservids(custom_url):
-    folder = None
-    nasser_info = load_nasser_info()
-    course_info = next(
-        (info
-         for info in nasser_info.values() if info['url'] == f"/{custom_url}"),
-        None)
-    course_name = next((name for name, info in nasser_info.items()
-                        if info['url'] == f"/{custom_url}"), None)
-    teachername = course_name
-    playlist_id = course_info["id"]
-    with open(f"website/playlists/nasser{course_name}.txt",
-              'r',
-              encoding='utf-8') as file:
-        content = file.read()
-        videos = ast.literal_eval(content)
-
-    teacher_pdf_mapping = {
-        "Chapter 1":
-        "https://drive.google.com/drive/folders/1otLcK6atSsKhZGIo7Cz0hRxoZ7gbN8nz?usp=drive_link",
-        "Chapter 2":
-        "https://drive.google.com/drive/folders/1yY4NSy-guuvbtSUGuRg6uXh6nxi4XXmY?usp=drive_link",
-        "Chapter 3":
-        "https://drive.google.com/drive/folders/1CqVC871-_kgNxNuJtpXAkp8BMHWL0cqU?usp=drive_link",
-        "Chapter 4":
-        "https://drive.google.com/drive/folders/1xtEHPFPHAiyXaQ62Ou2MRkklZmBvWzZd?usp=drive_link",
-        "Chapter 5 Part 1":
-        "https://drive.google.com/drive/folders/1zda1ANurONO44MTBIo2tm4wkhGahtUUn?usp=drive_link",
-        "Chapter 5 Part 2":
-        "https://drive.google.com/drive/folders/1gQgsv5s3RiXeQ3dbCOlCKp3fR78_uv6M?usp=drive_link",
-        "Final Revisions":
-        "https://drive.google.com/drive/folders/1B8SZ5RKPaALH2YICEePBwNGZWBWwqBpu?usp=drive_link",
-    }
-    if course_name in teacher_pdf_mapping:
-        folder = teacher_pdf_mapping[teachername]
-
-    return render_template('used_pages/videopage.html',
-                           videos=videos,
-                           playlist_id=playlist_id,
-                           teachername=teachername,
-                           folder=folder)
-
-
-#Math --------------------------------------------------------------------------------------------------------------------------
-@views.route('/maths')
-def math():
-    teacher_links = {
-        "Sherbo": ("/sherbo", "Omar sherbeni"),
-        "Salama": ("/salama", "Mohamed salama")
-    }
-    teachername = "Maths"
-    return render_template('used_pages/teacher.html',
-                           teacher_links=teacher_links,
-                           teachername=teachername,
-                           imgs="yes",
-                           link={"Mathdf": "https://mathdf.com/"})
-
-
-#Sherbo ------------------------
-
-
-@views.route('/sherbo')
-def sherbo():
-    sherbo_info = load_sherbo_info()
-
-    teacher_links = {
-        course: (f"/sherbo{sherbo_info[course]['url']}",
-                 sherbo_info[course]['description'])
-        for course in sherbo_info
-    }
-    teachername = "Maths"
-    return render_template('used_pages/teacher.html',
-                           teacher_links=teacher_links,
-                           teachername=teachername,
-                           imgs="yes")
-
-
-def load_sherbo_info():
-    with open('website/Backend/sherbo.json', 'r') as file:
-        sherbo_info = json.load(file)
-
-    timezone = pytz.timezone('Etc/GMT-3')
-    now = datetime.now(timezone)
-
-    date_10_july = timezone.localize(datetime(2024, 7, 10, 9, 0, 0))
-    date_13_july = timezone.localize(datetime(2024, 7, 13, 9, 0, 0))
-    date_17_july = timezone.localize(datetime(2024, 7, 17, 9, 0, 0))
-
-    if date_10_july <= now < date_13_july:
-
-        sherbo_info_items = list(sherbo_info.items())[1:]
-
-    elif date_13_july <= now < date_17_july:
-        sherbo_info_items = list(sherbo_info.items())[2:]
+    for teacher in data[subject]["teachers"]
+]
 
     else:
-        sherbo_info_items = list(sherbo_info.items())[3:]
+        return ""
 
-    sherbo_info = dict(sherbo_info_items)
-
-    return sherbo_info
-
-
-def load_sherbo_info_old():
-    with open('website/Backend/sherbo.json', 'r') as file:
-        sherbo_info = json.load(file)
-
-    return sherbo_info
-
-
-@views.route('/old/sherbo')
-def sherbo_old():
-    sherbo_info = load_sherbo_info_old()
-
-    teacher_links = {
-        course: (f"/sherbo{sherbo_info[course]['url']}",
-                 sherbo_info[course]['description'])
-        for course in sherbo_info
-    }
-    teachername = "Maths"
-    return render_template('used_pages/teacher.html',
-                           teacher_links=teacher_links,
-                           teachername=teachername,
-                           imgs="yes")
-
-
-@views.route("/sherbo/<custom_url>/update")
-def sherboupdates(custom_url):
-    sherbo_info = load_sherbo_info_old()
-    course_key = next((name for name, info in sherbo_info.items()
-                       if info['url'] == f"/{custom_url}"), None)
-    if course_key not in sherbo_info:
-        return redirect(url_for('views.display_links'))
-    playlist_id = sherbo_info[course_key]["id"]
-    return createtxtfile(f"sherbo{course_key}", playlist_id)
-
-
-@views.route("/sherbo/<custom_url>")
-def sherporoutes(custom_url):
-    extra = None
-    folder = None
-    if custom_url == 'final':
-        return redirect(
-            'https://drive.google.com/file/d/1WEGpT_6U3yrM0cXFEniA1rqC9lUFFaW0/view?usp=drive_link'
-        )
-    sherbo_info = load_sherbo_info_old()
-    course_info = next(
-        (info
-         for info in sherbo_info.values() if info['url'] == f"/{custom_url}"),
-        None)
-    course_name = next((name for name, info in sherbo_info.items()
-                        if info['url'] == f"/{custom_url}"), None)
-    if course_name is None:
-        return f'{custom_url} Doesnt exist'
-    teachername = course_name
-    playlist_id = course_info["id"]
-    with open(f"website/playlists/sherbo{course_name}.txt",
-              'r',
-              encoding='utf-8') as file:
-        content = file.read()
-        videos = ast.literal_eval(content)
-
-    if course_name == "Dynamics":
-
-        folder = "https://drive.google.com/drive/folders/1SBpcOBHoGSsxnROkQWVmFOuIxuxKhK8S?usp=drive_link"
-
-    elif course_name == "Calculus":
-        folder = "https://drive.google.com/drive/folders/142TCiyG-oCmkpgeLpEnHmGaRSmnN6Och?usp=drive_link"
-
-    elif course_name == "Statics":
-        folder = "https://drive.google.com/drive/folders/192Zd0BMB0-ohwV2dYsSJvFB651d7qXAS?usp=drive_link"
-
-    elif course_name == "Algebra & Geometry":
-
-        folder = "https://drive.google.com/drive/folders/1_BT42ym3-9BY3FQOlFUKce7T6Scntx5o?usp=drive_link"
-
-    elif course_name == "Final rev":
-        folder = "https://drive.google.com/drive/folders/1xiJWM6qrULUPVSuf_Ae1e4oeTrmqhsqX?usp=drive_link"
-
-    return render_template('used_pages/videopage.html',
-                           videos=videos,
-                           playlist_id=playlist_id,
-                           teachername=teachername,
-                           extra=extra,
-                           folder=folder)
-
-
-# Salama --------------------------------------------------------
-@views.route('/salama')
-def salama():
-    salama_info = load_salama_info()
-
-    teacher_links = [[
-        course,
-        [
-            f"/salama{salama_info[course]['url']}",
-            salama_info[course]['description']
-        ]
-    ] for course in salama_info]
-    teachername = "Maths"
-    return render_template('used_pages/teacherwithsort.html',
-                           teacher_links=teacher_links,
-                           teachername=teachername,
-                           imgs="yes")
-
-
-def load_salama_info():
-    with open('website/Backend/salama.json', 'r') as file:
-        salama_info = json.load(file)
-    return salama_info
-
-
-def add_course(course_name, course_id, input3, course_image, desc):
-    salama_info = load_salama_info()
-    if course_image:
-        filename = course_name + '.jpg'
-        upload_path = os.path.join('website/static/assets/Maths/', filename)
-        course_image.save(upload_path)
-        new_course = {"id": course_id, "url": input3, "description": desc}
-        salama_info[course_name] = new_course
-        with open('website/Backend/salama.json', 'w') as file:
-            json.dump(salama_info, file, indent=2)
-        return f"Course '{course_name}' added successfully."
+    return render_template('used_pages/subjects.html',
+                           teachername=subject, teacher_links=teachers)
+#Teacher 
+@views.route("/subjects/<subject>/teacher/<teacher_name>")
+def teacher(subject , teacher_name):
+    
+    with open('website/Backend/data.json') as f:
+        data = json.load(f)
+    if subject in data:
+        for teacher in data[subject]["teachers"]:
+            if teacher["link"] == teacher_name:
+                courses = teacher.get("courses")
+                for item in courses:
+                    item['link'] = item['name']
+                break
     else:
-        return "Invalid file format or no file provided."
+        return ""
+    return render_template('used_pages/teacher.html',
+                           teachername=subject, teacher_links=courses , teacher_name = teacher_name)
 
+#Videos 
+@views.route("/subjects/<subject>/teacher/<teacher_name>/course/<course_name>")
+def videos(subject , teacher_name , course_name):
+    
+    with open('website/Backend/data.json') as f:
+        data = json.load(f)
+    if subject in data:
+        for teacher in data[subject]["teachers"]:
+            if teacher.get("link") == teacher_name:
+                # Find the specific course
+                for course in teacher.get("courses", []):
+                    if course.get("name") == course_name:
+                        # Return the course videos and playlist_id
+                        videos = course.get('videos', '')
+                        playlist_id = course.get('playlist_id', '')
+                        folder = course.get('folder' , '')
+                   
+    else:
+        return ""
+    
 
-@views.route("/salama/add-course", methods=['GET', 'POST'])
-def salama_add_course_route():
-    if current_user.username in ['spy', 'skailler']:
-        if request.method == 'POST':
-
-            input1 = request.form.get('input1')
-            input2 = request.form.get('input2')
-            desc = request.form.get('desc')
-
-            input3 = f"/{request.form.get('input3')}"
-
-            course_image = request.files['course_image']
-            return add_course(input1, input2, input3, course_image, desc)
-
-    return render_template('backend_pages/add-course.html')
-
-
-@views.route("/salama/edit-course", methods=['GET', 'POST'])
-def salama_edit_course_route():
-    if current_user.username in ['spy', 'skailler']:
-        if request.method == 'POST':
-            selected_course = request.form.get('course_select')
-            new_course_id = request.form.get('course_id')
-            new_course_url = request.form.get('course_url')
-
-            with open('website/Backend/salama.json', 'r') as file:
-                your_courses_data = json.load(file)
-
-            if selected_course in your_courses_data:
-                your_courses_data[selected_course]['id'] = new_course_id
-                your_courses_data[selected_course]['url'] = new_course_url
-
-                with open('website/Backend/salama.json', 'w') as file:
-                    json.dump(your_courses_data, file, indent=2)
-
-            uploaded_file = request.files.get('course_image')
-            if uploaded_file:
-                filename = selected_course + '.jpg'
-                upload_path = os.path.join('website/static/assets/Maths/',
-                                           filename)
-                uploaded_file.save(upload_path)
-
-            return f"Edited {selected_course} !"
-
-        with open('website/Backend/salama.json', 'r') as file:
-            courses = json.load(file)
-
-        return render_template('backend_pages/edit-course.html',
-                               courses=courses,
-                               selectedCourse=None)
-
-    return render_template('backend_pages/edit-course.html',
-                           courses=courses,
-                           selectedCourse=None)
-
-
-@views.route("/salama/update")
-def salamaallupdate():
-    salama_info = load_salama_info()
-    for course_key, info in salama_info.items():
-        playlist_id = info.get("id")
-        if playlist_id:
-            createtxtfile(f"salama{course_key}", playlist_id)
-    return "Update completed for all Salama courses"
-
-
-@views.route("/salama/<custom_url>/update")
-def salamacoursesupdate(custom_url):
-    salama_info = load_salama_info()
-    course_key = next((name for name, info in salama_info.items()
-                       if info['url'] == f"/{custom_url}"), None)
-    if course_key not in salama_info:
-        return redirect(url_for('views.display_links'))
-    playlist_id = salama_info[course_key]["id"]
-    return createtxtfile(f"salama{course_key}", playlist_id)
-
-
-@views.route("/salama/<custom_url>")
-def salamaroutes(custom_url):
-    extra = None
-    salama_info = load_salama_info()
-    course_info = next(
-        (info
-         for info in salama_info.values() if info['url'] == f"/{custom_url}"),
-        None)
-    course_name = next((name for name, info in salama_info.items()
-                        if info['url'] == f"/{custom_url}"), None)
     teachername = course_name
-    playlist_id = course_info["id"]
-    with open(f"website/playlists/salama{course_name}.txt",
-              'r',
-              encoding='utf-8') as file:
-        content = file.read()
-        videos = ast.literal_eval(content)
-    if course_name == "Course 6":
-        extra = {
-            "Pdf 1":
-            "https://drive.google.com/file/d/18mnyKrmeiNNZMBdaJ0sD8VAkAzLbM15r/view?usp=drive_link",
-            "Pdf 2":
-            "https://drive.google.com/file/d/1JLwNyWB8lOVSdVi8IvA6zb1D1iVQ8H3l/view?usp=drive_link"
-        }
-    elif course_name == "Course 17":
-        extra = {
-            "Pdf 1":
-            "https://drive.google.com/file/d/1Ng8UkfF48_Cj1ZjiMn8NPfkWEONh3vJD/view?usp=drive_link"
-        }
-    elif course_name == "Course 19":
-        extra = {
-            "Pdf 1":
-            "https://drive.google.com/file/d/1a-56mRMP3nYSts90itOfINMtmrb8z6rr/view?usp=drive_link",
-            "Pdf 2":
-            "https://drive.google.com/file/d/1O21TqOmEJv2R9zUJmMw0BFnHsjCtqEVF/view?usp=drive_link"
-        }
-    return render_template('used_pages/videopage.html',
-                           videos=videos,
-                           playlist_id=playlist_id,
-                           teachername=teachername,
-                           extra=extra)
-
-
-#Arabic --------------------------------------------------------------------------------------------------------------------------
-@views.route('/arabic')
-def arabic():
-    teacher_links = {
-        "Gedo": ("gedo", "Reda El Farouk"),
-        "Mohamed Tarek": ("mohamedtarek", "Final Revision"),
-        "Mo Salah": ("mo-salah", "Mohamed Salah"),
-    }
-    teachername = "Arabic"
-    return render_template('used_pages/teacher.html',
-                           teacher_links=teacher_links,
-                           teachername=teachername,
-                           imgs="yes")
-
-
-@views.route('/gedo')
-def gedo():
-    teacher_links = {
-        "Gedo": ("gedosessions", "All sessions"),
-        "Gedo Rev1": ("gedorev1", "Revision 1"),
-        "Gedo Rev2": ("gedorev2", "Revision 2"),
-        "Gedo Rev3": ("gedorev3", "Revision 3"),
-        "Gedo Rev4": ("gedorev4", "Revision 4"),
-        "Gedo Rev5": ("gedorev5", "Revision 5"),
-        "Gedo Rev6": ("gedorev6", "Revision 6"),
-        "Gedo Rev7": ("gedorev7", "Revision 7"),
-        "Gedo Rev8": ("gedorev8", "Revision 8"),
-    }
-    teachername = "Arabic"
-    return render_template('used_pages/teacher.html',
-                           teacher_links=teacher_links,
-                           teachername=teachername,
-                           imgs="yes")
-
-
-@views.route("/gedosessions")
-def gedosessions():
-    playlist_id = 'PLM-GVlebsoPXBcSNcLjkmcQG53hQYTvui'
-    teachername = "Gedo"
-    with open("website/playlists/gedo.txt", 'r', encoding='utf-8') as file:
-        content = file.read()
-        videos = ast.literal_eval(content)
-    return render_template('used_pages/videopage.html',
-                           videos=videos,
-                           playlist_id=playlist_id,
-                           teachername=teachername)
-
-
-@views.route("/gedosessions/update")
-def gedosessionsupdate():
-    return createtxtfile("gedo", "PLM-GVlebsoPXBcSNcLjkmcQG53hQYTvui")
-
-
-@views.route("/gedorev1")
-def gedorev1():
-    playlist_id = 'PLM-GVlebsoPXPD1eQbSocD0g3DLchpyC9'
-    teachername = "Gedo"
-    with open("website/playlists/gedorev1.txt", 'r', encoding='utf-8') as file:
-        content = file.read()
-        videos = ast.literal_eval(content)
-    return render_template('used_pages/videopage.html',
-                           videos=videos,
-                           playlist_id=playlist_id,
-                           teachername=teachername)
-
-
-@views.route("/gedorev1/update")
-def gedorev1update():
-    return createtxtfile("gedorev1", "PLM-GVlebsoPXPD1eQbSocD0g3DLchpyC9")
-
-
-@views.route("/gedorev2")
-def gedorev2():
-    playlist_id = 'PLM-GVlebsoPXTAA08dW2Oro5G2EmLB0Pk'
-    teachername = "Gedo"
-    with open("website/playlists/gedorev2.txt", 'r', encoding='utf-8') as file:
-        content = file.read()
-        videos = ast.literal_eval(content)
-    return render_template('used_pages/videopage.html',
-                           videos=videos,
-                           playlist_id=playlist_id,
-                           teachername=teachername)
-
-
-@views.route("/gedorev2/update")
-def gedorev2update():
-    return createtxtfile("gedorev2", "PLM-GVlebsoPXTAA08dW2Oro5G2EmLB0Pk")
-
-
-@views.route("/gedorev3")
-def gedorev3():
-    playlist_id = 'PLM-GVlebsoPX46KbmAnXFHKX5fZsv5XEV'
-    teachername = "Gedo"
-    with open("website/playlists/gedorev3.txt", 'r', encoding='utf-8') as file:
-        content = file.read()
-        videos = ast.literal_eval(content)
-    return render_template('used_pages/videopage.html',
-                           videos=videos,
-                           playlist_id=playlist_id,
-                           teachername=teachername)
-
-
-@views.route("/gedorev3/update")
-def gedorev3update():
-    return createtxtfile("gedorev3", "PLM-GVlebsoPX46KbmAnXFHKX5fZsv5XEV")
-
-
-@views.route("/gedorev4")
-def gedorev4():
-    playlist_id = 'PLM-GVlebsoPULzDXf_vfadcP--n-pfaXM'
-    teachername = "Gedo"
-    with open("website/playlists/gedorev4.txt", 'r', encoding='utf-8') as file:
-        content = file.read()
-        videos = ast.literal_eval(content)
-    return render_template('used_pages/videopage.html',
-                           videos=videos,
-                           playlist_id=playlist_id,
-                           teachername=teachername)
-
-
-@views.route("/gedorev4/update")
-def gedorev4update():
-    return createtxtfile("gedorev4", "PLM-GVlebsoPULzDXf_vfadcP--n-pfaXM")
-
-
-@views.route("/gedorev5")
-def gedorev5():
-    playlist_id = 'PLM-GVlebsoPUnidZXcpQOMfq0Rj0sZO-5'
-    teachername = "Gedo"
-    with open("website/playlists/gedorev5.txt", 'r', encoding='utf-8') as file:
-        content = file.read()
-        videos = ast.literal_eval(content)
-    return render_template('used_pages/videopage.html',
-                           videos=videos,
-                           playlist_id=playlist_id,
-                           teachername=teachername)
-
-
-@views.route("/gedorev5/update")
-def gedorev5update():
-    return createtxtfile("gedorev5", "PLM-GVlebsoPUnidZXcpQOMfq0Rj0sZO-5")
-
-
-@views.route("/gedorev6")
-def gedorev6():
-    playlist_id = 'PLM-GVlebsoPW-ByMIpaHRcQoQAINlFJ2I'
-    teachername = "Gedo"
-    with open("website/playlists/gedorev6.txt", 'r', encoding='utf-8') as file:
-        content = file.read()
-        videos = ast.literal_eval(content)
-    return render_template('used_pages/videopage.html',
-                           videos=videos,
-                           playlist_id=playlist_id,
-                           teachername=teachername)
-
-
-@views.route("/gedorev6/update")
-def gedorev6update():
-    return createtxtfile("gedorev6", "PLM-GVlebsoPW-ByMIpaHRcQoQAINlFJ2I")
-
-
-@views.route("/gedorev7")
-def gedorev7():
-    playlist_id = 'PLM-GVlebsoPXaUej1euRJvw65n6UFarhs'
-    teachername = "Gedo"
-    with open("website/playlists/gedorev7.txt", 'r', encoding='utf-8') as file:
-        content = file.read()
-        videos = ast.literal_eval(content)
-    return render_template('used_pages/videopage.html',
-                           videos=videos,
-                           playlist_id=playlist_id,
-                           teachername=teachername)
-
-
-@views.route("/gedorev7/update")
-def gedorev7update():
-    return createtxtfile("gedorev7", "PLM-GVlebsoPXaUej1euRJvw65n6UFarhs")
-
-
-@views.route("/gedorev8")
-def gedorev8():
-    playlist_id = 'PLM-GVlebsoPUZb1vaHdLrCWK-xzilPY_A'
-    teachername = "Gedo"
-    with open("website/playlists/gedorev8.txt", 'r', encoding='utf-8') as file:
-        content = file.read()
-        videos = ast.literal_eval(content)
-    return render_template('used_pages/videopage.html',
-                           videos=videos,
-                           playlist_id=playlist_id,
-                           teachername=teachername)
-
-
-@views.route("/gedorev8/update")
-def gedorev8update():
-    return createtxtfile("gedorev8", "PLM-GVlebsoPUZb1vaHdLrCWK-xzilPY_A")
-
-
-@views.route("/mo-salah")
-def mosalah():
-    playlist_id = 'PLM-GVlebsoPXv3dz0yaqJtvjkOAN6KNRc'
-    teachername = "Mo Salah"
-    with open("website/playlists/mosalah.txt", 'r', encoding='utf-8') as file:
-        content = file.read()
-        videos = ast.literal_eval(content)
-    return render_template('used_pages/videopage.html',
-                           videos=videos,
-                           playlist_id=playlist_id,
-                           teachername=teachername)
-
-
-@views.route("/mo-salah/update")
-def mosalahupdate():
-    return createtxtfile("mosalah", "PLM-GVlebsoPXv3dz0yaqJtvjkOAN6KNRc")
-
-
-@views.route("/mohamedtarek")
-def mohamedtarek():
-    playlist_id = 'PLM-GVlebsoPWeP1pGCJWmf20Uc2Cu4JWN'
-    teachername = "Mohamed Tarek"
-    with open("website/playlists/mohamedtarek.txt", 'r',
-              encoding='utf-8') as file:
-        content = file.read()
-        videos = ast.literal_eval(content)
-    return render_template('used_pages/videopage.html',
-                           videos=videos,
-                           playlist_id=playlist_id,
-                           teachername=teachername)
-
-
-@views.route("/mohamedtarek/update")
-def mohamedtarekupdate():
-    return createtxtfile("mohamedtarek", "PLM-GVlebsoPWeP1pGCJWmf20Uc2Cu4JWN")
-
-
-#Geology --------------------------------------------------------------------------------------------------------------------------
-@views.route('/geology')
-def geology():
-    teacher_links = {
-        "Sameh": ("sameh", "Sameh Nash2t"),
-    }
-    teachername = "Geology"
-    return render_template('used_pages/teacher.html',
-                           teacher_links=teacher_links,
-                           teachername=teachername,
-                           imgs="yes")
-
-
-def load_sameh_info():
-    with open('website/Backend/sameh.json', 'r') as file:
-        info = json.load(file)
-    return info
-
-
-@views.route('/sameh')
-def sameh():
-    info = load_sameh_info()
-
-    teacher_links = {
-        f"{course}":
-        (f"/sameh{info[course]['url']}", info[course]['description'])
-        for course in info
-    }
-    teachername = "Geology"
-    return render_template('used_pages/teacher.html',
-                           teacher_links=teacher_links,
-                           teachername=teachername,
-                           imgs="yes")
-
-
-@views.route("/sameh/<custom_url>/update")
-def samehupdate(custom_url):
-    info = load_sameh_info()
-    course_key = next(
-        (name
-         for name, info in info.items() if info['url'] == f"/{custom_url}"),
-        None)
-    if course_key not in info:
-        return redirect(url_for('views.display_links'))
-    playlist_id = info[course_key]["id"]
-    return createtxtfile(f"sameh{course_key}", playlist_id)
-
-
-@views.route("/sameh/<custom_url>")
-def samehvids(custom_url):
-    info = load_sameh_info()
-    course_info = next(
-        (info for info in info.values() if info['url'] == f"/{custom_url}"),
-        None)
-    course_name = next(
-        (name
-         for name, info in info.items() if info['url'] == f"/{custom_url}"),
-        None)
-    teachername = course_name
-    playlist_id = course_info["id"]
-    with open(f"website/playlists/sameh{course_name}.txt",
-              'r',
-              encoding='utf-8') as file:
-        content = file.read()
-        videos = ast.literal_eval(content)
 
     return render_template('used_pages/videopage.html',
-                           videos=videos,
-                           playlist_id=playlist_id,
-                           teachername=teachername)
+                        videos=videos,
+                        playlist_id=playlist_id,
+                        teachername=teachername,
+                        folder=folder)
 
 
-@views.route("/giomaged")
-def giomaged():
-    teachername = "Gio maged"
-    playlist_id = 'PLM-GVlebsoPXh1obVV3aWysV7wXlN3yET'
-    with open("website/playlists/giomaged.txt", 'r', encoding='utf-8') as file:
-        content = file.read()
-        videos = ast.literal_eval(content)
-    return render_template('used_pages/videopage.html',
-                           videos=videos,
-                           playlist_id=playlist_id,
-                           teachername=teachername)
+#get_playlist_videos(playlist id)
+@views.route("/subjects/<subject>/teacher/<teacher_name>/course/<course_name>/update")
+def update(subject , teacher_name , course_name):
+    
+    with open('website/Backend/data.json') as f:
+        data = json.load(f)
+    if subject in data:
+        for teacher in data[subject]["teachers"]:
+            if teacher.get("link") == teacher_name:
+                # Find the specific course
+                for course in teacher.get("courses", []):
+                    if course.get("name") == course_name:
 
-
-@views.route("/giomaged/update")
-def giomagedupdate():
-    return createtxtfile("giomaged", "PLM-GVlebsoPXh1obVV3aWysV7wXlN3yET")
-
-
-#Biology----------------------------------------------------------------------------------------------------------------------
-@views.route('/biology')
-def bio():
-    teacher_links = {
-        "Daif": ("daif", "Mohamed Daif"),
-    }
-    teachername = "Biology"
-    return render_template('used_pages/teacher.html',
-                           teacher_links=teacher_links,
-                           teachername=teachername,
-                           imgs="yes")
-
-
-def load_daif_info():
-    with open('website/Backend/daif.json', 'r') as file:
-        info = json.load(file)
-    return info
-
-
-@views.route('/daif')
-def daif():
-    info = load_daif_info()
-
-    teacher_links = {
-        f"{course}":
-        (f"/daif{info[course]['url']}", info[course]['description'])
-        for course in info
-    }
-    teachername = "Biology"
-    return render_template('used_pages/teacher.html',
-                           teacher_links=teacher_links,
-                           teachername=teachername,
-                           imgs="yes")
-
-
-@views.route("/daif/<custom_url>/update")
-def daifupdates(custom_url):
-    info = load_daif_info()
-    course_key = next(
-        (name
-         for name, info in info.items() if info['url'] == f"/{custom_url}"),
-        None)
-    if course_key not in info:
-        return redirect(url_for('views.display_links'))
-    playlist_id = info[course_key]["id"]
-    return createtxtfile(f"daif{course_key}", playlist_id)
-
-
-@views.route("/daif/<custom_url>")
-def daifvids(custom_url):
-    info = load_daif_info()
-    course_info = next(
-        (info for info in info.values() if info['url'] == f"/{custom_url}"),
-        None)
-    course_name = next(
-        (name
-         for name, info in info.items() if info['url'] == f"/{custom_url}"),
-        None)
-    teachername = course_name
-    playlist_id = course_info["id"]
-    with open(f"website/playlists/daif{course_name}.txt",
-              'r',
-              encoding='utf-8') as file:
-        content = file.read()
-        videos = ast.literal_eval(content)
-
-    return render_template('used_pages/videopage.html',
-                           videos=videos,
-                           playlist_id=playlist_id,
-                           teachername=teachername)
-
-
-#-----------------------------------------------------------------------------------------------------------
-
-
-@views.route('/english')
-def english():
-    teacher_links = {
-        "Hossam Sameh": ("english/hossamsameh", "Revisions only"),
-        "Ahmed Salah": ("english/ahmadsalah", "Sessions & Revisions"),
-    }
-    teachername = "English"
-    return render_template('used_pages/teacher.html',
-                           teacher_links=teacher_links,
-                           teachername=teachername,
-                           imgs="yes")
-
-
-@views.route("/english/ahmadsalah")
-def ahmadsalah():
-    teachername = "Ahmad Salah"
-    playlist_id = 'PLM-GVlebsoPUWOjoc9DyO2Jh8mclaRY1Q'
-    with open("website/playlists/ahmadsalah.txt", 'r',
-              encoding='utf-8') as file:
-        content = file.read()
-        videos = ast.literal_eval(content)
-
-    return render_template('used_pages/videopage.html',
-                           videos=videos,
-                           playlist_id=playlist_id,
-                           teachername=teachername)
-
-
-@views.route("/english/ahmadsalah/update")
-def ahmadsalahupdate():
-    return createtxtfile("ahmadsalah", "PLM-GVlebsoPUWOjoc9DyO2Jh8mclaRY1Q")
-
-
-@views.route("/english/hossamsameh")
-def hossamsameh():
-    teachername = "Hossam Sameh"
-    playlist_id = 'PLM-GVlebsoPWGSfDq2_C801iLUl3RKWCK'
-    with open("website/playlists/hossamsameh.txt", 'r',
-              encoding='utf-8') as file:
-        content = file.read()
-        videos = ast.literal_eval(content)
-
-
-#   extra = {
-#            "Chapter 2.pdf" : "https://drive.google.com/file/d/1gxT2ay-h24ncKVztlUAPpNuQla99AAeE/view?usp=drive_link" ,
-#            "Chapter 3.pdf" : "https://drive.google.com/file/d/1sCYoSYrY490BoSU0MPyrKBGELC7MdR6n/view?usp=drive_link",
-#            "Chapter 4.pdf" : "https://drive.google.com/file/d/1FDjtIghK-f-NKmvIrrT1wqOZB7gOTRdk/view?usp=drive_link"}
-    folder = "https://drive.google.com/drive/folders/1cqdZyL-Le9yYqlzhatHL4qvnjhhGyAOu?usp=drive_link"
-    return render_template('used_pages/videopage.html',
-                           videos=videos,
-                           playlist_id=playlist_id,
-                           teachername=teachername,
-                           folder=folder)
-
-
-@views.route("/english/hossamsameh/update")
-def hossamsamehupdate():
-    return createtxtfile("hossamsameh", "PLM-GVlebsoPWGSfDq2_C801iLUl3RKWCK")
-
-
-@views.route('/german')
-def german():
-    teacher_links = {
-        "German": ("germann", "Abd El Moez"),
-        "Exam night": ("german/exam-night", "Abd El Moez"),
-    }
-    teachername = "German"
-    return render_template('used_pages/teacher.html',
-                           teacher_links=teacher_links,
-                           teachername=teachername,
-                           imgs="yes")
-
-
-@views.route("/germann")
-def germann():
-    teachername = "German"
-    playlist_id = 'PLM-GVlebsoPWNh__WI8QAIN2xQjawgB4i'
-    with open("website/playlists/germann.txt", 'r', encoding='utf-8') as file:
-        content = file.read()
-        videos = ast.literal_eval(content)
-    return render_template('used_pages/videopage.html',
-                           videos=videos,
-                           playlist_id=playlist_id,
-                           teachername=teachername)
-
-
-@views.route("/germann/update")
-def germannupdate():
-    return createtxtfile("germann", "PLM-GVlebsoPWNh__WI8QAIN2xQjawgB4i")
-
-
-@views.route("/german/exam-night")
-def germanexamnight():
-    teachername = "German"
-    playlist_id = 'PLM-GVlebsoPXKLHbkTZkb_VEAM_TswA_0'
-    with open("website/playlists/germanexamnight.txt", 'r',
-              encoding='utf-8') as file:
-        content = file.read()
-        videos = ast.literal_eval(content)
-    return render_template('used_pages/videopage.html',
-                           videos=videos,
-                           playlist_id=playlist_id,
-                           teachername=teachername)
-
-
-@views.route("/german/exam-night/update")
-def germanexamnightupdate():
-    return createtxtfile("germanexamnight",
-                         "PLM-GVlebsoPXKLHbkTZkb_VEAM_TswA_0")
-
-
-@views.route("/adby")
-def adby():
-    teachername = "Adby"
-    playlist_id = 'PLM-GVlebsoPWZG7j5kRK479fragOS83By'
-    with open("website/playlists/adby.txt", 'r', encoding='utf-8') as file:
-        content = file.read()
-        videos = ast.literal_eval(content)
-
-    folder = "https://drive.google.com/drive/folders/1mJd9I6VGHc_HzPLDo2jO53AmtpDPkM2o?usp=drive_link"
-    return render_template('used_pages/videopage.html',
-                           videos=videos,
-                           playlist_id=playlist_id,
-                           teachername=teachername,
-                           folder=folder)
-
-
-@views.route("/adby/update")
-def adbyupdate():
-    return createtxtfile("adby", "PLM-GVlebsoPWZG7j5kRK479fragOS83By")
-
-
-@views.route('/string')
-def string():
-
-    return send_file('den.pdf')
+                        playlist_id = course.get('playlist_id', '')
+                        videos = get_playlist_videos(playlist_id)
+                        course['videos'] = videos
+                        with open('website/Backend/data.json', 'w') as f:
+                            json.dump(data, f, indent=4)
+            
+    return videos

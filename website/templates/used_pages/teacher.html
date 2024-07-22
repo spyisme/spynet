@@ -3,6 +3,17 @@
 <head>
 
     <title>{{ teachername }}</title>
+
+    <script>
+      const capitalize=(word)=> {
+      return word[0].toUpperCase() + word.slice(1).toLowerCase();
+    }
+    let title= document.querySelector('title')
+    title.textContent=capitalize(title.textContent)
+    </script>
+
+
+
     <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
 
 
@@ -31,16 +42,19 @@
   <section class="banner">
     <canvas id="canvas"> </canvas>
   <div class="nav">
-    {% if teachername == "Arabic"or teachername == "English" or teachername == "Biology" or teachername == "Chemistry" or teachername == "Geology" or teachername == "German" or teachername == "Maths" or teachername == "Physics" %}
+    {% set valid_subjects = ["arabic", "english", "biology", "chemistry", "geology", "german", "maths", "physics"] %}
 
-    <img class="img" src="{{ url_for('static', filename='assets/subjects/' + teachername + '.png') }}" alt="Subjects Image">
+    {% if teachername in valid_subjects %}
+        <img class="img" src="{{ url_for('static', filename='assets/subjects/' + teachername + '.png') }}" alt="Subjects Image">
+    {% else %}
+        <h1>✰ {{ teachername }} ✰</h1>
+    {% endif %}
 
 
-    
-         {%else%}
-        <h1  >✰ {{ teachername }} ✰</h1>
 
-{%endif%}
+
+
+
 {% if link %}
     {% for key, value in link.items() %}
         <p><a href="{{ value }}" target="_blank" style="color: white;"><u>{{ key }}</u></a></p>
@@ -54,25 +68,26 @@
             
 
    <ul>
-    {% for name, data in teacher_links.items() %}
+    {% for x in teacher_links %}
+
 
 
 
           <li>
     
-            <a href="{{ data[0] }}">
+            <a href="{{teacher_name}}/course/{{x.link}}">
 
 
                   <div class="card">
-                    {% if data|length > 2 and data[2] %}
-                    <div class="card-new-badge"> {{data[2]}} </div>
-                    {% endif %}
+       
                    
-                    <img class="img" src="{{ url_for('static', filename='assets/' + teachername +'/' + name +'.jpg') }}" alt="Subjects Image">
+                    <img class="img" src="{{ url_for('static', filename='assets/' + teachername +'/' + teacher_name +'/' + x.link +'.jpg') }}" alt="{{x.link}}">
 
        
-                      <p>{{ name }}</p>
-                <span class="card-description">{{ data[1] }}</span>
+                      <p>{{ x.name }}</p>
+
+                      <span class="card-description">{{x.description}}</span>
+
                 </div>
 
               </a>

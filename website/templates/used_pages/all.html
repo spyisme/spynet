@@ -62,11 +62,11 @@
 
             <div id="homestuff" class="content hidden">
                 <ul>
-                    {% if lines %}
+
 
                     {% for item in lines %}
                     <li>
-                        <a href="{{ item }}">
+                        <a href="subjects/{{ item }}">
                             <div class="card">
                                 <img src="static/assets/homepage/{{item}}.jpg" alt="{{ item }}" loading="lazy" />
                                 <div class="text">{{ item }}</div>
@@ -75,15 +75,13 @@
                     </li>
 
                     {% endfor %}
-                    {% else %}
-                    <h1 style="color: white;">5ALSNAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</h1>
-                    {% endif %}
+    
                 </ul>
             </div>
 
             <div id="pdfsstuff" class="content hidden">
                 <ul>
-                    {% if lines %}
+          
 
                     <li>
                         <a href="/books" target="_blank">
@@ -101,10 +99,6 @@
                     </li>
                 
       
-                    {% else %}
-                    <h1 style="color: white;">5ALSNAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</h1>
-
-                    {% endif %}
     
                 </ul>
             </div>
