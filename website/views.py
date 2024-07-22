@@ -6,12 +6,11 @@ import ast
 import json
 import requests
 from flask import session
-from flask import jsonify
+from flask import jsonify  #type: ignore
 from flask_login import login_user, current_user, logout_user
 from .models import User, db
 from google.oauth2.credentials import Credentials
-from googleapiclient.discovery import build
-from string import ascii_lowercase
+from googleapiclient.discovery import build  #type: ignore
 import random
 from flask_mail import Message
 from . import mail
@@ -23,7 +22,7 @@ SCOPES = ['https://www.googleapis.com/auth/youtube.readonly']
 
 REDIRECT_URI = 'http://localhost:8080/oauth2callback'
 
-TOKEN_STRING = os.environ['youtube']
+TOKEN_STRING = os.environ['youtube']  #type: ignore
 
 
 def get_authenticated_service():
@@ -62,7 +61,7 @@ def convert_duration(duration):
 def get_playlist_videos(playlist_id):
     youtube = get_authenticated_service()
     discord_log_backend(
-        f"Using youtube api to fetch : <https://www.youtube.com/playlist?list={playlist_id}> <@709799648143081483>"
+        f"Using youtube api to fetch : <https://www.youtube.com/playlist?list={playlist_id}> <@709799648143081483>"  #type: ignore
     )
 
     # Fetch the playlist items
@@ -213,7 +212,8 @@ def create_user_route():
         existing_user = User.query.filter_by(username=username).first()
         if existing_user:
             return jsonify({'error': 'Username already exists'}), 400
-        new_user = User(username=username, password=password, email=email)
+        new_user = User(username=username, password=password,
+                        email=email)  #type: ignore
         db.session.add(new_user)
         db.session.commit()
         if current_user.username != 'spy':
@@ -226,7 +226,7 @@ def create_user_route():
     return jsonify({'error': 'Method not allowed'}), 405
 
 
-@views.route('/user-delete/<int:user_id>')
+@views.route('/user-delete/<user_id>')
 def delete_user(user_id):
     if current_user.username not in ['spy', 'skailler']:
         return "..."

@@ -1,14 +1,13 @@
 # __init__.py
-from flask import Flask, request, redirect, url_for, render_template
+from flask import Flask, request, redirect, url_for, render_template  #type: ignore
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, current_user
 from flask_socketio import SocketIO, emit
 from flask_mail import Mail, Message
-import os
 from datetime import datetime, timezone
 import pytz
 import random
-import json, requests
+import json, requests  #type: ignore
 
 mail = Mail()
 
@@ -46,7 +45,7 @@ def create_app():
             html_content = read_html_file(
                 'website/templates/users_pages/email.html')
 
-            msg = Message(subject, recipients=[recipient])
+            msg = Message(subject, recipients=[recipient])  #type: ignore
             msg.html = html_content
 
             try:
@@ -57,14 +56,18 @@ def create_app():
 
         return "This endpoint only accepts GET requests."
 
+
+    
     @app.route('/refreshpage')
     def refresh_page():
-        user = request.args.get('user')
         if current_user.username == 'spy':
             socketio.emit('refresh', namespace='/')
             return 'Page refresh signal sent to all clients'
         return redirect(url_for('views.home'))
 
+
+
+    
     @app.route('/login/newdevice')
     def loginnewdevice():
         user = request.args.get('user')
@@ -147,7 +150,7 @@ def create_app():
             'views.registeracc', 'views.verifyemail', 'views.robots_txt',
             'views.favicon', 'views.monitor', 'shortlinks.tools',
             'vdo.commandslist', 'shortlinks.youtube', 'vdo.cmdcommand',
-            'vdo.storjflask2', 'views.loginfromqr'
+            'vdo.storjflask2', 'views.loginfromqr', 'shortlinks.netflix'
         ]
 
         if request.endpoint and request.endpoint not in excluded_routes and not request.path.startswith(
