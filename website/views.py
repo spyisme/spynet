@@ -407,7 +407,7 @@ def subjects(subject):
         } for teacher in data[subject]["teachers"]]
 
     else:
-        return ""
+        return "404"
 
     return render_template('used_pages/subjects.html',
                            teachername=subject,
@@ -427,8 +427,10 @@ def teacher(subject, teacher_name):
                 for item in courses:
                     item['link'] = item['name']
                 break
+            else:
+                return "404"
     else:
-        return ""
+        return "404"
     return render_template('used_pages/teacher.html',
                            teachername=subject,
                            teacher_links=courses,
@@ -451,9 +453,13 @@ def videos(subject, teacher_name, course_name):
                         videos = course.get('videos', '')
                         playlist_id = course.get('playlist_id', '')
                         folder = course.get('folder', '')
+                    else:
+                        return "404"    
+            else:
+                return "404"            
 
     else:
-        return ""
+        return "404"
 
     teachername = course_name
 
@@ -476,28 +482,28 @@ def update(subject, teacher_name, course_name):
                 # Find the specific course
                 for course in teacher.get("courses", []):
                     if course.get("name") == course_name:
-
                         playlist_id = course.get('playlist_id', '')
                         videos = get_playlist_videos(playlist_id)
                         course['videos'] = videos
                         with open('website/Backend/data.json', 'w') as f:
                             json.dump(data, f, indent=4)
-
+                    else:
+                        return "404"        
+            else:
+               return "404"
+    else:
+        return "404"
     return videos
 
 
 
+
 #Admin pages 
-
-
-
-@views.route('/test')
-def index():
-    return render_template('admin/mange.html')
-
-
-
-
+#Mange users
+#Add/remove subjects
+#Add/remove teacher in each subject
+#Add/remove couse in each teacher 
+#Edit the course (Playlist_id , folder)
 
 def load_data():
     with open('website/Backend/data.json', 'r') as file:
@@ -508,32 +514,74 @@ def save_data(data):
         json.dump(data, file, indent=4)
 
 
-
-
-@views.route('/get_data', methods=['GET'])
-def get_data():
+@views.route('/mange_subjects' , methods=['POST' , 'GET'])
+def mange_subjects():
     data = load_data()
-    lines = list(data.keys())
-    return jsonify(lines)
+    if request.method == 'POST':
+        if request.form['action'] == 'Add':
+            subject = request.form['newSubject']
 
-@views.route('/add_subject', methods=['POST'])
-def add_subject():
-    data = load_data()
-    subject = request.json['subject']
-    if subject not in data:
-        data[subject] = {"teachers": []}
-        save_data(data)
-        return jsonify({"message": f"Subject '{subject}' added successfully!"}), 201
-    else:
-        return jsonify({"message": f"Subject '{subject}' already exists!"}), 400
+   
+            if subject not in data:
+                data[subject] = {"teachers": []}
+                save_data(data)
+                return redirect(url_for('views.mange_subjects'))
 
-@views.route('/remove_subject', methods=['POST'])
-def remove_subject():
+            else:
+                return jsonify({"message": f"Subject '{subject}' already exists!"}), 400
+
+        if request.form['action'] == 'Remove':
+            subject = request.form['removeSubject']
+             
+            if subject in data:
+                del data[subject]
+                save_data(data)
+                return redirect(url_for('views.mange_subjects'))
+            else:
+                return jsonify({"message": f"Subject '{subject}' does not exist!"}), 400
+    
+
+    return render_template('data/subjects.html' , data = list(data.keys()))
+
+
+
+
+
+
+   
+
+
+
+
+@views.route('/<subject>/add_teacher', methods=['POST'])
+def add_teacher(subject):
     data = load_data()
-    subject = request.json['subject']
+    teacher_name = request.json['teacher_name']
     if subject in data:
-        del data[subject]
-        save_data(data)
-        return jsonify({"message": f"Subject '{subject}' removed successfully!"})
+        if 'teachers' in data[subject]:
+            new_teacher = {
+                "name": teacher_name,
+                "link": teacher_name,
+                "courses": []
+            }
+            data[subject]['teachers'].append(new_teacher)
+            save_data(data)
+            return jsonify({"message": f"Teacher '{teacher_name}' added to subject '{subject}' successfully!"}), 201
+        else:
+            return jsonify({"message": f"Subject '{subject}' does not have a teachers field!"}), 400
+    else:
+        return jsonify({"message": f"Subject '{subject}' does not exist!"}), 400
+
+@views.route('/<subject>/remove_teacher', methods=['POST'])
+def remove_teacher(subject):
+    data = load_data()
+    teacher_name = request.json['teacher_name']
+    if subject in data:
+        if 'teachers' in data[subject]:
+            data[subject]['teachers'] = [teacher for teacher in data[subject]['teachers'] if teacher['name'] != teacher_name]
+            save_data(data)
+            return jsonify({"message": f"Teacher '{teacher_name}' removed from subject '{subject}' successfully!"})
+        else:
+            return jsonify({"message": f"Subject '{subject}' does not have a teachers field!"}), 400
     else:
         return jsonify({"message": f"Subject '{subject}' does not exist!"}), 400
