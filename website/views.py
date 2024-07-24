@@ -74,9 +74,7 @@ def convert_duration(duration):
 
 def get_playlist_videos(playlist_id):
     youtube = get_authenticated_service()
-    discord_log_backend(
-        f"Using youtube api to fetch : <https://www.youtube.com/playlist?list={playlist_id}> <@709799648143081483>"  #type: ignore
-    )
+
 
     # Fetch the playlist items
     playlist_items = []
@@ -143,22 +141,6 @@ def discord_log_register(message):
         headers=headers)
 
 
-def discord_log_backend(message):
-    messageeeee = {'content': message}
-    payload = json.dumps(messageeeee)
-    headers = {'Content-Type': 'application/json'}
-    requests.post(
-        "https://discord.com/api/webhooks/1223859771401179146/Qaxf4CVfRhTn7oQ2lbz1MdJQZ441_-VruTkP8tir3JabeFbMkLR9aJpDANDwFSYcEDfJ",
-        data=payload,
-        headers=headers)
-
-
-#Uptime robot
-@views.route('/monitor')
-def monitor():
-    return "Working"
-
-
 #Login route (whitelist_ips is from EG)
 
 blacklist_ips = set()
@@ -177,27 +159,27 @@ def login():
 
     user_agent = request.headers.get('User-Agent')
 
-    # if current_user.is_authenticated:
-    #     return redirect(url_for('views.home'))
-    # if client_ip in blacklist_ips:
-    #     return jsonify(message=f"Error 403 your ip is {client_ip}"), 403
+    if current_user.is_authenticated:
+        return redirect(url_for('views.home'))
+    if client_ip in blacklist_ips:
+        return jsonify(message=f"Error 403 your ip is {client_ip}"), 403
 
-    # if client_ip not in whitelist_ips:
-    #     api_url = f'https://ipinfo.io/{client_ip}?token=8f8d5a48b50694'
-    #     response = requests.get(api_url)
-    #     data = response.json()
+    if client_ip not in whitelist_ips:
+        api_url = f'https://ipinfo.io/{client_ip}?token=8f8d5a48b50694'
+        response = requests.get(api_url)
+        data = response.json()
 
-    #     if 'country' in data:
-    #         country_code = data['country']
-    #         if country_code != 'EG':
-    #             blacklist_ips.add(client_ip)
-    #             return jsonify(message="Please disable vpn/proxy."), 403
-    #     else:
-    #         blacklist_ips.add(client_ip)
-    #         return jsonify(
-    #             message="Unable to determine the country. Login failed."), 403
+        if 'country' in data:
+            country_code = data['country']
+            if country_code != 'EG':
+                blacklist_ips.add(client_ip)
+                return jsonify(message="Please disable vpn/proxy."), 403
+        else:
+            blacklist_ips.add(client_ip)
+            return jsonify(
+                message="Unable to determine the country. Login failed."), 403
 
-    # whitelist_ips.add(client_ip)
+    whitelist_ips.add(client_ip)
 
     if request.method == 'POST':
         username = request.form.get('username')
@@ -365,20 +347,19 @@ def registeracc():
 def redirectlinks(link):
     link = link.replace('questionmark', '?')
     link = link.replace('andsympol', '&').replace(':', ':/')  #For iphone
-
     return redirect(f"{link}")
-
 
 @views.route('/favicon.ico')
 def favicon():
     return redirect("/static/favicon.ico")
 
-
 @views.route('/robots.txt')
 def robots_txt():
+    return send_file('website/robots.txt', mimetype='otp/plain')
 
-    return send_file('robots.txt', mimetype='otp/plain')
-
+@views.route('/monitor') #Uptime robot
+def monitor():
+    return "Working"
 
 #Home
 @views.route("/subjects")
@@ -394,13 +375,12 @@ def home():
 
     return redirect(url_for("views.subjectspage"))
 
-#Subjects
+#User pages---------------------------------------------------------------------------------------------------
 @views.route("/subjects/<subject>")
 def subjects(subject):
     with open('website/Backend/data.json') as f:
         data = json.load(f)
     if subject in data:
-
         teachers = [{
             "name":
             teacher["name"],
@@ -410,10 +390,6 @@ def subjects(subject):
             teacher.get("description", "")
             or f"{len(teacher['courses'])} courses"
         } for teacher in data[subject]["teachers"]]
-
-    else:
-        return "404"
-
     return render_template('used_pages/subjects.html',
                            teachername=subject,
                            teacher_links=teachers)
@@ -432,15 +408,10 @@ def teacher(subject, teacher_name):
                 for item in courses:
                     item['link'] = item['name']
                 break
-
-    else:
-        return "404"
     return render_template('used_pages/teacher.html',
                            teachername=subject,
                            teacher_links=courses,
                            teacher_name=teacher_name)
-
-
 #Videos
 @views.route("/subjects/<subject>/<teacher_name>/<course_name>")
 def videos(subject, teacher_name, course_name):
@@ -461,9 +432,6 @@ def videos(subject, teacher_name, course_name):
                         folder = course.get('folder', '')
               
 
-    else:
-        return "404"
-
     teachername = course_name
 
     return render_template('used_pages/videopage.html',
@@ -472,8 +440,7 @@ def videos(subject, teacher_name, course_name):
                            teachername=teachername,
                            folder=folder)
 
-
-#get_playlist_videos(playlist id)
+#/Update(playlist id)
 @views.route("/subjects/<subject>/<teacher_name>/<course_name>/update")
 def update(subject, teacher_name, course_name):
 
@@ -490,19 +457,26 @@ def update(subject, teacher_name, course_name):
                         course['videos'] = videos
                         with open('website/Backend/data.json', 'w') as f:
                             json.dump(data, f, indent=4)
-
-    else:
-        return "404"
     return videos
 
 
 
 
 #Admin pages 
-#Make only an admin can chnage the following routes 
+ 
 #Manage users laterrrrrrrrrrrr
 
 
+
+
+
+
+
+
+
+
+#Edit pages------------------------------------------------------------------------------------
+#Make only an admin can chnage the following routes
 def load_data():
     with open('website/Backend/data.json', 'r') as file:
         return json.load(file)
@@ -518,9 +492,6 @@ def save_data(data):
     with open(backup_filename, 'w') as backup_file:
         backup_file.write(current_data)
 
-
-    
-    # Save the new data
     with open('website/Backend/data.json', 'w') as file:
         json.dump(data, file, indent=4)
 
