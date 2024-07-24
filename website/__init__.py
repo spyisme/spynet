@@ -133,14 +133,6 @@ def create_app():
             data=payload,
             headers=headers)
 
-    def discord_log2(message):
-        messageeeee = {'content': message}
-        payload = json.dumps(messageeeee)
-        headers = {'Content-Type': 'application/json'}
-        requests.post(
-            "https://discord.com/api/webhooks/1224087481255723049/fSB0MRQEV2ihjm19SuMMsnrKxokxn-2MVS7M-iBAh1tjZq3vs3caMK_830-jQG0AAAEp",
-            data=payload,
-            headers=headers)
 
     # Before request callback to check if the user is logged in
     def before_request():
