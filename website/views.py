@@ -380,15 +380,18 @@ def robots_txt():
 
 
 #Home
-@views.route("/")
-def home():
+@views.route("/subjects")
+def subjectspage():
     with open('website/Backend/data.json') as f:
         data = json.load(f)
     lines = list(data.keys())
     return render_template('used_pages/all.html',
                            lines=lines,
                            teachername="All")
+@views.route("/")
+def home():
 
+    return redirect(url_for("views.subjectspage"))
 
 #Subjects
 @views.route("/subjects/<subject>")
@@ -428,8 +431,7 @@ def teacher(subject, teacher_name):
                 for item in courses:
                     item['link'] = item['name']
                 break
-            else:
-                return "404"
+
     else:
         return "404"
     return render_template('used_pages/teacher.html',
@@ -449,15 +451,14 @@ def videos(subject, teacher_name, course_name):
             if teacher.get("link") == teacher_name:
                 # Find the specific course
                 for course in teacher.get("courses", []):
+
+     
                     if course.get("name") == course_name:
                         # Return the course videos and playlist_id
                         videos = course.get('videos', '')
                         playlist_id = course.get('playlist_id', '')
                         folder = course.get('folder', '')
-                    else:
-                        return "404"    
-            else:
-                return "404"            
+              
 
     else:
         return "404"
@@ -516,23 +517,24 @@ def save_data(data):
     os.makedirs(os.path.dirname(backup_filename), exist_ok=True)
     
     # Backup the current data.json
-    with open('website/Backend/data.json', 'r') as file:
-        current_data = file.read()
-    with open(backup_filename, 'w') as backup_file:
-        backup_file.write(current_data)
+    # with open('website/Backend/data.json', 'r') as file:
+    #     current_data = file.read()
+    # with open(backup_filename, 'w') as backup_file:
+    #     backup_file.write(current_data)
     
     # Save the new data
     with open('website/Backend/data.json', 'w') as file:
         json.dump(data, file, indent=4)
 
 
-@views.route('/edit_subjects' , methods=['POST' , 'GET'])
+@views.route('/subjects/edit' , methods=['POST' , 'GET'])
 def manage_subjects():
     data = load_data()
     if request.method == 'POST':
         if request.form['action'] == 'Add':
             subject = request.form['newSubject']
-
+            if subject == "":
+                return "Subject is none "
             if subject not in data:
                 data[subject] = {"teachers": []}
                 save_data(data)
@@ -543,7 +545,8 @@ def manage_subjects():
 
         if request.form['action'] == 'Remove':
             subject = request.form['removeSubject']
-             
+            if subject == "":
+                return "Subject is none "
             if subject in data:
                 del data[subject]
                 save_data(data)
@@ -556,14 +559,17 @@ def manage_subjects():
 
 
 
-@views.route('/<subject>/edit' , methods=['POST' , 'GET'])
+@views.route('/subjects/<subject>/edit' , methods=['POST' , 'GET'])
 def manage_teachers(subject):
     data = load_data()
     teachers= data[subject].get('teachers', [])
-    teacher_names = [teacher['name'] for teacher in teachers]
+    teacher_list = [{'name': teacher['name'], 'link': teacher['link']} for teacher in teachers]
+
     if request.method == 'POST':
         if request.form['action'] == 'Add':
             teacher_name = request.form['new']
+            if teacher_name == "":
+                return "Teacher name is none "
             if subject in data:
                 new_teacher = {
                     "name": teacher_name,
@@ -580,7 +586,8 @@ def manage_teachers(subject):
 
         if request.form['action'] == 'Remove':
             teacher_name = request.form['remove']
-             
+            if teacher_name == "":
+                return "Teacher name is none "
             if subject in data:
                 if 'teachers' in data[subject]:
                     teacher_exists = any(teacher['name'] == teacher_name for teacher in data[subject]['teachers'])
@@ -594,7 +601,61 @@ def manage_teachers(subject):
             else:
                 return jsonify({"message": f"Subject '{subject}' does not exist!"}), 400
 
-    return render_template('data/teachers.html' , data = teacher_names , subject = subject)
+    return render_template('data/teachers.html' , data = teacher_list , subject = subject)
+
+
+
+@views.route('/subjects/<subject>/teacher/<teachername>/edit' , methods=['POST' , 'GET'])
+def manage_courses(subject , teachername):
+    data = load_data()
+
+ 
+    teachers = data.get(subject, {}).get('teachers', [])
+    
+
+    teacher_courses = next((teacher['courses'] for teacher in teachers if teacher['link'] == teachername), None)
+    course_names = [course['name'] for course in teacher_courses]
+
+    
+    if request.method == 'POST':
+        if request.form['action'] == 'Add':
+            course_name = request.form['new']
+            if course_name == "":
+                return "Course name is none "
+            new_course = {
+                "name": course_name,
+                "description": "",
+                "videos": "",
+                "playlist_id": "",
+                "folder": ""
+            }
+            teacher_courses.append(new_course)
+            data[subject]['teachers'] = teachers
+            save_data(data)
+            return redirect(url_for('views.manage_courses', subject=subject , teachername = teachername))
+
+        if request.form['action'] == 'Remove':
+
+            teacher = next((t for t in teachers if t['link'] == teachername), None)
+            course_name = request.form['remove']
+
+            if course_name == "":
+                return "Course name is none "
+            teacher_courses = [course for course in teacher_courses if course['name'] != course_name]
+
+            teacher['courses'] = teacher_courses
+            data[subject]['teachers'] = teachers
+            
+            save_data(data)
+
+            return redirect(url_for('views.manage_courses', subject=subject , teachername = teachername))
+
+
+             
+
+    return render_template('data/courses.html' , data = course_names , teachername = teachername )
+
+
 
 
 
