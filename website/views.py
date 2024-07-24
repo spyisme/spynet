@@ -501,7 +501,7 @@ def update(subject, teacher_name, course_name):
 #Admin pages 
 #Make only an admin can chnage the following routes 
 #Manage users laterrrrrrrrrrrr
-#Upload images , delete images
+
 
 def load_data():
     with open('website/Backend/data.json', 'r') as file:
@@ -525,13 +525,25 @@ def save_data(data):
         json.dump(data, file, indent=4)
 
 
-
+#Add/remove a subject 
 @views.route('/subjects/edit' , methods=['POST' , 'GET'])
 def manage_subjects():
     data = load_data()
     if request.method == 'POST':
         if request.form['action'] == 'Add':
+
             subject = request.form['newSubject']
+
+            file = request.files['file']
+
+            if file:
+                os.makedirs(os.path.dirname(f'website/static/assets/homepage/' + subject + '.jpg'), exist_ok=True)
+
+                file.save(f'website/static/assets/homepage/' + subject + '.jpg')
+
+            else:
+                return "Choose an imgae for the teacher"
+            
             if subject == "":
                 return "Subject is none "
             if subject not in data:
@@ -544,6 +556,7 @@ def manage_subjects():
 
         if request.form['action'] == 'Remove':
             subject = request.form['removeSubject']
+            os.remove(f'website/static/assets/homepage/' + subject + '.jpg')
             if subject == "":
                 return "Subject is none "
             if subject in data:
@@ -557,7 +570,7 @@ def manage_subjects():
 
 
 
-
+#Add/remove a teacher 
 @views.route('/subjects/<subject>/edit' , methods=['POST' , 'GET'])
 def manage_teachers(subject):
     data = load_data()
@@ -567,6 +580,18 @@ def manage_teachers(subject):
     if request.method == 'POST':
         if request.form['action'] == 'Add':
             teacher_name = request.form['new']
+
+            file = request.files['file']
+
+            if file:
+                os.makedirs(os.path.dirname(f'website/static/assets/{subject}/' + teacher_name + '.jpg'), exist_ok=True)
+
+                file.save(f'website/static/assets/{subject}/' + teacher_name + '.jpg')
+
+            else:
+                return "Choose an imgae for the teacher"
+            
+
             if teacher_name == "":
                 return "Teacher name is none "
             if subject in data:
@@ -585,6 +610,8 @@ def manage_teachers(subject):
 
         if request.form['action'] == 'Remove':
             teacher_name = request.form['remove']
+            os.remove(f'website/static/assets/{subject}/' + teacher_name + '.jpg')
+
             if teacher_name == "":
                 return "Teacher name is none "
             if subject in data:
@@ -603,7 +630,7 @@ def manage_teachers(subject):
     return render_template('data/teachers.html' , data = teacher_list , subject = subject)
 
 
-
+#Add/remove a course 
 @views.route('/subjects/<subject>/teacher/<teachername>/edit' , methods=['POST' , 'GET'])
 def manage_courses(subject , teachername):
     data = load_data()
@@ -643,7 +670,7 @@ def manage_courses(subject , teachername):
             return redirect(url_for('views.manage_courses', subject=subject , teachername = teachername))
 
         if request.form['action'] == 'Remove':
-
+            os.remove(f'website/static/assets/{subject}/{teachername}/' + course_name + '.jpg')
             teacher = next((t for t in teachers if t['link'] == teachername), None)
             course_name = request.form['remove']
 
@@ -663,9 +690,7 @@ def manage_courses(subject , teachername):
 
     return render_template('data/courses.html' , data = course_names , teachername = teachername )
 
-
-
-
+#Edit a course info
 @views.route('/subjects/<subject>/teacher/<teachername>/course/<course_name>/edit', methods=['POST', 'GET'])
 def edit_course(subject, teachername, course_name):
     data = load_data()
