@@ -420,7 +420,7 @@ def subjects(subject):
 
 
 #Teacher
-@views.route("/subjects/<subject>/teacher/<teacher_name>")
+@views.route("/subjects/<subject>/<teacher_name>")
 def teacher(subject, teacher_name):
 
     with open('website/Backend/data.json') as f:
@@ -442,7 +442,7 @@ def teacher(subject, teacher_name):
 
 
 #Videos
-@views.route("/subjects/<subject>/teacher/<teacher_name>/course/<course_name>")
+@views.route("/subjects/<subject>/<teacher_name>/<course_name>")
 def videos(subject, teacher_name, course_name):
 
     with open('website/Backend/data.json') as f:
@@ -474,7 +474,7 @@ def videos(subject, teacher_name, course_name):
 
 
 #get_playlist_videos(playlist id)
-@views.route("/subjects/<subject>/teacher/<teacher_name>/course/<course_name>/update")
+@views.route("/subjects/<subject>/<teacher_name>/<course_name>/update")
 def update(subject, teacher_name, course_name):
 
     with open('website/Backend/data.json') as f:
@@ -631,7 +631,7 @@ def manage_teachers(subject):
 
 
 #Add/remove a course 
-@views.route('/subjects/<subject>/teacher/<teachername>/edit' , methods=['POST' , 'GET'])
+@views.route('/subjects/<subject>/<teachername>/edit' , methods=['POST' , 'GET'])
 def manage_courses(subject , teachername):
     data = load_data()
 
@@ -691,7 +691,7 @@ def manage_courses(subject , teachername):
     return render_template('data/courses.html' , data = course_names , teachername = teachername )
 
 #Edit a course info
-@views.route('/subjects/<subject>/teacher/<teachername>/course/<course_name>/edit', methods=['POST', 'GET'])
+@views.route('/subjects/<subject>/<teachername>/<course_name>/edit', methods=['POST', 'GET'])
 def edit_course(subject, teachername, course_name):
     data = load_data()
     current_course = None
