@@ -489,10 +489,7 @@ def update(subject, teacher_name, course_name):
                         course['videos'] = videos
                         with open('website/Backend/data.json', 'w') as f:
                             json.dump(data, f, indent=4)
-                    else:
-                        return "404"        
-            else:
-               return "404"
+
     else:
         return "404"
     return videos
@@ -501,11 +498,9 @@ def update(subject, teacher_name, course_name):
 
 
 #Admin pages 
+#Make only an admin can chnage the following routes 
 #Manage users laterrrrrrrrrrrr
-#Add/remove subjects Done
-#Add/remove teacher in each subject
-#Add/remove couse in each teacher 
-#Edit the course (Playlist_id , folder)
+#Upload images , delete images
 
 def load_data():
     with open('website/Backend/data.json', 'r') as file:
@@ -521,10 +516,13 @@ def save_data(data):
         current_data = file.read()
     with open(backup_filename, 'w') as backup_file:
         backup_file.write(current_data)
+
+
     
     # Save the new data
     with open('website/Backend/data.json', 'w') as file:
         json.dump(data, file, indent=4)
+
 
 
 @views.route('/subjects/edit' , methods=['POST' , 'GET'])
@@ -658,4 +656,30 @@ def manage_courses(subject , teachername):
 
 
 
+@views.route('/subjects/<subject>/teacher/<teachername>/course/<course_name>/edit', methods=['POST', 'GET'])
+def edit_course(subject, teachername, course_name):
+    data = load_data()
+    current_course = None
+
+    if request.method == 'POST':
+        for teacher in data.get(subject, {}).get('teachers', []):
+            if teacher['link'] == teachername:
+                for course in teacher['courses']:
+                    if course['name'] == course_name:
+                        if request.form['action'] == 'apply':
+                            course['playlist_id'] = request.form['playlist']
+                        elif request.form['action'] == 'Apply':
+                            course['folder'] = request.form['folder']
+                        save_data(data)
+                        return redirect(url_for('views.edit_course', subject=subject, teachername=teachername, course_name=course_name))
+
+    # Find the current course to display its details
+    for teacher in data.get(subject, {}).get('teachers', []):
+        if teacher['link'] == teachername:
+            for course in teacher['courses']:
+                if course['name'] == course_name:
+                    current_course = course
+                    break
+
+    return render_template('data/course.html', course_name=course_name, teachername=teachername, current_course=current_course)
 
