@@ -16,6 +16,7 @@ from flask_mail import Message
 from . import mail
 from google.auth.exceptions import GoogleAuthError
 from datetime import datetime
+from werkzeug.utils import secure_filename
 
 views = Blueprint('views', __name__)
 
@@ -613,11 +614,20 @@ def manage_courses(subject , teachername):
 
     teacher_courses = next((teacher['courses'] for teacher in teachers if teacher['link'] == teachername), None)
     course_names = [course['name'] for course in teacher_courses]
-
     
     if request.method == 'POST':
         if request.form['action'] == 'Add':
             course_name = request.form['new']
+            file = request.files['file']
+
+            if file:
+                os.makedirs(os.path.dirname(f'website/static/assets/{subject}/{teachername}/' + course_name + '.jpg'), exist_ok=True)
+                
+                file.save(f'website/static/assets/{subject}/{teachername}/' + course_name + '.jpg')
+
+            else:
+                return "Choose an imgae for the course"
+            
             if course_name == "":
                 return "Course name is none "
             new_course = {
@@ -682,4 +692,32 @@ def edit_course(subject, teachername, course_name):
                     break
 
     return render_template('data/course.html', course_name=course_name, teachername=teachername, current_course=current_course)
+
+
+
+
+
+
+
+@views.route('/upload', methods=['POST', 'GET'])
+def upload_file():
+    if request.method == 'POST':
+        html_input = request.form['path']
+        if 'file' not in request.files:
+            return "No file part"
+        
+        file = request.files['file']
+        
+        if file.filename == '':
+            return "No selected file"
+        
+        if file:
+            # Save the file to a specific folder
+            filename = secure_filename(file.filename)
+            file.save(f'website/static/assets/{html_input}/' + filename)
+            return "File uploaded successfully"
+    
+    # If GET request or invalid POST request
+    return render_template('data/upload.html')
+
 
