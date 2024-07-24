@@ -15,6 +15,7 @@ import random
 from flask_mail import Message
 from . import mail
 from google.auth.exceptions import GoogleAuthError
+from datetime import datetime
 
 views = Blueprint('views', __name__)
 
@@ -499,8 +500,8 @@ def update(subject, teacher_name, course_name):
 
 
 #Admin pages 
-#Mange users
-#Add/remove subjects
+#Manage users laterrrrrrrrrrrr
+#Add/remove subjects Done
 #Add/remove teacher in each subject
 #Add/remove couse in each teacher 
 #Edit the course (Playlist_id , folder)
@@ -510,22 +511,32 @@ def load_data():
         return json.load(file)
 
 def save_data(data):
+    timestamp = datetime.now().strftime("%m.%d_%H.%M")
+    backup_filename = f"website/Backend/dumps/{timestamp}.json"
+    os.makedirs(os.path.dirname(backup_filename), exist_ok=True)
+    
+    # Backup the current data.json
+    with open('website/Backend/data.json', 'r') as file:
+        current_data = file.read()
+    with open(backup_filename, 'w') as backup_file:
+        backup_file.write(current_data)
+    
+    # Save the new data
     with open('website/Backend/data.json', 'w') as file:
         json.dump(data, file, indent=4)
 
 
-@views.route('/mange_subjects' , methods=['POST' , 'GET'])
-def mange_subjects():
+@views.route('/edit_subjects' , methods=['POST' , 'GET'])
+def manage_subjects():
     data = load_data()
     if request.method == 'POST':
         if request.form['action'] == 'Add':
             subject = request.form['newSubject']
 
-   
             if subject not in data:
                 data[subject] = {"teachers": []}
                 save_data(data)
-                return redirect(url_for('views.mange_subjects'))
+                return redirect(url_for('views.manage_subjects'))
 
             else:
                 return jsonify({"message": f"Subject '{subject}' already exists!"}), 400
@@ -536,52 +547,54 @@ def mange_subjects():
             if subject in data:
                 del data[subject]
                 save_data(data)
-                return redirect(url_for('views.mange_subjects'))
+                return redirect(url_for('views.manage_subjects'))
             else:
                 return jsonify({"message": f"Subject '{subject}' does not exist!"}), 400
-    
 
     return render_template('data/subjects.html' , data = list(data.keys()))
 
 
 
 
-
-
-   
-
-
-
-
-@views.route('/<subject>/add_teacher', methods=['POST'])
-def add_teacher(subject):
+@views.route('/<subject>/edit' , methods=['POST' , 'GET'])
+def manage_teachers(subject):
     data = load_data()
-    teacher_name = request.json['teacher_name']
-    if subject in data:
-        if 'teachers' in data[subject]:
-            new_teacher = {
-                "name": teacher_name,
-                "link": teacher_name,
-                "courses": []
-            }
-            data[subject]['teachers'].append(new_teacher)
-            save_data(data)
-            return jsonify({"message": f"Teacher '{teacher_name}' added to subject '{subject}' successfully!"}), 201
-        else:
-            return jsonify({"message": f"Subject '{subject}' does not have a teachers field!"}), 400
-    else:
-        return jsonify({"message": f"Subject '{subject}' does not exist!"}), 400
+    teachers= data[subject].get('teachers', [])
+    teacher_names = [teacher['name'] for teacher in teachers]
+    if request.method == 'POST':
+        if request.form['action'] == 'Add':
+            teacher_name = request.form['new']
+            if subject in data:
+                new_teacher = {
+                    "name": teacher_name,
+                    "link": teacher_name,
+                    "courses": []
+                }
+                data[subject]['teachers'].append(new_teacher)
+                save_data(data)
+                return redirect(url_for('views.manage_teachers', subject=subject))
 
-@views.route('/<subject>/remove_teacher', methods=['POST'])
-def remove_teacher(subject):
-    data = load_data()
-    teacher_name = request.json['teacher_name']
-    if subject in data:
-        if 'teachers' in data[subject]:
-            data[subject]['teachers'] = [teacher for teacher in data[subject]['teachers'] if teacher['name'] != teacher_name]
-            save_data(data)
-            return jsonify({"message": f"Teacher '{teacher_name}' removed from subject '{subject}' successfully!"})
-        else:
-            return jsonify({"message": f"Subject '{subject}' does not have a teachers field!"}), 400
-    else:
-        return jsonify({"message": f"Subject '{subject}' does not exist!"}), 400
+            else:
+                return jsonify({"message": f"Subject '{subject}' does not exist!"}), 400
+  
+
+        if request.form['action'] == 'Remove':
+            teacher_name = request.form['remove']
+             
+            if subject in data:
+                if 'teachers' in data[subject]:
+                    teacher_exists = any(teacher['name'] == teacher_name for teacher in data[subject]['teachers'])
+                    if teacher_exists:
+                        data[subject]['teachers'] = [teacher for teacher in data[subject]['teachers'] if teacher['name'] != teacher_name]
+                        save_data(data)
+                        return redirect(url_for('views.manage_teachers', subject=subject))
+                    else:
+                        return jsonify({"message": f"Teacher '{teacher_name}' does not exist in subject '{subject}'!"}), 400
+
+            else:
+                return jsonify({"message": f"Subject '{subject}' does not exist!"}), 400
+
+    return render_template('data/teachers.html' , data = teacher_names , subject = subject)
+
+
+
