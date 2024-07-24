@@ -517,10 +517,10 @@ def save_data(data):
     os.makedirs(os.path.dirname(backup_filename), exist_ok=True)
     
     # Backup the current data.json
-    # with open('website/Backend/data.json', 'r') as file:
-    #     current_data = file.read()
-    # with open(backup_filename, 'w') as backup_file:
-    #     backup_file.write(current_data)
+    with open('website/Backend/data.json', 'r') as file:
+        current_data = file.read()
+    with open(backup_filename, 'w') as backup_file:
+        backup_file.write(current_data)
     
     # Save the new data
     with open('website/Backend/data.json', 'w') as file:
