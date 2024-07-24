@@ -680,6 +680,10 @@ def edit_course(subject, teachername, course_name):
                             course['playlist_id'] = request.form['playlist']
                         elif request.form['action'] == 'Apply':
                             course['folder'] = request.form['folder']
+                        elif request.form['action'] == 'set' :
+                            course['description']  = request.form['description']
+                        elif request.form['action'] == 'Clear videos' :
+                            course['videos']  = ""                       
                         save_data(data)
                         return redirect(url_for('views.edit_course', subject=subject, teachername=teachername, course_name=course_name))
 
@@ -693,31 +697,5 @@ def edit_course(subject, teachername, course_name):
 
     return render_template('data/course.html', course_name=course_name, teachername=teachername, current_course=current_course)
 
-
-
-
-
-
-
-@views.route('/upload', methods=['POST', 'GET'])
-def upload_file():
-    if request.method == 'POST':
-        html_input = request.form['path']
-        if 'file' not in request.files:
-            return "No file part"
-        
-        file = request.files['file']
-        
-        if file.filename == '':
-            return "No selected file"
-        
-        if file:
-            # Save the file to a specific folder
-            filename = secure_filename(file.filename)
-            file.save(f'website/static/assets/{html_input}/' + filename)
-            return "File uploaded successfully"
-    
-    # If GET request or invalid POST request
-    return render_template('data/upload.html')
 
 

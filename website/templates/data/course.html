@@ -18,7 +18,11 @@
 
             <p>Current Playlist ID: {{ current_course.playlist_id }}</p>
             <p>Current Folder: {{ current_course.folder }}</p>
-
+            <p>Current Description: {{ current_course.description }}</p>
+        <form action="" method="post">
+            
+            <input type ="submit"  name="action" value="Clear videos">
+</form>
         </pre>
 
     </div>
@@ -30,11 +34,24 @@
         <input type="text" name="playlist" placeholder="Playlist id">
         <input type ="submit"  name="action" value="apply">
     </div>
-    <div>
+</form>
+<form action="" method="post">
+
+<div>
         <h2>Google Drive Folder</h2>
         <input type="text" name="folder" placeholder="Folder">
         <input type ="submit"  name="action" value="Apply">
     </div>
+    </form>
+    <form action="" method="post">
+
+    <div>
+        <h2>Course Description</h2>
+        <input type="text" name="description" placeholder="Description">
+        <input type ="submit"  name="action" value="set">
+    </div>
+
+
 </form>
 </body>
 </html>
