@@ -1,0 +1,1134 @@
+{
+    "chemistry": {
+        "teachers": [
+            {
+                "name": "Dr. Nasser el batal",
+                "link": "nasserelbatal",
+                "courses": [
+                    {
+                        "name": "Chapter 1",
+                        "description": "Transition elements",
+                        "videos": [
+                            {
+                                "id": "oexPqeRkPjw",
+                                "title": "S1 | Part 1",
+                                "duration": "00:28:18",
+                                "jsid": 0
+                            },
+                            {
+                                "id": "8YnBXVoBKgI",
+                                "title": "S1 | Part 2",
+                                "duration": "01:53:15",
+                                "jsid": 1
+                            },
+                            {
+                                "id": "eMNKHn9RldY",
+                                "title": "S1 | Homework",
+                                "duration": "01:14:08",
+                                "jsid": 2
+                            },
+                            {
+                                "id": "wDxR05qj36A",
+                                "title": "S2 | Part 1",
+                                "duration": "01:36:51",
+                                "jsid": 3
+                            },
+                            {
+                                "id": "ke_zRzmYh8A",
+                                "title": "S2 | Part 2",
+                                "duration": "01:31:53",
+                                "jsid": 4
+                            },
+                            {
+                                "id": "Igqyd0rPG-o",
+                                "title": "S2 | Summary",
+                                "duration": "00:21:32",
+                                "jsid": 5
+                            },
+                            {
+                                "id": "xxXksf4rnaw",
+                                "title": "S2 | Classwork 1",
+                                "duration": "02:08:23",
+                                "jsid": 6
+                            },
+                            {
+                                "id": "IsCDLe0MkXA",
+                                "title": "S2 | Classwork 2",
+                                "duration": "01:57:31",
+                                "jsid": 7
+                            },
+                            {
+                                "id": "dKm1xNxs1M4",
+                                "title": "S2 | Homework",
+                                "duration": "03:10:50",
+                                "jsid": 8
+                            },
+                            {
+                                "id": "cMSmPDe300w",
+                                "title": "S3 | Part 1",
+                                "duration": "01:49:34",
+                                "jsid": 9
+                            },
+                            {
+                                "id": "SgOK5BcP_DI",
+                                "title": "S3 | Part 2",
+                                "duration": "00:41:22",
+                                "jsid": 10
+                            },
+                            {
+                                "id": "C9Hy2u8daAk",
+                                "title": "S3 | Summary",
+                                "duration": "00:18:49",
+                                "jsid": 11
+                            },
+                            {
+                                "id": "L_uva89uAdY",
+                                "title": "S3 | Classwork",
+                                "duration": "02:03:16",
+                                "jsid": 12
+                            },
+                            {
+                                "id": "vcluE9jselM",
+                                "title": "S3 | Homework",
+                                "duration": "01:52:47",
+                                "jsid": 13
+                            },
+                            {
+                                "id": "VhB3mW5er5s",
+                                "title": "S4 | Part 1",
+                                "duration": "01:34:49",
+                                "jsid": 14
+                            },
+                            {
+                                "id": "Fv3fvCrAHy8",
+                                "title": "S4 | Part 2",
+                                "duration": "01:26:27",
+                                "jsid": 15
+                            },
+                            {
+                                "id": "c6hgb_TTtOU",
+                                "title": "S4 | Summary",
+                                "duration": "00:40:31",
+                                "jsid": 16
+                            },
+                            {
+                                "id": "OIOW0bRsrvo",
+                                "title": "S4 | Classwork",
+                                "duration": "01:56:44",
+                                "jsid": 17
+                            },
+                            {
+                                "id": "wdve7UzrfVo",
+                                "title": "S4 | Homework",
+                                "duration": "01:24:34",
+                                "jsid": 18
+                            },
+                            {
+                                "id": "1rXysYNUXL8",
+                                "title": "S5 | Part 1",
+                                "duration": "02:06:35",
+                                "jsid": 19
+                            },
+                            {
+                                "id": "RA5RespL9b4",
+                                "title": "S5 | Part 2",
+                                "duration": "00:49:17",
+                                "jsid": 20
+                            },
+                            {
+                                "id": "Ne1s9Qdr8Xk",
+                                "title": "S5 | Summary",
+                                "duration": "00:15:13",
+                                "jsid": 21
+                            },
+                            {
+                                "id": "lmsFtoUISQE",
+                                "title": "S5 | Classwork",
+                                "duration": "02:13:56",
+                                "jsid": 22
+                            },
+                            {
+                                "id": "cuG_RZDTyKc",
+                                "title": "S5 | Homework",
+                                "duration": "02:15:53",
+                                "jsid": 23
+                            }
+                        ],
+                        "playlist_id": "PLM-GVlebsoPXWpBDCzn4h0L36UNRYuFb2",
+                        "folder": "https://drive.google.com/drive/folders/1otLcK6atSsKhZGIo7Cz0hRxoZ7gbN8nz?usp=drive_link"
+                    }
+                ]
+            },
+            {
+                "name": "Mr. Ashraf el shenawy",
+                "link": "ashrafelshenawy",
+                "courses": []
+            }
+        ]
+    },
+    "maths": {
+        "teachers": [
+            {
+                "name": "Mr. Omar Sherbiny",
+                "link": "sherbo",
+                "description": "cool teacher",
+                "courses": [
+                    {
+                        "name": "Algebra",
+                        "description": "Symbols and equations.",
+                        "videos": [
+                            {
+                                "id": "JcRBOwEPHHA",
+                                "title": "Binomial theorem",
+                                "duration": "06:22:48",
+                                "jsid": 0
+                            },
+                            {
+                                "id": "tyc8tfjCipY",
+                                "title": "Binomial theorem | Cw",
+                                "duration": "03:03:10",
+                                "jsid": 1
+                            },
+                            {
+                                "id": "kkS9rr3Nxyw",
+                                "title": "Complex numbers",
+                                "duration": "04:30:07",
+                                "jsid": 2
+                            },
+                            {
+                                "id": "Eh6e9xvOl64",
+                                "title": "Complex numbers | Part 2",
+                                "duration": "02:18:14",
+                                "jsid": 3
+                            },
+                            {
+                                "id": "abw69M-K71s",
+                                "title": "Complex numbers | Cw & Hw",
+                                "duration": "04:09:12",
+                                "jsid": 4
+                            },
+                            {
+                                "id": "69-CunkXs_s",
+                                "title": "Omega",
+                                "duration": "03:12:03",
+                                "jsid": 5
+                            },
+                            {
+                                "id": "HB1L8T2AcVA",
+                                "title": "Omega | Cw",
+                                "duration": "00:52:44",
+                                "jsid": 6
+                            },
+                            {
+                                "id": "gj0Ufvfir_I",
+                                "title": "Determinants",
+                                "duration": "05:06:32",
+                                "jsid": 7
+                            },
+                            {
+                                "id": "ZWjXetLLYas",
+                                "title": "Determinants | Cw",
+                                "duration": "02:33:35",
+                                "jsid": 8
+                            },
+                            {
+                                "id": "OZ2Uu683sp4",
+                                "title": "Matrices",
+                                "duration": "02:44:44",
+                                "jsid": 9
+                            },
+                            {
+                                "id": "9WTeuuQFdKA",
+                                "title": "Matrices | Cw",
+                                "duration": "00:54:37",
+                                "jsid": 10
+                            },
+                            {
+                                "id": "oYsfhrxKKSI",
+                                "title": "linear equations",
+                                "duration": "02:41:13",
+                                "jsid": 11
+                            },
+                            {
+                                "id": "DYJKJFJXs9A",
+                                "title": "linear equations CW",
+                                "duration": "01:04:50",
+                                "jsid": 12
+                            },
+                            {
+                                "id": "xlNzSADN4ok",
+                                "title": "AlgebraPC",
+                                "duration": "00:49:19",
+                                "jsid": 13
+                            },
+                            {
+                                "id": "t19gs1Zh8i4",
+                                "title": "AlgebraPCHw",
+                                "duration": "03:52:07",
+                                "jsid": 14
+                            },
+                            {
+                                "id": "H5HrS5pCwG8",
+                                "title": "SG CH1 | Part 1",
+                                "duration": "03:36:24",
+                                "jsid": 15
+                            },
+                            {
+                                "id": "p4icHkxRmF4",
+                                "title": "SG CH1 | Part 1 Classwork",
+                                "duration": "02:02:39",
+                                "jsid": 16
+                            },
+                            {
+                                "id": "sKeFqy8_RF4",
+                                "title": "SG CH1 | Part 2",
+                                "duration": "02:07:26",
+                                "jsid": 17
+                            },
+                            {
+                                "id": "hC2SSY7kMWo",
+                                "title": "SG CH1 | Part 2 Classwork",
+                                "duration": "02:01:39",
+                                "jsid": 18
+                            },
+                            {
+                                "id": "8_I8ejqtisI",
+                                "title": "SG CH2 | Part 1",
+                                "duration": "03:15:43",
+                                "jsid": 19
+                            },
+                            {
+                                "id": "N0ne4GW86lQ",
+                                "title": "SG CH2 | Part 1 Classwork",
+                                "duration": "02:09:58",
+                                "jsid": 20
+                            },
+                            {
+                                "id": "JV1-OMjn25E",
+                                "title": "SG CH2 | Part 2",
+                                "duration": "06:00:19",
+                                "jsid": 21
+                            },
+                            {
+                                "id": "1yW_4ih0Ik0",
+                                "title": "SG CH2 | Part 2 Classwork",
+                                "duration": "03:17:00",
+                                "jsid": 22
+                            },
+                            {
+                                "id": "t-Tni-lrKiM",
+                                "title": "AlgCh1Summary",
+                                "duration": "02:31:38",
+                                "jsid": 23
+                            },
+                            {
+                                "id": "hQF16SmoGgU",
+                                "title": "AlgCh1Problems1",
+                                "duration": "01:05:30",
+                                "jsid": 24
+                            },
+                            {
+                                "id": "O5vx50SnMbo",
+                                "title": "AlgCh1Problems2",
+                                "duration": "01:39:48",
+                                "jsid": 25
+                            },
+                            {
+                                "id": "XlBaVi1OBEc",
+                                "title": "AlgCh1Problems3",
+                                "duration": "02:45:37",
+                                "jsid": 26
+                            },
+                            {
+                                "id": "qeOJamy3J8Q",
+                                "title": "AlgCh2Summary",
+                                "duration": "01:41:34",
+                                "jsid": 27
+                            },
+                            {
+                                "id": "hHD7bvZuN2I",
+                                "title": "AlgCh2Problems1",
+                                "duration": "03:47:11",
+                                "jsid": 28
+                            },
+                            {
+                                "id": "Rnd32OAZXEM",
+                                "title": "AlgCh2Problems2",
+                                "duration": "01:27:56",
+                                "jsid": 29
+                            },
+                            {
+                                "id": "ZwcX5tpzlSw",
+                                "title": "AlgCh3Summary",
+                                "duration": "02:55:33",
+                                "jsid": 30
+                            },
+                            {
+                                "id": "yK9vufINivs",
+                                "title": "AlgCh3Problems1",
+                                "duration": "01:26:24",
+                                "jsid": 31
+                            },
+                            {
+                                "id": "ymdZhhvn9BA",
+                                "title": "AlgCh3Problems2",
+                                "duration": "01:28:27",
+                                "jsid": 32
+                            },
+                            {
+                                "id": "JzfNPTuQ0-I",
+                                "title": "SGFinalrevPart1Summary",
+                                "duration": "01:07:05",
+                                "jsid": 33
+                            },
+                            {
+                                "id": "Zsr1nEDonaU",
+                                "title": "SGFinalrevPart1Problems",
+                                "duration": "01:29:18",
+                                "jsid": 34
+                            },
+                            {
+                                "id": "udGfbWFOSlw",
+                                "title": "SGFinalrevPart2Summary",
+                                "duration": "01:32:57",
+                                "jsid": 35
+                            },
+                            {
+                                "id": "1Ycs-36WTu4",
+                                "title": "SGFinalrevPart2Problems",
+                                "duration": "02:58:18",
+                                "jsid": 36
+                            },
+                            {
+                                "id": "oRs3hNqtu3E",
+                                "title": "SGFinalrevPart3Summary",
+                                "duration": "01:27:52",
+                                "jsid": 37
+                            },
+                            {
+                                "id": "S0pwUBgaT_4",
+                                "title": "SGFinalrevPart3Problems",
+                                "duration": "02:34:11",
+                                "jsid": 38
+                            },
+                            {
+                                "id": "NqduIRzw5Ao",
+                                "title": "SGFinalrevPart4Summary",
+                                "duration": "02:08:30",
+                                "jsid": 39
+                            },
+                            {
+                                "id": "8DS_mBaGdR8",
+                                "title": "SGFinalrevPart4ProblemsSolve",
+                                "duration": "03:30:40",
+                                "jsid": 40
+                            }
+                        ],
+                        "playlist_id": "PLM-GVlebsoPXA9V7VBUTiazxj2DQn_yxN",
+                        "folder": "https://drive.google.com/drive/folders/1cEnVqh8bAFr4aqHgMdy-_TpfbEVXC0zc?usp=drive_link"
+                    },
+                    {
+                        "name": "Calculus",
+                        "description": "Change and motion.",
+                        "videos": [
+                            {
+                                "id": "7BkflzSCJSc",
+                                "title": "S1 | Skills",
+                                "duration": "01:15:57",
+                                "jsid": 0
+                            },
+                            {
+                                "id": "CNKX3UOPdlQ",
+                                "title": "S1 | Part 1 | Explain",
+                                "duration": "01:49:06",
+                                "jsid": 1
+                            },
+                            {
+                                "id": "vJoWf2neJaM",
+                                "title": "S1 | Part 1 | Classwork",
+                                "duration": "00:38:44",
+                                "jsid": 2
+                            },
+                            {
+                                "id": "mEuxg-wr36A",
+                                "title": "S1 | Part 2 | Explain",
+                                "duration": "01:07:32",
+                                "jsid": 3
+                            },
+                            {
+                                "id": "_YEjOfDkUHc",
+                                "title": "S1 | Part 2 | Classwork",
+                                "duration": "00:25:53",
+                                "jsid": 4
+                            },
+                            {
+                                "id": "Tgb1MgFpVLY",
+                                "title": "S1 | Part 3 | Explain",
+                                "duration": "01:43:48",
+                                "jsid": 5
+                            },
+                            {
+                                "id": "zRxyHwABUc0",
+                                "title": "S1 | Part 3 | Classwork",
+                                "duration": "00:09:02",
+                                "jsid": 6
+                            },
+                            {
+                                "id": "ZEcabe4DkM8",
+                                "title": "S1 | Homework",
+                                "duration": "07:26:39",
+                                "jsid": 7
+                            },
+                            {
+                                "id": "H14xZscRYZ4",
+                                "title": "S2 | Skills",
+                                "duration": "01:55:38",
+                                "jsid": 8
+                            },
+                            {
+                                "id": "Dsj5K0GBXWQ",
+                                "title": "S2 | Part 1",
+                                "duration": "03:17:19",
+                                "jsid": 9
+                            },
+                            {
+                                "id": "jUBDSjdTl8M",
+                                "title": "S2 | Part 2",
+                                "duration": "02:47:19",
+                                "jsid": 10
+                            },
+                            {
+                                "id": "jDVZUVqRT9E",
+                                "title": "S2 | Classwork 1",
+                                "duration": "00:30:52",
+                                "jsid": 11
+                            },
+                            {
+                                "id": "2NfBi6yIZjg",
+                                "title": "S2 | Classwork 2",
+                                "duration": "00:31:42",
+                                "jsid": 12
+                            },
+                            {
+                                "id": "ok-s_Jj48pw",
+                                "title": "S2 | Homework",
+                                "duration": "04:13:57",
+                                "jsid": 13
+                            },
+                            {
+                                "id": "25vhepXYFXw",
+                                "title": "S3 | Part 1",
+                                "duration": "01:12:48",
+                                "jsid": 14
+                            },
+                            {
+                                "id": "KtOj69-JPoo",
+                                "title": "S3 | Part 2",
+                                "duration": "01:00:49",
+                                "jsid": 15
+                            },
+                            {
+                                "id": "YbzFIk8D-YA",
+                                "title": "S3 | Homework",
+                                "duration": "02:16:21",
+                                "jsid": 16
+                            },
+                            {
+                                "id": "Icd-ear_86k",
+                                "title": "S4 | Skills",
+                                "duration": "00:45:12",
+                                "jsid": 17
+                            },
+                            {
+                                "id": "cCn1Tb1BRrI",
+                                "title": "S4 | Prestudy",
+                                "duration": "00:59:20",
+                                "jsid": 18
+                            },
+                            {
+                                "id": "ktZmN_WlXnA",
+                                "title": "S4 | Part 1",
+                                "duration": "03:12:09",
+                                "jsid": 19
+                            },
+                            {
+                                "id": "KEvlRMS23C4",
+                                "title": "S4 | Part 1 Classwork",
+                                "duration": "01:23:57",
+                                "jsid": 20
+                            },
+                            {
+                                "id": "q9mPZW9nMp0",
+                                "title": "S4 | Part 2",
+                                "duration": "00:51:53",
+                                "jsid": 21
+                            },
+                            {
+                                "id": "ZUuFXVt0Wuo",
+                                "title": "S4 | Part 2 Classwork",
+                                "duration": "00:23:20",
+                                "jsid": 22
+                            },
+                            {
+                                "id": "FmSBY4aUGdI",
+                                "title": "S4 | Part 3",
+                                "duration": "01:06:26",
+                                "jsid": 23
+                            },
+                            {
+                                "id": "I8WnMQXgBuM",
+                                "title": "S4 | Part 4",
+                                "duration": "00:27:46",
+                                "jsid": 24
+                            },
+                            {
+                                "id": "BIpDqxcVI9I",
+                                "title": "S4 | Homework",
+                                "duration": "04:22:06",
+                                "jsid": 25
+                            },
+                            {
+                                "id": "tgurPHGumr4",
+                                "title": "S5 | Part 1",
+                                "duration": "01:45:28",
+                                "jsid": 26
+                            },
+                            {
+                                "id": "j6ISTmCcOAE",
+                                "title": "S5 | Part 1 Classwork",
+                                "duration": "00:13:50",
+                                "jsid": 27
+                            },
+                            {
+                                "id": "OUKQboyGD-g",
+                                "title": "S5 | Part 2",
+                                "duration": "00:54:02",
+                                "jsid": 28
+                            },
+                            {
+                                "id": "ikBR8S80KuY",
+                                "title": "S5 | Part 2 Classwork",
+                                "duration": "00:07:54",
+                                "jsid": 29
+                            },
+                            {
+                                "id": "yu8T-rU8bUE",
+                                "title": "S5 | Part 3",
+                                "duration": "01:09:52",
+                                "jsid": 30
+                            },
+                            {
+                                "id": "du25ALpAFTA",
+                                "title": "S5 | Part 3 Claswork",
+                                "duration": "00:06:21",
+                                "jsid": 31
+                            },
+                            {
+                                "id": "Jdr_S-vPqB8",
+                                "title": "S5 | Trig",
+                                "duration": "00:24:10",
+                                "jsid": 32
+                            },
+                            {
+                                "id": "QOEDrAKA3Bo",
+                                "title": "S5 | Homework",
+                                "duration": "08:49:37",
+                                "jsid": 33
+                            },
+                            {
+                                "id": "nkhx_UCB8X0",
+                                "title": "S6 | Part 1",
+                                "duration": "00:34:06",
+                                "jsid": 34
+                            },
+                            {
+                                "id": "XYhY8Hjamhk",
+                                "title": "S6 | Part 1 Classwork",
+                                "duration": "00:05:22",
+                                "jsid": 35
+                            },
+                            {
+                                "id": "sOToHBTag0Q",
+                                "title": "S6 | Part 2",
+                                "duration": "00:42:39",
+                                "jsid": 36
+                            },
+                            {
+                                "id": "uM4YDaUqGXA",
+                                "title": "S6 | Part 2 Classwork",
+                                "duration": "00:15:34",
+                                "jsid": 37
+                            },
+                            {
+                                "id": "Fz4gxkkHzu0",
+                                "title": "S6 | Applications",
+                                "duration": "01:02:41",
+                                "jsid": 38
+                            },
+                            {
+                                "id": "yGWWzKqsLK0",
+                                "title": "S6 | Homework",
+                                "duration": "03:31:00",
+                                "jsid": 39
+                            },
+                            {
+                                "id": "CvKWfzadL2o",
+                                "title": "S7 | Part 1",
+                                "duration": "02:01:41",
+                                "jsid": 40
+                            },
+                            {
+                                "id": "_Wy8zzbRCJ8",
+                                "title": "S7 | Part 1 Classwork",
+                                "duration": "00:28:45",
+                                "jsid": 41
+                            },
+                            {
+                                "id": "7IjtYgZOEIE",
+                                "title": "S7 | Part 2",
+                                "duration": "00:43:47",
+                                "jsid": 42
+                            },
+                            {
+                                "id": "5RYDePi8zdE",
+                                "title": "S7 | Part 2 Classwork",
+                                "duration": "00:15:19",
+                                "jsid": 43
+                            },
+                            {
+                                "id": "GHe9QuzVxPA",
+                                "title": "S7 | Homework",
+                                "duration": "07:26:59",
+                                "jsid": 44
+                            },
+                            {
+                                "id": "Eoe5VHyx2rs",
+                                "title": "S8 | Graphs of Chapter 3",
+                                "duration": "01:16:54",
+                                "jsid": 45
+                            },
+                            {
+                                "id": "OnrTMQDOPHI",
+                                "title": "S8 | Classwork",
+                                "duration": "01:21:27",
+                                "jsid": 46
+                            },
+                            {
+                                "id": "bkjfQ9IRuXE",
+                                "title": "S8 | Homework",
+                                "duration": "01:25:19",
+                                "jsid": 47
+                            },
+                            {
+                                "id": "i0LL9bysF_g",
+                                "title": "S9 | Part 1",
+                                "duration": "02:18:46",
+                                "jsid": 48
+                            },
+                            {
+                                "id": "a0VBRp4mdkc",
+                                "title": "S9 | Part 1 Classwork",
+                                "duration": "01:05:35",
+                                "jsid": 49
+                            },
+                            {
+                                "id": "XIeHKL4OwA4",
+                                "title": "S9 | Part 2",
+                                "duration": "00:47:13",
+                                "jsid": 50
+                            },
+                            {
+                                "id": "EqMiBZSZXbk",
+                                "title": "S9 | Part 2 Classwork",
+                                "duration": "00:40:40",
+                                "jsid": 51
+                            },
+                            {
+                                "id": "IWVvWVMv0R4",
+                                "title": "S9  | Homework",
+                                "duration": "08:21:40",
+                                "jsid": 52
+                            },
+                            {
+                                "id": "uglmO27Fsic",
+                                "title": "S10 | Maxmin Part 1",
+                                "duration": "02:11:20",
+                                "jsid": 53
+                            },
+                            {
+                                "id": "xw_5pWASlRM",
+                                "title": "S10 | Maxmin Part 1 Classwork",
+                                "duration": "00:36:29",
+                                "jsid": 54
+                            },
+                            {
+                                "id": "ONZtau7gQcg",
+                                "title": "S10 | Maxmin Part 2",
+                                "duration": "01:07:29",
+                                "jsid": 55
+                            },
+                            {
+                                "id": "pNpTMJ-kjCo",
+                                "title": "S10 | Maxmin Part 2 Classwork",
+                                "duration": "00:43:00",
+                                "jsid": 56
+                            },
+                            {
+                                "id": "-mBrR39gRTY",
+                                "title": "S10 | Homework",
+                                "duration": "03:08:57",
+                                "jsid": 57
+                            },
+                            {
+                                "id": "yxJoF7rs5v4",
+                                "title": "Chapter 1 Summary",
+                                "duration": "01:04:05",
+                                "jsid": 58
+                            },
+                            {
+                                "id": "QnJWTgBpIRo",
+                                "title": "Chapter 1 Solve | Part 1",
+                                "duration": "02:33:49",
+                                "jsid": 59
+                            },
+                            {
+                                "id": "B82UnD3u3uQ",
+                                "title": "Chapter 1 Solve | Part 2",
+                                "duration": "01:43:37",
+                                "jsid": 60
+                            },
+                            {
+                                "id": "aLc5cjbIPGg",
+                                "title": "Chapter 1 Solve | Part 3",
+                                "duration": "03:52:27",
+                                "jsid": 61
+                            },
+                            {
+                                "id": "PaCnxz6TuJ4",
+                                "title": "Chapter 2 Summary",
+                                "duration": "01:29:17",
+                                "jsid": 62
+                            },
+                            {
+                                "id": "fT8oq9m5lVU",
+                                "title": "Chapter 2 Solve | Part 1",
+                                "duration": "01:09:13",
+                                "jsid": 63
+                            },
+                            {
+                                "id": "zSQidqTs3_Y",
+                                "title": "Chapter 2 Solve | Part 2",
+                                "duration": "01:26:08",
+                                "jsid": 64
+                            },
+                            {
+                                "id": "eh4fAbk6kAc",
+                                "title": "Chapter 3 Summary",
+                                "duration": "03:52:42",
+                                "jsid": 65
+                            },
+                            {
+                                "id": "IxP1r5lbT7o",
+                                "title": "Chapter 3 Solve | Part 1",
+                                "duration": "02:54:26",
+                                "jsid": 66
+                            },
+                            {
+                                "id": "o6Oasri8CQ4",
+                                "title": "Chapter 3 Solve | Part 2",
+                                "duration": "01:18:07",
+                                "jsid": 67
+                            },
+                            {
+                                "id": "eBtMwcENsZA",
+                                "title": "Chapter 3 Solve | Part 3",
+                                "duration": "02:44:05",
+                                "jsid": 68
+                            },
+                            {
+                                "id": "R8qSIAT3m8Q",
+                                "title": "Chapter 4 Summary",
+                                "duration": "01:49:09",
+                                "jsid": 69
+                            },
+                            {
+                                "id": "Fclp3fmdwj0",
+                                "title": "Chapter 4 Solve | Part 1",
+                                "duration": "03:56:09",
+                                "jsid": 70
+                            },
+                            {
+                                "id": "3UbJtc1QP5o",
+                                "title": "Chapter 4 Solve | Part 2",
+                                "duration": "01:25:02",
+                                "jsid": 71
+                            },
+                            {
+                                "id": "ODa2ICaooOc",
+                                "title": "Chapter 4 Solve | Part 3",
+                                "duration": "03:26:21",
+                                "jsid": 72
+                            }
+                        ],
+                        "playlist_id": "PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq",
+                        "folder": "https://drive.google.com/drive/folders/142TCiyG-oCmkpgeLpEnHmGaRSmnN6Och?usp=drive_link"
+                    }
+                ]
+            },
+            {
+                "name": "Mr. Mohamed Salama",
+                "link": "salama",
+                "description": "not cool teacher",
+                "courses": [
+                    {
+                        "name": "Geometry",
+                        "description": "Shapes and space.",
+                        "videos": "",
+                        "playlist_id": "",
+                        "folder": ""
+                    },
+                    {
+                        "name": "Statistics",
+                        "description": "Data analysis methods.",
+                        "videos": "",
+                        "playlist_id": "",
+                        "folder": ""
+                    }
+                ]
+            }
+        ]
+    },
+    "physics": {
+        "teachers": [
+            {
+                "name": "Dr. Mohamed Adel",
+                "link": "mohamedadel",
+                "courses": [
+                    {
+                        "name": "Mechanics",
+                        "description": "Motion and forces.",
+                        "videos": "",
+                        "playlist_id": "",
+                        "folder": ""
+                    },
+                    {
+                        "name": "Electromagnetism",
+                        "description": "Electric and magnetic.",
+                        "videos": "",
+                        "playlist_id": "",
+                        "folder": ""
+                    }
+                ]
+            },
+            {
+                "name": "Mr. Tamer el kady",
+                "link": "tamerelkady",
+                "courses": [
+                    {
+                        "name": "Thermodynamics",
+                        "description": "Heat and energy.",
+                        "videos": "",
+                        "playlist_id": "",
+                        "folder": ""
+                    },
+                    {
+                        "name": "Quantum Physics",
+                        "description": "Subatomic particles study.",
+                        "videos": "",
+                        "playlist_id": "",
+                        "folder": ""
+                    }
+                ]
+            }
+        ]
+    },
+    "english": {
+        "teachers": [
+            {
+                "name": "Mr. Hossam Sameh",
+                "link": "theleader",
+                "courses": [
+                    {
+                        "name": "Grammar",
+                        "description": "Language structure rules.",
+                        "videos": "",
+                        "playlist_id": "",
+                        "folder": ""
+                    },
+                    {
+                        "name": "Literature",
+                        "description": "Written works study.",
+                        "videos": "",
+                        "playlist_id": "",
+                        "folder": ""
+                    }
+                ]
+            },
+            {
+                "name": "Mr. Aahmed Salah",
+                "link": "ahmedsalah",
+                "courses": [
+                    {
+                        "name": "Writing",
+                        "description": "Composition and expression.",
+                        "videos": "",
+                        "playlist_id": "",
+                        "folder": ""
+                    },
+                    {
+                        "name": "Speaking",
+                        "description": "Oral communication skills.",
+                        "videos": "",
+                        "playlist_id": "",
+                        "folder": ""
+                    }
+                ]
+            }
+        ]
+    },
+    "arabic": {
+        "teachers": [
+            {
+                "name": "Mr. Mohamed Tarek",
+                "link": "mohamedtarek",
+                "courses": [
+                    {
+                        "name": "Grammar",
+                        "description": "Language rules study.",
+                        "videos": "",
+                        "playlist_id": "",
+                        "folder": ""
+                    },
+                    {
+                        "name": "Literature",
+                        "description": "Written texts study.",
+                        "videos": "",
+                        "playlist_id": "",
+                        "folder": ""
+                    }
+                ]
+            },
+            {
+                "name": "Mr. Mohamed Salah",
+                "link": "mohamedsalah",
+                "courses": [
+                    {
+                        "name": "Grammar",
+                        "description": "Language rules study.",
+                        "videos": "",
+                        "playlist_id": "",
+                        "folder": ""
+                    },
+                    {
+                        "name": "Literature",
+                        "description": "Written texts study.",
+                        "videos": "",
+                        "playlist_id": "",
+                        "folder": ""
+                    }
+                ]
+            },
+            {
+                "name": "Mr. Reda el farouk",
+                "link": "redaelfarouk",
+                "courses": [
+                    {
+                        "name": "Writing",
+                        "description": "Creative composition skills.",
+                        "videos": "",
+                        "playlist_id": "",
+                        "folder": ""
+                    },
+                    {
+                        "name": "Poetry",
+                        "description": "Versified language study.",
+                        "videos": "",
+                        "playlist_id": "",
+                        "folder": ""
+                    }
+                ]
+            }
+        ]
+    },
+    "german": {
+        "teachers": [
+            {
+                "name": "Herr Abd El Moez",
+                "link": "abdelmoez",
+                "courses": [
+                    {
+                        "name": "German Culture",
+                        "description": "Cultural context study.",
+                        "videos": "",
+                        "playlist_id": "",
+                        "folder": ""
+                    },
+                    {
+                        "name": "German Literature",
+                        "description": "German written works.",
+                        "videos": "",
+                        "playlist_id": "",
+                        "folder": ""
+                    }
+                ]
+            }
+        ]
+    },
+    "geology": {
+        "teachers": [
+            {
+                "name": "Mr. Sameh Nashaat",
+                "link": "samehnashaat",
+                "courses": [
+                    {
+                        "name": "Mineralogy",
+                        "description": "Study of minerals.",
+                        "videos": "",
+                        "playlist_id": "",
+                        "folder": ""
+                    },
+                    {
+                        "name": "Petrology",
+                        "description": "Rocks and formation.",
+                        "videos": "",
+                        "playlist_id": "",
+                        "folder": ""
+                    }
+                ]
+            }
+        ]
+    },
+    "biology": {
+        "teachers": [
+            {
+                "name": "Dr. Mohamed Daif",
+                "link": "daif",
+                "courses": [
+                    {
+                        "name": "Ecology",
+                        "description": "Ecosystems and interactions.",
+                        "videos": "",
+                        "playlist_id": "",
+                        "folder": ""
+                    },
+                    {
+                        "name": "Microbiology",
+                        "description": "Microorganisms study.",
+                        "videos": "",
+                        "playlist_id": "",
+                        "folder": ""
+                    }
+                ]
+            }
+        ]
+    },
+    "New": {
+        "teachers": [
+            {
+                "name": "Roblox",
+                "link": "Roblox",
+                "courses": []
+            }
+        ]
+    }
+}

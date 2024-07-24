@@ -67,31 +67,7 @@ def create_app():
 
 
 
-    
-    @app.route('/login/newdevice')
-    def loginnewdevice():
-        user = request.args.get('user')
 
-        if user in user_socket_map:
-            token = random.randint(100000, 999999)
-
-            current_user.otp = token
-
-            db.session.commit()
-
-            username = current_user.username
-
-            target_socket_id = user_socket_map[user]
-
-            socketio.emit('login', {
-                'token': token,
-                'username': username
-            },
-                          room=target_socket_id)
-
-            return 'Check your other device ;)'
-        else:
-            return "Please Refresh the other device and scan the qr code again."
 
     @app.route('/admin')
     def admin():
@@ -139,18 +115,18 @@ def create_app():
 
         excluded_routes = [
             'views.logoutotherdevices', 'views.login2', 'views.login',
-            'views.registeracc', 'views.verifyemail', 'views.robots_txt',
+            'views.registeracc', 'views.forgotpassword', 'views.robots_txt',
             'views.favicon', 'views.monitor', 'shortlinks.tools',
             'vdo.commandslist', 'shortlinks.youtube', 'vdo.cmdcommand',
-            'vdo.storjflask2', 'views.loginfromqr', 'shortlinks.netflix'
+            'vdo.storjflask2'
         ]
 
         if request.endpoint and request.endpoint not in excluded_routes and not request.path.startswith(
                 '/static/') and not request.path.startswith('/send_email'):
             if not current_user.is_authenticated:
-                return redirect(
-                    f"{url_for('views.login')}?goto={request.path.replace('/', '')}"
-                )
+                return redirect(url_for('views.login'))
+            elif current_user.otp == "Waiting approval" :
+                return 'Please wait to get approved'
             else:
                 client_ip = request.headers.get('X-Forwarded-For')
                 if client_ip:
@@ -160,11 +136,11 @@ def create_app():
 
                 user_agent = request.headers.get('User-Agent')
 
-                utc_now = datetime.now(timezone.utc)
+                # utc_now = datetime.now(timezone.utc)
 
-                gmt2 = pytz.timezone('Etc/GMT-3')
-                gmt2_now = utc_now.replace(tzinfo=pytz.utc).astimezone(gmt2)
-                timestamp = gmt2_now.strftime('%d/%m -- %I:%M %p')
+                # gmt2 = pytz.timezone('Etc/GMT-3')
+                # gmt2_now = utc_now.replace(tzinfo=pytz.utc).astimezone(gmt2)
+                # timestamp = gmt2_now.strftime('%d/%m -- %I:%M %p')
 
                 device_type = "Desktop" if "Windows" in user_agent else (
                     "Macintosh" if "Macintosh" in user_agent else "Mobile")
@@ -185,7 +161,7 @@ def create_app():
                         request.path = request.url
 
                 if current_user and current_user.username not in [
-                        'spy', 'biba'
+                        'spy'
                 ]:
                     discord_log(
                         f"{client_ip} Viewed <{request.path}>  {current_user.username} {device_type} ```{user_agent}```"
