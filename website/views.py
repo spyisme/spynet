@@ -75,7 +75,6 @@ def convert_duration(duration):
 def get_playlist_videos(playlist_id):
     youtube = get_authenticated_service()
 
-
     # Fetch the playlist items
     playlist_items = []
     next_page_token = None
@@ -161,23 +160,23 @@ def login():
 
     if current_user.is_authenticated:
         return redirect(url_for('views.home'))
-    # if client_ip in blacklist_ips:
-    #     return jsonify(message=f"Error 403 your ip is {client_ip}"), 403
+    if client_ip in blacklist_ips:
+        return jsonify(message=f"Error 403 your ip is {client_ip}"), 403
 
-    # if client_ip not in whitelist_ips:
-    #     api_url = f'https://ipinfo.io/{client_ip}?token=8f8d5a48b50694'
-    #     response = requests.get(api_url)
-    #     data = response.json()
+    if client_ip not in whitelist_ips:
+        api_url = f'https://ipinfo.io/{client_ip}?token=8f8d5a48b50694'
+        response = requests.get(api_url)
+        data = response.json()
 
-    #     if 'country' in data:
-    #         country_code = data['country']
-    #         if country_code != 'EG':
-    #             blacklist_ips.add(client_ip)
-    #             return jsonify(message="Please disable vpn/proxy."), 403
-    #     else:
-    #         blacklist_ips.add(client_ip)
-    #         return jsonify(
-    #             message="Unable to determine the country. Login failed."), 403
+        if 'country' in data:
+            country_code = data['country']
+            if country_code != 'EG':
+                blacklist_ips.add(client_ip)
+                return jsonify(message="Please disable vpn/proxy."), 403
+        else:
+            blacklist_ips.add(client_ip)
+            return jsonify(
+                message="Unable to determine the country. Login failed."), 403
 
     whitelist_ips.add(client_ip)
 
@@ -191,12 +190,12 @@ def login():
 
         if user:
 
-            if user.username not in ['spy'] and user.active_sessions >= 3: 
-                
+            if user.username not in ['spy'] and user.active_sessions >= 3:
+
                 discord_log_login(
                     f"{username} tried to login from more than 3 devices <@709799648143081483>"
                 )
-                
+
                 return redirect(f"/login?maxdevices=yes&user={username}")
 
             if password == user.password:
@@ -214,10 +213,10 @@ def login():
                     f"{client_ip} just failed to login with '{username}' Device ```{user_agent}``` <@709799648143081483>"
                 )
                 return redirect(f"/login?password=false&user={username}")
-        else :
+        else:
             discord_log_login(
-                    f"{client_ip} just failed to login with '{username}' Device ```{user_agent}``` <@709799648143081483>"
-                )
+                f"{client_ip} just failed to login with '{username}' Device ```{user_agent}``` <@709799648143081483>"
+            )
             return redirect("/login?failed=true")
     return render_template('users_pages/login.html',
                            password=request.args.get("password"),
@@ -241,12 +240,10 @@ def logout():
 #Works fine bs redo it later
 
 
-
 def read_html_file(file_path, **kwargs):
     with open(file_path, 'r') as file:
         template = file.read()
     return render_template_string(template, **kwargs)
-
 
 
 @views.route('/forgotpassword', methods=['GET', 'POST'])
@@ -261,9 +258,6 @@ def forgotpassword():
     else:
         client_ip = request.headers.get('CF-Connecting-IP',
                                         request.remote_addr)
-
-
-
 
     user_agent = request.headers.get('User-Agent')
     username = request.args.get('user')
@@ -283,7 +277,7 @@ def forgotpassword():
                 )
                 session.permanent = True
                 return redirect(url_for('views.home'))
-            elif  user.otp == "Waiting approval" :
+            elif user.otp == "Waiting approval":
                 return 'Please wait to get approved'
             recipient = user.email
             if recipient:
@@ -305,7 +299,8 @@ def forgotpassword():
     if request.method == 'POST':
         otp = request.form.get('otp')
         if otp == user.otp:
-            if user.username not in ['spy', 'biba'] and user.active_sessions >= 3:
+            if user.username not in ['spy', 'biba'
+                                     ] and user.active_sessions >= 3:
 
                 discord_log_login(
                     f"{username} tried to login from more than 3 devices <@709799648143081483>"
@@ -328,16 +323,15 @@ def forgotpassword():
 
             return redirect('/')
         else:
-            return redirect(f'/forgotpassword?msg=failedtologin&user={username}')
-        
+            return redirect(
+                f'/forgotpassword?msg=failedtologin&user={username}')
+
     return render_template('users_pages/verify.html',
                            email=user.email,
                            msg=msgg)
 
 
-
-
-#Re do it , basicly useless 
+#Re do it , basicly useless
 @views.route('/register', methods=['GET', 'POST'])
 def registeracc():
     client_ip = request.headers.get('X-Forwarded-For')
@@ -347,7 +341,25 @@ def registeracc():
     else:
         client_ip = request.headers.get('CF-Connecting-IP',
                                         request.remote_addr)
-        
+
+    if client_ip in blacklist_ips:
+        return jsonify(message=f"Error 403 your ip is {client_ip}"), 403
+
+    if client_ip not in whitelist_ips:
+        api_url = f'https://ipinfo.io/{client_ip}?token=8f8d5a48b50694'
+        response = requests.get(api_url)
+        data = response.json()
+
+        if 'country' in data:
+            country_code = data['country']
+            if country_code != 'EG':
+                blacklist_ips.add(client_ip)
+                return jsonify(message="Please disable vpn/proxy."), 403
+        else:
+            blacklist_ips.add(client_ip)
+            return jsonify(
+                message="Unable to determine the country. Login failed."), 403
+
     user_agent = request.headers.get('User-Agent')
     if current_user.is_authenticated:
         return redirect(url_for('views.home'))
@@ -359,12 +371,14 @@ def registeracc():
             return "Username taken"
         email = request.form.get('email')
         password = request.form.get('password')
-        
-        new_user = User(username=username, password=password, email=email , otp = "Waiting approval")
+
+        new_user = User(username=username,
+                        password=password,
+                        email=email,
+                        otp="Waiting approval")
 
         db.session.add(new_user)
         db.session.commit()
-
 
         discord_log_register(
             f"New user  : {username} ====== {email} ====== {password} ====== {client_ip} ====== {user_agent} <@709799648143081483>"
@@ -381,17 +395,21 @@ def redirectlinks(link):
     link = link.replace('andsympol', '&').replace(':', ':/')  #For iphone
     return redirect(f"{link}")
 
+
 @views.route('/favicon.ico')
 def favicon():
     return redirect("/static/favicon.ico")
+
 
 @views.route('/robots.txt')
 def robots_txt():
     return send_file('website/robots.txt', mimetype='otp/plain')
 
-@views.route('/monitor') #Uptime robot
+
+@views.route('/monitor')  #Uptime robot
 def monitor():
     return "Working"
+
 
 #Home
 @views.route("/subjects")
@@ -402,10 +420,13 @@ def subjectspage():
     return render_template('used_pages/all.html',
                            lines=lines,
                            teachername="All")
+
+
 @views.route("/")
 def home():
 
     return redirect(url_for("views.subjectspage"))
+
 
 #User pages---------------------------------------------------------------------------------------------------
 @views.route("/subjects/<subject>")
@@ -444,6 +465,8 @@ def teacher(subject, teacher_name):
                            teachername=subject,
                            teacher_links=courses,
                            teacher_name=teacher_name)
+
+
 #Videos
 @views.route("/subjects/<subject>/<teacher_name>/<course_name>")
 def videos(subject, teacher_name, course_name):
@@ -456,13 +479,11 @@ def videos(subject, teacher_name, course_name):
                 # Find the specific course
                 for course in teacher.get("courses", []):
 
-     
                     if course.get("name") == course_name:
                         # Return the course videos and playlist_id
                         videos = course.get('videos', '')
                         playlist_id = course.get('playlist_id', '')
                         folder = course.get('folder', '')
-              
 
     teachername = course_name
 
@@ -471,6 +492,7 @@ def videos(subject, teacher_name, course_name):
                            playlist_id=playlist_id,
                            teachername=teachername,
                            folder=folder)
+
 
 #/Update(playlist id)
 @views.route("/subjects/<subject>/<teacher_name>/<course_name>/update")
@@ -492,42 +514,25 @@ def update(subject, teacher_name, course_name):
     return videos
 
 
+#Admin pages
 
-
-#Admin pages 
- 
-#Manage users 
-
-
-
-
-
-
-
-
-
+#Manage users
 
 #Edit pages------------------------------------------------------------------------------------
 
-
-
 admins = ['spy']
-
-
-
-
-
 
 
 def load_data():
     with open('website/Backend/data.json', 'r') as file:
         return json.load(file)
 
+
 def save_data(data):
     timestamp = datetime.now().strftime("%m.%d_%H.%M")
     backup_filename = f"website/Backend/dumps/{timestamp}.json"
     os.makedirs(os.path.dirname(backup_filename), exist_ok=True)
-    
+
     # Backup the current data.json
     with open('website/Backend/data.json', 'r') as file:
         current_data = file.read()
@@ -538,13 +543,13 @@ def save_data(data):
         json.dump(data, file, indent=4)
 
 
-#Add/remove a subject 
-@views.route('/subjects/edit' , methods=['POST' , 'GET'])
+#Add/remove a subject
+@views.route('/subjects/edit', methods=['POST', 'GET'])
 def manage_subjects():
 
     if current_user.username not in admins:
         return "User is not an admin"
-    
+
     data = load_data()
     if request.method == 'POST':
         if request.form['action'] == 'Add':
@@ -554,13 +559,17 @@ def manage_subjects():
             file = request.files['file']
 
             if file:
-                os.makedirs(os.path.dirname(f'website/static/assets/homepage/' + subject + '.jpg'), exist_ok=True)
+                os.makedirs(
+                    os.path.dirname(f'website/static/assets/homepage/' +
+                                    subject + '.jpg'),
+                    exist_ok=True)
 
-                file.save(f'website/static/assets/homepage/' + subject + '.jpg')
+                file.save(f'website/static/assets/homepage/' + subject +
+                          '.jpg')
 
             else:
                 return "Choose an imgae for the teacher"
-            
+
             if subject == "":
                 return "Subject is none "
             if subject not in data:
@@ -569,7 +578,8 @@ def manage_subjects():
                 return redirect(url_for('views.manage_subjects'))
 
             else:
-                return jsonify({"message": f"Subject '{subject}' already exists!"}), 400
+                return jsonify(
+                    {"message": f"Subject '{subject}' already exists!"}), 400
 
         if request.form['action'] == 'Remove':
             subject = request.form['removeSubject']
@@ -581,20 +591,23 @@ def manage_subjects():
                 save_data(data)
                 return redirect(url_for('views.manage_subjects'))
             else:
-                return jsonify({"message": f"Subject '{subject}' does not exist!"}), 400
+                return jsonify(
+                    {"message": f"Subject '{subject}' does not exist!"}), 400
 
-    return render_template('data/subjects.html' , data = list(data.keys()))
+    return render_template('data/subjects.html', data=list(data.keys()))
 
 
-
-#Add/remove a teacher 
-@views.route('/subjects/<subject>/edit' , methods=['POST' , 'GET'])
+#Add/remove a teacher
+@views.route('/subjects/<subject>/edit', methods=['POST', 'GET'])
 def manage_teachers(subject):
     if current_user.username not in admins:
         return "User is not an admin"
     data = load_data()
-    teachers= data[subject].get('teachers', [])
-    teacher_list = [{'name': teacher['name'], 'link': teacher['link']} for teacher in teachers]
+    teachers = data[subject].get('teachers', [])
+    teacher_list = [{
+        'name': teacher['name'],
+        'link': teacher['link']
+    } for teacher in teachers]
 
     if request.method == 'POST':
         if request.form['action'] == 'Add':
@@ -603,13 +616,16 @@ def manage_teachers(subject):
             file = request.files['file']
 
             if file:
-                os.makedirs(os.path.dirname(f'website/static/assets/{subject}/' + teacher_name + '.jpg'), exist_ok=True)
+                os.makedirs(
+                    os.path.dirname(f'website/static/assets/{subject}/' +
+                                    teacher_name + '.jpg'),
+                    exist_ok=True)
 
-                file.save(f'website/static/assets/{subject}/' + teacher_name + '.jpg')
+                file.save(f'website/static/assets/{subject}/' + teacher_name +
+                          '.jpg')
 
             else:
                 return "Choose an imgae for the teacher"
-            
 
             if teacher_name == "":
                 return "Teacher name is none "
@@ -621,61 +637,79 @@ def manage_teachers(subject):
                 }
                 data[subject]['teachers'].append(new_teacher)
                 save_data(data)
-                return redirect(url_for('views.manage_teachers', subject=subject))
+                return redirect(
+                    url_for('views.manage_teachers', subject=subject))
 
             else:
-                return jsonify({"message": f"Subject '{subject}' does not exist!"}), 400
-  
+                return jsonify(
+                    {"message": f"Subject '{subject}' does not exist!"}), 400
 
         if request.form['action'] == 'Remove':
             teacher_name = request.form['remove']
-            os.remove(f'website/static/assets/{subject}/' + teacher_name + '.jpg')
+            os.remove(f'website/static/assets/{subject}/' + teacher_name +
+                      '.jpg')
 
             if teacher_name == "":
                 return "Teacher name is none "
             if subject in data:
                 if 'teachers' in data[subject]:
-                    teacher_exists = any(teacher['name'] == teacher_name for teacher in data[subject]['teachers'])
+                    teacher_exists = any(
+                        teacher['name'] == teacher_name
+                        for teacher in data[subject]['teachers'])
                     if teacher_exists:
-                        data[subject]['teachers'] = [teacher for teacher in data[subject]['teachers'] if teacher['name'] != teacher_name]
+                        data[subject]['teachers'] = [
+                            teacher for teacher in data[subject]['teachers']
+                            if teacher['name'] != teacher_name
+                        ]
                         save_data(data)
-                        return redirect(url_for('views.manage_teachers', subject=subject))
+                        return redirect(
+                            url_for('views.manage_teachers', subject=subject))
                     else:
-                        return jsonify({"message": f"Teacher '{teacher_name}' does not exist in subject '{subject}'!"}), 400
+                        return jsonify({
+                            "message":
+                            f"Teacher '{teacher_name}' does not exist in subject '{subject}'!"
+                        }), 400
 
             else:
-                return jsonify({"message": f"Subject '{subject}' does not exist!"}), 400
+                return jsonify(
+                    {"message": f"Subject '{subject}' does not exist!"}), 400
 
-    return render_template('data/teachers.html' , data = teacher_list , subject = subject)
+    return render_template('data/teachers.html',
+                           data=teacher_list,
+                           subject=subject)
 
 
-#Add/remove a course 
-@views.route('/subjects/<subject>/<teachername>/edit' , methods=['POST' , 'GET'])
-def manage_courses(subject , teachername):
+#Add/remove a course
+@views.route('/subjects/<subject>/<teachername>/edit', methods=['POST', 'GET'])
+def manage_courses(subject, teachername):
     if current_user.username not in admins:
         return "User is not an admin"
     data = load_data()
 
- 
     teachers = data.get(subject, {}).get('teachers', [])
-    
 
-    teacher_courses = next((teacher['courses'] for teacher in teachers if teacher['link'] == teachername), None)
+    teacher_courses = next(
+        (teacher['courses']
+         for teacher in teachers if teacher['link'] == teachername), None)
     course_names = [course['name'] for course in teacher_courses]
-    
+
     if request.method == 'POST':
         if request.form['action'] == 'Add':
             course_name = request.form['new']
             file = request.files['file']
 
             if file:
-                os.makedirs(os.path.dirname(f'website/static/assets/{subject}/{teachername}/' + course_name + '.jpg'), exist_ok=True)
-                
-                file.save(f'website/static/assets/{subject}/{teachername}/' + course_name + '.jpg')
+                os.makedirs(os.path.dirname(
+                    f'website/static/assets/{subject}/{teachername}/' +
+                    course_name + '.jpg'),
+                            exist_ok=True)
+
+                file.save(f'website/static/assets/{subject}/{teachername}/' +
+                          course_name + '.jpg')
 
             else:
                 return "Choose an imgae for the course"
-            
+
             if course_name == "":
                 return "Course name is none "
             new_course = {
@@ -688,31 +722,43 @@ def manage_courses(subject , teachername):
             teacher_courses.append(new_course)
             data[subject]['teachers'] = teachers
             save_data(data)
-            return redirect(url_for('views.manage_courses', subject=subject , teachername = teachername))
+            return redirect(
+                url_for('views.manage_courses',
+                        subject=subject,
+                        teachername=teachername))
 
         if request.form['action'] == 'Remove':
-            os.remove(f'website/static/assets/{subject}/{teachername}/' + course_name + '.jpg')
-            teacher = next((t for t in teachers if t['link'] == teachername), None)
+            os.remove(f'website/static/assets/{subject}/{teachername}/' +
+                      course_name + '.jpg')
+            teacher = next((t for t in teachers if t['link'] == teachername),
+                           None)
             course_name = request.form['remove']
 
             if course_name == "":
                 return "Course name is none "
-            teacher_courses = [course for course in teacher_courses if course['name'] != course_name]
+            teacher_courses = [
+                course for course in teacher_courses
+                if course['name'] != course_name
+            ]
 
             teacher['courses'] = teacher_courses
             data[subject]['teachers'] = teachers
-            
+
             save_data(data)
 
-            return redirect(url_for('views.manage_courses', subject=subject , teachername = teachername))
+            return redirect(
+                url_for('views.manage_courses',
+                        subject=subject,
+                        teachername=teachername))
 
+    return render_template('data/courses.html',
+                           data=course_names,
+                           teachername=teachername)
 
-             
-
-    return render_template('data/courses.html' , data = course_names , teachername = teachername )
 
 #Edit a course info
-@views.route('/subjects/<subject>/<teachername>/<course_name>/edit', methods=['POST', 'GET'])
+@views.route('/subjects/<subject>/<teachername>/<course_name>/edit',
+             methods=['POST', 'GET'])
 def edit_course(subject, teachername, course_name):
     if current_user.username not in admins:
         return "User is not an admin"
@@ -728,12 +774,16 @@ def edit_course(subject, teachername, course_name):
                             course['playlist_id'] = request.form['playlist']
                         elif request.form['action'] == 'Apply':
                             course['folder'] = request.form['folder']
-                        elif request.form['action'] == 'set' :
-                            course['description']  = request.form['description']
-                        elif request.form['action'] == 'Clear videos' :
-                            course['videos']  = ""                       
+                        elif request.form['action'] == 'set':
+                            course['description'] = request.form['description']
+                        elif request.form['action'] == 'Clear videos':
+                            course['videos'] = ""
                         save_data(data)
-                        return redirect(url_for('views.edit_course', subject=subject, teachername=teachername, course_name=course_name))
+                        return redirect(
+                            url_for('views.edit_course',
+                                    subject=subject,
+                                    teachername=teachername,
+                                    course_name=course_name))
 
     # Find the current course to display its details
     for teacher in data.get(subject, {}).get('teachers', []):
@@ -743,7 +793,7 @@ def edit_course(subject, teachername, course_name):
                     current_course = course
                     break
 
-    return render_template('data/course.html', course_name=course_name, teachername=teachername, current_course=current_course)
-
-
-
+    return render_template('data/course.html',
+                           course_name=course_name,
+                           teachername=teachername,
+                           current_course=current_course)
