@@ -70,12 +70,13 @@
    <ul>
     {% for x in teacher_links %}
 
-
-
-
+    {% set link = x.link %}
+    {% if " " in link %}
+        {% set link = link.replace(' ', '-') %}
+    {% endif %}
           <li>
     
-            <a href="{{teacher_name}}/{{x.link}}">
+            <a href="{{teacher_name}}/{{link}}">
 
 
                   <div class="card">

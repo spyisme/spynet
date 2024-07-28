@@ -140,7 +140,17 @@ def discord_log_register(message):
         headers=headers)
 
 
-#Login route (whitelist_ips is from EG)
+def discord_log_backend(message):
+    messageeeee = {'content': message}
+    payload = json.dumps(messageeeee)
+    headers = {'Content-Type': 'application/json'}
+    requests.post(
+        "https://discord.com/api/webhooks/1264918948730638336/nD1A8OVB0FmSgUVV7DCd2gumd7CBeTWAoq7AbqjCjwoRRkkgLRM7a8xuYRPOUos4AmwE",
+        data=payload,
+        headers=headers)
+
+
+#Login , logout  (whitelist_ips is from EG)----------------------------------------------------------------
 
 blacklist_ips = set()
 whitelist_ips = set()
@@ -247,76 +257,15 @@ def logout():
 
 
 
-@views.route('/user-delete/<user_id>')
-def delete_user(user_id):
-    if current_user.username not in ['spy', 'skailler']:
-        return "..."
-
-    user_to_delete = User.query.get(user_id)
-
-    if user_to_delete.username == "spy":
-        return "55555555555"
-
-    if not user_to_delete:
-        return jsonify({'error': 'User not found'}), 404
-    
-    discord_log_login("<@709799648143081483> " + current_user.username +
-                            " deleted " + user_to_delete.username)
-    
-    db.session.delete(user_to_delete)
-    db.session.commit()
-
-    return redirect("/admin")
-
-@views.route('/approve/<userid>')
-def approve(userid):
-    user = User.query.filter_by(id=userid).first()
-    user.otp = 1
-    db.session.commit()
-    recipient = user.email
-    subject = "Account Approved"
-
-
-    html_content = read_html_file(
-        'website/templates/users_pages/account_created.html', username=user.username)
-
-    msg = Message(subject, recipients=[recipient])
-    msg.html = html_content
-    mail.send(msg)
-    
-    return "done"
-
-
-@views.route('/change_password', methods=['GET', 'POST'])
-def change_password():
-
-    if request.method == 'POST':
-        password = request.form.get('Password')
-        password2 = request.form.get('Password2')
-
-        if password != password2:
-            return redirect('/change_password?passwords=dontmatch')
-
-        current_user.password = password
-
-        db.session.commit()
-        return redirect('/subjects?password=set')
-
-    return render_template('users_pages/password.html' , msg =request.args.get("passwords") )
-
-
-
-
-
-#Works fine bs redo it later
-
-
+#Register , Forget Password------------------------------------------------------------------------------
 def read_html_file(file_path, **kwargs):
     with open(file_path, 'r') as file:
         template = file.read()
     return render_template_string(template, **kwargs)
 
 
+
+#Error handling?
 @views.route('/forgotpassword', methods=['GET', 'POST'])
 def forgotpassword():
     if current_user.is_authenticated:
@@ -403,8 +352,24 @@ def forgotpassword():
                            email=user.email,
                            msg=msgg)
 
+@views.route('/change_password', methods=['GET', 'POST'])
+def change_password():
+    if request.method == 'POST':
+        password = request.form.get('Password')
+        password2 = request.form.get('Password2')
 
-#Re do it , basicly useless
+        if password != password2:
+            return redirect('/change_password?passwords=dontmatch')
+
+        current_user.password = password
+
+        db.session.commit()
+        return redirect('/subjects?password=set')
+
+    return render_template('users_pages/password.html' , msg =request.args.get("passwords") )
+
+
+#Add requiremts 
 @views.route('/register', methods=['GET', 'POST'])
 def registeracc():
     client_ip = request.headers.get('X-Forwarded-For')
@@ -461,7 +426,7 @@ def registeracc():
                            done=request.args.get("done"))
 
 
-#Dont edit
+#Dont edit------------------------------------------------------------------------------------------------
 @views.route('/redirect/<path:link>')
 def redirectlinks(link):
     link = link.replace('questionmark', '?')
@@ -484,7 +449,7 @@ def monitor():
     return "Working"
 
 
-#Home
+#Home---------------------------------------------------------------------------------------------
 @views.route("/subjects")
 def subjectspage():
     password = request.args.get("password")
@@ -502,7 +467,9 @@ def home():
     return redirect(url_for("views.subjectspage"))
 
 
-#User pages---------------------------------------------------------------------------------------------------
+#User pages---------------------------------------------------------------------------------------------------------------
+
+#Subject
 @views.route("/subjects/<subject>")
 def subjects(subject):
     with open('website/Backend/data.json') as f:
@@ -545,6 +512,9 @@ def teacher(subject, teacher_name):
 @views.route("/subjects/<subject>/<teacher_name>/<course_name>")
 def videos(subject, teacher_name, course_name):
 
+    if "-" in course_name :
+        course_name =course_name.replace('-' , ' ')
+
     with open('website/Backend/data.json') as f:
         data = json.load(f)
     if subject in data:
@@ -568,9 +538,15 @@ def videos(subject, teacher_name, course_name):
                            folder=folder)
 
 
-#/Update(playlist id)
+
+
+#Update videos
 @views.route("/subjects/<subject>/<teacher_name>/<course_name>/update")
 def update(subject, teacher_name, course_name):
+
+    if "-" in course_name :
+
+        course_name =course_name.replace('-' , ' ')
 
     with open('website/Backend/data.json') as f:
         data = json.load(f)
@@ -589,12 +565,158 @@ def update(subject, teacher_name, course_name):
 
 
 #Admin pages
+admins = ['spy'] #list of admins (usernames)
 
-#Manage users
+
+
+#Manage users-----------------------------------------------------------------------
+@views.route('/edit_active_sessions/<user_id>', methods=['POST'])
+def edit_active_sessions(user_id):
+    if request.method == 'POST':
+        if current_user.username not in ['spy', 'skailler', 'behary']:
+            return "..."
+        new_active_sessions = request.form.get('value')
+
+        if not new_active_sessions:
+            return jsonify(
+                {'error': 'New value for active_sessions is required'}), 400
+
+        user = User.query.get(user_id)
+
+        if user:
+            user.active_sessions = new_active_sessions
+
+            db.session.commit()
+            if current_user.username != "spy":
+                discord_log_backend("<@709799648143081483> " +
+                                    current_user.username +
+                                    " edited sessions for " + user.username)
+
+            return redirect("/admin")
+        else:
+            return jsonify({'error': 'User not found'}), 404
+
+    return jsonify({'error': 'Method not allowed'}), 405
+
+
+
+@views.route('/edit_email/<user_id>', methods=['POST'])
+def edit_email(user_id):
+    if request.method == 'POST':
+        if current_user.username not in ['spy', 'skailler']:
+            return "..."
+        new_email = request.form.get('value')
+
+        user = User.query.get(user_id)
+
+        if user:
+            user.email = new_email
+
+            db.session.commit()
+            if current_user.username != "spy":
+                discord_log_backend("<@709799648143081483> " +
+                                    current_user.username +
+                                    " edited email for " + user.username)
+
+            return redirect("/admin")
+        else:
+            return jsonify({'error': 'User not found'}), 404
+
+    return jsonify({'error': 'Method not allowed'}), 405
+
+
+
+
+
+@views.route('/create_user', methods=['POST'])
+def create_user_route():
+    if request.method == 'POST':
+        username = request.form.get('username')
+        email = request.form.get('email')
+
+        password = "password"
+        if not username or not password:
+            return jsonify({'error':
+                            'Username and password are required'}), 400
+        existing_user = User.query.filter_by(username=username).first()
+        if existing_user:
+            return jsonify({'error': 'Username already exists'}), 400
+        new_user = User(username=username, password=password, email=email)
+        db.session.add(new_user)
+        db.session.commit()
+        if current_user.username != 'spy':
+            discord_log_backend("<@709799648143081483> " +
+                                current_user.username +
+                                " created new account " + username)
+
+        return redirect("/admin")
+
+    return jsonify({'error': 'Method not allowed'}), 405
+
+
+
+
+
+@views.route('/user-delete/<user_id>')
+def delete_user(user_id):
+    if current_user.username not in ['spy', 'skailler']:
+        return "..."
+
+    user_to_delete = User.query.get(user_id)
+
+    if user_to_delete.username == "spy":
+        return "55555555555"
+
+    if not user_to_delete:
+        return jsonify({'error': 'User not found'}), 404
+    
+    discord_log_login("<@709799648143081483> " + current_user.username +
+                            " deleted " + user_to_delete.username)
+    
+    db.session.delete(user_to_delete)
+    db.session.commit()
+
+    return redirect("/admin")
+
+@views.route('/approve/<userid>')
+def approve(userid):
+    user = User.query.filter_by(id=userid).first()
+    user.otp = 1
+    db.session.commit()
+    recipient = user.email
+    subject = "Account Approved"
+
+
+    html_content = read_html_file(
+        'website/templates/users_pages/account_created.html', username=user.username)
+
+    msg = Message(subject, recipients=[recipient])
+    msg.html = html_content
+    mail.send(msg)
+    
+    return "done"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #Edit pages------------------------------------------------------------------------------------
 
-admins = ['spy']
 
 
 def load_data():
@@ -838,7 +960,8 @@ def edit_course(subject, teachername, course_name):
         return "User is not an admin"
     data = load_data()
     current_course = None
-
+    if "-" in course_name :
+        course_name =course_name.replace('-' , ' ')
     if request.method == 'POST':
         for teacher in data.get(subject, {}).get('teachers', []):
             if teacher['link'] == teachername:
