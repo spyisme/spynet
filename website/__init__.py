@@ -127,6 +127,9 @@ def create_app():
                 return redirect(url_for('views.login'))
             elif current_user.otp == "Waiting approval" :
                 return 'Please wait to get approved'
+            elif current_user.password == "Chnageme":
+                if not request.path.startswith('/change_password') :
+                    return  redirect(url_for('views.change_password'))    
             else:
                 client_ip = request.headers.get('X-Forwarded-For')
                 if client_ip:

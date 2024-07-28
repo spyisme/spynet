@@ -160,6 +160,11 @@ def login():
 
     if current_user.is_authenticated:
         return redirect(url_for('views.home'))
+    
+
+    if client_ip == "127.0.0.1" :
+        whitelist_ips.add(client_ip)
+
     if client_ip in blacklist_ips:
         return jsonify(message=f"Error 403 your ip is {client_ip}"), 403
 
@@ -237,6 +242,48 @@ def logout():
     return redirect(url_for('views.login'))
 
 
+
+
+@views.route('/approve/<userid>')
+def approve(userid):
+    user = User.query.filter_by(id=userid).first()
+    user.otp = 1
+    db.session.commit()
+    recipient = user.email
+    subject = "Account Approved"
+
+
+    html_content = read_html_file(
+        'website/templates/users_pages/account_created.html', username=user.username)
+
+    msg = Message(subject, recipients=[recipient])
+    msg.html = html_content
+    mail.send(msg)
+    
+    return "done"
+
+
+@views.route('/change_password', methods=['GET', 'POST'])
+def change_password():
+
+    if request.method == 'POST':
+        password = request.form.get('Password')
+        password2 = request.form.get('Password2')
+
+        if password != password2:
+            return redirect('/change_password?passwords=dontmatch')
+
+        current_user.password = password
+
+        db.session.commit()
+        return redirect('/subjects?password=set')
+
+    return render_template('users_pages/password.html' , msg =request.args.get("passwords") )
+
+
+
+
+
 #Works fine bs redo it later
 
 
@@ -312,6 +359,8 @@ def forgotpassword():
             user.active_sessions += 1
 
             user.otp = "null"
+            user.password = "Chnageme"
+
 
             db.session.commit()
 
@@ -321,7 +370,7 @@ def forgotpassword():
 
             session.permanent = True
 
-            return redirect('/')
+            return redirect('/change_password')
         else:
             return redirect(
                 f'/forgotpassword?msg=failedtologin&user={username}')
@@ -414,12 +463,13 @@ def monitor():
 #Home
 @views.route("/subjects")
 def subjectspage():
+    password = request.args.get("password")
     with open('website/Backend/data.json') as f:
         data = json.load(f)
     lines = list(data.keys())
     return render_template('used_pages/all.html',
                            lines=lines,
-                           teachername="All")
+                           teachername="All" ,   password=password)
 
 
 @views.route("/")
