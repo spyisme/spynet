@@ -549,24 +549,7 @@ def iframevids():
     return render_template('backend_pages/iframe.html', url=url, sname=sname)
 
 
-@vdo.route('/watchit', methods=['GET', 'POST'])
-def watchit():
-    url = request.args.get('url')
-    webhook_url = "https://discord.com/api/webhooks/1197986558368825444/Q7kjJ3twI6GkOAqRAppGBlEtGR2I5egr98lX-Gh7D2JByHk1ePNBTVYKnjCtiHhIZ8U3"
-    if request.method == 'POST':
-        name = request.form.get('name')
-        msg = f'```app {url} --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output``` {name}'
-        command = (
-            f'app {url}  --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output'
-        )
-        with open('list.txt', 'a') as file:
-            file.write(command + '\n')
-        message = {'content': f'{msg}'}
-        payload = json.dumps(message)
-        headers = {'Content-Type': 'application/json'}
-        requests.post(webhook_url, data=payload, headers=headers)
-        return "Message Sent!"
-    return render_template('backend_pages/iframe.html')
+
 
 
 @vdo.route('/iframem3u8', methods=['GET', 'POST'])
@@ -595,58 +578,7 @@ def hosssamsameh():
     return render_template('backend_pages/iframe.html', url=url)
 
 
-@vdo.route('/shahid', methods=['GET', 'POST'])
-def shahid():
-    licurl = request.args.get('licurl')
-    mpd = request.args.get('mpd')
-    pssh = base64.b64decode(request.args.get('pssh'))
-    pssh = pssh.decode('utf-8')
-    api_url = "https://keysdb.net/api"
-    headers = {
-        "user-agent":
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (Ktesttemp, like Gecko) Chrome/90.0.4430.85 Safari/537.36",
-        "Content-Type":
-        "application/json",
-        "X-API-Key":
-        'c13cf813a7a384b56f5b5249d6fc0d113e3d981b3af7ee3b1409ff33fe452b15',
-    }
-    payload = {
-        "license_url": licurl,
-        "pssh": pssh,
-    }
-    response = requests.post(api_url, headers=headers, json=payload)
-    response_json = response.json()
-    keys = response_json["keys"]
-    for key in keys:
-        key_value = key["key"]
 
-    ckvaluetobeused = {}
-    parts = key_value.split(":")
-    if len(parts) == 2:
-        ckvaluetobeused[parts[0]] = parts[1]
-    keysbase64 = base64.urlsafe_b64encode(
-        str(ckvaluetobeused).encode()).decode()
-    if request.method == 'POST':
-        name = request.form.get('name')
-        msg = f'```app {mpd} --key {key_value} --save-name {name} -M format=mp4 --no-log  & move {name}.mp4 ./output``` {name} ```watch now``` {mpd}&ck={keysbase64}'
-        command = (
-            f"app {mpd}  --key {key_value}  --save-name {name} -M format=mp4 --no-log  & move {name}.mp4 ./output"
-        )
-        with open('list.txt', 'a') as file:
-            file.write(command + '\n')
-        message = {'content': f'{msg}'}
-        payload = json.dumps(message)
-        headers = {'Content-Type': 'application/json'}
-        requests.post(
-            "https://discord.com/api/webhooks/1217535086002573332/UZWHTP2ZPVUdIuOTBG-PVVHyi1bxaa8p_xDNVfeXvTS7_p72a0iVWmJkEoeHaxVowrbr",
-            data=payload,
-            headers=headers)
-        return "Message Sent!"
-    return render_template('backend_pages/shahid.html',
-                           mpd=mpd,
-                           key=key_value,
-                           pssh=pssh,
-                           url=f"{mpd}&ck={keysbase64}")
 
 
 @vdo.route("/list")
