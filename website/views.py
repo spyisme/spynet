@@ -192,6 +192,10 @@ def login():
         username = username.replace(" ", "")
         username = username.lower()
         user = User.query.filter_by(username=username).first()
+        if user :
+            pass
+        else : 
+            user = User.query.filter_by(email=username).first()
 
         if user:
 
