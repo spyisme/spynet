@@ -879,7 +879,22 @@
                 "name": "Mr. Mohamed Salama",
                 "link": "salama",
                 "description": "not cool teacher",
-                "courses": []
+                "courses": [
+                    {
+                        "name": "Geometry",
+                        "description": "Shapes and space.",
+                        "videos": "",
+                        "playlist_id": "",
+                        "folder": ""
+                    },
+                    {
+                        "name": "Statistics",
+                        "description": "Data analysis methods.",
+                        "videos": "",
+                        "playlist_id": "",
+                        "folder": ""
+                    }
+                ]
             }
         ]
     },

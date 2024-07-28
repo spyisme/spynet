@@ -66,8 +66,10 @@
            </div>
 
             
+           {%if teacher_links%}
 
    <ul>
+
     {% for x in teacher_links %}
 
     {% set link = x.link %}
@@ -96,6 +98,9 @@
           {% endfor %}
 
       </ul>
+      {%else%}
+      <h1 style="color: white; text-align: center;">No Content uploaded yet</h1>
+      {%endif%}
 <br>
 <br>
 <br>

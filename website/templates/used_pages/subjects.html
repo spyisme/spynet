@@ -48,6 +48,7 @@
         <img class="img" src="{{ url_for('static', filename='assets/subjects/' + teachername + '.png') }}" alt="Subjects Image">
     {% else %}
         <h1>✰ {{ teachername }} ✰</h1>
+        <hr>
     {% endif %}
 
 
@@ -66,8 +67,10 @@
            </div>
 
             
+           {%if teacher_links%}
 
    <ul>
+    
     {% for x in teacher_links %}
 
 
@@ -95,7 +98,12 @@
           {% endfor %}
 
       </ul>
-<br>
+    
+      {%else%}
+      <h1 style="color: white; text-align: center;">No Content added yet</h1>
+
+      {%endif%}
+      <br>
 <br>
 <br>
       <div class="footer">

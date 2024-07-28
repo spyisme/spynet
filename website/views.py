@@ -884,7 +884,8 @@ def manage_courses(subject, teachername):
          for teacher in teachers if teacher['link'] == teachername), None)
     course_names = [course['name'] for course in teacher_courses]
 
-    if request.method == 'POST':
+    if request.method == 'POST':  
+
         if request.form['action'] == 'Add':
             course_name = request.form['new']
             file = request.files['file']
@@ -919,11 +920,16 @@ def manage_courses(subject, teachername):
                         teachername=teachername))
 
         if request.form['action'] == 'Remove':
-            os.remove(f'website/static/assets/{subject}/{teachername}/' +
-                      course_name + '.jpg')
+
+            course_name = request.form['remove']
+            file_path = f'website/static/assets/{subject}/{teachername}/' + course_name + '.jpg'
+
+            if os.path.exists(file_path):
+                os.remove(file_path)
+
+
             teacher = next((t for t in teachers if t['link'] == teachername),
                            None)
-            course_name = request.form['remove']
 
             if course_name == "":
                 return "Course name is none "
