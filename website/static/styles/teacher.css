@@ -1,98 +1,96 @@
 
 
 .nav {
-    padding: 20px;
-    margin: 0;
-    text-align: center;
+  padding: 20px;
+  margin: 0;
+  text-align: center;
 
-        color: #fff;
+      color: #fff;
 }
 h1{
-  font-size: 46px;
+font-size: 46px;
 }
 ul {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 20px;
-    justify-content: space-around
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+  justify-content: space-around
 }
 li {
-    margin: 10px;
-    flex: 1;
-    flex: 0 0 calc(25% - 20px); /* Each item takes up 25% of the container width, accounting for margin and padding */
-    max-width: 300px; /* Set a maximum width for the cards on PC */
+  margin: 10px;
+  flex: 1;
+  flex: 0 0 calc(25% - 20px); /* Each item takes up 25% of the container width, accounting for margin and padding */
+  max-width: 300px; /* Set a maximum width for the cards on PC */
 }
 .card {
-    position: relative;
-    overflow: hidden;
-
-background-color: #fff;
-border: 1px solid #ccc;
-border-radius: 10px;
-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-padding: 20px;
-transition: transform 0.2s, box-shadow 0.2s;
-text-align: center;
-text-transform: capitalize;
-height: 230px;
-z-index: 1; /* Set a z-index value */
-
-  }
+  position: relative;
+  overflow: hidden;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-align: center;
+  text-transform: capitalize;
+  height: 230px;
+  z-index: 1;
+}
 
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
 .card img {
-    max-width: 100%;
-      height: 130px;
-  
+  max-width: 100%;
+  height: 130px;
 }
+
 .card p {
-    font-size: 22px; /* Increase text size */
-}
-.card-description {
-font-size: 14px;
-color: black;
-margin-top: 7px;
-position: relative;
-overflow: hidden;
+  font-size: 22px;
+  max-height: 50px; /* Limit the height of the <p> element */
+  overflow: hidden; /* Hide overflow text */
+  text-overflow: ellipsis; /* Add ellipsis (...) to indicate more text */
+  white-space: nowrap; /* Ensure text doesn't wrap */
 }
 
 .card-description {
-    position: relative;
-    overflow: hidden; /* Added overflow: hidden */
-    z-index: 1; /* Added z-index to ensure the text is above the shine effect */
+  font-size: 14px;
+  color: black;
+  margin-top: 7px;
+  position: relative;
+  overflow: hidden;
+  max-height: 40px; /* Adjust to fit within the card */
+  z-index: 1;
+}
 
-  }
-  
-  .card-description::after {
-    content: "";
-    display: inline-block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to right, transparent 0%, #ffffff 50%, transparent 100%);
-    animation: shine 2s linear infinite;
-    transform: translateX(-100%); /* Added to start outside the text */
-    z-index: 0; /* Set a lower z-index than the container */
+.card-description::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, transparent 0%, #ffffff 50%, transparent 100%);
+  animation: shine 2s linear infinite;
+  transform: translateX(-100%);
+  z-index: 0;
+}
 
-  }
-  
-  @keyframes shine {
-    100% {
+@keyframes shine {
+  100% {
       transform: translateX(100%);
-    }
   }
-  
+}
+
 
 a {
-    text-decoration: none;
-    color: blue;
+  text-decoration: none;
+  color: blue;
 }
 a :hover{
 cursor: url('/static/cursor.png'), auto;
@@ -101,30 +99,30 @@ cursor: url('/static/cursor.png'), auto;
 
 /* Mobile Styles */
 @media screen and (max-width: 768px) {
-    h1 {
-        padding: 10px;
-        width: 96%;
-    }
-    html{
+  h1 {
+      padding: 10px;
+      width: 96%;
+  }
+  html{
 cursor: auto;
 }
-    ul {
-        flex-direction: column; /* Stack cards vertically */
-        padding: 10px;
-    }
+  ul {
+      flex-direction: column; /* Stack cards vertically */
+      padding: 10px;
+  }
 
-    li {
-        margin: 5px;
-        max-width: 100%; /* Make cards full width on mobile */
-    }
+  li {
+      margin: 5px;
+      max-width: 100%; /* Make cards full width on mobile */
+  }
 
-    .card {
-        padding: 10px;
-        width: 96%; /* Make cards 100% width on mobile */
-        margin: 0 auto; /* Center-align the cards */
-        min-height: 50px;
-        width: 210px
-    }
+  .card {
+      padding: 10px;
+      width: 96%; /* Make cards 100% width on mobile */
+      margin: 0 auto; /* Center-align the cards */
+      min-height: 50px;
+      width: 210px
+  }
 }
 
 
@@ -153,16 +151,16 @@ pointer-events: none; /* Allow click events to pass through the canvas */
 
 
 .card-new-badge {
-    position: absolute;
-    top: 10px; /* Adjust the distance from the top */
-    left: 10px; /* Adjust the distance from the left */
-    background-color: #ff0000; /* Set the badge background color */
-    color: #ffffff; /* Set the text color */
-    padding: 5px 10px; /* Adjust the padding for the badge */
-    border-radius: 5px; /* Optional: Add rounded corners */
-    font-size: 12px; /* Adjust the font size */
-    font-weight: bold; /* Optional: Make the text bold */
-    z-index: 2; /* Ensure the badge is above other elements */
+  position: absolute;
+  top: 10px; /* Adjust the distance from the top */
+  left: 10px; /* Adjust the distance from the left */
+  background-color: #ff0000; /* Set the badge background color */
+  color: #ffffff; /* Set the text color */
+  padding: 5px 10px; /* Adjust the padding for the badge */
+  border-radius: 5px; /* Optional: Add rounded corners */
+  font-size: 12px; /* Adjust the font size */
+  font-weight: bold; /* Optional: Make the text bold */
+  z-index: 2; /* Ensure the badge is above other elements */
 }
 
 
@@ -183,39 +181,39 @@ pointer-events: none;
 
 
 .pagination-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px; /* Adjust margin as needed */
-  }
+  display: flex;
+  justify-content: center;
+  margin-top: 20px; /* Adjust margin as needed */
+}
 
 
 
 .btn-prev,
 .btn-next {
-  background-color: #4CAF50; /* Green */
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 5px;
+background-color: #4CAF50; /* Green */
+border: none;
+color: white;
+padding: 10px 20px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+margin: 4px 2px;
+cursor: pointer;
+border-radius: 5px;
 }
 
 .btn-prev {
-  margin-right: 10px; /* Add margin to separate prev and next buttons */
+margin-right: 10px; /* Add margin to separate prev and next buttons */
 }
 
 .btn-prev:hover,
 .btn-next:hover {
-  background-color: #45a049; /* Darker green on hover */
+background-color: #45a049; /* Darker green on hover */
 }
 
 .btn-prev:disabled,
 .btn-next:disabled {
-  background-color: #ccc; /* Gray for disabled buttons */
-  cursor: not-allowed;
+background-color: #ccc; /* Gray for disabled buttons */
+cursor: not-allowed;
 }
