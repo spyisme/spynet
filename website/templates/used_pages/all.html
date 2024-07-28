@@ -10,8 +10,8 @@
         <meta name="keywords" content="spy, spynet, spysnet" />
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/all.css') }}" />
 
-        <link rel="stylesheet" type="text/css" href="static/styles/all.css" />
 
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/main.css') }}" />
 
@@ -26,7 +26,7 @@
             <canvas id="canvas"> </canvas>
 
             <div class="nav">
-                <img class="img" src="static/assets/ss.png" />
+                <img class="img" src="{{ url_for('static', filename='assets/ss.png') }}" />
 
                 {%if password%}
                 <p>Passowrd Set!</p>
@@ -68,7 +68,7 @@
                     <li>
                         <a href="subjects/{{ item }}">
                             <div class="card">
-                                <img src="static/assets/homepage/{{item}}.jpg" alt="{{ item }}" loading="lazy" />
+                                <img src="{{ url_for('static', filename='assets/homepage/' + item + '.jpg') }} " alt="{{ item }}" loading="lazy" />
                                 <div class="text">{{ item }}</div>
                             </div>
                         </a>
@@ -129,7 +129,6 @@
         }
     </script>
 
-    <script src="static/java/snow.js"></script>
-
-    <script src="static/java/countdown.js"></script>
+<script src="   {{ url_for('static', filename='java/snow.js') }}"></script>
+<script src="   {{ url_for('static', filename='java/countdown.js') }}"></script>
 </html>

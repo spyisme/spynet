@@ -47,13 +47,12 @@ ul {
   
 }
 
-.card p {
-    font-size: 22px; /* Increase text size */
-  max-height: 50px; /* Limit the height of the <p> element */
 
-    overflow: hidden; /* Hide overflow text */
-    text-overflow: ellipsis; /* Add ellipsis (...) to indicate more text */
-    white-space: nowrap; /* Ensure text doesn't wrap */
+.card2 img {
+    max-width: 100%;
+
+      height: 100px;
+  
 }
 
 a {
@@ -94,6 +93,13 @@ cursor: auto;
         min-height: 50px;
         width: 210px
     }
+    .card2 {
+        padding: 10px;
+        width: 96%; /* Make cards 100% width on mobile */
+        margin: 0 auto; /* Center-align the cards */
+        min-height: 50px;
+        width: 210px
+    }
     .cardiframe {
         padding: 10px;
         width: 96%; /* Make cards 100% width on mobile */
@@ -102,8 +108,7 @@ cursor: auto;
         width: 210px
     }
 }
-.card
-{
+.card{
 color: blue;
     background-color: #fff;
     border: 1px solid #ccc;
@@ -116,7 +121,49 @@ color: blue;
     text-transform: capitalize; /* Capitalize the first letter */
     display: block;
     width: 200px;
+    max-height: 50px; /* Limit the height of the <p> element */
+    overflow: hidden; /* Hide overflow text */
+    text-overflow: ellipsis; /* Add ellipsis (...) to indicate more text */
+    white-space: nowrap; /* Ensure text doesn't wrap */
 }
+
+.card2{
+    color: blue;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        transition: transform 0.2s, box-shadow 0.2s;
+        text-align: center;
+        margin: 10px;
+        text-transform: capitalize; /* Capitalize the first letter */
+        display: block;
+        width: 200px;
+
+    }
+
+
+    .card2{
+        color: blue;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-align: center;
+            margin: 10px;
+            text-transform: capitalize; /* Capitalize the first letter */
+            display: block;
+            width: 200px;
+    
+        }
+        card2:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
 
 .cardiframe
 {

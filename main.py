@@ -1,7 +1,7 @@
 import logging  #type: ignore
 import json
 import requests
-from flask import render_template, request
+from flask import render_template, request ,redirect       
 from website import create_app
 
 log = logging.getLogger('werkzeug')
@@ -12,6 +12,8 @@ app, socketio = create_app()
 
 @app.errorhandler(404)
 def page_not_found(e):  #type: ignore
+    if request.path.endswith('/') :
+        return redirect(request.path[:-1])
     return render_template('used_pages/404.html')
 
 

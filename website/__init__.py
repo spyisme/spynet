@@ -82,6 +82,8 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
     app.config['SECRET_KEY'] = 'secretkey'
 
+
+
     db.init_app(app)
     login_manager.init_app(app)
     socketio.init_app(app)
@@ -148,10 +150,10 @@ def create_app():
                 device_type = "Desktop" if "Windows" in user_agent else (
                     "Macintosh" if "Macintosh" in user_agent else "Mobile")
 
-                if current_user.password == 'password' and 'options' not in request.path:
-                    if 'otp' not in request.path:
-                        if 'password' not in request.path:
-                            return redirect('/options')
+                # if current_user.password == 'password' and 'options' not in request.path:
+                #     if 'otp' not in request.path:
+                #         if 'password' not in request.path:
+                #             return redirect('/options')
 
                 if not request.path.startswith('/static/'):
                     if request.path.startswith('/redirect/'):

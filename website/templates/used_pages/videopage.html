@@ -62,7 +62,7 @@
   
 
                 <div class="card" onclick="openPopupname{{video.jsid}}(event)">
-                    {{ video.title }}
+              {{ video.title }}
           
                 </div>
 
@@ -94,19 +94,7 @@
         {% endfor %}
         {%endif%}
         </ul>
-        {%if extra%}
-        <hr>
-        <ul>
-   
-        {% for item in extra.items() %}
-        <a href="/redirect/{{ item.1 }}" target="_blank">
-            <div class="card">
-                {{ item.0 }}
-            </div>
-        </a>
-    {% endfor %} 
-</ul>
-    {%endif%}
+       
 
 
 
@@ -115,7 +103,7 @@
 {%if playlist_id%}
     
      <a href="/redirect/https://www.youtube.com/playlistquestionmarklist={{playlist_id}}" target="_blank">   
-        <div class="card">
+        <div class="card2">
             <img src="{{ url_for('static', filename='assets/yt.png') }}" loading="lazy"></img>
             <br> Open Playlist
         </div>
@@ -123,7 +111,7 @@
      {%endif%}
      {% if folder %}
      <a href="/redirect/{{folder}}" target="_blank">   
-      <div class="card">
+      <div class="card2">
           <img src="{{ url_for('static', filename='assets/drive.jpg') }}" loading="lazy"></img>
           <br> Open Drive
       </div>
