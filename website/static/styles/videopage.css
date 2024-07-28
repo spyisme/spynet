@@ -49,6 +49,11 @@ ul {
 
 .card p {
     font-size: 22px; /* Increase text size */
+  max-height: 50px; /* Limit the height of the <p> element */
+
+    overflow: hidden; /* Hide overflow text */
+    text-overflow: ellipsis; /* Add ellipsis (...) to indicate more text */
+    white-space: nowrap; /* Ensure text doesn't wrap */
 }
 
 a {

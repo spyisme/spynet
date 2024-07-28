@@ -572,6 +572,8 @@ admins = ['spy'] #list of admins (usernames)
 #Manage users-----------------------------------------------------------------------
 @views.route('/edit_active_sessions/<user_id>', methods=['POST'])
 def edit_active_sessions(user_id):
+    if current_user.username not in admins:
+        return "User is not an admin"
     if request.method == 'POST':
         if current_user.username not in ['spy', 'skailler', 'behary']:
             return "..."
@@ -602,9 +604,10 @@ def edit_active_sessions(user_id):
 
 @views.route('/edit_email/<user_id>', methods=['POST'])
 def edit_email(user_id):
+    if current_user.username not in admins:
+        return "User is not an admin"
+
     if request.method == 'POST':
-        if current_user.username not in ['spy', 'skailler']:
-            return "..."
         new_email = request.form.get('value')
 
         user = User.query.get(user_id)
@@ -630,6 +633,9 @@ def edit_email(user_id):
 
 @views.route('/create_user', methods=['POST'])
 def create_user_route():
+    if current_user.username not in admins:
+        return "User is not an admin"
+    
     if request.method == 'POST':
         username = request.form.get('username')
         email = request.form.get('email')
@@ -659,9 +665,8 @@ def create_user_route():
 
 @views.route('/user-delete/<user_id>')
 def delete_user(user_id):
-    if current_user.username not in ['spy', 'skailler']:
-        return "..."
-
+    if current_user.username not in admins:
+        return "User is not an admin"
     user_to_delete = User.query.get(user_id)
 
     if user_to_delete.username == "spy":
@@ -680,8 +685,10 @@ def delete_user(user_id):
 
 @views.route('/approve/<userid>')
 def approve(userid):
+    if current_user.username not in admins:
+        return "User is not an admin"
     user = User.query.filter_by(id=userid).first()
-    user.otp = 1
+    user.otp = "null"
     db.session.commit()
     recipient = user.email
     subject = "Account Approved"
@@ -695,18 +702,6 @@ def approve(userid):
     mail.send(msg)
     
     return "done"
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
