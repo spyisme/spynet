@@ -243,6 +243,26 @@ def logout():
 
 
 
+@views.route('/user-delete/<user_id>')
+def delete_user(user_id):
+    if current_user.username not in ['spy', 'skailler']:
+        return "..."
+
+    user_to_delete = User.query.get(user_id)
+
+    if user_to_delete.username == "spy":
+        return "55555555555"
+
+    if not user_to_delete:
+        return jsonify({'error': 'User not found'}), 404
+    
+    discord_log_login("<@709799648143081483> " + current_user.username +
+                            " deleted " + user_to_delete.username)
+    
+    db.session.delete(user_to_delete)
+    db.session.commit()
+
+    return redirect("/admin")
 
 @views.route('/approve/<userid>')
 def approve(userid):
