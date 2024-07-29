@@ -159,7 +159,7 @@ color: blue;
             width: 200px;
     
         }
-        card2:hover {
+        .card2:hover {
             transform: translateY(-5px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
