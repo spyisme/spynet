@@ -9,10 +9,14 @@
     <div>
         <h2>Current Courses</h2>
         <pre id="teacher">
+
 {%for x in data %}
+    {% set link = x %}
+    {% if " " in link %}
+        {% set link = link.replace(' ', '-') %}
+    {% endif %}
 
-
-<a href="{{x}}/edit">{{x}}</a>
+<a href="{{link}}/edit">{{x}}</a>
 {%endfor%}
         </pre>
 

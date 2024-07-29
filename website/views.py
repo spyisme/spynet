@@ -977,6 +977,7 @@ def edit_course(subject, teachername, course_name):
                         elif request.form['action'] == 'Clear videos':
                             course['videos'] = ""
                         save_data(data)
+                        course_name = course_name.replace(' ' , '-')
                         return redirect(
                             url_for('views.edit_course',
                                     subject=subject,
