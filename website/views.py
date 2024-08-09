@@ -156,7 +156,7 @@ def discord_log_backend(message):
         headers=headers)
 
 
-#Login , logout  (whitelist_ips is from EG)----------------------------------------------------------------
+#Login , logout  (whitelist_ips is from EG)----------------------------------------------
 
 blacklist_ips = set()
 whitelist_ips = set()
@@ -204,7 +204,7 @@ def login():
         username = request.form.get('username')
         password = request.form.get('password')
 
-        username = username.replace(" ", "")
+        username = username.replace(" ", "")  #type: ignore
         username = username.lower()
         user = User.query.filter_by(username=username).first()
         if user:
@@ -217,7 +217,7 @@ def login():
             if user.username not in ['spy'] and user.active_sessions >= 3:
 
                 discord_log_login(
-                    f"{username} tried to login from more than 3 devices <@709799648143081483>"
+                    f"{username} tried to login from more than 3 devices <@709799648143081483>"  #type: ignore
                 )
 
                 return redirect(f"/login?maxdevices=yes&user={username}")
@@ -227,19 +227,19 @@ def login():
                 user.active_sessions += 1
                 db.session.commit()
                 discord_log_login(
-                    f"{client_ip} just logged in with {username} Device ```{user_agent}```  <@709799648143081483>"
+                    f"{client_ip} just logged in with {username} Device ```{user_agent}```  <@709799648143081483>"  #type: ignore
                 )
                 session.permanent = True
                 return redirect(url_for('views.home'))
 
             else:
                 discord_log_login(
-                    f"{client_ip} just failed to login with '{username}' Device ```{user_agent}``` <@709799648143081483>"
+                    f"{client_ip} just failed to login with '{username}' Device ```{user_agent}``` <@709799648143081483>"  #type: ignore
                 )
                 return redirect(f"/login?password=false&user={username}")
         else:
             discord_log_login(
-                f"{client_ip} just failed to login with '{username}' Device ```{user_agent}``` <@709799648143081483>"
+                f"{client_ip} just failed to login with '{username}' Device ```{user_agent}``` <@709799648143081483>"  #type: ignore
             )
             return redirect("/login?failed=true")
     return render_template('users_pages/login.html',
@@ -261,7 +261,7 @@ def logout():
     return redirect(url_for('views.login'))
 
 
-#Register , Forget Password------------------------------------------------------------------------------
+#Register , Forget Password--------------------------------------------------------------
 def read_html_file(file_path, **kwargs):
     with open(file_path, 'r') as file:
         template = file.read()
@@ -288,15 +288,15 @@ def forgotpassword():
 
     user = User.query.filter_by(username=username).first()
 
-    if request.method == 'GET':
-        if user:
+    if request.method == 'GET':  #type: ignore
+        if user:  #type: ignore
             if user.otp == 'bypassotp':
                 login_user(user)
                 if user.username != 'spy':
                     user.active_sessions += 1
                 db.session.commit()
                 discord_log_login(
-                    f"{client_ip} just logged in with {username} Device ```{user_agent}```  <@709799648143081483>"
+                    f"{client_ip} just logged in with {username} Device ```{user_agent}```  <@709799648143081483>"  #type: ignore
                 )
                 session.permanent = True
                 return redirect(url_for('views.home'))
@@ -321,9 +321,11 @@ def forgotpassword():
 
     if request.method == 'POST':
         otp = request.form.get('otp')
-        if otp == user.otp:
-            if user.username not in ['spy', 'biba'
-                                     ] and user.active_sessions >= 3:
+        if otp == user.otp:  #type: ignore
+            if user.username not in [
+                    'spy',
+                    'biba'  #type: ignore
+            ] and user.active_sessions >= 3:  #type: ignore
 
                 discord_log_login(
                     f"{username} tried to login from more than 3 devices <@709799648143081483>"
@@ -332,10 +334,10 @@ def forgotpassword():
 
             login_user(user)
 
-            user.active_sessions += 1
+            user.active_sessions += 1  #type: ignore
 
-            user.otp = "null"
-            user.password = "Chnageme"
+            user.otp = "null"  #type: ignore
+            user.password = "Chnageme"  #type: ignore
 
             db.session.commit()
 
@@ -350,9 +352,10 @@ def forgotpassword():
             return redirect(
                 f'/forgotpassword?msg=failedtologin&user={username}')
 
-    return render_template('users_pages/verify.html',
-                           email=user.email,
-                           msg=msgg)
+    return render_template(
+        'users_pages/verify.html',
+        email=user.email,  #type: ignore
+        msg=msgg)
 
 
 @views.route('/change_password', methods=['GET', 'POST'])
@@ -414,10 +417,11 @@ def registeracc():
         email = request.form.get('email')
         password = request.form.get('password')
 
-        new_user = User(username=username,
-                        password=password,
-                        email=email,
-                        otp="Waiting approval")
+        new_user = User(
+            username=username,  #type: ignore
+            password=password,  #type: ignore
+            email=email,  #type: ignore
+            otp="Waiting approval")  #type: ignore
 
         db.session.add(new_user)
         db.session.commit()
