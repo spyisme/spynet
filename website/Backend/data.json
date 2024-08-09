@@ -18,6 +18,7 @@
             {
                 "name": "Mr. Ashraf el shenawy",
                 "link": "ashrafelshenawy",
+                "description": "",
                 "courses": [
                     {
                         "name": "All sessions",
@@ -962,7 +963,7 @@
                     },
                     {
                         "name": "Rev ll 3yal el summer",
-                        "description": "Wady ya biba",
+                        "description": "Mtwdesh ya biba",
                         "videos": [
                             {
                                 "id": "Hw9R1lxwZxg",
@@ -1280,11 +1281,13 @@
             {
                 "name": "Mr. Mohamed Tarek",
                 "link": "mohamedtarek",
+                "description": "",
                 "courses": []
             },
             {
                 "name": "Mr. Mohamed Salah",
                 "link": "mohamedsalah",
+                "description": "",
                 "courses": []
             },
             {
@@ -1300,6 +1303,7 @@
             {
                 "name": "Herr Abd El Moez",
                 "link": "abdelmoez",
+                "description": "",
                 "courses": []
             }
         ]
@@ -1309,6 +1313,7 @@
             {
                 "name": "Mr. Sameh Nashaat",
                 "link": "samehnashaat",
+                "description": "",
                 "courses": [
                     {
                         "name": "Rev ll 3yal el summer",

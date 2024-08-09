@@ -8,12 +8,12 @@
     <h1>Edit {{subject}}</h1>
     <div>
         <h2>Current Teachers</h2>
-        <pre id="teacher">
+
 {%for x in data %}
 
-<a href="{{x.link}}/edit">{{x.name}}</a>
+<a href="{{x.link}}/edit">{{x.name}}</a> <br>
 {%endfor%}
-        </pre>
+
 
     </div>
     <div>

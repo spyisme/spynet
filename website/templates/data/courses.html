@@ -5,24 +5,32 @@
 
 </head>
 <body>
-    <h1>Edit {{teachername}} Courses</h1>
+    <h1>Edit {{teachername}}</h1>
     <div>
+        <form action="" method="post">
+
+        <div>
+            <h2>Edit Teacher Description</h2>
+            <input type="text" name="description" placeholder="{{desc}}">
+            <input type ="submit"  name="action" value="Set">
+        </div>
+        </form>
         <h2>Current Courses</h2>
-        <pre id="teacher">
-
-{%for x in data %}
-    {% set link = x %}
-    {% if " " in link %}
-        {% set link = link.replace(' ', '-') %}
-    {% endif %}
-
-<a href="{{link}}/edit">{{x}}</a>
-{%endfor%}
-        </pre>
+        {%for x in data %}
+            {% set link = x %}
+            {% if " " in link %}
+                {% set link = link.replace(' ', '-') %}
+            {% endif %}
+        <a href="{{link}}/edit">{{x}}</a> <br>
+        {%endfor%}
 
     </div>
     <div>
+
+
         
+
+        <div>
         <h2>Add Course</h2>
         <form action="" method="post" enctype="multipart/form-data">
 

@@ -897,10 +897,28 @@ def manage_courses(subject, teachername):
     teacher_courses = next(
         (teacher['courses']
          for teacher in teachers if teacher['link'] == teachername), None)
+
     course_names = [course['name']
                     for course in teacher_courses]  #type: ignore
 
+    teacherinfo = None
+
+    for teacher in teachers:
+        if teacher['link'] == teachername:
+            teacherinfo = teacher
+
     if request.method == 'POST':
+
+        if request.form['action'] == 'Set':
+            description = request.form['description']
+            teacherinfo['description'] = description
+            data[subject]['teachers'] = teachers
+            save_data(data)
+
+            return redirect(
+                url_for('views.manage_courses',
+                        subject=subject,
+                        teachername=teachername))
 
         if request.form['action'] == 'Add':
             course_name = request.form['new']
@@ -965,7 +983,8 @@ def manage_courses(subject, teachername):
 
     return render_template('data/courses.html',
                            data=course_names,
-                           teachername=teachername)
+                           teachername=teachername,
+                           desc=teacherinfo['description'])
 
 
 #Edit a course info
