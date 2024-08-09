@@ -77,3 +77,10 @@ def vdo():
     return redirect(
         "https://cdn.gilcdn.com/ContentMediaGenericFiles/cec96512c8ae6d7cc545381c1dbf421e-Full.txt"
     )
+
+
+shortlinks.route("/data")
+
+
+def final():
+    return redirect("https://spysnet.com/static/final.json")

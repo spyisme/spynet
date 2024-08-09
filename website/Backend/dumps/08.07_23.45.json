@@ -4,7 +4,6 @@
             {
                 "name": "Dr. Nasser el batal",
                 "link": "nasserelbatal",
-                "description": "Year 2023/2024",
                 "courses": [
                     {
                         "name": "Chapter 1",
@@ -163,20 +162,6 @@
             {
                 "name": "Mr. Ashraf el shenawy",
                 "link": "ashrafelshenawy",
-                "courses": [
-                    {
-                        "name": "All sessions",
-                        "description": "Not youtube",
-                        "videos": "",
-                        "playlist_id": "",
-                        "folder": ""
-                    }
-                ]
-            },
-            {
-                "name": "Dr. Nasser el batal",
-                "description": "Year 2024/2025",
-                "link": "Dr. Nasser el batal",
                 "courses": []
             }
         ]
@@ -186,7 +171,7 @@
             {
                 "name": "Mr. Omar Sherbiny",
                 "link": "sherbo",
-                "description": "Year 2023/2024",
+                "description": "cool teacher",
                 "courses": [
                     {
                         "name": "Algebra",
@@ -893,7 +878,7 @@
             {
                 "name": "Mr. Mohamed Salama",
                 "link": "salama",
-                "description": "Year 2023/2024",
+                "description": "not cool teacher",
                 "courses": []
             }
         ]
@@ -903,7 +888,6 @@
             {
                 "name": "Dr. Mohamed Adel",
                 "link": "mohamedadel",
-                "description": "Year 2023/2024",
                 "courses": [
                     {
                         "name": "Chapter 1",
@@ -1393,15 +1377,29 @@
                             }
                         ],
                         "playlist_id": "PLM-GVlebsoPWnPigZ2AseknDAedaryyn6",
-                        "folder": "https://drive.google.com/drive/folders/1Goxe2Odi_qg0MPeoU8Zn8kpVJq8JKNLg?usp=drive_link"
+                        "folder": ""
                     }
                 ]
             },
             {
                 "name": "Mr. Tamer el kady",
                 "link": "tamerelkady",
-                "description": "Year 2023/2024",
-                "courses": []
+                "courses": [
+                    {
+                        "name": "Thermodynamics",
+                        "description": "Heat and energy.",
+                        "videos": "",
+                        "playlist_id": "",
+                        "folder": ""
+                    },
+                    {
+                        "name": "Quantum Physics",
+                        "description": "Subatomic particles study.",
+                        "videos": "",
+                        "playlist_id": "",
+                        "folder": ""
+                    }
+                ]
             }
         ]
     },
@@ -1410,13 +1408,42 @@
             {
                 "name": "Mr. Hossam Sameh",
                 "link": "theleader",
-                "description": "Year 2023/2024",
-                "courses": []
+                "courses": [
+                    {
+                        "name": "Grammar",
+                        "description": "Language structure rules.",
+                        "videos": "",
+                        "playlist_id": "",
+                        "folder": ""
+                    },
+                    {
+                        "name": "Literature",
+                        "description": "Written works study.",
+                        "videos": "",
+                        "playlist_id": "",
+                        "folder": ""
+                    }
+                ]
             },
             {
                 "name": "Mr. Aahmed Salah",
                 "link": "ahmedsalah",
-                "courses": []
+                "courses": [
+                    {
+                        "name": "Writing",
+                        "description": "Composition and expression.",
+                        "videos": "",
+                        "playlist_id": "",
+                        "folder": ""
+                    },
+                    {
+                        "name": "Speaking",
+                        "description": "Oral communication skills.",
+                        "videos": "",
+                        "playlist_id": "",
+                        "folder": ""
+                    }
+                ]
             }
         ]
     },
@@ -1425,18 +1452,62 @@
             {
                 "name": "Mr. Mohamed Tarek",
                 "link": "mohamedtarek",
-                "courses": []
+                "courses": [
+                    {
+                        "name": "Grammar",
+                        "description": "Language rules study.",
+                        "videos": "",
+                        "playlist_id": "",
+                        "folder": ""
+                    },
+                    {
+                        "name": "Literature",
+                        "description": "Written texts study.",
+                        "videos": "",
+                        "playlist_id": "",
+                        "folder": ""
+                    }
+                ]
             },
             {
                 "name": "Mr. Mohamed Salah",
                 "link": "mohamedsalah",
-                "courses": []
+                "courses": [
+                    {
+                        "name": "Grammar",
+                        "description": "Language rules study.",
+                        "videos": "",
+                        "playlist_id": "",
+                        "folder": ""
+                    },
+                    {
+                        "name": "Literature",
+                        "description": "Written texts study.",
+                        "videos": "",
+                        "playlist_id": "",
+                        "folder": ""
+                    }
+                ]
             },
             {
                 "name": "Mr. Reda el farouk",
                 "link": "redaelfarouk",
-                "description": "Year 2023/2024",
-                "courses": []
+                "courses": [
+                    {
+                        "name": "Writing",
+                        "description": "Creative composition skills.",
+                        "videos": "",
+                        "playlist_id": "",
+                        "folder": ""
+                    },
+                    {
+                        "name": "Poetry",
+                        "description": "Versified language study.",
+                        "videos": "",
+                        "playlist_id": "",
+                        "folder": ""
+                    }
+                ]
             }
         ]
     },
@@ -1445,7 +1516,22 @@
             {
                 "name": "Herr Abd El Moez",
                 "link": "abdelmoez",
-                "courses": []
+                "courses": [
+                    {
+                        "name": "German Culture",
+                        "description": "Cultural context study.",
+                        "videos": "",
+                        "playlist_id": "",
+                        "folder": ""
+                    },
+                    {
+                        "name": "German Literature",
+                        "description": "German written works.",
+                        "videos": "",
+                        "playlist_id": "",
+                        "folder": ""
+                    }
+                ]
             }
         ]
     },
@@ -1457,94 +1543,9 @@
                 "courses": [
                     {
                         "name": "Rev ll 3yal el summer",
-                        "description": "Wady ya string",
-                        "videos": [
-                            {
-                                "id": "D3CaCGGNQfo",
-                                "title": "Ch5 | Part 1",
-                                "duration": "02:22:46",
-                                "jsid": 0
-                            },
-                            {
-                                "id": "CLWrexn6mGo",
-                                "title": "Ch5 | Part 2",
-                                "duration": "02:21:32",
-                                "jsid": 1
-                            },
-                            {
-                                "id": "IMsSWwkTooo",
-                                "title": "Ch4 | Part 1",
-                                "duration": "03:03:14",
-                                "jsid": 2
-                            },
-                            {
-                                "id": "ETPG2_cxK8A",
-                                "title": "Ch4 | Part 2",
-                                "duration": "01:49:02",
-                                "jsid": 3
-                            },
-                            {
-                                "id": "q1IWjFVvPmk",
-                                "title": "Ch3 | Part 1",
-                                "duration": "03:26:10",
-                                "jsid": 4
-                            },
-                            {
-                                "id": "s7vei_jyH9U",
-                                "title": "Ch3 | Part 2",
-                                "duration": "01:23:42",
-                                "jsid": 5
-                            },
-                            {
-                                "id": "kqGLWXJvpcI",
-                                "title": "Ch2 | Part 1",
-                                "duration": "02:05:21",
-                                "jsid": 6
-                            },
-                            {
-                                "id": "QzIKOkXG0Tg",
-                                "title": "Ch2 | Part 2",
-                                "duration": "01:32:29",
-                                "jsid": 7
-                            },
-                            {
-                                "id": "i3F80iObJY8",
-                                "title": "Ch1 | Part 1",
-                                "duration": "02:11:23",
-                                "jsid": 8
-                            },
-                            {
-                                "id": "3s8qDw5RMv0",
-                                "title": "Ch1 | Part 2",
-                                "duration": "01:54:40",
-                                "jsid": 9
-                            },
-                            {
-                                "id": "iNXmSqGWyPs",
-                                "title": "B2ea | Part 1",
-                                "duration": "02:23:41",
-                                "jsid": 10
-                            },
-                            {
-                                "id": "3s7YyYwLBqw",
-                                "title": "B2ea | Part 2",
-                                "duration": "01:38:35",
-                                "jsid": 11
-                            },
-                            {
-                                "id": "BZLQ2IJnwr0",
-                                "title": "B2ea | Part 1 7al",
-                                "duration": "01:19:50",
-                                "jsid": 12
-                            },
-                            {
-                                "id": "yCKM2M9c1o8",
-                                "title": "B2ea | Part 2 7al",
-                                "duration": "01:26:05",
-                                "jsid": 13
-                            }
-                        ],
-                        "playlist_id": "PLM-GVlebsoPVUltbPkgnKVQw43iAI-G3h",
+                        "description": "",
+                        "videos": "",
+                        "playlist_id": "",
                         "folder": ""
                     }
                 ]
@@ -1555,9 +1556,23 @@
         "teachers": [
             {
                 "name": "Dr. Mohamed Daif",
-                "description": "Year 2023/2024",
                 "link": "daif",
-                "courses": []
+                "courses": [
+                    {
+                        "name": "Ecology",
+                        "description": "Ecosystems and interactions.",
+                        "videos": "",
+                        "playlist_id": "",
+                        "folder": ""
+                    },
+                    {
+                        "name": "Microbiology",
+                        "description": "Microorganisms study.",
+                        "videos": "",
+                        "playlist_id": "",
+                        "folder": ""
+                    }
+                ]
             }
         ]
     }

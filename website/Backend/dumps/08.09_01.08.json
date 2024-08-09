@@ -166,7 +166,7 @@
                 "courses": [
                     {
                         "name": "All sessions",
-                        "description": "Not youtube",
+                        "description": "",
                         "videos": "",
                         "playlist_id": "",
                         "folder": ""

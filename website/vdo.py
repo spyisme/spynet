@@ -63,8 +63,16 @@ def check_file(filename):
         return f'{filename} does not exist.'
 
 
+def jsonget(token, thing):
+    # decoded_bytes = base64.b64decode(token)
+    decoded_string = base64url_to_text(token)
+    data = json.loads(decoded_string)
+    final = data.get(thing)
+    return (final)
+
+
 def getkeys(video_url):
-    wvd = "cdms/realme.wvd"  # Set your preferred value for wvd
+    wvd = "cdms/main.wvd"  # Set your preferred value for wvd
     if wvd is None:
         exit(
             f"No CDM! To use local decryption, place a .wvd in {os.getcwd()}/WVDs"
@@ -97,6 +105,7 @@ def getkeys(video_url):
             otp_match = decoded_string[otp_start_index:otp_end_index]
 
         else:
+            otp_match = jsonget(token, 'otp')
             print("No OTP found in the decoded string.")
 
         if playback_info_index != -1:
@@ -109,6 +118,7 @@ def getkeys(video_url):
                 playback_info_start_index:playback_info_end_index]
 
         else:
+            playbackinfo_match = jsonget(token, 'playbackInfo')
             print("No playbackInfo found in the decoded string.")
 
     except UnicodeDecodeError:
@@ -549,9 +559,6 @@ def iframevids():
     return render_template('backend_pages/iframe.html', url=url, sname=sname)
 
 
-
-
-
 @vdo.route('/iframem3u8', methods=['GET', 'POST'])
 def hosssamsameh():
     url = request.args.get('url')
@@ -576,9 +583,6 @@ def hosssamsameh():
         requests.post(webhook_url, data=payload, headers=headers)
         return "Message Sent!"
     return render_template('backend_pages/iframe.html', url=url)
-
-
-
 
 
 @vdo.route("/list")

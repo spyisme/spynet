@@ -170,9 +170,8 @@ def login():
 
     if current_user.is_authenticated:
         return redirect(url_for('views.home'))
-    
 
-    if client_ip == "127.0.0.1" :
+    if client_ip == "127.0.0.1":
         whitelist_ips.add(client_ip)
 
     if client_ip in blacklist_ips:
@@ -202,9 +201,9 @@ def login():
         username = username.replace(" ", "")
         username = username.lower()
         user = User.query.filter_by(username=username).first()
-        if user :
+        if user:
             pass
-        else : 
+        else:
             user = User.query.filter_by(email=username).first()
 
         if user:
@@ -256,13 +255,11 @@ def logout():
     return redirect(url_for('views.login'))
 
 
-
 #Register , Forget Password------------------------------------------------------------------------------
 def read_html_file(file_path, **kwargs):
     with open(file_path, 'r') as file:
         template = file.read()
     return render_template_string(template, **kwargs)
-
 
 
 #Error handling?
@@ -334,7 +331,6 @@ def forgotpassword():
             user.otp = "null"
             user.password = "Chnageme"
 
-
             db.session.commit()
 
             discord_log_login(
@@ -352,6 +348,7 @@ def forgotpassword():
                            email=user.email,
                            msg=msgg)
 
+
 @views.route('/change_password', methods=['GET', 'POST'])
 def change_password():
     if request.method == 'POST':
@@ -366,10 +363,11 @@ def change_password():
         db.session.commit()
         return redirect('/subjects?password=set')
 
-    return render_template('users_pages/password.html' , msg =request.args.get("passwords") )
+    return render_template('users_pages/password.html',
+                           msg=request.args.get("passwords"))
 
 
-#Add requiremts 
+#Add requiremts
 @views.route('/register', methods=['GET', 'POST'])
 def registeracc():
     client_ip = request.headers.get('X-Forwarded-For')
@@ -458,7 +456,8 @@ def subjectspage():
     lines = list(data.keys())
     return render_template('used_pages/all.html',
                            lines=lines,
-                           teachername="All" ,   password=password)
+                           teachername="All",
+                           password=password)
 
 
 @views.route("/")
@@ -467,11 +466,13 @@ def home():
     return redirect(url_for("views.subjectspage"))
 
 
-#User pages---------------------------------------------------------------------------------------------------------------
+#User pages---------------------------------------------------------------------------
+
 
 #Subject
 @views.route("/subjects/<subject>")
 def subjects(subject):
+    teachers = None
     with open('website/Backend/data.json') as f:
         data = json.load(f)
     if subject in data:
@@ -484,6 +485,8 @@ def subjects(subject):
             teacher.get("description", "")
             or f"{len(teacher['courses'])} courses"
         } for teacher in data[subject]["teachers"]]
+    else:
+        return "Not found"
     return render_template('used_pages/subjects.html',
                            teachername=subject,
                            teacher_links=teachers)
@@ -492,16 +495,21 @@ def subjects(subject):
 #Teacher
 @views.route("/subjects/<subject>/<teacher_name>")
 def teacher(subject, teacher_name):
-
+    courses = None
     with open('website/Backend/data.json') as f:
         data = json.load(f)
     if subject in data:
         for teacher in data[subject]["teachers"]:
             if teacher["link"] == teacher_name:
                 courses = teacher.get("courses")
-                for item in courses:
-                    item['link'] = item['name']
-                break
+                if courses:
+                    for item in courses:
+                        item['link'] = item['name']
+                    break
+                else:
+                    return "Not found"
+            else:
+                return "Not found"
     return render_template('used_pages/teacher.html',
                            teachername=subject,
                            teacher_links=courses,
@@ -511,9 +519,12 @@ def teacher(subject, teacher_name):
 #Videos
 @views.route("/subjects/<subject>/<teacher_name>/<course_name>")
 def videos(subject, teacher_name, course_name):
+    videos = None
+    playlist_id = None
+    folder = None
 
-    if "-" in course_name :
-        course_name =course_name.replace('-' , ' ')
+    if "-" in course_name:
+        course_name = course_name.replace('-', ' ')
 
     with open('website/Backend/data.json') as f:
         data = json.load(f)
@@ -528,7 +539,10 @@ def videos(subject, teacher_name, course_name):
                         videos = course.get('videos', '')
                         playlist_id = course.get('playlist_id', '')
                         folder = course.get('folder', '')
-
+                    else:
+                        return "Not found"
+            else:
+                "Not found"
     teachername = course_name
 
     return render_template('used_pages/videopage.html',
@@ -538,15 +552,22 @@ def videos(subject, teacher_name, course_name):
                            folder=folder)
 
 
+#-----------------------------------------Ashraf el shenawy----------------
+
+
+@views.route("/subjects/chemistry/ashrafelshenawy/All-sessions")
+def ashrafelshemawy():
+
+    return render_template('used_pages/ashraf.html')
 
 
 #Update videos
 @views.route("/subjects/<subject>/<teacher_name>/<course_name>/update")
 def update(subject, teacher_name, course_name):
 
-    if "-" in course_name :
+    if "-" in course_name:
 
-        course_name =course_name.replace('-' , ' ')
+        course_name = course_name.replace('-', ' ')
 
     with open('website/Backend/data.json') as f:
         data = json.load(f)
@@ -565,8 +586,7 @@ def update(subject, teacher_name, course_name):
 
 
 #Admin pages
-admins = ['spy'] #list of admins (usernames)
-
+admins = ['spy']  #list of admins (usernames)
 
 
 #Manage users-----------------------------------------------------------------------
@@ -601,7 +621,6 @@ def edit_active_sessions(user_id):
     return jsonify({'error': 'Method not allowed'}), 405
 
 
-
 @views.route('/edit_email/<user_id>', methods=['POST'])
 def edit_email(user_id):
     if current_user.username not in admins:
@@ -628,14 +647,11 @@ def edit_email(user_id):
     return jsonify({'error': 'Method not allowed'}), 405
 
 
-
-
-
 @views.route('/create_user', methods=['POST'])
 def create_user_route():
     if current_user.username not in admins:
         return "User is not an admin"
-    
+
     if request.method == 'POST':
         username = request.form.get('username')
         email = request.form.get('email')
@@ -660,9 +676,6 @@ def create_user_route():
     return jsonify({'error': 'Method not allowed'}), 405
 
 
-
-
-
 @views.route('/user-delete/<user_id>')
 def delete_user(user_id):
     if current_user.username not in admins:
@@ -674,14 +687,15 @@ def delete_user(user_id):
 
     if not user_to_delete:
         return jsonify({'error': 'User not found'}), 404
-    
+
     discord_log_login("<@709799648143081483> " + current_user.username +
-                            " deleted " + user_to_delete.username)
-    
+                      " deleted " + user_to_delete.username)
+
     db.session.delete(user_to_delete)
     db.session.commit()
 
     return redirect("/admin")
+
 
 @views.route('/approve/<userid>')
 def approve(userid):
@@ -693,25 +707,18 @@ def approve(userid):
     recipient = user.email
     subject = "Account Approved"
 
-
     html_content = read_html_file(
-        'website/templates/users_pages/account_created.html', username=user.username)
+        'website/templates/users_pages/account_created.html',
+        username=user.username)
 
     msg = Message(subject, recipients=[recipient])
     msg.html = html_content
     mail.send(msg)
-    
+
     return "done"
 
 
-
-
-
-
-
-
 #Edit pages------------------------------------------------------------------------------------
-
 
 
 def load_data():
@@ -884,7 +891,7 @@ def manage_courses(subject, teachername):
          for teacher in teachers if teacher['link'] == teachername), None)
     course_names = [course['name'] for course in teacher_courses]
 
-    if request.method == 'POST':  
+    if request.method == 'POST':
 
         if request.form['action'] == 'Add':
             course_name = request.form['new']
@@ -927,7 +934,6 @@ def manage_courses(subject, teachername):
             if os.path.exists(file_path):
                 os.remove(file_path)
 
-
             teacher = next((t for t in teachers if t['link'] == teachername),
                            None)
 
@@ -961,8 +967,8 @@ def edit_course(subject, teachername, course_name):
         return "User is not an admin"
     data = load_data()
     current_course = None
-    if "-" in course_name :
-        course_name =course_name.replace('-' , ' ')
+    if "-" in course_name:
+        course_name = course_name.replace('-', ' ')
     if request.method == 'POST':
         for teacher in data.get(subject, {}).get('teachers', []):
             if teacher['link'] == teachername:
@@ -977,7 +983,7 @@ def edit_course(subject, teachername, course_name):
                         elif request.form['action'] == 'Clear videos':
                             course['videos'] = ""
                         save_data(data)
-                        course_name = course_name.replace(' ' , '-')
+                        course_name = course_name.replace(' ', '-')
                         return redirect(
                             url_for('views.edit_course',
                                     subject=subject,

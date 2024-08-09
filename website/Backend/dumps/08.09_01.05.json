@@ -163,20 +163,6 @@
             {
                 "name": "Mr. Ashraf el shenawy",
                 "link": "ashrafelshenawy",
-                "courses": [
-                    {
-                        "name": "All sessions",
-                        "description": "Not youtube",
-                        "videos": "",
-                        "playlist_id": "",
-                        "folder": ""
-                    }
-                ]
-            },
-            {
-                "name": "Dr. Nasser el batal",
-                "description": "Year 2024/2025",
-                "link": "Dr. Nasser el batal",
                 "courses": []
             }
         ]
@@ -1401,6 +1387,7 @@
                 "name": "Mr. Tamer el kady",
                 "link": "tamerelkady",
                 "description": "Year 2023/2024",
+
                 "courses": []
             }
         ]
@@ -1411,12 +1398,17 @@
                 "name": "Mr. Hossam Sameh",
                 "link": "theleader",
                 "description": "Year 2023/2024",
-                "courses": []
+
+                "courses": [
+  
+                ]
             },
             {
                 "name": "Mr. Aahmed Salah",
                 "link": "ahmedsalah",
-                "courses": []
+                "courses": [
+
+                ]
             }
         ]
     },
@@ -1425,18 +1417,26 @@
             {
                 "name": "Mr. Mohamed Tarek",
                 "link": "mohamedtarek",
-                "courses": []
+
+                "courses": [
+    
+                ]
             },
             {
                 "name": "Mr. Mohamed Salah",
                 "link": "mohamedsalah",
-                "courses": []
+                "courses": [
+   
+                ]
             },
             {
                 "name": "Mr. Reda el farouk",
                 "link": "redaelfarouk",
                 "description": "Year 2023/2024",
-                "courses": []
+
+                "courses": [
+      
+                ]
             }
         ]
     },
@@ -1445,7 +1445,9 @@
             {
                 "name": "Herr Abd El Moez",
                 "link": "abdelmoez",
-                "courses": []
+                "courses": [
+   
+                ]
             }
         ]
     },
@@ -1556,8 +1558,10 @@
             {
                 "name": "Dr. Mohamed Daif",
                 "description": "Year 2023/2024",
+
                 "link": "daif",
-                "courses": []
+        "courses":[
+                ]
             }
         ]
     }
