@@ -595,7 +595,7 @@ def update(subject, teacher_name, course_name):
 
 
 #Admin pages
-admins = ['spy']  #list of admins (usernames)
+admins = ['spy' , 'biba']  #list of admins (usernames)
 
 
 #Manage users-----------------------------------------------------------------------

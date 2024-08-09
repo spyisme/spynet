@@ -4,7 +4,7 @@
     <meta name="robots" content="noindex">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
 
 
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -16,21 +16,18 @@
       <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/ashraf.css') }}">
     
 
-     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/main.css') }}">
-   
-    
+
 
 
 </head>
-<body>
-
-
-
+<body onload="startCountdown()">
 
     <section class="banner">
         <canvas id="canvas"></canvas>
         <div class="form-container">
-            <h2>Ashraf ElShenawy (By Spy)</h2>
+            <p style="font-size: 43px;">Ashraf ElShenawy (By Spy)</p>
+
+            <hr>
             <h3></h3>
             <label for="lectureIdInput">Select Lecture :</label>
             <select class="custom-select" id="lectureIdInput"></select>
@@ -42,16 +39,23 @@
         <div id="videoPlayerContainer">
             <iframe id="videoPlayer" allow="encrypted-media" allowfullscreen></iframe>
         </div>
+        
+          <div class="footer">
+            <p id="countdown">Loading..</p>
+          </div>
+
+        
     </section>
 
 
-      <div class="footer">
-        <p id="countdown">smth</p>
-      </div>
+
 
 </body>
-    <script src="{{ url_for('static', filename='java/countdown.js') }}"></script>
+
     <script src="{{ url_for('static', filename='java/snow.js') }}"></script>
     <script src="{{ url_for('static', filename='java/ashraf.js') }}"></script>
+    <script src="   {{ url_for('static', filename='java/countdown.js') }}"></script>
+    <script src="   {{ url_for('static', filename='java/connection.js') }}"></script>
+
 
 </html>

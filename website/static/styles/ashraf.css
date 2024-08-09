@@ -1,8 +1,9 @@
     html, body {
+        zoom: 85%;
 
         margin: 0;
         padding: 0;
-        zoom: 90%;
+
 
     }
     body {
@@ -40,8 +41,8 @@
     }
     iframe {
         border: 0;
-        width: 935.18px;
-        height: 400px;
+        width: 1200px;
+        height: 800px;
     }
     #canvas {
         position: absolute;
@@ -100,4 +101,21 @@
         border: none;
         border-radius: 5px;
         margin: 5px;
+    }
+
+
+.footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #17364f;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    z-index: 2; /* Higher z-index value than shine */
+
+    }
+.countdown{
+    color:white;
     }
