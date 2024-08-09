@@ -516,6 +516,9 @@ def teacher(subject, teacher_name):
                     item['link'] = item['name']
                 break
 
+    if courses == None:  #type: ignore
+        return "Not found"
+
     return render_template('used_pages/teacher.html',
                            teachername=subject,
                            teacher_links=courses,
@@ -544,9 +547,8 @@ def videos(subject, teacher_name, course_name):
                         playlist_id = course.get('playlist_id', '')
                         folder = course.get('folder', '')
 
-                    if videos == None:  #type: ignore
-                        return "Not found"
-
+    if videos == None:  #type: ignore
+        return "Not found"
     teachername = course_name
 
     return render_template('used_pages/videopage.html',

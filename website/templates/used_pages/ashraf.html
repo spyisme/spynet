@@ -12,10 +12,14 @@
 
 
     <title>Spy</title>
-    
-       <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/ashraf.css') }}">
 
-    <script src="{{ url_for('static', filename='java/ashraf.js') }}"></script>
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/ashraf.css') }}">
+    
+
+     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/main.css') }}">
+   
+    
+
 
 </head>
 <body>
@@ -41,11 +45,13 @@
     </section>
 
 
-
+      <div class="footer">
+        <p id="countdown">smth</p>
+      </div>
 
 </body>
-
+    <script src="{{ url_for('static', filename='java/countdown.js') }}"></script>
     <script src="{{ url_for('static', filename='java/snow.js') }}"></script>
-
+    <script src="{{ url_for('static', filename='java/ashraf.js') }}"></script>
 
 </html>
