@@ -1,22 +1,28 @@
-from flask import Blueprint, render_template, request, redirect, url_for, render_template_string, send_file, current_app
-
-from googleapiclient.discovery import build
-import os
-import ast
 import json
-import requests
-from flask import session
-from flask import jsonify  #type: ignore
-from flask_login import login_user, current_user, logout_user
-from .models import User, db
-from google.oauth2.credentials import Credentials
-from googleapiclient.discovery import build  #type: ignore
+import os
 import random
-from flask_mail import Message
-from . import mail
-from google.auth.exceptions import GoogleAuthError
 from datetime import datetime
-from werkzeug.utils import secure_filename
+
+import requests
+from flask import (
+    Blueprint,
+    jsonify,  #type: ignore
+    redirect,
+    render_template,
+    render_template_string,
+    request,
+    send_file,
+    session,
+    url_for,
+)
+from flask_login import current_user, login_user, logout_user
+from flask_mail import Message
+from google.auth.exceptions import GoogleAuthError
+from google.oauth2.credentials import Credentials
+from googleapiclient.discovery import build
+
+from . import mail
+from .models import User, db
 
 views = Blueprint('views', __name__)
 
@@ -502,14 +508,10 @@ def teacher(subject, teacher_name):
         for teacher in data[subject]["teachers"]:
             if teacher["link"] == teacher_name:
                 courses = teacher.get("courses")
-                if courses:
-                    for item in courses:
-                        item['link'] = item['name']
-                    break
-                else:
-                    return "Not found"
-            else:
-                return "Not found"
+                for item in courses:
+                    item['link'] = item['name']
+                break
+
     return render_template('used_pages/teacher.html',
                            teachername=subject,
                            teacher_links=courses,
@@ -531,18 +533,16 @@ def videos(subject, teacher_name, course_name):
     if subject in data:
         for teacher in data[subject]["teachers"]:
             if teacher.get("link") == teacher_name:
-                # Find the specific course
                 for course in teacher.get("courses", []):
 
                     if course.get("name") == course_name:
-                        # Return the course videos and playlist_id
                         videos = course.get('videos', '')
                         playlist_id = course.get('playlist_id', '')
                         folder = course.get('folder', '')
-                    else:
+
+                    if videos == None:  #type: ignore
                         return "Not found"
-            else:
-                "Not found"
+
     teachername = course_name
 
     return render_template('used_pages/videopage.html',
@@ -562,9 +562,12 @@ def ashrafelshemawy():
 
 
 #Update videos
-@views.route("/subjects/<subject>/<teacher_name>/<course_name>/update")
-def update(subject, teacher_name, course_name):
 
+
+@views.route(
+    "/subjects/<subject>/<teacher_name>/<course_name>/update")  #type: ignore
+def update(subject, teacher_name, course_name):
+    videos = None
     if "-" in course_name:
 
         course_name = course_name.replace('-', ' ')
@@ -663,7 +666,8 @@ def create_user_route():
         existing_user = User.query.filter_by(username=username).first()
         if existing_user:
             return jsonify({'error': 'Username already exists'}), 400
-        new_user = User(username=username, password=password, email=email)
+        new_user = User(username=username, password=password,
+                        email=email)  #type: ignore
         db.session.add(new_user)
         db.session.commit()
         if current_user.username != 'spy':
@@ -682,7 +686,7 @@ def delete_user(user_id):
         return "User is not an admin"
     user_to_delete = User.query.get(user_id)
 
-    if user_to_delete.username == "spy":
+    if user_to_delete.username == "spy":  #type: ignore
         return "55555555555"
 
     if not user_to_delete:
@@ -702,14 +706,14 @@ def approve(userid):
     if current_user.username not in admins:
         return "User is not an admin"
     user = User.query.filter_by(id=userid).first()
-    user.otp = "null"
+    user.otp = "null"  #type: ignore
     db.session.commit()
-    recipient = user.email
+    recipient = user.email  #type: ignore
     subject = "Account Approved"
 
     html_content = read_html_file(
         'website/templates/users_pages/account_created.html',
-        username=user.username)
+        username=user.username)  #type: ignore
 
     msg = Message(subject, recipients=[recipient])
     msg.html = html_content
@@ -718,7 +722,7 @@ def approve(userid):
     return "done"
 
 
-#Edit pages------------------------------------------------------------------------------------
+#Edit pages-----------------------------------------------------------------------
 
 
 def load_data():
@@ -757,13 +761,11 @@ def manage_subjects():
             file = request.files['file']
 
             if file:
-                os.makedirs(
-                    os.path.dirname(f'website/static/assets/homepage/' +
-                                    subject + '.jpg'),
-                    exist_ok=True)
+                os.makedirs(os.path.dirname('website/static/assets/homepage/' +
+                                            subject + '.jpg'),
+                            exist_ok=True)
 
-                file.save(f'website/static/assets/homepage/' + subject +
-                          '.jpg')
+                file.save('website/static/assets/homepage/' + subject + '.jpg')
 
             else:
                 return "Choose an imgae for the teacher"
@@ -781,7 +783,7 @@ def manage_subjects():
 
         if request.form['action'] == 'Remove':
             subject = request.form['removeSubject']
-            os.remove(f'website/static/assets/homepage/' + subject + '.jpg')
+            os.remove('website/static/assets/homepage/' + subject + '.jpg')
             if subject == "":
                 return "Subject is none "
             if subject in data:
@@ -865,8 +867,8 @@ def manage_teachers(subject):
                     else:
                         return jsonify({
                             "message":
-                            f"Teacher '{teacher_name}' does not exist in subject '{subject}'!"
-                        }), 400
+                            f"Teacher '{teacher_name}' does not exist in subject '{subject}'!"  #type: ignore
+                        }), 400  #type: ignore
 
             else:
                 return jsonify(
@@ -889,7 +891,8 @@ def manage_courses(subject, teachername):
     teacher_courses = next(
         (teacher['courses']
          for teacher in teachers if teacher['link'] == teachername), None)
-    course_names = [course['name'] for course in teacher_courses]
+    course_names = [course['name']
+                    for course in teacher_courses]  #type: ignore
 
     if request.method == 'POST':
 
@@ -918,7 +921,7 @@ def manage_courses(subject, teachername):
                 "playlist_id": "",
                 "folder": ""
             }
-            teacher_courses.append(new_course)
+            teacher_courses.append(new_course)  #type: ignore
             data[subject]['teachers'] = teachers
             save_data(data)
             return redirect(
@@ -929,7 +932,7 @@ def manage_courses(subject, teachername):
         if request.form['action'] == 'Remove':
 
             course_name = request.form['remove']
-            file_path = f'website/static/assets/{subject}/{teachername}/' + course_name + '.jpg'
+            file_path = f'website/static/assets/{subject}/{teachername}/' + course_name + '.jpg'  #type: ignore
 
             if os.path.exists(file_path):
                 os.remove(file_path)
@@ -940,11 +943,11 @@ def manage_courses(subject, teachername):
             if course_name == "":
                 return "Course name is none "
             teacher_courses = [
-                course for course in teacher_courses
+                course for course in teacher_courses  #type: ignore
                 if course['name'] != course_name
             ]
 
-            teacher['courses'] = teacher_courses
+            teacher['courses'] = teacher_courses  #type: ignore
             data[subject]['teachers'] = teachers
 
             save_data(data)
