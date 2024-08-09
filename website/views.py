@@ -223,6 +223,8 @@ def login():
                 )
 
                 return redirect(f"/login?maxdevices=yes&user={username}")
+            if user.password == "password" :
+                return redirect(f"forgotpassword?user={username}")
 
             if password == user.password:
                 login_user(user)
