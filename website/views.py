@@ -207,6 +207,8 @@ def login():
         username = username.replace(" ", "")  #type: ignore
         username = username.lower()
         user = User.query.filter_by(username=username).first()
+        
+        #To get the username using the username/email
         if user:
             pass
         else:
