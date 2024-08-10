@@ -622,16 +622,16 @@ def admin():
 
 
 
-# @views.route('/approve_users')
-# def approveusers():
-#     if current_user.username == 'spy':
-#        users = User.query.filter(User.otp.contains('Waiting approval')).all()
-#     else :
-#         users = None
+@views.route('/approve_users')
+def approveusers():
+    if current_user.username == 'spy':
+       users = User.query.filter(User.otp.contains('Waiting approval')).all()
+    else :
+        users = None
 
 
 
-#     return render_template('admin/admin.html', users=users)
+    return render_template('admin/admin.html', users=users)
 
 
 @views.route('/approve/<userid>')

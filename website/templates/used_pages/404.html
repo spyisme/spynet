@@ -8,6 +8,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
     <script src="static/java/connection.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/main.css') }}" />
 
     <style>
         body {
@@ -18,7 +19,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #15172b;
+            background-color: black;
 
         }
         .error-container {
@@ -39,7 +40,7 @@
             border: 0;
             box-sizing: border-box;
             color: #eee;
-            cursor: pointer;
+            /* cursor: pointer; */
             font-size: 18px;
             padding: 10px 20px;
             text-align: center;
