@@ -570,7 +570,7 @@ def videos(subject, teacher_name, course_name):
 #-----------------------------------------Ashraf el shenawy----------------
 
 
-@views.route("/subjects/chemistry/ashrafelshenawy/All-sessions")
+@views.route("/subjects/chemistry/ashrafelshenawy")
 def ashrafelshemawy():
 
     return render_template('used_pages/ashraf.html')
