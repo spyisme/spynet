@@ -36,25 +36,6 @@ def create_app():
         with open(file_path, 'r') as file:
             return file.read()
 
-    @app.route('/send_email', methods=['GET', 'POST'])
-    def send_email():
-        if request.method == 'GET':
-            recipient = request.args.get('to')
-            subject = "Account Registration Confirmation"
-
-            html_content = read_html_file(
-                'website/templates/users_pages/email.html')
-
-            msg = Message(subject, recipients=[recipient])  #type: ignore
-            msg.html = html_content
-
-            try:
-                mail.send(msg)
-                return redirect("/register?done=true")
-            except Exception as e:
-                return f"Failed to send email. Error: {str(e)}"
-
-        return "This endpoint only accepts GET requests."
 
 
     
@@ -69,15 +50,6 @@ def create_app():
 
 
 
-    @app.route('/admin')
-    def admin():
-        if current_user.username != 'spy':
-            users = User.query.filter(User.username != 'biba').all()
-
-        else:
-            users = User.query.all()
-
-        return render_template('admin/admin.html', users=users)
 
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
     app.config['SECRET_KEY'] = 'secretkey'
@@ -124,14 +96,23 @@ def create_app():
         ]
 
         if request.endpoint and request.endpoint not in excluded_routes and not request.path.startswith(
-                '/static/') and not request.path.startswith('/send_email'):
+                '/static/') :
             if not current_user.is_authenticated:
                 return redirect(url_for('views.login'))
+        
+
             elif current_user.otp == "Waiting approval" :
-                return 'Please wait to get approved'
+
+                if not request.path.startswith('/send_email') :
+
+                    return render_template('users_pages/approve.html')
+                
+
             elif current_user.password == "Chnageme":
                 if not request.path.startswith('/change_password') :
-                    return  redirect(url_for('views.change_password'))    
+                    return  redirect(url_for('views.change_password'))  
+
+
             else:
                 client_ip = request.headers.get('X-Forwarded-For')
                 if client_ip:

