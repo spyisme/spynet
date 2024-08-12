@@ -208,7 +208,7 @@ def login():
         username = username.replace(" ", "")  #type: ignore
         username = username.lower()
         user = User.query.filter_by(username=username).first()
-        
+
         #To get the username using the username/email
         if user:
             pass
@@ -224,7 +224,7 @@ def login():
                 )
 
                 return redirect(f"/login?maxdevices=yes&user={username}")
-            if user.password == "password" :
+            if user.password == "password":
                 return redirect(f"forgotpassword?user={username}")
 
             if password == user.password:
@@ -604,8 +604,7 @@ def update(subject, teacher_name, course_name):
 
 
 #Admin pages
-admins = ['spy' , 'biba']  #list of admins (usernames)
-
+admins = ['spy', 'biba']  #list of admins (usernames)
 
 #Manage users-----------------------------------------------------------------------
 
@@ -613,7 +612,9 @@ admins = ['spy' , 'biba']  #list of admins (usernames)
 @views.route('/admin')
 def admin():
     if current_user.username != 'spy':
-        users = User.query.filter(not_(User.otp.contains('Waiting approval'))).filter(User.username != 'biba').filter(User.username != 'spy').all()
+        users = User.query.filter(not_(
+            User.otp.contains('Waiting approval'))).filter(
+                User.username != 'biba').filter(User.username != 'spy').all()
 
     else:
         users = User.query.all()
@@ -621,15 +622,12 @@ def admin():
     return render_template('admin/admin.html', users=users)
 
 
-
 @views.route('/approve_users')
 def approveusers():
     if current_user.username == 'spy':
-       users = User.query.filter(User.otp.contains('Waiting approval')).all()
-    else :
+        users = User.query.filter(User.otp.contains('Waiting approval')).all()
+    else:
         users = None
-
-
 
     return render_template('admin/admin.html', users=users)
 
@@ -655,15 +653,6 @@ def approve(userid):
     return "done"
 
 
-
-
-
-
-
-
-
-
-
 @views.route('/send_email', methods=['GET', 'POST'])
 def send_email():
 
@@ -672,7 +661,7 @@ def send_email():
 
     email = User.query.filter_by(email=recipient).first()
 
-    if email :
+    if email:
 
         html_content = read_html_file(
             'website/templates/users_pages/email.html')
@@ -685,20 +674,8 @@ def send_email():
             return redirect("/")
         except Exception as e:
             return f"Failed to send email. Account Got created tho"
-    else :
-        return "Email doesnt exist"    
-
-
-
-
-
-
-
-
-
-
-
-
+    else:
+        return "Email doesnt exist"
 
 
 @views.route('/edit_active_sessions/<user_id>', methods=['POST'])
@@ -807,8 +784,6 @@ def delete_user(user_id):
     db.session.commit()
 
     return redirect("/admin")
-
-
 
 
 #Edit pages-----------------------------------------------------------------------
@@ -1113,3 +1088,4 @@ def edit_course(subject, teachername, course_name):
                            course_name=course_name,
                            teachername=teachername,
                            current_course=current_course)
+

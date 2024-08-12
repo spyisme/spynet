@@ -177,9 +177,9 @@ def getkeys(video_url):
 
     headers = {
         'Content-Type': 'application/json',
-        'vdo-sdk': 'Aegis/1.26.3-bp-zen-3',
+        'vdo-sdk': 'Aegis/1.26.8-bg-zen-1',
         'User-Agent':
-        'Dalvik/2.1.0 (Linux; U; Android 13; SM-E625F Build/TP1A.220624.014)',
+        'Dalvik/2.1.0 (Linux; U; Android 13; 2201117SG Build/TP1A.220624.014)',
         'Host': 'license.vdocipher.com',
         'Connection': 'Keep-Alive',
         'Accept-Encoding': 'gzip',
@@ -246,9 +246,9 @@ def getkeys(video_url):
 
     headers = {
         'Content-Type': 'application/json',
-        'vdo-sdk': 'Aegis/1.26.3-bp-zen-3',
+        'vdo-sdk': 'Aegis/1.26.8-bg-zen-1',
         'User-Agent':
-        'Dalvik/2.1.0 (Linux; U; Android 13; SM-E625F Build/TP1A.220624.014)',
+        'Dalvik/2.1.0 (Linux; U; Android 13; 2201117SG Build/TP1A.220624.014)',
         'Host': 'license.vdocipher.com',
         'Connection': 'Keep-Alive',
         'Accept-Encoding': 'gzip',
