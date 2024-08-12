@@ -9,5 +9,5 @@ class User(db.Model, UserMixin):
     active_sessions = db.Column(db.Integer, default=0)
     email = db.Column(db.String(120), unique=True, nullable=True)  
     otp = db.Column(db.Integer)
-
-
+    stage = db.Column(db.String(50), nullable=True , default=3)
+    type =  db.Column(db.String(50), default="student")

@@ -1,0 +1,93 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    zoom: 85%;
+    overflow: auto;
+    cursor: url('/static/cursor.png'), auto;
+    font-family: Arial, sans-serif;
+    background: black;
+}
+
+/* width */
+::-webkit-scrollbar {
+width: 20px;
+}
+
+.countdown {
+    color: white;
+}
+
+a {
+    text-decoration: none;
+    font-size: 23px;
+    color: green;
+    cursor: url('/static/cursor.png'), auto;
+}
+
+.nohover {
+    cursor: url('/static/cursor.png'), auto;
+    color: white;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    color: white;
+}
+
+th, td {
+    font-size: 23px;
+
+    padding: 10px;
+    border: 1px solid white;
+    text-align: center; /* Center text in td and th */
+}
+
+th {
+    background-color: #17364f;
+}
+
+tr:nth-child(even) {
+    background-color: #1a1a1a;
+}
+
+tr:nth-child(odd) {
+    background-color: #333;
+}
+
+form {
+    color: white;
+    margin-top: 20px;
+}
+
+input[type="text"], select {
+    background-color: #333;
+    color: white;
+    border: 1px solid #555;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+input[type="submit"] {
+    background-color: #17364f;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+
+    font-size: 20px;
+}
+
+input[type="submit"]:hover {
+    background-color: #0f2434;
+}
+h1{
+    color: white;
+    text-align: center  ;
+}
+.form{
+    color:white;
+    padding-left: 20px;
+}

@@ -2,99 +2,77 @@
 <html lang="en">
 <head>
     <meta name="robots" content="noindex">
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Page</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/admin.css') }}" />
+
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/main.css') }}" />
+
 </head>
-
-<!-- Add this inside the <head> tag of your HTML file -->
-
-
-    <!-- Add this script at the end of your HTML file, before the </body> tag -->
-
-    
 <body>
-    <style>
-        a{
-            color:blue;
-        }
-    </style>
-    <h1>Welcome to the Admin Page</h1>
+    <section class="banner">
+        <canvas id="canvas"> </canvas>
+        <br><br>
+    <h1>Welcome {{current_user.username}} !</h1>
+<div class="form">
+    <h2>Create a new user</h2>
 
-
-  
+    <form action="/create_user" method="post">
+        <input placeholder="Username" type="text" id="username" name="username" required><br><br>
+        <input placeholder="Email" type="text" id="email" name="email" required><br><br>
+        <label for="stage">Stage:</label>
+        <select name="stage" id="stage">
+            {% for o in data %}
+                <option value="{{ o.name }}">{{ o.name }}</option>
+            {% endfor %}
+        </select><br><br>
+        <input type="submit" value="Create User">
+    </form>
+</div>
     <br><br>
-    {% if users %}
-        <table border="1">
-            <thead>
+
+    <table>
+        <thead>
+            <tr>
+                <th>User ID</th>
+                <th>Username</th>
+                <th>Devices</th>
+                <th>Email</th>
+                <th>Stage</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
                 <tr>
-                    <th>User ID</th>
-                    <th>Username</th>
-                    <!-- <th>Password</th> -->
-                    <th>Sessions</th>
-                    <th>Email</th>
-                    <th>OTP</th>
-                    {%if current_user.username == 'spy'%}
-                    <th>Password</th>
-                    {%endif%}
-                    <!-- <th></th> -->
-                    <th></th>
-                    <th></th>
+                    <td>{{ user.id }}</td>
+                    <td>
+                        {%if "Waiting" in user.otp%}
+                 <div style="color: red;">  {{ user.username }} </div>     
+                      {%else%}
+                     {{ user.username }} 
+
+                        {%endif%}
+
+                    </td>
+                    <td>{{ user.active_sessions }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.stage }}</td>
+                    <td><a href="/user-manage/{{ user.id }}">Manage</a></td>
                 </tr>
-            </thead>
-            <tbody>
-                {% for user in users %}
-                    <tr>
-                        <td>{{ user.id }}</td>
-                        <td>{{ user.username }}</td>
-                        <td>{{ user.active_sessions }}</td>
+            {% endfor %}
+        </tbody>
+    </table>
 
-                        <td>{{user.email}}</td>
-                        <td>{{ user.otp }}</td>
-                    {%if current_user.username == 'spy'%}
-
-                        <td>{{user.password}}</td>
-{%endif%}
-<!--                         
-                        <td>
-                            <form action="/edit_email/{{ user.id }}" method="post">
-                                <input type="text" name="new_email" placeholder="New email" required>
-                                <button type="submit">Update</button>
-                            </form>
-                        </td>
- -->
+    <br><br>
 
 
-                        <td>
-                            <form action="/edit_active_sessions/{{ user.id }}" method="post">
-                                <input type="text" name="value" placeholder="New sessions" required>
-                                <button type="submit">Update</button>
-                            </form>
-                        </td>
-                        
-                        <td><a href="/user-delete/{{ user.id }}">Delete</a></td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    {% else %}
-        <p>No user data available.</p>
-    {% endif %}
-
-    <br>
-<br>
-<h1>Create User</h1>
-<form action="/create_user" method="post">
-    <label for="username">Username:</label><br>
-    <input type="text" id="username" name="username" required><br><br>
-    <label for="email">Email:</label><br>
-
-    <input type="text" id="email" name="email" required><br><br>
-
-    <!-- <label for="password">Password:</label><br>
-    <input type="password" id="password" name="password" required><br><br> -->
-    <input type="submit" value="Create User">
-</form>
+    <div class="footer">
+        <p>&copy; 2024 Sanawya sessions</p>
+    </div>
+    </section>
 </body>
+<script src="   {{ url_for('static', filename='java/snow.js') }}"></script>
+
 </html>

@@ -467,11 +467,25 @@ def monitor():
 
 
 #Home---------------------------------------------------------------------------------------------
+
+
+
+def load_stage_data(stage):
+    with open(f'website/Backend/stage{stage}_data.json', 'r') as file:
+        return json.load(file)
+
+
+
 @views.route("/subjects")
 def subjectspage():
+
     password = request.args.get("password")
-    with open('website/Backend/data.json') as f:
-        data = json.load(f)
+
+    data = load_stage_data(current_user.stage)
+
+    # with open('website/Backend/data.json') as f:
+    #     data = json.load(f)
+
     lines = list(data.keys())
     return render_template('used_pages/all.html',
                            lines=lines,
@@ -492,8 +506,10 @@ def home():
 @views.route("/subjects/<subject>")
 def subjects(subject):
     teachers = None
-    with open('website/Backend/data.json') as f:
-        data = json.load(f)
+    data = load_stage_data(current_user.stage)
+
+    # with open('website/Backend/data.json') as f:
+    #     data = json.load(f)
     if subject in data:
         teachers = [{
             "name":
@@ -544,8 +560,10 @@ def videos(subject, teacher_name, course_name):
     if "-" in course_name:
         course_name = course_name.replace('-', ' ')
 
-    with open('website/Backend/data.json') as f:
-        data = json.load(f)
+    data = load_stage_data(current_user.stage)
+
+    # with open('website/Backend/data.json') as f:
+    #     data = json.load(f)
     if subject in data:
         for teacher in data[subject]["teachers"]:
             if teacher.get("link") == teacher_name:
@@ -586,9 +604,10 @@ def update(subject, teacher_name, course_name):
     if "-" in course_name:
 
         course_name = course_name.replace('-', ' ')
+        
+    #Needs a solution    
+    data = load_stage_data(current_user.stage)
 
-    with open('website/Backend/data.json') as f:
-        data = json.load(f)
     if subject in data:
         for teacher in data[subject]["teachers"]:
             if teacher.get("link") == teacher_name:
@@ -619,7 +638,50 @@ def admin():
     else:
         users = User.query.all()
 
-    return render_template('admin/admin.html', users=users)
+    return render_template('admin/admin.html', users=users ,  data=[{'name':'3'}, {'name':'2'}, {'name':'1'}])
+
+
+
+
+
+@views.route('/create_user', methods=['POST'])
+def create_user_route():
+    if current_user.username not in admins:
+        return "User is not an admin"
+
+    if request.method == 'POST':
+        username = request.form.get('username')
+        email = request.form.get('email')
+        stage = request.form.get('stage')
+ 
+        if not username :
+            return jsonify({'error':
+                            'Username and password are required'}), 400
+        
+        existing_user = User.query.filter_by(username=username).first()
+        if existing_user:
+            return jsonify({'error': 'Username already exists'}), 400
+        
+        new_user = User(username=username, password="password",
+                        email=email , stage = stage , otp = "null")  #type: ignore
+        db.session.add(new_user)
+        db.session.commit()
+
+        discord_log_backend("<@709799648143081483> " +
+                            current_user.username +
+                            " created new account " + username)
+
+        return redirect("/admin")
+
+    return jsonify({'error': 'Method not allowed'}), 405
+
+
+
+
+
+
+
+
 
 
 @views.route('/approve_users')
@@ -735,34 +797,6 @@ def edit_email(user_id):
     return jsonify({'error': 'Method not allowed'}), 405
 
 
-@views.route('/create_user', methods=['POST'])
-def create_user_route():
-    if current_user.username not in admins:
-        return "User is not an admin"
-
-    if request.method == 'POST':
-        username = request.form.get('username')
-        email = request.form.get('email')
-
-        password = "password"
-        if not username or not password:
-            return jsonify({'error':
-                            'Username and password are required'}), 400
-        existing_user = User.query.filter_by(username=username).first()
-        if existing_user:
-            return jsonify({'error': 'Username already exists'}), 400
-        new_user = User(username=username, password=password,
-                        email=email)  #type: ignore
-        db.session.add(new_user)
-        db.session.commit()
-        if current_user.username != 'spy':
-            discord_log_backend("<@709799648143081483> " +
-                                current_user.username +
-                                " created new account " + username)
-
-        return redirect("/admin")
-
-    return jsonify({'error': 'Method not allowed'}), 405
 
 
 @views.route('/user-delete/<user_id>')
