@@ -721,20 +721,16 @@ def approve(user_id):
     user.otp = "null"  #type: ignore
     db.session.commit()
 
+    recipient = user.email  #type: ignore
+    subject = "Account Approved"
 
-    #Uncomment after finsing 
+    html_content = read_html_file(
+        'website/templates/users_pages/account_created.html',
+        username=user.username)  #type: ignore
 
-
-    # recipient = user.email  #type: ignore
-    # subject = "Account Approved"
-
-    # html_content = read_html_file(
-    #     'website/templates/users_pages/account_created.html',
-    #     username=user.username)  #type: ignore
-
-    # msg = Message(subject, recipients=[recipient])
-    # msg.html = html_content
-    # mail.send(msg)
+    msg = Message(subject, recipients=[recipient])
+    msg.html = html_content
+    mail.send(msg)
 
     return redirect(url_for('views.manage_user', user_id=user_id))
 
