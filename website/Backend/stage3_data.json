@@ -3,7 +3,7 @@
         "teachers": [
             {
                 "name": "Dr. Nasser el batal",
-                "link": "nasserelbatal",
+                "link": "nasserelbatalold",
                 "description": "Year 2023/2024",
                 "courses": [
                     {
@@ -32,7 +32,7 @@
             {
                 "name": "Dr. Nasser el batal",
                 "description": "Year 2024/2025",
-                "link": "Dr. Nasser el batal",
+                "link": "nasserelbatal",
                 "courses": []
             }
         ]
@@ -748,8 +748,14 @@
             },
             {
                 "name": "Mr. Mohamed Salama",
-                "link": "salama",
+                "link": "salamaold",
                 "description": "Year 2023/2024",
+                "courses": []
+            },
+            {
+                "name": "Mr. Mohamed Salama",
+                "link": "salama",
+                "description": "Year 2024/2025",
                 "courses": []
             }
         ]
@@ -758,206 +764,13 @@
         "teachers": [
             {
                 "name": "Dr. Mohamed Adel",
-                "link": "mohamedadel",
+                "link": "mohamedadelold",
                 "description": "Year 2023/2024",
                 "courses": [
                     {
                         "name": "Chapter 1",
                         "description": "2024",
-                        "videos": [
-                            {
-                                "id": "naoxi2wbpx8",
-                                "title": "Explaining our system",
-                                "duration": "00:16:50",
-                                "jsid": 0
-                            },
-                            {
-                                "id": "MqeecLzE8LM",
-                                "title": "Explaining        site",
-                                "duration": "00:20:28",
-                                "jsid": 1
-                            },
-                            {
-                                "id": "v_U9yHOvKMM",
-                                "title": "S1 | Interstellar show",
-                                "duration": "00:15:18",
-                                "jsid": 2
-                            },
-                            {
-                                "id": "rzEHYfNn3Gw",
-                                "title": "S1 | Solving",
-                                "duration": "00:15:20",
-                                "jsid": 3
-                            },
-                            {
-                                "id": "7OmbM2HhoWE",
-                                "title": "S1 | Summary",
-                                "duration": "00:04:40",
-                                "jsid": 4
-                            },
-                            {
-                                "id": "B9Pg7Y3ZO1Y",
-                                "title": "S1 | One step further",
-                                "duration": "00:25:53",
-                                "jsid": 5
-                            },
-                            {
-                                "id": "FCtv8w9bnWE",
-                                "title": "S2 | Summary",
-                                "duration": "00:03:10",
-                                "jsid": 6
-                            },
-                            {
-                                "id": "z8V2cognGaA",
-                                "title": "S2 | Interstellar show",
-                                "duration": "00:07:01",
-                                "jsid": 7
-                            },
-                            {
-                                "id": "M2GqOn3SvQU",
-                                "title": "S2 | Reshaping idea",
-                                "duration": "00:19:35",
-                                "jsid": 8
-                            },
-                            {
-                                "id": "V49Uz4bkJNA",
-                                "title": "S2 | One Step Further",
-                                "duration": "01:16:33",
-                                "jsid": 9
-                            },
-                            {
-                                "id": "a3B6U6FqBzE",
-                                "title": "S2 | Solving",
-                                "duration": "00:37:06",
-                                "jsid": 10
-                            },
-                            {
-                                "id": "cwJ5lQL5yT4",
-                                "title": "S2 | Solving Techniques",
-                                "duration": "00:18:30",
-                                "jsid": 11
-                            },
-                            {
-                                "id": "MW9O0Ower3k",
-                                "title": "S3",
-                                "duration": "00:11:01",
-                                "jsid": 12
-                            },
-                            {
-                                "id": "NGz5MDjBtyI",
-                                "title": "S3 | One Step Further",
-                                "duration": "00:37:59",
-                                "jsid": 13
-                            },
-                            {
-                                "id": "OFFUmG5UZEw",
-                                "title": "S3 | Interstellar show",
-                                "duration": "00:06:15",
-                                "jsid": 14
-                            },
-                            {
-                                "id": "Fg6dJhyxV3Y",
-                                "title": "S3 | Solving",
-                                "duration": "00:48:05",
-                                "jsid": 15
-                            },
-                            {
-                                "id": "nxwkPHbb88c",
-                                "title": "S3 | Solving techniques",
-                                "duration": "00:12:54",
-                                "jsid": 16
-                            },
-                            {
-                                "id": "YW5MeUTswwc",
-                                "title": "S4 | Part 1",
-                                "duration": "00:11:09",
-                                "jsid": 17
-                            },
-                            {
-                                "id": "T_XoSCfN_Ng",
-                                "title": "S4 | Part 2",
-                                "duration": "00:25:43",
-                                "jsid": 18
-                            },
-                            {
-                                "id": "F0riQRMvJ_E",
-                                "title": "S4 | Part 3",
-                                "duration": "00:23:41",
-                                "jsid": 19
-                            },
-                            {
-                                "id": "ZBqH1VT41DE",
-                                "title": "S4 | Part 4",
-                                "duration": "00:06:58",
-                                "jsid": 20
-                            },
-                            {
-                                "id": "K2f2bw-64Uc",
-                                "title": "S4 | Part 5",
-                                "duration": "00:11:37",
-                                "jsid": 21
-                            },
-                            {
-                                "id": "gY8zJdi0-ts",
-                                "title": "S4 Part 6",
-                                "duration": "00:17:51",
-                                "jsid": 22
-                            },
-                            {
-                                "id": "MBOUQxu8oN4",
-                                "title": "S4 Part 7",
-                                "duration": "00:38:24",
-                                "jsid": 23
-                            },
-                            {
-                                "id": "VHt6UT0rFyc",
-                                "title": "S4 | One Step Further",
-                                "duration": "00:39:40",
-                                "jsid": 24
-                            },
-                            {
-                                "id": "nTS2QLx5glQ",
-                                "title": "S5 | Intro",
-                                "duration": "00:09:34",
-                                "jsid": 25
-                            },
-                            {
-                                "id": "dGTm3SNRhQ8",
-                                "title": "S5 | Part 1",
-                                "duration": "00:05:21",
-                                "jsid": 26
-                            },
-                            {
-                                "id": "WWyy8YP8PXE",
-                                "title": "S5 | Part 2",
-                                "duration": "00:44:11",
-                                "jsid": 27
-                            },
-                            {
-                                "id": "RA_UWdXMtPo",
-                                "title": "S5 | Part 3",
-                                "duration": "00:01:25",
-                                "jsid": 28
-                            },
-                            {
-                                "id": "7zPAJgPmrYs",
-                                "title": "S5 | Part 4",
-                                "duration": "00:16:38",
-                                "jsid": 29
-                            },
-                            {
-                                "id": "dwueCSn2PXo",
-                                "title": "S5 | Part 5",
-                                "duration": "00:42:48",
-                                "jsid": 30
-                            },
-                            {
-                                "id": "2ioAL64lKBI",
-                                "title": "S5 | One Step Further",
-                                "duration": "01:34:23",
-                                "jsid": 31
-                            }
-                        ],
+                        "videos": [],
                         "playlist_id": "PLM-GVlebsoPUat7jnB0u9lL9uV9RDB8bG",
                         "folder": ""
                     },
@@ -1253,25 +1066,34 @@
                     }
                 ]
             },
+
+            {
+                "name": "Mr. Tamer el kady",
+                "link": "tamerelkadyold",
+                "description": "Year 2023/2024",
+                "courses": []
+            },
+            {
+                "name": "Dr. Mohamed Adel",
+                "link": "mohamedadel",
+                "description": "Year 2024/2025",
+                "courses": []
+            },
             {
                 "name": "Mr. Tamer el kady",
                 "link": "tamerelkady",
-                "description": "Year 2023/2024",
+                "description": "Year 2024/2025",
                 "courses": []
             }
         ]
     },
     "english": {
         "teachers": [
+     
             {
                 "name": "Mr. Hossam Sameh",
                 "link": "theleader",
-                "description": "Year 2023/2024",
-                "courses": []
-            },
-            {
-                "name": "Mr. Aahmed Salah",
-                "link": "ahmedsalah",
+                "description": "Year 2024/2025",
                 "courses": []
             }
         ]
@@ -1280,30 +1102,60 @@
         "teachers": [
             {
                 "name": "Mr. Mohamed Tarek",
+                "link": "mohamedtarekold",
+                "description": "Year 2023/2024",
+
+                "courses": []
+            },
+            {
+                "name": "Mr. Mohamed Salah",
+                "link": "mohamedsalahold",
+                "description": "Year 2023/2024",
+
+                "courses": []
+            },
+            {
+                "name": "Mr. Reda el farouk",
+                "link": "redaelfaroukold",
+                "description": "Year 2023/2024",
+                "courses": []
+            },
+
+
+            {
+                "name": "Mr. Mohamed Tarek",
                 "link": "mohamedtarek",
-                "description": "",
+                "description": "Year 2024/2025",
+
                 "courses": []
             },
             {
                 "name": "Mr. Mohamed Salah",
                 "link": "mohamedsalah",
-                "description": "",
+                "description": "Year 2024/2025",
+
                 "courses": []
             },
             {
                 "name": "Mr. Reda el farouk",
                 "link": "redaelfarouk",
-                "description": "Year 2023/2024",
+                "description": "Year 2024/2025",
                 "courses": []
             }
+
+
+
+
+
         ]
     },
     "german": {
         "teachers": [
             {
                 "name": "Herr Abd El Moez",
-                "link": "abdelmoez",
-                "description": "",
+                "link": "abdelmoezold",
+                "description": "Year 2023/2024",
+
                 "courses": []
             }
         ]
@@ -1312,8 +1164,10 @@
         "teachers": [
             {
                 "name": "Mr. Sameh Nashaat",
-                "link": "samehnashaat",
-                "description": "",
+                "link": "samehnashaatold",
+                "description": "Year 2023/2024",
+
+
                 "courses": [
                     {
                         "name": "Rev ll 3yal el summer",
@@ -1408,6 +1262,13 @@
                         "folder": ""
                     }
                 ]
+            },
+            {
+                "name": "Mr. Sameh Nashaat",
+
+                "description": "Year 2024/2025",
+                "link": "samehnashaat",
+                "courses": []
             }
         ]
     },
@@ -1416,6 +1277,12 @@
             {
                 "name": "Dr. Mohamed Daif",
                 "description": "Year 2023/2024",
+                "link": "daifold",
+                "courses": []
+            },
+            {
+                "name": "Dr. Mohamed Daif",
+                "description": "Year 2024/2025",
                 "link": "daif",
                 "courses": []
             }
