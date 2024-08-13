@@ -16,13 +16,16 @@
         <br>
         <br>
     <h1 style="text-align: center;">Editing User: {{ user.username }} | ID : {{user.id}}</h1>
+    <div style="text-align: center;">
+<a href="/admin" style="font-size: 20px; text-decoration: underline; text-align: center; color: white;">Admin page </a>
+</div>
     {%if "Waiting" in user.otp%}
     <form action="{{ url_for('views.approve', user_id=user.id) }}" method="post" style="text-align: center;margin-top: 20px;">
      User is not approved yet.   <input style="background-color: green;" type="submit" value="Approve User?" onclick="return confirm('Are you sure you want to approve this user?');">
     </form>
 {%else%}
-<form action="{{ url_for('views.delete_user', user_id=user.id) }}" method="post" style="text-align: center;margin-top: 20px;">
-   To disable user click <input style="background-color: rgb(28, 132, 158);" type="submit" value="Disable User" onclick="return confirm('Are you sure you want to disable this user?');">
+<form action="{{ url_for('views.disable', user_id=user.id) }}" method="post" style="text-align: center;margin-top: 20px;">
+   To disable user click <input type="submit" value="Disable User" onclick="return confirm('Are you sure you want to disable this user?');">
 </form>
     {%endif%}
     <br>
@@ -71,7 +74,7 @@
    
 
     <form action="{{ url_for('views.delete_user', user_id=user.id) }}" method="post" style="margin-top: 20px;">
-        <input  type="submit" value="Delete User" onclick="return confirm('Are you sure you want to delete this user?');">
+        <input  type="submit" value="Permanently delete User" onclick="return confirm('Are you sure you want to delete this user (This action can not be undone)?');">
     </form>
 
     <br><br>

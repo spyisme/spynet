@@ -692,7 +692,7 @@ def manage_user(user_id):
 
         existing_user = User.query.filter_by(username=username).first()
 
-        if existing_user:
+        if existing_user and existing_user.username != user.username:
             return jsonify({'error': 'Username already exists'}), 400
         
  
@@ -720,16 +720,34 @@ def approve(user_id):
     user = User.query.filter_by(id=user_id).first()
     user.otp = "null"  #type: ignore
     db.session.commit()
-    recipient = user.email  #type: ignore
-    subject = "Account Approved"
 
-    html_content = read_html_file(
-        'website/templates/users_pages/account_created.html',
-        username=user.username)  #type: ignore
 
-    msg = Message(subject, recipients=[recipient])
-    msg.html = html_content
-    mail.send(msg)
+    #Uncomment after finsing 
+
+
+    # recipient = user.email  #type: ignore
+    # subject = "Account Approved"
+
+    # html_content = read_html_file(
+    #     'website/templates/users_pages/account_created.html',
+    #     username=user.username)  #type: ignore
+
+    # msg = Message(subject, recipients=[recipient])
+    # msg.html = html_content
+    # mail.send(msg)
+
+    return redirect(url_for('views.manage_user', user_id=user_id))
+
+
+
+@views.route('/disable/<int:user_id>' , methods=['GET', 'POST'])
+def disable(user_id):
+    if current_user.username not in admins:
+        return "User is not an admin"
+    user = User.query.filter_by(id=user_id).first()
+    user.otp = "Waiting approval"  #type: ignore
+    db.session.commit()
+
 
     return redirect(url_for('views.manage_user', user_id=user_id))
 
