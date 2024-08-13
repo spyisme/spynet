@@ -84,7 +84,7 @@
                   <div class="card">
        
                    
-                    <img class="img" src="{{ url_for('static', filename='assets/' + teachername +'/' + x.link +'.jpg') }}" alt="{{x.link}}">
+                    <img class="img" src="{{ url_for('static', filename='assets/Stage' + current_user.stage|string + '/'  + teachername +'/' + x.link +'.jpg') }}" alt="{{x.link}}">
 
        
                       <p>{{ x.name }}</p>
@@ -107,7 +107,7 @@
 <br>
 <br>
       <div class="footer">
-        <p id="countdown">Loading..</p>
+        <p id="countdown">© 2024 Sanawya sessions</p>
       </div>
 
     </section>

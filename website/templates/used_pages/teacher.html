@@ -50,8 +50,9 @@
         <h1>✰ {{ teachername }} ✰</h1>
     {% endif %}
 
-
-
+    {%if "2023" in description %}
+<h1>Old content</h1>
+{%endif%}
 
 
 
@@ -84,7 +85,7 @@
                   <div class="card">
        
                    
-                    <img class="img" src="{{ url_for('static', filename='assets/' + teachername +'/' + teacher_name +'/' + x.link +'.jpg') }}" alt="{{x.link}}">
+                    <img class="img" src="{{ url_for('static', filename='assets/Stage' +current_user.stage|string  + '/' + teachername +'/' + teacher_name +'/' + x.link +'.jpg') }}" alt="{{x.link}}">
 
        
                       <p>{{ x.name }}</p>
@@ -104,8 +105,9 @@
 <br>
 <br>
 <br>
+
       <div class="footer">
-        <p id="countdown">Loading..</p>
+        <p id="countdown">© 2024 Sanawya sessions</p>
       </div>
 
     </section>

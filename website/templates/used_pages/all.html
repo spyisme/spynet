@@ -40,7 +40,7 @@
 
                 {%endif%}
                 
-                <p id="date">Loading..</p>
+                <p id="date"></p>
         
              
             </div>
@@ -58,8 +58,7 @@
                 <p><button class="button" id="homeBtn" onclick="showDiv('homestuff', 'homeBtn')">Videos</button></p>
                 <p><button class="button" id="pdfsBtn" onclick="showDiv('pdfsstuff', 'pdfsBtn')">Pdfs</button></p>
             </div>
-            {% if current_user.is_authenticated %}
-
+ 
             <div id="homestuff" class="content hidden">
                 <ul>
 
@@ -68,7 +67,8 @@
                     <li>
                         <a href="subjects/{{ item }}">
                             <div class="card">
-                                <img src="{{ url_for('static', filename='assets/homepage/' + item + '.jpg') }} " alt="{{ item }}" loading="lazy" />
+                                <img src="{{ url_for('static', filename='assets/Stage' + current_user.stage|string + '/homepage/' + item + '.jpg') }}" alt="{{ item }}" loading="lazy" />
+
                                 <div class="text">{{ item }}</div>
                             </div>
                         </a>
@@ -95,14 +95,11 @@
     
                 </ul>
             </div>
-            {%else%}
-            <a href="/login">Please Login</a>
-            {%endif%}
 
             <br />
 
             <div class="footer">
-                <p id="countdown">Loading..</p>
+                <p id="countdown">© 2024 Sanawya sessions</p>
             </div>
         </section>
     </body>

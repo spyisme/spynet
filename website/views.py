@@ -531,12 +531,12 @@ def subjects(subject):
 @views.route("/subjects/<subject>/<teacher_name>")
 def teacher(subject, teacher_name):
     courses = None
-    with open('website/Backend/data.json') as f:
-        data = json.load(f)
+    data = load_stage_data(current_user.stage)
     if subject in data:
         for teacher in data[subject]["teachers"]:
             if teacher["link"] == teacher_name:
                 courses = teacher.get("courses")
+                description= teacher.get("description")
                 for item in courses:
                     item['link'] = item['name']
                 break
@@ -544,10 +544,13 @@ def teacher(subject, teacher_name):
     if courses == None:  #type: ignore
         return "Not found"
 
+
+
+
     return render_template('used_pages/teacher.html',
                            teachername=subject,
                            teacher_links=courses,
-                           teacher_name=teacher_name)
+                           teacher_name=teacher_name , description = description)
 
 
 #Videos
@@ -597,8 +600,7 @@ def ashrafelshemawy():
 #Update videos
 
 
-@views.route(
-    "/subjects/<subject>/<teacher_name>/<course_name>/update")  #type: ignore
+@views.route("/subjects/<subject>/<teacher_name>/<course_name>/update")  #type: ignore
 def update(subject, teacher_name, course_name):
     videos = None
     if "-" in course_name:
@@ -623,20 +625,16 @@ def update(subject, teacher_name, course_name):
 
 
 #Admin pages
-admins = ['spy', 'biba']  #list of admins (usernames)
 
 #Manage users-----------------------------------------------------------------------
 
 
 @views.route('/admin')
 def admin():
-    if current_user.username != 'spy':
-        users = User.query.filter(not_(
-            User.otp.contains('Waiting approval'))).filter(
-                User.username != 'biba').filter(User.username != 'spy').all()
+    if current_user.type != 'admin' : 
+        return "User is not an admin"
 
-    else:
-        users = User.query.all()
+    users = User.query.all()
 
     return render_template('admin/admin.html', users=users ,  data=[{'name':3}, {'name':2}, {'name':1}])
 
@@ -646,7 +644,7 @@ def admin():
 
 @views.route('/create_user', methods=['POST'])
 def create_user_route():
-    if current_user.username not in admins:
+    if current_user.type != 'admin' : 
         return "User is not an admin"
 
     if request.method == 'POST':
@@ -715,7 +713,7 @@ def manage_user(user_id):
 
 @views.route('/approve/<int:user_id>' , methods=['GET', 'POST'])
 def approve(user_id):
-    if current_user.username not in admins:
+    if current_user.type != 'admin' : 
         return "User is not an admin"
     user = User.query.filter_by(id=user_id).first()
     user.otp = "null"  #type: ignore
@@ -738,7 +736,7 @@ def approve(user_id):
 
 @views.route('/disable/<int:user_id>' , methods=['GET', 'POST'])
 def disable(user_id):
-    if current_user.username not in admins:
+    if current_user.type != 'admin' : 
         return "User is not an admin"
     user = User.query.filter_by(id=user_id).first()
     user.otp = "Waiting approval"  #type: ignore
@@ -753,7 +751,7 @@ def disable(user_id):
 
 @views.route('/user-delete/<user_id>' , methods=['GET', 'POST'])
 def delete_user(user_id):
-    if current_user.username not in admins:
+    if current_user.type != 'admin' : 
         return "User is not an admin"
     
     user_to_delete = User.query.get(user_id)
@@ -807,7 +805,7 @@ def send_email():
 
 @views.route('/edit_active_sessions/<user_id>', methods=['POST'])
 def edit_active_sessions(user_id):
-    if current_user.username not in admins:
+    if current_user.type != 'admin' : 
         return "User is not an admin"
     if request.method == 'POST':
         if current_user.username not in ['spy', 'skailler', 'behary']:
@@ -838,7 +836,7 @@ def edit_active_sessions(user_id):
 
 @views.route('/edit_email/<user_id>', methods=['POST'])
 def edit_email(user_id):
-    if current_user.username not in admins:
+    if current_user.type != 'admin' : 
         return "User is not an admin"
 
     if request.method == 'POST':
@@ -875,29 +873,30 @@ def load_data():
         return json.load(file)
 
 
-def save_data(data):
-    timestamp = datetime.now().strftime("%m.%d_%H.%M")
-    backup_filename = f"website/Backend/dumps/{timestamp}.json"
+def save_data(data , stage):
+    timestamp = datetime.now().strftime("%m.%d-%H")
+    backup_filename = f"website/Backend/dumps/Stage{stage}_{timestamp}.json"
     os.makedirs(os.path.dirname(backup_filename), exist_ok=True)
 
     # Backup the current data.json
-    with open('website/Backend/data.json', 'r') as file:
+    with open(f'website/Backend/stage{stage}_data.json', 'r') as file:
         current_data = file.read()
     with open(backup_filename, 'w') as backup_file:
         backup_file.write(current_data)
 
-    with open('website/Backend/data.json', 'w') as file:
+    with open(f'website/Backend/stage{stage}_data.json', 'w') as file:
         json.dump(data, file, indent=4)
+
 
 
 #Add/remove a subject
 @views.route('/subjects/edit', methods=['POST', 'GET'])
 def manage_subjects():
 
-    if current_user.username not in admins:
+    if current_user.type != 'admin' : 
         return "User is not an admin"
 
-    data = load_data()
+    data = load_stage_data(current_user.stage)
     if request.method == 'POST':
         if request.form['action'] == 'Add':
 
@@ -906,11 +905,11 @@ def manage_subjects():
             file = request.files['file']
 
             if file:
-                os.makedirs(os.path.dirname('website/static/assets/homepage/' +
+                os.makedirs(os.path.dirname(f'website/static/assets/Stage{current_user.stage}/homepage/' +
                                             subject + '.jpg'),
                             exist_ok=True)
 
-                file.save('website/static/assets/homepage/' + subject + '.jpg')
+                file.save(f'website/static/assets/Stage{current_user.stage}/homepage/{subject}.jpg')
 
             else:
                 return "Choose an imgae for the teacher"
@@ -919,7 +918,7 @@ def manage_subjects():
                 return "Subject is none "
             if subject not in data:
                 data[subject] = {"teachers": []}
-                save_data(data)
+                save_data(data , current_user.stage)
                 return redirect(url_for('views.manage_subjects'))
 
             else:
@@ -928,12 +927,12 @@ def manage_subjects():
 
         if request.form['action'] == 'Remove':
             subject = request.form['removeSubject']
-            os.remove('website/static/assets/homepage/' + subject + '.jpg')
+            os.remove(f'website/static/assets/Stage{current_user.stage}/homepage/{subject}.jpg')
             if subject == "":
                 return "Subject is none "
             if subject in data:
                 del data[subject]
-                save_data(data)
+                save_data(data , current_user.stage)
                 return redirect(url_for('views.manage_subjects'))
             else:
                 return jsonify(
@@ -945,9 +944,9 @@ def manage_subjects():
 #Add/remove a teacher
 @views.route('/subjects/<subject>/edit', methods=['POST', 'GET'])
 def manage_teachers(subject):
-    if current_user.username not in admins:
+    if current_user.type != 'admin' : 
         return "User is not an admin"
-    data = load_data()
+    data = load_stage_data(current_user.stage)
     teachers = data[subject].get('teachers', [])
     teacher_list = [{
         'name': teacher['name'],
@@ -957,16 +956,18 @@ def manage_teachers(subject):
     if request.method == 'POST':
         if request.form['action'] == 'Add':
             teacher_name = request.form['new']
+            teacher_link = request.form['new2']
+
 
             file = request.files['file']
 
             if file:
                 os.makedirs(
-                    os.path.dirname(f'website/static/assets/{subject}/' +
+                    os.path.dirname(f'website/static/assets/Stage{current_user.stage}/{subject}/' +
                                     teacher_name + '.jpg'),
                     exist_ok=True)
 
-                file.save(f'website/static/assets/{subject}/' + teacher_name +
+                file.save(f'website/static/assets/Stage{current_user.stage}/{subject}/' + teacher_name +
                           '.jpg')
 
             else:
@@ -974,14 +975,25 @@ def manage_teachers(subject):
 
             if teacher_name == "":
                 return "Teacher name is none "
+            
+   
+            for entry in data:
+                if 'link' in entry and teacher_link in entry['link']:
+                    return "Link is taken already"
+
+
+
+
             if subject in data:
                 new_teacher = {
                     "name": teacher_name,
-                    "link": teacher_name,
-                    "courses": []
+                    "link": teacher_link,
+                    "courses": [],
+                    "description": ""
+
                 }
                 data[subject]['teachers'].append(new_teacher)
-                save_data(data)
+                save_data(data , current_user.stage)
                 return redirect(
                     url_for('views.manage_teachers', subject=subject))
 
@@ -991,7 +1003,7 @@ def manage_teachers(subject):
 
         if request.form['action'] == 'Remove':
             teacher_name = request.form['remove']
-            os.remove(f'website/static/assets/{subject}/' + teacher_name +
+            os.remove(f'website/static/assets/Stage{current_user.stage}/{subject}/' + teacher_name +
                       '.jpg')
 
             if teacher_name == "":
@@ -1006,7 +1018,7 @@ def manage_teachers(subject):
                             teacher for teacher in data[subject]['teachers']
                             if teacher['name'] != teacher_name
                         ]
-                        save_data(data)
+                        save_data(data, current_user.stage)
                         return redirect(
                             url_for('views.manage_teachers', subject=subject))
                     else:
@@ -1027,9 +1039,9 @@ def manage_teachers(subject):
 #Add/remove a course
 @views.route('/subjects/<subject>/<teachername>/edit', methods=['POST', 'GET'])
 def manage_courses(subject, teachername):
-    if current_user.username not in admins:
+    if current_user.type != 'admin' : 
         return "User is not an admin"
-    data = load_data()
+    data = load_stage_data(current_user.stage)
 
     teachers = data.get(subject, {}).get('teachers', [])
 
@@ -1052,7 +1064,7 @@ def manage_courses(subject, teachername):
             description = request.form['description']
             teacherinfo['description'] = description
             data[subject]['teachers'] = teachers
-            save_data(data)
+            save_data(data , current_user.stage)
 
             return redirect(
                 url_for('views.manage_courses',
@@ -1065,11 +1077,11 @@ def manage_courses(subject, teachername):
 
             if file:
                 os.makedirs(os.path.dirname(
-                    f'website/static/assets/{subject}/{teachername}/' +
+                    f'website/static/assets/Stage{current_user.stage}/{subject}/{teachername}/' +
                     course_name + '.jpg'),
                             exist_ok=True)
 
-                file.save(f'website/static/assets/{subject}/{teachername}/' +
+                file.save(f'website/static/assets/Stage{current_user.stage}/{subject}/{teachername}/' +
                           course_name + '.jpg')
 
             else:
@@ -1086,7 +1098,7 @@ def manage_courses(subject, teachername):
             }
             teacher_courses.append(new_course)  #type: ignore
             data[subject]['teachers'] = teachers
-            save_data(data)
+            save_data(data , current_user.stage)
             return redirect(
                 url_for('views.manage_courses',
                         subject=subject,
@@ -1095,7 +1107,7 @@ def manage_courses(subject, teachername):
         if request.form['action'] == 'Remove':
 
             course_name = request.form['remove']
-            file_path = f'website/static/assets/{subject}/{teachername}/' + course_name + '.jpg'  #type: ignore
+            file_path = f'website/static/assets/Stage{current_user.stage}/{subject}/{teachername}/' + course_name + '.jpg'  #type: ignore
 
             if os.path.exists(file_path):
                 os.remove(file_path)
@@ -1113,7 +1125,7 @@ def manage_courses(subject, teachername):
             teacher['courses'] = teacher_courses  #type: ignore
             data[subject]['teachers'] = teachers
 
-            save_data(data)
+            save_data(data , current_user.stage)
 
             return redirect(
                 url_for('views.manage_courses',
@@ -1130,9 +1142,9 @@ def manage_courses(subject, teachername):
 @views.route('/subjects/<subject>/<teachername>/<course_name>/edit',
              methods=['POST', 'GET'])
 def edit_course(subject, teachername, course_name):
-    if current_user.username not in admins:
+    if current_user.type != 'admin' : 
         return "User is not an admin"
-    data = load_data()
+    data = load_stage_data(current_user.stage)
     current_course = None
     if "-" in course_name:
         course_name = course_name.replace('-', ' ')
@@ -1149,7 +1161,7 @@ def edit_course(subject, teachername, course_name):
                             course['description'] = request.form['description']
                         elif request.form['action'] == 'Clear videos':
                             course['videos'] = ""
-                        save_data(data)
+                        save_data(data , current_user.stage)
                         course_name = course_name.replace(' ', '-')
                         return redirect(
                             url_for('views.edit_course',
