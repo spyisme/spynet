@@ -638,7 +638,7 @@ def admin():
     else:
         users = User.query.all()
 
-    return render_template('admin/admin.html', users=users ,  data=[{'name':'3'}, {'name':'2'}, {'name':'1'}])
+    return render_template('admin/admin.html', users=users ,  data=[{'name':3}, {'name':2}, {'name':1}])
 
 
 
@@ -676,29 +676,48 @@ def create_user_route():
     return jsonify({'error': 'Method not allowed'}), 405
 
 
+@views.route('/user-manage/<int:user_id>', methods=['GET', 'POST'])
+def manage_user(user_id):
+    user = User.query.get(user_id)
+
+    if not user:
+        return "User not found", 404
+
+    if request.method == 'POST':
+        # Handle form submission to update user details
+        username = request.form.get('username')
+
+    
+
+
+        existing_user = User.query.filter_by(username=username).first()
+
+        if existing_user:
+            return jsonify({'error': 'Username already exists'}), 400
+        
+ 
+        user.username = request.form.get('username')
+        user.email = request.form.get('email')
+        user.stage = request.form.get('stage')
+        user.password = request.form.get('password')
+        user.active_sessions = request.form.get('devices')
+
+
+
+        db.session.commit()
+        return redirect(url_for('views.manage_user', user_id=user_id))  # Redirect to the same page to show updated data
+
+    # Render the manage user template
+    return render_template('admin/manage.html', user=user ,  data=[{'name':3}, {'name':2}, {'name':1}])
 
 
 
 
-
-
-
-
-@views.route('/approve_users')
-def approveusers():
-    if current_user.username == 'spy':
-        users = User.query.filter(User.otp.contains('Waiting approval')).all()
-    else:
-        users = None
-
-    return render_template('admin/admin.html', users=users)
-
-
-@views.route('/approve/<userid>')
-def approve(userid):
+@views.route('/approve/<int:user_id>' , methods=['GET', 'POST'])
+def approve(user_id):
     if current_user.username not in admins:
         return "User is not an admin"
-    user = User.query.filter_by(id=userid).first()
+    user = User.query.filter_by(id=user_id).first()
     user.otp = "null"  #type: ignore
     db.session.commit()
     recipient = user.email  #type: ignore
@@ -712,7 +731,39 @@ def approve(userid):
     msg.html = html_content
     mail.send(msg)
 
-    return "done"
+    return redirect(url_for('views.manage_user', user_id=user_id))
+
+
+
+
+
+@views.route('/user-delete/<user_id>' , methods=['GET', 'POST'])
+def delete_user(user_id):
+    if current_user.username not in admins:
+        return "User is not an admin"
+    
+    user_to_delete = User.query.get(user_id)
+
+    if user_to_delete.username == "spy":  #type: ignore
+        return "55555555555"
+
+    if not user_to_delete:
+        return jsonify({'error': 'User not found'}), 404
+
+    discord_log_login("<@709799648143081483> " + current_user.username +
+                      " deleted " + user_to_delete.username)
+
+    db.session.delete(user_to_delete)
+    db.session.commit()
+
+    return redirect("/admin")
+
+
+
+
+
+
+
 
 
 @views.route('/send_email', methods=['GET', 'POST'])
@@ -799,25 +850,7 @@ def edit_email(user_id):
 
 
 
-@views.route('/user-delete/<user_id>')
-def delete_user(user_id):
-    if current_user.username not in admins:
-        return "User is not an admin"
-    user_to_delete = User.query.get(user_id)
 
-    if user_to_delete.username == "spy":  #type: ignore
-        return "55555555555"
-
-    if not user_to_delete:
-        return jsonify({'error': 'User not found'}), 404
-
-    discord_log_login("<@709799648143081483> " + current_user.username +
-                      " deleted " + user_to_delete.username)
-
-    db.session.delete(user_to_delete)
-    db.session.commit()
-
-    return redirect("/admin")
 
 
 #Edit pages-----------------------------------------------------------------------
