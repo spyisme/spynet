@@ -478,6 +478,12 @@ def load_stage_data(stage):
 
 @views.route("/subjects")
 def subjectspage():
+    if current_user.type == 'admin' :
+        lines = ['Stage 1' , 'Stage 2' , 'Stage 3']
+        return render_template('used_pages/all.html',
+                        lines=lines,
+                        teachername="All")
+
 
     password = request.args.get("password")
 
