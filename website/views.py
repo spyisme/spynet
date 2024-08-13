@@ -571,7 +571,8 @@ def videos(subject, teacher_name, course_name):
         for teacher in data[subject]["teachers"]:
             if teacher.get("link") == teacher_name:
                 for course in teacher.get("courses", []):
-
+                    description= teacher.get("description")
+                    
                     if course.get("name") == course_name:
                         videos = course.get('videos', '')
                         playlist_id = course.get('playlist_id', '')
@@ -585,7 +586,7 @@ def videos(subject, teacher_name, course_name):
                            videos=videos,
                            playlist_id=playlist_id,
                            teachername=teachername,
-                           folder=folder)
+                           folder=folder ,  description = description)
 
 
 #-----------------------------------------Ashraf el shenawy----------------
@@ -619,7 +620,7 @@ def update(subject, teacher_name, course_name):
                         playlist_id = course.get('playlist_id', '')
                         videos = get_playlist_videos(playlist_id)
                         course['videos'] = videos
-                        with open('website/Backend/data.json', 'w') as f:
+                        with open(f'website/Backend/Stage{current_user.stage}_data.json', 'w') as f:
                             json.dump(data, f, indent=4)
     return videos
 
@@ -1003,20 +1004,21 @@ def manage_teachers(subject):
 
         if request.form['action'] == 'Remove':
             teacher_name = request.form['remove']
-            os.remove(f'website/static/assets/Stage{current_user.stage}/{subject}/' + teacher_name +
-                      '.jpg')
-
+            try:
+                os.remove(f'website/static/assets/Stage{current_user.stage}/{subject}/' + teacher_name +'.jpg')
+            except :
+                pass
             if teacher_name == "":
                 return "Teacher name is none "
             if subject in data:
                 if 'teachers' in data[subject]:
                     teacher_exists = any(
-                        teacher['name'] == teacher_name
+                        teacher['link'] == teacher_name
                         for teacher in data[subject]['teachers'])
                     if teacher_exists:
                         data[subject]['teachers'] = [
                             teacher for teacher in data[subject]['teachers']
-                            if teacher['name'] != teacher_name
+                            if teacher['link'] != teacher_name
                         ]
                         save_data(data, current_user.stage)
                         return redirect(

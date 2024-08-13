@@ -90,7 +90,8 @@
        
                       <p>{{ x.name }}</p>
 
-                      <span class="card-description">{{x.description}}</span>
+                      <span class="card-description">{{ x.description if x.description else 'description' }}</span>
+
 
                 </div>
 
