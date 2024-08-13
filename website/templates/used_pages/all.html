@@ -64,17 +64,8 @@
 
 
                     {% for item in lines %}
-                    {%if current_user.type == "admin"%}
-                    <li>
-                        <a href="subjects/{{ item }}">
-                            <div class="card">
-                                <img src="{{ url_for('static', filename='assets/admin/homepage/' + item + '.jpg') }}" alt="{{ item }}" loading="lazy" />
 
-                                <div class="text">{{ item }}</div>
-                            </div>
-                        </a>
-                    </li>
-                    {%else%}
+    
                     <li>
                         <a href="subjects/{{ item }}">
                             <div class="card">
@@ -84,8 +75,7 @@
                             </div>
                         </a>
                     </li>
-                    {%endif%}
-
+      
                     {% endfor %}
                 </ul>
             </div>
