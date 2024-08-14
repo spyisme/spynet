@@ -26,6 +26,12 @@
                     {% endfor %}
                 </select><br><br>
                 <input type="submit" value="Create User">
+                <script>
+                    function redirectTo(url) {
+                        window.location.href = url;
+                    }
+                </script>
+                <button type="button" class="download" onclick="redirectTo('/database')">Download Database</button>
             </form>
         </div>
         <br><br>

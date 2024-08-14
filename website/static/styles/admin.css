@@ -91,3 +91,20 @@ h1{
     color:white;
     padding-left: 20px;
 }
+
+
+
+.download{
+    background-color: #17364f;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+
+    font-size: 20px;
+
+}
+
+.download:hover {
+    background-color: #0f2434;
+}
