@@ -1,8 +1,7 @@
 import logging  #type: ignore
 import json
 import requests
-from flask import render_template, request, redirect , send_file
-
+from flask import render_template, request, redirect
 from website import create_app
 
 log = logging.getLogger('werkzeug')
@@ -19,15 +18,6 @@ def page_not_found(e):  #type: ignore
 
 
 
-
-def discord_log_backend(text):
-    message = {'content': text}
-    payload = json.dumps(message)
-    headers = {'Content-Type': 'application/json'}
-    requests.post(
-        "https://discord.com/api/webhooks/1264918948730638336/nD1A8OVB0FmSgUVV7DCd2gumd7CBeTWAoq7AbqjCjwoRRkkgLRM7a8xuYRPOUos4AmwE",
-        data=payload,
-        headers=headers)
 
 
 if __name__ == "__main__":

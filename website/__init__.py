@@ -53,17 +53,7 @@ def create_app():
 
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
     app.config['SECRET_KEY'] = 'secretkey'
-    @app.route('/database')
-    def database():
-        if current_user.type != 'admin':
-            return "User is not an admin"
 
-        # Construct the absolute path to the database file
-        db_path = os.path.join(os.path.dirname(__file__), '..', 'instance', 'site.db')
-        if not os.path.exists(db_path):
-            return "Database file not found."
-
-        return send_file(db_path)
 
     db.init_app(app)
     login_manager.init_app(app)

