@@ -807,6 +807,8 @@ def uptimebackup():
     files_to_zip = ['website/Backend/stage1_data.json', 'website/Backend/stage2_data.json' , 'website/Backend/stage3_data.json']
 
     # Create a ZIP file
+    os.remove('website/stagesdata.zip')
+
     with zipfile.ZipFile(zip_filename, 'w') as zipf:
         for file in files_to_zip:
             zipf.write(file)
@@ -816,7 +818,7 @@ def uptimebackup():
     
     upload_file_to_discord("https://discord.com/api/webhooks/1273289183993008241/bAsFwfve1lDTaFv4e4q8F4z--raNqKQbkLTW5lsHqyTwS5QkGS3uOSEN01NVhmmCuFmt", "website/stagesdata.zip")
     upload_file_to_discord("https://discord.com/api/webhooks/1273288058808045679/-k8Tc5AWGZGroG3swyknC2y_EEWXfvQQUDyLiZnsHeqtWu4UQbLe-ZBJLABZH6hx2AtH", db_path)
-    discord_log_backend("<@709799648143081483> UptimeRobot Backup")
+    discord_log_backend("UptimeRobot Backup")
     return "Done"
 
 
@@ -830,7 +832,11 @@ def stages_data():
     
     zip_filename = 'website/stagesdata.zip'
     files_to_zip = ['website/Backend/stage1_data.json', 'website/Backend/stage2_data.json' , 'website/Backend/stage3_data.json']
-
+    
+    try :
+        os.remove('website/stagesdata.zip')
+    except :
+        pass
     # Create a ZIP file
     with zipfile.ZipFile(zip_filename, 'w') as zipf:
         for file in files_to_zip:
