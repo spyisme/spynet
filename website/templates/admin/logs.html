@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logs</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/logs.css') }}" />
+
+    
+</head>
+<body>
+    <section class="banner">
+        <canvas id="canvas"></canvas>
+    <h1 style="text-align: center;">Displaying {{user.username}} logs | ID : {{user.id}}</h1>
+    <div style="text-align: center;">
+    
+<a href="/user-manage/{{user.id}}" class='link' >Edit user info</a>
+    </div>
+ 
+
+<br>
+    <br><br>
+    <div class="log-container">
+        {% for log in logs %}
+        <div class="log-entry">
+            {% if '|' in log %}
+                {% set log_parts = log.split(' | ') %}
+                <div class="log-item">Ip: {{ log_parts[0] }}</div>
+
+                {%if "youtube" in log_parts[2] %}
+                <div class="log-item">Url: <a href="{{log_parts[2]}}" target="_blank">Youtube Link</a></div>
+                {%else%}
+                {%if "drive" in log_parts[2]%}
+                <div class="log-item">Url: <a href="{{log_parts[2]}}"  target="_blank">Google Drive Link</a></div>
+
+                {%else%}
+
+                {% set link = log_parts[2] %}
+                {% set url_parts = link.split('/') %}
+                {% set last_item = url_parts[-1] %}
+                {% set second_last_item = url_parts[-2] if url_parts|length > 1 else '' %}
+                {%if second_last_item%}
+                {% set combined_item = second_last_item ~ '/' ~ last_item %}
+                {%else%}
+                {%set combined_item = last_item%}
+                {%endif%}
+                <div class="log-item">Url: <a href="{{log_parts[2]}}"  target="_blank">{{ combined_item  }}</a></div>
+
+
+                {%endif%}
+                {%endif%}
+
+
+
+
+                <div class="log-item">Device: {{ log_parts[1] }}</div>
+                <div class="log-item">Date: {{ log_parts[3] }}</div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    <div class="footer">
+        <p>&copy; 2024 Sanawya sessions</p>
+    </div>
+</section>
+</body>
+<script src="{{ url_for('static', filename='java/snow.js') }}"></script>
+
+</html>

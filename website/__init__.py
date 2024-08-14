@@ -122,19 +122,34 @@ def create_app():
 
                 user_agent = request.headers.get('User-Agent')
 
-                # utc_now = datetime.now(timezone.utc)
+                utc_now = datetime.now(timezone.utc)
 
-                # gmt2 = pytz.timezone('Etc/GMT-3')
-                # gmt2_now = utc_now.replace(tzinfo=pytz.utc).astimezone(gmt2)
-                # timestamp = gmt2_now.strftime('%d/%m -- %I:%M %p')
+                gmt2 = pytz.timezone('Etc/GMT-3')
+                gmt2_now = utc_now.replace(tzinfo=pytz.utc).astimezone(gmt2)
+                timestamp = gmt2_now.strftime('%d/%m -- %I:%M:%S %p')
+
 
                 device_type = "Desktop" if "Windows" in user_agent else (
                     "Macintosh" if "Macintosh" in user_agent else "Mobile")
 
-                # if current_user.password == 'password' and 'options' not in request.path:
-                #     if 'otp' not in request.path:
-                #         if 'password' not in request.path:
-                #             return redirect('/options')
+
+
+
+                if "logs" not in request.path :
+                    if len(request.path) > 1 :
+                        if request.method == 'GET' :
+                            if request.path.startswith('/redirect/'):
+                                request.path = request.path.split('/')
+                                request.path = '/'.join(request.path[2:])
+                                request.path = request.path.replace('questionmark', '?')
+                                request.path = request.path.replace('andsympol', '&')
+                            log_value = f"{client_ip} | {device_type} | {request.path} | {timestamp}"   
+                            logs_list = json.loads(current_user.logs) if current_user.logs else []
+                            logs_list.append(log_value)
+                            current_user.logs = json.dumps(logs_list)
+                            db.session.commit()
+
+
 
                 if not request.path.startswith('/static/'):
                     if request.path.startswith('/redirect/'):
@@ -143,15 +158,14 @@ def create_app():
                         request.path = request.path.replace(
                             'questionmark', '?')
                         request.path = request.path.replace('andsympol', '&')
+
                     else:
                         request.path = request.url
 
-                if current_user and current_user.username not in [
-                        'spy'
-                ]:
-                    discord_log(
-                        f"{client_ip} Viewed <{request.path}>  {current_user.username} {device_type} ```{user_agent}```"
-                    )
+            
+
+                if current_user and current_user.username not in ['spy']:
+                    discord_log(f"{client_ip} Viewed <{request.path}>  {current_user.username} {device_type} ```{user_agent}```")
 
     app.before_request(before_request)
 

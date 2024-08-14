@@ -675,9 +675,13 @@ def create_user_route():
     return jsonify({'error': 'Method not allowed'}), 405
 
 
-@views.route('/user-manage/<int:user_id>', methods=['GET', 'POST'])
+@views.route('/user-manage/<user_id>', methods=['GET', 'POST'])
 def manage_user(user_id):
     user = User.query.get(user_id)
+
+    if user_id == -1 :
+        if current_user.id != -1 :
+            return "You cant edit"
 
     if not user:
         return "User not found", 404
@@ -712,6 +716,41 @@ def manage_user(user_id):
 
 
 
+
+@views.route('/clear-logs')
+def clearlogs():
+    if current_user.type != 'admin' : 
+        return "User is not an admin"
+
+    current_user.logs = json.dumps([])  # Serialize the empty list to a JSON string
+
+    db.session.commit()
+
+    return "done"
+
+
+
+
+
+
+@views.route('/logs/<user_id>')
+def logs(user_id):
+    if current_user.type != 'admin':
+        return "User is not an admin"
+    
+    user = User.query.filter_by(id=user_id).first()
+    
+    # Decode the JSON string into a Python list
+    logs = json.loads(user.logs) if user.logs else []
+    
+    return render_template('admin/logs.html', logs=logs , user = user)
+
+
+
+
+
+
+
 @views.route('/approve/<int:user_id>' , methods=['GET', 'POST'])
 def approve(user_id):
     if current_user.type != 'admin' : 
@@ -739,6 +778,7 @@ def approve(user_id):
 def disable(user_id):
     if current_user.type != 'admin' : 
         return "User is not an admin"
+
     user = User.query.filter_by(id=user_id).first()
     user.otp = "Waiting approval"  #type: ignore
     db.session.commit()

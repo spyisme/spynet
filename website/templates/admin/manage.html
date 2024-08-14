@@ -62,7 +62,19 @@
         
 
    <br><br>
+
+   <script>
+    function redirectTo(url) {
+        window.location.href = url;
+    }
+</script>
         <input style="background-color: green;" type="submit" value="Update User" onclick="return confirm('Are you sure you want to update this user?');">
+   
+
+            <button type="button" class="logs"  onclick="redirectTo('/logs/{{user.id}}')">
+                View logs
+            </button>
+   
     </form>
 
 
@@ -78,6 +90,8 @@
     </form>
 
     <br><br>
+
+
 
     <div class="footer">
         <p>&copy; 2024 Sanawya sessions</p>
