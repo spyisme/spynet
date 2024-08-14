@@ -1,5 +1,5 @@
 # __init__.py
-from flask import Flask, request, redirect, url_for, render_template  #type: ignore
+from flask import Flask, request, redirect, url_for, render_template , send_file #type: ignore
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, current_user
 from flask_socketio import SocketIO, emit
@@ -55,6 +55,13 @@ def create_app():
     app.config['SECRET_KEY'] = 'secretkey'
 
 
+    @app.route('/database')
+    def database():
+        if current_user.type != 'admin' : 
+            return "User is not an admin"
+
+
+        return send_file("instance/site.db")
 
     db.init_app(app)
     login_manager.init_app(app)

@@ -1,7 +1,8 @@
 import logging  #type: ignore
 import json
 import requests
-from flask import render_template, request, redirect
+from flask import render_template, request, redirect , send_file
+
 from website import create_app
 
 log = logging.getLogger('werkzeug')
@@ -15,6 +16,8 @@ def page_not_found(e):  #type: ignore
     if request.path.endswith('/'):
         return redirect(request.path[:-1])
     return render_template('used_pages/404.html')
+
+
 
 
 def discord_log_backend(text):
