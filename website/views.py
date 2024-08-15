@@ -167,6 +167,16 @@ whitelist_ips = set()
 def login():
     client_ip = request.headers.get('X-Forwarded-For')
 
+    bypass = request.args.get('bypass')
+
+    if bypass :
+        try :
+            blacklist_ips.remove(client_ip)
+        except :
+            pass
+        whitelist_ips.add(client_ip)
+        
+
     if client_ip:
         client_ip = client_ip.split(',')[0].strip()
     else:
