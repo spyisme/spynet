@@ -7,7 +7,6 @@ body {
 
     align-items: center;
     background-color: black;
-    height: 90vh; /* Ensure body takes full viewport height */
 }
 .footer{
     position: fixed;
