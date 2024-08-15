@@ -466,3 +466,7 @@ sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) attempt to write a r
  * Debug mode: on
  * Serving Flask app 'website'
  * Debug mode: on
+Invalid session -6K0dRVhG5fMXJ7tAAAC (further occurrences of this error will be logged with level INFO)
+172.105.128.12 - - [15/Aug/2024 22:35:47] code 400, message Bad request version ('À\x14À')
+ * Serving Flask app 'website'
+ * Debug mode: on
