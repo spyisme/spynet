@@ -4,7 +4,7 @@ body {
     display: flex;
     justify-content: center;
     zoom: 85%;
-
+height: 100%;
     align-items: center;
     background-color: black;
 }
