@@ -4,9 +4,10 @@ body {
     display: flex;
     justify-content: center;
     zoom: 85%;
-height: 100hf;
+
     align-items: center;
     background-color: black;
+    height: 120vh; /* Ensure body takes full viewport height */
 }
 .footer{
     position: fixed;
