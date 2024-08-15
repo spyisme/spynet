@@ -503,8 +503,10 @@ def subjectspage():
 
 @views.route("/")
 def home():
-
-    return redirect(url_for("views.subjectspage"))
+    if current_user.is_authenticated:
+        return redirect(url_for('views.subjectspage'))
+    
+    return render_template('users_pages/home.html')
 
 
 #User pages---------------------------------------------------------------------------
