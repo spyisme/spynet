@@ -469,11 +469,9 @@ def monitor():
 #Home---------------------------------------------------------------------------------------------
 
 
-
 def load_stage_data(stage):
     with open(f'website/Backend/stage{stage}_data.json', 'r') as file:
         return json.load(file)
-
 
 
 @views.route("/subjects")
@@ -536,7 +534,7 @@ def teacher(subject, teacher_name):
         for teacher in data[subject]["teachers"]:
             if teacher["link"] == teacher_name:
                 courses = teacher.get("courses")
-                description= teacher.get("description")
+                description = teacher.get("description")
                 for item in courses:
                     item['link'] = item['name']
                 break
@@ -544,13 +542,11 @@ def teacher(subject, teacher_name):
     if courses == None:  #type: ignore
         return "Not found"
 
-
-
-
     return render_template('used_pages/teacher.html',
                            teachername=subject,
                            teacher_links=courses,
-                           teacher_name=teacher_name , description = description)
+                           teacher_name=teacher_name,
+                           description=description)
 
 
 #Videos
@@ -571,8 +567,8 @@ def videos(subject, teacher_name, course_name):
         for teacher in data[subject]["teachers"]:
             if teacher.get("link") == teacher_name:
                 for course in teacher.get("courses", []):
-                    description= teacher.get("description")
-                    
+                    description = teacher.get("description")
+
                     if course.get("name") == course_name:
                         videos = course.get('videos', '')
                         playlist_id = course.get('playlist_id', '')
@@ -586,7 +582,8 @@ def videos(subject, teacher_name, course_name):
                            videos=videos,
                            playlist_id=playlist_id,
                            teachername=teachername,
-                           folder=folder ,  description = description)
+                           folder=folder,
+                           description=description)
 
 
 #-----------------------------------------Ashraf el shenawy----------------
@@ -601,14 +598,15 @@ def ashrafelshemawy():
 #Update videos
 
 
-@views.route("/subjects/<subject>/<teacher_name>/<course_name>/update")  #type: ignore
+@views.route(
+    "/subjects/<subject>/<teacher_name>/<course_name>/update")  #type: ignore
 def update(subject, teacher_name, course_name):
     videos = None
     if "-" in course_name:
 
         course_name = course_name.replace('-', ' ')
-        
-    #Needs a solution    
+
+    #Needs a solution
     data = load_stage_data(current_user.stage)
 
     if subject in data:
@@ -620,7 +618,9 @@ def update(subject, teacher_name, course_name):
                         playlist_id = course.get('playlist_id', '')
                         videos = get_playlist_videos(playlist_id)
                         course['videos'] = videos
-                        with open(f'website/Backend/Stage{current_user.stage}_data.json', 'w') as f:
+                        with open(
+                                f'website/Backend/Stage{current_user.stage}_data.json',
+                                'w') as f:
                             json.dump(data, f, indent=4)
     return videos
 
@@ -632,42 +632,49 @@ def update(subject, teacher_name, course_name):
 
 @views.route('/admin')
 def admin():
-    if current_user.type != 'admin' : 
+    if current_user.type != 'admin':
         return "User is not an admin"
 
     users = User.query.all()
 
-    return render_template('admin/admin.html', users=users ,  data=[{'name':3}, {'name':2}, {'name':1}])
-
-
-
+    return render_template('admin/admin.html',
+                           users=users,
+                           data=[{
+                               'name': 3
+                           }, {
+                               'name': 2
+                           }, {
+                               'name': 1
+                           }])
 
 
 @views.route('/create_user', methods=['POST'])
 def create_user_route():
-    if current_user.type != 'admin' : 
+    if current_user.type != 'admin':
         return "User is not an admin"
 
     if request.method == 'POST':
         username = request.form.get('username')
         email = request.form.get('email')
         stage = request.form.get('stage')
- 
-        if not username :
+
+        if not username:
             return jsonify({'error':
                             'Username and password are required'}), 400
-        
+
         existing_user = User.query.filter_by(username=username).first()
         if existing_user:
             return jsonify({'error': 'Username already exists'}), 400
-        
-        new_user = User(username=username, password="password",
-                        email=email , stage = stage , otp = "null")  #type: ignore
+
+        new_user = User(username=username,
+                        password="password",
+                        email=email,
+                        stage=stage,
+                        otp="null")  #type: ignore
         db.session.add(new_user)
         db.session.commit()
 
-        discord_log_backend("<@709799648143081483> " +
-                            current_user.username +
+        discord_log_backend("<@709799648143081483> " + current_user.username +
                             " created new account " + username)
 
         return redirect("/admin")
@@ -679,8 +686,8 @@ def create_user_route():
 def manage_user(user_id):
     user = User.query.get(user_id)
 
-    if user_id == -1 :
-        if current_user.id != -1 :
+    if user_id == -1:
+        if current_user.id != -1:
             return "You cant edit"
 
     if not user:
@@ -690,70 +697,63 @@ def manage_user(user_id):
         # Handle form submission to update user details
         username = request.form.get('username')
 
-    
-
-
         existing_user = User.query.filter_by(username=username).first()
 
         if existing_user and existing_user.username != user.username:
             return jsonify({'error': 'Username already exists'}), 400
-        
- 
+
         user.username = request.form.get('username')
         user.email = request.form.get('email')
         user.stage = request.form.get('stage')
         user.password = request.form.get('password')
         user.active_sessions = request.form.get('devices')
 
-
-
         db.session.commit()
-        return redirect(url_for('views.manage_user', user_id=user_id))  # Redirect to the same page to show updated data
+        return redirect(url_for(
+            'views.manage_user',
+            user_id=user_id))  # Redirect to the same page to show updated data
 
     # Render the manage user template
-    return render_template('admin/manage.html', user=user ,  data=[{'name':3}, {'name':2}, {'name':1}])
-
-
-
+    return render_template('admin/manage.html',
+                           user=user,
+                           data=[{
+                               'name': 3
+                           }, {
+                               'name': 2
+                           }, {
+                               'name': 1
+                           }])
 
 
 @views.route('/clear-logs')
 def clearlogs():
-    if current_user.type != 'admin' : 
+    if current_user.type != 'admin':
         return "User is not an admin"
 
-    current_user.logs = json.dumps([])  # Serialize the empty list to a JSON string
+    current_user.logs = json.dumps(
+        [])  # Serialize the empty list to a JSON string
 
     db.session.commit()
 
     return "done"
 
 
-
-
-
-
 @views.route('/logs/<user_id>')
 def logs(user_id):
     if current_user.type != 'admin':
         return "User is not an admin"
-    
+
     user = User.query.filter_by(id=user_id).first()
-    
+
     # Decode the JSON string into a Python list
     logs = json.loads(user.logs) if user.logs else []
-    
-    return render_template('admin/logs.html', logs=logs , user = user)
+
+    return render_template('admin/logs.html', logs=logs, user=user)
 
 
-
-
-
-
-
-@views.route('/approve/<int:user_id>' , methods=['GET', 'POST'])
+@views.route('/approve/<int:user_id>', methods=['GET', 'POST'])
 def approve(user_id):
-    if current_user.type != 'admin' : 
+    if current_user.type != 'admin':
         return "User is not an admin"
     user = User.query.filter_by(id=user_id).first()
     user.otp = "null"  #type: ignore
@@ -773,16 +773,14 @@ def approve(user_id):
     return redirect(url_for('views.manage_user', user_id=user_id))
 
 
-
-@views.route('/disable/<int:user_id>' , methods=['GET', 'POST'])
+@views.route('/disable/<int:user_id>', methods=['GET', 'POST'])
 def disable(user_id):
-    if current_user.type != 'admin' : 
+    if current_user.type != 'admin':
         return "User is not an admin"
 
     user = User.query.filter_by(id=user_id).first()
     user.otp = "Waiting approval"  #type: ignore
     db.session.commit()
-
 
     return redirect(url_for('views.manage_user', user_id=user_id))
 
@@ -793,18 +791,17 @@ def upload_file_to_discord(webhook_url, file_path):
         requests.post(webhook_url, files=files)
 
 
-
-
-
-
-
 import zipfile
+
 
 @views.route('/uptime-backup')
 def uptimebackup():
-    
+
     zip_filename = 'website/stagesdata.zip'
-    files_to_zip = ['website/Backend/stage1_data.json', 'website/Backend/stage2_data.json' , 'website/Backend/stage3_data.json']
+    files_to_zip = [
+        'website/Backend/stage1_data.json', 'website/Backend/stage2_data.json',
+        'website/Backend/stage3_data.json'
+    ]
 
     # Create a ZIP file
     os.remove('website/stagesdata.zip')
@@ -813,38 +810,42 @@ def uptimebackup():
         for file in files_to_zip:
             zipf.write(file)
 
+    db_path = os.path.join(os.path.dirname(__file__), '..', 'instance',
+                           'site.db')
 
-    db_path = os.path.join(os.path.dirname(__file__), '..', 'instance', 'site.db')
-    
-    upload_file_to_discord("https://discord.com/api/webhooks/1273289183993008241/bAsFwfve1lDTaFv4e4q8F4z--raNqKQbkLTW5lsHqyTwS5QkGS3uOSEN01NVhmmCuFmt", "website/stagesdata.zip")
-    upload_file_to_discord("https://discord.com/api/webhooks/1273288058808045679/-k8Tc5AWGZGroG3swyknC2y_EEWXfvQQUDyLiZnsHeqtWu4UQbLe-ZBJLABZH6hx2AtH", db_path)
+    upload_file_to_discord(
+        "https://discord.com/api/webhooks/1273289183993008241/bAsFwfve1lDTaFv4e4q8F4z--raNqKQbkLTW5lsHqyTwS5QkGS3uOSEN01NVhmmCuFmt",
+        "website/stagesdata.zip")
+    upload_file_to_discord(
+        "https://discord.com/api/webhooks/1273288058808045679/-k8Tc5AWGZGroG3swyknC2y_EEWXfvQQUDyLiZnsHeqtWu4UQbLe-ZBJLABZH6hx2AtH",
+        db_path)
     discord_log_backend("UptimeRobot Backup")
     return "Done"
-
-
-
 
 
 @views.route('/stages-data')
 def stages_data():
     if current_user.type != 'admin':
         return "User is not an admin"
-    
+
     zip_filename = 'website/stagesdata.zip'
-    files_to_zip = ['website/Backend/stage1_data.json', 'website/Backend/stage2_data.json' , 'website/Backend/stage3_data.json']
-    
-    try :
+    files_to_zip = [
+        'website/Backend/stage1_data.json', 'website/Backend/stage2_data.json',
+        'website/Backend/stage3_data.json'
+    ]
+
+    try:
         os.remove('website/stagesdata.zip')
-    except :
+    except:
         pass
     # Create a ZIP file
     with zipfile.ZipFile(zip_filename, 'w') as zipf:
         for file in files_to_zip:
             zipf.write(file)
 
-
-    
-    upload_file_to_discord("https://discord.com/api/webhooks/1273289183993008241/bAsFwfve1lDTaFv4e4q8F4z--raNqKQbkLTW5lsHqyTwS5QkGS3uOSEN01NVhmmCuFmt", "website/stagesdata.zip")
+    upload_file_to_discord(
+        "https://discord.com/api/webhooks/1273289183993008241/bAsFwfve1lDTaFv4e4q8F4z--raNqKQbkLTW5lsHqyTwS5QkGS3uOSEN01NVhmmCuFmt",
+        "website/stagesdata.zip")
     return send_file("stagesdata.zip")
 
 
@@ -854,42 +855,37 @@ def database():
         return "User is not an admin"
 
     # Construct the absolute path to the database file
-    db_path = os.path.join(os.path.dirname(__file__), '..', 'instance', 'site.db')
+    db_path = os.path.join(os.path.dirname(__file__), '..', 'instance',
+                           'site.db')
     if not os.path.exists(db_path):
         return "Database file not found."
-    
-    upload_file_to_discord("https://discord.com/api/webhooks/1273288058808045679/-k8Tc5AWGZGroG3swyknC2y_EEWXfvQQUDyLiZnsHeqtWu4UQbLe-ZBJLABZH6hx2AtH", db_path)
+
+    upload_file_to_discord(
+        "https://discord.com/api/webhooks/1273288058808045679/-k8Tc5AWGZGroG3swyknC2y_EEWXfvQQUDyLiZnsHeqtWu4UQbLe-ZBJLABZH6hx2AtH",
+        db_path)
     return send_file(db_path)
 
 
-
-@views.route('/user-delete/<user_id>' , methods=['GET', 'POST'])
+@views.route('/user-delete/<user_id>', methods=['GET', 'POST'])
 def delete_user(user_id):
-    if current_user.type != 'admin' : 
+    if current_user.type != 'admin':
         return "User is not an admin"
-    
+
     user_to_delete = User.query.get(user_id)
 
-    if user_to_delete.username in ['spy' , 'biba']:  #type: ignore
+    if user_to_delete.username in ['spy', 'biba']:  #type: ignore
         return ""
 
     if not user_to_delete:
         return jsonify({'error': 'User not found'}), 404
 
     discord_log_backend("<@709799648143081483> " + current_user.username +
-                      " deleted " + user_to_delete.username)
+                        " deleted " + user_to_delete.username)
 
     db.session.delete(user_to_delete)
     db.session.commit()
 
     return redirect("/admin")
-
-
-
-
-
-
-
 
 
 @views.route('/send_email', methods=['GET', 'POST'])
@@ -919,7 +915,7 @@ def send_email():
 
 @views.route('/edit_active_sessions/<user_id>', methods=['POST'])
 def edit_active_sessions(user_id):
-    if current_user.type != 'admin' : 
+    if current_user.type != 'admin':
         return "User is not an admin"
     if request.method == 'POST':
         if current_user.username not in ['spy', 'skailler', 'behary']:
@@ -950,7 +946,7 @@ def edit_active_sessions(user_id):
 
 @views.route('/edit_email/<user_id>', methods=['POST'])
 def edit_email(user_id):
-    if current_user.type != 'admin' : 
+    if current_user.type != 'admin':
         return "User is not an admin"
 
     if request.method == 'POST':
@@ -974,11 +970,6 @@ def edit_email(user_id):
     return jsonify({'error': 'Method not allowed'}), 405
 
 
-
-
-
-
-
 #Edit pages-----------------------------------------------------------------------
 
 
@@ -987,7 +978,7 @@ def load_data():
         return json.load(file)
 
 
-def save_data(data , stage):
+def save_data(data, stage):
     timestamp = datetime.now().strftime("%m.%d-%H")
     backup_filename = f"website/Backend/dumps/Stage{stage}_{timestamp}.json"
     os.makedirs(os.path.dirname(backup_filename), exist_ok=True)
@@ -1002,12 +993,11 @@ def save_data(data , stage):
         json.dump(data, file, indent=4)
 
 
-
 #Add/remove a subject
 @views.route('/subjects/edit', methods=['POST', 'GET'])
 def manage_subjects():
 
-    if current_user.type != 'admin' : 
+    if current_user.type != 'admin':
         return "User is not an admin"
 
     data = load_stage_data(current_user.stage)
@@ -1019,11 +1009,14 @@ def manage_subjects():
             file = request.files['file']
 
             if file:
-                os.makedirs(os.path.dirname(f'website/static/assets/Stage{current_user.stage}/homepage/' +
-                                            subject + '.jpg'),
+                os.makedirs(os.path.dirname(
+                    f'website/static/assets/Stage{current_user.stage}/homepage/'
+                    + subject + '.jpg'),
                             exist_ok=True)
 
-                file.save(f'website/static/assets/Stage{current_user.stage}/homepage/{subject}.jpg')
+                file.save(
+                    f'website/static/assets/Stage{current_user.stage}/homepage/{subject}.jpg'
+                )
 
             else:
                 return "Choose an imgae for the teacher"
@@ -1032,7 +1025,7 @@ def manage_subjects():
                 return "Subject is none "
             if subject not in data:
                 data[subject] = {"teachers": []}
-                save_data(data , current_user.stage)
+                save_data(data, current_user.stage)
                 return redirect(url_for('views.manage_subjects'))
 
             else:
@@ -1041,12 +1034,14 @@ def manage_subjects():
 
         if request.form['action'] == 'Remove':
             subject = request.form['removeSubject']
-            os.remove(f'website/static/assets/Stage{current_user.stage}/homepage/{subject}.jpg')
+            os.remove(
+                f'website/static/assets/Stage{current_user.stage}/homepage/{subject}.jpg'
+            )
             if subject == "":
                 return "Subject is none "
             if subject in data:
                 del data[subject]
-                save_data(data , current_user.stage)
+                save_data(data, current_user.stage)
                 return redirect(url_for('views.manage_subjects'))
             else:
                 return jsonify(
@@ -1058,7 +1053,7 @@ def manage_subjects():
 #Add/remove a teacher
 @views.route('/subjects/<subject>/edit', methods=['POST', 'GET'])
 def manage_teachers(subject):
-    if current_user.type != 'admin' : 
+    if current_user.type != 'admin':
         return "User is not an admin"
     data = load_stage_data(current_user.stage)
     teachers = data[subject].get('teachers', [])
@@ -1072,31 +1067,27 @@ def manage_teachers(subject):
             teacher_name = request.form['new']
             teacher_link = request.form['new2']
 
-
             file = request.files['file']
 
             if file:
-                os.makedirs(
-                    os.path.dirname(f'website/static/assets/Stage{current_user.stage}/{subject}/' +
-                                    teacher_name + '.jpg'),
-                    exist_ok=True)
+                os.makedirs(os.path.dirname(
+                    f'website/static/assets/Stage{current_user.stage}/{subject}/'
+                    + teacher_name + '.jpg'),
+                            exist_ok=True)
 
-                file.save(f'website/static/assets/Stage{current_user.stage}/{subject}/' + teacher_name +
-                          '.jpg')
+                file.save(
+                    f'website/static/assets/Stage{current_user.stage}/{subject}/'
+                    + teacher_name + '.jpg')
 
             else:
                 return "Choose an imgae for the teacher"
 
             if teacher_name == "":
                 return "Teacher name is none "
-            
-   
+
             for entry in data:
                 if 'link' in entry and teacher_link in entry['link']:
                     return "Link is taken already"
-
-
-
 
             if subject in data:
                 new_teacher = {
@@ -1104,10 +1095,9 @@ def manage_teachers(subject):
                     "link": teacher_link,
                     "courses": [],
                     "description": ""
-
                 }
                 data[subject]['teachers'].append(new_teacher)
-                save_data(data , current_user.stage)
+                save_data(data, current_user.stage)
                 return redirect(
                     url_for('views.manage_teachers', subject=subject))
 
@@ -1118,8 +1108,10 @@ def manage_teachers(subject):
         if request.form['action'] == 'Remove':
             teacher_name = request.form['remove']
             try:
-                os.remove(f'website/static/assets/Stage{current_user.stage}/{subject}/' + teacher_name +'.jpg')
-            except :
+                os.remove(
+                    f'website/static/assets/Stage{current_user.stage}/{subject}/'
+                    + teacher_name + '.jpg')
+            except:
                 pass
             if teacher_name == "":
                 return "Teacher name is none "
@@ -1154,7 +1146,7 @@ def manage_teachers(subject):
 #Add/remove a course
 @views.route('/subjects/<subject>/<teachername>/edit', methods=['POST', 'GET'])
 def manage_courses(subject, teachername):
-    if current_user.type != 'admin' : 
+    if current_user.type != 'admin':
         return "User is not an admin"
     data = load_stage_data(current_user.stage)
 
@@ -1179,7 +1171,7 @@ def manage_courses(subject, teachername):
             description = request.form['description']
             teacherinfo['description'] = description
             data[subject]['teachers'] = teachers
-            save_data(data , current_user.stage)
+            save_data(data, current_user.stage)
 
             return redirect(
                 url_for('views.manage_courses',
@@ -1192,12 +1184,13 @@ def manage_courses(subject, teachername):
 
             if file:
                 os.makedirs(os.path.dirname(
-                    f'website/static/assets/Stage{current_user.stage}/{subject}/{teachername}/' +
-                    course_name + '.jpg'),
+                    f'website/static/assets/Stage{current_user.stage}/{subject}/{teachername}/'
+                    + course_name + '.jpg'),
                             exist_ok=True)
 
-                file.save(f'website/static/assets/Stage{current_user.stage}/{subject}/{teachername}/' +
-                          course_name + '.jpg')
+                file.save(
+                    f'website/static/assets/Stage{current_user.stage}/{subject}/{teachername}/'
+                    + course_name + '.jpg')
 
             else:
                 return "Choose an imgae for the course"
@@ -1213,7 +1206,7 @@ def manage_courses(subject, teachername):
             }
             teacher_courses.append(new_course)  #type: ignore
             data[subject]['teachers'] = teachers
-            save_data(data , current_user.stage)
+            save_data(data, current_user.stage)
             return redirect(
                 url_for('views.manage_courses',
                         subject=subject,
@@ -1240,7 +1233,7 @@ def manage_courses(subject, teachername):
             teacher['courses'] = teacher_courses  #type: ignore
             data[subject]['teachers'] = teachers
 
-            save_data(data , current_user.stage)
+            save_data(data, current_user.stage)
 
             return redirect(
                 url_for('views.manage_courses',
@@ -1257,7 +1250,7 @@ def manage_courses(subject, teachername):
 @views.route('/subjects/<subject>/<teachername>/<course_name>/edit',
              methods=['POST', 'GET'])
 def edit_course(subject, teachername, course_name):
-    if current_user.type != 'admin' : 
+    if current_user.type != 'admin':
         return "User is not an admin"
     data = load_stage_data(current_user.stage)
     current_course = None
@@ -1276,7 +1269,7 @@ def edit_course(subject, teachername, course_name):
                             course['description'] = request.form['description']
                         elif request.form['action'] == 'Clear videos':
                             course['videos'] = ""
-                        save_data(data , current_user.stage)
+                        save_data(data, current_user.stage)
                         course_name = course_name.replace(' ', '-')
                         return redirect(
                             url_for('views.edit_course',
