@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage User</title>
+
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/manage.css') }}" />
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/main.css') }}" />
+</head>
+<body>
+    <section class="banner">
+        <canvas id="canvas"></canvas>
+        <br>
+        <br>
+    <h1 style="text-align: center;">Editing User: {{ user.username }} | ID : {{user.id}}</h1>
+    <div style="text-align: center;">
+<a href="/admin" style="font-size: 20px; text-decoration: underline; text-align: center; color: white;">Admin page </a>
+</div>
+    {%if "Waiting" in user.otp%}
+    <form action="{{ url_for('views.approve', user_id=user.id) }}" method="post" style="text-align: center;margin-top: 20px;">
+     User is not approved yet.   <input style="background-color: green;" type="submit" value="Approve User?" onclick="return confirm('Are you sure you want to approve this user?');">
+    </form>
+{%else%}
+<form action="{{ url_for('views.disable', user_id=user.id) }}" method="post" style="text-align: center;margin-top: 20px;">
+   To disable user click <input type="submit" value="Disable User" onclick="return confirm('Are you sure you want to disable this user?');">
+</form>
+    {%endif%}
+    <br>
+    <form action="" method="post">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" value="{{ user.username }}" required><br><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" value="{{ user.email }}" required><br><br>
+        <label for="password">Password:</label>
+        <input type="text" id="password" name="password" value="{{ user.password }}" placeholder="Password is not set"><br><br>
+
+
+        <label for="devices">Devices:</label>
+        <input type="text" id="devices" name="devices" value="{{ user.active_sessions }}" required><br><br>
+
+        <label for="otp">OTP:</label>
+        <input type="text" id="otp" name="otp" value="{{ user.otp }}" disabled><br><br>
+
+
+
+        <label for="stage">Stage:</label>
+
+            <select name="stage" id="stage">
+                <option value="{{ user.stage }}" selected>{{ user.stage }}</option>
+            
+                {% for o in data %}
+    
+                    {% if o.name != user.stage %}
+                        <option value="{{ o.name }}">{{ o.name }}</option>
+           
+                    {% endif %}
+                {% endfor %}
+            </select>
+        
+
+   <br><br>
+
+   <script>
+    function redirectTo(url) {
+        window.location.href = url;
+    }
+</script>
+        <input style="background-color: green;" type="submit" value="Update User" onclick="return confirm('Are you sure you want to update this user?');">
+   
+
+            <button type="button" class="logs"  onclick="redirectTo('/logs/{{user.id}}')">
+                View logs
+            </button>
+   
+    </form>
+
+
+
+
+
+
+
+   
+
+    <form action="{{ url_for('views.delete_user', user_id=user.id) }}" method="post" style="margin-top: 20px;">
+        <input  type="submit" value="Permanently delete User" onclick="return confirm('Are you sure you want to delete this user (This action can not be undone)?');">
+    </form>
+
+    <br><br>
+
+
+
+    <div class="footer">
+        <p>&copy; 2024 Sanawya sessions</p>
+    </div>
+
+</section>
+</body>
+<script src="{{ url_for('static', filename='java/snow.js') }}"></script>
+
+</html>

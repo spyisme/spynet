@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+    <head>
+ 
+
+        <title>Sanawya Sessions</title>
+        <link rel="icon" type="image/x-icon" href="./favicon.ico" />
+
+        <meta name="description" content="Spynet" />
+        <meta name="keywords" content="spy, spynet, spysnet" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/all.css') }}" />
+
+
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/main.css') }}" />
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
+        <script src="   {{ url_for('static', filename='java/connection.js') }}"></script>
+
+        <!-- <script src="https://webkeyz.github.io/stand-with-palestine/dist/stand-with-palestine-widget.js"></script> -->
+    </head>
+
+    <body onload="startCountdown()">
+        <section class="banner">
+            <canvas id="canvas"> </canvas>
+
+            <div class="nav">
+                <img class="img" src="{{ url_for('static', filename='assets/ss.png') }}" />
+
+                {%if password%}
+                <p>Passowrd Set!</p>
+
+                {%endif%} 
+                
+                {%if current_user.password == 'not-set'%}
+                <u>
+                    <p><a href="/options">Set a password now!</a></p>
+                </u>
+
+                {%endif%}
+                
+                <p id="date"></p>
+        
+             
+            </div>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+
+            <div class="textcont">
+                <p><button class="button" id="homeBtn" onclick="showDiv('homestuff', 'homeBtn')">Videos</button></p>
+                <p><button class="button" id="pdfsBtn" onclick="showDiv('pdfsstuff', 'pdfsBtn')">Pdfs</button></p>
+            </div>
+ 
+            <div id="homestuff" class="content hidden">
+                <ul>
+
+
+                    {% for item in lines %}
+
+    
+                    <li>
+                        <a href="subjects/{{ item }}">
+                            <div class="card">
+                                <img src="{{ url_for('static', filename='assets/Stage' + current_user.stage|string + '/homepage/' + item + '.jpg') }}" alt="{{ item }}" loading="lazy" />
+
+                                <div class="text">{{ item }}</div>
+                            </div>
+                        </a>
+                    </li>
+      
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div id="pdfsstuff" class="content hidden">
+                <ul>
+          
+
+                    <li>
+                        <a href="/books" target="_blank">
+                            <div class="card2">
+                                All Pdfs
+                            </div>
+                        </a>
+                    </li>
+       
+            
+    
+                </ul>
+            </div>
+
+            <br />
+
+            <div class="footer">
+                <p id="countdown">© 2024 Sanawya sessions</p>
+            </div>
+        </section>
+    </body>
+
+    <script>
+        function showDiv(divId, buttonId) {
+            // Hide all divs first
+            var divs = document.querySelectorAll(".content");
+            divs.forEach(function (div) {
+                div.classList.add("hidden");
+            });
+
+            // Remove 'active' class from all buttons
+            var buttons = document.querySelectorAll(".button");
+            buttons.forEach(function (button) {
+                button.classList.remove("active");
+            });
+
+            // Show the selected div
+            document.getElementById(divId).classList.remove("hidden");
+
+            // Add 'active' class to the clicked button
+            document.getElementById(buttonId).classList.add("active");
+        }
+    </script>
+
+<script src="   {{ url_for('static', filename='java/snow.js') }}"></script>
+<script src="   {{ url_for('static', filename='java/countdown.js') }}"></script>
+</html>

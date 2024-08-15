@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Spysnet</title>
+
+</head>
+<body>
+    <h1>Edit {{subject}}</h1>
+    <div>
+        <h2>Current Teachers</h2>
+
+{%for x in data %}
+
+<a href="{{x.link}}/edit">{{x.name}}</a> <br>
+{%endfor%}
+
+
+    </div>
+    <div>
+        
+        <h2>Add Teacher</h2>
+        <form action="" method="post" enctype="multipart/form-data">
+
+        <input type="text" name="new" placeholder="New Teacher"><br><br><br>
+        <input type="text" name="new2" placeholder="Url (Duplication Error)"><br><br><br>
+
+        <input type="file" name="file"><br><br><br>
+
+        <input type ="submit"  name="action" value="Add">
+    </div>
+</form>
+    <form action="" method="post">
+
+    <div>
+
+        <h2>Remove Teacher</h2>
+        <input type="text" name="remove" placeholder="Teacher to remove">
+        <input type ="submit"  name="action" value="Remove">
+    </div>
+</form>
+</body>
+</html>

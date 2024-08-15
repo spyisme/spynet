@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>{{ teacher_name }}</title>
+
+    <script>
+      const capitalize=(word)=> {
+      return word[0].toUpperCase() + word.slice(1).toLowerCase();
+    }
+    let title= document.querySelector('title')
+    title.textContent=capitalize(title.textContent)
+    </script>
+
+
+
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+
+
+
+    <meta name="description" content="Spynet">
+    <meta name="keywords" content="spy, spynet, spysnet">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/teacher.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/main.css') }}">
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
+
+
+    <!-- <script src="https://webkeyz.github.io/stand-with-palestine/dist/stand-with-palestine-widget.js"></script> -->
+
+</head>
+
+
+<body onload="startCountdown()">
+
+  <section class="banner">
+    <canvas id="canvas"> </canvas>
+  <div class="nav">
+    {% set valid_subjects = ["arabic", "english", "biology", "chemistry", "geology", "german", "maths", "physics"] %}
+
+    {% if teachername in valid_subjects %}
+        <img class="img" src="{{ url_for('static', filename='assets/subjects/' + teachername + '.png') }}" alt="Subjects Image">
+    {% else %}
+        <h1>✰ {{ teachername }} ✰</h1>
+    {% endif %}
+
+    {%if "2023" in description %}
+<h1>Old content</h1>
+{%endif%}
+
+
+
+{% if link %}
+    {% for key, value in link.items() %}
+        <p><a href="{{ value }}" target="_blank" style="color: white;"><u>{{ key }}</u></a></p>
+    {% endfor %}
+{% endif %}
+
+
+
+           </div>
+
+            
+           {%if teacher_links%}
+
+   <ul>
+
+    {% for x in teacher_links %}
+
+    {% set link = x.link %}
+    {% if " " in link %}
+        {% set link = link.replace(' ', '-') %}
+    {% endif %}
+          <li>
+    
+            <a href="{{teacher_name}}/{{link}}">
+
+
+                  <div class="card">
+       
+                   
+                    <img class="img" src="{{ url_for('static', filename='assets/Stage' +current_user.stage|string  + '/' + teachername +'/' + teacher_name +'/' + x.link +'.jpg') }}" alt="{{x.link}}">
+
+       
+                      <p>{{ x.name }}</p>
+
+                      <span class="card-description">{{ x.description if x.description else 'description' }}</span>
+
+
+                </div>
+
+              </a>
+          </li>
+          {% endfor %}
+
+      </ul>
+      {%else%}
+      <h1 style="color: white; text-align: center;">No Content uploaded yet</h1>
+      {%endif%}
+<br>
+<br>
+<br>
+
+      <div class="footer">
+        <p id="countdown">© 2024 Sanawya sessions</p>
+      </div>
+
+    </section>
+
+    </body>
+
+
+<script src="   {{ url_for('static', filename='java/snow.js') }}"></script>
+<script src="   {{ url_for('static', filename='java/countdown.js') }}"></script>
+ 
+
+</html>

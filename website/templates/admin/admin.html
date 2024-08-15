@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="robots" content="noindex">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/admin.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/main.css') }}" />
+</head>
+<body>
+    <section class="banner">
+        <canvas id="canvas"></canvas>
+        <br><br>
+        <h1>Welcome {{current_user.username}} !</h1>
+        <div class="form">
+            <h2>Create a new user</h2>
+
+            <form id="createUserForm" action="/create_user" method="post">
+                <input placeholder="Username" type="text" id="username" name="username" required><br><br>
+                <input placeholder="Email" type="text" id="email" name="email" required><br><br>
+                <label for="stage">Stage:</label>
+                <select name="stage" id="stage">
+                    {% for o in data %}
+                        <option value="{{ o.name }}">{{ o.name }}</option>
+                    {% endfor %}
+                </select><br><br>
+                <input type="submit" value="Create User">
+                <script>
+                    function redirectTo(url) {
+                        window.location.href = url;
+                    }
+                </script>
+                <button type="button" class="download" onclick="redirectTo('/database')">Download Database</button>
+                <button type="button" class="download" onclick="redirectTo('/stages-data')">Download Stages Data</button>
+            
+            </form>
+        </div>
+        <br><br>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>User ID</th>
+                    <th>Username</th>
+                    <th>Devices</th>
+                    <th>Email</th>
+                    <th>Stage</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                    <tr {% if "Waiting" in user.otp %}style="color: red;"{% endif %}>
+                        <td>{{ user.id }}</td>
+                        <td>
+                            {% if user.type == 'admin' %}
+                                ★ {{ user.username }} ★
+                            {% else %}
+                                {{ user.username }} 
+                            {% endif %}
+                        </td>
+                        <td>{{ user.active_sessions }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.stage }}</td>
+                        <td><a href="/user-manage/{{ user.id }}">Manage</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <br><br>
+
+        <div class="footer">
+            <p>&copy; 2024 Sanawya sessions</p>
+        </div>
+    </section>
+</body>
+<script src="{{ url_for('static', filename='java/snow.js') }}"></script>
+<script>
+    document.getElementById('createUserForm').addEventListener('submit', function(event) {
+        var confirmation = confirm("Are you sure you want to create this user?");
+        if (!confirmation) {
+            event.preventDefault(); // Prevent form submission if not confirmed
+        }
+    });
+</script>
+</html>

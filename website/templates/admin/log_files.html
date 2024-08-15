@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="robots" content="noindex">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log Files</title>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
+    <script src="static/java/connection.js"></script>
+
+</head>
+<style>
+    a{
+        color:green;
+        text-transform: capitalize;
+
+    }
+
+</style>
+<body>
+    <h1>Log Files</h1>
+    <ul>
+    {% for log_file in log_files %}
+    {% set username = log_file.split('_')[0] %}
+
+        <li><a href="/logs/{{ username }}">{{ username }}</a></li>
+    {% endfor %}
+    </ul>
+</body>
+</html>

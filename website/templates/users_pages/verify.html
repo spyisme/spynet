@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
+    <script src="static/java/connection.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/login.css') }}">
+
+</head>
+<body>
+<div class="form">
+
+
+    <form method="post">
+
+
+    <div class="title">2fa</div>
+    <div class="subtitle">Check your inbox : {{email}} !</div>
+    {%if msg%}
+    <br>
+        <div class="failed">Incorrect OTP. Please enter the most recent one.</div>
+    <br>
+    {%endif%}
+
+    <div class="input-container ic2">
+        <input placeholder="" type="text" class="input" id="otp" name="otp" required>
+        <div class="cut cut-short"></div>
+        <label class="iLabel" for="otp">Otp</label>
+    </div>
+    <button class="submit" type="text">Login</button>
+</div>
+
+</form>
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const inputs = document.querySelectorAll('.input');
+        inputs.forEach(function (input) {
+            input.addEventListener('blur', function () {
+                if (input.value.trim() !== '') {
+                    input.classList.add('valid');
+                } else {
+                    input.classList.remove('valid');
+                }
+            });
+        });
+    });
+</script>
+
+
+</body>
+</html>
+
+
+

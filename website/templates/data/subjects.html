@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Spysnet</title>
+
+</head>
+<body>
+    <h1>Edit Subjects</h1>
+    <div>
+        <h2>Current Subjects</h2>
+            {%for x in data %}
+            <a href="{{x}}/edit">{{x}}</a> <br>
+            {%endfor%} 
+  
+
+    </div>
+    <div>
+        
+        <h2>Add Subject</h2>
+        <form action="" method="post" enctype="multipart/form-data">
+
+        <input type="text" name="newSubject" placeholder="New subject"><br><br><br>
+        <input type="file" name="file"><br><br><br>
+
+        <input type ="submit"  name="action" value="Add">
+    </div>
+</form>
+<form action="" method="post">
+
+    <div>
+
+        <h2>Remove Subject</h2>
+        <input type="text" name="removeSubject" placeholder="Subject to remove">
+        <input type ="submit"  name="action" value="Remove">
+    </div>
+    </form>
+</form>
+</body>
+</html>

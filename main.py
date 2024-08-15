@@ -1,0 +1,30 @@
+import logging  #type: ignore
+import json
+import requests
+from flask import render_template, request, redirect
+from website import create_app
+
+log = logging.getLogger('werkzeug')
+log.setLevel(logging.ERROR)
+
+app, socketio = create_app()
+
+
+@app.errorhandler(404)
+def page_not_found(e):  #type: ignore
+    if request.path.endswith('/'):
+        return redirect(request.path[:-1])
+    return render_template('used_pages/404.html')
+
+
+
+
+
+if __name__ == "__main__":
+    socketio.run(app,
+                 host="0.0.0.0",
+                 port=80,
+                 allow_unsafe_werkzeug=True,
+                 debug=True,
+                 use_reloader=True,
+                 log_output=True)

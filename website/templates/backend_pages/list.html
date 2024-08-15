@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="robots" content="noindex">
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2812078112067783"
+     crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="https://spysnet.com/static/snn.png">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commands List</title>
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            position: relative;
+            background-color: #fff;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        strong {
+            color: #007bff;
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 0;
+            right: 50px;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            right: 0;
+            min-width: 160px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content button {
+            width: 100%;
+            padding: 8px;
+            text-align: left;
+            border: none;
+            background: none;
+            cursor: pointer;
+        }
+
+        .dropdown-content button:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>Commands List</h1>
+    <h1>Count : {{count}}</h1>
+    <div class="action-buttons">
+        <button onclick="downloadall()">Download All</button>
+        <button onclick="addnew()">Add</button>
+        <button onclick="clearr()">Clear all</button>
+        <button onclick="createcmd()">Create cmd</button>
+
+
+    </div>
+    <ul>
+        {% for command in cmds_queue %}
+            <li>
+                <strong>Video Name:</strong> {{ extract_save_name(command) }}<br>
+                <div class="dropdown" onclick="toggleDropdown(this)">
+                    &#9660;
+                    <div class="dropdown-content">
+                        <button onclick="showFullCommand('{{ command }}')">Show Full Command</button>
+                        <button onclick="Download('{{ command }}')">Download</button>
+                       
+                        <button onclick="confirmDelete('{{ command }}')">Delete</button>
+
+                    </div>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <script>
+        function toggleDropdown(dropdown) {
+            var content = dropdown.querySelector('.dropdown-content');
+            if (content) {
+                content.style.display = (content.style.display === "block") ? "none" : "block";
+            }
+        }
+
+        function showFullCommand(command) {
+            alert(command);
+            console.log("show");
+        }
+
+        function confirmDelete(command) {
+            var confirmDelete = window.confirm("Are you sure you want to delete?");
+            if (confirmDelete) {
+                window.location.href = "/deletecmd?command=" + encodeURIComponent(command);
+            }
+        }
+        
+        function Download(command) {
+            var confirmDelete = window.confirm("Are you sure you want to download and upload this video to storj?");
+            if (confirmDelete) {
+                window.location.href = "/downloadsingle?command=" + encodeURIComponent(command);
+            }
+        }
+
+        function downloadall() {
+            var confirmDelete = window.confirm("Are you sure you want to download and upload all the videos below to storj?");
+            if (confirmDelete) {
+                window.location.href = "/downloadall";
+            }
+        }
+        function clearr() {
+            var confirmDelete = window.confirm("Are you sure you want to clear all the list?");
+            if (confirmDelete) {
+                window.location.href = "/clear";
+            }
+        }
+        function addnew() {
+            window.location.href = "/addcmd";
+        }
+        function createcmd() {
+            window.location.href = "/createcmd";
+        }
+    </script>
+</body>
+</html>

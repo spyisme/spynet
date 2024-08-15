@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
+    <script src="static/java/connection.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/login.css') }}">
+    
+</head>
+<body>
+
+<div class="form">
+    <form method="post">
+
+    <div class="title">Welcome</div>
+    <div class="subtitle">Let's create your account ! ( <u><a href="/login">Login</a></u> )</div>
+
+{%if done%}
+<br>
+
+    <div class="subtitle"><div class="done">Account creatted successfully wait for approval</div></div>
+<br>
+
+{%endif%}
+
+    <div class="input-container ic1">
+        <input placeholder="" type="text" class="input" id="username" name="username" required>
+        <div class="cut cut-short2"></div>
+        <label class="iLabel" for="username">Username</label>
+    </div>
+
+    <div class="input-container ic2">
+        <input placeholder="" type="text" class="input" id="email"  name="email" required>
+        <div class="cut cut-short3"></div>
+        <label class="iLabel" for="email">Email</label>
+    </div>
+
+    <div class="input-container ic2">
+        <input placeholder="" type="password" class="input" id="password" name="password" required>
+        <div class="cut cut-short2"></div>
+        <label class="iLabel" for="password">Password</label>
+    </div>
+
+
+
+    <button class="submit" type="text">Register</button>
+</div>
+</form>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const inputs = document.querySelectorAll('.input');
+        inputs.forEach(function (input) {
+            input.addEventListener('blur', function () {
+                if (input.value.trim() !== '') {
+                    input.classList.add('valid');
+                } else {
+                    input.classList.remove('valid');
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>

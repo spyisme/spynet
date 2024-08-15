@@ -1,0 +1,148 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    zoom: 85%;
+    overflow: auto;
+    cursor: url('/static/cursor.png'), auto;
+}
+
+
+.footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #17364f;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    z-index: 2; /* Higher z-index value than shine */
+
+    }
+.countdown{
+    color:white;
+    }
+
+body {
+    font-family: Arial, sans-serif;
+    background: black;
+    /* background: rgb(0, 32, 63); */
+    /* background: linear-gradient(72deg, rgba(0, 32, 63, 1) 0%, rgba(255, 223, 186, 1) 40%, rgba(1, 54, 87, 1) 100%);  */
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: white;
+}
+
+
+
+
+.link{
+    text-align: center;
+    text-decoration: underline;
+    font-size: 20px; 
+    color: white;
+}
+
+
+
+
+a{
+    color: white;
+    text-decoration: underline;
+}
+
+
+
+
+.log-entry {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 1fr;
+    gap: 10px;
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+}
+
+.log-item {
+    padding: 5px;
+    white-space: nowrap;
+}
+
+.log-entry:nth-child(odd) {
+    background-color: #1a1a1a;
+}
+.log-entry:nth-child(even) {
+    background-color: #333;
+}
+
+.log-item.url {
+    font-size: 0.9em; /* Adjust size as needed */
+    max-width: 300px; /* Adjust max width as needed */
+    display: block;
+}
+.log-container {
+    background-color: #444; /* Slightly lighter background */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    max-height: 700px;
+    overflow-y: auto;
+}
+::-webkit-scrollbar {
+    width: 10px;
+    }
+    
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: green; 
+    border-radius: 10px;
+  }
+  
+
+
+
+.log-entry {
+    background-color: #555; /* Background color for each log entry */
+    padding: 10px;
+    color: white;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    font-size: 25px;
+    line-height: 1.6;
+    border-left: 5px solid #28a745; /* Green border to highlight log entry */
+
+}
+
+
+
+
+
+
+
+
+
+.banner {
+    width: 100%;
+    height: 100%;
+    
+    }
+    .banner_content {
+    display: flex;
+    position: relative;
+    z-index: 1;
+    flex-direction: column;
+    text-align: center;
+    }
+
+    #canvas {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    }
+    
+    
