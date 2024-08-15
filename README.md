@@ -1,2 +1,0 @@
-# SpyNet
-Sanawya Sessions
