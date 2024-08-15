@@ -22,10 +22,18 @@ h1 {
 form {
     background-color: #444; /* Slightly lighter background for the form */
     padding: 20px;
-    left:30px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
+
+@media screen and (max-width: 768px) {
+    form {
+       text-align: center;
+       margin-left: 14px;
+
+    }
+    
+  }
 
 label {
     display: block;

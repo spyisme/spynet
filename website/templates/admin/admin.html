@@ -31,8 +31,12 @@
                         window.location.href = url;
                     }
                 </script>
-                <button type="button" class="download" onclick="redirectTo('/database')">Download Database</button>
-                <button type="button" class="download" onclick="redirectTo('/stages-data')">Download Stages Data</button>
+                       <br class="mobile-break">
+                       <br class="mobile-break">
+       
+          <button type="button" class="download" onclick="redirectTo('/database')">Download Database</button>      &nbsp&nbsp
+         
+                <button type="button" class="download" onclick="redirectTo('/stages-data')">Download Stages Data</button> 
             
             </form>
         </div>
@@ -41,11 +45,11 @@
         <table>
             <thead>
                 <tr>
-                    <th>User ID</th>
+                    <th>User ID  </th>
                     <th>Username</th>
-                    <th>Devices</th>
-                    <th>Email</th>
-                    <th>Stage</th>
+                    <th >Devices</th>
+                    <th  class="hide-on-mobile">Email</th>
+                    <th class="hide-on-mobile" >Stage</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -55,19 +59,20 @@
                         <td>{{ user.id }}</td>
                         <td>
                             {% if user.type == 'admin' %}
-                                ★ {{ user.username }} ★
+                                ★ {{ user.username }} ★ 
                             {% else %}
                                 {{ user.username }} 
                             {% endif %}
                         </td>
-                        <td>{{ user.active_sessions }}</td>
-                        <td>{{ user.email }}</td>
-                        <td>{{ user.stage }}</td>
+                        <td >{{ user.active_sessions }}</td>
+                        <td class="hide-on-mobile">{{ user.email }}</td>
+                        <td class="hide-on-mobile" >{{ user.stage }}</td>
                         <td><a href="/user-manage/{{ user.id }}">Manage</a></td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
+        
 
         <br><br>
 
