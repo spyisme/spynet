@@ -192,7 +192,7 @@ def login():
         whitelist_ips.add(client_ip)
 
     if client_ip in blacklist_ips:
-        return jsonify(message=f"Error 403 your ip is {client_ip}"), 403
+        return jsonify(message=f"Error 403 your ip is {client_ip}")
 
     if client_ip not in whitelist_ips:
         api_url = f'https://ipinfo.io/{client_ip}?token=8f8d5a48b50694'
@@ -203,11 +203,11 @@ def login():
             country_code = data['country']
             if country_code != 'EG':
                 blacklist_ips.add(client_ip)
-                return jsonify(message="Please disable vpn/proxy."), 403
+                return jsonify(message="Please disable vpn/proxy.")
         else:
             blacklist_ips.add(client_ip)
             return jsonify(
-                message="Unable to determine the country. Login failed."), 403
+                message="Unable to determine the country. Login failed.")
 
     whitelist_ips.add(client_ip)
 
@@ -414,11 +414,11 @@ def registeracc():
             country_code = data['country']
             if country_code != 'EG':
                 blacklist_ips.add(client_ip)
-                return jsonify(message="Please disable vpn/proxy."), 403
+                return jsonify(message="Please disable vpn/proxy.")
         else:
             blacklist_ips.add(client_ip)
             return jsonify(
-                message="Unable to determine the country. Login failed."), 403
+                message="Unable to determine the country. Login failed.")
 
     user_agent = request.headers.get('User-Agent')
     if current_user.is_authenticated:
