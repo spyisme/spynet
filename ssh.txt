@@ -1,0 +1,8 @@
+ssh -i C:\Users\Pc\Desktop\spy.pem.pub root@95.179.222.63
+
+y9$Vbh-K$_)jmGbN
+
+nohup python3 main.py &
+
+pkill python3
+
