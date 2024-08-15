@@ -1,9 +1,9 @@
-# ssh -i ./spy.pem root@95.179.222.63
+ ssh -i ./spy.txt root@95.179.222.63
 
-# y9$Vbh-K$_)jmGbN
+y9$Vbh-K$_)jmGbN
 
-# nohup python3 main.py &
+nohup python3 main.py &
 
-# pkill python3
+pkill python3
 
 
