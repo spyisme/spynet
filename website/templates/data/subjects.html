@@ -2,38 +2,52 @@
 <html>
 <head>
     <title>Spysnet</title>
-
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/subjects.css') }}" />
 </head>
 <body>
-    <h1>Edit Subjects</h1>
-    <div>
-        <h2>Current Subjects</h2>
-            {%for x in data %}
-            <a href="{{x}}/edit">{{x}}</a> <br>
-            {%endfor%} 
-  
+    <section class="banner">
+        <canvas id="canvas"></canvas>
+        <div class="banner_content">
+            <h1>Edit Subjects</h1>
+            
+            <div class="content-container">
+                
+   
+                <div class="form-container">
+                    <h2>Add Subject</h2>
+                    <form action="" method="post" enctype="multipart/form-data">
+                        <input type="text" name="newSubject" placeholder="New subject"><br><br>
+                        <input type="file" name="file"><br><br>
+                        <input type="submit" name="action" value="Add">
+                    </form>
 
-    </div>
-    <div>
-        
-        <h2>Add Subject</h2>
-        <form action="" method="post" enctype="multipart/form-data">
+                    <h2>Remove Subject</h2>
+                    <form action="" method="post">
+                        <select name="removeSubject">
+                            {% for x in data %}
+                            <option value="{{ x }}">{{ x }}</option>
+                            {% endfor %}
+                        </select><br><br>
+                        <input type="submit" name="action" value="Remove">
+                    </form>
+                </div>
+                <div class="subjects-container">
+                    <h2>Current Subjects</h2>
+                    <ul>
+                        {% for x in data %}
+                        <li>
+                            <a href="{{ x }}/edit">{{ x }}</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
 
-        <input type="text" name="newSubject" placeholder="New subject"><br><br><br>
-        <input type="file" name="file"><br><br><br>
-
-        <input type ="submit"  name="action" value="Add">
-    </div>
-</form>
-<form action="" method="post">
-
-    <div>
-
-        <h2>Remove Subject</h2>
-        <input type="text" name="removeSubject" placeholder="Subject to remove">
-        <input type ="submit"  name="action" value="Remove">
-    </div>
-    </form>
-</form>
+        <div class="footer">
+            <p>&copy; 2024 Sanawya sessions</p>
+        </div>
+    </section>
 </body>
+<script src="{{ url_for('static', filename='java/snow.js') }}"></script>
 </html>

@@ -15,6 +15,7 @@ from flask import (
     send_file,
     session,
     url_for,
+    abort
 )
 from flask_login import current_user, login_user, logout_user
 from flask_mail import Message
@@ -169,19 +170,22 @@ def login():
 
     bypass = request.args.get('bypass')
 
-    if bypass :
-        try :
-            blacklist_ips.remove(client_ip)
-        except :
-            pass
-        whitelist_ips.add(client_ip)
-        
 
     if client_ip:
         client_ip = client_ip.split(',')[0].strip()
     else:
         client_ip = request.headers.get('CF-Connecting-IP',
                                         request.remote_addr)
+
+
+
+    if bypass :
+        try :
+            blacklist_ips.remove(client_ip)
+            whitelist_ips.add(client_ip)
+
+        except :
+            whitelist_ips.add(client_ip)
 
     user_agent = request.headers.get('User-Agent')
 
@@ -531,7 +535,8 @@ def subjects(subject):
             or f"{len(teacher['courses'])} courses"
         } for teacher in data[subject]["teachers"]]
     else:
-        return "Not found"
+        abort(404)
+
     return render_template('used_pages/subjects.html',
                            teachername=subject,
                            teacher_links=teachers)
@@ -552,7 +557,8 @@ def teacher(subject, teacher_name):
                 break
 
     if courses == None:  #type: ignore
-        return "Not found"
+        abort(404)
+
 
     return render_template('used_pages/teacher.html',
                            teachername=subject,
@@ -587,7 +593,8 @@ def videos(subject, teacher_name, course_name):
                         folder = course.get('folder', '')
 
     if videos == None:  #type: ignore
-        return "Not found"
+        abort(404)
+
     teachername = course_name
 
     return render_template('used_pages/videopage.html',
@@ -634,6 +641,7 @@ def update(subject, teacher_name, course_name):
                                 f'website/Backend/stage{current_user.stage}_data.json',
                                 'w') as f:
                             json.dump(data, f, indent=4)
+    # return redirect(f'/subjects/{subject}/{teacher_name}/{course_name}')
     return videos
 
 
@@ -721,9 +729,7 @@ def manage_user(user_id):
         user.active_sessions = request.form.get('devices')
 
         db.session.commit()
-        return redirect(url_for(
-            'views.manage_user',
-            user_id=user_id))  # Redirect to the same page to show updated data
+        return redirect(url_for('views.manage_user',user_id=user_id)) 
 
     # Render the manage user template
     return render_template('admin/manage.html',
@@ -742,8 +748,7 @@ def clearlogs():
     if current_user.type != 'admin':
         return "User is not an admin"
 
-    current_user.logs = json.dumps(
-        [])  # Serialize the empty list to a JSON string
+    current_user.logs = json.dumps([])
 
     db.session.commit()
 
@@ -763,10 +768,10 @@ def logs(user_id):
     return render_template('admin/logs.html', logs=logs, user=user)
 
 
-@views.route('/approve/<int:user_id>', methods=['GET', 'POST'])
+@views.route('/approve/<user_id>', methods=['GET', 'POST'])
 def approve(user_id):
-    if current_user.type != 'admin':
-        return "User is not an admin"
+    if user_id == -1:
+        return "You cant edit"
     user = User.query.filter_by(id=user_id).first()
     user.otp = "null"  #type: ignore
     db.session.commit()
@@ -785,10 +790,12 @@ def approve(user_id):
     return redirect(url_for('views.manage_user', user_id=user_id))
 
 
-@views.route('/disable/<int:user_id>', methods=['GET', 'POST'])
+@views.route('/disable/<user_id>', methods=['GET', 'POST'])
 def disable(user_id):
     if current_user.type != 'admin':
         return "User is not an admin"
+    if user_id == -1:
+        return "You cant edit"
 
     user = User.query.filter_by(id=user_id).first()
     user.otp = "Waiting approval"  #type: ignore
@@ -886,7 +893,11 @@ def delete_user(user_id):
     user_to_delete = User.query.get(user_id)
 
     if user_to_delete.username in ['spy', 'biba']:  #type: ignore
-        return ""
+        return "Cant delete user"
+    
+    if user_to_delete.type == "admin":
+        if current_user.username != 'spy':
+            return "Cant delete user"
 
     if not user_to_delete:
         return jsonify({'error': 'User not found'}), 404
