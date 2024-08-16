@@ -631,7 +631,7 @@ def update(subject, teacher_name, course_name):
                         videos = get_playlist_videos(playlist_id)
                         course['videos'] = videos
                         with open(
-                                f'website/Backend/Stage{current_user.stage}_data.json',
+                                f'website/Backend/stage{current_user.stage}_data.json',
                                 'w') as f:
                             json.dump(data, f, indent=4)
     return videos
