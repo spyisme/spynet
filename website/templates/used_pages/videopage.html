@@ -41,7 +41,12 @@
               {%if "2023" in description %}
               <h1>Old content</h1>
               {%endif%}
-              
+              {%if current_user.type == 'admin'%}
+<u>
+    <p><a style="color: white;" href="edit">Edit current Page</a></p>
+</u>
+{%endif%}
+
                   
   
   </div>

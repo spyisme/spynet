@@ -61,6 +61,11 @@
         <p><a href="{{ value }}" target="_blank" style="color: white;"><u>{{ key }}</u></a></p>
     {% endfor %}
 {% endif %}
+{%if current_user.type == 'admin'%}
+<u>
+    <p><a style="color: white;" href="edit">Edit current Page</a></p>
+</u>
+{%endif%}
 
 
 
