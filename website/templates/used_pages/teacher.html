@@ -62,7 +62,11 @@
     {% endfor %}
 {% endif %}
 
-
+{%if current_user.type == 'admin'%}
+<u>
+    <p><a href="edit">Edit current Page</a></p>
+</u>
+{%endif%}
 
            </div>
 
