@@ -39,7 +39,11 @@
                 </u>
 
                 {%endif%}
-                
+                {%if current_user.type == 'admin'%}
+                <u>
+                    <p><a href="/admin">Admin Page</a></p>
+                </u>
+                {%endif%}
                 <p id="date"></p>
         
              
