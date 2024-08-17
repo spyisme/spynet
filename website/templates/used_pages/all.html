@@ -42,7 +42,15 @@
                 {%if current_user.type == 'admin'%}
                 <u>
                     <p><a href="/admin">Admin Page</a></p> <br>
-                    <p><a href="edit">Edit current page</a></p>
+                    <p><a id="edit-link">Edit current page</a></p>
+                    <script>
+                        // Get the current URL path
+                        const currentPath = window.location.pathname;
+                    
+                        // Set the href attribute to the current path with "/edit" appended
+                        document.getElementById('edit-link').href = currentPath + '/edit';
+                    </script>
+                    
                 </u>
                 {%endif%}
                 <p id="date"></p>
