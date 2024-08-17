@@ -435,12 +435,15 @@ def registeracc():
             return "Username taken"
         email = request.form.get('email')
         password = request.form.get('password')
+        stage = request.form.get('stage')
+
 
         new_user = User(
             username=username,  #type: ignore
             password=password,  #type: ignore
             email=email,  #type: ignore
-            otp="Waiting approval")  #type: ignore
+            otp="Waiting approval"
+            ,stage = stage)  #type: ignore
 
         db.session.add(new_user)
         db.session.commit()
@@ -454,7 +457,14 @@ def registeracc():
 
         return redirect(f"/send_email?to={email}")
     return render_template('users_pages/register.html',
-                           done=request.args.get("done"))
+                           done=request.args.get("done") ,
+                           data=[{
+                               'name': 3
+                           }, {
+                               'name': 2
+                           }, {
+                               'name': 1
+                           }])
 
 
 #Dont edit------------------------------------------------------------------------------------------------

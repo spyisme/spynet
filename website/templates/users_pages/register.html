@@ -44,7 +44,11 @@
         <div class="cut cut-short2"></div>
         <label class="iLabel" for="password">Password</label>
     </div>
-
+    <select name="stage" id="stage">
+        {% for o in data %}
+            <option value="{{ o.name }}">{{ o.name }}</option>
+        {% endfor %}
+    </select><br><br>
 
 
     <button class="submit" type="text">Register</button>
