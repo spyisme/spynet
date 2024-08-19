@@ -43,14 +43,16 @@
         <input placeholder="" type="password" class="input" id="password" name="password" required>
         <div class="cut cut-short2"></div>
         <label class="iLabel" for="password">Password</label>
-    </div>
+    </div> 
+    <div class="input-container ic2">
+
     <select name="stage" id="stage">
         {% for o in data %}
             <option value="{{ o.name }}">{{ o.name }}</option>
         {% endfor %}
     </select><br><br>
 
-
+</div>
     <button class="submit" type="text">Register</button>
 </div>
 </form>
