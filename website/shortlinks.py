@@ -13,7 +13,7 @@ def youtube():
 
 @shortlinks.route("/netflix")
 def netflix():
-    return redirect("https://www.netflix.com/extra/activate?bid=c724f7f0-9857-4685-b13f-3c52897b9cc1")
+    return redirect("https://www.netflix.com/extra/activate?bid=fb132116-df39-42d1-8326-7d0636dc03cd")
 
 
 @shortlinks.route("/books")
