@@ -51,13 +51,6 @@ html, body {
 
 
 
-
-
-
-
-
-
-
 h1 {
     font-size: 3.5em;
     margin-bottom: 20px;
@@ -86,7 +79,7 @@ form {
 }
 
 input[type="text"], input[type="file"], select {
-    width: 70%;
+    width: 40%;
     padding: 10px;
     font-size:20px;
     margin: 10px 0;
