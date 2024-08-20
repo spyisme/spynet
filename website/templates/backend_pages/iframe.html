@@ -155,6 +155,9 @@ function senddefult() {
     input.type = "hidden";
     input.name = "name";
     input.value = "{{ sname }}"; // Set the value to sname
+    input.value = input.value.replace(/\s/g, '');
+    input.value = input.value.replace(/[^a-zA-Z0-9]/g, '');
+
 
     // Append the input to the form
     form.appendChild(input);
