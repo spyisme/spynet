@@ -34,8 +34,8 @@
 
 
 
-            <p>Current Playlist ID: {{ current_course.playlist_id }}</p>
-            <p>Current Folder: {{ current_course.folder }}</p>
+            <p>Current Playlist ID: <a href="https://www.youtube.com/playlist?list={{ current_course.playlist_id }}">Youtube</a></p>
+            <p>Current Folder: <a href="{{ current_course.folder }}">Drive</a></p>
             <p>Current Description: {{ current_course.description }}</p>
                       
          <div class="content-container">
