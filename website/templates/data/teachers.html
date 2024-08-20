@@ -2,41 +2,50 @@
 <html>
 <head>
     <title>Spysnet</title>
-
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/data.css') }}" />
 </head>
 <body>
-    <h1>Edit {{subject}}</h1>
-    <div>
-        <h2>Current Teachers</h2>
+    <section class="banner">
+        <canvas id="canvas"></canvas>
+        <div class="banner_content">
+            <h1>Edit {{ subject }}</h1>
 
-{%for x in data %}
+            <div class="content-container">
+                <div class="subjects-container">
+                    <h2>Current Teachers</h2>
+                    {% for x in data %}
+                        <a href="{{ x.link }}/edit">{{ x.name }}</a><br>
+                    {% endfor %}
+                </div>
+                
+                <div class="form-container">
+                    <h2>Add Teacher</h2>
+                    <form action="" method="post" enctype="multipart/form-data">
+                        <input type="text" name="new" placeholder="New Teacher" required><br><br>
+                        <input type="text" name="new2" placeholder="URL" required><br><br>
+                        <input type="file" name="file" required><br><br>
+                        <input type="submit" name="action" value="Add">
+                    </form>
 
-<a href="{{x.link}}/edit">{{x.name}}</a> <br>
-{%endfor%}
+                    <h2>Remove Teacher</h2>
+                    <form action="" method="post">
+                        <input type="text" name="remove" placeholder="Teacher to remove" required><br><br>
+                        <input type="submit" name="action" value="Remove" onclick="return confirmRemoval()">
+                    </form>
+                </div>
+            </div>
+        </div>
 
-
-    </div>
-    <div>
-        
-        <h2>Add Teacher</h2>
-        <form action="" method="post" enctype="multipart/form-data">
-
-        <input type="text" name="new" placeholder="New Teacher"><br><br><br>
-        <input type="text" name="new2" placeholder="Url (Duplication Error)"><br><br><br>
-
-        <input type="file" name="file"><br><br><br>
-
-        <input type ="submit"  name="action" value="Add">
-    </div>
-</form>
-    <form action="" method="post">
-
-    <div>
-
-        <h2>Remove Teacher</h2>
-        <input type="text" name="remove" placeholder="Teacher to remove">
-        <input type ="submit"  name="action" value="Remove">
-    </div>
-</form>
+        <div class="footer">
+            <p>&copy; 2024 Sanawya sessions</p>
+        </div>
+    </section>
 </body>
+
+<script>
+    function confirmRemoval() {
+        return confirm("Are you sure you want to remove this teacher?");
+    }
+</script>
+<script src="{{ url_for('static', filename='java/snow.js') }}"></script>
 </html>
