@@ -28,6 +28,9 @@
                             <option value="{{ x.link }}">{{ x.name }}</option>
                             {% endfor %}
                         </select><br><br>
+                        <input type="submit" name="action" value="Remove" onclick="return confirmRemoval()">
+
+                    </form>
                 </div>
             </div>
         </div>
