@@ -3,6 +3,7 @@ import os
 import random
 from datetime import datetime
 from sqlalchemy import not_
+import shutil
 
 import requests
 from flask import (
@@ -651,8 +652,8 @@ def update(subject, teacher_name, course_name):
                                 f'website/Backend/stage{current_user.stage}_data.json',
                                 'w') as f:
                             json.dump(data, f, indent=4)
-    # return redirect(f'/subjects/{subject}/{teacher_name}/{course_name}')
-    return videos
+    return redirect(f'/subjects/{subject}/{teacher_name}/{course_name}')
+    # return videos
 
 
 #Admin pages
@@ -1067,9 +1068,15 @@ def manage_subjects():
 
         if request.form['action'] == 'Remove':
             subject = request.form['removeSubject']
-            os.remove(
-                f'website/static/assets/Stage{current_user.stage}/homepage/{subject}.jpg'
-            )
+            try:
+                os.remove(
+                    f'website/static/assets/Stage{current_user.stage}/homepage/{subject}.jpg'
+                )
+                shutil.rmtree(f"website/static/assets/Stage{current_user.stage}/{subject}/")
+
+            except :
+                pass
+
             if subject == "":
                 return "Subject is none "
             if subject in data:
@@ -1144,6 +1151,8 @@ def manage_teachers(subject):
                 os.remove(
                     f'website/static/assets/Stage{current_user.stage}/{subject}/'
                     + teacher_name + '.jpg')
+                shutil.rmtree(f"website/static/assets/Stage{current_user.stage}/{subject}/{teacher_name}")
+                       
             except:
                 pass
             if teacher_name == "":
