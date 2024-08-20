@@ -12,7 +12,7 @@
     /* Apply styles to the body element */
     body {
         font-family: Arial, sans-serif;
-        background-color: #15172b;
+        background-color: black;
 
         margin: 0;
         padding: 0;
@@ -139,20 +139,21 @@ select option {
 <body>
 
     <br><br>
-    <h1 class="white">SpySnet</h1>
+    <h1 class="white">Sanawya Sessions</h1>
 
 
-    {% if current_user.username in ['spy', 'skailler', 'feteera'] %}
+    {% if current_user.username in ['spy'] %}
 
 
     <div class="center" >
-        {%if status== "old"%}
-    <form method="POST" action="/form">
-<h1 class="black">Old</h1>
-    {%else%}
-    <form method="POST">
 
-    {%endif%}
+        {%if status== "old"%}
+        <form method="POST" action="/form">
+        <b><p class="black">Old Form</p></b>
+        {%else%}
+        <form method="POST">
+        {%endif%}
+
         <br>
         <p>{{video_name}}</p>
         <label for="vidname" class="black">Video Name:</label>

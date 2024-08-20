@@ -9,7 +9,7 @@
    <meta name="description" content="Dencrypt Vdocipher">
   <meta name="author" content="Spy">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SpysNet</title>
+    <title>Iframe videos</title>
 <style>/* styles.css */
 
     /* Apply styles to the body element */
@@ -106,10 +106,14 @@ select option {
     </style>
 </head>
 <body>
-    <h1>iFrame Videos</h1>
+    <br><br>
+    <h1>Sanawya Sessions</h1>
     <form method="POST">
-        <label for="name">Name:</label>
-        <input type="text" name="name" required autocomplete="off"  oninput="validateInput(this)"> 
+        <br>
+        <p id="texttocopy">{{ sname }}</p>
+        <button id="copyButton" onclick="copyText()">Copy Name</button>
+        <label for="name">Video Name:</label>
+        <input type="text" name="name" required autocomplete="off"  oninput="validateInput(this)" placeholder="{{sname}}"> 
         <br>
         <button type="submit">Send Message</button>
     </form>
@@ -120,12 +124,7 @@ select option {
         <p>{{url}}</p>
             </div>
 </div>
-<div class="output">
-    <h2>Name : </h2>
-    <p id="texttocopy">{{ sname }}</p>
-    <button id="copyButton" onclick="copyText()">Copy Name</button>
-</div>
-</div>
+
 <script>      function validateInput(inputField) {
     // Remove white spaces
     inputField.value = inputField.value.replace(/\s/g, '');
