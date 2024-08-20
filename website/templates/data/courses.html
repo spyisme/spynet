@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Spysnet</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/datacss') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/data.css') }}" />
 </head>
 <body>
     <section class="banner">
@@ -30,8 +30,11 @@
 
 
 
-                        <input type="text" name="remove" placeholder="Course to remove" required><br><br>
-
+                        <select name="remove">
+                            {% for x in data %}
+                            <option value="{{ x.link }}">{{ x.name }}</option>
+                            {% endfor %}
+                        </select><br><br>
 
                         <input type="submit" name="action" value="Remove" onclick="return confirmRemoval()">
                     </form>
