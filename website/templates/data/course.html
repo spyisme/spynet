@@ -23,7 +23,12 @@
             text-transform: capitalize;
         }
         p{
-            color:white;
+  
+            text-decoration: none;
+    color: #ffdfba;
+    font-size: 1.8em;
+    margin: 5px 0;
+    display: inline-block;
         }
     </style>
 
@@ -34,7 +39,7 @@
 
 
 
-            <p>Current Playlist ID: <a href="https://www.youtube.com/playlist?list={{ current_course.playlist_id }}">Youtube</a></p>
+            <p>Current Playlist :<a href="https://www.youtube.com/playlist?list={{ current_course.playlist_id }}">Youtube</a></p>
             <p>Current Folder: <a href="{{ current_course.folder }}">Drive</a></p>
             <p>Current Description: {{ current_course.description }}</p>
                       
