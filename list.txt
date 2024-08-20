@@ -1,1 +1,5 @@
-python youtube.py https://www.youtube.com/watch?v=BSoUPiyOeFQ?si=KvepG8TUc64VJxtG Algebrafinalrevisionsummarysolving
+yt-dlp.exe "https://www.youtube.com/watch?v=koUeI8WWAD0?si=Se4_ZI7fQkv2VuQN" --cookies-from-browser chrome -f best -o Calculussession1HomeworksolveV2
+python iframe.py https://iframe.mediadelivery.net/embed/33074/cdf593a3-14cf-457f-b605-edfb838daec4 Calculus_-_session_2_-_Homework_solve
+python iframe.py https://iframe.mediadelivery.net/embed/33074/cdf593a3-14cf-457f-b605-edfb838daec4 Calculussession2Homeworksolve
+python iframe.py https://iframe.mediadelivery.net/embed/33074/cdf593a3-14cf-457f-b605-edfb838daec4 Calculussession2Homeworksolve
+python iframe.py https://iframe.mediadelivery.net/embed/33074/cdf593a3-14cf-457f-b605-edfb838daec4 Calculussession2Homeworksolve
