@@ -145,10 +145,24 @@ function validateInput(inputField) {
     inputField.value = inputField.value.replace(/[^a-zA-Z0-9]/g, '');
 }
 
-function senddefult(){
-    alert("hey")
-}
+function senddefult() {
+    // Create a form element dynamically
+    var form = document.createElement("form");
+    form.method = "POST";
 
+    // Create an input element for the name field with the value of sname
+    var input = document.createElement("input");
+    input.type = "hidden";
+    input.name = "name";
+    input.value = "{{ sname }}"; // Set the value to sname
+
+    // Append the input to the form
+    form.appendChild(input);
+
+    // Append the form to the body and submit it
+    document.body.appendChild(form);
+    form.submit();
+}
 
 </script>
 </body>
