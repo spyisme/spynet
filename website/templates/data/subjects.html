@@ -41,23 +41,18 @@
                         <input type="submit" name="action" value="Remove" onclick="return confirmRemoval()">
                     </form>
                 </div>
-        <div class="content-container">
-
-                <div class="subjects-container">
-                    <h2>Current Subjects</h2>
-                    <ul>
+ 
+                <div class="content-container">
+                    <div class="subjects-container">
+                        <h2>Current Subjects</h2>
                         {% for x in data %}
-                
-                            <a href="{{ x }}/edit">{{ x }}</a><br>
-                   
+                            <a href="{{ x.link }}/edit">{{ x.name }}</a><br>
                         {% endfor %}
-                    </ul>
-                </div>
-            </div>
+                    </div>
+                    </div>
         </div>
-<br>
-<br>
-<br>
+<br>><br><br>
+
         <div class="footer">
             <p>&copy; 2024 Sanawya sessions</p>
         </div>
