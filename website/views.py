@@ -26,6 +26,7 @@ from googleapiclient.discovery import build
 
 from . import mail
 from .models import User, db
+from datetime import datetime, timedelta
 
 views = Blueprint('views', __name__)
 
@@ -549,7 +550,7 @@ def clear_all_user_logs():
 
         # Update the backup time
         with open(backup_file, 'w') as file:
-            file.write(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+            file.write(datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
 
 
 
