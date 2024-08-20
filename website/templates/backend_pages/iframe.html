@@ -125,7 +125,7 @@ select option {
         <br>
         <br>
         <button type="submit">Send Message</button>
-        <button type="button" class="submit">Send Message with defult name</button>
+        <button type="button" class="submit" onclick="senddefult()">Send Message with defult name</button>
 
     </form>
 
@@ -145,6 +145,9 @@ function validateInput(inputField) {
     inputField.value = inputField.value.replace(/[^a-zA-Z0-9]/g, '');
 }
 
+function senddefult(){
+    alert("hey")
+}
 
 
 </script>
