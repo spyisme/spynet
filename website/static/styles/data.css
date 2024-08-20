@@ -27,7 +27,7 @@ html, body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-
+    padding: 20px; /* Add padding to avoid content touching the edges */
 }
 
 .banner_content {
@@ -47,7 +47,6 @@ h2 {
 }
 
 a {
-    
     text-decoration: none;
     color: #ffdfba;
     font-size: 1.8em;
@@ -64,9 +63,9 @@ form {
 }
 
 input[type="text"], input[type="file"], select {
-    width: 70%;
+    width: 100%; /* Make inputs full width on mobile */
     padding: 10px;
-    font-size:20px;
+    font-size: 1em; /* Adjust font size for better readability on mobile */
     margin: 10px 0;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -77,11 +76,10 @@ input[type="submit"] {
     color: white;
     border: none;
     padding: 10px 20px;
-    font-size: 25px;
+    font-size: 1em; /* Adjust font size for better readability on mobile */
     cursor: pointer;
     border-radius: 5px;
 }
-
 
 input[type="submit"]:hover {
     background-color: #1c4b6b;
@@ -100,9 +98,10 @@ input[type="submit"]:hover {
     cursor: url('/static/cursor.png'), auto;
     color: white;
 }
+
 @media (max-width: 768px) {
     h1 {
-        font-size: 1.8em;
+        font-size: 2.5em;
     }
 
     h2 {
@@ -110,42 +109,42 @@ input[type="submit"]:hover {
     }
 
     input[type="text"], input[type="file"], select {
-        width: 80%;
-        padding: 6px;
+        width: 100%; /* Full width on smaller devices */
+        padding: 8px;
         font-size: 0.9em;
     }
 
     input[type="submit"] {
-        padding: 6px 12px;
+        padding: 8px 16px;
         font-size: 0.9em;
     }
 
-    li, a {
-        font-size: 1em;
+    a {
+        font-size: 1.2em;
     }
 }
 
 @media (max-width: 480px) {
     h1 {
-        font-size: 1.5em;
+        font-size: 1.8em;
     }
 
     h2 {
-        font-size: 1em;
+        font-size: 1.1em;
     }
 
     input[type="text"], input[type="file"], select {
-        width: 90%;
-        padding: 5px;
+        width: 100%; /* Full width on the smallest devices */
+        padding: 6px;
         font-size: 0.8em;
     }
 
     input[type="submit"] {
-        padding: 5px 10px;
+        padding: 6px 12px;
         font-size: 0.8em;
     }
 
-    li, a {
-        font-size: 0.9em;
+    a {
+        font-size: 1em;
     }
 }
