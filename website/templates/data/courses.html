@@ -17,24 +17,24 @@
 <body>
     <section class="banner">
         <canvas id="canvas"></canvas>
-            <h1>Edit {{ teachername }}</h1>
+            <h1 style="color: white; text-align: center;">Edit {{ teachername }}</h1>
 
             <div class="content-container">
                 <div class="form-container">
-                    <h2>Edit Teacher Description</h2>
+                    <h2 style="color: white; text-align: center;" >Edit Teacher Description</h2>
                     <form action="" method="post">
                         <input type="text" name="description" placeholder="{{ desc }}" required><br><br>
                         <input type="submit" name="action" value="Set">
                     </form>
                     
-                    <h2>Add Course</h2>
+                    <h2 style="color: white; text-align: center;">Add Course</h2>
                     <form action="" method="post" enctype="multipart/form-data">
                         <input type="text" name="new" placeholder="New Course" required><br><br>
                         <input type="file" name="file" required><br><br>
                         <input type="submit" name="action" value="Add">
                     </form>
                     
-                    <h2>Remove Course</h2>
+                    <h2 style="color: white; text-align: center;">Remove Course</h2>
                     <form action="" method="post">
 
 
