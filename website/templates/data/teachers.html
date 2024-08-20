@@ -10,13 +10,7 @@
         <div class="banner_content">
             <h1>Edit {{ subject }}</h1>
 
-            <div class="content-container">
-                <div class="subjects-container">
-                    <h2>Current Teachers</h2>
-                    {% for x in data %}
-                        <a href="{{ x.link }}/edit">{{ x.name }}</a><br>
-                    {% endfor %}
-                </div>
+>
                 
                 <div class="form-container">
                     <h2>Add Teacher</h2>
@@ -29,12 +23,21 @@
 
                     <h2>Remove Teacher</h2>
                     <form action="" method="post">
-                        <input type="text" name="remove" placeholder="Teacher to remove" required><br><br>
-                        <input type="submit" name="action" value="Remove" onclick="return confirmRemoval()">
-                    </form>
+                        <select name="removeSubject">
+                            {% for x in data %}
+                            <option value="{{ x }}">{{ x }}</option>
+                            {% endfor %}
+                        </select><br><br>
                 </div>
             </div>
         </div>
+        <div class="content-container">
+            <div class="subjects-container">
+                <h2>Current Teachers</h2>
+                {% for x in data %}
+                    <a href="{{ x.link }}/edit">{{ x.name }}</a><br>
+                {% endfor %}
+            </div
 
         <div class="footer">
             <p>&copy; 2024 Sanawya sessions</p>
