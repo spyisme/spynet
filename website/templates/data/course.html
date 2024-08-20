@@ -44,9 +44,8 @@
         <h2>Current info</h2>
 
 
-
-            <p class="neww">Current Playlist : <a href="https://www.youtube.com/playlist?list={{ current_course.playlist_id }}" target="_blank">Youtube</a> </p>
-            <p class="neww">Current Folder : <a href="{{ current_course.folder }}" target="_blank">Drive</a> </p>
+            <p class="neww">Current Playlist : <u><a href="https://www.youtube.com/playlist?list={{ current_course.playlist_id }}" target="_blank">Youtube</a></u> </p>
+            <p class="neww">Current Folder : <u><a href="{{ current_course.folder }}" target="_blank">Drive</a> </u></p>
             <p class="neww">Current Description: {{ current_course.description }}</p>
                       
          <div class="content-container">
@@ -63,7 +62,7 @@
         <h2>Playlist id</h2>
         <form action="" method="post">
 
-        <input type="text" name="playlist" placeholder="Playlist id"><br>
+        <input type="text" name="playlist" placeholder="Playlist id"><br><br>
         <input type ="submit"  name="action" value="apply">
     </div>
 </form>
@@ -71,7 +70,7 @@
 
 <div>
         <h2>Google Drive Folder</h2>
-        <input type="text" name="folder" placeholder="Folder"><br>
+        <input type="text" name="folder" placeholder="Folder"><br><br>
         <input type ="submit"  name="action" value="Apply">
     </div>
     </form>
@@ -79,7 +78,7 @@
 
     <div>
         <h2>Course Description</h2>
-        <input type="text" name="description" placeholder="Description"><br>
+        <input type="text" name="description" placeholder="Description"><br><br>
         <input type ="submit"  name="action" value="set">
     </div>
 
