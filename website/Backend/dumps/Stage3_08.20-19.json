@@ -1567,6 +1567,13 @@
                         ],
                         "playlist_id": "PLM-GVlebsoPXUOsllaqlIt0JaHvIBS_h3",
                         "folder": "https://drive.google.com/drive/folders/1B8SZ5RKPaALH2YICEePBwNGZWBWwqBpu?usp=drive_link"
+                    },
+                    {
+                        "name": "sda",
+                        "description": "",
+                        "videos": "",
+                        "playlist_id": "",
+                        "folder": ""
                     }
                 ]
             },
@@ -8010,30 +8017,6 @@
                 "description": "Year 2024/2025",
                 "link": "daif",
                 "courses": []
-            }
-        ]
-    },
-    "new subject": {
-        "teachers": [
-            {
-                "name": "teacher1",
-                "link": "dsad",
-                "courses": [
-                    {
-                        "name": "sasadsad",
-                        "description": "",
-                        "videos": "",
-                        "playlist_id": "",
-                        "folder": ""
-                    }
-                ],
-                "description": ""
-            },
-            {
-                "name": "teacher2",
-                "link": "sdasdsad",
-                "courses": [],
-                "description": ""
             }
         ]
     }
