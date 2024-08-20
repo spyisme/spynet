@@ -8018,15 +8018,7 @@
             {
                 "name": "teacher1",
                 "link": "dsad",
-                "courses": [
-                    {
-                        "name": "sasadsad",
-                        "description": "",
-                        "videos": "",
-                        "playlist_id": "",
-                        "folder": ""
-                    }
-                ],
+                "courses": [],
                 "description": ""
             },
             {
