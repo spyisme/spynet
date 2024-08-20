@@ -6,7 +6,6 @@ html, body {
     font-family: Arial, sans-serif;
     background: black;
     zoom: 85%;
-    overflow: auto;
     cursor: url('/static/cursor.png'), auto;
 }
 
