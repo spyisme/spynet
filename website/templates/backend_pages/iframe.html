@@ -120,12 +120,11 @@ select option {
         <p>{{url}}</p>
             </div>
 </div>
-{%if sname%}
 <div class="output">
     <h2>Name : </h2>
-    <p>{{sname}}</p>
-        </div>
-        {%endif%}
+    <p id="texttocopy">{{ sname }}</p>
+    <button id="copyButton" onclick="copyText()">Copy Name</button>
+</div>
 </div>
 <script>      function validateInput(inputField) {
     // Remove white spaces
@@ -133,6 +132,35 @@ select option {
 
     // Remove non-alphanumeric characters
     inputField.value = inputField.value.replace(/[^a-zA-Z0-9]/g, '');
-}</script>
+}
+</script>
 </body>
+
+<script>
+    function copyText() {
+        // Get the text to copy
+        var textToCopy = document.getElementById("texttocopy").textContent;
+        
+        // Create a temporary textarea element
+        var tempTextarea = document.createElement("textarea");
+        tempTextarea.value = textToCopy;
+        
+        // Append the textarea to the body
+        document.body.appendChild(tempTextarea);
+        
+        // Select the text and copy it
+        tempTextarea.select();
+        document.execCommand("copy");
+        
+        // Remove the textarea
+        document.body.removeChild(tempTextarea);
+        
+        // Change the button text to "Copied"
+        var copyButton = document.getElementById("copyButton");
+        copyButton.textContent = "Copied";
+
+    }
+    </script>
+
+
 </html>

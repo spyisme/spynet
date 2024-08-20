@@ -540,8 +540,8 @@ def iframevids():
         if "youtube" in url.lower() or "youtu.be" in url.lower():
             url = url.split('/')[4]
 
-            msg = f'```python youtube.py https://www.youtube.com/watch?v={url} {name}``` {name}'
-            command = f"python youtube.py https://www.youtube.com/watch?v={url} {name}"
+            msg = f'```yt-dlp.exe "https://www.youtube.com/watch?v={url}" --cookies-from-browser chrome -f best -o {name}``` {name}'
+            command = f'yt-dlp.exe "https://www.youtube.com/watch?v={url}" --cookies-from-browser chrome -f best -o {name}'
             with open('list.txt', 'a') as file:
                 file.write(command + '\n')
         else:
@@ -595,6 +595,9 @@ def commandslist():
             else:
                 save_name_match = "Tamer-El-Kady video"
                 return save_name_match
+        elif command.startswith("yt-dlp"):
+            return command.split(' ')[7]
+
         else:
             save_name_match = re.search(r'--save-name\s+(\S+)', command)
             if save_name_match:
