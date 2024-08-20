@@ -10,7 +10,7 @@
                         "description": "Geometry",
                         "videos": "",
                         "playlist_id": "",
-                        "folder": "https://drive.google.com/drive/folders/1Y13lbFGxPfcckqdzJolxUojOppOjVyT4?usp=drive_link"
+                        "folder": ""
                     },
                     {
                         "name": "Course 2",
@@ -41,7 +41,7 @@
                         "folder": "https://drive.google.com/drive/folders/1gtFy5XfOUrqgMb3ZhV_f91lpcbHBCTtU?usp=drive_link"
                     }
                 ],
-                "description": "Second Term"
+                "description": ""
             }
         ]
     }
