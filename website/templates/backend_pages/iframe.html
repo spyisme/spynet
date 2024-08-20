@@ -111,11 +111,12 @@ select option {
     <form method="POST">
         <br>
         <p id="texttocopy">{{ sname }}</p>
-        <button id="copyButton" onclick="copyText()">Copy Name</button>
         <label for="name">Video Name:</label>
         <input type="text" name="name" required autocomplete="off"  oninput="validateInput(this)" placeholder="{{sname}}"> 
         <br>
         <button type="submit">Send Message</button>
+        <button type="button">Send Message with defult name</button>
+
     </form>
 
 
