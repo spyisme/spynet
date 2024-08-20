@@ -2,8 +2,16 @@
 <html>
 <head>
     <title>Spysnet</title>
+    <link rel="icon" type="image/x-icon" href="./favicon.ico" />
+
+    <meta name="description" content="Spynet" />
+    <meta name="keywords" content="spy, spynet, spysnet" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/main.css') }}" />
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
+    <script src="   {{ url_for('static', filename='java/connection.js') }}"></script>
 </head>
 <body>
     <section class="banner">
@@ -51,8 +59,7 @@
                     {% endfor %}
                 </div>
         </div>
-        <br>
-<br>
+        <br> <br>
 
         <div class="footer">
             <p>&copy; 2024 Sanawya sessions</p>
@@ -61,10 +68,12 @@
     </section>
 </body>
 
+
 <script>
     function confirmRemoval() {
         return confirm("Are you sure you want to remove this course?");
     }
 </script>
+
 <script src="{{ url_for('static', filename='java/snow.js') }}"></script>
 </html>
