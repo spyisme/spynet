@@ -15,7 +15,7 @@
     /* Apply styles to the body element */
     body {
         font-family: Arial, sans-serif;
-        background-color: #f4f4f4;
+        background-color: black;
         margin: 0;
         padding: 0;
     }
@@ -118,9 +118,11 @@ select option {
     <form method="POST">
         <br>
         <p id="texttocopy">{{ sname }}</p>
+        <br>
         <label for="name">Video Name:</label>
         <input type="text" name="name" required autocomplete="off"  oninput="validateInput(this)" placeholder="{{sname}}"> 
         <br>
+        <br><br>
         <button type="submit">Send Message</button>
         <button type="button" class="submit">Send Message with defult name</button>
 
@@ -133,41 +135,20 @@ select option {
             </div>
 </div>
 
-<script>      function validateInput(inputField) {
+<script>      
+function validateInput(inputField) {
     // Remove white spaces
     inputField.value = inputField.value.replace(/\s/g, '');
 
     // Remove non-alphanumeric characters
     inputField.value = inputField.value.replace(/[^a-zA-Z0-9]/g, '');
 }
+
+
+
 </script>
 </body>
 
-<script>
-    function copyText() {
-        // Get the text to copy
-        var textToCopy = document.getElementById("texttocopy").textContent;
-        
-        // Create a temporary textarea element
-        var tempTextarea = document.createElement("textarea");
-        tempTextarea.value = textToCopy;
-        
-        // Append the textarea to the body
-        document.body.appendChild(tempTextarea);
-        
-        // Select the text and copy it
-        tempTextarea.select();
-        document.execCommand("copy");
-        
-        // Remove the textarea
-        document.body.removeChild(tempTextarea);
-        
-        // Change the button text to "Copied"
-        var copyButton = document.getElementById("copyButton");
-        copyButton.textContent = "Copied";
-
-    }
-    </script>
 
 
 </html>
