@@ -22,6 +22,9 @@
         input[type="submit"] {
             text-transform: capitalize;
         }
+        p{
+            color:white;
+        }
     </style>
 
 
@@ -39,7 +42,7 @@
             <div class="form-container">
         <form action="" method="post">
             
-            <input type ="submit"  name="action" value="Clear videos">
+            <input type ="submit"  name="action" value="Clear videos" onclick="confirmRemoval()">
 </form>
    
 
@@ -49,7 +52,7 @@
         <h2>Playlist id</h2>
         <form action="" method="post">
 
-        <input type="text" name="playlist" placeholder="Playlist id"><br><br><br>
+        <input type="text" name="playlist" placeholder="Playlist id"><br>
         <input type ="submit"  name="action" value="apply">
     </div>
 </form>
@@ -57,7 +60,7 @@
 
 <div>
         <h2>Google Drive Folder</h2>
-        <input type="text" name="folder" placeholder="Folder"><br><br><br>
+        <input type="text" name="folder" placeholder="Folder"><br>
         <input type ="submit"  name="action" value="Apply">
     </div>
     </form>
@@ -65,7 +68,7 @@
 
     <div>
         <h2>Course Description</h2>
-        <input type="text" name="description" placeholder="Description"><br><br><br>
+        <input type="text" name="description" placeholder="Description"><br>
         <input type ="submit"  name="action" value="set">
     </div>
 
@@ -84,4 +87,10 @@
 </section>
 
 </body>
+<script src="{{ url_for('static', filename='java/snow.js') }}"></script>
+<script>
+    function confirmRemoval() {
+        return confirm("Are you sure you want to reset this course videos?");
+    }
+</script>
 </html>
