@@ -1118,8 +1118,8 @@ def manage_teachers(subject):
             if teacher_name == "":
                 return "Teacher name is none "
 
-            for entry in data:
-                if 'link' in entry and teacher_link in entry['link']:
+            for entry in teacher_list:
+                if teacher_link in entry['link']:
                     return "Link is taken already"
 
             if subject in data:
