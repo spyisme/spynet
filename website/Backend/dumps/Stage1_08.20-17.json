@@ -146,113 +146,15 @@
                     {
                         "name": "Course 4",
                         "description": "Geometry",
-                        "videos": [
-                            {
-                                "id": "CZNofnmiE5s",
-                                "title": "Equation of  straight line",
-                                "duration": "01:18:18",
-                                "jsid": 0
-                            },
-                            {
-                                "id": "yGM_nkZx5Bw",
-                                "title": "Division of straight line",
-                                "duration": "00:39:00",
-                                "jsid": 1
-                            },
-                            {
-                                "id": "xm5JAzDT_eI",
-                                "title": "Straight line Rules Part 1",
-                                "duration": "03:00:48",
-                                "jsid": 2
-                            },
-                            {
-                                "id": "IO2M66GfYh4",
-                                "title": "Straight line Rules Part 2",
-                                "duration": "00:36:19",
-                                "jsid": 3
-                            },
-                            {
-                                "id": "cg6sRFM8GbM",
-                                "title": "Equation of straight line Cw & Hw",
-                                "duration": "04:22:13",
-                                "jsid": 4
-                            },
-                            {
-                                "id": "4vH7RCitLWA",
-                                "title": "Line segment division Cw & Hw",
-                                "duration": "03:48:20",
-                                "jsid": 5
-                            }
-                        ],
-                        "playlist_id": "PLM-GVlebsoPU01UyNRZ6B3VGkEuv_Kp49",
-                        "folder": "https://drive.google.com/drive/folders/10H7pk3u_8PDtYZJ8hHZDMukKRFoKpCs7?usp=drive_link"
+                        "videos": "",
+                        "playlist_id": "",
+                        "folder": "https://drive.google.com/drive/folders/1gtFy5XfOUrqgMb3ZhV_f91lpcbHBCTtU?usp=drive_link"
                     },
                     {
                         "name": "Course 5",
                         "description": "Final Rev",
-                        "videos": [
-                            {
-                                "id": "3gy9Wu-uyIo",
-                                "title": "Linear programming",
-                                "duration": "01:54:20",
-                                "jsid": 0
-                            },
-                            {
-                                "id": "2-nfZ2PCaY8",
-                                "title": "Algebra Summary + Solving",
-                                "duration": "05:57:09",
-                                "jsid": 1
-                            },
-                            {
-                                "id": "Iu6a8u3GKyk",
-                                "title": "Trigonometry Summary",
-                                "duration": "00:48:26",
-                                "jsid": 2
-                            },
-                            {
-                                "id": "kXBxloXsPnw",
-                                "title": "Trigonometry Solving",
-                                "duration": "04:16:53",
-                                "jsid": 3
-                            },
-                            {
-                                "id": "uXkjFSQLK8M",
-                                "title": "Geometry Summary",
-                                "duration": "01:57:22",
-                                "jsid": 4
-                            },
-                            {
-                                "id": "vO1YOenXRGc",
-                                "title": "Geometry Solving Part 1",
-                                "duration": "00:57:24",
-                                "jsid": 5
-                            },
-                            {
-                                "id": "0Jwft0r43tk",
-                                "title": "Geometry Solving Part 2",
-                                "duration": "05:24:31",
-                                "jsid": 6
-                            },
-                            {
-                                "id": "j5gf0hl1-RY",
-                                "title": "Model 1",
-                                "duration": "01:33:43",
-                                "jsid": 7
-                            },
-                            {
-                                "id": "lwvygYcxdUg",
-                                "title": "Model 2",
-                                "duration": "01:08:29",
-                                "jsid": 8
-                            },
-                            {
-                                "id": "UK8ijdRJoGs",
-                                "title": "Models 3 4 5",
-                                "duration": "02:34:50",
-                                "jsid": 9
-                            }
-                        ],
-                        "playlist_id": "PLM-GVlebsoPVkuIvkSy688-Dxz-A7auKU",
+                        "videos": "",
+                        "playlist_id": "",
                         "folder": "https://drive.google.com/drive/folders/1gtFy5XfOUrqgMb3ZhV_f91lpcbHBCTtU?usp=drive_link"
                     }
                 ],
