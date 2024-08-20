@@ -25,7 +25,7 @@
                     <form action="" method="post">
                         <select name="removeSubject">
                             {% for x in data %}
-                            <option value="{{ x }}">{{ x }}</option>
+                            <option value="{{ x.link }}">{{ x.name }}</option>
                             {% endfor %}
                         </select><br><br>
                 </div>
