@@ -27,7 +27,13 @@
             text-decoration: none;
     color: #ffdfba;
     font-size: 1.8em;
-    margin: 5px 0;
+    display: inline-block;
+        }
+        a{
+              
+            text-decoration: none;
+    color: #ffdfba;
+    font-size: 1em;
     display: inline-block;
         }
     </style>
@@ -40,7 +46,7 @@
 
 
             <p class="neww">Current Playlist : <a href="https://www.youtube.com/playlist?list={{ current_course.playlist_id }}" target="_blank">Youtube</a> </p>
-            <p class="neww">Current Folder : <a class= "neww" href="{{ current_course.folder }}" target="_blank">Drive</a> </p>
+            <p class="neww">Current Folder : <a href="{{ current_course.folder }}" target="_blank">Drive</a> </p>
             <p class="neww">Current Description: {{ current_course.description }}</p>
                       
          <div class="content-container">
