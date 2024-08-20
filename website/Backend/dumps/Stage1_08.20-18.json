@@ -190,69 +190,8 @@
                     {
                         "name": "Course 5",
                         "description": "Final Rev",
-                        "videos": [
-                            {
-                                "id": "3gy9Wu-uyIo",
-                                "title": "Linear programming",
-                                "duration": "01:54:20",
-                                "jsid": 0
-                            },
-                            {
-                                "id": "2-nfZ2PCaY8",
-                                "title": "Algebra Summary + Solving",
-                                "duration": "05:57:09",
-                                "jsid": 1
-                            },
-                            {
-                                "id": "Iu6a8u3GKyk",
-                                "title": "Trigonometry Summary",
-                                "duration": "00:48:26",
-                                "jsid": 2
-                            },
-                            {
-                                "id": "kXBxloXsPnw",
-                                "title": "Trigonometry Solving",
-                                "duration": "04:16:53",
-                                "jsid": 3
-                            },
-                            {
-                                "id": "uXkjFSQLK8M",
-                                "title": "Geometry Summary",
-                                "duration": "01:57:22",
-                                "jsid": 4
-                            },
-                            {
-                                "id": "vO1YOenXRGc",
-                                "title": "Geometry Solving Part 1",
-                                "duration": "00:57:24",
-                                "jsid": 5
-                            },
-                            {
-                                "id": "0Jwft0r43tk",
-                                "title": "Geometry Solving Part 2",
-                                "duration": "05:24:31",
-                                "jsid": 6
-                            },
-                            {
-                                "id": "j5gf0hl1-RY",
-                                "title": "Model 1",
-                                "duration": "01:33:43",
-                                "jsid": 7
-                            },
-                            {
-                                "id": "lwvygYcxdUg",
-                                "title": "Model 2",
-                                "duration": "01:08:29",
-                                "jsid": 8
-                            },
-                            {
-                                "id": "UK8ijdRJoGs",
-                                "title": "Models 3 4 5",
-                                "duration": "02:34:50",
-                                "jsid": 9
-                            }
-                        ],
-                        "playlist_id": "PLM-GVlebsoPVkuIvkSy688-Dxz-A7auKU",
+                        "videos": "",
+                        "playlist_id": "",
                         "folder": "https://drive.google.com/drive/folders/1gtFy5XfOUrqgMb3ZhV_f91lpcbHBCTtU?usp=drive_link"
                     }
                 ],
