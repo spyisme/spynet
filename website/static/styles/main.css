@@ -4,16 +4,13 @@ html, body {
     padding: 0;
     zoom: 85%;
     overflow: auto;
+    height:100%;
+    width: 100%;
     font-family: Arial, sans-serif;
     background: black;
     cursor: url('/static/cursor.png'), auto;
 }
 
-@media only screen and (max-width: 600px) {
-    html, body{
-    height:100vh;
-}
-}
 
 .footer{
     position: fixed;
