@@ -48,7 +48,11 @@ html, body {
         }
 
 
-
+        @media screen and (max-width: 768px) {
+            html,body{
+                height:100%;
+            }
+        }
 
 
 h1 {
