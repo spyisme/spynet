@@ -2,7 +2,6 @@ html, body {
     margin: 0;
     padding: 0;
     zoom: 85%;
-    overflow: auto;
     cursor: url('/static/cursor.png'), auto;
     font-family: Arial, sans-serif;
     background-color: black;
