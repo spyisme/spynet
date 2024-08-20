@@ -8012,29 +8012,5 @@
                 "courses": []
             }
         ]
-    },
-    "new subject": {
-        "teachers": [
-            {
-                "name": "teacher1",
-                "link": "dsad",
-                "courses": [
-                    {
-                        "name": "sasadsad",
-                        "description": "",
-                        "videos": "",
-                        "playlist_id": "",
-                        "folder": ""
-                    }
-                ],
-                "description": ""
-            },
-            {
-                "name": "teacher2",
-                "link": "sdasdsad",
-                "courses": [],
-                "description": ""
-            }
-        ]
     }
 }
