@@ -1,7 +1,7 @@
 import json
 import os
 import random
-from datetime import datetime
+from datetime import date, time, datetime , timedelta
 from sqlalchemy import not_
 import shutil
 
@@ -26,7 +26,6 @@ from googleapiclient.discovery import build
 
 from . import mail
 from .models import User, db
-from datetime import datetime, timedelta
 
 views = Blueprint('views', __name__)
 
@@ -531,7 +530,7 @@ def clear_all_user_logs():
         last_backup_time = datetime.min  # Set to a very old date if no backup file (1, 1, 1)
 
     # Check if a week has passed since the last backup
-    if datetime.now() - last_backup_time >= datetime.timedelta(weeks=1):
+    if datetime.now() - last_backup_time >= timedelta(weeks=1):
         db_path = os.path.join(os.path.dirname(__file__), '..', 'instance',
                            'site.db')
         upload_file_to_discord(
