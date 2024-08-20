@@ -1,15 +1,14 @@
-
 html, body {
-    height:100%;
     margin: 0;
     padding: 0;
     zoom: 85%;
-    overflow: auto;
     cursor: url('/static/cursor.png'), auto;
+    font-family: Arial, sans-serif;
+    background-color: black;
+    color: #ffffff;
 }
 
-
-.footer{
+.footer {
     position: fixed;
     left: 0;
     bottom: 0;
@@ -18,54 +17,24 @@ html, body {
     color: #fff;
     text-align: center;
     padding: 10px 0;
-    z-index: 2; /* Higher z-index value than shine */
-
-    }
-.countdown{
-    color:white;
-    }
-
-body {
-    font-family: Arial, sans-serif;
-    background: black;
-    /* background: rgb(0, 32, 63); */
-    /* background: linear-gradient(72deg, rgba(0, 32, 63, 1) 0%, rgba(255, 223, 186, 1) 40%, rgba(1, 54, 87, 1) 100%);  */
+    z-index: 2;
 }
 
+.banner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 
-a {
-  text-decoration: none;
-    cursor: url('/static/cursor.png'), auto;
 }
 
-.nohover{
-    cursor: url('/static/cursor.png'), auto;
-    color:white ;
-    }
-
-    .banner {
-        width: 100%;
-        height: 100%;
-        
-        }
-        .banner_content {
-        display: flex;
-        position: relative;
-        z-index: 1;
-        flex-direction: column;
-        text-align: center;
-        }
-
-        #canvas {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-        }
-        
-        
+.banner_content {
+    text-align: center;
+    color: white;
+    z-index: 1;
+}
 
 h1 {
     font-size: 3.5em;
@@ -118,6 +87,14 @@ input[type="submit"]:hover {
     background-color: #1c4b6b;
 }
 
+#canvas {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
 
 .nohover {
     cursor: url('/static/cursor.png'), auto;
