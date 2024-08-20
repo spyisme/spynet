@@ -16,6 +16,7 @@ html, body {
     
     }
     .banner_content {
+    color:white;
     display: flex;
     position: relative;
     z-index: 1;
