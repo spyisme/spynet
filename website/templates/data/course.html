@@ -2,16 +2,31 @@
 <html>
 <head>
     <title>Spysnet</title>
+    <link rel="icon" type="image/x-icon" href="./favicon.ico" />
 
+    <meta name="description" content="Spynet" />
+    <meta name="keywords" content="spy, spynet, spysnet" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/data.css') }}" />
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
+    <script src="   {{ url_for('static', filename='java/connection.js') }}"></script>
 </head>
 <body>
+    <section class="banner">
+        <canvas id="canvas"></canvas>
+        <div class="banner_content">
     <style>
         input[type="submit"] {
             text-transform: capitalize;
         }
     </style>
+
+
     <h1>Edit {{course_name}}</h1>
-    <div>
+ 
         <h2>Current info</h2>
 
 
@@ -19,6 +34,9 @@
             <p>Current Playlist ID: {{ current_course.playlist_id }}</p>
             <p>Current Folder: {{ current_course.folder }}</p>
             <p>Current Description: {{ current_course.description }}</p>
+                      
+         <div class="content-container">
+            <div class="form-container">
         <form action="" method="post">
             
             <input type ="submit"  name="action" value="Clear videos">
@@ -53,5 +71,17 @@
 
 
 </form>
+</div>
+<br>><br><br>
+<br>><br><br>
+
+
+<div class="footer">
+    <p id="countdown">© 2024 Sanawya sessions</p>
+</div>
+
+</div>
+</section>
+
 </body>
 </html>
