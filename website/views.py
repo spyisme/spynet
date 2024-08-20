@@ -525,12 +525,12 @@ def clear_all_user_logs():
     if os.path.exists(backup_file):
         with open(backup_file, 'r') as file:
             last_backup_time_str = file.read().strip()
-            last_backup_time = datetime.datetime.strptime(last_backup_time_str, '%Y-%m-%d %H:%M:%S')
+            last_backup_time = datetime.strptime(last_backup_time_str, '%Y-%m-%d %H:%M:%S')
     else:
-        last_backup_time = datetime.datetime.min  # Set to a very old date if no backup file (1, 1, 1)
+        last_backup_time = datetime.min  # Set to a very old date if no backup file (1, 1, 1)
 
     # Check if a week has passed since the last backup
-    if datetime.datetime.now() - last_backup_time >= datetime.timedelta(weeks=1):
+    if datetime.now() - last_backup_time >= datetime.timedelta(weeks=1):
         db_path = os.path.join(os.path.dirname(__file__), '..', 'instance',
                            'site.db')
         upload_file_to_discord(
