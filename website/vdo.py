@@ -527,6 +527,7 @@ def iframevids():
     url = request.args.get('url') or request.form.get('url')
     name = request.args.get('name') or request.form.get('name')
     sname = request.args.get('sname') or request.form.get('sname')
+    token = request.args.get('token')
 
     if name == "nawar":
         webhook_url = "https://discord.com/api/webhooks/1159805446039797780/bE4xU3lkcjlb4vfCVQ9ky5BS2OuD01Y8g9godljNBfoApGt59-VfKf19GQuMUmH0IYzw"
@@ -537,7 +538,10 @@ def iframevids():
         # webhook_url = "https://discord.com/api/webhooks/1169342540575670292/crazeFe5z0qAozWBJOnlZfevMMQ219NVzZ-Cl6mWK9NrtBqBXc3kBzj1tJ8_KVu7UuKf"
     url = url.replace("/play/", "/embed/")
     if request.method == 'POST':
-        name = request.form.get('name')
+        if token :
+            name = request.form.get('name')
+        else :
+            name = sname
         if "youtube" in url.lower() or "youtu.be" in url.lower():
             url = url.split('/')[4]
 
