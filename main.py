@@ -3,7 +3,6 @@ import json
 import requests
 from flask import render_template, request, redirect , url_for
 from website import create_app
-from flask_cors import CORS
 
 from flask_login import current_user
 
@@ -12,7 +11,7 @@ log.setLevel(logging.ERROR)
 
 app, socketio = create_app()
 
-CORS(app, resources={r"/iframes": {"origins": "https://omar-sherbeni.com"}})
+
 
 
 @app.errorhandler(404)
