@@ -40,7 +40,7 @@
     </div>
 
     <div class="input-container ic1">
-        <input placeholder="" type="text" class="input" id="number" name="number" required>
+        <input placeholder="" type="text" class="input" id="number" name="number" required  oninput="validateInput2(this)">
         <div class="cut cut-short2"></div>
         <label class="iLabel" for="number">Phone Number</label>
     </div> 
@@ -80,6 +80,15 @@
             // Remove non-alphanumeric characters
             inputField.value = inputField.value.replace(/[^a-zA-Z0-9]/g, '');
         }
+
+
+        function validateInput2(inputField) {
+    // Remove white spaces
+    inputField.value = inputField.value.replace(/\s/g, '');
+
+    // Remove non-numeric characters
+    inputField.value = inputField.value.replace(/[^0-9]/g, '');
+}
 </script>
 </body>
 </html>
