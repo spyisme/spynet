@@ -538,6 +538,7 @@ def iframevids():
     url = url.replace("/play/", "/embed/")
     if request.method == 'POST':
         videoname = request.form.get('videoname')
+        videoname = re.sub(r'[\s\W_]+', '', videoname)
 
         if "youtube" in url.lower() or "youtu.be" in url.lower():
             url = url.split('/')[4]
@@ -558,7 +559,7 @@ def iframevids():
         headers = {'Content-Type': 'application/json'}
         requests.post(webhook_url, data=payload, headers=headers)
         return "Message Sent!"
-    return render_template('backend_pages/iframe.html', url=url, sname=sname)
+    return render_template('backend_pages/iframe.html', url=url, videoname=videoname)
 
 
 @vdo.route('/iframem3u8', methods=['GET', 'POST'])
