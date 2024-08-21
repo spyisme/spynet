@@ -47,11 +47,11 @@
     <div class="input-container ic2">
 
     
-<p style="color: white;">Stage :</p><select name="stage" id="stage">
-        {% for o in data %}
-            <option value="{{ o.name }}">{{ o.name }}</option>
-        {% endfor %}
-    </select><br><br>
+<p style="color: white;">Stage : <select name="stage" id="stage">
+    {% for o in data %}
+        <option value="{{ o.name }}">{{ o.name }}</option>
+    {% endfor %}
+</select></p><br><br>
 
 </div>
     <button class="submit" type="text">Register</button>
