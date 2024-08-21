@@ -105,8 +105,14 @@ def create_app():
         if request.endpoint and request.endpoint not in excluded_routes and not request.path.startswith(
                 '/static/') :
             if not current_user.is_authenticated:
-                return redirect(url_for('views.home'))
-        
+                token = request.args.get('token')
+                if request.endpoint == 'vdo.iframevids':
+                    if token != "spyisme" :
+                        return redirect(url_for('views.home'))
+                else :
+                    return redirect(url_for('views.home'))
+
+            
 
             elif current_user.otp == "Waiting approval" :
 
