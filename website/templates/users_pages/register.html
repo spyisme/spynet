@@ -1,93 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
     <script src="static/java/connection.js"></script>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/login.css') }}">
+    
 </head>
 <body>
 
 <div class="form">
-    <form method="post" id="registrationForm">
+    <form method="post">
 
-        <div class="title">Welcome</div>
-        <div class="subtitle">Let's create your account! (<u><a href="/login">Login</a></u>)</div>
+    <div class="title">Welcome</div>
+    <div class="subtitle">Let's create your account ! ( <u><a href="/login">Login</a></u> )</div>
 
-        {% if done %}
-        <br>
-        <div class="subtitle"><div class="done">Account created successfully, wait for approval</div></div>
-        <br>
-        {% endif %}
+{%if done%}
+<br>
 
-        <div class="input-container ic1">
-            <input placeholder="" type="text" class="input" id="username" name="username" required>
-            <div class="cut cut-short2"></div>
-            <label class="iLabel" for="username">Username</label>
-        </div>
+    <div class="subtitle"><div class="done">Account creatted successfully wait for approval</div></div>
+<br>
 
-        <div class="input-container ic2">
-            <input placeholder="" type="text" class="input" id="email" name="email" required>
-            <div class="cut cut-short3"></div>
-            <label class="iLabel" for="email">Email</label>
-        </div>
+{%endif%}
 
-        <div class="input-container ic1">
-            <input placeholder="" type="text" class="input" id="number" name="number" required>
-            <div class="cut cut-short2"></div>
-            <label class="iLabel" for="number">Phone Number</label>
-        </div> 
+    <div class="input-container ic1">
+        <input placeholder="" type="text" class="input" id="username" name="username" required  oninput="validateInput(this)">
+        <div class="cut cut-short2"></div>
+        <label class="iLabel" for="username">Username</label>
+    </div>
 
-        <div class="input-container ic2">
-            <p style="color: white;">Stage : 
-                <select name="stage" id="stage">
-                    {% for o in data %}
-                        <option value="{{ o.name }}">{{ o.name }}</option>
-                    {% endfor %}
-                </select>
-            </p>
-            <br><br>
-        </div>
-        <button class="submit" type="submit">Register</button>
-    </form>
+    <div class="input-container ic2">
+        <input placeholder="" type="text" class="input" id="email"  name="email" required>
+        <div class="cut cut-short3"></div>
+        <label class="iLabel" for="email">Email</label>
+    </div>
+
+    <div class="input-container ic1">
+        <input placeholder="" type="text" class="input" id="number" name="number" required>
+        <div class="cut cut-short2"></div>
+        <label class="iLabel" for="number">Phone Number</label>
+    </div> 
+    <div class="input-container ic2">
+
+    
+<p style="color: white;">Stage : <select name="stage" id="stage">
+    {% for o in data %}
+        <option value="{{ o.name }}">{{ o.name }}</option>
+    {% endfor %}
+</select></p><br><br>
+
 </div>
+    <button class="submit" type="text">Register</button>
+</div>
+</form>
+
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        const usernameInput = document.getElementById('username');
-        const numberInput = document.getElementById('number');
-        const form = document.getElementById('registrationForm');
-
-        usernameInput.addEventListener('input', function () {
-            const username = usernameInput.value.trim();
-            if (username.length < 10 && /^[a-zA-Z]+$/.test(username)) {
-                usernameInput.classList.add('valid');
-                usernameInput.setCustomValidity('');
-            } else {
-                usernameInput.classList.remove('valid');
-                usernameInput.setCustomValidity('Username must be less than 10 characters and contain only letters.');
-            }
-        });
-
-        numberInput.addEventListener('input', function () {
-            const number = numberInput.value.trim();
-            if (/^01\d{8,}$/.test(number)) {
-                numberInput.classList.add('valid');
-                numberInput.setCustomValidity('');
-            } else {
-                numberInput.classList.remove('valid');
-                numberInput.setCustomValidity('Phone number must be at least 10 digits, starting with 01.');
-            }
-        });
-
-        form.addEventListener('submit', function (event) {
-            if (!usernameInput.checkValidity() || !numberInput.checkValidity()) {
-                event.preventDefault(); // Prevent form submission if validation fails
-            }
+        const inputs = document.querySelectorAll('.input');
+        inputs.forEach(function (input) {
+            input.addEventListener('blur', function () {
+                if (input.value.trim() !== '') {
+                    input.classList.add('valid');
+                } else {
+                    input.classList.remove('valid');
+                }
+            });
         });
     });
+
+          function validateInput(inputField) {
+            // Remove white spaces
+            inputField.value = inputField.value.replace(/\s/g, '');
+
+            // Remove non-alphanumeric characters
+            inputField.value = inputField.value.replace(/[^a-zA-Z0-9]/g, '');
+        }
 </script>
 </body>
 </html>
