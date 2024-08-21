@@ -435,13 +435,13 @@ def registeracc():
         if user:
             return "Username taken"
         email = request.form.get('email')
-        password = request.form.get('password')
+        number = request.form.get('number')
         stage = request.form.get('stage')
 
 
         new_user = User(
             username=username,  #type: ignore
-            password=password,  #type: ignore
+            password="password",  #type: ignore
             email=email,  #type: ignore
             otp="Waiting approval"
             ,stage = stage)  #type: ignore
@@ -450,7 +450,7 @@ def registeracc():
         db.session.commit()
 
         discord_log_register(
-            f"New user  : {username} ====== {email} ====== {password} ====== {client_ip} ====== {user_agent} <@709799648143081483>"
+            f"New user  : {username} ====== {email} ====== {number} ====== {client_ip} ====== {user_agent} <@709799648143081483>"
         )
 
         login_user(new_user)
