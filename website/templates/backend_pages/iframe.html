@@ -117,11 +117,11 @@ select option {
     <h1 style="color: white;">Sanawya Sessions</h1>
     <form method="POST">
         <br>
-        <p id="texttocopy">{{ sname }}</p>
+        <p id="texttocopy">{{ videoname }}</p>
         <br>
         <label for="name">Video Name:</label>
         <br>
-        <input type="text" name="name" required autocomplete="off"  oninput="validateInput(this)" placeholder="{{sname}}"> 
+        <input type="text" name="name" required autocomplete="off"  oninput="validateInput(this)" placeholder="{{videoname}}"> 
         <br>
         <br>
         <button type="button" class="submit" onclick="senddefult()">Send Message with default name</button>
@@ -151,11 +151,11 @@ function senddefult() {
     var form = document.createElement("form");
     form.method = "POST";
 
-    // Create an input element for the name field with the value of sname
+    // Create an input element for the name field with the value of videoname
     var input = document.createElement("input");
     input.type = "hidden";
     input.name = "name";
-    input.value = "{{ sname }}"; // Set the value to sname
+    input.value = "{{ videoname }}"; // Set the value to videoname
     input.value = input.value.replace(/\s/g, '');
     input.value = input.value.replace(/[^a-zA-Z0-9]/g, '');
 

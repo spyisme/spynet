@@ -525,34 +525,31 @@ def discord():
 @vdo.route('/iframes', methods=['GET', 'POST'])
 def iframevids():
     url = request.args.get('url') or request.form.get('url')
-    name = request.args.get('name') or request.form.get('name')
-    sname = request.args.get('sname') or request.form.get('sname')
-    token = request.args.get('token')
+    namee = request.args.get('name') or request.form.get('name')
+    videoname = request.args.get('videoname') or request.form.get('videoname')
 
-    if name == "nawar":
+    if namee == "nawar":
         webhook_url = "https://discord.com/api/webhooks/1159805446039797780/bE4xU3lkcjlb4vfCVQ9ky5BS2OuD01Y8g9godljNBfoApGt59-VfKf19GQuMUmH0IYzw"
-    elif name == "ahmadsalah":
+    elif namee == "ahmadsalah":
         webhook_url = "https://discord.com/api/webhooks/1170733207835115630/MpyyTLirCjBUOSHxisTsb4l7lqF7XBw-l4KEsi7DAFLAoZdUzMtGFwth67Qj3ZJCE5Oo"
-    elif name == "sherbo":
+    elif namee == "sherbo":
         webhook_url ="https://discord.com/api/webhooks/1275782261425438803/siPIo2_24HHXITRT44MgiiF0MRO--vnegwZdyz-DwSM8lnoWTaIsLfIxTHev6n28JrbL"
         # webhook_url = "https://discord.com/api/webhooks/1169342540575670292/crazeFe5z0qAozWBJOnlZfevMMQ219NVzZ-Cl6mWK9NrtBqBXc3kBzj1tJ8_KVu7UuKf"
     url = url.replace("/play/", "/embed/")
     if request.method == 'POST':
-        if token :
-            name = request.form.get('name')
-        else :
-            name = sname
+        videoname = request.form.get('videoname')
+
         if "youtube" in url.lower() or "youtu.be" in url.lower():
             url = url.split('/')[4]
 
-            msg = f'```yt-dlp.exe "https://www.youtube.com/watch?v={url}" --cookies-from-browser chrome -f best -o {name}``` {name}'
-            command = f'yt-dlp.exe "https://www.youtube.com/watch?v={url}" --cookies-from-browser chrome -f best -o {name}'
+            msg = f'```yt-dlp.exe "https://www.youtube.com/watch?v={url}" --cookies-from-browser chrome -f best -o {videoname}``` {videoname}'
+            command = f'yt-dlp.exe "https://www.youtube.com/watch?v={url}" --cookies-from-browser chrome -f best -o {videoname}'
             with open('list.txt', 'a') as file:
                 file.write(command + '\n')
         else:
             url = url.split('?')[0]
-            msg = f'```python iframe.py {url} {name}``` {name}'
-            command = f"python iframe.py {url} {name}"
+            msg = f'```python iframe.py {url} {videoname}``` {videoname}'
+            command = f"python iframe.py {url} {videoname}"
             with open('list.txt', 'a') as file:
                 file.write(command + '\n')
 
