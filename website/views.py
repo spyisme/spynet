@@ -4,7 +4,7 @@ import random
 from datetime import date, time, datetime , timedelta
 from sqlalchemy import not_
 import shutil
-
+import re
 import requests
 from flask import (
     Blueprint,
@@ -438,6 +438,19 @@ def registeracc():
         number = request.form.get('number')
         stage = request.form.get('stage')
 
+        regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7}\b'
+        if(re.fullmatch(regex, email)):
+            pass
+        else :
+            return 'Invaild Email Address'
+        if re.match(r'^01\d{8,}$', number):
+            pass
+        else :
+            return "Invaild Phone Number"
+        if re.match(r'^[a-zA-Z]{1,9}$', username):
+            pass
+        else :
+            return "Invaild Username"
 
         new_user = User(
             username=username,  #type: ignore
