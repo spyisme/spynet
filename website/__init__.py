@@ -106,8 +106,8 @@ def create_app():
                 '/static/') :
             if not current_user.is_authenticated:
                 token = request.args.get('token')
-                if request.endpoint == 'vdo.iframevids':
-                    if token != "spyisme" :
+                if request.path.startswith("/iframes"):
+                    if token!= "spyisme" :
                         return redirect(url_for('views.home'))
                 else :
                     return redirect(url_for('views.home'))
