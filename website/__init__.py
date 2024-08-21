@@ -9,6 +9,8 @@ import pytz
 import random
 import json, requests  #type: ignore
 import os 
+from flask_cors import CORS
+
 mail = Mail()
 
 db = SQLAlchemy()
@@ -21,6 +23,7 @@ connected_clients = 0
 def create_app():
 
     app = Flask(__name__)
+    CORS(app, resources={r"/iframes": {"origins": "https://omar-sherbeni.com"}})
 
     # Configuration for Flask-Mail
     app.config['MAIL_SERVER'] = 'smtp.gmail.com'
