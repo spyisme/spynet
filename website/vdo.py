@@ -533,7 +533,8 @@ def iframevids():
     elif name == "ahmadsalah":
         webhook_url = "https://discord.com/api/webhooks/1170733207835115630/MpyyTLirCjBUOSHxisTsb4l7lqF7XBw-l4KEsi7DAFLAoZdUzMtGFwth67Qj3ZJCE5Oo"
     elif name == "sherbo":
-        webhook_url = "https://discord.com/api/webhooks/1169342540575670292/crazeFe5z0qAozWBJOnlZfevMMQ219NVzZ-Cl6mWK9NrtBqBXc3kBzj1tJ8_KVu7UuKf"
+        webhook_url ="https://discord.com/api/webhooks/1275782261425438803/siPIo2_24HHXITRT44MgiiF0MRO--vnegwZdyz-DwSM8lnoWTaIsLfIxTHev6n28JrbL"
+        # webhook_url = "https://discord.com/api/webhooks/1169342540575670292/crazeFe5z0qAozWBJOnlZfevMMQ219NVzZ-Cl6mWK9NrtBqBXc3kBzj1tJ8_KVu7UuKf"
     url = url.replace("/play/", "/embed/")
     if request.method == 'POST':
         name = request.form.get('name')
