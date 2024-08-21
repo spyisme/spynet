@@ -1,4 +1,4 @@
-ssh -i ./spy.txt spy@95.179.222.63g
+ssh -i ./spy.txt spy@95.179.222.63
 
 Amoor2019
 
