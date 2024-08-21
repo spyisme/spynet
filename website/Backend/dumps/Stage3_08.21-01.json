@@ -6101,6 +6101,273 @@
             }
         ]
     },
+    "german": {
+        "teachers": [
+            {
+                "name": "Herr Abd El Moez",
+                "link": "abdelmoezold",
+                "description": "Year 2023/2024",
+                "courses": [
+                    {
+                        "name": "Final Revisions",
+                        "description": "10 Sessions",
+                        "videos": [
+                            {
+                                "id": "FZukYlHyDEU",
+                                "title": "IMPORTANT Ta2sesya",
+                                "duration": "03:07:19",
+                                "jsid": 0
+                            },
+                            {
+                                "id": "73gu2F6gqEk",
+                                "title": "Revision on the first term",
+                                "duration": "02:25:30",
+                                "jsid": 1
+                            },
+                            {
+                                "id": "gu2D6yI_0lA",
+                                "title": "Revision pdf solve",
+                                "duration": "01:45:07",
+                                "jsid": 2
+                            },
+                            {
+                                "id": "bB3_487aas8",
+                                "title": "Final Rev 1",
+                                "duration": "01:51:55",
+                                "jsid": 3
+                            },
+                            {
+                                "id": "bJQpua1CC20",
+                                "title": "Final Rev 1 hw",
+                                "duration": "01:15:05",
+                                "jsid": 4
+                            },
+                            {
+                                "id": "YJ4xJA20S4k",
+                                "title": "Final Rev 1 exam",
+                                "duration": "00:17:12",
+                                "jsid": 5
+                            },
+                            {
+                                "id": "c8KUNETGV14",
+                                "title": "Final Rev 2",
+                                "duration": "01:32:02",
+                                "jsid": 6
+                            },
+                            {
+                                "id": "9fjGu5S7A1k",
+                                "title": "Final Rev 2 Hw",
+                                "duration": "01:11:24",
+                                "jsid": 7
+                            },
+                            {
+                                "id": "JDG5Tf9dx38",
+                                "title": "Final Rev 2 Exam",
+                                "duration": "00:11:20",
+                                "jsid": 8
+                            },
+                            {
+                                "id": "oJduwKYlYD8",
+                                "title": "Final Rev 3",
+                                "duration": "00:56:22",
+                                "jsid": 9
+                            },
+                            {
+                                "id": "LtyyFsehhWY",
+                                "title": "Final Rev 3 Hw",
+                                "duration": "01:02:55",
+                                "jsid": 10
+                            },
+                            {
+                                "id": "vJ0a9PwM5Mc",
+                                "title": "Final Rev 3 Exam",
+                                "duration": "00:12:57",
+                                "jsid": 11
+                            },
+                            {
+                                "id": "z-bL_4ypGbw",
+                                "title": "Final Rev 4",
+                                "duration": "01:07:49",
+                                "jsid": 12
+                            },
+                            {
+                                "id": "aPN9VZeA9k0",
+                                "title": "Final Rev 4 Hw",
+                                "duration": "00:41:19",
+                                "jsid": 13
+                            },
+                            {
+                                "id": "zN2_Tbn7eNE",
+                                "title": "Final Rev 4 Exam",
+                                "duration": "00:08:44",
+                                "jsid": 14
+                            },
+                            {
+                                "id": "CL2Cixwu_7c",
+                                "title": "Final Rev 5",
+                                "duration": "01:46:44",
+                                "jsid": 15
+                            },
+                            {
+                                "id": "t_irGA4DOC4",
+                                "title": "Final Rev 6",
+                                "duration": "01:22:58",
+                                "jsid": 16
+                            },
+                            {
+                                "id": "l3whYeE-Oi8",
+                                "title": "Final Rev 6 Hw",
+                                "duration": "01:00:53",
+                                "jsid": 17
+                            },
+                            {
+                                "id": "mBYwrO0EEl4",
+                                "title": "Final Rev 6 Exam",
+                                "duration": "00:19:47",
+                                "jsid": 18
+                            },
+                            {
+                                "id": "_S80VAnDoIk",
+                                "title": "Final Rev 6 Extra",
+                                "duration": "00:04:46",
+                                "jsid": 19
+                            },
+                            {
+                                "id": "Am_jYP5ef50",
+                                "title": "Final Rev 7",
+                                "duration": "00:56:57",
+                                "jsid": 20
+                            },
+                            {
+                                "id": "rzCsCY4XTm8",
+                                "title": "Final Rev 7 Hw",
+                                "duration": "01:00:52",
+                                "jsid": 21
+                            },
+                            {
+                                "id": "86VYd8_hbhw",
+                                "title": "Final Rev 7 Exam",
+                                "duration": "00:05:51",
+                                "jsid": 22
+                            },
+                            {
+                                "id": "JVfVFE1ahdk",
+                                "title": "Final Rev 7 Extra",
+                                "duration": "00:01:07",
+                                "jsid": 23
+                            },
+                            {
+                                "id": "adYOtwD6DIc",
+                                "title": "Final Rev 8",
+                                "duration": "01:02:53",
+                                "jsid": 24
+                            },
+                            {
+                                "id": "QiC0z0Zh4Rc",
+                                "title": "Final Rev 8 Hw",
+                                "duration": "01:06:09",
+                                "jsid": 25
+                            },
+                            {
+                                "id": "bTzPvGhj26U",
+                                "title": "Final Rev 8 Exam",
+                                "duration": "00:08:14",
+                                "jsid": 26
+                            },
+                            {
+                                "id": "WFpaFDqqak8",
+                                "title": "Final Rev 9",
+                                "duration": "00:49:40",
+                                "jsid": 27
+                            },
+                            {
+                                "id": "DWvQ_l1WsWk",
+                                "title": "Final Rev 9 Hw",
+                                "duration": "00:37:02",
+                                "jsid": 28
+                            },
+                            {
+                                "id": "Ot96pGkaHGk",
+                                "title": "Final Rev 9 Exam",
+                                "duration": "00:08:21",
+                                "jsid": 29
+                            },
+                            {
+                                "id": "fLObliIrNo8",
+                                "title": "Final Rev 10",
+                                "duration": "01:11:07",
+                                "jsid": 30
+                            },
+                            {
+                                "id": "H7yOn72IetM",
+                                "title": "Final Rev 10 Hw",
+                                "duration": "00:41:07",
+                                "jsid": 31
+                            },
+                            {
+                                "id": "Q2Gue_CQMnk",
+                                "title": "Exam Night Plan",
+                                "duration": "00:23:08",
+                                "jsid": 32
+                            }
+                        ],
+                        "playlist_id": "PLM-GVlebsoPWNh__WI8QAIN2xQjawgB4i",
+                        "folder": "https://drive.google.com/drive/folders/1Mfyook7uXVp0d3y85WaRUuXB_F6Or_Yn?usp=drive_link"
+                    },
+                    {
+                        "name": "Exam night",
+                        "description": "Last Night Videos",
+                        "videos": [
+                            {
+                                "id": "Pt97xtGyf74",
+                                "title": "Exam night 1 | Part 1",
+                                "duration": "01:47:39",
+                                "jsid": 0
+                            },
+                            {
+                                "id": "6OR1KQqztMQ",
+                                "title": "Exam night 1 | Part 2",
+                                "duration": "01:10:24",
+                                "jsid": 1
+                            },
+                            {
+                                "id": "WPCfG4ZCbeg",
+                                "title": "Exam night 1 | Part 3",
+                                "duration": "03:14:54",
+                                "jsid": 2
+                            },
+                            {
+                                "id": "pJavImLAjcc",
+                                "title": "Exam night 2 | Part 1",
+                                "duration": "02:30:08",
+                                "jsid": 3
+                            },
+                            {
+                                "id": "81BjBPdcdBw",
+                                "title": "Exam night 2 | Part 2",
+                                "duration": "00:50:37",
+                                "jsid": 4
+                            },
+                            {
+                                "id": "b6hS5XEy8nI",
+                                "title": "Exam night 2 | Part 3",
+                                "duration": "01:22:20",
+                                "jsid": 5
+                            },
+                            {
+                                "id": "cZlD-YxNL_E",
+                                "title": "Exam Night 2 | \u062a\u0631\u0643\u0627\u062a \u0641\u0631\u0627\u0648 \u0646\u0639\u064a\u0645\u0629",
+                                "duration": "00:14:47",
+                                "jsid": 6
+                            }
+                        ],
+                        "playlist_id": "PLM-GVlebsoPXKLHbkTZkb_VEAM_TswA_0",
+                        "folder": "https://drive.google.com/drive/folders/1Mfyook7uXVp0d3y85WaRUuXB_F6Or_Yn?usp=drive_link"
+                    }
+                ]
+            }
+        ]
+    },
     "biology": {
         "teachers": [
             {
