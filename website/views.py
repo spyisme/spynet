@@ -1383,37 +1383,3 @@ def edit_course(subject, teachername, course_name):
                            teachername=teachername,
                            current_course=current_course)
 
-#Sherbo Quizzes-------------------------------------------------------
-#Quizzes/Stage 1/sherbo
-
-
-QUIZZES_FOLDER = os.path.join(os.getcwd(), 'website' , 'Quizzes', 'Stage 1', 'sherbo')
-
-@views.route('/quizzes')
-def list_folders():
-    # List all folders in the sherbo directory
-    folders = [f for f in os.listdir(QUIZZES_FOLDER) if os.path.isdir(os.path.join(QUIZZES_FOLDER, f))]
-
-    return render_template('folders.html', folders=folders)
-
-
-@views.route('/quizzes/<folder_name>')
-def show_images(folder_name):
-    # Path to the Questions folder inside the specific folder_name
-    questions_folder = os.path.join(QUIZZES_FOLDER, folder_name, 'Questions')
-
-    # List all images in the Questions folder
-
-    if os.path.exists(questions_folder):
-        all_files = os.listdir(questions_folder)
-        # Filter files that start with 'Q' followed by digits (e.g., Q1, Q2, etc.)
-        images = sorted([f for f in all_files if re.match(r'^Q\d+\.(jpg|jpeg|png|gif)$', f)], key=lambda x: int(re.findall(r'\d+', x)[0]))
-
-
-    return render_template('images.html', images=images, folder_name=folder_name)
-
-@views.route('/quizzes/<folder_name>/Questions/<filename>')
-def send_image(folder_name, filename):
-    # Path to the Questions folder
-    questions_folder = os.path.join(QUIZZES_FOLDER, folder_name, 'Questions')
-    return send_from_directory(questions_folder, filename)
