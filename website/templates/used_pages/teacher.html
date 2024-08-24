@@ -101,13 +101,17 @@
 
        
                       <p>{{ x.name }}</p>
-                      
                       {%if "2023" in x.description%}
-                      <span class="card_old-description">{{ x.description if x.description else 'description' }}</span>
-                      {%else%}
+                      <span class="card_old-description">
+                        {%else%}
+                      <span class="card-description">
 
-                      <span class="card-description">{{ x.description if x.description else 'description' }}</span>
-                      {%endif%}
+                        {%endif%}
+
+                        {{ x.description if x.description else 'description' }}
+                      
+                      </span>
+
 
 
                 </div>
