@@ -1205,26 +1205,23 @@ def manage_teachers(subject):
             teacher_link = request.form['new2']
 
             file = request.files['file']
-
-            if file:
-                os.makedirs(os.path.dirname(
-                    f'website/static/assets/Stage{current_user.stage}/{subject}/'
-                    + teacher_name + '.jpg'),
-                            exist_ok=True)
-
-                file.save(
-                    f'website/static/assets/Stage{current_user.stage}/{subject}/'
-                    + teacher_name + '.jpg')
-
-            else:
-                return "Choose an imgae for the teacher"
-
             if teacher_name == "":
                 return "Teacher name is none "
 
             for entry in teacher_list:
                 if teacher_link in entry['link']:
                     return "Link is taken already"
+                
+            if file:
+
+                file.save(
+                    f'website/static/assets/Stage{current_user.stage}/{subject}/'
+                    + teacher_link + '.jpg')
+
+            else:
+                return "Choose an imgae for the teacher"
+
+
 
             if subject in data:
                 new_teacher = {
