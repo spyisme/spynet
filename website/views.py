@@ -634,7 +634,7 @@ def subjects(subject):
         } for teacher in data[subject]["teachers"]]
     else:
         abort(404)
-
+    return "a7aa?"
     return render_template('used_pages/subjects.html',
                            teachername=subject,
                            teacher_links=teachers)
