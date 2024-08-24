@@ -4025,10 +4025,10 @@
                 "courses": [
                     {
                         "name": "Chapter 1",
-                        "description": "",
+                        "description": "Electricity and Ohm's law",
                         "videos": "",
                         "playlist_id": "",
-                        "folder": ""
+                        "folder": "https://drive.google.com/drive/folders/1mi1-bkVvyUaNUTi9EjrTOsmfx8xqwWmf?usp=drive_link"
                     }
                 ]
             }
