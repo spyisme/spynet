@@ -1037,15 +1037,14 @@ def send_email():
         msg.html = html_content
 
         try:
-            mail.send(msg)
-            return redirect("/")
+            mail.send(msg) 
+            return render_template('used_pages/landing.html')
+    
         except Exception as e:
             return f"Failed to send email. Account Got created tho"
     else:
         return "Email doesnt exist"
-    
-    return render_template('used_pages/landing.html')
-    
+
 
 
 @views.route('/edit_active_sessions/<user_id>', methods=['POST'])
