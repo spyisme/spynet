@@ -4022,7 +4022,15 @@
                 "name": "Mr. Tamer el kady",
                 "link": "tamerelkady",
                 "description": "Year 2024/2025",
-                "courses": []
+                "courses": [
+                    {
+                        "name": "Chapter 1",
+                        "description": "",
+                        "videos": "",
+                        "playlist_id": "",
+                        "folder": ""
+                    }
+                ]
             }
         ]
     },
