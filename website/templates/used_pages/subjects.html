@@ -95,10 +95,11 @@
     
             <a href="{{teachername}}/{{x.link}}">
 
-
-                  <div class="card">
-       
-                   
+    {%if "2023" in x.description%}
+        <div class="card_old">
+            {%else%}
+        <div class="card">
+          {%endif%}
                     <img class="img" src="{{ url_for('static', filename='assets/Stage' + current_user.stage|string + '/'  + teachername +'/' + x.link +'.jpg') }}" alt="{{x.link}}">
 
        
