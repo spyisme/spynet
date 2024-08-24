@@ -86,7 +86,9 @@ a:hover {
 form {
     margin: 20px 0;
 }
-
+input[type="file"]{
+color :white;
+}
 input[type="text"], input[type="file"], select {
     width: 40%;
     padding: 10px;
