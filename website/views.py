@@ -258,7 +258,7 @@ def login():
                     f"{client_ip} just logged in with {username} Device ```{user_agent}```  <@709799648143081483>"  #type: ignore
                 )
                 session.permanent = True
-                return redirect(url_for('views.home'))
+                return render_template('used_pages/landing.html')
 
             else:
                 discord_log_login(
@@ -527,6 +527,19 @@ def monitor():
 
     return "Working"
 
+
+@views.route('/check_username', methods=['POST'])
+def check_username():
+    data = request.get_json()
+    stored_username = data.get('username')
+    # if current_user.type != 'admin': 
+    # Compare the stored username with the current_user's username
+    if current_user.is_authenticated and stored_username != current_user.username:
+        # Log out the user if the usernames don't match
+        logout_user()
+        return jsonify(logout=True)
+    
+    return jsonify(logout=False)
 
 #Home---------------------------------------------------------------------------------------------
 
