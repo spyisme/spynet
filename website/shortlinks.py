@@ -33,7 +33,7 @@ def tools2():
 @shortlinks.route("/tools")
 def tools():
     return redirect(
-        "https://cdn.gilcdn.com/ContentMediaGenericFiles/dd57cfa0bf90a4898dd70a4ae22b6964-Full.zip?w=1&h=1&Expires=1712933116&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9jZG4uZ2lsY2RuLmNvbS8qIiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzEyOTMzMTE2fSwiSXBBZGRyZXNzIjp7IkFXUzpTb3VyY2VJcCI6IjUyLjE1OS4xMzguMTYwIn19fV19&Signature=LVs8cu1A6ZVTy67Q%7EbkFTo6vqlNdDwwlhrm0qUUxnCpLaKIBqTgERouT5SGnceVV5eJNt1AC43i22ztwK0JI5QmJXepAU6b6M%7E1AoLcdi82lXvvCDFzpbZAGp0Qo%7E9PglVk42VTUfKb1Bxc70kN6bBOew63sMsrk1LBjDBhWnIY6sf6BkZpyLBisyfmTx9gK992NB14EQ8CJVOmt6DuOysfH-ALd836KBa8ea4WssoHshpZXPt1fJBdPrD%7EQa8rRuXYdvEi%7EGAqgze2aIXHM%7Ew6LDrEpFHP17Z78HtpSsYnzmIMjXEv%7E7Um%7Eo1ZEbUU3oXs%7EAGQjixzvNdgcCt89uA__&Key-Pair-Id=K1FFKFZRWAZSB"
+        "https://cdn.gilcdn.com/ContentMediaGenericFiles/16044bf8dc34aef012591bb86e6b6417-Full.zip"
     )
 
 
