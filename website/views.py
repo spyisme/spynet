@@ -452,8 +452,14 @@ def registeracc():
             pass
         else :
             return "Invaild Username"
+        latest_user = User.query.order_by(User.id.desc()).first()
+
+        latest_id = latest_user.id if latest_user else 0
+
+        random_number = random.randint(latest_id + 1, latest_id + 20)
 
         new_user = User(
+            # id = random_number , # More than the last user and not to be repated 
             username=username,  #type: ignore
             password="password",  #type: ignore
             email=email,  #type: ignore
@@ -746,8 +752,15 @@ def create_user_route():
         existing_user = User.query.filter_by(username=username).first()
         if existing_user:
             return jsonify({'error': 'Username already exists'}), 400
+        latest_user = User.query.order_by(User.id.desc()).first()
 
-        new_user = User(username=username,
+        latest_id = latest_user.id if latest_user else 0
+
+        random_number = random.randint(latest_id + 1, latest_id + 20)
+
+        new_user = User(
+            id = random_number
+            ,username=username,
                         password="password",
                         email=email,
                         stage=stage,
