@@ -119,7 +119,15 @@ li {
   text-overflow: ellipsis; /* Add ellipsis (...) to indicate more text */
   white-space: nowrap; /* Ensure text doesn't wrap */
 }
-
+.card_old-description {
+  font-size: 14px;
+  color: black;
+  margin-top: 7px;
+  position: relative;
+  overflow: hidden;
+  max-height: 40px; /* Adjust to fit within the card */
+  z-index: 1;
+}
 .card_old-description::after {
   content: "";
   display: inline-block;
