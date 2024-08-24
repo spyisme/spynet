@@ -90,7 +90,7 @@ li {
 .card_old {
   position: relative;
   overflow: hidden;
-  background-color: #E0E0E0;
+  background-color: #8f8f8f;
   border: 1px solid #ccc;
   border-radius: 10px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
@@ -118,6 +118,26 @@ li {
   overflow: hidden; /* Hide overflow text */
   text-overflow: ellipsis; /* Add ellipsis (...) to indicate more text */
   white-space: nowrap; /* Ensure text doesn't wrap */
+}
+
+.card_old-description::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, transparent 0%, #8f8f8f 50%, transparent 100%);
+  animation: shine 2s linear infinite;
+  transform: translateX(-100%);
+  z-index: 0;
+}
+
+@keyframes shine {
+  100% {
+      transform: translateX(100%);
+  }
 }
 
 
