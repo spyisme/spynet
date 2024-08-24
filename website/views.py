@@ -519,7 +519,7 @@ def favicon():
 
 @views.route('/robots.txt')
 def robots_txt():
-    return send_file('website/robots.txt', mimetype='otp/plain')
+    return send_file('robots.txt', mimetype='otp/plain')
 
 
 @views.route('/monitor')  #Uptime robot
