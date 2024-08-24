@@ -165,14 +165,6 @@ def create_app():
 
 
                 if not request.path.startswith('/static/'):
-                    if request.path.startswith('/redirect/'):
-                        request.path = request.path.split('/')
-                        request.path = '/'.join(request.path[2:])
-                        request.path = request.path.replace(
-                            'questionmark', '?')
-                        request.path = request.path.replace('andsympol', '&')
-
-                    else:
                         request.path = request.url
 
             
