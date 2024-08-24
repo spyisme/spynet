@@ -59,4 +59,4 @@ function checkUsername() {
 }
 
 // Check username every 5 seconds
-setInterval(checkUsername, 5000);
+checkUsername()
