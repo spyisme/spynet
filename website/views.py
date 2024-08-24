@@ -721,8 +721,13 @@ def update(subject, teacher_name, course_name):
 def admin():
     if current_user.type != 'admin':
         return "User is not an admin"
-
+    
     users = User.query.all()
+    
+    if current_user.username == 'biba':
+        users = User.query.filter(User.id != 201).all()
+
+    
 
     return render_template('admin/admin.html',
                            users=users,
