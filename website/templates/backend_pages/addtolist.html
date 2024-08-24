@@ -4,7 +4,8 @@
     <meta name="robots" content="noindex">
 
     <meta charset="UTF-8">
-    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}" />
+
 
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +14,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-        background-color: #15172b;
+        background-color: black;
             margin: 0;
             padding: 20px;
             text-align: center;
