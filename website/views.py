@@ -623,7 +623,7 @@ def subjects(subject):
     if subject in data:
         teachers = [{
             "name":
-            teacher["name"],
+            "name",
             "badge":
             "neww",
             "link":
