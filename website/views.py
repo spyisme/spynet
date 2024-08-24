@@ -464,7 +464,7 @@ def registeracc():
             pass
         else :
             return "Invaild Phone Number"
-        if re.match(r'^[a-zA-Z]$', username):
+        if re.match(r'^[a-zA-Z0-9]+$', username):
             pass
         else :
             return "Invaild Username"
