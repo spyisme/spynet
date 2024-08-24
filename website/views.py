@@ -623,9 +623,9 @@ def subjects(subject):
     if subject in data:
         teachers = [{
             "name":
-            "name",
+            teacher["name"],
             "badge":
-            "neww",
+            teacher["badge"],
             "link":
             teacher["link"],
             "description":
@@ -634,7 +634,7 @@ def subjects(subject):
         } for teacher in data[subject]["teachers"]]
     else:
         abort(404)
-    return "a7aa?"
+
     return render_template('used_pages/subjects.html',
                            teachername=subject,
                            teacher_links=teachers)
