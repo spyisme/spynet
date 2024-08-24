@@ -517,10 +517,13 @@ def favicon():
     return redirect("/static/favicon.ico")
 
 
+@views.route('/Robots.txt')
+def robots_txt1():
+    return ""
+
 @views.route('/robots.txt')
 def robots_txt():
     return ""
-
 
 @views.route('/monitor')  #Uptime robot
 def monitor():
