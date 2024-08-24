@@ -1398,7 +1398,9 @@ def edit_course(subject, teachername, course_name):
                 for course in teacher['courses']:
                     if course['name'] == course_name:
                         if request.form['action'] == 'apply':
-                            course['playlist_id'] = request.form['playlist']
+                            
+                            course['playlist_id'] = request.form['playlist'].split('?list=')[1]
+                            
                         elif request.form['action'] == 'Apply':
                             course['folder'] = request.form['folder']
                         elif request.form['action'] == 'set':
