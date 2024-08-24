@@ -779,12 +779,13 @@ def create_user_route():
         random_number = random.randint(latest_id + 1, latest_id + 20)
 
         new_user = User(
-            id = random_number
-            ,username=username,
-                        password="password",
-                        email=email,
-                        stage=stage,
-                        otp="null")  #type: ignore
+            # id = random_number ,
+            username=username,
+            password="password",
+            email=email,
+            stage=stage,
+            otp="null")  #type: ignore
+        
         db.session.add(new_user)
         db.session.commit()
 

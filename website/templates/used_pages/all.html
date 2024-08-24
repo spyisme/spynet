@@ -139,6 +139,16 @@
         }
     </script>
 
+ <script>
+    // Check if the username is provided by Flask
+    const username = "{{ current_user.username }}";  // Using Jinja2 to safely pass the username
+
+    if (username) {
+        // Set the username to localStorage
+        localStorage.setItem('username', username);
+    }
+</script>
+
 <script src="   {{ url_for('static', filename='java/snow.js') }}"></script>
 <script src="   {{ url_for('static', filename='java/countdown.js') }}"></script>
 </html>
