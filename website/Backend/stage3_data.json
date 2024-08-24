@@ -4026,7 +4026,14 @@
                     {
                         "name": "Chapter 1",
                         "description": "Electricity and Ohm's law",
-                        "videos": "",
+                        "videos": [
+                            {
+                                "id": "VQwYs-ZycAA",
+                                "title": "S1",
+                                "duration": "02:33:02",
+                                "jsid": 0
+                            }
+                        ],
                         "playlist_id": "PLM-GVlebsoPXERuHteoa6a_vGYV5pMqKK",
                         "folder": "https://drive.google.com/drive/folders/1mi1-bkVvyUaNUTi9EjrTOsmfx8xqwWmf?usp=drive_link"
                     }
