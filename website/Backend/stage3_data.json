@@ -1,6 +1,28 @@
 {
     "chemistry": {
         "teachers": [
+
+            {
+                "name": "Dr. Nasser el batal",
+                "description": "Year 2024/2025",
+                "link": "nasserelbatal",
+                "courses": []
+            },
+            {
+                "name": "Mr. Ashraf el shenawy",
+                "link": "ashrafelshenawy",
+                "description": "Year 2024/2025",
+                "courses": [
+                    {
+                        "name": "All sessions",
+                        "description": "Not youtube",
+                        "videos": "",
+                        "playlist_id": "",
+                        "folder": ""
+                    }
+                ]
+            },
+
             {
                 "name": "Dr. Nasser el batal",
                 "link": "nasserelbatalold",
@@ -1424,26 +1446,6 @@
                         "folder": "https://drive.google.com/drive/folders/1B8SZ5RKPaALH2YICEePBwNGZWBWwqBpu?usp=drive_link"
                     }
                 ]
-            },
-            {
-                "name": "Mr. Ashraf el shenawy",
-                "link": "ashrafelshenawy",
-                "description": "Year 2024/2025",
-                "courses": [
-                    {
-                        "name": "All sessions",
-                        "description": "Not youtube",
-                        "videos": "",
-                        "playlist_id": "",
-                        "folder": ""
-                    }
-                ]
-            },
-            {
-                "name": "Dr. Nasser el batal",
-                "description": "Year 2024/2025",
-                "link": "nasserelbatal",
-                "courses": []
             }
         ]
     },
@@ -3308,6 +3310,34 @@
     },
     "physics": {
         "teachers": [
+
+            {
+                "name": "Dr. Mohamed Adel",
+                "link": "mohamedadel",
+                "description": "Year 2024/2025",
+                "courses": []
+            },
+            {
+                "name": "Mr. Tamer el kady",
+                "link": "tamerelkady",
+                "description": "Year 2024/2025",
+                "courses": [
+                    {
+                        "name": "Chapter 1",
+                        "description": "Electricity and Ohm's law",
+                        "videos": [
+                            {
+                                "id": "VQwYs-ZycAA",
+                                "title": "S1",
+                                "duration": "02:33:02",
+                                "jsid": 0
+                            }
+                        ],
+                        "playlist_id": "PLM-GVlebsoPXERuHteoa6a_vGYV5pMqKK",
+                        "folder": "https://drive.google.com/drive/folders/1mi1-bkVvyUaNUTi9EjrTOsmfx8xqwWmf?usp=drive_link"
+                    }
+                ]
+            },
             {
                 "name": "Dr. Mohamed Adel",
                 "link": "mohamedadelold",
@@ -4011,38 +4041,24 @@
                         "folder": "https://drive.google.com/drive/folders/1n1jJte2y40YEuxsq0TiohJGafP3rwj-W?usp=drive_link"
                     }
                 ]
-            },
-            {
-                "name": "Dr. Mohamed Adel",
-                "link": "mohamedadel",
-                "description": "Year 2024/2025",
-                "courses": []
-            },
-            {
-                "name": "Mr. Tamer el kady",
-                "link": "tamerelkady",
-                "description": "Year 2024/2025",
-                "courses": [
-                    {
-                        "name": "Chapter 1",
-                        "description": "Electricity and Ohm's law",
-                        "videos": [
-                            {
-                                "id": "VQwYs-ZycAA",
-                                "title": "S1",
-                                "duration": "02:33:02",
-                                "jsid": 0
-                            }
-                        ],
-                        "playlist_id": "PLM-GVlebsoPXERuHteoa6a_vGYV5pMqKK",
-                        "folder": "https://drive.google.com/drive/folders/1mi1-bkVvyUaNUTi9EjrTOsmfx8xqwWmf?usp=drive_link"
-                    }
-                ]
             }
         ]
     },
     "english": {
         "teachers": [
+
+            {
+                "name": "Mohamed Salah",
+                "link": "mosalahenglish",
+                "courses": [],
+                "description": "Year 2024/2025"
+            },
+            {
+                "name": "Mr. Hossam Sameh",
+                "link": "theleader",
+                "description": "Videos may not be uploaded.",
+                "courses": []
+            },
             {
                 "name": "Mr. Hossam Sameh",
                 "link": "theleaderold",
@@ -4471,23 +4487,53 @@
                         "folder": "https://drive.google.com/drive/folders/1Uo88HuJaQRHgWgWefKZwCf1J6UP4XiLG?usp=drive_link"
                     }
                 ]
-            },
-            {
-                "name": "Mr. Hossam Sameh",
-                "link": "theleader",
-                "description": "Videos may not be uploaded.",
-                "courses": []
-            },
-            {
-                "name": "Mohamed Salah",
-                "link": "mosalahenglish",
-                "courses": [],
-                "description": "Year 2024/2025"
             }
         ]
     },
     "arabic": {
         "teachers": [
+
+            {
+                "name": "Mr. Mohamed Tarek",
+                "link": "mohamedtarek",
+                "description": "Year 2024/2025",
+                "courses": [
+                    {
+                        "name": "Term 1",
+                        "description": "",
+                        "videos": [
+                            {
+                                "id": "w4py4CcFinw",
+                                "title": "\u0623\u0633\u0627\u0633\u064a\u0627\u062a \u0627\u0644\u0646\u062d\u0648 | Part 1 (Public)",
+                                "duration": "01:19:18",
+                                "jsid": 0
+                            },
+                            {
+                                "id": "UafsAtm0GIA",
+                                "title": "\u0623\u0633\u0627\u0633\u064a\u0627\u062a \u0627\u0644\u0646\u062d\u0648 | Part 2 (Public)",
+                                "duration": "01:16:30",
+                                "jsid": 1
+                            }
+                        ],
+                        "playlist_id": "PLM-GVlebsoPVEE3wqtC8ukf_mkxETkP1-",
+                        "folder": "https://drive.google.com/drive/folders/1CZAHml1eCTHk2QVAhHBlLHVliBzxGboZ?usp=drive_link"
+                    }
+                ]
+            },
+            {
+                "name": "Mr. Reda el farouk",
+                "link": "redaelfarouk",
+                "description": "Year 2024/2025",
+                "courses": [
+                    {
+                        "name": "Month 1",
+                        "description": "4 Sessions",
+                        "videos": "",
+                        "playlist_id": "",
+                        "folder": ""
+                    }
+                ]
+            },
             {
                 "name": "Mr. Mohamed Tarek",
                 "link": "mohamedtarekold",
@@ -6107,52 +6153,18 @@
                         "folder": ""
                     }
                 ]
-            },
-            {
-                "name": "Mr. Mohamed Tarek",
-                "link": "mohamedtarek",
-                "description": "Year 2024/2025",
-                "courses": [
-                    {
-                        "name": "Term 1",
-                        "description": "",
-                        "videos": [
-                            {
-                                "id": "w4py4CcFinw",
-                                "title": "\u0623\u0633\u0627\u0633\u064a\u0627\u062a \u0627\u0644\u0646\u062d\u0648 | Part 1 (Public)",
-                                "duration": "01:19:18",
-                                "jsid": 0
-                            },
-                            {
-                                "id": "UafsAtm0GIA",
-                                "title": "\u0623\u0633\u0627\u0633\u064a\u0627\u062a \u0627\u0644\u0646\u062d\u0648 | Part 2 (Public)",
-                                "duration": "01:16:30",
-                                "jsid": 1
-                            }
-                        ],
-                        "playlist_id": "PLM-GVlebsoPVEE3wqtC8ukf_mkxETkP1-",
-                        "folder": "https://drive.google.com/drive/folders/1CZAHml1eCTHk2QVAhHBlLHVliBzxGboZ?usp=drive_link"
-                    }
-                ]
-            },
-            {
-                "name": "Mr. Reda el farouk",
-                "link": "redaelfarouk",
-                "description": "Year 2024/2025",
-                "courses": [
-                    {
-                        "name": "Month 1",
-                        "description": "4 Sessions",
-                        "videos": "",
-                        "playlist_id": "",
-                        "folder": ""
-                    }
-                ]
             }
         ]
     },
     "biology": {
         "teachers": [
+  
+            {
+                "name": "Dr. Mohamed Daif",
+                "description": "Year 2024/2025",
+                "link": "daif",
+                "courses": []
+            },
             {
                 "name": "Dr. Mohamed Daif",
                 "description": "Year 2023/2024",
@@ -7533,12 +7545,6 @@
                         "folder": ""
                     }
                 ]
-            },
-            {
-                "name": "Dr. Mohamed Daif",
-                "description": "Year 2024/2025",
-                "link": "daif",
-                "courses": []
             }
         ]
     }
