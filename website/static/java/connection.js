@@ -1,4 +1,4 @@
-// Function to generate a random 8-digit ID
+// Function to generate a random 8-digit id
 function generateRandomId() {
     return Math.floor(10000000 + Math.random() * 90000000).toString();
 }
