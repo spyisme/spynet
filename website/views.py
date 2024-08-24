@@ -406,7 +406,8 @@ def change_password():
         current_user.password = password
 
         db.session.commit()
-        return redirect('/subjects?password=set')
+
+        return render_template('used_pages/landing.html')
 
     return render_template('users_pages/password.html',
                            msg=request.args.get("passwords"))
@@ -463,7 +464,7 @@ def registeracc():
             pass
         else :
             return "Invaild Phone Number"
-        if re.match(r'^[a-zA-Z]{1,9}$', username):
+        if re.match(r'^[a-zA-Z]$', username):
             pass
         else :
             return "Invaild Username"
@@ -1042,6 +1043,9 @@ def send_email():
             return f"Failed to send email. Account Got created tho"
     else:
         return "Email doesnt exist"
+    
+    return render_template('used_pages/landing.html')
+    
 
 
 @views.route('/edit_active_sessions/<user_id>', methods=['POST'])
