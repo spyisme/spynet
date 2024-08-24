@@ -155,10 +155,17 @@ def discord_log_backend(message):
     payload = json.dumps(messageeeee)
     headers = {'Content-Type': 'application/json'}
     requests.post(
+        "https://discord.com/api/webhooks/1276724582866354327/-Xkth_SH8Yo9LFxuSxUyFiG5eU9Ga8aXT4gBtHoBy05ehTz5tYNloMXq4nd_6vcG8jfL",
+        data=payload,
+        headers=headers)
+def discord_log_uptime(message):
+    messageeeee = {'content': message}
+    payload = json.dumps(messageeeee)
+    headers = {'Content-Type': 'application/json'}
+    requests.post(
         "https://discord.com/api/webhooks/1264918948730638336/nD1A8OVB0FmSgUVV7DCd2gumd7CBeTWAoq7AbqjCjwoRRkkgLRM7a8xuYRPOUos4AmwE",
         data=payload,
         headers=headers)
-
 
 #Login , logout  (whitelist_ips is from EG)----------------------------------------------
 
@@ -273,10 +280,18 @@ def login():
 
 @views.route('/logout')
 def logout():
+
+    client_ip = request.headers.get('X-Forwarded-For')
+
+    if client_ip:
+        client_ip = client_ip.split(',')[0].strip()
+    else:
+        client_ip = request.headers.get('CF-Connecting-IP',
+                                        request.remote_addr)
     current_user.active_sessions -= 1
     db.session.commit()
     discord_log_login(
-        f"<@709799648143081483> {current_user.username} Logged out ")
+        f"<@709799648143081483> {current_user.username} Logged out from {client_ip}")
 
     logout_user()
     return redirect(url_for('views.login'))
@@ -917,7 +932,7 @@ def uptimebackup():
     upload_file_to_discord(
         "https://discord.com/api/webhooks/1273288058808045679/-k8Tc5AWGZGroG3swyknC2y_EEWXfvQQUDyLiZnsHeqtWu4UQbLe-ZBJLABZH6hx2AtH",
         db_path)
-    discord_log_backend("UptimeRobot Backup")
+    discord_log_uptime("UptimeRobot Backup")
     return "Done"
 
 
