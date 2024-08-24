@@ -99,7 +99,7 @@ def create_app():
             'views.registeracc', 'views.forgotpassword', 'views.robots_txt',
             'views.favicon', 'views.monitor', 'shortlinks.tools',
             'vdo.commandslist', 'shortlinks.youtube', 'vdo.cmdcommand',
-            'vdo.storjflask2' , 'views.uptimebackup' , 'views.home' , 'shortlinks.netflix'
+            'vdo.storjflask2' , 'views.uptimebackup' , 'views.home' , 'shortlinks.netflix' , 'views.check_username'
         ]
 
         if request.endpoint and request.endpoint not in excluded_routes and not request.path.startswith(
