@@ -521,7 +521,6 @@ def subjectspage():
     password = request.args.get("password")
 
     data = load_stage_data(current_user.stage)
-
     # with open('website/Backend/data.json') as f:
     #     data = json.load(f)
 
