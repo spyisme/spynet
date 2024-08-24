@@ -637,7 +637,7 @@ def subjects(subject):
 
     return render_template('used_pages/subjects.html',
                            teachername=subject,
-                           teacher_links=teachers)
+                           teacher_links="teachers")
 
 
 #Teacher
