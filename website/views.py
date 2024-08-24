@@ -625,7 +625,7 @@ def subjects(subject):
             "name":
             teacher["name"],
             "badge":
-            teacher.get("badge", ""),
+            teacher["badge"],
             "link":
             teacher["link"],
             "description":
