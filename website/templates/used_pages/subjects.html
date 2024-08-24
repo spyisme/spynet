@@ -94,7 +94,6 @@
           <li>
     
             <a href="{{teachername}}/{{x.link}}">
-              <div class="card-new-badge">test1</div>
 
     {%if "2023" in x.description%}
         <div class="card_old">
@@ -102,8 +101,12 @@
         <div class="card">
           {%endif%}
                     <img class="img" src="{{ url_for('static', filename='assets/Stage' + current_user.stage|string + '/'  + teachername +'/' + x.link +'.jpg') }}" alt="{{x.link}}">
+                    
+                    
+                    {%if x.badge%}
+       <div class="card-new-badge">{{x.badge}}</div>
+{%endif%}
 
-       <div class="card-new-badge">test2</div>
                       <p>{{ x.name }}</p>
 
                       {%if "2023" in x.description%}
