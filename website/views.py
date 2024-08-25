@@ -873,6 +873,7 @@ def manage_user(user_id):
         # Compare each field to identify changes
         for key, value in user_before.items():
             if getattr(user, key) != value:
+                discord_log_backend(f'{value} is now {getattr(user, key)}')
                 changes[key] = {
                     'before': value,
                     'after': getattr(user, key)
