@@ -42,13 +42,9 @@
         <label for="otp">Subscription Method:</label>
         
         <select name="sub_method" id="sub_method">
-            <option value="{{ user.subscription_method }}" selected>{{ user.subscription_method }}</option>
-            {% for o in sub_methods %}
 
-                {% if o.name != user.subscription_method %}
+            {% for o in sub_methods %}
                     <option value="{{ o.name }}">{{ o.name }}</option>
-       
-                {% endif %}
             {% endfor %}
         </select>
          
@@ -59,14 +55,11 @@
         <label for="stage">Stage:</label>
 
             <select name="stage" id="stage">
-                <option value="{{ user.stage }}" selected>{{ user.stage }}</option>
-            
+
                 {% for o in data %}
-    
-                    {% if o.name != user.stage %}
+
                         <option value="{{ o.name }}">{{ o.name }}</option>
-           
-                    {% endif %}
+    
                 {% endfor %}
             </select>
         
