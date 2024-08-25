@@ -854,12 +854,14 @@ def manage_user(user_id):
         user.email = request.form.get('email')
         user.stage = request.form.get('stage')
         user.phone_number =  request.form.get('phone')
+
         if current_user.username == 'spy' :
             user.password = request.form.get('password')
 
         user.active_sessions = request.form.get('devices')
-        user.subscription_method = request.form.get('sub_method')
-        user.subscription_date = datetime.strptime(request.form.get('sub_date'), '%Y-%m-%d').date()
+        if user.type != 'admin' :
+            user.subscription_method = request.form.get('sub_method')
+            user.subscription_date = datetime.strptime(request.form.get('sub_date'), '%Y-%m-%d').date()
 
         db.session.commit()
         return redirect(url_for('views.manage_user',user_id=user_id)) 
