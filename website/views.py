@@ -781,14 +781,7 @@ def admin():
     
 
     return render_template('admin/admin.html',
-                           users=users,
-                           data=[{
-                               'name': 3
-                           }, {
-                               'name': 2
-                           }, {
-                               'name': 1
-                           }])
+                           users=users)
 
 
 @views.route('/create_user', methods=['POST'])
