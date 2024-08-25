@@ -497,7 +497,8 @@ def registeracc():
             otp="Waiting approval",
             type ="student_register",
             stage = stage ,
-            phone_number =number)  
+            phone_number =number,
+            created_by= "registration")  
 
         db.session.add(new_user)
         db.session.commit()
@@ -816,7 +817,8 @@ def create_user_route():
                 stage=stage,
                 otp="null"
                 ,subscription_method= subscription_method,
-                subscription_date = subscription_date
+                subscription_date = subscription_date,
+                created_by = current_user.username
                 )  
         else:
          
@@ -826,7 +828,9 @@ def create_user_route():
                 email=email,
                 stage=stage,
                 otp="null",
-                phone_number= phone)  
+                phone_number= phone,
+                created_by = current_user.username
+                )  
          
         db.session.add(new_user)
         db.session.commit()
