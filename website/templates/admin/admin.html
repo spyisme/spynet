@@ -60,14 +60,7 @@
             <tbody>
                 {% for user in users %}
                     <tr {% if "Waiting" in user.otp %}style="color: red;"{% endif %}>
-                        {% set current_date = datetime.utcnow() %}
-                        {% set subscription_date = datetime.combine(user.subscription_date, datetime.min.time()) %}
-                        {% set days_passed = (current_date - subscription_date).days %}
-                    
-                        {% if days_passed > 30 %}
-                            <ins>
-                        {% endif %}
-                    
+
 
 
 
@@ -85,9 +78,7 @@
                         <td class="hide-on-mobile" >{{ user.stage }}</td>
                         <td><a href="/user-manage/{{ user.id }}">Manage</a></td>
 
-                        {% if days_passed > 30 %}
-                            </ins>
-                        {% endif %}
+   
 
                     </tr>
                 {% endfor %}
