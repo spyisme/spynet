@@ -873,13 +873,12 @@ def manage_user(user_id):
         # Compare each field to identify changes
         for key, value in user_before.items():
             if getattr(user, key) != value:
-                discord_log_backend(f'{value} is now {getattr(user, key)}')
+                discord_log_backend(f'{changes[key]} for user {user.username} was {value} and now is {getattr(user, key)} by {current_user.username}')
                 changes[key] = {
                     'before': value,
                     'after': getattr(user, key)
                 }
 
-        discord_log_backend("changes")
 
         db.session.commit()
         return redirect(url_for('views.manage_user',user_id=user_id)) 
