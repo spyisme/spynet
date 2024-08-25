@@ -853,7 +853,7 @@ def manage_user(user_id):
         user.username = request.form.get('username')
         user.email = request.form.get('email')
         user.stage = request.form.get('stage')
-
+        user.phone_number =  request.form.get('phone')
         if current_user.username == 'spy' :
             user.password = request.form.get('password')
 
