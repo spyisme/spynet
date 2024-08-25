@@ -165,7 +165,12 @@ def create_app():
 
 
                 if not request.path.startswith('/static/'):
-                        request.path = request.url
+                        if any(keyword in request.path for keyword in ["drive", "youtube"]):
+
+                            pass
+                        else:
+
+                            request.path = request.url
 
             
 
