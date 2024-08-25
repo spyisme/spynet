@@ -10,7 +10,7 @@ import random
 import json, requests  #type: ignore
 import os 
 from flask_cors import CORS
-
+from datetime import datetime, timedelta
 
 mail = Mail()
 
@@ -125,7 +125,12 @@ def create_app():
             elif current_user.password == "Chnageme":
                 if not request.path.startswith('/change_password') :
                     return  redirect(url_for('views.change_password'))  
+                
 
+
+            elif current_user.subscription_date + timedelta(days=30) < datetime.today().date() :
+                return "Please renew"
+        
 
             else:
                 client_ip = request.headers.get('X-Forwarded-For')
