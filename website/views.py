@@ -569,7 +569,7 @@ def load_stage_data(stage):
 
 @views.route("/subjects")
 def subjectspage():
-
+    end_date = current_user.subscription_date + timedelta(days=30)
     password = request.args.get("password")
 
     data = load_stage_data(current_user.stage)
@@ -580,7 +580,7 @@ def subjectspage():
     return render_template('used_pages/all.html',
                            lines=lines,
                            teachername="All",
-                           password=password)
+                           password=password , end_date = end_date)
 
 
 def clear_all_user_logs():
