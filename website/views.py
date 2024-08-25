@@ -8,7 +8,7 @@ import re
 import requests
 from flask import (
     Blueprint,
-    jsonify,  #type: ignore
+    jsonify,  
     redirect,
     render_template,
     render_template_string,
@@ -228,7 +228,7 @@ def login():
         username = request.form.get('username')
         password = request.form.get('password')
 
-        username = username.replace(" ", "")  #type: ignore
+        username = username.replace(" ", "")  
         username = username.lower()
         user = User.query.filter_by(username=username).first()
 
@@ -243,7 +243,7 @@ def login():
             if user.username not in ['spy'] and user.active_sessions >= 3:
 
                 discord_log_login(
-                    f"{username} tried to login from more than 3 devices <@709799648143081483>"  #type: ignore
+                    f"{username} tried to login from more than 3 devices <@709799648143081483>"  
                 )
 
                 return redirect(f"/login?maxdevices=yes&user={username}")
@@ -255,19 +255,19 @@ def login():
                 user.active_sessions += 1
                 db.session.commit()
                 discord_log_login(
-                    f"{client_ip} just logged in with {username} Device ```{user_agent}```  <@709799648143081483>"  #type: ignore
+                    f"{client_ip} just logged in with {username} Device ```{user_agent}```  <@709799648143081483>"  
                 )
                 session.permanent = True
                 return render_template('used_pages/landing.html')
 
             else:
                 discord_log_login(
-                    f"{client_ip} just failed to login with '{username}' Device ```{user_agent}``` <@709799648143081483>"  #type: ignore
+                    f"{client_ip} just failed to login with '{username}' Device ```{user_agent}``` <@709799648143081483>"  
                 )
                 return redirect(f"/login?password=false&user={username}")
         else:
             discord_log_login(
-                f"{client_ip} just failed to login with '{username}' Device ```{user_agent}``` <@709799648143081483>"  #type: ignore
+                f"{client_ip} just failed to login with '{username}' Device ```{user_agent}``` <@709799648143081483>"  
             )
             return redirect("/login?failed=true")
     return render_template('users_pages/login.html',
@@ -324,15 +324,15 @@ def forgotpassword():
 
     user = User.query.filter_by(username=username).first()
 
-    if request.method == 'GET':  #type: ignore
-        if user:  #type: ignore
+    if request.method == 'GET':  
+        if user:  
             if user.otp == 'bypassotp':
                 login_user(user)
                 if user.username != 'spy':
                     user.active_sessions += 1
                 db.session.commit()
                 discord_log_login(
-                    f"{client_ip} just logged in with {username} Device ```{user_agent}```  <@709799648143081483>"  #type: ignore
+                    f"{client_ip} just logged in with {username} Device ```{user_agent}```  <@709799648143081483>"  
                 )
                 session.permanent = True
                 return redirect(url_for('views.home'))
@@ -357,11 +357,11 @@ def forgotpassword():
 
     if request.method == 'POST':
         otp = request.form.get('otp')
-        if otp == user.otp:  #type: ignore
+        if otp == user.otp:  
             if user.username not in [
                     'spy',
-                    'biba'  #type: ignore
-            ] and user.active_sessions >= 3:  #type: ignore
+                    'biba'  
+            ] and user.active_sessions >= 3:  
 
                 discord_log_login(
                     f"{username} tried to login from more than 3 devices <@709799648143081483>"
@@ -370,10 +370,10 @@ def forgotpassword():
 
             login_user(user)
 
-            user.active_sessions += 1  #type: ignore
+            user.active_sessions += 1  
 
-            user.otp = "null"  #type: ignore
-            user.password = "Chnageme"  #type: ignore
+            user.otp = "null"  
+            user.password = "Chnageme"  
 
             db.session.commit()
 
@@ -390,7 +390,7 @@ def forgotpassword():
 
     return render_template(
         'users_pages/verify.html',
-        email=user.email,  #type: ignore
+        email=user.email,  
         msg=msgg)
 
 
@@ -416,7 +416,12 @@ def change_password():
 #Add requiremts
 @views.route('/register', methods=['GET', 'POST'])
 def registeracc():
+    if current_user.is_authenticated:
+        return redirect(url_for('views.home'))
+    
+
     client_ip = request.headers.get('X-Forwarded-For')
+    user_agent = request.headers.get('User-Agent')
 
     if client_ip:
         client_ip = client_ip.split(',')[0].strip()
@@ -425,62 +430,70 @@ def registeracc():
                                         request.remote_addr)
 
     if client_ip in blacklist_ips:
-        return jsonify(message=f"Error 403 your ip is {client_ip}"), 403
+        return jsonify(message=f"Please disable vpn/proxy. Current ip : {client_ip}"), 403
 
     if client_ip not in whitelist_ips:
         api_url = f'https://ipinfo.io/{client_ip}?token=8f8d5a48b50694'
         response = requests.get(api_url)
-        data = response.json()
 
-        if 'country' in data:
-            country_code = data['country']
-            if country_code != 'EG':
+        if response.status_code == 200 :
+            data = response.json()
+
+            if 'country' in data:
+                country_code = data['country']
+                if country_code != 'EG':
+                    blacklist_ips.add(client_ip)
+                    return jsonify(message=f"Please disable vpn/proxy. Current ip : {client_ip}")
+            else:
                 blacklist_ips.add(client_ip)
-                return jsonify(message="Please disable vpn/proxy.")
-        else:
-            blacklist_ips.add(client_ip)
-            return jsonify(
-                message="Unable to determine the country. Login failed.")
+                return jsonify(
+                    message="Unable to determine the country. Login failed.")
 
-    user_agent = request.headers.get('User-Agent')
-    if current_user.is_authenticated:
-        return redirect(url_for('views.home'))
+
+
+    whitelist_ips.add(client_ip)
+
 
     if request.method == 'POST':
         username = request.form.get('username')
         user = User.query.filter_by(username=username).first()
+
         if user:
-            return "Username taken"
+            return "Username is taken try another"
         email = request.form.get('email')
         number = request.form.get('number')
         stage = request.form.get('stage')
 
+
+        #Need to have a web-interface
+
         regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7}\b'
+
         if(re.fullmatch(regex, email)):
             pass
         else :
             return 'Invaild Email Address'
+        
         if re.match(r'^01\d{8,}$', number):
             pass
         else :
             return "Invaild Phone Number"
+        
         if re.match(r'^[a-zA-Z0-9]+$', username):
             pass
         else :
             return "Invaild Username"
-        latest_user = User.query.order_by(User.id.desc()).first()
+        
 
-        latest_id = latest_user.id if latest_user else 0
 
-        random_number = random.randint(latest_id + 1, latest_id + 20)
 
         new_user = User(
-            # id = random_number , # More than the last user and not to be repated 
-            username=username,  #type: ignore
-            password="password",  #type: ignore
-            email=email,  #type: ignore
-            otp="Waiting approval"
-            ,stage = stage)  #type: ignore
+            username=username,  
+            password="password",  
+            email=email,  
+            otp="Waiting approval",
+            type ="student_register",
+            stage = stage)  
 
         db.session.add(new_user)
         db.session.commit()
@@ -657,7 +670,7 @@ def teacher(subject, teacher_name):
                     item['link'] = item['name']
                 break
 
-    if courses == None:  #type: ignore
+    if courses == None:  
         abort(404)
 
 
@@ -693,7 +706,7 @@ def videos(subject, teacher_name, course_name):
                         playlist_id = course.get('playlist_id', '')
                         folder = course.get('folder', '')
 
-    if videos == None:  #type: ignore
+    if videos == None:  
         abort(404)
 
     teachername = course_name
@@ -719,7 +732,7 @@ def ashrafelshemawy():
 
 
 @views.route(
-    "/subjects/<subject>/<teacher_name>/<course_name>/update")  #type: ignore
+    "/subjects/<subject>/<teacher_name>/<course_name>/update")  
 def update(subject, teacher_name, course_name):
     videos = None
     if "-" in course_name:
@@ -803,7 +816,7 @@ def create_user_route():
             password="password",
             email=email,
             stage=stage,
-            otp="null")  #type: ignore
+            otp="null")  
         
         db.session.add(new_user)
         db.session.commit()
@@ -887,15 +900,15 @@ def approve(user_id):
     if user_id == -1:
         return "You cant edit"
     user = User.query.filter_by(id=user_id).first()
-    user.otp = "null"  #type: ignore
+    user.otp = "null"  
     db.session.commit()
 
-    recipient = user.email  #type: ignore
+    recipient = user.email  
     subject = "Account Approved"
 
     html_content = read_html_file(
         'website/templates/users_pages/account_created.html',
-        username=user.username)  #type: ignore
+        username=user.username)  
 
     msg = Message(subject, recipients=[recipient])
     msg.html = html_content
@@ -912,7 +925,7 @@ def disable(user_id):
         return "You cant edit"
 
     user = User.query.filter_by(id=user_id).first()
-    user.otp = "Waiting approval"  #type: ignore
+    user.otp = "Waiting approval"  
     db.session.commit()
 
     return redirect(url_for('views.manage_user', user_id=user_id))
@@ -1006,7 +1019,7 @@ def delete_user(user_id):
 
     user_to_delete = User.query.get(user_id)
 
-    if user_to_delete.username in ['spy', 'biba']:  #type: ignore
+    if user_to_delete.username in ['spy', 'biba']:  
         return "Cant delete user"
     
     if user_to_delete.type == "admin":
@@ -1024,10 +1037,6 @@ def delete_user(user_id):
 
     return redirect("/admin")
 
-import smtplib
-import ssl
-from email.mime.text import MIMEText
-
 @views.route('/send_email', methods=['GET', 'POST'])
 def send_email():
 
@@ -1041,24 +1050,19 @@ def send_email():
         html_content = read_html_file(
             'website/templates/users_pages/email.html')
 
-        msg = Message(subject, recipients=[recipient])  #type: ignore
+        msg = Message(subject, recipients=[recipient])  
         msg.html = html_content
 
         try:
-            context = ssl.SSLContext(ssl.PROTOCOL_TLS)
-            context.load_cert_chain(certfile='cert.pem', keyfile='key.pem')
-
-            # Connect to the SMTP server using smtplib with the SSL context
-            with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as server:
-                server.login('amooraymanh730072@gmail.com', 'ocpb mxsf ncwu pebf')
-                server.sendmail('sanawyasessions@spysnet.com', [recipient], msg.as_string())
-
+            mail.send(msg) 
             return render_template('used_pages/landing.html')
     
         except Exception as e:
-            return f"Failed to send email. Account Got created tho {e}"
+            discord_log_backend(f"Error Sending the email to {recipient} : {e}")
+            return render_template('used_pages/landing.html')
     else:
         return "Email doesnt exist"
+
 
 
 
@@ -1285,8 +1289,8 @@ def manage_teachers(subject):
                     else:
                         return jsonify({
                             "message":
-                            f"Teacher '{teacher_name}' does not exist in subject '{subject}'!"  #type: ignore
-                        }), 400  #type: ignore
+                            f"Teacher '{teacher_name}' does not exist in subject '{subject}'!"  
+                        }), 400  
 
             else:
                 return jsonify(
@@ -1311,7 +1315,7 @@ def manage_courses(subject, teachername):
          for teacher in teachers if teacher['link'] == teachername), None)
 
     course_names = [course['name']
-                    for course in teacher_courses]  #type: ignore
+                    for course in teacher_courses]  
 
     teacherinfo = None
 
@@ -1358,7 +1362,7 @@ def manage_courses(subject, teachername):
                 "playlist_id": "",
                 "folder": ""
             }
-            teacher_courses.append(new_course)  #type: ignore
+            teacher_courses.append(new_course)  
             data[subject]['teachers'] = teachers
             save_data(data, current_user.stage)
             return redirect(
@@ -1369,7 +1373,7 @@ def manage_courses(subject, teachername):
         if request.form['action'] == 'Remove':
 
             course_name = request.form['remove']
-            file_path = f'website/static/assets/Stage{current_user.stage}/{subject}/{teachername}/' + course_name + '.jpg'  #type: ignore
+            file_path = f'website/static/assets/Stage{current_user.stage}/{subject}/{teachername}/' + course_name + '.jpg'  
 
             if os.path.exists(file_path):
                 os.remove(file_path)
@@ -1380,11 +1384,11 @@ def manage_courses(subject, teachername):
             if course_name == "":
                 return "Course name is none "
             teacher_courses = [
-                course for course in teacher_courses  #type: ignore
+                course for course in teacher_courses  
                 if course['name'] != course_name
             ]
 
-            teacher['courses'] = teacher_courses  #type: ignore
+            teacher['courses'] = teacher_courses  
             data[subject]['teachers'] = teachers
 
             save_data(data, current_user.stage)
