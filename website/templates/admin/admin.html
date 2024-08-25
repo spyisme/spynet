@@ -33,13 +33,12 @@
                         window.location.href = url;
                     }
                 </script>
-                       <br class="mobile-break">
-                       <br class="mobile-break">
-                      <div class="hide-on-mobile">&nbsp&nbsp</div> 
+{%if current_user.username == 'spy'%}
+
           <button type="button" class="download" onclick="redirectTo('/database')">Download Database</button>      &nbsp&nbsp
          
                 <button type="button" class="download" onclick="redirectTo('/stages-data')">Download Stages Data</button> 
-            
+            {%endif%}
             </form>
         </div>
         <br><br>

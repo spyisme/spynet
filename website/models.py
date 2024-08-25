@@ -12,7 +12,7 @@ class User(db.Model, UserMixin):
     stage = db.Column(db.String(50), nullable=True, default=3)
     type = db.Column(db.String(50), default="student")
     created_by = db.Column(db.String(50), nullable=True)
-    logs = db.Column(db.Text, nullable=True, default='[]')  # Store logs as JSON string
-    subscription_date = db.Column(db.Date, nullable=True)
+    logs = db.Column(db.Text, nullable=True, default='[]')  
+    subscription_date = db.Column(db.Date, default=date(1970, 1, 1))
     subscription_method = db.Column(db.String(50), default="None")
     phone_number = db.Column(db.String(15), unique=True, nullable=False)
