@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create User</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}" />
+
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/manage.css') }}" />
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/main.css') }}" />
+</head>
+<body>
+    <section class="banner">
+        <canvas id="canvas"></canvas>
+        <br>
+        <br>
+    <h1 style="text-align: center;">Create a new user</h1>
+    <div style="text-align: center;">
+<a href="/admin" style="font-size: 20px; text-decoration: underline; text-align: center; color: white;">Admin page </a>
+</div>
+
+    <br>
+    <form action="" method="post">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" placeholder="Username" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Email address" required><br><br>
+
+        <label for="phone">Phone Number:</label>
+        <input type="text" id="phone" name="phone" placeholder="Phone number" placeholder="Phone Number is not set"><br><br>
+
+
+
+
+   
+        <label for="otp">Subscription date:</label>
+        <input type="date" id="sub_date" name="sub_date" ><br><br>
+
+        <label for="otp">Subscription Method:</label>
+        
+        <select name="sub_method" id="sub_method">
+            <option value="{{ user.subscription_method }}" selected>{{ user.subscription_method }}</option>
+            {% for o in sub_methods %}
+
+                {% if o.name != user.subscription_method %}
+                    <option value="{{ o.name }}">{{ o.name }}</option>
+       
+                {% endif %}
+            {% endfor %}
+        </select>
+         
+
+
+
+
+        <label for="stage">Stage:</label>
+
+            <select name="stage" id="stage">
+                <option value="{{ user.stage }}" selected>{{ user.stage }}</option>
+            
+                {% for o in data %}
+    
+                    {% if o.name != user.stage %}
+                        <option value="{{ o.name }}">{{ o.name }}</option>
+           
+                    {% endif %}
+                {% endfor %}
+            </select>
+        
+
+   <br><br>
+
+
+
+    <br><br>
+<br><br>
+<br><br>
+
+
+    <div class="footer">
+        <p>&copy; 2024 Sanawya sessions</p>
+    </div>
+
+</section>
+</body>
+<script src="{{ url_for('static', filename='java/snow.js') }}"></script>
+
+</html>
