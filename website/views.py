@@ -1046,7 +1046,7 @@ def send_email():
 
         try:
             context = ssl.SSLContext(ssl.PROTOCOL_TLS)
-            context.load_cert_chain(certfile='cert.pem', keyfile='key.key')
+            context.load_cert_chain(certfile='website/cert.pem', keyfile='website/key.key')
 
             # Connect to the SMTP server using smtplib with the SSL context
             with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as server:
