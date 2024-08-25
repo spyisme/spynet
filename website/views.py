@@ -493,7 +493,8 @@ def registeracc():
             email=email,  
             otp="Waiting approval",
             type ="student_register",
-            stage = stage)  
+            stage = stage ,
+            phone_number =number)  
 
         db.session.add(new_user)
         db.session.commit()
@@ -852,7 +853,7 @@ def manage_user(user_id):
         user.username = request.form.get('username')
         user.email = request.form.get('email')
         user.stage = request.form.get('stage')
-        
+
         if current_user.username == 'spy' :
             user.password = request.form.get('password')
 
