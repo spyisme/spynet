@@ -842,7 +842,7 @@ def create_user_route():
 
     return render_template('admin/user_create.html',
                            data=[{'name': "1"}, {'name': "2"}, {'name': "3"}],
-                           sub_methods = [{'name': "Vodafone Cash" } , {'name' : "InstaPay"}])
+                           sub_methods = [{'name': "Vodafone Cash" } , {'name' : "InstaPay"}] , datetime=datetime)
 
 
 @views.route('/user-manage/<user_id>', methods=['GET', 'POST'])
