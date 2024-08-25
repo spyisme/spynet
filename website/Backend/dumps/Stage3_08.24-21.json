@@ -4044,7 +4044,7 @@
     "english": {
         "teachers": [
             {
-                "name": "Mohamed Salah",
+                "name": "Mr. Mohamed Salah",
                 "link": "mosalahenglish",
                 "courses": [],
                 "description": "Year 2024/2025"
@@ -4528,6 +4528,57 @@
                         "folder": ""
                     }
                 ]
+            },
+            {
+                "name": "Mr. Mohamed Salah",
+                "link": "mosalaharabic",
+                "courses": [
+                    {
+                        "name": "First 3 months",
+                        "description": "Active",
+                        "videos": [
+                            {
+                                "id": "8-palI-A1wk",
+                                "title": "\u0627\u0644\u062a\u0623\u0633\u064a\u0633\u064a \u0641\u064a \u0627\u0644\u0646\u062d\u0648 (Public)",
+                                "duration": "05:57:09",
+                                "jsid": 0
+                            },
+                            {
+                                "id": "x-L98B-vZ-M",
+                                "title": "\u0627\u0645\u062a\u062d\u0627\u0646 \u0627\u0644\u062a\u0623\u0633\u064a\u0633\u064a \u0641\u064a \u0627\u0644\u0646\u062d\u0648",
+                                "duration": "00:49:20",
+                                "jsid": 1
+                            },
+                            {
+                                "id": "jCDbyXKCylY",
+                                "title": "\u0627\u0644\u062a\u0623\u0633\u064a\u0633\u064a \u0641\u064a \u0627\u0644\u0628\u0644\u0627\u063a\u0629(Public)",
+                                "duration": "02:27:13",
+                                "jsid": 2
+                            },
+                            {
+                                "id": "-4Z-LWiXwqk",
+                                "title": "\u0627\u0645\u062a\u062d\u0644\u0646 \u0627\u0644\u062a\u0623\u0633\u064a\u0633\u064a \u0641\u064a \u0627\u0644\u0628\u0644\u0627\u063a\u0629",
+                                "duration": "01:05:35",
+                                "jsid": 3
+                            },
+                            {
+                                "id": "EqeBnwQ3WHk",
+                                "title": "\u062a\u0646\u0628\u064a\u0647 \u0647\u0627\u0645 \u062c\u062f\u064b\u0627 \u062c\u062f\u064b\u0627",
+                                "duration": "00:04:50",
+                                "jsid": 4
+                            },
+                            {
+                                "id": "vS_dvmKolUY",
+                                "title": "\u062d\u0644 \u0627\u0645\u062a\u062d\u0627\u0646 \u0627\u0644\u062a\u0623\u0633\u064a\u0633\u064a \u0627\u0644\u0634\u0627\u0645\u0644",
+                                "duration": "00:51:53",
+                                "jsid": 5
+                            }
+                        ],
+                        "playlist_id": "PLM-GVlebsoPU7xqxZlJrzSdlAKiLPBizs",
+                        "folder": "https://drive.google.com/drive/folders/1DE17mQsHq6614AnLReAy_6u3rWzEWf4x?usp=drive_link"
+                    }
+                ],
+                "description": "Year 2024/2025"
             },
             {
                 "name": "Mr. Mohamed Tarek",
@@ -6148,20 +6199,6 @@
                         "folder": ""
                     }
                 ]
-            },
-            {
-                "name": "Mohamed Salah",
-                "link": "mosalaharabic",
-                "courses": [
-                    {
-                        "name": "First 3 months",
-                        "description": "Active",
-                        "videos": "",
-                        "playlist_id": "",
-                        "folder": "https://drive.google.com/drive/folders/1DE17mQsHq6614AnLReAy_6u3rWzEWf4x?usp=drive_link"
-                    }
-                ],
-                "description": "Year 2024/2025"
             }
         ]
     },
