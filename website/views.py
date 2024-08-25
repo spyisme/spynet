@@ -386,7 +386,7 @@ def forgotpassword():
 
             session.permanent = True
 
-            return redirect('/change_password')
+            return  render_template('used_pages/landing.html')
         else:
             return redirect(
                 f'/forgotpassword?msg=failedtologin&user={username}')
