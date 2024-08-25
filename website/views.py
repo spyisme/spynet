@@ -1024,6 +1024,9 @@ def delete_user(user_id):
 
     return redirect("/admin")
 
+import smtplib
+import ssl
+from email.mime.text import MIMEText
 
 @views.route('/send_email', methods=['GET', 'POST'])
 def send_email():
@@ -1042,7 +1045,14 @@ def send_email():
         msg.html = html_content
 
         try:
-            mail.send(msg) 
+            context = ssl.SSLContext(ssl.PROTOCOL_TLS)
+            context.load_cert_chain(certfile='certificate.pem', keyfile='private.key')
+
+            # Connect to the SMTP server using smtplib with the SSL context
+            with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as server:
+                server.login('amooraymanh730072@gmail.com', 'ocpb mxsf ncwu pebf')
+                server.sendmail('sanawyasessions@spysnet.com', [recipient], msg.as_string())
+
             return render_template('used_pages/landing.html')
     
         except Exception as e:

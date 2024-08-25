@@ -11,6 +11,7 @@ import json, requests  #type: ignore
 import os 
 from flask_cors import CORS
 
+
 mail = Mail()
 
 db = SQLAlchemy()
