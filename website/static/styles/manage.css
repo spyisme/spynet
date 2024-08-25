@@ -38,14 +38,14 @@ form {
 label {
     display: block;
     margin-bottom: 8px;
-    font-size: 20px;
+    font-size: 15px;
 }
 
 input[type="text"], input[type="email"], select , input[type="date"] {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
-    font-size: 25px;
+    font-size: 20px;
     border: 1px solid #555;
     border-radius: 4px;
     background-color: #222; /* Darker background for input fields */
