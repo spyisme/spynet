@@ -61,7 +61,7 @@
                 {% for user in users %}
                     <tr {% if "Waiting" in user.otp %}style="color: red;"{% endif %}>
                         {% set current_date = datetime.utcnow() %}
-                        {% set subscription_date = user.subscription_date %}
+                        {% set subscription_date = datetime.combine(user.subscription_date, datetime.min.time()) %}
                         {% set days_passed = (current_date - subscription_date).days %}
                     
                         {% if days_passed > 30 %}
