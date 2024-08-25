@@ -129,7 +129,8 @@ def create_app():
 
 
             elif current_user.subscription_date + timedelta(days=30) < datetime.today().date() :
-                return "Please renew"
+                if current_user.type != 'admin' :
+                    return "Please renew"
         
 
             else:
