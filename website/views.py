@@ -1056,7 +1056,7 @@ def send_email():
             return render_template('used_pages/landing.html')
     
         except Exception as e:
-            return f"Failed to send email. Account Got created tho"
+            return f"Failed to send email. Account Got created tho {e}"
     else:
         return "Email doesnt exist"
 
