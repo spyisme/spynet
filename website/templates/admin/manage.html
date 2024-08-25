@@ -49,6 +49,21 @@
         <label for="otp">Subscription date:</label>
         <input type="date" id="sub_date" name="sub_date" value="{{ user.subscription_date }}" disabled><br><br>
 
+        <label for="otp">Subscription Method:</label>
+        <input type="date" id="sub_method" name="sub_method" value="{{ user.subscription_method }}" disabled><br><br>
+
+        
+        <select name="sub_method" id="sub_method">
+            <option value="{{ user.subscription_method }}" selected>{{ user.subscription_method }}</option>
+        
+            {% for o in sub_methods %}
+
+                {% if o.name != user.subscription_method %}
+                    <option value="{{ o.subscription_method }}">{{ o.subscription_method }}</option>
+       
+                {% endif %}
+            {% endfor %}
+        </select>
 
 
         <label for="stage">Stage:</label>
