@@ -878,7 +878,8 @@ def manage_user(user_id):
                     'after': getattr(user, key)
                 }
 
-        discord_log_backend(changes)
+        discord_log_backend("changes")
+
         db.session.commit()
         return redirect(url_for('views.manage_user',user_id=user_id)) 
 
