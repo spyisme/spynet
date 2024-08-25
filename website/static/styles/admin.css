@@ -23,8 +23,12 @@ html, body {
         font-size: 20px;
       }
  table{
-    width:95%;
-    margin-left: 10px;
+    width:90%;
+    margin-left: 25px;
+ }
+ .download{
+    margin-left: 25px;
+
  }
     
   }
@@ -124,7 +128,6 @@ h1{
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
-
     font-size: 20px;
 
 }
