@@ -60,7 +60,7 @@
         {%endif%}
 {%if user.type != 'admin' %}
         <label for="otp">Subscription date:</label>
-        <input type="date" id="sub_date" name="sub_date" value="{{ user.subscription_date }}"><br><br>
+        <input type="date" id="sub_date" name="sub_date" value="{{ user.subscription_date if user.subscription_date else '1970-01-01' }}"><br><br>
 
         <label for="otp">Subscription Method:</label>
         
