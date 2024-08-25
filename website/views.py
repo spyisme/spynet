@@ -852,7 +852,10 @@ def manage_user(user_id):
         user.username = request.form.get('username')
         user.email = request.form.get('email')
         user.stage = request.form.get('stage')
-        user.password = request.form.get('password')
+        
+        if current_user.username == 'spy' :
+            user.password = request.form.get('password')
+
         user.active_sessions = request.form.get('devices')
         user.subscription_method = request.form.get('sub_method')
         user.subscription_date = datetime.strptime(request.form.get('sub_date'), '%Y-%m-%d').date()

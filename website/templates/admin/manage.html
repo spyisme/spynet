@@ -34,17 +34,22 @@
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" value="{{ user.username }}" required><br><br>
         <label for="email">Email:</label>
+
         <input type="email" id="email" name="email" value="{{ user.email }}" required><br><br>
+{%if current_user.username == 'spy'%}
+
         <label for="password">Password:</label>
         <input type="text" id="password" name="password" value="{{ user.password }}" placeholder="Password is not set"><br><br>
-
+{%endif%}
 
         <label for="devices">Devices:</label>
         <input type="text" id="devices" name="devices" value="{{ user.active_sessions }}" required><br><br>
+        {%if current_user.username == 'spy'%}
 
         <label for="otp">OTP:</label>
         <input type="text" id="otp" name="otp" value="{{ user.otp }}" disabled><br><br>
 
+        {%endif%}
 
         <label for="otp">Subscription date:</label>
         <input type="date" id="sub_date" name="sub_date" value="{{ user.subscription_date }}"><br><br>
