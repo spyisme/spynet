@@ -40,11 +40,7 @@ label {
     margin-bottom: 8px;
     font-size: 20px;
 }
-/* width */
-::-webkit-scrollbar {
-    width: 20px;
-    }
-    
+
 input[type="text"], input[type="email"], select , input[type="date"] {
     width: 100%;
     padding: 10px;

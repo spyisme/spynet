@@ -53,7 +53,6 @@
         
         <select name="sub_method" id="sub_method">
             <option value="{{ user.subscription_method }}" selected>{{ user.subscription_method }}</option>
-        
             {% for o in sub_methods %}
 
                 {% if o.name != user.subscription_method %}
