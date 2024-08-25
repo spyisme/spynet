@@ -323,7 +323,10 @@ def forgotpassword():
     msgg = request.args.get('msg')
 
     user = User.query.filter_by(username=username).first()
-
+    if user:
+        pass
+    else:
+        user = User.query.filter_by(email=username).first()
     if request.method == 'GET':  
         if user:  
             if user.otp == 'bypassotp':
