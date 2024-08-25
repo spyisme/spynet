@@ -793,23 +793,41 @@ def create_user_route():
         username = request.form.get('username')
         email = request.form.get('email')
         stage = request.form.get('stage')
+        phone = request.form.get('phone')
+        paid_status = request.form.get('paid')
 
         if not username:
             return jsonify({'error':
                             'Username and password are required'}), 400
 
         existing_user = User.query.filter_by(username=username).first()
+
         if existing_user:
             return jsonify({'error': 'Username already exists'}), 400
-
-
-        new_user = User(
-            username=username,
-            password="password",
-            email=email,
-            stage=stage,
-            otp="null")  
         
+        if paid_status == 'Yes':
+            subscription_method = request.form.get('sub_method')
+            subscription_date = datetime.strptime(request.form.get('sub_date'), '%Y-%m-%d').date()
+
+            new_user = User(
+                username=username,
+                password="password",
+                email=email,
+                stage=stage,
+                otp="null"
+                ,subscription_method= subscription_method,
+                subscription_date = subscription_date
+                )  
+        else:
+         
+         new_user = User(
+                username=username,
+                password="password",
+                email=email,
+                stage=stage,
+                otp="null",
+                phone_number= phone)  
+         
         db.session.add(new_user)
         db.session.commit()
 
