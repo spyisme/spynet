@@ -36,6 +36,14 @@
         <label for="email">Email:</label>
 
         <input type="email" id="email" name="email" value="{{ user.email }}" required><br><br>
+
+
+
+        <label for="phone">Phone Number:</label>
+        <input type="text" id="phone" name="phone" value="{{ user.phone_number }}" placeholder="Phone Number is not set"><br><br>
+
+
+
 {%if current_user.username == 'spy'%}
 
         <label for="password">Password:</label>
