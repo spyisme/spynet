@@ -59,7 +59,7 @@
             {% for o in sub_methods %}
 
                 {% if o.name != user.subscription_method %}
-                    <option value="{{ o.subscription_method }}">{{ o.subscription_method }}</option>
+                    <option value="{{ o.name }}">{{ o.name }}</option>
        
                 {% endif %}
             {% endfor %}
