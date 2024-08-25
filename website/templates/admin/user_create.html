@@ -34,7 +34,14 @@
 
 
 
-
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Get today's date
+                const today = new Date().toISOString().split('T')[0];
+                // Set the value of the input field to today's date
+                document.getElementById('sub_date').value = today;
+            });
+        </script>
    
         <label for="otp">Subscription date:</label>
         <input type="date" id="sub_date" name="sub_date" ><br><br>
