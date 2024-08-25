@@ -784,7 +784,7 @@ def admin():
                            users=users)
 
 
-@views.route('/create_user', methods=['POST'])
+@views.route('/admin-create', methods=['GET', 'POST'])
 def create_user_route():
     if current_user.type != 'admin':
         return "User is not an admin"
@@ -801,14 +801,9 @@ def create_user_route():
         existing_user = User.query.filter_by(username=username).first()
         if existing_user:
             return jsonify({'error': 'Username already exists'}), 400
-        latest_user = User.query.order_by(User.id.desc()).first()
 
-        latest_id = latest_user.id if latest_user else 0
-
-        random_number = random.randint(latest_id + 1, latest_id + 20)
 
         new_user = User(
-            # id = random_number ,
             username=username,
             password="password",
             email=email,
@@ -823,7 +818,7 @@ def create_user_route():
 
         return redirect("/admin")
 
-    return jsonify({'error': 'Method not allowed'}), 405
+    return render_template('admin/user_create.html')
 
 
 @views.route('/user-manage/<user_id>', methods=['GET', 'POST'])
