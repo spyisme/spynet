@@ -42,7 +42,17 @@
                 document.getElementById('sub_date').value = today;
             });
         </script>
-   
+   <div class="control">
+    <label class="radio">
+      <input type="radio" name="foobar" />
+      Foo
+    </label>
+    <label class="radio">
+      <input type="radio" name="foobar" checked />
+      Bar
+    </label>
+  </div>
+  
         <label for="otp">Subscription date:</label>
         <input type="date" id="sub_date" name="sub_date" ><br><br>
 
@@ -70,7 +80,7 @@
                 {% endfor %}
             </select>
         
-        <input style="background-color: green;" type="submit" value="Update User" onclick="return confirm('Are you sure you want to create this user?');">
+        <input style="background-color: green;" type="submit" value="Create User" onclick="return confirm('Are you sure you want to create this user?');">
 
 </form>
    <br><br>
