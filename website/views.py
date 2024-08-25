@@ -854,6 +854,7 @@ def manage_user(user_id):
         user.stage = request.form.get('stage')
         user.password = request.form.get('password')
         user.active_sessions = request.form.get('devices')
+        user.subscription_method = request.form.get('sub_method')
 
         db.session.commit()
         return redirect(url_for('views.manage_user',user_id=user_id)) 
