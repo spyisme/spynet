@@ -846,6 +846,16 @@ def manage_user(user_id):
         if existing_user and existing_user.username != user.username:
             return jsonify({'error': 'Username already exists'}), 400
 
+        user_before = {
+            'username': user.username,
+            'email': user.email,
+            'stage': user.stage,
+            'phone_number': user.phone_number,
+            'password': user.password,
+            'active_sessions': user.active_sessions,
+            'subscription_method': user.subscription_method,
+            'subscription_date': user.subscription_date,
+        }
         user.username = request.form.get('username')
         user.email = request.form.get('email')
         user.stage = request.form.get('stage')
@@ -858,7 +868,17 @@ def manage_user(user_id):
         if user.type != 'admin' :
             user.subscription_method = request.form.get('sub_method')
             user.subscription_date = datetime.strptime(request.form.get('sub_date'), '%Y-%m-%d').date()
+        changes = {}
 
+        # Compare each field to identify changes
+        for key, value in user_before.items():
+            if getattr(user, key) != value:
+                changes[key] = {
+                    'before': value,
+                    'after': getattr(user, key)
+                }
+
+        discord_log_backend(changes)
         db.session.commit()
         return redirect(url_for('views.manage_user',user_id=user_id)) 
 
