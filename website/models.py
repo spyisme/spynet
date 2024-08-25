@@ -15,4 +15,4 @@ class User(db.Model, UserMixin):
     logs = db.Column(db.Text, nullable=True, default='[]')  # Store logs as JSON string
     subscription_date = db.Column(db.Date, nullable=True)
     subscription_method = db.Column(db.String(50), default="None")
-    phone_number = db.Column(db.Integer , unique=True, nullable=False)
+    phone_number = db.Column(db.String(15), unique=True, nullable=False)
