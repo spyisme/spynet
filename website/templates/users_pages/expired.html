@@ -13,6 +13,13 @@
     <div class="form">
         <h1 class="title">Your subscription has expired</h1>
         <p class="subtitle">Last subscription date : {{current_user.subscription_date}}.</p>
+        <p class="subtitle">
+            Instapay : <span id="instapay"></span> , Vodafone Cash : <span id="vodafone"></span>
+          </p>
+          <script type="text/javascript">
+            document.getElementById("instapay").textContent = "01111251681";
+            document.getElementById("vodafone").textContent = "01070257965";
+          </script>
     </div>
 </body>
 </html>
