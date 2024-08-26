@@ -949,7 +949,7 @@ def approve(user_id):
     msg = Message(subject, recipients=[recipient])
     msg.html = html_content
     mail.send(msg)
-
+    discord_log_backend(f"{current_user.username} approved {user.username}")
     return redirect(url_for('views.manage_user', user_id=user_id))
 
 
