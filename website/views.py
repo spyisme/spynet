@@ -842,7 +842,7 @@ def create_user_route():
         return redirect("/admin")
 
     return render_template('admin/user_create.html',
-                           data=[{'name': "1"}, {'name': "2"}, {'name': "3"}],
+                           data=[{'name': "3"}, {'name': "2"}, {'name': "1"}],
                            sub_methods = [{'name': "Vodafone Cash" } , {'name' : "InstaPay"}])
 
 
