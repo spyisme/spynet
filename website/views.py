@@ -964,6 +964,8 @@ def disable(user_id):
     user.otp = "Waiting approval"  
     db.session.commit()
 
+    discord_log_backend(f"{current_user.username} disabled {user.username}")
+
     return redirect(url_for('views.manage_user', user_id=user_id))
 
 
