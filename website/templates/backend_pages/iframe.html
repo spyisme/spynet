@@ -122,12 +122,12 @@ select option {
         <br>
         <label for="name">Video Name:</label>
         <br>
-        <input type="text" name="videoname" required autocomplete="off"  oninput="validateInput(this)" placeholder="{{videoname}}"> 
+        <input type="text" name="videoname" id="videoname" required autocomplete="off"  oninput="validateInput(this)" placeholder="{{videoname}}"> 
         <br>
         <br>
 
         <button type="submit">Send Message</button>
-        
+
         <button type="button" class="submit" onclick="senddefult()">Send Message with default name</button>
 
     </form>

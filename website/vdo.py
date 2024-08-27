@@ -538,6 +538,7 @@ def iframevids():
     url = url.replace("/play/", "/embed/")
     if request.method == 'POST':
         videoname = request.form.get('videoname')
+        return videoname
         videoname = re.sub(r'[\s\W_]+', '', videoname)
 
         if "youtube" in url.lower() or "youtu.be" in url.lower():
