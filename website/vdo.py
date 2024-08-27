@@ -524,9 +524,9 @@ def discord():
 
 @vdo.route('/iframes', methods=['GET', 'POST'])
 def iframevids():
-    url = request.args.get('url') or request.form.get('url')
-    namee = request.args.get('name') or request.form.get('name')
-    videoname = request.args.get('videoname') or request.form.get('videoname')
+    url = request.form.get('url')
+    namee =  request.form.get('name')
+    videoname =  request.form.get('videoname')
 
     if namee == "nawar":
         webhook_url = "https://discord.com/api/webhooks/1159805446039797780/bE4xU3lkcjlb4vfCVQ9ky5BS2OuD01Y8g9godljNBfoApGt59-VfKf19GQuMUmH0IYzw"
