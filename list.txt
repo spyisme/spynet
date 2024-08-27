@@ -1,0 +1,1 @@
+app https://r2.interstellarseries.com/hls/9176383777/83e212b276934326b5c72a01b6c4d1ca.m3u8 --header "User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:102.0) Gecko/20100101 Firefox/102.0" --header "Referer: https://iframe.mediadelivery.net/" --save-name Basiccourse -M format=mp4 --auto-select --no-log  & move Basiccourse.mp4 ./output
