@@ -60,8 +60,7 @@
             <tbody>
                 {% for user in users %}
 
-                <tr style="{% if 'Waiting' in user.otp %}color: red;{% endif %} {% if user.expired %}text-decoration: line-through;{% endif %}">
-
+                <tr style="{% if 'Waiting' in user.otp %}color: red;{% endif %} {% if user.expired %}text-decoration: line-through; font-weight: bold;{% endif %}">
 
                         <td>{{ user.id }}</td>
                         <td>
