@@ -59,11 +59,9 @@
             </thead>
             <tbody>
                 {% for user in users %}
-                    <tr {% if "Waiting" in user.otp %}style="color: red;"{% endif %}>
 
-{%if user.expired%}
-<del>
-{%endif%}
+                    <tr {% if "Waiting" in user.otp %}style="color: red;"{% endif %} {%if user.expired%} style=" text-decoration: line-through;"{%endif%} >
+
 
                         <td>{{ user.id }}</td>
                         <td>
@@ -78,9 +76,7 @@
                         <td class="hide-on-mobile" >{{ user.stage }}</td>
                         <td><a href="/user-manage/{{ user.id }}">Manage</a></td>
 
-                        {%if user.expired%}
-                        </del>
-                        {%endif%}
+      
 
                     </tr>
                 {% endfor %}
