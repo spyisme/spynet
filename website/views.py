@@ -777,10 +777,15 @@ def admin():
     users = User.query.all() 
 
     for user in users:
-        if user.subscription_date and datetime.now() - user.subscription_date >= timedelta(days=30):
-            user.expired = True
+        if user.subscription_date:
+            # Ensure both are datetime objects
+            subscription_datetime = datetime.combine(user.subscription_date, datetime.min.time())
+            if datetime.now() - subscription_datetime >= timedelta(days=30):
+                user.expired = True
+                # Optionally save the updated user state to the database
+                # db.session.commit()
 
-    return render_template('admin/admin.html', users=users, datetime=datetime)
+    return render_template('admin/admin.html', users=users)
 
 
 @views.route('/admin-create', methods=['GET', 'POST'])
