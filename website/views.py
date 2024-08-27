@@ -776,9 +776,11 @@ def admin():
     
     users = User.query.all() 
 
-    return render_template('admin/admin.html',
-                           users=users , datetime= datetime)
+    for user in users:
+        if user.subscription_date and datetime.now() - user.subscription_date >= timedelta(days=30):
+            user.expired = True
 
+    return render_template('admin/admin.html', users=users, datetime=datetime)
 
 
 @views.route('/admin-create', methods=['GET', 'POST'])
