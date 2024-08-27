@@ -784,7 +784,7 @@ def admin():
                 user.expired = True
                 # Optionally save the updated user state to the database
                 # db.session.commit()
-                return user.username
+                
     return render_template('admin/admin.html', users=users)
 
 

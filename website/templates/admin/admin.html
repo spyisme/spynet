@@ -62,7 +62,7 @@
                     <tr {% if "Waiting" in user.otp %}style="color: red;"{% endif %}>
 
 {%if user.expired%}
-<ins>
+<del>
 {%endif%}
 
                         <td>{{ user.id }}</td>
@@ -79,7 +79,7 @@
                         <td><a href="/user-manage/{{ user.id }}">Manage</a></td>
 
                         {%if user.expired%}
-                        </ins>
+                        </del>
                         {%endif%}
 
                     </tr>
