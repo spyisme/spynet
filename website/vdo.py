@@ -524,9 +524,9 @@ def discord():
 
 @vdo.route('/iframes', methods=['GET', 'POST'])
 def iframevids():
-    url = request.form.get('url')
-    namee =  request.form.get('name')
-    videoname =  request.form.get('videoname')
+    url = request.args.get('url') or request.form.get('url')
+    namee = request.args.get('name') or request.form.get('name')
+    videoname = request.args.get('videoname') or request.form.get('videoname')
 
     if namee == "nawar":
         webhook_url = "https://discord.com/api/webhooks/1159805446039797780/bE4xU3lkcjlb4vfCVQ9ky5BS2OuD01Y8g9godljNBfoApGt59-VfKf19GQuMUmH0IYzw"
@@ -538,7 +538,6 @@ def iframevids():
     url = url.replace("/play/", "/embed/")
     if request.method == 'POST':
         videoname = request.form.get('videoname')
-        return videoname
         videoname = re.sub(r'[\s\W_]+', '', videoname)
 
         if "youtube" in url.lower() or "youtu.be" in url.lower():
@@ -574,11 +573,15 @@ def hosssamsameh():
 
     webhook_url = "https://discord.com/api/webhooks/1224528158741626901/mIG58hd-FLTe79XHUsgwE0BxyyKjL2JFs9RyHfLBRfyM1v85YbkJGEzcJyQQVOsfhpRc"
     if request.method == 'POST':
-        name = request.form.get('name')
-        msg = f'```app {url} --header "User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:102.0) Gecko/20100101 Firefox/102.0" --header "Referer: https://iframe.mediadelivery.net/" --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output``` {name}'
-        command = (
-            f'app {url} --header "User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:102.0) Gecko/20100101 Firefox/102.0" --header "Referer: https://iframe.mediadelivery.net/" --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output'
-        )
+        name = request.form.get('videoname')
+        if "interstellar" in url: 
+            msg = f'```app {url} --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output``` {name}'
+            command = f'app {url} --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output;'
+        else :   
+            msg = f'```app {url} --header "User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:102.0) Gecko/20100101 Firefox/102.0" --header "Referer: https://iframe.mediadelivery.net/" --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output``` {name}'
+            command = (
+                f'app {url} --header "User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:102.0) Gecko/20100101 Firefox/102.0" --header "Referer: https://iframe.mediadelivery.net/" --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output'
+            )
         with open('list.txt', 'a') as file:
             file.write(command + '\n')
         message = {'content': f'{msg}'}
