@@ -732,7 +732,11 @@ def ashrafelshemawy():
 
     return render_template('used_pages/ashraf.html')
 
+#-----------------------------------------Basic Course mo adel----------------
+@views.route("/subjects/physics/mohamedadel/Basic-Course")
+def basiccoursemoadel():
 
+    return redirect('https://www.youtube.com/watch?v=Mhcuu-A7RT8&list=PLM-GVlebsoPX_GMg2uu7IGI1bN0idBYOu')
 #Update videos
 
 
