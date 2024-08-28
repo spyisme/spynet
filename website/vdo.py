@@ -652,8 +652,8 @@ def addtolist():
                     cmds_from_file = [line.strip() for line in file if line.strip()]
                 userinput = f'yt-dlp.exe "{userinput}" --cookies-from-browser chrome -f b -o "output/randomname{len(cmds_from_file)}.mp4" '
 
-                with open('list.txt', 'a') as file:
-                    file.write(userinput + '\n')
+            with open('list.txt', 'a') as file:
+                file.write(userinput + '\n')
         else :
             with open('list.txt', 'a') as file:
                 file.write(userinput + '\n')
