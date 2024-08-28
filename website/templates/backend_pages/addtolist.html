@@ -74,12 +74,13 @@
     </style>
 </head>
 <body>
-    <h1 class="new2">SpySnet</h1>
+    <h1 class="new2">Sanawya Sessions</h1>
     {%if newcmd%}
 <p class="new">Command added! ({{newcmd}})</p>
     {%endif%}
     <form method="post">
         <label for="userinput">Enter Command:</label>
+        <input type="checkbox" id="checkbox" name="checkbox" value="checkbox">
         <input type="text" id="userinput" name="userinput" required autocomplete="off">
         <button type="submit">Submit</button>
     </form>

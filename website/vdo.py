@@ -644,11 +644,24 @@ def addtolist():
 
     if request.method == 'POST':
         userinput = request.form['userinput']
-        with open('list.txt', 'a') as file:
-            file.write(userinput + '\n')
-        import random
-        random_number = random.randint(0, 100)
-        return redirect(f'/addcmd?newcmd={random_number}')
+        checkbox = request.form.get('checkbox')
+
+        if "youtu" in userinput :
+            if checkbox :
+                with open('list.txt', 'r') as file:
+                    cmds_from_file = [line.strip() for line in file if line.strip()]
+                userinput = f'yt-dlp.exe "{userinput}" --cookies-from-browser chrome -f b -o "output/randomname{len(cmds_from_file)}.mp4" '
+
+                with open('list.txt', 'a') as file:
+                    file.write(userinput + '\n')
+        else :
+            with open('list.txt', 'a') as file:
+                file.write(userinput + '\n')
+
+        with open('list.txt', 'r') as file:
+            cmds_from_file = [line.strip() for line in file if line.strip()]
+
+        return redirect(f'/addcmd?newcmd={len(cmds_from_file)}')
 
     return render_template("backend_pages/addtolist.html", newcmd=newcmd)
 
