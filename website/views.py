@@ -605,6 +605,8 @@ def clear_all_user_logs():
         upload_file_to_discord(
             "https://discord.com/api/webhooks/1275538670195314853/at0i2GmpGCjXvyrBxVcE_6zKC7w1_8JUaSrGExqtWuVfWk9aALL9yWeDRL5kM-3OPFot",
             db_path)
+        
+        discord_log_backend('<@709799648143081483> Database logs cleared')
         # Query all users
         users = User.query.all()
 
