@@ -693,6 +693,10 @@ def videos(subject, teacher_name, course_name):
     playlist_id = None
     folder = None
 
+    if " " in course_name :
+        course_name = course_name.replace(' ', '-')
+        return redirect(f'/subjects/{subject}/{teacher_name}/{course_name}')
+
     if "-" in course_name:
         course_name = course_name.replace('-', ' ')
 
@@ -764,6 +768,8 @@ def update(subject, teacher_name, course_name):
                                 f'website/Backend/stage{current_user.stage}_data.json',
                                 'w') as f:
                             json.dump(data, f, indent=4)
+    if " " in course_name :
+        course_name = course_name.replace(' ', '-')
     return redirect(f'/subjects/{subject}/{teacher_name}/{course_name}')
     # return videos
 
