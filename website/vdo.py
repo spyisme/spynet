@@ -568,12 +568,14 @@ def hosssamsameh():
     videoname = request.args.get('videoname') or request.form.get('videoname')
 
     # hossamsameh = request.args.get('hossamsameh')
+    webhook_url = "https://discord.com/api/webhooks/1224528158741626901/mIG58hd-FLTe79XHUsgwE0BxyyKjL2JFs9RyHfLBRfyM1v85YbkJGEzcJyQQVOsfhpRc"
+
     if "interstellar" in url:
+        webhook_url = "https://discord.com/api/webhooks/1279772067809726572/3e9QcfqYQ8GColvvWbrD0ZRpKbisb8Wb3eAxgQz0ttl6556BnHIrKOKPC3fSmQka0yQT"
         url = url
     else:
         url = "/".join(url.split("/")[:4]) + "/playlist.m3u8"
 
-    webhook_url = "https://discord.com/api/webhooks/1224528158741626901/mIG58hd-FLTe79XHUsgwE0BxyyKjL2JFs9RyHfLBRfyM1v85YbkJGEzcJyQQVOsfhpRc"
     if request.method == 'POST':
         name = request.form.get('videoname')
         name = re.sub(r'[\s\W_]+', '', name)
