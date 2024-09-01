@@ -17,7 +17,7 @@ Gedo = "https://discord.com/api/webhooks/1158824183833309326/lOGuL_T9mAtYuGCkDRk
 Sameh = "https://discord.com/api/webhooks/1226090203760955433/DkaAHvw-ZnTlUhaHEslmpXbSi45x-5nf9cZJ3MLbkjooaSNSOtYwOY2Jb70jGDjaRI9W"
 Else = "https://discord.com/api/webhooks/1201174140770586655/d3VuNRT1j0xyTajwMC7gKIwfGDywENK1MaAtjhtJ02Okv-Xf0X5ROMuvhaAArEVG_iZc"
 Logs = "https://discord.com/api/webhooks/1199384528553254983/-wZ9h7YobG3IHZBRZKtzPI5ZcAHpHvMYM-ajpJ87ZzXWTWvu2Upkk7_YaYi3X66QaUJL"
-
+Tamer = "https://discord.com/api/webhooks/1279775036999204924/Q8Rc7UWPrNw6-5nX-cCkTqiAu9kofwHqkppPqCCPyGVfxXV0eI_HTja8DZDef2dMeIIW"
 #Defult
 
 vdo = Blueprint('vdo', __name__)
@@ -394,48 +394,49 @@ def index():
 
     discord_log(url)
 
-    options_map = {
-        "samehnashaat": [
-            'Sameh-Nash2t', 'Bio', 'Nawar', 'Nasser-El-Batal', 'Salama',
-            'Gedo', 'Else'
-        ],
-        "chapter": [
-            'Nasser-El-Batal', 'Else', 'Nawar', 'Gedo', 'Bio', 'Salama',
-            'Sameh-Nash2t'
-        ],
-        "class": [
-            'Nasser-El-Batal', 'Else', 'Nawar', 'Gedo', 'Bio', 'Salama',
-            'Sameh-Nash2t'
-        ],
-        "mrredaelfarouk": [
-            'Gedo', 'Nawar', 'Nasser-El-Batal', 'Else', 'Bio', 'Salama',
-            'Sameh-Nash2t'
-        ],
-        "nawar": [
-            'Nawar', 'Else', 'Nasser-El-Batal', 'Gedo', 'Bio', 'Salama',
-            'Sameh-Nash2t'
-        ],
-        "matrix": [
-            'Salama', 'Else', 'Nasser-El-Batal', 'Gedo', 'Bio', 'Nawar',
-            'Sameh-Nash2t'
-        ],
-        "ednuva": [
-            'Bio', 'Nawar', 'Nasser-El-Batal', 'Gedo', 'Else', 'Salama',
-            'Sameh-Nash2t'
-        ]
-    }
+    # options_map = {
+    #     "samehnashaat": [
+    #         'Sameh-Nash2t', 'Bio', 'Nawar', 'Nasser-El-Batal', 'Salama',
+    #         'Gedo', 'Else'
+    #     ],
+    #     "chapter": [
+    #         'Nasser-El-Batal', 'Else', 'Nawar', 'Gedo', 'Bio', 'Salama',
+    #         'Sameh-Nash2t'
+    #     ],
+    #     "class": [
+    #         'Nasser-El-Batal', 'Else', 'Nawar', 'Gedo', 'Bio', 'Salama',
+    #         'Sameh-Nash2t'
+    #     ],
+    #     "mrredaelfarouk": [
+    #         'Gedo', 'Nawar', 'Nasser-El-Batal', 'Else', 'Bio', 'Salama',
+    #         'Sameh-Nash2t'
+    #     ],
+    #     "nawar": [
+    #         'Nawar', 'Else', 'Nasser-El-Batal', 'Gedo', 'Bio', 'Salama',
+    #         'Sameh-Nash2t'
+    #     ],
+    #     "matrix": [
+    #         'Salama', 'Else', 'Nasser-El-Batal', 'Gedo', 'Bio', 'Nawar',
+    #         'Sameh-Nash2t'
+    #     ],
+    #     "ednuva": [
+    #         'Bio', 'Nawar', 'Nasser-El-Batal', 'Gedo', 'Else', 'Salama',
+    #         'Sameh-Nash2t'
+    #     ]
+    # }
 
     default_options = [
-        'Else', 'Nawar', 'Salama', 'Nasser-El-Batal', 'Gedo', 'Bio',
+        'Else', 'Nawar', 'Salama', 'Nasser-El-Batal', 'Gedo', 'Bio', 'Tamer-el-kady'
         'Sameh-Nash2t'
     ]
 
-    for keyword, keyword_options in options_map.items():
-        if keyword in tokenhref:
-            options = keyword_options
-            break
-    else:
-        options = default_options
+    # for keyword, keyword_options in options_map.items():
+    #     if keyword in tokenhref:
+    #         options = keyword_options
+    #         break
+    # else:
+
+    options = default_options
 
     result = result.replace("\n", " ")
 
@@ -456,6 +457,7 @@ def index():
                 file.write(userinput + '\n')
             headers = {'Content-Type': 'application/json'}
             teacher_webhooks = {
+                "Tamer-el-kady" : Tamer,
                 "Nawar": Nawar,
                 "Nasser-El-Batal": Nasser,
                 "Salama": Salama,
@@ -509,6 +511,7 @@ def discord():
         file.write(userinput + '\n')
     headers = {'Content-Type': 'application/json'}
     teacher_webhooks = {
+        "Tamer-el-kady" : Tamer,
         "Nawar": Nawar,
         "Nasser-El-Batal": Nasser,
         "Salama": Salama,
