@@ -565,6 +565,8 @@ def iframevids():
 @vdo.route('/iframem3u8', methods=['GET', 'POST'])
 def hosssamsameh():
     url = request.args.get('url')
+    videoname = request.args.get('videoname') or request.form.get('videoname')
+
     # hossamsameh = request.args.get('hossamsameh')
     if "interstellar" in url:
         url = url
@@ -574,6 +576,8 @@ def hosssamsameh():
     webhook_url = "https://discord.com/api/webhooks/1224528158741626901/mIG58hd-FLTe79XHUsgwE0BxyyKjL2JFs9RyHfLBRfyM1v85YbkJGEzcJyQQVOsfhpRc"
     if request.method == 'POST':
         name = request.form.get('videoname')
+        name = re.sub(r'[\s\W_]+', '', name)
+
         if "interstellar" in url: 
             msg = f'```app {url} --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output``` {name}'
             command = f'app {url} --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output;'
@@ -589,7 +593,7 @@ def hosssamsameh():
         headers = {'Content-Type': 'application/json'}
         requests.post(webhook_url, data=payload, headers=headers)
         return "Message Sent!"
-    return render_template('backend_pages/iframe.html', url=url)
+    return render_template('backend_pages/iframe.html', url=url , videoname=videoname)
 
 
 @vdo.route("/list")
