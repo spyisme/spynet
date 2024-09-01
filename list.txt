@@ -1,0 +1,5 @@
+app https://r2.interstellarseries.com/hls/5453219312/1dce52e8ef2f44c6a66838343a4fb9fe.m3u8 --save-name introductiontoelectricityandtypesofmaterials -M format=mp4 --auto-select --no-log  & move introductiontoelectricityandtypesofmaterials.mp4 ./output;
+app https://r2.interstellarseries.com/hls/6496239218/2565e45113794ba69677beab3ce46b31.m3u8 --save-name electriccurrentelectriccircuits -M format=mp4 --auto-select --no-log  & move electriccurrentelectriccircuits.mp4 ./output;
+app https://r2.interstellarseries.com/hls/1628564785/528b677d5c12418dbf56dff4e24d485d.m3u8 --save-name CurrentIntensitySolvingonit -M format=mp4 --auto-select --no-log  & move CurrentIntensitySolvingonit.mp4 ./output;
+app https://r2.interstellarseries.com/hls/3731827239/9b169dbd000843cbb6b4484867a3e40a.m3u8 --save-name PotentialPotentialdifferenceSolvingonthem -M format=mp4 --auto-select --no-log  & move PotentialPotentialdifferenceSolvingonthem.mp4 ./output;
+app https://resources.interstellarseries.com/hls/7521386584/d857d83113e448498320313c9f4a98e6.m3u8 --save-name S2Interstellarshow -M format=mp4 --auto-select --no-log  & move S2Interstellarshow.mp4 ./output;
