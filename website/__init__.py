@@ -56,7 +56,7 @@ def create_app():
 
 
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
-    app.config['SECRET_KEY'] = 'secretkey'
+    app.config['SECRET_KEY'] = b'\xcaz\xe5\xf9\xaa\xdd~U\xf3\x0c1\xf7\xb4\x1b\x9e\x84\xce,f\x02\xb9 kd\x80\xd8\xf6\x05\x8e\xa0\x96W'  
 
 
     db.init_app(app)
@@ -96,7 +96,7 @@ def create_app():
     def before_request():
 
         excluded_routes = [
-            'views.logoutotherdevices', 'views.login2', 'views.login',
+            'views.logoutotherdevices', 'views.login2', 'views.login', 'secure_endpoint',
             'views.registeracc', 'views.forgotpassword', 'views.robots_txt',
             'views.favicon', 'views.monitor', 'shortlinks.tools',
             'vdo.commandslist', 'shortlinks.youtube', 'vdo.cmdcommand',

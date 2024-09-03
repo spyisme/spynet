@@ -1,9 +1,10 @@
 import logging  #type: ignore
 import json
 import requests
-from flask import render_template, request, redirect , url_for
+from flask import render_template, request, redirect , url_for , jsonify
 from website import create_app
-
+import hmac
+import hashlib
 from flask_login import current_user
 
 log = logging.getLogger('werkzeug')
@@ -25,6 +26,25 @@ def page_not_found(e):  #type: ignore
     return render_template('used_pages/404.html')
 
 
+
+SECRET_KEY =  b'\xcaz\xe5\xf9\xaa\xdd~U\xf3\x0c1\xf7\xb4\x1b\x9e\x84\xce,f\x02\xb9 kd\x80\xd8\xf6\x05\x8e\xa0\x96W'  
+
+
+def generate_signature(message, secret_key):
+    return hmac.new(secret_key, message.encode(), hashlib.sha256).hexdigest()
+
+@app.route('/secure-endpoint', methods=['POST'])
+def secure_endpoint():
+    data = request.json
+    message = data.get('message')
+    
+    if not message:
+        return jsonify({"status": "missing message"}), 400
+
+    response_data = {"status": "success", "message": message}
+    response_signature = generate_signature(str(response_data), SECRET_KEY)
+
+    return jsonify({"data": response_data, "signature": response_signature}), 200
 
 
 
