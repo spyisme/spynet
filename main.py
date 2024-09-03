@@ -25,9 +25,8 @@ def page_not_found(e):  #type: ignore
 
     return render_template('used_pages/404.html')
 
-@app.route('/', subdomain='<subdomain>')
-def index(subdomain):
-    return f"Hello from the {subdomain} subdomain!"
+
+
 
 SECRET_KEY = b'ss'  # Should be securely generated and consistent
 
