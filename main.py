@@ -27,7 +27,7 @@ def page_not_found(e):  #type: ignore
 
 
 
-SECRET_KEY =  b'\xcaz\xe5\xf9\xaa\xdd~U\xf3\x0c1\xf7\xb4\x1b\x9e\x84\xce,f\x02\xb9 kd\x80\xd8\xf6\x05\x8e\xa0\x96W'  
+SECRET_KEY =  'ss'  
 
 
 def generate_signature(message, secret_key):
