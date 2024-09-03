@@ -45,7 +45,7 @@ def secure_endpoint():
     data_string = json.dumps(response_data, sort_keys=True)
     response_signature = generate_signature(data_string, SECRET_KEY)
 
-    return jsonify({"data": response_data, "signature": response_signature}), 200
+    return jsonify({"data": response_data}), 200
 
 
 
