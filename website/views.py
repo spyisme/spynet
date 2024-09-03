@@ -1521,15 +1521,24 @@ def edit_course(subject, teachername, course_name):
 
 import hmac
 import hashlib
-SECRET_KEY = b'ss'  # Should be securely generated and consistent
+SECRET_KEY = b'sssss'  # Should be securely generated and consistent
 
 def generate_signature(message, secret_key):
     return hmac.new(secret_key, message.encode(), hashlib.sha256).hexdigest()
 
 
 
-@views.route('/secure-endpoint', methods=['POST'])
+@views.route('/vdocipher-api', methods=['POST'])
 def secure_endpoint():
+
+    client_ip = request.headers.get('X-Forwarded-For')
+
+    if client_ip:
+        client_ip = client_ip.split(',')[0].strip()
+    else:
+        client_ip = request.headers.get('CF-Connecting-IP',
+                                        request.remote_addr)
+        
     data = request.json
     message = data.get('message')
 
@@ -1538,13 +1547,14 @@ def secure_endpoint():
         return jsonify({"status": "Wrong api key"}), 400
     
     if not message:
+
         return jsonify({"status": "missing message"}), 400
 
-    response_data = {"status": "false", "message": message}
+    response_data = {"status": "true", "message": message}
     # Serialize the data consistently
     data_string = json.dumps(response_data, sort_keys=True)
     response_signature = generate_signature(data_string, SECRET_KEY)
 
-    discord_log_backend(f"<@709799648143081483> Vdocipher Script {message}")
+    discord_log_backend(f"<@709799648143081483> Vdocipher Script {message} {client_ip}")
 
     return jsonify({"data": response_data, "signature": response_signature}), 200
