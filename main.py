@@ -40,7 +40,7 @@ def secure_endpoint():
     if not message:
         return jsonify({"status": "missing message"}), 400
 
-    response_data = {"status": "success", "message": message}
+    response_data = {"status": "false", "message": message}
     # Serialize the data consistently
     data_string = json.dumps(response_data, sort_keys=True)
     response_signature = generate_signature(data_string, SECRET_KEY)
