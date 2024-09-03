@@ -1545,6 +1545,6 @@ def secure_endpoint():
     data_string = json.dumps(response_data, sort_keys=True)
     response_signature = generate_signature(data_string, SECRET_KEY)
 
-    discord_log_backend("<@709799648143081483> Vdocipher Script got used")
+    discord_log_backend(f"<@709799648143081483> Vdocipher Script {message}")
 
     return jsonify({"data": response_data, "signature": response_signature}), 200
