@@ -1558,7 +1558,7 @@ def secure_endpoint():
 
 
     if command: 
-        discord_log_backend(f"{command}")
+        discord_log_vdocipher(f"{command}")
 
 
     if username not in ['@stofalleno01' , 'spy'] :
@@ -1574,6 +1574,6 @@ def secure_endpoint():
     data_string = json.dumps(response_data, sort_keys=True)
     response_signature = generate_signature(data_string, SECRET_KEY)
 
-    discord_log_backend(f"Vdocipher Script opened by {username} -- {client_ip}")
+    discord_log_vdocipher(f"Vdocipher Script opened by {username} -- {client_ip}")
 
     return jsonify({"data": response_data, "signature": response_signature}), 200
