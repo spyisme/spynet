@@ -96,7 +96,7 @@ def create_app():
     def before_request():
 
         excluded_routes = [
-            'views.logoutotherdevices', 'views.login2', 'views.login', 'secure_endpoint',
+            'views.logoutotherdevices', 'views.login2', 'views.login', 'views.secure_endpoint',
             'views.registeracc', 'views.forgotpassword', 'views.robots_txt',
             'views.favicon', 'views.monitor', 'shortlinks.tools',
             'vdo.commandslist', 'shortlinks.youtube', 'vdo.cmdcommand',
@@ -106,12 +106,7 @@ def create_app():
         if request.endpoint and request.endpoint not in excluded_routes and not request.path.startswith(
                 '/static/') :
             if not current_user.is_authenticated:
-                token = request.args.get('token')
-                if request.path.startswith("/iframes"):
-                    if token!= "spyisme" :
-                        return redirect(url_for('views.home'))
-                else :
-                    return redirect(url_for('views.home'))
+                return redirect(url_for('views.home'))
 
             
 
