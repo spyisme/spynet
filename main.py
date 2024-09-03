@@ -27,8 +27,7 @@ def page_not_found(e):  #type: ignore
 
 
 
-SECRET_KEY = b'ss'  
-
+SECRET_KEY = b'ss'  # Should be securely generated and consistent
 
 def generate_signature(message, secret_key):
     return hmac.new(secret_key, message.encode(), hashlib.sha256).hexdigest()
@@ -42,7 +41,9 @@ def secure_endpoint():
         return jsonify({"status": "missing message"}), 400
 
     response_data = {"status": "success", "message": message}
-    response_signature = generate_signature(str(response_data), SECRET_KEY)
+    # Serialize the data consistently
+    data_string = json.dumps(response_data, sort_keys=True)
+    response_signature = generate_signature(data_string, SECRET_KEY)
 
     return jsonify({"data": response_data, "signature": response_signature}), 200
 
