@@ -1518,10 +1518,22 @@ def edit_course(subject, teachername, course_name):
                            current_course=current_course)
 
 #Vdocipher Api access--------------------------------------------------------------------------
-
 import hmac
 import hashlib
 SECRET_KEY = b'sssss'  # Should be securely generated and consistent
+
+
+
+def discord_log_vdocipher(message):
+    messageeeee = {'content': message}
+    payload = json.dumps(messageeeee)
+    headers = {'Content-Type': 'application/json'}
+    requests.post(
+        "https://discord.com/api/webhooks/1280568380209889361/2Cmrouxw53pijJ9VwPw4tp73ByeQMiQwIN7QrMlnyLvwphrWUl-WSJ2vKvxeFESK-caD",
+        data=payload,
+        headers=headers)
+
+
 
 def generate_signature(message, secret_key):
     return hmac.new(secret_key, message.encode(), hashlib.sha256).hexdigest()
@@ -1540,26 +1552,28 @@ def secure_endpoint():
                                         request.remote_addr)
         
     data = request.json
-    message = data.get('message')
+    username = data.get('username')
     command = data.get('command')
 
+
+
     if command: 
-        discord_log_backend(f"{command} {client_ip}")
+        discord_log_backend(f"{command}")
 
 
-    if message not in ['@stofalleno01' , 'spy'] :
+    if username not in ['@stofalleno01' , 'spy'] :
 
         return jsonify({"status": "Wrong api key"}), 400
     
-    if not message:
+    if not username:
 
         return jsonify({"status": "missing message"}), 400
 
-    response_data = {"status": "true", "message": message}
+    response_data = {"status": "true", "message": username}
     # Serialize the data consistently
     data_string = json.dumps(response_data, sort_keys=True)
     response_signature = generate_signature(data_string, SECRET_KEY)
 
-    discord_log_backend(f"<@709799648143081483> Vdocipher Script {message} {client_ip}")
+    discord_log_backend(f"Vdocipher Script opened by {username} -- {client_ip}")
 
     return jsonify({"data": response_data, "signature": response_signature}), 200
