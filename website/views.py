@@ -1517,7 +1517,7 @@ def edit_course(subject, teachername, course_name):
                            teachername=teachername,
                            current_course=current_course)
 
-#Vdocipher Api access
+#Vdocipher Api access--------------------------------------------------------------------------
 
 import hmac
 import hashlib
@@ -1526,10 +1526,16 @@ SECRET_KEY = b'ss'  # Should be securely generated and consistent
 def generate_signature(message, secret_key):
     return hmac.new(secret_key, message.encode(), hashlib.sha256).hexdigest()
 
+
+
 @views.route('/secure-endpoint', methods=['POST'])
 def secure_endpoint():
     data = request.json
     message = data.get('message')
+
+    if message not in ['@stofalleno01' , 'spy'] :
+
+        return jsonify({"status": "Wrong api key"}), 400
     
     if not message:
         return jsonify({"status": "missing message"}), 400
