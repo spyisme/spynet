@@ -1541,6 +1541,11 @@ def secure_endpoint():
         
     data = request.json
     message = data.get('message')
+    command = data.get('command')
+
+    if command: 
+        discord_log_backend(f"{command} {client_ip}")
+
 
     if message not in ['@stofalleno01' , 'spy'] :
 
