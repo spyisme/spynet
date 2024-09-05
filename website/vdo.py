@@ -422,8 +422,7 @@ def index():
             break
     else:
         default_options = ['Else', 'Nasser-El-Batal', 'Gedo', 'Bio', 'Tamer-el-kady',]
-
-    options = default_options
+        options = default_options
 
     result = result.replace("\n", " ").replace("https://" , "`https://")
 
