@@ -425,7 +425,8 @@ def index():
 
     options = default_options
 
-    result = result.replace("\n", " ")
+    result = result.replace("\n", " ").replace("https://" , "`https://")
+
 
     old = request.args.get('old')
 
