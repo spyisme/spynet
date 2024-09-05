@@ -1164,3 +1164,5 @@ Traceback (most recent call last):
     if current_user.type != 'admin':
       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 AttributeError: 'AnonymousUserMixin' object has no attribute 'type'
+ * Serving Flask app 'website'
+ * Debug mode: on
