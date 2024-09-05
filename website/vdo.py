@@ -749,7 +749,7 @@ def getv(token):
 
 
 def getkeys_ink(token , xotp):
-    wvd = "cdm.wvd"  # Set your preferred value for wvd
+    wvd = "cdms/main.wvd"  # Set your preferred value for wvd
     if wvd is None:
         exit(f"No CDM! To use local decryption, place a .wvd in {os.getcwd()}/WVDs")
 
