@@ -395,23 +395,11 @@ def index():
     discord_log(url)
 
     options_map = {
-        "chapter": [
-            'Nasser-El-Batal', 'Else', 'Nawar', 'Gedo', 'Bio', 'Salama',
-            'Sameh-Nash2t'
-        ],
-        "class": [
-            'Nasser-El-Batal', 'Else', 'Nawar', 'Gedo', 'Bio', 'Salama',
-            'Sameh-Nash2t'
-        ],
+
         "mrredaelfarouk": [
-            'Gedo',  'Nasser-El-Batal', 'Else', 'Bio', 'Salama'
-        ],
-
-
-        "ednuva": [
-            'Bio', 'Nawar', 'Nasser-El-Batal', 'Gedo', 'Else', 'Salama',
-            'Sameh-Nash2t'
+            'Gedo',  'Nasser-El-Batal',  'Bio', 'Tamer-el-kady' , 'Else'
         ]
+
     }
 
 
@@ -421,7 +409,7 @@ def index():
             options = keyword_options
             break
     else:
-        default_options = ['Else', 'Nasser-El-Batal', 'Gedo', 'Bio', 'Tamer-el-kady',]
+        default_options = ['Else', 'Tamer-el-kady', 'Nasser-El-Batal', 'Bio', 'Gedo',]
         options = default_options
 
     result = result.replace("\n", " ").replace("https://" , "`https://")
