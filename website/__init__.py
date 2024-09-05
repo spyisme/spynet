@@ -24,11 +24,7 @@ connected_clients = 0
 def create_app():
 
     app = Flask(__name__)
-
-    CORS(app, resources={
-        r"/iframes": {"origins": "https://omar-sherbeni.com"},
-        r"/skillshare": {"origins": "https://www.skillshare.com"}
-    })
+    CORS(app, resources={r"/skillshare": {"origins": "https://www.skillshare.com/"}} ,)
 
     # Configuration for Flask-Mail
     app.config['MAIL_SERVER'] = 'smtp.gmail.com'
