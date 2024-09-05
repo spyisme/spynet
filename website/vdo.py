@@ -71,7 +71,7 @@ def jsonget(token, thing):
     return (final)
 
 
-def getkeys(video_url):
+def getkeys_vdocipher(video_url):
     wvd = "cdms/main.wvd"  # Set your preferred value for wvd
     if wvd is None:
         exit(
@@ -310,7 +310,7 @@ def get_pssh(mpd: str):
 
 
 # mpd
-def get_mpd(video_id: str) -> str:
+def get_mpd_vdocipher(video_id: str) -> str:
     headers = {
         'user-agent':
         'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36',
@@ -329,7 +329,7 @@ def get_key(index):
     cached_list = list(cached_results)
     if 0 <= index < len(cached_list):
         value = cached_list[index]
-        return render_template('key_page.html', value=value)
+        return value
     else:
         return jsonify({'error': 'Index out of range'}), 404
 
@@ -348,7 +348,7 @@ def index():
 
         if video_id in used_ids:
 
-            mpd2 = get_mpd(video_id)
+            mpd2 = get_mpd_vdocipher(video_id)
 
             for x in cached_results:
                 if mpd2 in x:
@@ -363,7 +363,7 @@ def index():
                 f"Api got used by {current_user.username} | {client_ip}")
             used_ids.add(video_id)
 
-    mpd, c_keys, video_name = getkeys(mytoken)
+    mpd, c_keys, video_name = getkeys_vdocipher(mytoken)
 
     tokenhref = gethref(mytoken)
 
@@ -394,47 +394,34 @@ def index():
 
     discord_log(url)
 
-    # options_map = {
-    #     "samehnashaat": [
-    #         'Sameh-Nash2t', 'Bio', 'Nawar', 'Nasser-El-Batal', 'Salama',
-    #         'Gedo', 'Else'
-    #     ],
-    #     "chapter": [
-    #         'Nasser-El-Batal', 'Else', 'Nawar', 'Gedo', 'Bio', 'Salama',
-    #         'Sameh-Nash2t'
-    #     ],
-    #     "class": [
-    #         'Nasser-El-Batal', 'Else', 'Nawar', 'Gedo', 'Bio', 'Salama',
-    #         'Sameh-Nash2t'
-    #     ],
-    #     "mrredaelfarouk": [
-    #         'Gedo', 'Nawar', 'Nasser-El-Batal', 'Else', 'Bio', 'Salama',
-    #         'Sameh-Nash2t'
-    #     ],
-    #     "nawar": [
-    #         'Nawar', 'Else', 'Nasser-El-Batal', 'Gedo', 'Bio', 'Salama',
-    #         'Sameh-Nash2t'
-    #     ],
-    #     "matrix": [
-    #         'Salama', 'Else', 'Nasser-El-Batal', 'Gedo', 'Bio', 'Nawar',
-    #         'Sameh-Nash2t'
-    #     ],
-    #     "ednuva": [
-    #         'Bio', 'Nawar', 'Nasser-El-Batal', 'Gedo', 'Else', 'Salama',
-    #         'Sameh-Nash2t'
-    #     ]
-    # }
+    options_map = {
+        "chapter": [
+            'Nasser-El-Batal', 'Else', 'Nawar', 'Gedo', 'Bio', 'Salama',
+            'Sameh-Nash2t'
+        ],
+        "class": [
+            'Nasser-El-Batal', 'Else', 'Nawar', 'Gedo', 'Bio', 'Salama',
+            'Sameh-Nash2t'
+        ],
+        "mrredaelfarouk": [
+            'Gedo',  'Nasser-El-Batal', 'Else', 'Bio', 'Salama'
+        ],
 
-    default_options = [
-        'Else', 'Nawar', 'Salama', 'Nasser-El-Batal', 'Gedo', 'Bio', 'Tamer-el-kady'
-        'Sameh-Nash2t'
-    ]
 
-    # for keyword, keyword_options in options_map.items():
-    #     if keyword in tokenhref:
-    #         options = keyword_options
-    #         break
-    # else:
+        "ednuva": [
+            'Bio', 'Nawar', 'Nasser-El-Batal', 'Gedo', 'Else', 'Salama',
+            'Sameh-Nash2t'
+        ]
+    }
+
+
+
+    for keyword, keyword_options in options_map.items():
+        if keyword in tokenhref:
+            options = keyword_options
+            break
+    else:
+        default_options = ['Else', 'Nasser-El-Batal', 'Gedo', 'Bio', 'Tamer-el-kady',]
 
     options = default_options
 
@@ -727,3 +714,183 @@ def cleartokens():
 @vdo.route("/pssh")
 def pssh():
     return jsonify(list(used_ids))
+
+
+
+#Ink videos------------------------------------------------------------------------------------------------------------
+
+def get_mpd_ink(token , xotp):
+    headers = {
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36',
+        'origin': 'https://resource.inkryptvideos.com',
+        'referer': 'https://resource.inkryptvideos.com/',
+        'X-Otp' : f'{xotp}'
+    }
+    decoded_bytes = base64.b64decode(token)
+    decoded_string = decoded_bytes.decode('utf-8')
+    data = json.loads(decoded_string)
+    video_id = data.get("v")
+    url = 'https://api.inkryptvideos.com/api/s1/v_info/' + video_id
+    req = None
+    req = requests.get(url, headers=headers)
+    req.raise_for_status()  # Raise an exception if the request fails
+    resp = req.json()
+    storage_hostname = resp['data']['storage_hostname']
+    dash_manifest = resp['data']['dash_manifest'].replace("\\", "")
+    full_url = f"https://{storage_hostname}/{dash_manifest}"
+    return full_url
+
+def getv(token):
+    decoded_bytes = base64.b64decode(token)
+    decoded_string = decoded_bytes.decode('utf-8')
+    data = json.loads(decoded_string)
+    v = data.get("v")
+    return (v)
+
+
+def getkeys_ink(token , xotp):
+    wvd = "cdm.wvd"  # Set your preferred value for wvd
+    if wvd is None:
+        exit(f"No CDM! To use local decryption, place a .wvd in {os.getcwd()}/WVDs")
+
+    mpd = get_mpd_ink(token , xotp)
+
+    pssh = PSSH(get_pssh(mpd))
+
+
+    device = Device.load(wvd)
+
+    cdm = Cdm.from_device(device)
+
+    session_id = cdm.open()
+
+    headers = {
+            'sec-ch-ua': '"Google Chrome";v="117", "Not;A=Brand";v="8", "Chromium";v="117"',
+            'x-version': '2.1.63',
+            'x-otp': f'{xotp}',
+            'sec-ch-ua-mobile': '?0',
+            'content-type': 'application/json',
+            'Referer': 'https://resource.inkryptvideos.com/',
+            'sec-ch-ua-platform': '"Windows"',
+    }
+
+
+    service_cert_json_data = {
+        'token': f'{token}',
+    }
+
+
+    service_cert = requests.post(
+        'https://license.inkryptvideos.com/api/v1/wj/license',
+        headers=headers,
+        json=service_cert_json_data
+    )
+
+
+    if service_cert.status_code != 200:
+        print("Couldn't retrieve service cert")
+    else:
+        service_cert = service_cert.json()["l"]
+        cdm.set_service_certificate(session_id, cdm.common_privacy_cert)
+
+
+    if service_cert:
+        challenge = cdm.get_license_challenge(session_id, pssh, privacy_mode=True)
+    else:
+        challenge = cdm.get_license_challenge(session_id, pssh)
+
+
+    v = getv(token)
+
+    token = {
+            "v" : f"{v}",
+            "c": f"{base64.b64encode(challenge).decode()}",
+            
+        }
+
+    json_data = {
+            'token': f'{base64.b64encode(json.dumps(token).encode("utf-8")).decode()}',
+        }
+
+    headers = {
+            'sec-ch-ua': '"Google Chrome";v="117", "Not;A=Brand";v="8", "Chromium";v="117"',
+            'x-version': '2.1.63',
+            'x-otp': f'{xotp}',
+            'sec-ch-ua-mobile': '?0',
+            #'ink-ref': 'https://mrredaelfarouk.com/lectures/progress/5',
+            'content-type': 'application/json',
+            'Referer': 'https://resource.inkryptvideos.com/',
+            'sec-ch-ua-platform': '"Windows"',
+    }
+
+    license = requests.post(
+            'https://license.inkryptvideos.com/api/v1/wj/license',
+            headers=headers,
+            json=json_data
+        )
+
+    if license.status_code != 200:
+            print(license.content)
+            exit("Could not complete license challenge")
+
+
+    license = license.json()["l"]
+
+    cdm.parse_license(session_id, license)
+
+
+
+    c_keys = ""
+    for key in cdm.get_keys(session_id):
+        if key.type != "SIGNING":
+            c_keys += f"--key {key.kid.hex}:{key.key.hex()} "
+
+
+    cdm.close(session_id)
+
+    return c_keys , mpd 
+
+
+
+
+@vdo.route('/ink', methods=['GET', 'POST'])
+def ink():
+    token = request.args.get('token')
+    xotp = request.args.get('otp')
+
+    content_key , mpd = getkeys_ink(token , xotp)
+
+    result = mpd + '\n' + content_key
+
+    session['result'] = result
+
+    return render_template('backend_pages/ink.html', content_key=content_key , mpd = mpd ,input1 = result)
+
+
+
+@vdo.route('/inkform', methods=['POST'])
+def inkform():
+    if request.method == 'POST':
+        user_data = {
+            'name': request.form['vidname']
+        }
+        return redirect(url_for('vdo.discordink', **user_data))
+    return render_template('backend_pages/ink.html')
+
+
+@vdo.route('/inkdiscord', methods=['GET', 'POST'])
+def discordink():
+    result = session.get('result')
+    name = request.args.get('name')
+    result = result.replace("\n", " ")
+
+    msg = f'app {result} --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output'
+    message = {
+            'content': f'```{msg}```{name}'
+        }
+    payload = json.dumps(message)
+    headers = {'Content-Type': 'application/json'}
+    with open('list.txt', 'a') as file:
+            file.write(msg + '\n')
+    requests.post("https://discord.com/api/webhooks/1158824183833309326/lOGuL_T9mAtYuGCkDRkVxRERIQAD1fHS3RTzxkRmS1ZlzT5yY4C7bi20XdK-1pSXcVzZ", data=payload, headers=headers)
+    return "Message Sent!" 
