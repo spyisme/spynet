@@ -864,7 +864,7 @@ def ink():
 
     session['result'] = result
 
-    return render_template('backend_pages/ink.html', content_key=content_key , mpd = mpd ,input1 = result)
+    return render_template('backend_pages/ink.html', content_key=content_key , mpd = mpd ,result = result)
 
 
 
