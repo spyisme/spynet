@@ -167,5 +167,3 @@ pyproject.toml
 replit.nix
 __pycache__
 website/__pycache__
-/instance/site.db
-
