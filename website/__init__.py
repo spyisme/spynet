@@ -158,13 +158,7 @@ def create_app():
                                 request.path = '/'.join(request.path[2:])
                                 request.path = request.path.replace('questionmark', '?')
                                 request.path = request.path.replace('andsympol', '&')
-                            log_value = f"{client_ip} | {device_type} | {request.path} | {timestamp}"   
-                            logs_list = json.loads(current_user.logs) if current_user.logs else []
-                            logs_list.append(log_value)
-                            current_user.logs = json.dumps(logs_list)
-                            db.session.commit()
-
-
+  
 
                 if not request.path.startswith('/static/'):
                         if any(keyword in request.path for keyword in ["drive", "youtube"]):

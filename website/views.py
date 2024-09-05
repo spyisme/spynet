@@ -545,8 +545,6 @@ def robots_txt():
 
 @views.route('/monitor')  #Uptime robot
 def monitor():
-    clear_all_user_logs()
-
     return "Working"
 
 
@@ -587,40 +585,7 @@ def subjectspage():
                            password=password , end_date = end_date)
 
 
-def clear_all_user_logs():
-    backup_file = 'backuptime.txt'
 
-    # Check if the backup file exists
-    if os.path.exists(backup_file):
-        with open(backup_file, 'r') as file:
-            last_backup_time_str = file.read().strip()
-            last_backup_time = datetime.strptime(last_backup_time_str, '%Y-%m-%d %H:%M:%S')
-    else:
-        last_backup_time = datetime.min  # Set to a very old date if no backup file (1, 1, 1)
-
-    # Check if a week has passed since the last backup
-    if datetime.now() - last_backup_time >= timedelta(weeks=1):
-        db_path = os.path.join(os.path.dirname(__file__), '..', 'instance',
-                           'site.db')
-        upload_file_to_discord(
-            "https://discord.com/api/webhooks/1275538670195314853/at0i2GmpGCjXvyrBxVcE_6zKC7w1_8JUaSrGExqtWuVfWk9aALL9yWeDRL5kM-3OPFot",
-            db_path)
-        
-        discord_log_backend('<@709799648143081483> Database logs cleared')
-        # Query all users
-        users = User.query.all()
-
-        # Update each user's logs field
-        for user in users:
-            user.logs = json.dumps([])  # Or use None if you prefer
-            db.session.add(user)
-
-        # Commit the changes to the database
-        db.session.commit()
-
-        # Update the backup time
-        with open(backup_file, 'w') as file:
-            file.write(datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
 
 
 
@@ -935,29 +900,8 @@ def manage_user(user_id):
                            sub_methods = [{'name': "Vodafone Cash" } , {'name' : "InstaPay"}])
 
 
-@views.route('/clear-logs')
-def clearlogs():
-    if current_user.type != 'admin':
-        return "User is not an admin"
-
-    current_user.logs = json.dumps([])
-
-    db.session.commit()
-
-    return "done"
 
 
-@views.route('/logs/<user_id>')
-def logs(user_id):
-    if current_user.type != 'admin':
-        return "User is not an admin"
-
-    user = User.query.filter_by(id=user_id).first()
-
-    # Decode the JSON string into a Python list
-    logs = json.loads(user.logs) if user.logs else []
-
-    return render_template('admin/logs.html', logs=logs, user=user)
 
 
 @views.route('/approve/<user_id>', methods=['GET', 'POST'])
