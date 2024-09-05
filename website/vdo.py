@@ -858,13 +858,15 @@ def ink():
     token = request.args.get('token')
     xotp = request.args.get('otp')
 
-    content_key , mpd = getkeys_ink(token , xotp)
+    c_keys , mpd = getkeys_ink(token , xotp)
 
-    result = mpd + '\n' + content_key
+    keys_content = re.findall(r"--key\s+(\S+)", c_keys)
+
+    result = mpd + '\n ' + c_keys
 
     session['result'] = result
 
-    return render_template('backend_pages/ink.html', content_key=content_key , mpd = mpd ,result = result)
+    return render_template('backend_pages/ink.html', content_key=keys_content , mpd = mpd ,result = result)
 
 
 
