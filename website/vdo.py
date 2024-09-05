@@ -576,6 +576,56 @@ def hosssamsameh():
     return render_template('backend_pages/iframe.html', url=url , videoname=videoname)
 
 
+
+
+
+
+@vdo.route('/skillshare', methods=['GET', 'POST'])
+def skillshare():
+    url = request.args.get('m3u8')
+    videoname = request.args.get('name') 
+
+    webhook_url = "https://discord.com/api/webhooks/1224528158741626901/mIG58hd-FLTe79XHUsgwE0BxyyKjL2JFs9RyHfLBRfyM1v85YbkJGEzcJyQQVOsfhpRc"
+
+    if request.method == 'POST':
+        name = request.form.get('videoname')
+        name = re.sub(r'[\s\W_]+', '', name)
+
+        msg = f'```app {url} --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output``` {name}'
+        command = f'app {url} --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output;'
+
+        with open('list.txt', 'a') as file:
+            file.write(command + '\n')
+        message = {'content': f'{msg}'}
+        payload = json.dumps(message)
+        headers = {'Content-Type': 'application/json'}
+        requests.post(webhook_url, data=payload, headers=headers)
+        return "Message Sent!"
+    return render_template('backend_pages/iframe.html', url=url , videoname=videoname)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @vdo.route("/list")
 def commandslist():
 
