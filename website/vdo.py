@@ -589,10 +589,9 @@ def skillshare():
 
     if request.method == 'POST':
         name = request.form.get('videoname')
-        name = re.sub(r'[\s\W_]+', '', name)
-
-        msg = f'```app {url} --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output``` {name}'
-        command = f'app {url} --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output;'
+  
+        msg = f'```app {url} --save-name "{name}" -M format=mp4 --auto-select --no-log  & move "{name}".mp4 ./output``` {name}'
+        command = f'app {url} --save-name "{name}" -M format=mp4 --auto-select --no-log  & move "{name}".mp4 ./output;'
 
         with open('list.txt', 'a') as file:
             file.write(command + '\n')
