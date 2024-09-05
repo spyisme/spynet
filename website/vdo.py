@@ -588,6 +588,11 @@ def skillshare():
     webhook_url = "https://discord.com/api/webhooks/1224528158741626901/mIG58hd-FLTe79XHUsgwE0BxyyKjL2JFs9RyHfLBRfyM1v85YbkJGEzcJyQQVOsfhpRc"
 
     if request.method == 'POST':
+        if url :
+            pass
+        else :
+            url = request.form.get('url')
+
         name = request.form.get('videoname')
   
         msg = f'```app {url} --save-name "{name}" -M format=mp4 --auto-select --no-log  & move "{name}".mp4 ./output``` {name}'
