@@ -1,0 +1,3 @@
+app None --save-name "Introduction" -M format=mp4 --auto-select --no-log  & move "Introduction".mp4 ./output;
+app None --save-name "Getting Started" -M format=mp4 --auto-select --no-log  & move "Getting Started".mp4 ./output;
+app None --save-name "Getting Started" -M format=mp4 --auto-select --no-log  & move "Getting Started".mp4 ./output;
