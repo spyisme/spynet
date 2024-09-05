@@ -4361,7 +4361,20 @@
                     {
                         "name": "Introductory Course",
                         "description": "First step",
-                        "videos": "",
+                        "videos": [
+                            {
+                                "id": "Y3VCZvrqpLE",
+                                "title": "Introductory Course Lecture 1",
+                                "duration": "01:30:58",
+                                "jsid": 0
+                            },
+                            {
+                                "id": "DCYeEuBHaK8",
+                                "title": "Introductory Course Lecture 2",
+                                "duration": "01:49:22",
+                                "jsid": 1
+                            }
+                        ],
                         "playlist_id": "PLM-GVlebsoPW_ygU82xmBivqfLdqv_76b",
                         "folder": "https://drive.google.com/drive/folders/1BK961OcB3jYYyn1vofPHSfZZxBvTX3SX?usp=drive_link"
                     }
