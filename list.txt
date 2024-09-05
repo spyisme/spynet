@@ -1,0 +1,3 @@
+yt-dlp.exe "https://youtu.be/RbHBDlNhbnE" --cookies-from-browser chrome -f b -o "output/randomname0.mp4" 
+yt-dlp.exe "https://youtu.be/3_jEDjhjlAg" --cookies-from-browser chrome -f b -o "output/randomname1.mp4" 
+yt-dlp.exe "https://youtu.be/cP024_Pu8Ek" --cookies-from-browser chrome -f b -o "output/randomname2.mp4" 
