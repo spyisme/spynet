@@ -863,6 +863,8 @@ def ink():
     keys_content = re.findall(r"--key\s+(\S+)", c_keys)
 
     result = mpd + '\n ' + c_keys
+    
+    result = result.replace("\n", " ")
 
     session['result'] = result
 
