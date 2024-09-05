@@ -151,28 +151,37 @@ select option {
 
 
 
-<script>
-    const copyButton = document.getElementById("copyButton");
-    const newTextToCopy = document.querySelector(".new");
-    
-    copyButton.addEventListener("click", () => {
-        copyToClipboard(newTextToCopy.textContent);
-        copyButton.textContent = "Copied!";
-        copyButton.classList.add("copied");
-        setTimeout(() => {
-            copyButton.textContent = "Copy Keys";
-            copyButton.classList.remove("copied");
-        }, 5000); // 5000 milliseconds (5 seconds)
-    });
-    
-    function copyToClipboard(text) {
-        const textArea = document.createElement("textarea");
-        textArea.value = text;
-        document.body.appendChild(textArea);
-        textArea.select();
-        document.execCommand("copy");
-        document.body.removeChild(textArea);
-    }
-</script>
+        <script>
+            const copyButton = document.getElementById("copyButton");
+            const newTextToCopy = document.querySelector(".new");
+            
+            copyButton.addEventListener("click", () => {
+                copyToClipboard(newTextToCopy.textContent);
+                copyButton.textContent = "Copied!";
+                copyButton.classList.add("copied");
+                setTimeout(() => {
+                    copyButton.textContent = "Copy Keys";
+                    copyButton.classList.remove("copied");
+                }, 5000); // 5000 milliseconds (5 seconds)
+            });
+            
+            function copyToClipboard(text) {
+                const textArea = document.createElement("textarea");
+                textArea.value = text;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand("copy");
+                document.body.removeChild(textArea);
+            }
+         
+                function validateInput(inputField) {
+                    // Remove white spaces
+                    inputField.value = inputField.value.replace(/\s/g, '');
+        
+                    // Remove non-alphanumeric characters
+                    inputField.value = inputField.value.replace(/[^a-zA-Z0-9]/g, '');
+                }
+          
+        </script>
 </body>
 </html>

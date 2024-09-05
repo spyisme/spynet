@@ -862,11 +862,12 @@ def ink():
 
     keys_content = re.findall(r"--key\s+(\S+)", c_keys)
 
-    result = mpd + '\n ' + c_keys
-    
-    result = result.replace("\n", " ")
+    result = mpd + '\n' + c_keys
 
     session['result'] = result
+
+    result = result.replace("\n", " ")
+
 
     return render_template('backend_pages/ink.html', content_key=keys_content , mpd = mpd ,result = result)
 
