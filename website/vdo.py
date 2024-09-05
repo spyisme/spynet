@@ -591,7 +591,10 @@ def commandslist():
 
         else:
             save_name_match = re.search(r'--save-name\s+(\S+)', command)
-            if save_name_match:
+            match = re.search(r'--save-name\s*"([^"]+)"', command)
+            if match:
+                return match.group(1)
+            elif save_name_match :
                 return save_name_match.group(1)
             else:
                 return "Command has no name"

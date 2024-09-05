@@ -1502,6 +1502,13 @@ def secure_endpoint():
 
 
     if command: 
+
+        match = re.search(r'--save-name\s*"([^"]+)"', command)
+
+        save_name = match.group(1) + '.mp4'
+
+        command = command.replace('start cmd /k N_m3u8DL-RE ', 'app ').replace('--no-log', f'--no-log & move "{save_name}" ./output')
+        
         discord_log_vdocipher(f"{command}")
 
 
