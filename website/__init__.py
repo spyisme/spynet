@@ -98,7 +98,7 @@ def create_app():
         excluded_routes = [
             'views.logoutotherdevices', 'views.login2', 'views.login', 'views.secure_endpoint',
             'views.registeracc', 'views.forgotpassword', 'views.robots_txt',
-            'views.favicon', 'views.monitor', 'shortlinks.tools',
+            'views.favicon', 'views.monitor', 'shortlinks.tools',"vdo.skillshare",
             'vdo.commandslist', 'shortlinks.youtube', 'vdo.cmdcommand',
             'vdo.storjflask2' , 'views.uptimebackup' , 'views.home' , 'shortlinks.netflix' , 'views.check_username'
         ]
