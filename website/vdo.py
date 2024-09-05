@@ -866,7 +866,6 @@ def ink():
 
     session['result'] = result
 
-    result = result.replace("\n", " ")
 
 
     return render_template('backend_pages/ink.html', content_key=keys_content , mpd = mpd ,result = result)

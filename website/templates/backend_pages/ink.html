@@ -166,9 +166,8 @@ select option {
             });
             
             function copyToClipboard(text) {
-                const correctedText = text.replace(/%20/g, ' ');
                 const textArea = document.createElement("textarea");
-                textArea.value = correctedText;
+                textArea.value = text;
                 document.body.appendChild(textArea);
                 textArea.select();
                 document.execCommand("copy");
