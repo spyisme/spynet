@@ -24,10 +24,10 @@ connected_clients = 0
 def create_app():
 
     app = Flask(__name__)
-    
+
     CORS(app, resources={
         r"/iframes": {"origins": "https://omar-sherbeni.com"},
-        r"/skillshare": {"origins": "https://skillshare.com"}
+        r"/skillshare": {"origins": "https://www.skillshare.com"}
     })
 
     # Configuration for Flask-Mail
