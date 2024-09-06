@@ -232,7 +232,7 @@ def login():
         username = username.lower()
         user = User.query.filter_by(username=username).first()
 
-        #To get the username using the username/email
+        #To get the username using the Username/email
         if user:
             pass
         else:
