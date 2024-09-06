@@ -240,13 +240,14 @@ def login():
 
         if user:
 
-            if user.username not in ['spy'] and user.active_sessions >= 3:
+            # if user.username not in ['spy'] and user.active_sessions >= 3:
 
-                discord_log_login(
-                    f"{username} tried to login from more than 3 devices <@709799648143081483>"  
-                )
+                # discord_log_login(
+                #     f"{username} tried to login from more than 3 devices <@709799648143081483>"  
+                # )
 
-                return redirect(f"/login?maxdevices=yes&user={username}")
+                # return redirect(f"/login?maxdevices=yes&user={username}")
+
             if user.password == "password":
                 return redirect(f"forgotpassword?user={username}")
 
@@ -361,15 +362,15 @@ def forgotpassword():
     if request.method == 'POST':
         otp = request.form.get('otp')
         if otp == user.otp:  
-            if user.username not in [
-                    'spy',
-                    'biba'  
-            ] and user.active_sessions >= 3:  
+            # if user.username not in [
+            #         'spy',
+            #         'biba'  
+            # ] and user.active_sessions >= 3:  
 
-                discord_log_login(
-                    f"{username} tried to login from more than 3 devices <@709799648143081483>"
-                )
-                return redirect(f"/login?maxdevices=true&user={username}")
+            #     discord_log_login(
+            #         f"{username} tried to login from more than 3 devices <@709799648143081483>"
+            #     )
+            #     return redirect(f"/login?maxdevices=true&user={username}")
 
             login_user(user)
 
