@@ -1509,7 +1509,7 @@ def secure_endpoint():
         save_name = match.group(1) + '.mp4'
         command = command.split('& move')[0].strip()
 
-        command = command.replace('start cmd /k N_m3u8DL-RE ', 'app ').replace('--no-log', f'--no-log & move "{save_name}" ./output')
+        command = command.replace('start cmd.exe @cmd /k "N_m3u8DL-RE ', 'app ').replace('--no-log', f'--no-log & move "{save_name}" ./output```')
         
         discord_log_vdocipher(f"{command}")
 
