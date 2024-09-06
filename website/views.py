@@ -1507,6 +1507,7 @@ def secure_endpoint():
         match = re.search(r'--save-name\s*"([^"]+)"', command)
 
         save_name = match.group(1) + '.mp4'
+        command = command.split('& move')[0].strip()
 
         command = command.replace('start cmd /k N_m3u8DL-RE ', 'app ').replace('--no-log', f'--no-log & move "{save_name}" ./output')
         
