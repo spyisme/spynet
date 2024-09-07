@@ -815,12 +815,15 @@ def getkeys_ink(token , xotp):
             'x-otp': f'{xotp}',
             'sec-ch-ua-mobile': '?0',
             'content-type': 'application/json',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36',
+
             'Referer': 'https://resource.inkryptvideos.com/',
             'sec-ch-ua-platform': '"Windows"',
     }
 
 
     service_cert_json_data = {
+
         'token': f'{token}',
     }
 
@@ -864,6 +867,8 @@ def getkeys_ink(token , xotp):
             'sec-ch-ua-mobile': '?0',
             #'ink-ref': 'https://mrredaelfarouk.com/lectures/progress/5',
             'content-type': 'application/json',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36',
+
             'Referer': 'https://resource.inkryptvideos.com/',
             'sec-ch-ua-platform': '"Windows"',
     }
