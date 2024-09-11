@@ -6622,33 +6622,8 @@
                 "courses": [
                     {
                         "name": "Chapter 1",
-                        "description": " ",
-                        "videos": [
-                            {
-                                "id": "OruX7hcclic",
-                                "title": "System overview",
-                                "duration": "00:05:14",
-                                "jsid": 0
-                            },
-                            {
-                                "id": "wW5AGnNhz94",
-                                "title": "S1 | Part 1",
-                                "duration": "01:28:47",
-                                "jsid": 1
-                            },
-                            {
-                                "id": "cp7-4O-gkPs",
-                                "title": "S1 | Part 2",
-                                "duration": "01:15:45",
-                                "jsid": 2
-                            },
-                            {
-                                "id": "kLd7T_oI0T8",
-                                "title": "S1 | Part 3",
-                                "duration": "00:27:49",
-                                "jsid": 3
-                            }
-                        ],
+                        "description": "",
+                        "videos": "",
                         "playlist_id": "PLM-GVlebsoPWtyKgs1hPQueuu5Qf1LCbN",
                         "folder": "https://drive.google.com/drive/folders/1S2nY0jX2EzT-G96uwoPyMik21ReV0Jg2?usp=drive_link"
                     }

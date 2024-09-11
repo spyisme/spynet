@@ -1,1 +1,0 @@
-app https://clfront-49323-vl.inkryptvideos.com/media/86d285cecdbf2d2c/cbadd87b/66d671672825d_stream.mpd --key 808b701708765bfaad422b7c2cb942df:1ec08e13299402d7ff015264d9e043ad  --save-name S1Hw -M format=mp4 --auto-select --no-log  & move S1Hw.mp4 ./output
