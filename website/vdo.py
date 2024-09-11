@@ -72,7 +72,7 @@ def jsonget(token, thing):
 
 
 def getkeys_vdocipher(video_url):
-    wvd = "cdms/main.wvd"  # Set your preferred value for wvd
+    wvd = "cdms/vdo.wvd"  # Set your preferred value for wvd
     if wvd is None:
         exit(
             f"No CDM! To use local decryption, place a .wvd in {os.getcwd()}/WVDs"
@@ -794,7 +794,7 @@ def getv(token):
 
 
 def getkeys_ink(token , xotp):
-    wvd = "cdms/main.wvd"  # Set your preferred value for wvd
+    wvd = "cdms/ink.wvd"  # Set your preferred value for wvd
     if wvd is None:
         exit(f"No CDM! To use local decryption, place a .wvd in {os.getcwd()}/WVDs")
 
