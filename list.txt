@@ -1,0 +1,4 @@
+app https://r2.interstellarseries.com/hls/8178883335/b16823ae4b7443429de970c9724deb07.m3u8 --save-name S3SolvingQuizonS2 -M format=mp4 --auto-select --no-log  & move S3SolvingQuizonS2.mp4 ./output;
+app https://r2.interstellarseries.com/hls/2292597453/baf3871eb3ba4ac38bf354eddb1e5690.m3u8 --save-name S3SeriesandParallelConnection -M format=mp4 --auto-select --no-log  & move S3SeriesandParallelConnection.mp4 ./output;
+app https://r2.interstellarseries.com/hls/5227835257/82f800c1bde74717b1fe6190b3f33365.m3u8 --save-name S3Practicingonseriesandparallel -M format=mp4 --auto-select --no-log  & move S3Practicingonseriesandparallel.mp4 ./output;
+app https://r2.interstellarseries.com/hls/3556368546/4a17ea95aa77467689dad30ec8dc7d4c.m3u8 --save-name S3MixedConnectionandsolvingonit -M format=mp4 --auto-select --no-log  & move S3MixedConnectionandsolvingonit.mp4 ./output;
