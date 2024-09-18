@@ -123,9 +123,9 @@ def create_app():
                 
 
 
-            elif current_user.subscription_date + timedelta(days=30) < datetime.today().date() :
-                if current_user.type != 'admin' :
-                    return render_template('users_pages/expired.html')
+            # elif current_user.subscription_date + timedelta(days=30) < datetime.today().date() :
+            #     if current_user.type != 'admin' :
+            #         return render_template('users_pages/expired.html')
         
 
             else:
