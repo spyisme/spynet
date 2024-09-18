@@ -8,7 +8,7 @@
                 "courses": [
                     {
                         "name": "Chapter 1",
-                        "description": "Transition elements",
+                        "description": "",
                         "videos": [
                             {
                                 "id": "_e1Btglv6OI",
@@ -3686,21 +3686,21 @@
                                 "jsid": 3
                             },
                             {
+                                "id": "_aOcf_G4HAk",
+                                "title": "S2 | Hw Mrs . Fatma",
+                                "duration": "02:44:07",
+                                "jsid": 4
+                            },
+                            {
                                 "id": "cIqflVlxRMM",
                                 "title": "S2 | Hw  Mr . Hady",
                                 "duration": "02:27:23",
-                                "jsid": 4
+                                "jsid": 5
                             },
                             {
                                 "id": "dW9V4HR2i68",
                                 "title": "S2 | Hw  Mr . Hady Part  2",
                                 "duration": "00:32:10",
-                                "jsid": 5
-                            },
-                            {
-                                "id": "_aOcf_G4HAk",
-                                "title": "S2 | Hw Mrs . Fatma",
-                                "duration": "02:44:07",
                                 "jsid": 6
                             },
                             {
@@ -3726,18 +3726,6 @@
                                 "title": "S4",
                                 "duration": "02:47:13",
                                 "jsid": 10
-                            },
-                            {
-                                "id": "To4ue9eWtfw",
-                                "title": "S4 | Hw Mr . Hady",
-                                "duration": "03:22:59",
-                                "jsid": 11
-                            },
-                            {
-                                "id": "tRtVLdQwh_k",
-                                "title": "S4 | Hw Mrs . Fatma",
-                                "duration": "05:30:24",
-                                "jsid": 12
                             }
                         ],
                         "playlist_id": "PLM-GVlebsoPXERuHteoa6a_vGYV5pMqKK",
@@ -4476,20 +4464,6 @@
                         ],
                         "playlist_id": "PLM-GVlebsoPW_ygU82xmBivqfLdqv_76b",
                         "folder": "https://drive.google.com/drive/folders/1BK961OcB3jYYyn1vofPHSfZZxBvTX3SX?usp=drive_link"
-                    },
-                    {
-                        "name": "Sessions",
-                        "description": "",
-                        "videos": [
-                            {
-                                "id": "ssiyK6TiBu4",
-                                "title": "S1",
-                                "duration": "02:50:11",
-                                "jsid": 0
-                            }
-                        ],
-                        "playlist_id": "PLM-GVlebsoPVYYWT428oBFUTFNRlEEMVk",
-                        "folder": ""
                     }
                 ],
                 "description": "Year 2024/2025"
@@ -6807,7 +6781,7 @@
                 "courses": [
                     {
                         "name": "Chapter 1",
-                        "description": "Chapter 1",
+                        "description": "Biology",
                         "videos": [
                             {
                                 "id": "OruX7hcclic",
@@ -6838,18 +6812,6 @@
                                 "title": "S1 | Law Sa2lak",
                                 "duration": "02:00:55",
                                 "jsid": 4
-                            },
-                            {
-                                "id": "zNcIkWnGCRI",
-                                "title": "S1 | Hw",
-                                "duration": "01:57:38",
-                                "jsid": 5
-                            },
-                            {
-                                "id": "NF6o1GRJjog",
-                                "title": "S1 | Classwork",
-                                "duration": "02:00:55",
-                                "jsid": 6
                             }
                         ],
                         "playlist_id": "PLM-GVlebsoPWtyKgs1hPQueuu5Qf1LCbN",

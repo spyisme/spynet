@@ -5,40 +5,7 @@
                 "name": "Dr. Nasser el batal",
                 "description": "Year 2024/2025",
                 "link": "nasserelbatal",
-                "courses": [
-                    {
-                        "name": "Chapter 1",
-                        "description": "Transition elements",
-                        "videos": [
-                            {
-                                "id": "_e1Btglv6OI",
-                                "title": "S1 | Part 1",
-                                "duration": "00:05:15",
-                                "jsid": 0
-                            },
-                            {
-                                "id": "Ji4P-zLJsdU",
-                                "title": "S1 | Part 2",
-                                "duration": "00:25:53",
-                                "jsid": 1
-                            },
-                            {
-                                "id": "fZ9ZI6zg7z0",
-                                "title": "S1 | Part 3",
-                                "duration": "01:23:53",
-                                "jsid": 2
-                            },
-                            {
-                                "id": "nRugZnQ3mFU",
-                                "title": "S1 | Part 4",
-                                "duration": "00:41:50",
-                                "jsid": 3
-                            }
-                        ],
-                        "playlist_id": "PLM-GVlebsoPWV03Kfc9jDQZ3KLZwZMtYT",
-                        "folder": "https://drive.google.com/drive/folders/16O3YJwHQAPgX-vlC0JjCVQbYwdjj-wSe"
-                    }
-                ]
+                "courses": []
             },
             {
                 "name": "Mr. Ashraf el shenawy",
@@ -3611,40 +3578,10 @@
                                 "jsid": 17
                             },
                             {
-                                "id": "-IFhgY-uDr4",
-                                "title": "S3 | Solving Quiz on S2",
-                                "duration": "00:47:13",
-                                "jsid": 18
-                            },
-                            {
-                                "id": "clNqdXg30HU",
-                                "title": "S3 | Series and Parallel",
-                                "duration": "00:57:48",
-                                "jsid": 19
-                            },
-                            {
-                                "id": "7gmHyNHqYss",
-                                "title": "S3 | Practicing on series and parallel",
-                                "duration": "00:17:31",
-                                "jsid": 20
-                            },
-                            {
-                                "id": "pAWK5zZi5GQ",
-                                "title": "S3 | Mixed Connection and solving on it",
-                                "duration": "00:34:57",
-                                "jsid": 21
-                            },
-                            {
                                 "id": "bGIOn-DAGIM",
                                 "title": "S3 | One Step Further",
                                 "duration": "00:37:59",
-                                "jsid": 22
-                            },
-                            {
-                                "id": "zQNb9SUQebY",
-                                "title": "S3 | Hw",
-                                "duration": "00:44:11",
-                                "jsid": 23
+                                "jsid": 18
                             }
                         ],
                         "playlist_id": "PLM-GVlebsoPX_GMg2uu7IGI1bN0idBYOu",
@@ -3686,21 +3623,21 @@
                                 "jsid": 3
                             },
                             {
+                                "id": "_aOcf_G4HAk",
+                                "title": "S2 | Hw Mrs . Fatma",
+                                "duration": "02:44:07",
+                                "jsid": 4
+                            },
+                            {
                                 "id": "cIqflVlxRMM",
                                 "title": "S2 | Hw  Mr . Hady",
                                 "duration": "02:27:23",
-                                "jsid": 4
+                                "jsid": 5
                             },
                             {
                                 "id": "dW9V4HR2i68",
                                 "title": "S2 | Hw  Mr . Hady Part  2",
                                 "duration": "00:32:10",
-                                "jsid": 5
-                            },
-                            {
-                                "id": "_aOcf_G4HAk",
-                                "title": "S2 | Hw Mrs . Fatma",
-                                "duration": "02:44:07",
                                 "jsid": 6
                             },
                             {
@@ -3726,18 +3663,6 @@
                                 "title": "S4",
                                 "duration": "02:47:13",
                                 "jsid": 10
-                            },
-                            {
-                                "id": "To4ue9eWtfw",
-                                "title": "S4 | Hw Mr . Hady",
-                                "duration": "03:22:59",
-                                "jsid": 11
-                            },
-                            {
-                                "id": "tRtVLdQwh_k",
-                                "title": "S4 | Hw Mrs . Fatma",
-                                "duration": "05:30:24",
-                                "jsid": 12
                             }
                         ],
                         "playlist_id": "PLM-GVlebsoPXERuHteoa6a_vGYV5pMqKK",
@@ -4476,20 +4401,6 @@
                         ],
                         "playlist_id": "PLM-GVlebsoPW_ygU82xmBivqfLdqv_76b",
                         "folder": "https://drive.google.com/drive/folders/1BK961OcB3jYYyn1vofPHSfZZxBvTX3SX?usp=drive_link"
-                    },
-                    {
-                        "name": "Sessions",
-                        "description": "",
-                        "videos": [
-                            {
-                                "id": "ssiyK6TiBu4",
-                                "title": "S1",
-                                "duration": "02:50:11",
-                                "jsid": 0
-                            }
-                        ],
-                        "playlist_id": "PLM-GVlebsoPVYYWT428oBFUTFNRlEEMVk",
-                        "folder": ""
                     }
                 ],
                 "description": "Year 2024/2025"
@@ -6807,7 +6718,7 @@
                 "courses": [
                     {
                         "name": "Chapter 1",
-                        "description": "Chapter 1",
+                        "description": "Biology",
                         "videos": [
                             {
                                 "id": "OruX7hcclic",
@@ -6838,18 +6749,6 @@
                                 "title": "S1 | Law Sa2lak",
                                 "duration": "02:00:55",
                                 "jsid": 4
-                            },
-                            {
-                                "id": "zNcIkWnGCRI",
-                                "title": "S1 | Hw",
-                                "duration": "01:57:38",
-                                "jsid": 5
-                            },
-                            {
-                                "id": "NF6o1GRJjog",
-                                "title": "S1 | Classwork",
-                                "duration": "02:00:55",
-                                "jsid": 6
                             }
                         ],
                         "playlist_id": "PLM-GVlebsoPWtyKgs1hPQueuu5Qf1LCbN",

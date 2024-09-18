@@ -4480,15 +4480,8 @@
                     {
                         "name": "Sessions",
                         "description": "",
-                        "videos": [
-                            {
-                                "id": "ssiyK6TiBu4",
-                                "title": "S1",
-                                "duration": "02:50:11",
-                                "jsid": 0
-                            }
-                        ],
-                        "playlist_id": "PLM-GVlebsoPVYYWT428oBFUTFNRlEEMVk",
+                        "videos": "",
+                        "playlist_id": "",
                         "folder": ""
                     }
                 ],
