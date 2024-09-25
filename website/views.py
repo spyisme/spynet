@@ -757,7 +757,7 @@ def tes():
     response1 = requests.get('https://api.ipify.org/?format=json')
     response2 = requests.get('https://api.ipify.org/?format=json' , proxies=proxy)
 
-    return response1 , response2
+    return f"{response1} , {response2}"
 
 
 
