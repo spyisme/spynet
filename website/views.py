@@ -778,8 +778,47 @@ def theleaderfinal(type , id):
     if type == 'video':
             url = f"https://api.theleadersacademy.online/api/video/play/{id}"
             
+            with open('workingtheleader.json', 'r') as file:
+                accounts = json.load(file)
 
-            for x in range(20):
+            for account in accounts:
+                headers = {
+                    'Accept': '*/*',
+                    'Cache-Control': 'no-cache',
+                    'Connection': 'keep-alive',
+                    'Content-Type': 'application/json',
+                    'DeviceId': 's',
+                }
+
+                email = account['email']
+                password = account['password']
+                json_data = {
+                    'identifier': email,
+                    'password': password,
+                    'device': {
+                        'browser': {
+                            'name': 's',
+                            'version': 's',
+                            'major': 's',
+                        },
+                        'os': {
+                            'name': 's',
+                            'version': 's',
+                        },
+                        'device': {
+                            'type': 's',
+                            'id': 's',
+                        },
+                    },
+                }
+
+                response = session.post(
+                    'https://api.theleadersacademy.online/api/auth/login',
+                    headers=headers,
+                    json=json_data)
+
+                token = response.json()['data']['token']
+                headers = {"Authorization": f"Bearer {token}"}
                 
                 response = requests.get(url, headers=headers)
                 if response.status_code == 200:
