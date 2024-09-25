@@ -148,10 +148,17 @@
                 url = "/subjects/english/theleader/session/document/" + id;
             }
 
-            // Create a clickable link that updates the iframe
+            // Create a clickable link
             let itemDiv = document.createElement('div');
             itemDiv.className = 'result-item';
-            itemDiv.innerHTML = `<a href="javascript:void(0);" onclick="updateIframe('${url}')"><strong>${description}</strong> (${type})</a>`;
+            
+            // Check the type and create link accordingly
+            if (type === "video") {
+                itemDiv.innerHTML = `<a href="javascript:void(0);" onclick="updateIframe('${url}')"><strong>${description}</strong> (${type})</a>`;
+            } else {
+                itemDiv.innerHTML = `<a href="${url}" target="_blank"><strong>${description}</strong> (${type})</a>`;
+            }
+            
             resultsContainer.appendChild(itemDiv);
         });
     }
