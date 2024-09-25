@@ -717,10 +717,14 @@ def getuploadedlec():
     headers = {
         "deviceid": "s",
     }
-
+    proxy = {
+    "http": "http://nprofi:6f0reuyu@139.171.104.74:29842",
+    "https": "http://nprofi:6f0reuyu@139.171.104.74:29842"
+}
+    
     response = requests.get(
         "https://api.theleadersacademy.online/api/classroom/get/mrhossamonline25",
-        headers=headers)
+        headers=headers , proxies=proxy)
 
     data = response.json()
 
