@@ -754,8 +754,8 @@ def tes():
     "https": "http://nprofi:6f0reuyu@139.171.104.74:29842"
     }
     
-    response1 = request.get('https://api.ipify.org/?format=json')
-    response2 = request.get('https://api.ipify.org/?format=json' , proxies=proxy)
+    response1 = requests.get('https://api.ipify.org/?format=json')
+    response2 = requests.get('https://api.ipify.org/?format=json' , proxies=proxy)
 
     return response1 , response2
 
