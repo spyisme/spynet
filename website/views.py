@@ -768,22 +768,46 @@ def theleaderfirst(id):
 
 @views.route("/subjects/english/theleader/session/<type>/<id>")
 def theleaderfinal(type , id):
-
     headers = {"Authorization": "Bearer MjM1NjQz.ML6JzvDRSM7j25oOl0MfYoSurT1lQzDk7CQFsMHox_PBlrz9QmmKfo7mhSXV"}
-    step2link = f'https://api.theleadersacademy.online/api/course/{id}'
 
-    step2 = requests.get(step2link, headers=headers)
+    if type == 'video':
+            video = session.get(
+                f"https://api.theleadersacademy.online/api/video/play/{id}",
+                headers=headers)
 
-    step2_data = step2.json()
+            video = video.json()
+            video = video["data"]["details"]["iframe"]
 
-    step2_course = step2_data['data']['course']
+            match = re.search(r'src="([^"]+)"', video)
+            if match:
+                link = match.group(1)
 
-    extracted_data = [(unit['id'], unit['name'],
-                        unit['type']['name'])
-                        for unit in step2_course['units']]
+                # print(link)
 
+    elif type == 'webcontent':
+        webcontent = session.get(
+            f"https://api.theleadersacademy.online/api/web-content/{id}",
+            headers=headers)
 
-    return extracted_data
+        webcontent = webcontent.json()
+        webcontent = webcontent["data"]["content"]
+        match = re.search(r'href="([^"]+)"', webcontent)
+        if match:
+            link = match.group(1)
+
+            # print(link)
+
+    elif type == 'document':
+        document = session.get(
+            f" https://api.theleadersacademy.online/api/document/{id}",
+            headers=headers)
+
+        document = document.json()
+        link = document["data"]["uri"]
+
+  
+
+    return link
 
 
 
