@@ -16,7 +16,13 @@
     
 
 
-
+      <style>
+        /* CSS to make the dropdown font size bigger */
+        select {
+            font-size: 18px; /* Adjust this value for bigger font */
+            padding: 5px; /* Optional: to increase the size of the dropdown box */
+        }
+    </style>
 
 </head>
 <body onload="startCountdown()">
@@ -30,8 +36,8 @@
                 <a href="/" class="nohover">Home</a>
               </p><br>
             <hr>
-            <select name="dropdown" id="dropdown">
 
+            <select name="dropdown" id="dropdown">
    {%for x in lectures%}
    <option value="{{ x }}">{{ x }}</option>
 
