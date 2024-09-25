@@ -779,7 +779,7 @@ def theleaderfinal(type , id):
             video = requests.get(
                 f"https://api.theleadersacademy.online/api/video/play/{id}",
                 headers=headers)
-            return video.status_code
+            return f"{video.status_code}"
             video = video.json()
             video = video["data"]["details"]["iframe"]
 
