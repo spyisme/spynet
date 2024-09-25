@@ -760,9 +760,13 @@ def theleaderfirst(id):
 
     step2_course = step2_data['data']['course']
 
-    extracted_data = [(unit['id'], unit['name'],
-                        unit['type']['name'])
-                        for unit in step2_course['units']]
+    allowed_types = ['video', 'document', 'webcontent']
+
+    # Extract only units with allowed types
+    extracted_data = [(unit['id'], unit['name'], unit['type']['name'])
+                    for unit in step2_course['units']
+                    if unit['type']['name'].lower() in allowed_types]
+
 
     return extracted_data
 
