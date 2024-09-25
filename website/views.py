@@ -739,7 +739,7 @@ def getuploadedlec():
 
 
 @views.route("/subjects/english/theleader")
-def basiccoursemoadel():
+def theleadersessions():
 
     return getuploadedlec()
 
