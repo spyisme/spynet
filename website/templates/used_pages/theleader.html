@@ -45,7 +45,7 @@
 
 </select>
 <div class="play-btn" style="width:50px; text-align: center;   margin-left: auto;
-  margin-right: auto;">Load</div>
+  margin-right: auto;" onclick="loadlec()">Load</div>
 
         <br>      
         <br>
@@ -60,10 +60,29 @@
         
     </section>
 
-
-
-
 </body>
+
+<script>
+    function loadlec() {
+        // Get the selected option text
+        var selectedOption = document.getElementById('dropdown').value;
+        
+        // Use a regular expression to extract the ID
+        var idMatch = selectedOption.match(/ID\s*:\s*(\d+)/);
+        
+        if (idMatch) {
+            var id = idMatch[1]; // The ID value extracted
+            var url = "/subjects/english/theleader/session/" + id;
+            
+            // Redirect to the constructed URL
+            window.location.href = url;
+        } else {
+            alert("ID not found in the selected option!");
+        }
+    }
+</script>
+
+
 
     <script src="{{ url_for('static', filename='java/snow.js') }}"></script>
     <script src="   {{ url_for('static', filename='java/countdown.js') }}"></script>
