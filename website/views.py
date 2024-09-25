@@ -709,11 +709,44 @@ def ashrafelshemawy():
 def basiccoursemoadel():
 
     return redirect('https://www.youtube.com/watch?v=Mhcuu-A7RT8&list=PLM-GVlebsoPX_GMg2uu7IGI1bN0idBYOu')
-#Update videos
+
+#The leader---------------------------------------------------------------------
+
+#Get uploaded lectures
+def getuploadedlec():
+    headers = {
+        "deviceid": "s",
+    }
+
+    response = requests.get(
+        "https://api.theleadersacademy.online/api/classroom/get/mrhossamonline25",
+        headers=headers)
+
+    data = response.json()
+
+    online_lectures = []
+
+    # Find the "Main Lectures" tab and extract courses
+    for tab in data['data']['tabs']:
+        if tab['name'] == "Main Lectures":
+            for section in tab['sections']:
+                if section['name'] == "Online Lectures":
+                    for course in section['courses']:
+                        course_info = f'{course["name"]} ID : {course["id"]}'
+                        online_lectures.append(course_info)
+
+    return online_lectures
 
 
-@views.route(
-    "/subjects/<subject>/<teacher_name>/<course_name>/update")  
+@views.route("/subjects/english/theleader")
+def basiccoursemoadel():
+
+    return getuploadedlec()
+
+
+#Update videos-----------------------------------------------------------------
+
+@views.route("/subjects/<subject>/<teacher_name>/<course_name>/update")  
 def update(subject, teacher_name, course_name):
     videos = None
     if "-" in course_name:
