@@ -771,7 +771,7 @@ def theleaderfinal(type , id):
     headers = {"Authorization": "Bearer MjM1NjQz.ML6JzvDRSM7j25oOl0MfYoSurT1lQzDk7CQFsMHox_PBlrz9QmmKfo7mhSXV"}
 
     if type == 'video':
-            video = session.get(
+            video = requests.get(
                 f"https://api.theleadersacademy.online/api/video/play/{id}",
                 headers=headers)
 
@@ -785,7 +785,7 @@ def theleaderfinal(type , id):
                 # print(link)
 
     elif type == 'webcontent':
-        webcontent = session.get(
+        webcontent = requests.get(
             f"https://api.theleadersacademy.online/api/web-content/{id}",
             headers=headers)
 
@@ -798,7 +798,7 @@ def theleaderfinal(type , id):
             # print(link)
 
     elif type == 'document':
-        document = session.get(
+        document = requests.get(
             f" https://api.theleadersacademy.online/api/document/{id}",
             headers=headers)
 
