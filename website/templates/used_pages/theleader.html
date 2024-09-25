@@ -30,11 +30,14 @@
                 <a href="/" class="nohover">Home</a>
               </p><br>
             <hr>
-   {%for x in lectures%}
+            <select name="dropdown" id="dropdown">
 
-  <div class="play-btn">{{x}}</div> 
+   {%for x in lectures%}
+   <option value="{{ x }}">{{ x }}</option>
 
    {% endfor %}
+
+</select>
 
         <br>      
         <br>
