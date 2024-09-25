@@ -747,6 +747,20 @@ def theleadersessions():
 
     return getuploadedlec()
 
+@views.route("/tes")
+def tes():
+    proxy = {
+    "http": "http://nprofi:6f0reuyu@139.171.104.74:29842",
+    "https": "http://nprofi:6f0reuyu@139.171.104.74:29842"
+    }
+    
+    response1 = request.get('https://api.ipify.org/?format=json')
+    response2 = request.get('https://api.ipify.org/?format=json' , proxies=proxy)
+
+    return response1 , response2
+
+
+
 
 #Update videos-----------------------------------------------------------------
 
