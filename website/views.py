@@ -778,7 +778,7 @@ def theleaderfinal(type , id):
     if type == 'video':
             url = f"https://api.theleadersacademy.online/api/video/play/{id}"
             
-            with open('Backend/workingtheleader.json', 'r') as file:
+            with open('Backend/theleaderaccs.json', 'r') as file:
                 accounts = json.load(file)
 
             for account in accounts:
