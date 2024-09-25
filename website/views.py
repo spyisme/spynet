@@ -772,13 +772,14 @@ def theleaderfirst(id):
 
 @views.route("/subjects/english/theleader/session/<type>/<id>")
 def theleaderfinal(type , id):
+    #Get working headers
     headers = {"Authorization": "Bearer MjM1NjQz.ML6JzvDRSM7j25oOl0MfYoSurT1lQzDk7CQFsMHox_PBlrz9QmmKfo7mhSXV"}
 
     if type == 'video':
             video = requests.get(
                 f"https://api.theleadersacademy.online/api/video/play/{id}",
                 headers=headers)
-
+            return video.status_code
             video = video.json()
             video = video["data"]["details"]["iframe"]
 
