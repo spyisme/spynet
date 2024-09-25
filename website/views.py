@@ -748,6 +748,24 @@ def theleadersessions():
     return render_template('used_pages/theleader.html' , lectures = lectures)
 
 
+@views.route("/subjects/english/theleader/session/<id>")
+def theleadersessionswithid(id):
+
+    headers = {"Authorization": "Bearer MjM1NjQz.ML6JzvDRSM7j25oOl0MfYoSurT1lQzDk7CQFsMHox_PBlrz9QmmKfo7mhSXV"}
+    step2link = f'https://api.theleadersacademy.online/api/course/{id}'
+
+    step2 = requests.get(step2link, headers=headers)
+
+    step2_data = step2.json()
+
+    step2_course = step2_data['data']['course']
+
+    extracted_data = [(unit['id'], unit['name'],
+                        unit['type']['name'])
+                        for unit in step2_course['units']]
+
+
+    return extracted_data
 #Update videos-----------------------------------------------------------------
 
 @views.route("/subjects/<subject>/<teacher_name>/<course_name>/update")  

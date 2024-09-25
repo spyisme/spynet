@@ -44,8 +44,15 @@
    {% endfor %}
 
 </select>
+
+
+
 <div class="play-btn" style="width:50px; text-align: center;   margin-left: auto;
   margin-right: auto;" onclick="loadlec()">Load</div>
+
+
+<div id="results" class="result-container"></div>
+
 
         <br>      
         <br>
@@ -63,21 +70,54 @@
 </body>
 
 <script>
-    function loadlec() {
+    async function loadlec() {
         // Get the selected option text
         var selectedOption = document.getElementById('dropdown').value;
-        
+
         // Use a regular expression to extract the ID
         var idMatch = selectedOption.match(/ID\s*:\s*(\d+)/);
-        
+
         if (idMatch) {
             var id = idMatch[1]; // The ID value extracted
             var url = "/subjects/english/theleader/session/" + id;
-            
-            // Redirect to the constructed URL
-            window.location.href = url;
+
+            try {
+                // Send a GET request to the URL
+                let response = await fetch(url);
+                
+                // Check if the response is successful
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+
+                // Parse the JSON response
+                let data = await response.json();
+
+                // Display the data
+                displayResults(data);
+            } catch (error) {
+                console.error('There was a problem with the fetch operation:', error);
+            }
         } else {
             alert("ID not found in the selected option!");
+        }
+    }
+
+    function displayResults(data) {
+        // Get the results container
+        var resultsContainer = document.getElementById('results');
+
+        // Clear previous results
+        resultsContainer.innerHTML = '';
+
+        // Iterate over the JSON data and create elements for each item
+        for (let key in data) {
+            if (data.hasOwnProperty(key)) {
+                // Create a div for each item
+                let itemDiv = document.createElement('div');
+                itemDiv.innerHTML = `<strong>${key}:</strong> ${data[key]}`;
+                resultsContainer.appendChild(itemDiv);
+            }
         }
     }
 </script>
