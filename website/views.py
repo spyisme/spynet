@@ -778,7 +778,7 @@ def theleaderfinal(type , id):
     if type == 'video':
             url = f"https://api.theleadersacademy.online/api/video/play/{id}"
             
-            with open('workingtheleader.json', 'r') as file:
+            with open('Backend/workingtheleader.json', 'r') as file:
                 accounts = json.load(file)
 
             for account in accounts:
@@ -819,7 +819,7 @@ def theleaderfinal(type , id):
 
                 token = response.json()['data']['token']
                 headers = {"Authorization": f"Bearer {token}"}
-                
+
                 response = requests.get(url, headers=headers)
                 if response.status_code == 200:
                     break
