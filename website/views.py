@@ -751,10 +751,9 @@ def theleadersessions():
 @views.route("/subjects/english/theleader/session/<id>")
 def theleaderfirst(id):
 
-    headers = {"Authorization": "Bearer MjM1NjQz.ML6JzvDRSM7j25oOl0MfYoSurT1lQzDk7CQFsMHox_PBlrz9QmmKfo7mhSXV"}
     step2link = f'https://api.theleadersacademy.online/api/course/{id}'
 
-    step2 = requests.get(step2link, headers=headers)
+    step2 = find_a_working_acc(step2link)
 
     step2_data = step2.json()
 
@@ -835,11 +834,10 @@ def theleaderfinal(type , id):
     headers = {"Authorization": "Bearer MjM1NjQz.ML6JzvDRSM7j25oOl0MfYoSurT1lQzDk7CQFsMHox_PBlrz9QmmKfo7mhSXV"}
 
     if type == 'video':
-            url = f"https://api.theleadersacademy.online/api/video/play/{id}"
+            video = find_a_working_acc(f"https://api.theleadersacademy.online/api/video/play/{id}")
             
-            response = find_a_working_acc(url)
-            
-            video = response.json()
+   
+            video = video.json()
             video = video["data"]["details"]["iframe"]
 
             match = re.search(r'src="([^"]+)"', video)
@@ -849,9 +847,7 @@ def theleaderfinal(type , id):
                 # print(link)
 
     elif type == 'webcontent':
-        webcontent = requests.get(
-            f"https://api.theleadersacademy.online/api/web-content/{id}",
-            headers=headers)
+        webcontent = find_a_working_acc(f"https://api.theleadersacademy.online/api/web-content/{id}")
 
         webcontent = webcontent.json()
         webcontent = webcontent["data"]["content"]
@@ -862,9 +858,7 @@ def theleaderfinal(type , id):
             # print(link)
 
     elif type == 'document':
-        document = requests.get(
-            f" https://api.theleadersacademy.online/api/document/{id}",
-            headers=headers)
+        document = find_a_working_acc(f"https://api.theleadersacademy.online/api/document/{id}")
 
         document = document.json()
         link = document["data"]["uri"]
