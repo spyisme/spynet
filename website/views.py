@@ -744,22 +744,8 @@ def getuploadedlec():
 
 @views.route("/subjects/english/theleader")
 def theleadersessions():
-
-    return getuploadedlec()
-
-@views.route("/tes")
-def tes():
-    proxy = {
-    "http": "http://nprofi:6f0reuyu@139.171.104.74:29842",
-    "https": "http://nprofi:6f0reuyu@139.171.104.74:29842"
-    }
-    
-    response1 = requests.get('https://api.ipify.org/?format=json')
-    response2 = requests.get('https://api.ipify.org/?format=json' , proxies=proxy)
-
-    return f"{response1.text} , {response2.text}"
-
-
+    lectures = getuploadedlec()
+    return render_template('used_pages/theleader.html' , lectures = lectures)
 
 
 #Update videos-----------------------------------------------------------------
