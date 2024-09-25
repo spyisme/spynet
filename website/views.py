@@ -770,6 +770,65 @@ def theleaderfirst(id):
 
     return extracted_data
 
+
+
+def find_a_working_acc(url):
+        with open('website/Backend/theleaderaccs.json', 'r') as file:
+            accounts = json.load(file)
+
+        for account in accounts:
+            headers = {
+                'Accept': '*/*',
+                'Cache-Control': 'no-cache',
+                'Connection': 'keep-alive',
+                'Content-Type': 'application/json',
+                'DeviceId': 's',
+            }
+
+            email = account['email']
+            password = account['password']
+            json_data = {
+                'identifier': email,
+                'password': password,
+                'device': {
+                    'browser': {
+                        'name': 's',
+                        'version': 's',
+                        'major': 's',
+                    },
+                    'os': {
+                        'name': 's',
+                        'version': 's',
+                    },
+                    'device': {
+                        'type': 's',
+                        'id': 's',
+                    },
+                },
+            }
+
+            response = requests.post(
+                'https://api.theleadersacademy.online/api/auth/login',
+                headers=headers,
+                json=json_data)
+
+            token = response.json()['data']['token']
+            headers = {"Authorization": f"Bearer {token}"}
+
+            response = requests.get(url, headers=headers)
+            if response.status_code == 200:
+                return response 
+
+
+
+
+
+
+
+
+
+
+
 @views.route("/subjects/english/theleader/session/<type>/<id>")
 def theleaderfinal(type , id):
     #Best acc yet (Defult one to start with)
@@ -778,53 +837,8 @@ def theleaderfinal(type , id):
     if type == 'video':
             url = f"https://api.theleadersacademy.online/api/video/play/{id}"
             
-            with open('website/Backend/theleaderaccs.json', 'r') as file:
-                accounts = json.load(file)
-
-            for account in accounts:
-                headers = {
-                    'Accept': '*/*',
-                    'Cache-Control': 'no-cache',
-                    'Connection': 'keep-alive',
-                    'Content-Type': 'application/json',
-                    'DeviceId': 's',
-                }
-
-                email = account['email']
-                password = account['password']
-                json_data = {
-                    'identifier': email,
-                    'password': password,
-                    'device': {
-                        'browser': {
-                            'name': 's',
-                            'version': 's',
-                            'major': 's',
-                        },
-                        'os': {
-                            'name': 's',
-                            'version': 's',
-                        },
-                        'device': {
-                            'type': 's',
-                            'id': 's',
-                        },
-                    },
-                }
-
-                response = requests.post(
-                    'https://api.theleadersacademy.online/api/auth/login',
-                    headers=headers,
-                    json=json_data)
-
-                token = response.json()['data']['token']
-                headers = {"Authorization": f"Bearer {token}"}
-
-                response = requests.get(url, headers=headers)
-                if response.status_code == 200:
-                    break
-
-
+            response = find_a_working_acc(url)
+            
             video = response.json()
             video = video["data"]["details"]["iframe"]
 
