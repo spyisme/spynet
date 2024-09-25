@@ -807,7 +807,7 @@ def theleaderfinal(type , id):
 
   
 
-    return link
+    return redirect(link)
 
 
 
