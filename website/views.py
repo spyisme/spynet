@@ -772,15 +772,21 @@ def theleaderfirst(id):
 
 @views.route("/subjects/english/theleader/session/<type>/<id>")
 def theleaderfinal(type , id):
-    #Get working headers
+    #Best acc yet (Defult one to start with)
     headers = {"Authorization": "Bearer MjM1NjQz.ML6JzvDRSM7j25oOl0MfYoSurT1lQzDk7CQFsMHox_PBlrz9QmmKfo7mhSXV"}
 
     if type == 'video':
-            video = requests.get(
-                f"https://api.theleadersacademy.online/api/video/play/{id}",
-                headers=headers)
-            return f"{video.status_code}"
-            video = video.json()
+            url = f"https://api.theleadersacademy.online/api/video/play/{id}"
+            
+
+            for x in range(20):
+                
+                response = requests.get(url, headers=headers)
+                if response.status_code == 200:
+                    return response
+
+
+            video = response.json()
             video = video["data"]["details"]["iframe"]
 
             match = re.search(r'src="([^"]+)"', video)
