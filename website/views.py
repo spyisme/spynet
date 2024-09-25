@@ -812,7 +812,7 @@ def theleaderfinal(type , id):
                     },
                 }
 
-                response = session.post(
+                response = requests.post(
                     'https://api.theleadersacademy.online/api/auth/login',
                     headers=headers,
                     json=json_data)
