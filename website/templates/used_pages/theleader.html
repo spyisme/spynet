@@ -31,7 +31,16 @@
     border-radius: 5px; /* Optional: rounded corners */
 }
 
-        
+.result-item {
+            margin: 5px 0; /* Space between result items */
+        }
+        .result-item a {
+            text-decoration: none; /* Remove underline from links */
+            color: #007bff; /* Link color */
+        }
+        .result-item a:hover {
+            text-decoration: underline; /* Underline on hover */
+        }    
     </style>
 
 </head>
@@ -81,29 +90,21 @@
 
 <script>
     async function loadlec() {
-        // Get the selected option text
         var selectedOption = document.getElementById('dropdown').value;
-
-        // Use a regular expression to extract the ID
         var idMatch = selectedOption.match(/ID\s*:\s*(\d+)/);
 
         if (idMatch) {
-            var id = idMatch[1]; // The ID value extracted
+            var id = idMatch[1];
             var url = "/subjects/english/theleader/session/" + id;
 
             try {
-                // Send a GET request to the URL
                 let response = await fetch(url);
                 
-                // Check if the response is successful
                 if (!response.ok) {
                     throw new Error('Network response was not ok ' + response.statusText);
                 }
 
-                // Parse the JSON response
                 let data = await response.json();
-
-                // Display the data
                 displayResults(data);
             } catch (error) {
                 console.error('There was a problem with the fetch operation:', error);
@@ -114,24 +115,34 @@
     }
 
     function displayResults(data) {
-        // Get the results container
         var resultsContainer = document.getElementById('results');
-
-        // Clear previous results
         resultsContainer.innerHTML = '';
 
-        // Iterate over the JSON data and create elements for each item
-        for (let key in data) {
-            if (data.hasOwnProperty(key)) {
-                // Create a div for each item
-                let itemDiv = document.createElement('div');
-                itemDiv.innerHTML = `<strong>${key}:</strong> ${data[key]}`;
-                resultsContainer.appendChild(itemDiv);
+        data.forEach(function(item) {
+            let id = item[0];
+            let description = item[1];
+            let type = item[2];
+
+            // Construct the URL based on the type
+            let url = "";
+            if (type === "video") {
+                url = "/subjects/english/theleader/session/video/" + id;
+            } else if (type === "webcontent") {
+                url = "/subjects/english/theleader/session/webcontent/" + id;
+            } else if (type === "document") {
+                url = "/subjects/english/theleader/session/document/" + id;
+            } else if (type === "test") {
+                url = "/subjects/english/theleader/session/test/" + id;
             }
-        }
+
+            // Create a clickable link
+            let itemDiv = document.createElement('div');
+            itemDiv.className = 'result-item';
+            itemDiv.innerHTML = `<a href="${url}" target="_blank"><strong>${description}</strong> (${type})</a>`;
+            resultsContainer.appendChild(itemDiv);
+        });
     }
 </script>
-
 
 
     <script src="{{ url_for('static', filename='java/snow.js') }}"></script>
