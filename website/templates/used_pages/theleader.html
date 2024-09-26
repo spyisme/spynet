@@ -67,7 +67,7 @@
               </p><br>
             <hr>
 
-            <select name="dropdown" id="dropdown" onchange="loadlec()">
+            <select name="dropdown" id="dropdown" onchange="loadlec(); cleariframe();">
 
    {%for x in lectures%}
    <option value="{{ x }}">{{ x }}</option>
@@ -128,6 +128,13 @@
             resultsContainer.innerHTML = ''; // Clear loading message if no ID found
         }
     }
+    function cleariframe() {
+        // Remove existing iframe if it exists
+        const existingIframe = document.getElementById('contentFrame');
+        if (existingIframe) {
+            iframeContainer.removeChild(existingIframe);
+        }
+    }
     
     function displayResults(data) {
         const resultsContainer = document.getElementById('results');
@@ -153,11 +160,7 @@
     async function updateIframe(url, type) {
         const iframeContainer = document.getElementById('iframeContainer');
         
-        // Remove existing iframe if it exists
-        const existingIframe = document.getElementById('contentFrame');
-        if (existingIframe) {
-            iframeContainer.removeChild(existingIframe);
-        }
+
     
         // Create a new iframe element
         const contentFrame = document.createElement('iframe');
