@@ -766,6 +766,7 @@ def theleaderfirst(id):
                     for unit in step2_course['units']
                     if unit['type']['name'].lower() in allowed_types]
 
+    extracted_data.insert(0, ("", "Choose a Lecture", ""))
 
     return extracted_data
 
