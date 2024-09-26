@@ -84,80 +84,82 @@
     const lecturesData = {{ lectures|tojson }};  // Pass the lectures data from Flask to JS
 
     function loadlec() {
-      const selectedLectureId = document.getElementById('dropdown').value;
-      const resultsContainer = document.getElementById('results');
-      const iframeContainer = document.getElementById('iframeContainer');
+        const selectedLectureId = document.getElementById('dropdown').value;
+        const resultsContainer = document.getElementById('results');
+        hideIframe();  // Hide iframe before new selection
 
-      // Show loading message while processing
-      resultsContainer.innerHTML = 'Loading...';
-      hideIframe();
+        // Show loading message while processing
+        resultsContainer.innerHTML = 'Loading...';
 
-      // Find the selected lecture by ID
-      const selectedLecture = lecturesData.find(lecture => lecture.lecture_id == selectedLectureId);
+        // Find the selected lecture by ID
+        const selectedLecture = lecturesData.find(lecture => lecture.lecture_id == selectedLectureId);
 
-      if (selectedLecture) {
-        displayResults(selectedLecture.units);
-      } else {
-        alert("Lecture not found!");
-        resultsContainer.innerHTML = '';  // Clear loading message if no lecture found
-      }
+        if (selectedLecture) {
+            displayResults(selectedLecture.units);
+        } else {
+            alert("Lecture not found!");
+            resultsContainer.innerHTML = '';  // Clear loading message if no lecture found
+        }
     }
 
     function displayResults(units) {
-      const resultsContainer = document.getElementById('results');
-      resultsContainer.innerHTML = '';  // Clear existing results
+        const resultsContainer = document.getElementById('results');
+        resultsContainer.innerHTML = '';  // Clear existing results
 
-      // Iterate over units and generate links
-      units.forEach(item => {
-        const [id, description, type] = item;
-        const url = `/subjects/english/theleader/session/${type}/${id}`;
+        // Iterate over units and generate links
+        units.forEach(item => {
+            const [id, description, type] = item;
+            const url = `/subjects/english/theleader/session/${type}/${id}`;
 
-        // Create a clickable link
-        const itemDiv = document.createElement('div');
-        itemDiv.className = 'result-item';
-        itemDiv.innerHTML = type === "video"
-          ? `<a href="javascript:void(0);" onclick="updateIframe('${url}', 'video')"><strong>${description}</strong> (${type})</a>`
-          : `<a href="${url}" target="_blank"><strong>${description}</strong> (${type})</a>`;
+            // Create a clickable link
+            const itemDiv = document.createElement('div');
+            itemDiv.className = 'result-item';
+            itemDiv.innerHTML = type === "video"
+              ? `<a href="javascript:void(0);" onclick="updateIframe('${url}', 'video')"><strong>${description}</strong> (${type})</a>`
+              : `<a href="${url}" target="_blank"><strong>${description}</strong> (${type})</a>`;
 
-        resultsContainer.appendChild(itemDiv);
-      });
+            resultsContainer.appendChild(itemDiv);
+        });
 
-      hideIframe();  // Keep the iframe hidden until a video is selected
+        hideIframe();  // Keep the iframe hidden until a video is selected
     }
 
     function updateIframe(url, type) {
-      const iframeContainer = document.getElementById('iframeContainer');
-      const contentFrame = document.getElementById('contentFrame');
+        const iframeContainer = document.getElementById('iframeContainer');
+        const contentFrame = document.getElementById('contentFrame');
 
-      if (type === 'video') {
-        // Show loading message while fetching video content
-        showLoadingMessage(iframeContainer, 'Loading...');
+        if (type === 'video') {
+            // Show loading message while fetching video content
+            showLoadingMessage(iframeContainer, 'Loading...');
 
-        // Update iframe with the video URL
-        contentFrame.src = url;
-        iframeContainer.style.display = 'block';  // Show iframe container
-      } else {
-        contentFrame.src = url;  // Set src for non-video types
-        iframeContainer.style.display = 'block';  // Show iframe container
-      }
+            // Directly set the video URL
+            contentFrame.src = url;
+            iframeContainer.style.display = 'block';  // Show iframe container
+        } else {
+            // For non-video types, open the URL in the iframe
+            contentFrame.src = url;
+            iframeContainer.style.display = 'block';  // Show iframe container
+        }
     }
 
     function showLoadingMessage(container, message, color = 'gray') {
-      container.innerHTML = '';  // Clear previous content
-      const loadingMessage = document.createElement('div');
-      loadingMessage.style.fontSize = '24px';
-      loadingMessage.style.color = color;
-      loadingMessage.style.textAlign = 'center';
-      loadingMessage.style.padding = '50px';
-      loadingMessage.innerText = message;
-      container.appendChild(loadingMessage);
+        container.innerHTML = '';  // Clear previous content
+        const loadingMessage = document.createElement('div');
+        loadingMessage.style.fontSize = '24px';
+        loadingMessage.style.color = color;
+        loadingMessage.style.textAlign = 'center';
+        loadingMessage.style.padding = '50px';
+        loadingMessage.innerText = message;
+        container.appendChild(loadingMessage);
     }
 
     function hideIframe() {
-      const iframeContainer = document.getElementById('iframeContainer');
-      iframeContainer.style.display = 'none';  // Hide the iframe container
+        const iframeContainer = document.getElementById('iframeContainer');
+        const contentFrame = document.getElementById('contentFrame');
+        contentFrame.src = "";  // Clear the iframe src
+        iframeContainer.style.display = 'none';  // Hide the iframe container
     }
-  </script>
+</script>
 
   <script src="{{ url_for('static', filename='java/snow.js') }}"></script>
   <script src="{{ url_for('static', filename='java/countdown.js') }}"></script>

@@ -728,19 +728,6 @@ def getuploadedlec():
 
     data = response.json()
 
-    online_lectures = []
-
-    # Find the "Main Lectures" tab and extract courses
-    for tab in data['data']['tabs']:
-        if tab['name'] == "Main Lectures":
-            for section in tab['sections']:
-                if section['name'] == "Online Lectures":
-                    for course in section['courses']:
-                        course_info = f'{course["name"]} ID : {course["id"]}'
-                        online_lectures.append(course_info)
-                          
-    online_lectures.insert(0, ("Choose a Lecture"))
-
 
 
     allowed_types=['video', 'document', 'webcontent']
@@ -766,8 +753,9 @@ def getuploadedlec():
                                 lecture_info["units"].append([unit['id'], unit['name'], unit['type']['name']])
                         
                         lectures_with_units.append(lecture_info)
-
-    return online_lectures , lectures_with_units
+    lectures_with_units.insert(0, ("Choose a Lecture"))
+    
+    return  lectures_with_units
 
 
 
@@ -776,7 +764,7 @@ def getuploadedlec():
 
 @views.route("/subjects/english/theleader")
 def theleadersessions():
-    lectures , lectures_with_units = getuploadedlec()
+    lectures_with_units = getuploadedlec()
 
 
 
