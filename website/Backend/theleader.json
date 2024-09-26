@@ -1,6 +1,9 @@
 {
     "video": {
-        "700": "https://iframe.mediadelivery.net/embed/155107/a3730614-3163-4c37-89b8-355deb0db479?autoplay=true&loop=false&muted=false&preload=true&responsive=true"
+        "700": "https://iframe.mediadelivery.net/embed/155107/a3730614-3163-4c37-89b8-355deb0db479?autoplay=true&loop=false&muted=false&preload=true&responsive=true",
+        "699": "https://iframe.mediadelivery.net/embed/155107/71957f01-3dbe-4dc2-9085-bbf78d922b59?autoplay=true&loop=false&muted=false&preload=true&responsive=true",
+        "725": "https://iframe.mediadelivery.net/embed/155107/d956fa07-e8d9-4af0-bdb9-d2c92d054393?autoplay=true&loop=false&muted=false&preload=true&responsive=true",
+        "727": "https://iframe.mediadelivery.net/embed/155107/6d0a70aa-011e-4685-9150-93e7c7d9d648?autoplay=true&loop=false&muted=false&preload=true&responsive=true"
     },
     "webcontent": {},
     "document": {}
