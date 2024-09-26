@@ -740,13 +740,33 @@ def getuploadedlec():
                         online_lectures.append(course_info)
                           
     online_lectures.insert(0, ("Choose a Lecture"))
-    return online_lectures
+
+    extracted_data = []
+
+    allowed_types=['video', 'document', 'webcontent']
+
+    # Find the "Main Lectures" tab
+    for tab in data['data']['tabs']:
+        if tab['name'] == "Main Lectures":
+            for section in tab['sections']:
+                if section['name'] == "Online Lectures":
+                    for course in section['courses']:
+                        # Extract only units with allowed types
+                        for unit in course['units']:
+                            if unit['type']['name'].lower() in allowed_types:
+                                extracted_data.append((unit['id'], unit['name'], unit['type']['name']))
+
+    return online_lectures , extracted_data
+
+
+
+
 
 
 @views.route("/subjects/english/theleader")
 def theleadersessions():
-    lectures = getuploadedlec()
-    return render_template('used_pages/theleader.html' , lectures = lectures)
+    lectures , extracted_data = getuploadedlec()
+    return render_template('used_pages/theleader.html' , lectures = lectures , extracted_data = extracted_data) 
 
 
 @views.route("/subjects/english/theleader/session/<id>")
@@ -822,11 +842,6 @@ def find_a_working_acc(url):
             response = requests.get(url, headers=headers , proxies= proxy)
             if response.status_code == 200:
                 return response 
-
-
-
-
-
 
 
 def add_to_json(video_id, link, json_file_path='website/Backend/theleader.json', content_type='video'):
