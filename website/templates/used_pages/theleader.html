@@ -125,36 +125,35 @@
     }
 
     function updateIframe(url, type) {
-        console.log("updateIframe called with URL:", url, "and type:", type); // Add this line
+    const iframeContainer = document.getElementById('iframeContainer');
+    let contentFrame = document.getElementById('contentFrame');
 
-        const iframeContainer = document.getElementById('iframeContainer');
-        let contentFrame = document.getElementById('contentFrame');
+    console.log("Updating iframe with URL:", url); // Log the URL
 
-        // If the iframe doesn't exist, create it
-        if (!contentFrame) {
-            contentFrame = document.createElement('iframe');
-            contentFrame.id = 'contentFrame';
-            contentFrame.allowFullscreen = true;
-            contentFrame.style.width = '100%';
-            contentFrame.style.height = '600px';
-            contentFrame.style.border = '1px solid #ddd';
-            contentFrame.style.borderRadius = '5px';
-            iframeContainer.appendChild(contentFrame);  // Add iframe to the container
-        }
-
-        if (type === 'video') {
-            // Show loading message while fetching video content
-            showLoadingMessage(iframeContainer, 'Loading...');
-
-            // Set the video URL
-            contentFrame.src = url;
-            iframeContainer.style.display = 'block';  // Show iframe container
-        } else {
-            // For non-video types, open the URL in the iframe
-            contentFrame.src = url;
-            iframeContainer.style.display = 'block';  // Show iframe container
-        }
+    if (!contentFrame) {
+        contentFrame = document.createElement('iframe');
+        contentFrame.id = 'contentFrame';
+        contentFrame.allowFullscreen = true;
+        contentFrame.style.width = '100%';
+        contentFrame.style.height = '600px';
+        contentFrame.style.border = '1px solid #ddd';
+        contentFrame.style.borderRadius = '5px';
+        iframeContainer.appendChild(contentFrame);  
     }
+
+    // Set the iframe source
+    contentFrame.src = url;  // This sets the source of the iframe
+    console.log("Iframe src set to:", contentFrame.src); // Log the iframe src
+
+    // Optionally listen for iframe load event
+    contentFrame.onload = function() {
+        console.log("Iframe content loaded");
+        hideLoadingMessage(iframeContainer); // Hide loading message when loaded
+    };
+
+    iframeContainer.style.display = 'block';  
+}
+
 
     function showLoadingMessage(container, message, color = 'gray') {
         container.innerHTML = '';  // Clear previous content
