@@ -741,9 +741,11 @@ def getuploadedlec():
                           
     online_lectures.insert(0, ("Choose a Lecture"))
 
-    extracted_data = []
+
 
     allowed_types=['video', 'document', 'webcontent']
+
+    lectures_with_units = []
 
     # Find the "Main Lectures" tab
     for tab in data['data']['tabs']:
@@ -751,12 +753,21 @@ def getuploadedlec():
             for section in tab['sections']:
                 if section['name'] == "Online Lectures":
                     for course in section['courses']:
-                        # Extract only units with allowed types
+                        # Initialize the lecture info with name and id
+                        lecture_info = {
+                            "lecture_id": course['id'],
+                            "lecture_name": course['name'],
+                            "units": []
+                        }
+                        
+                        # Extract units of allowed types
                         for unit in course['units']:
                             if unit['type']['name'].lower() in allowed_types:
-                                extracted_data.append((unit['id'], unit['name'], unit['type']['name']))
+                                lecture_info["units"].append([unit['id'], unit['name'], unit['type']['name']])
+                        
+                        lectures_with_units.append(lecture_info)
 
-    return online_lectures , extracted_data
+    return online_lectures , lectures_with_units
 
 
 
@@ -765,9 +776,10 @@ def getuploadedlec():
 
 @views.route("/subjects/english/theleader")
 def theleadersessions():
-    lectures , extracted_data = getuploadedlec()
+    lectures , lectures_with_units = getuploadedlec()
 
-    return extracted_data
+    return lectures_with_units
+
     return render_template('used_pages/theleader.html' , lectures = lectures , extracted_data = extracted_data) 
 
 
