@@ -173,20 +173,25 @@
 
         iframeContainer.style.display = 'block'; // Show iframe after results are loaded
     }
-
     function updateIframe(url, type) {
-        var contentFrame = document.getElementById('contentFrame');
-        var iframeContainer = document.getElementById('iframeContainer');
+    var contentFrame = document.getElementById('contentFrame');
+    var iframeContainer = document.getElementById('iframeContainer');
 
-        if (type === 'video') {
-            // Show a loading message inside the iframe for video type
-            contentFrame.srcdoc = '<div style="font-size: 24px; color: gray; text-align: center; padding: 50px;">Loading...</div>';
-        }
+    // Show a loading message inside the iframe initially
+    contentFrame.srcdoc = '<div style="font-size: 24px; color: gray; text-align: center; padding: 50px;">Loading...</div>';
 
-        // Update the iframe's src and display it
-        contentFrame.src = url;
-        iframeContainer.style.display = 'block';
-    }
+    // Listen for when the iframe has finished loading
+    contentFrame.onload = function() {
+        // Once the content has loaded, clear the srcdoc to avoid any confusion
+        contentFrame.srcdoc = '';
+    };
+
+    // Update the iframe's src with the actual content URL
+    contentFrame.src = url;
+
+    // Display the iframe container
+    iframeContainer.style.display = 'block';
+}
 </script>
 
 
