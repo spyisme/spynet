@@ -98,154 +98,120 @@
 
 </body>
 <script>
-async function loadlec() {
-    var selectedOption = document.getElementById('dropdown').value;
-    var idMatch = selectedOption.match(/ID\s*:\s*(\d+)/);
-
-    // Get the necessary elements
-    var resultsContainer = document.getElementById('results');
-    var iframeContainer = document.getElementById('iframeContainer');
-    var contentFrame = document.getElementById('contentFrame');
-
-    // Clear the results and iframe and show loading messages
-    resultsContainer.innerHTML = 'Loading...';
-    contentFrame.src = ''; // Clear the iframe content
-    document.getElementById('contentFrame').src = '';
-    iframeContainer.style.display = 'none'; // Hide the iframe
-
-    if (idMatch) {
-        var id = idMatch[1];
-        var url = "/subjects/english/theleader/session/" + id;
-
-        try {
-            let response = await fetch(url);
-
-            if (!response.ok) {
-                throw new Error('Network response was not ok ' + response.statusText);
-            }
-
-            let data = await response.json();
-            displayResults(data);
-        } catch (error) {
-            console.error('There was a problem with the fetch operation:', error);
-            resultsContainer.innerHTML = 'Error loading content. Please try again later.';
-        }
-    } else {
-        alert("ID not found in the selected option!");
-        resultsContainer.innerHTML = ''; // Clear loading message if no ID found
-    }
-}
-
-function displayResults(data) {
-    var resultsContainer = document.getElementById('results');
-    var iframeContainer = document.getElementById('iframeContainer');
-    var contentFrame = document.getElementById('contentFrame');
-
-    // Clear the existing results
-    resultsContainer.innerHTML = '';
-
-    // Display the results from the data
-    data.forEach(function(item) {
-        let id = item[0];
-        let description = item[1];
-        let type = item[2];
-
-        // Construct the URL based on the type
-        let url = "";
-        if (type === "video") {
-            url = "/subjects/english/theleader/session/video/" + id;
-        } else if (type === "webcontent") {
-            url = "/subjects/english/theleader/session/webcontent/" + id;
-        } else if (type === "document") {
-            url = "/subjects/english/theleader/session/document/" + id;
-        }
-
-        // Create a clickable link
-        let itemDiv = document.createElement('div');
-        itemDiv.className = 'result-item';
-
-        // Check the type and create link accordingly
-        if (type === "video") {
-            itemDiv.innerHTML = `<a href="javascript:void(0);" onclick="updateIframe('${url}', 'video')"><strong>${description}</strong> (${type})</a>`;
-        } else {
-            itemDiv.innerHTML = `<a href="${url}" target="_blank"><strong>${description}</strong> (${type})</a>`;
-        }
-
-        resultsContainer.appendChild(itemDiv);
-    });
-
-    iframeContainer.style.display = 'none'; // Keep the iframe hidden until a video is selected
-}
-
-async function updateIframe(url, type) {
-    var iframeContainer = document.getElementById('iframeContainer');
-
-    // Remove existing iframe if it exists
-    var existingIframe = document.getElementById('contentFrame');
-    if (existingIframe) {
-        iframeContainer.removeChild(existingIframe);
-    }
-
-    // Create a new iframe element
-    var contentFrame = document.createElement('iframe');
-    contentFrame.id = 'contentFrame'; // Set the id for the new iframe
-    contentFrame.allowfullscreen = true; // Allow fullscreen mode
-    contentFrame.style.width = '100%'; // Set width
-    contentFrame.style.height = '600px'; // Set height
-    contentFrame.style.border = '1px solid #ddd'; // Set border
-    contentFrame.style.borderRadius = '5px'; // Set border radius
-
-    // Show loading message
-    var loadingMessage = document.createElement('div');
-    loadingMessage.style.fontSize = '24px';
-    loadingMessage.style.color = 'gray';
-    loadingMessage.style.textAlign = 'center';
-    loadingMessage.style.padding = '50px';
-    loadingMessage.innerText = 'Loading...';
+    async function loadlec() {
+        const selectedOption = document.getElementById('dropdown').value;
+        const idMatch = selectedOption.match(/ID\s*:\s*(\d+)/);
+        const resultsContainer = document.getElementById('results');
+        const iframeContainer = document.getElementById('iframeContainer');
     
-    // Clear iframe container and show loading message
-    iframeContainer.innerHTML = ''; // Clear the container
-    iframeContainer.appendChild(loadingMessage); // Add loading message
-
-    if (type === 'video') {
-        try {
-            // Fetch the content from the URL
-            let response = await fetch(url);
-            
-            if (!response.ok) {
-                throw new Error('Network response was not ok ' + response.statusText);
+        // Show loading message while fetching data
+        resultsContainer.innerHTML = 'Loading...';
+        hideIframe();
+    
+        if (idMatch) {
+            const id = idMatch[1];
+            const url = `/subjects/english/theleader/session/${id}`;
+    
+            try {
+                const response = await fetch(url);
+    
+                if (!response.ok) throw new Error(`Network response was not ok: ${response.statusText}`);
+    
+                const data = await response.json();
+                displayResults(data);
+            } catch (error) {
+                console.error('Fetch error:', error);
+                resultsContainer.innerHTML = 'Error loading content. Please try again later.';
             }
-
-            let data = await response.text(); // Get the response as text
-
-            // Set the fetched content into the new iframe using srcdoc
-            contentFrame.srcdoc = data;
-
-            // Append the new iframe to the container
-            iframeContainer.innerHTML = ''; // Clear previous content
-            iframeContainer.appendChild(contentFrame); // Add new iframe
-
-        } catch (error) {
-            console.error('There was a problem with the fetch operation:', error);
-            loadingMessage.innerText = 'Error loading content. Please try again later.';
-            loadingMessage.style.color = 'red'; // Change color to red for error message
+        } else {
+            alert("ID not found in the selected option!");
+            resultsContainer.innerHTML = ''; // Clear loading message if no ID found
         }
-    } else {
-        // For non-video types, directly set the iframe src and append it
-        contentFrame.src = url; // Set the src for the iframe
-        iframeContainer.appendChild(contentFrame); // Add new iframe
     }
-
-    // Display the iframe container if a video is loaded
-    if (type === 'video') {
-        iframeContainer.style.display = 'block';
-    } else {
-        iframeContainer.style.display = 'none'; // Hide the container for non-video types
+    
+    function displayResults(data) {
+        const resultsContainer = document.getElementById('results');
+        resultsContainer.innerHTML = ''; // Clear existing results
+    
+        data.forEach(item => {
+            const [id, description, type] = item;
+            const url = `/subjects/english/theleader/session/${type}/${id}`;
+            
+            // Create a clickable link
+            const itemDiv = document.createElement('div');
+            itemDiv.className = 'result-item';
+            itemDiv.innerHTML = type === "video"
+                ? `<a href="javascript:void(0);" onclick="updateIframe('${url}', 'video')"><strong>${description}</strong> (${type})</a>`
+                : `<a href="${url}" target="_blank"><strong>${description}</strong> (${type})</a>`;
+            
+            resultsContainer.appendChild(itemDiv);
+        });
+    
+        hideIframe(); // Keep the iframe hidden until a video is selected
     }
-}
-
-
-</script>
+    
+    async function updateIframe(url, type) {
+        const iframeContainer = document.getElementById('iframeContainer');
+        
+        // Remove existing iframe if it exists
+        const existingIframe = document.getElementById('contentFrame');
+        if (existingIframe) {
+            iframeContainer.removeChild(existingIframe);
+        }
+    
+        // Create a new iframe element
+        const contentFrame = document.createElement('iframe');
+        contentFrame.id = 'contentFrame';
+        contentFrame.allowfullscreen = true;
+        contentFrame.style.width = '100%';
+        contentFrame.style.height = '600px';
+        contentFrame.style.border = '1px solid #ddd';
+        contentFrame.style.borderRadius = '5px';
+    
+        // Show loading message while fetching video content
+        showLoadingMessage(iframeContainer, 'Loading...');
+    
+        if (type === 'video') {
+            try {
+                const response = await fetch(url);
+    
+                if (!response.ok) throw new Error(`Network response was not ok: ${response.statusText}`);
+    
+                const data = await response.text(); // Get the response as text
+                contentFrame.srcdoc = data; // Set the fetched content into the iframe
+    
+                iframeContainer.innerHTML = ''; // Clear previous content
+                iframeContainer.appendChild(contentFrame); // Add new iframe
+                iframeContainer.style.display = 'block'; // Show iframe container
+            } catch (error) {
+                console.error('Fetch error:', error);
+                showLoadingMessage(iframeContainer, 'Error loading content. Please try again later.', 'red');
+            }
+        } else {
+            contentFrame.src = url; // Set src for non-video types
+            iframeContainer.appendChild(contentFrame); // Add new iframe
+            iframeContainer.style.display = 'block'; // Show iframe container
+        }
+    }
+    
+    function showLoadingMessage(container, message, color = 'gray') {
+        container.innerHTML = ''; // Clear previous content
+        const loadingMessage = document.createElement('div');
+        loadingMessage.style.fontSize = '24px';
+        loadingMessage.style.color = color;
+        loadingMessage.style.textAlign = 'center';
+        loadingMessage.style.padding = '50px';
+        loadingMessage.innerText = message;
+        container.appendChild(loadingMessage);
+    }
+    
+    function hideIframe() {
+        const iframeContainer = document.getElementById('iframeContainer');
+        iframeContainer.style.display = 'none'; // Hide the iframe container
+    }
+    
+    </script>
+    
 
 
     <script src="{{ url_for('static', filename='java/snow.js') }}"></script>
