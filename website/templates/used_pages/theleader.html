@@ -126,13 +126,25 @@
 
     function updateIframe(url, type) {
         const iframeContainer = document.getElementById('iframeContainer');
-        const contentFrame = document.getElementById('contentFrame');
+        let contentFrame = document.getElementById('contentFrame');
+
+        // If the iframe doesn't exist, create it
+        if (!contentFrame) {
+            contentFrame = document.createElement('iframe');
+            contentFrame.id = 'contentFrame';
+            contentFrame.allowFullscreen = true;
+            contentFrame.style.width = '100%';
+            contentFrame.style.height = '600px';
+            contentFrame.style.border = '1px solid #ddd';
+            contentFrame.style.borderRadius = '5px';
+            iframeContainer.appendChild(contentFrame);  // Add iframe to the container
+        }
 
         if (type === 'video') {
             // Show loading message while fetching video content
             showLoadingMessage(iframeContainer, 'Loading...');
 
-            // Directly set the video URL
+            // Set the video URL
             contentFrame.src = url;
             iframeContainer.style.display = 'block';  // Show iframe container
         } else {
@@ -155,8 +167,6 @@
 
     function hideIframe() {
         const iframeContainer = document.getElementById('iframeContainer');
-        const contentFrame = document.getElementById('contentFrame');
-        contentFrame.src = "";  // Clear the iframe src
         iframeContainer.style.display = 'none';  // Hide the iframe container
     }
 </script>

@@ -753,8 +753,9 @@ def getuploadedlec():
                                 lecture_info["units"].append([unit['id'], unit['name'], unit['type']['name']])
                         
                         lectures_with_units.append(lecture_info)
+                        
     lectures_with_units.insert(0, ("Choose a Lecture"))
-    
+
     return  lectures_with_units
 
 
