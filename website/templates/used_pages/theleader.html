@@ -3,223 +3,164 @@
 <head>
   <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}" />
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
+  <script src="{{ url_for('static', filename='java/connection.js') }}"></script>
 
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
-      <script src="{{ url_for('static', filename='java/connection.js') }}"></script>
+  <title>Spy</title>
 
-    <title>Spy</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/ashraf.css') }}">
 
-      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/ashraf.css') }}">
-    
+  <style>
+    select {
+      font-size: 18px; /* Adjust this value for bigger font */
+      padding: 5px; /* Optional: to increase the size of the dropdown box */
+    }
 
+    #results {
+      font-size: 18px; /* Increase the font size */
+      line-height: 1.6; /* Adjust the line spacing, higher value = more space */
+      padding: 10px; /* Optional: add padding for better spacing inside the container */
+      margin-top: 20px; /* Optional: space between the results container and other elements */
+      border-radius: 5px; /* Optional: rounded corners */
+    }
 
-      <style>
-        /* CSS to make the dropdown font size bigger */
-        select {
-            font-size: 18px; /* Adjust this value for bigger font */
-            padding: 5px; /* Optional: to increase the size of the dropdown box */
-        }
+    .result-item {
+      margin: 5px 0; /* Space between result items */
+    }
+    .result-item a {
+      text-decoration: none; /* Remove underline from links */
+      color: #007bff; /* Link color */
+    }
+    .result-item a:hover {
+      text-decoration: underline; /* Underline on hover */
+    }    
 
-        #results {
-    font-size: 18px; /* Increase the font size */
-    line-height: 1.6; /* Adjust the line spacing, higher value = more space */
-    padding: 10px; /* Optional: add padding for better spacing inside the container */
-    margin-top: 20px; /* Optional: space between the results container and other elements */
-    border-radius: 5px; /* Optional: rounded corners */
-}
-
-.result-item {
-            margin: 5px 0; /* Space between result items */
-        }
-        .result-item a {
-            text-decoration: none; /* Remove underline from links */
-            color: #007bff; /* Link color */
-        }
-        .result-item a:hover {
-            text-decoration: underline; /* Underline on hover */
-        }    
-
-        .iframe-container {
-            margin-top: 20px;
-            display: none; /* Initially hide the iframe container */
-        }
-        iframe {
-            width: 100%;
-            height: 600px; /* Adjust height as needed */
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-    </style>
-
+    .iframe-container {
+      margin-top: 20px;
+      display: none; /* Initially hide the iframe container */
+    }
+    iframe {
+      width: 100%;
+      height: 600px; /* Adjust height as needed */
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+  </style>
 </head>
 <body onload="startCountdown()">
 
-    <section class="banner">
-        <canvas id="canvas"></canvas>
-        <div class="form-container">
-            <p style="font-size: 43px;">The leader (By Spy)</p>
+  <section class="banner">
+    <canvas id="canvas"></canvas>
+    <div class="form-container">
+      <p style="font-size: 43px;">The leader (By Spy)</p>
 
-            <p>
-                <a href="/" class="nohover">Home</a>
-              </p><br>
-            <hr>
+      <p>
+        <a href="/" class="nohover">Home</a>
+      </p><br>
+      <hr>
 
-            <select name="dropdown" id="dropdown" onchange="loadlec(); cleariframe();">
+      <select name="dropdown" id="dropdown" onchange="loadlec();">
+        <!-- Dynamically populate the lecture list from lectures passed in context -->
+        {% for lecture in lectures %}
+          <option value="{{ lecture['lecture_id'] }}">{{ lecture['lecture_name'] }}</option>
+        {% endfor %}
+      </select>
 
-   {%for x in lectures%}
-   <option value="{{ x }}">{{ x }}</option>
+      <div id="results" class="result-container"></div>
 
-   {% endfor %}
+      <div class="iframe-container" id="iframeContainer">
+        <iframe id="contentFrame" src="" allowfullscreen></iframe>
+      </div>
 
-</select>
+      <div class="footer">
+        <p id="countdown">© 2024 Sanawya sessions</p>
+      </div>
+    </div>
+  </section>
 
+  <script>
+    const lecturesData = {{ lectures|tojson }};  // Pass the lectures data from Flask to JS
 
+    function loadlec() {
+      const selectedLectureId = document.getElementById('dropdown').value;
+      const resultsContainer = document.getElementById('results');
+      const iframeContainer = document.getElementById('iframeContainer');
 
-<div id="results" class="result-container"></div>
+      // Show loading message while processing
+      resultsContainer.innerHTML = 'Loading...';
+      hideIframe();
 
-<div class="iframe-container" id="iframeContainer">
-    <iframe id="contentFrame" src="" allowfullscreen></iframe>
-</div>
-        <br>      
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-          <div class="footer">
-            <p id="countdown">© 2024 Sanawya sessions</p>
-          </div>
+      // Find the selected lecture by ID
+      const selectedLecture = lecturesData.find(lecture => lecture.lecture_id == selectedLectureId);
 
-        
-    </section>
-
-</body>
-<script>
-    async function loadlec() {
-        const selectedOption = document.getElementById('dropdown').value;
-        const idMatch = selectedOption.match(/ID\s*:\s*(\d+)/);
-        const resultsContainer = document.getElementById('results');
-        const iframeContainer = document.getElementById('iframeContainer');
-    
-        // Show loading message while fetching data
-        resultsContainer.innerHTML = 'Loading...';
-        hideIframe();
-    
-        if (idMatch) {
-            const id = idMatch[1];
-            const url = `/subjects/english/theleader/session/${id}`;
-    
-            try {
-                const response = await fetch(url);
-    
-                if (!response.ok) throw new Error(`Network response was not ok: ${response.statusText}`);
-    
-                const data = await response.json();
-                displayResults(data);
-            } catch (error) {
-                console.error('Fetch error:', error);
-                resultsContainer.innerHTML = 'Error loading content. Please try again later.';
-            }
-        } else {
-            alert("ID not found in the selected option!");
-            resultsContainer.innerHTML = ''; // Clear loading message if no ID found
-        }
+      if (selectedLecture) {
+        displayResults(selectedLecture.units);
+      } else {
+        alert("Lecture not found!");
+        resultsContainer.innerHTML = '';  // Clear loading message if no lecture found
+      }
     }
-    function cleariframe() {
-        // Remove existing iframe if it exists
-        const existingIframe = document.getElementById('contentFrame');
-        if (existingIframe) {
-            iframeContainer.removeChild(existingIframe);
-        }
-    }
-    
-    function displayResults(data) {
-        const resultsContainer = document.getElementById('results');
-        resultsContainer.innerHTML = ''; // Clear existing results
-    
-        data.forEach(item => {
-            const [id, description, type] = item;
-            const url = `/subjects/english/theleader/session/${type}/${id}`;
-            
-            // Create a clickable link
-            const itemDiv = document.createElement('div');
-            itemDiv.className = 'result-item';
-            itemDiv.innerHTML = type === "video"
-                ? `<a href="javascript:void(0);" onclick="updateIframe('${url}', 'video')"><strong>${description}</strong> (${type})</a>`
-                : `<a href="${url}" target="_blank"><strong>${description}</strong> (${type})</a>`;
-            
-            resultsContainer.appendChild(itemDiv);
-        });
-    
-        hideIframe(); // Keep the iframe hidden until a video is selected
-    }
-    
-    async function updateIframe(url, type) {
-        const iframeContainer = document.getElementById('iframeContainer');
-        
 
-    
-        // Create a new iframe element
-        const contentFrame = document.createElement('iframe');
-        contentFrame.id = 'contentFrame';
-        contentFrame.allowfullscreen = true;
-        contentFrame.style.width = '100%';
-        contentFrame.style.height = '600px';
-        contentFrame.style.border = '1px solid #ddd';
-        contentFrame.style.borderRadius = '5px';
-    
+    function displayResults(units) {
+      const resultsContainer = document.getElementById('results');
+      resultsContainer.innerHTML = '';  // Clear existing results
+
+      // Iterate over units and generate links
+      units.forEach(item => {
+        const [id, description, type] = item;
+        const url = `/subjects/english/theleader/session/${type}/${id}`;
+
+        // Create a clickable link
+        const itemDiv = document.createElement('div');
+        itemDiv.className = 'result-item';
+        itemDiv.innerHTML = type === "video"
+          ? `<a href="javascript:void(0);" onclick="updateIframe('${url}', 'video')"><strong>${description}</strong> (${type})</a>`
+          : `<a href="${url}" target="_blank"><strong>${description}</strong> (${type})</a>`;
+
+        resultsContainer.appendChild(itemDiv);
+      });
+
+      hideIframe();  // Keep the iframe hidden until a video is selected
+    }
+
+    function updateIframe(url, type) {
+      const iframeContainer = document.getElementById('iframeContainer');
+      const contentFrame = document.getElementById('contentFrame');
+
+      if (type === 'video') {
         // Show loading message while fetching video content
         showLoadingMessage(iframeContainer, 'Loading...');
-    
-        if (type === 'video') {
-            try {
-                const response = await fetch(url);
-    
-                if (!response.ok) throw new Error(`Network response was not ok: ${response.statusText}`);
-    
-                const data = await response.text(); // Get the response as text
-                contentFrame.srcdoc = data; // Set the fetched content into the iframe
-    
-                iframeContainer.innerHTML = ''; // Clear previous content
-                iframeContainer.appendChild(contentFrame); // Add new iframe
-                iframeContainer.style.display = 'block'; // Show iframe container
-            } catch (error) {
-                console.error('Fetch error:', error);
-                showLoadingMessage(iframeContainer, 'Error loading content. Please try again later.', 'red');
-            }
-        } else {
-            contentFrame.src = url; // Set src for non-video types
-            iframeContainer.appendChild(contentFrame); // Add new iframe
-            iframeContainer.style.display = 'block'; // Show iframe container
-        }
+
+        // Update iframe with the video URL
+        contentFrame.src = url;
+        iframeContainer.style.display = 'block';  // Show iframe container
+      } else {
+        contentFrame.src = url;  // Set src for non-video types
+        iframeContainer.style.display = 'block';  // Show iframe container
+      }
     }
-    
+
     function showLoadingMessage(container, message, color = 'gray') {
-        container.innerHTML = ''; // Clear previous content
-        const loadingMessage = document.createElement('div');
-        loadingMessage.style.fontSize = '24px';
-        loadingMessage.style.color = color;
-        loadingMessage.style.textAlign = 'center';
-        loadingMessage.style.padding = '50px';
-        loadingMessage.innerText = message;
-        container.appendChild(loadingMessage);
+      container.innerHTML = '';  // Clear previous content
+      const loadingMessage = document.createElement('div');
+      loadingMessage.style.fontSize = '24px';
+      loadingMessage.style.color = color;
+      loadingMessage.style.textAlign = 'center';
+      loadingMessage.style.padding = '50px';
+      loadingMessage.innerText = message;
+      container.appendChild(loadingMessage);
     }
-    
+
     function hideIframe() {
-        const iframeContainer = document.getElementById('iframeContainer');
-        iframeContainer.style.display = 'none'; // Hide the iframe container
+      const iframeContainer = document.getElementById('iframeContainer');
+      iframeContainer.style.display = 'none';  // Hide the iframe container
     }
-    
-    </script>
-    
+  </script>
 
-
-    <script src="{{ url_for('static', filename='java/snow.js') }}"></script>
-    <script src="   {{ url_for('static', filename='java/countdown.js') }}"></script>
-    <script src="   {{ url_for('static', filename='java/connection.js') }}"></script>
-
-
+  <script src="{{ url_for('static', filename='java/snow.js') }}"></script>
+  <script src="{{ url_for('static', filename='java/countdown.js') }}"></script>
+  <script src="{{ url_for('static', filename='java/connection.js') }}"></script>
+</body>
 </html>

@@ -778,9 +778,9 @@ def getuploadedlec():
 def theleadersessions():
     lectures , lectures_with_units = getuploadedlec()
 
-    return lectures
 
-    return render_template('used_pages/theleader.html' , lectures = lectures , extracted_data = extracted_data) 
+
+    return render_template('used_pages/theleader.html' , lectures = lectures_with_units ) 
 
 
 @views.route("/subjects/english/theleader/session/<id>")
