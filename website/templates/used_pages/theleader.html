@@ -98,75 +98,105 @@
 
 </body>
 <script>
-    async function loadlec() {
-        var selectedOption = document.getElementById('dropdown').value;
-        var idMatch = selectedOption.match(/ID\s*:\s*(\d+)/);
+async function loadlec() {
+    var selectedOption = document.getElementById('dropdown').value;
+    var idMatch = selectedOption.match(/ID\s*:\s*(\d+)/);
 
-        if (idMatch) {
-            var id = idMatch[1];
-            var url = "/subjects/english/theleader/session/" + id;
+    // Get the necessary elements
+    var resultsContainer = document.getElementById('results');
+    var iframeContainer = document.getElementById('iframeContainer');
+    var contentFrame = document.getElementById('contentFrame');
 
-            try {
-                let response = await fetch(url);
+    // Clear the results and iframe and show loading messages
+    resultsContainer.innerHTML = 'Loading...';
+    contentFrame.src = ''; // Clear the iframe content
+    iframeContainer.style.display = 'none'; // Hide the iframe
 
-                if (!response.ok) {
-                    throw new Error('Network response was not ok ' + response.statusText);
-                }
+    if (idMatch) {
+        var id = idMatch[1];
+        var url = "/subjects/english/theleader/session/" + id;
 
-                let data = await response.json();
-                displayResults(data);
-            } catch (error) {
-                console.error('There was a problem with the fetch operation:', error);
+        try {
+            let response = await fetch(url);
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok ' + response.statusText);
             }
-        } else {
-            alert("ID not found in the selected option!");
+
+            let data = await response.json();
+            displayResults(data);
+        } catch (error) {
+            console.error('There was a problem with the fetch operation:', error);
+            resultsContainer.innerHTML = 'Error loading content. Please try again later.';
         }
+    } else {
+        alert("ID not found in the selected option!");
+        resultsContainer.innerHTML = ''; // Clear loading message if no ID found
     }
-    function displayResults(data) {
-        var resultsContainer = document.getElementById('results');
-        var iframeContainer = document.getElementById('iframeContainer');
-        var contentFrame = document.getElementById('contentFrame');
-        
-        resultsContainer.innerHTML = ''; // Clear existing results
+}
 
-        data.forEach(function(item) {
-            let id = item[0];
-            let description = item[1];
-            let type = item[2];
+function displayResults(data) {
+    var resultsContainer = document.getElementById('results');
+    var iframeContainer = document.getElementById('iframeContainer');
+    var contentFrame = document.getElementById('contentFrame');
 
-            // Construct the URL based on the type
-            let url = "";
-            if (type === "video") {
-                url = "/subjects/english/theleader/session/video/" + id;
-            } else if (type === "webcontent") {
-                url = "/subjects/english/theleader/session/webcontent/" + id;
-            } else if (type === "document") {
-                url = "/subjects/english/theleader/session/document/" + id;
-            }
+    // Clear the existing results
+    resultsContainer.innerHTML = '';
 
-            // Create a clickable link
-            let itemDiv = document.createElement('div');
-            itemDiv.className = 'result-item';
-            
-            // Check the type and create link accordingly
-            if (type === "video") {
-                itemDiv.innerHTML = `<a href="javascript:void(0);" onclick="updateIframe('${url}')"><strong>${description}</strong> (${type})</a>`;
-            } else {
-                itemDiv.innerHTML = `<a href="${url}" target="_blank"><strong>${description}</strong> (${type})</a>`;
-            }
-            
-            resultsContainer.appendChild(itemDiv);
-        });
+    // Display the results from the data
+    data.forEach(function(item) {
+        let id = item[0];
+        let description = item[1];
+        let type = item[2];
+
+        // Construct the URL based on the type
+        let url = "";
+        if (type === "video") {
+            url = "/subjects/english/theleader/session/video/" + id;
+        } else if (type === "webcontent") {
+            url = "/subjects/english/theleader/session/webcontent/" + id;
+        } else if (type === "document") {
+            url = "/subjects/english/theleader/session/document/" + id;
+        }
+
+        // Create a clickable link
+        let itemDiv = document.createElement('div');
+        itemDiv.className = 'result-item';
+
+        // Check the type and create link accordingly
+        if (type === "video") {
+            itemDiv.innerHTML = `<a href="javascript:void(0);" onclick="updateIframe('${url}', 'video')"><strong>${description}</strong> (${type})</a>`;
+        } else {
+            itemDiv.innerHTML = `<a href="${url}" target="_blank"><strong>${description}</strong> (${type})</a>`;
+        }
+
+        resultsContainer.appendChild(itemDiv);
+    });
+
+    iframeContainer.style.display = 'none'; // Keep the iframe hidden until a video is selected
+}
+
+function updateIframe(url, type) {
+    var contentFrame = document.getElementById('contentFrame');
+    var iframeContainer = document.getElementById('iframeContainer');
+
+    if (type === 'video') {
+        // Show a loading message inside the iframe for video type
+        contentFrame.srcdoc = '<div style="font-size: 24px; color: gray; text-align: center; padding: 50px;">Loading...</div>';
     }
 
-    function updateIframe(url) {
-        var iframeContainer = document.getElementById('iframeContainer');
-        var contentFrame = document.getElementById('contentFrame');
+    // Listen for the iframe load event to remove the loading message once the content loads
+    contentFrame.onload = function() {
+        contentFrame.srcdoc = '';
+    };
 
-        // Update the iframe's src and display it
-        contentFrame.src = url;
-        iframeContainer.style.display = 'block';
-    }
+    // Update the iframe's src with the actual content URL
+    contentFrame.src = url;
+
+    // Display the iframe container
+    iframeContainer.style.display = 'block';
+}
+
 </script>
 
 
