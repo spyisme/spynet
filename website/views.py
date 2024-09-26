@@ -738,7 +738,8 @@ def getuploadedlec():
                     for course in section['courses']:
                         course_info = f'{course["name"]} ID : {course["id"]}'
                         online_lectures.append(course_info)
-
+                          
+    online_lectures.insert(0, ("", "Choose a Lecture", ""))
     return online_lectures
 
 
@@ -766,8 +767,7 @@ def theleaderfirst(id):
                     for unit in step2_course['units']
                     if unit['type']['name'].lower() in allowed_types]
 
-    extracted_data.insert(0, ("", "Choose a Lecture", ""))
-
+  
     return extracted_data
 
 
