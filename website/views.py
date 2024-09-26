@@ -859,7 +859,7 @@ def theleaderfinal(type , id):
             with open(json_file_path, 'r') as json_file:
                 data = json.load(json_file)
                 if id in data["video"]:
-                    return data["video"][id]  # Return the link if found
+                    return data["video"][id].strip()  # Return the link if found
 
         video = find_a_working_acc(f"https://api.theleadersacademy.online/api/video/play/{id}")
         
