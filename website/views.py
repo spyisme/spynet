@@ -830,11 +830,7 @@ def find_a_working_acc(url):
 
 
 def add_to_json(video_id, link, json_file_path='website/Backend/theleader.json', content_type='video'):
-    if os.path.exists(json_file_path):
-        with open(json_file_path, 'r') as json_file:
-            data = json.load(json_file)
-    else:
-        data = {"video": {}, "webcontent": {}, "document": {}}
+    data = {"video": {}, "webcontent": {}, "document": {}}
 
     # Add the link to the corresponding section based on content type
     if content_type == 'video':
