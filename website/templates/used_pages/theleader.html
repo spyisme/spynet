@@ -61,7 +61,7 @@
       </p><br>
       <hr>
 
-      <select name="dropdown" id="dropdown" onchange="loadlec();">
+      <select name="dropdown" id="dropdown" onchange="loadlec(); hideIframe();">
         <!-- Dynamically populate the lecture list from lectures passed in context -->
         {% for lecture in lectures %}
           <option value="{{ lecture['lecture_id'] }}">{{ lecture['lecture_name'] }}</option>
@@ -170,6 +170,7 @@
         const iframeContainer = document.getElementById('iframeContainer');
         document.getElementById('iframeContainer').src = '';
         iframeContainer.style.display = 'none';  // Hide the iframe container
+        iframeContainer.src = '';
     }
 </script>
 
