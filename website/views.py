@@ -777,6 +777,10 @@ def find_a_working_acc(url):
             accounts = json.load(file)
 
         for account in accounts:
+            proxy = {
+                "http": "http://nprofi:6f0reuyu@139.171.104.74:29842",
+                "https": "http://nprofi:6f0reuyu@139.171.104.74:29842"
+            }
             headers = {
                 'Accept': '*/*',
                 'Cache-Control': 'no-cache',
@@ -810,12 +814,12 @@ def find_a_working_acc(url):
             response = requests.post(
                 'https://api.theleadersacademy.online/api/auth/login',
                 headers=headers,
-                json=json_data)
+                json=json_data , proxies= proxy)
 
             token = response.json()['data']['token']
             headers = {"Authorization": f"Bearer {token}"}
 
-            response = requests.get(url, headers=headers)
+            response = requests.get(url, headers=headers , proxies= proxy)
             if response.status_code == 200:
                 return response 
 
@@ -831,9 +835,6 @@ def find_a_working_acc(url):
 
 @views.route("/subjects/english/theleader/session/<type>/<id>")
 def theleaderfinal(type , id):
-    #Best acc yet (Defult one to start with)
-    headers = {"Authorization": "Bearer MjM1NjQz.ML6JzvDRSM7j25oOl0MfYoSurT1lQzDk7CQFsMHox_PBlrz9QmmKfo7mhSXV"}
-
     if type == 'video':
             video = find_a_working_acc(f"https://api.theleadersacademy.online/api/video/play/{id}")
             
