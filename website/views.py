@@ -829,22 +829,48 @@ def find_a_working_acc(url):
 
 
 
+def add_to_json(video_id, link, json_file_path='website/Backend/theleader.json', content_type='video'):
+    if os.path.exists(json_file_path):
+        with open(json_file_path, 'r') as json_file:
+            data = json.load(json_file)
+    else:
+        data = {"video": {}, "webcontent": {}, "document": {}}
 
+    # Add the link to the corresponding section based on content type
+    if content_type == 'video':
+        data["video"][video_id] = link
+    elif content_type == 'webcontent':
+        data["webcontent"][video_id] = link
+    elif content_type == 'document':
+        data["document"][video_id] = link
+
+    # Save the updated JSON back to the file
+    with open(json_file_path, 'w') as json_file:
+        json.dump(data, json_file, indent=4)
 
 
 
 @views.route("/subjects/english/theleader/session/<type>/<id>")
 def theleaderfinal(type , id):
     if type == 'video':
-            video = find_a_working_acc(f"https://api.theleadersacademy.online/api/video/play/{id}")
+        json_file_path = 'website/Backend/theleader.json'
             
-   
-            video = video.json()
-            video = video["data"]["details"]["iframe"]
+        if os.path.exists(json_file_path):
+            with open(json_file_path, 'r') as json_file:
+                data = json.load(json_file)
+                if id in data["video"]:
+                    return data["video"][id]  # Return the link if found
 
-            match = re.search(r'src="([^"]+)"', video)
-            if match:
-                link = match.group(1)
+        video = find_a_working_acc(f"https://api.theleadersacademy.online/api/video/play/{id}")
+        
+
+        video = video.json()
+        video = video["data"]["details"]["iframe"]
+
+        match = re.search(r'src="([^"]+)"', video)
+        if match:
+            link = match.group(1)
+            add_to_json(id, link, content_type='video')
 
                 # print(link)
 
