@@ -859,20 +859,18 @@ def theleaderfinal(type , id):
             with open(json_file_path, 'r') as json_file:
                 data = json.load(json_file)
                 if id in data["video"]:
-                    return data["video"][id].strip()  # Return the link if found
+                    link =  data["video"][id].strip() 
+                else: 
+                    video = find_a_working_acc(f"https://api.theleadersacademy.online/api/video/play/{id}")
+                    
 
-        video = find_a_working_acc(f"https://api.theleadersacademy.online/api/video/play/{id}")
-        
+                    video = video.json()
+                    video = video["data"]["details"]["iframe"]
 
-        video = video.json()
-        video = video["data"]["details"]["iframe"]
-
-        match = re.search(r'src="([^"]+)"', video)
-        if match:
-            link = match.group(1)
-            add_to_json(id, link, content_type='video')
-
-                # print(link)
+                    match = re.search(r'src="([^"]+)"', video)
+                    if match:
+                        link = match.group(1)
+                        add_to_json(id, link, content_type='video')
 
     elif type == 'webcontent':
         webcontent = find_a_working_acc(f"https://api.theleadersacademy.online/api/web-content/{id}")
