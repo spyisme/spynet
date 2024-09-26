@@ -739,7 +739,7 @@ def getuploadedlec():
                         course_info = f'{course["name"]} ID : {course["id"]}'
                         online_lectures.append(course_info)
                           
-    online_lectures.insert(0, ("", "Choose a Lecture", ""))
+    online_lectures.insert(0, ("Choose a Lecture"))
     return online_lectures
 
 
