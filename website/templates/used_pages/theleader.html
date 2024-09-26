@@ -168,6 +168,7 @@
 
     function hideIframe() {
         const iframeContainer = document.getElementById('iframeContainer');
+        document.getElementById('iframeContainer').src = '';
         iframeContainer.style.display = 'none';  // Hide the iframe container
     }
 </script>
