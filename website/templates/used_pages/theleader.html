@@ -61,7 +61,7 @@
       </p><br>
       <hr>
 
-      <select name="dropdown" id="dropdown" onchange="loadlec(); hideIframe();">
+      <select name="dropdown" id="dropdown" onchange="loadlec(); cleariframe();">
         <!-- Dynamically populate the lecture list from lectures passed in context -->
         {% for lecture in lectures %}
           <option value="{{ lecture['lecture_id'] }}">{{ lecture['lecture_name'] }}</option>
@@ -86,7 +86,7 @@
     function loadlec() {
         const selectedLectureId = document.getElementById('dropdown').value;
         const resultsContainer = document.getElementById('results');
-        hideIframe();  // Hide iframe before new selection
+        cleariframe();  // Hide iframe before new selection
 
         // Show loading message while processing
         resultsContainer.innerHTML = 'Loading...';
@@ -121,7 +121,7 @@
             resultsContainer.appendChild(itemDiv);
         });
 
-        hideIframe();  // Keep the iframe hidden until a video is selected
+        cleariframe();  // Keep the iframe hidden until a video is selected
     }
 
     function updateIframe(url, type) {
@@ -166,11 +166,12 @@
         container.appendChild(loadingMessage);
     }
 
-    function hideIframe() {
-        const iframeContainer = document.getElementById('iframeContainer');
-        document.getElementById('iframeContainer').src = '';
-        iframeContainer.style.display = 'none';  // Hide the iframe container
-        iframeContainer.src = '';
+    function cleariframe() {
+        // Remove existing iframe if it exists
+        const existingIframe = document.getElementById('contentFrame');
+        if (existingIframe) {
+            iframeContainer.removeChild(existingIframe);
+        }
     }
 </script>
 
