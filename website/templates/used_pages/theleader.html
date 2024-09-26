@@ -176,26 +176,36 @@ function displayResults(data) {
     iframeContainer.style.display = 'none'; // Keep the iframe hidden until a video is selected
 }
 
-function updateIframe(url, type) {
-    var contentFrame = document.getElementById('contentFrame');
+async function updateIframe(url, type) {
     var iframeContainer = document.getElementById('iframeContainer');
+    var contentFrame = document.getElementById('contentFrame');
 
     if (type === 'video') {
-        // Show a loading message inside the iframe for video type
+        // Show a loading message inside the iframe
         contentFrame.srcdoc = '<div style="font-size: 24px; color: gray; text-align: center; padding: 50px;">Loading...</div>';
+
+        try {
+            // Fetch the content from the URL
+            let response = await fetch(url);
+            
+            if (!response.ok) {
+                throw new Error('Network response was not ok ' + response.statusText);
+            }
+
+            let data = await response.text(); // Get the response as text
+
+            // Set the fetched content into the iframe using srcdoc
+            contentFrame.srcdoc = data;
+
+            // Make sure the iframe is visible
+            iframeContainer.style.display = 'block';
+        } catch (error) {
+            console.error('There was a problem with the fetch operation:', error);
+            contentFrame.srcdoc = '<div style="font-size: 24px; color: red; text-align: center; padding: 50px;">Error loading content. Please try again later.</div>';
+        }
     }
-
-    // Listen for the iframe load event to remove the loading message once the content loads
-    contentFrame.onload = function() {
-        contentFrame.srcdoc = '';
-    };
-
-    // Update the iframe's src with the actual content URL
-    contentFrame.src = url;
-
-    // Display the iframe container
-    iframeContainer.style.display = 'block';
 }
+
 
 </script>
 
