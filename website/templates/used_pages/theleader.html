@@ -103,6 +103,13 @@
         var selectedOption = document.getElementById('dropdown').value;
         var idMatch = selectedOption.match(/ID\s*:\s*(\d+)/);
 
+        var resultsContainer = document.getElementById('results');
+        var iframeContainer = document.getElementById('iframeContainer');
+
+        // Clear old content and show loading message
+        resultsContainer.innerHTML = 'Loading...';
+        iframeContainer.style.display = 'none'; // Hide iframe initially
+
         if (idMatch) {
             var id = idMatch[1];
             var url = "/subjects/english/theleader/session/" + id;
@@ -118,21 +125,19 @@
                 displayResults(data);
             } catch (error) {
                 console.error('There was a problem with the fetch operation:', error);
+                resultsContainer.innerHTML = 'Error loading content. Please try again later.';
             }
         } else {
             alert("ID not found in the selected option!");
+            resultsContainer.innerHTML = ''; // Clear loading message if no ID found
         }
     }
 
-    // Automatically load the first option on page load
-    document.addEventListener('DOMContentLoaded', (event) => {
-        loadlec(); // Call the function to load the first option
-    });
     function displayResults(data) {
         var resultsContainer = document.getElementById('results');
         var iframeContainer = document.getElementById('iframeContainer');
         var contentFrame = document.getElementById('contentFrame');
-        
+
         resultsContainer.innerHTML = ''; // Clear existing results
 
         data.forEach(function(item) {
@@ -153,16 +158,18 @@
             // Create a clickable link
             let itemDiv = document.createElement('div');
             itemDiv.className = 'result-item';
-            
+
             // Check the type and create link accordingly
             if (type === "video") {
                 itemDiv.innerHTML = `<a href="javascript:void(0);" onclick="updateIframe('${url}')"><strong>${description}</strong> (${type})</a>`;
             } else {
                 itemDiv.innerHTML = `<a href="${url}" target="_blank"><strong>${description}</strong> (${type})</a>`;
             }
-            
+
             resultsContainer.appendChild(itemDiv);
         });
+
+        iframeContainer.style.display = 'block'; // Show iframe after results are loaded
     }
 
     function updateIframe(url) {
