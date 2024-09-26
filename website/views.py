@@ -766,6 +766,8 @@ def getuploadedlec():
 @views.route("/subjects/english/theleader")
 def theleadersessions():
     lectures , extracted_data = getuploadedlec()
+
+    return extracted_data
     return render_template('used_pages/theleader.html' , lectures = lectures , extracted_data = extracted_data) 
 
 
