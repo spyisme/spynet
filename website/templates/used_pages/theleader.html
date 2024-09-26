@@ -78,10 +78,6 @@
 
 
 
-<div class="play-btn" style="width:50px; text-align: center;   margin-left: auto;
-  margin-right: auto;" onclick="loadlec()">Load</div>
-
-
 <div id="results" class="result-container"></div>
 
 <div class="iframe-container" id="iframeContainer">
@@ -126,6 +122,11 @@
             alert("ID not found in the selected option!");
         }
     }
+
+    // Automatically load the first option on page load
+    document.addEventListener('DOMContentLoaded', (event) => {
+        loadlec(); // Call the function to load the first option
+    });
     function displayResults(data) {
         var resultsContainer = document.getElementById('results');
         var iframeContainer = document.getElementById('iframeContainer');
