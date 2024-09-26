@@ -180,8 +180,9 @@ async function updateIframe(url, type) {
     var iframeContainer = document.getElementById('iframeContainer');
     var contentFrame = document.getElementById('contentFrame');
 
-    // Stop any currently playing video by resetting the src
-    contentFrame.src = '';
+    // Stop any currently playing video by resetting the src and hide the iframe
+    contentFrame.src = ''; // Clear the iframe content
+    iframeContainer.style.display = 'none'; // Hide the iframe
 
     if (type === 'video') {
         // Show a loading message inside the iframe
@@ -200,18 +201,19 @@ async function updateIframe(url, type) {
             // Set the fetched content into the iframe using srcdoc
             contentFrame.srcdoc = data;
 
-            // Make sure the iframe is visible
+            // Show the iframe
             iframeContainer.style.display = 'block';
         } catch (error) {
             console.error('There was a problem with the fetch operation:', error);
             contentFrame.srcdoc = '<div style="font-size: 24px; color: red; text-align: center; padding: 50px;">Error loading content. Please try again later.</div>';
         }
     } else {
-        // For non-video types, directly set the iframe src
-        contentFrame.src = url;
-        iframeContainer.style.display = 'block'; // Show the iframe
+        // For non-video types, directly set the iframe src and hide it
+        contentFrame.src = url; // You can set the src here if needed for non-video types
+        iframeContainer.style.display = 'none'; // Hide the iframe
     }
 }
+
 
 </script>
 
