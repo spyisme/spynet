@@ -67,7 +67,8 @@
               </p><br>
             <hr>
 
-            <select name="dropdown" id="dropdown">
+            <select name="dropdown" id="dropdown" onchange="loadlec()">
+
    {%for x in lectures%}
    <option value="{{ x }}">{{ x }}</option>
 
@@ -111,7 +112,7 @@
 
             try {
                 let response = await fetch(url);
-                
+
                 if (!response.ok) {
                     throw new Error('Network response was not ok ' + response.statusText);
                 }
@@ -125,7 +126,6 @@
             alert("ID not found in the selected option!");
         }
     }
-
     function displayResults(data) {
         var resultsContainer = document.getElementById('results');
         var iframeContainer = document.getElementById('iframeContainer');
