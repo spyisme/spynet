@@ -110,6 +110,7 @@ async function loadlec() {
     // Clear the results and iframe and show loading messages
     resultsContainer.innerHTML = 'Loading...';
     contentFrame.src = ''; // Clear the iframe content
+    document.getElementById('contentFrame').src = '';
     iframeContainer.style.display = 'none'; // Hide the iframe
 
     if (idMatch) {
