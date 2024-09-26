@@ -712,7 +712,6 @@ def basiccoursemoadel():
 
 #The leader---------------------------------------------------------------------
 
-#Get uploaded lectures
 def getuploadedlec():
     headers = {
         "deviceid": "s",
@@ -760,40 +759,11 @@ def getuploadedlec():
     return  lectures_with_units
 
 
-
-
-
-
 @views.route("/subjects/english/theleader")
 def theleadersessions():
     lectures_with_units = getuploadedlec()
 
-
-
     return render_template('used_pages/theleader.html' , lectures = lectures_with_units ) 
-
-
-@views.route("/subjects/english/theleader/session/<id>")
-def theleaderfirst(id):
-
-    step2link = f'https://api.theleadersacademy.online/api/course/{id}'
-
-    step2 = find_a_working_acc(step2link)
-
-    step2_data = step2.json()
-
-    step2_course = step2_data['data']['course']
-
-    allowed_types = ['video', 'document', 'webcontent']
-
-    # Extract only units with allowed types
-    extracted_data = [(unit['id'], unit['name'], unit['type']['name'])
-                    for unit in step2_course['units']
-                    if unit['type']['name'].lower() in allowed_types]
-
-  
-    return extracted_data
-
 
 
 def find_a_working_acc(url):
@@ -868,7 +838,6 @@ def add_to_json(video_id, link, json_file_path='website/Backend/theleader.json',
         json.dump(data, json_file, indent=4)
 
 
-
 @views.route("/subjects/english/theleader/session/<type>/<id>")
 def theleaderfinal(type , id):
     if type == 'video':
@@ -928,11 +897,6 @@ def theleaderfinal(type , id):
   
 
     return redirect(link)
-
-
-
-
-
 
 
 #Update videos-----------------------------------------------------------------
