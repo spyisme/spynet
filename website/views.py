@@ -853,13 +853,13 @@ def add_to_json(video_id, link, json_file_path='website/Backend/theleader.json',
 @views.route("/subjects/english/theleader/session/<type>/<id>")
 def theleaderfinal(type , id):
     if type == 'video':
-        json_file_path = 'website/Backend/theleader.json'
+        # json_file_path = 'website/Backend/theleader.json'
             
-        if os.path.exists(json_file_path):
-            with open(json_file_path, 'r') as json_file:
-                data = json.load(json_file)
-                if id in data["video"]:
-                    return data["video"][id]  # Return the link if found
+        # if os.path.exists(json_file_path):
+        #     with open(json_file_path, 'r') as json_file:
+        #         data = json.load(json_file)
+        #         if id in data["video"]:
+        #             return data["video"][id]  # Return the link if found
 
         video = find_a_working_acc(f"https://api.theleadersacademy.online/api/video/play/{id}")
         
