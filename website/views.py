@@ -873,21 +873,40 @@ def theleaderfinal(type , id):
                         add_to_json(id, link, content_type='video')
 
     elif type == 'webcontent':
-        webcontent = find_a_working_acc(f"https://api.theleadersacademy.online/api/web-content/{id}")
 
-        webcontent = webcontent.json()
-        webcontent = webcontent["data"]["content"]
-        match = re.search(r'href="([^"]+)"', webcontent)
-        if match:
-            link = match.group(1)
+        json_file_path = 'website/Backend/theleader.json'
+            
+        if os.path.exists(json_file_path):
+            with open(json_file_path, 'r') as json_file:
+                data = json.load(json_file)
+                if id in data["webcontent"]:
+                    link =  data["webcontent"][id].strip() 
+                else: 
+                    webcontent = find_a_working_acc(f"https://api.theleadersacademy.online/api/web-content/{id}")
 
-            # print(link)
+                    webcontent = webcontent.json()
+                    webcontent = webcontent["data"]["content"]
+                    match = re.search(r'href="([^"]+)"', webcontent)
+                    if match:
+                        link = match.group(1)
+                        add_to_json(id, link, content_type='webcontent')
+                        # print(link)
 
     elif type == 'document':
-        document = find_a_working_acc(f"https://api.theleadersacademy.online/api/document/{id}")
+        json_file_path = 'website/Backend/theleader.json'
+            
+        if os.path.exists(json_file_path):
+            with open(json_file_path, 'r') as json_file:
+                data = json.load(json_file)
+                if id in data["document"]:
+                    link =  data["document"][id].strip() 
+                else: 
+                    document = find_a_working_acc(f"https://api.theleadersacademy.online/api/document/{id}")
 
-        document = document.json()
-        link = document["data"]["uri"]
+                    document = document.json()
+                    link = document["data"]["uri"]
+                    add_to_json(id, link, content_type='document')
+
 
   
 
