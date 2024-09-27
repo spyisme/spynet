@@ -1,8 +1,0 @@
-python iframe.py https://iframe.mediadelivery.net/embed/33074/6bc8daff-2830-4216-8f30-2b8c49e516cf CalculusSession1Historyofcalculus
-python iframe.py https://iframe.mediadelivery.net/embed/33074/55a5aa91-b47f-49bf-a7ea-c0ec2751d8bc CalculusSession1RulesofDerivative
-python iframe.py https://iframe.mediadelivery.net/embed/33074/b4ed5487-9caa-44c2-af4f-61d21dfbd7b0 CalculusSession1Functions
-python iframe.py https://iframe.mediadelivery.net/embed/33074/1299f658-555c-497c-8916-b5c7a31de2ac CalculusSession1Problems
-app https://r2.interstellarseries.com/hls/5896333339/ccab8eb0617d461893c5730fb343cc72.m3u8 --save-name MegaproblemonResistorsconnectionSec3Session52025 -M format=mp4 --auto-select --no-log  & move MegaproblemonResistorsconnectionSec3Session52025.mp4 ./output;
-app https://r2.interstellarseries.com/hls/1265953264/82c4f06a420f41ddabbf69eb3c2d5e55.m3u8 --save-name InterstellarGuidlinesonseriesandparallelconnectionSec3Session52025 -M format=mp4 --auto-select --no-log  & move InterstellarGuidlinesonseriesandparallelconnectionSec3Session52025.mp4 ./output;
-app https://r2.interstellarseries.com/hls/3756587861/018c406817a04a909bb7001b491d1826.m3u8 --save-name step7DistributingcurrentandvoltageinasimplemixedcircuitandSolvingonitSec3Session52025 -M format=mp4 --auto-select --no-log  & move step7DistributingcurrentandvoltageinasimplemixedcircuitandSolvingonitSec3Session52025.mp4 ./output;
-app https://r2.interstellarseries.com/hls/9829962813/44c89eb73b49424bb8df71f38e05ed14.m3u8 --save-name onestepfurtherQ1to18inmediumquestionsSec3Session52025 -M format=mp4 --auto-select --no-log  & move onestepfurtherQ1to18inmediumquestionsSec3Session52025.mp4 ./output;

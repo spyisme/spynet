@@ -3523,6 +3523,12 @@
                         "folder": "https://drive.google.com/file/d/1WEGpT_6U3yrM0cXFEniA1rqC9lUFFaW0/view?usp=drive_link"
                     }
                 ]
+            },
+            {
+                "name": "Mr. Mohamed Salama",
+                "link": "salama",
+                "description": "Videos may not be uploaded.",
+                "courses": []
             }
         ]
     },
