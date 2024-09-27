@@ -1682,33 +1682,8 @@
                 "courses": [
                     {
                         "name": "Calculus",
-                        "description": "Calculus",
-                        "videos": [
-                            {
-                                "id": "ZJycXBLFtLo",
-                                "title": "S1 | History of calculus",
-                                "duration": "02:43:09",
-                                "jsid": 0
-                            },
-                            {
-                                "id": "zhMdXXdHTBA",
-                                "title": "S1 | Functions",
-                                "duration": "00:58:02",
-                                "jsid": 1
-                            },
-                            {
-                                "id": "lUs7Tj8RC58",
-                                "title": "S1 | Rules of Derivative",
-                                "duration": "01:30:35",
-                                "jsid": 2
-                            },
-                            {
-                                "id": "OOJvv8XJdD8",
-                                "title": "S1 | Problems",
-                                "duration": "01:16:10",
-                                "jsid": 3
-                            }
-                        ],
+                        "description": "",
+                        "videos": "",
                         "playlist_id": "PLM-GVlebsoPXQRhX_Nwv0NXNr3lYO3Tlx",
                         "folder": "https://drive.google.com/drive/folders/1KNSCURgxaAmY_OXK8nI6uc10yj73eO0J?usp=drive_link"
                     }
