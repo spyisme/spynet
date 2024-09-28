@@ -35,52 +35,88 @@
                                 "jsid": 3
                             },
                             {
+                                "id": "KxHdl-xCQyE",
+                                "title": "S1 | Classwork",
+                                "duration": "00:48:08",
+                                "jsid": 4
+                            },
+                            {
                                 "id": "_2U8gRsP71c",
                                 "title": "S2 | Quiz",
                                 "duration": "00:07:00",
-                                "jsid": 4
+                                "jsid": 5
                             },
                             {
                                 "id": "ldTw6j2HkNg",
                                 "title": "S2 | Part 1",
                                 "duration": "00:26:47",
-                                "jsid": 5
+                                "jsid": 6
                             },
                             {
                                 "id": "cUndQkyMr10",
                                 "title": "S2 | Part 2",
                                 "duration": "00:50:31",
-                                "jsid": 6
+                                "jsid": 7
                             },
                             {
                                 "id": "skdivEBwwLY",
                                 "title": "S2 | Part 3",
                                 "duration": "00:45:45",
-                                "jsid": 7
+                                "jsid": 8
                             },
                             {
                                 "id": "keHcDD0tWnY",
                                 "title": "S2 | Part 4",
                                 "duration": "00:22:44",
-                                "jsid": 8
+                                "jsid": 9
                             },
                             {
                                 "id": "7wySfV7NVd0",
                                 "title": "S2 | Summary",
                                 "duration": "00:23:27",
-                                "jsid": 9
+                                "jsid": 10
                             },
                             {
                                 "id": "_I41Ebh0wT0",
                                 "title": "S2 | Classwork 1",
                                 "duration": "01:52:09",
-                                "jsid": 10
+                                "jsid": 11
                             },
                             {
                                 "id": "ia97gu3Geu4",
                                 "title": "S2 | Classwork 2",
                                 "duration": "02:51:21",
-                                "jsid": 11
+                                "jsid": 12
+                            },
+                            {
+                                "id": "9xeURVqrFWI",
+                                "title": "S2 | Homework",
+                                "duration": "03:24:53",
+                                "jsid": 13
+                            },
+                            {
+                                "id": "6R8pQxlGEPU",
+                                "title": "S3 | Quiz",
+                                "duration": "00:25:39",
+                                "jsid": 14
+                            },
+                            {
+                                "id": "kLXZD_c9qGA",
+                                "title": "S3 | Part 1",
+                                "duration": "00:35:52",
+                                "jsid": 15
+                            },
+                            {
+                                "id": "MqMuZA-ai50",
+                                "title": "S3 | Part 2",
+                                "duration": "00:32:53",
+                                "jsid": 16
+                            },
+                            {
+                                "id": "HKHqaAHZmqk",
+                                "title": "S3 | Part 3",
+                                "duration": "00:51:00",
+                                "jsid": 17
                             }
                         ],
                         "playlist_id": "PLM-GVlebsoPWV03Kfc9jDQZ3KLZwZMtYT",
