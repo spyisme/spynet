@@ -1431,10 +1431,11 @@ def manage_teachers(subject):
                     return "Link is taken already"
                 
             if file:
-
-                file.save(
-                    f'website/static/assets/Stage{current_user.stage}/{subject}/'
-                    + teacher_link + '.jpg')
+                directory = f"website/static/assets/Stage{current_user.stage}/{subject}"
+                if not os.path.exists(directory):
+                    os.makedirs(directory)
+                    
+                file.save(f'{directory}/'+ teacher_link + '.jpg')
 
             else:
                 return "Choose an imgae for the teacher"
