@@ -723,7 +723,7 @@ def addtolist():
 def clearlist():
     with open('list.txt', 'w') as file:
         file.truncate(0)
-    return "done"
+    return redirect(url_for('vdo.commandslist'))
 
 
 @vdo.route("/createcmd")
