@@ -527,9 +527,8 @@ def registeracc():
 @views.route('/redirect/<path:link>')
 def redirectlinks(link):
     link = link.replace('questionmark', '?')
-    link = link.replace('andsympol', '&').replace(':', ':/')  #For iphone
-    return link
-    return redirect(link)
+    link = link.replace('andsympol', '&').replace(':', ':/')  
+    return render_template('users_pages/redirect.html', link = link )
 
 
 @views.route('/favicon.ico')
