@@ -524,7 +524,7 @@ def registeracc():
 
 
 #Dont edit------------------------------------------------------------------------------------------------
-@views.route('/redirect/<path:link>')
+@views.route('/redirect/<link>')
 def redirectlinks(link):
     link = link.replace('questionmark', '?')
     link = link.replace('andsympol', '&').replace(':', ':/')  #For iphone
