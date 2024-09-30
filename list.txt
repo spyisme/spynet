@@ -1,0 +1,2 @@
+python iframe.py https://iframe.mediadelivery.net/embed/33074/39db0df5-fea9-42bb-abd0-4c82418380f7 Calculussession1Homeworksolve
+python iframe.py https://iframe.mediadelivery.net/embed/33074/c2e98a26-3c86-45fa-9141-ad4f21eab46b CalculusSession1ClassworkSolve
