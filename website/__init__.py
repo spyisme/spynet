@@ -171,6 +171,7 @@ def create_app():
             
 
                 if current_user and current_user.username not in ['spy']:
+                    request.path = request.path.replace('http' , 'https')
                     discord_log(f"{client_ip} Viewed <{request.path}>  {current_user.username} {device_type} ```{user_agent}```")
 
     app.before_request(before_request)
