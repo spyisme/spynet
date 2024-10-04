@@ -800,7 +800,7 @@ def find_a_working_acc(url):
                     },
                     'device': {
                         'type': 's',
-                        'id': 's',
+                        'id': '2',
                     },
                 },
             }
@@ -809,7 +809,7 @@ def find_a_working_acc(url):
                 'https://api.theleadersacademy.online/api/auth/login',
                 headers=headers,
                 json=json_data , proxies= proxy)
-            return response.text
+
             token = response.json()['data']['token']
             headers = {"Authorization": f"Bearer {token}"}
 
@@ -871,7 +871,7 @@ def theleaderfinal(type , id):
                     link =  data["webcontent"][id].strip() 
                 else: 
                     webcontent = find_a_working_acc(f"https://api.theleadersacademy.online/api/web-content/{id}")
-                    return webcontent
+
                     webcontent = webcontent.json()
                     webcontent = webcontent["data"]["content"]
                     match = re.search(r'href="([^"]+)"', webcontent)
