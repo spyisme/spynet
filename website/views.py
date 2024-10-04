@@ -871,7 +871,7 @@ def theleaderfinal(type , id):
                     link =  data["webcontent"][id].strip() 
                 else: 
                     webcontent = find_a_working_acc(f"https://api.theleadersacademy.online/api/web-content/{id}")
-
+                    return webcontent
                     webcontent = webcontent.json()
                     webcontent = webcontent["data"]["content"]
                     match = re.search(r'href="([^"]+)"', webcontent)
