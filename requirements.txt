@@ -1,4 +1,3 @@
-requests
 flask
 Flask-SQLAlchemy
 flask_login
@@ -10,3 +9,5 @@ pycryptodomex
 pycryptodome
 pytz
 pywidevine
+flask_cors
+flask_sqlalchemy
