@@ -809,7 +809,7 @@ def find_a_working_acc(url):
                 'https://api.theleadersacademy.online/api/auth/login',
                 headers=headers,
                 json=json_data , proxies= proxy)
-
+            return response.text
             token = response.json()['data']['token']
             headers = {"Authorization": f"Bearer {token}"}
 
