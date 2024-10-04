@@ -714,7 +714,7 @@ def basiccoursemoadel():
 
 def getuploadedlec():
     headers = {
-        "deviceid": "s",
+        "deviceid": "2",
     }
     proxy = {
     "http": "http://nprofi:6f0reuyu@139.171.104.74:29842",
@@ -780,7 +780,7 @@ def find_a_working_acc(url):
                 'Cache-Control': 'no-cache',
                 'Connection': 'keep-alive',
                 'Content-Type': 'application/json',
-                'DeviceId': 's',
+                'DeviceId': '2',
             }
 
             email = account['email']
