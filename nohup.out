@@ -3017,3 +3017,14 @@ AttributeError: 'AnonymousUserMixin' object has no attribute 'type'
  * Debug mode: on
 Address already in use
 Port 80 is in use by another program. Either identify and stop that program, or start the server with a different port.
+ * Serving Flask app 'website'
+ * Debug mode: on
+Permission denied
+ * Serving Flask app 'website'
+ * Debug mode: on
+Permission denied
+ * Serving Flask app 'website'
+ * Debug mode: on
+Permission denied
+ * Serving Flask app 'website'
+ * Debug mode: on
