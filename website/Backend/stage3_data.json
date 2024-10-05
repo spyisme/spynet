@@ -123,6 +123,18 @@
                                 "title": "S3 | Summary",
                                 "duration": "00:26:51",
                                 "jsid": 18
+                            },
+                            {
+                                "id": "NIC1zRBb33I",
+                                "title": "S3 | Classwork 1",
+                                "duration": "01:23:22",
+                                "jsid": 19
+                            },
+                            {
+                                "id": "CocrFTqmlfI",
+                                "title": "S3 | Classwork 2",
+                                "duration": "01:04:20",
+                                "jsid": 20
                             }
                         ],
                         "playlist_id": "PLM-GVlebsoPWV03Kfc9jDQZ3KLZwZMtYT",
@@ -3852,6 +3864,30 @@
                                 "title": "S5 | One Step Further Part 1",
                                 "duration": "01:30:34",
                                 "jsid": 35
+                            },
+                            {
+                                "id": "QNJ6yYitQVs",
+                                "title": "S6 | Intro to Ohms law",
+                                "duration": "01:18:48",
+                                "jsid": 36
+                            },
+                            {
+                                "id": "U_UZ0Q27gB4",
+                                "title": "S6 | Important Solving Techniques for Ohms law",
+                                "duration": "01:02:08",
+                                "jsid": 37
+                            },
+                            {
+                                "id": "kQ8BAXwvZTE",
+                                "title": "S6 | Solving on Ohms law Graphs",
+                                "duration": "01:44:28",
+                                "jsid": 38
+                            },
+                            {
+                                "id": "tGXqOZ7Gpvg",
+                                "title": "S6 | One Step Further",
+                                "duration": "01:32:13",
+                                "jsid": 39
                             }
                         ],
                         "playlist_id": "PLM-GVlebsoPX_GMg2uu7IGI1bN0idBYOu",
@@ -3969,6 +4005,24 @@
                                 "title": "S6",
                                 "duration": "03:15:26",
                                 "jsid": 16
+                            },
+                            {
+                                "id": "QT6BaEbXjw0",
+                                "title": "S6 | Hw Mr . Hady",
+                                "duration": "03:06:07",
+                                "jsid": 17
+                            },
+                            {
+                                "id": "O5PYHK7NDkw",
+                                "title": "S6 | Hw Mrs . Fatma",
+                                "duration": "03:43:43",
+                                "jsid": 18
+                            },
+                            {
+                                "id": "w3V7eUI-ev0",
+                                "title": "S7",
+                                "duration": "02:56:03",
+                                "jsid": 19
                             }
                         ],
                         "playlist_id": "PLM-GVlebsoPXERuHteoa6a_vGYV5pMqKK",
