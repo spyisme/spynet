@@ -15,7 +15,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
     <script src="   {{ url_for('static', filename='java/connection.js') }}"></script>
 </head>
-<body>
+<body onload="startCountdown()">
+
     <section class="banner">
         <canvas id="canvas"></canvas>
         <div class="banner_content">
@@ -91,7 +92,7 @@
 
 
 <div class="footer">
-    <p id="countdown">© 2024 Sanawya sessions</p>
+    <p id="countdown">Loading...</p>
 </div>
 
 </div>
