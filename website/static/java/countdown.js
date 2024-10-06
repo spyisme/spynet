@@ -29,7 +29,7 @@ function startCountdown() {
         // If no more countdown dates, display "EXPIRED" message
         if (currentIndex >= countdownDates.length) {
             clearInterval(x);
-            document.getElementById("countdown").innerHTML = "&copy; 2024 Sanawya sessions";
+            document.getElementById("countdown").innerHTML = "&copy; 2025 Sanawya sessions";
             document.getElementById("date").innerHTML = "";
             return;
         }
