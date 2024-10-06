@@ -15368,3 +15368,7 @@ Traceback (most recent call last):
   File "/root/spysnet/main.py", line 21, in page_not_found
     if current_user.type == "admin" :
 AttributeError: 'AnonymousUserMixin' object has no attribute 'type'
+64.62.197.224 - - [06/Oct/2024 19:03:37] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00{\x01\x00\x00w\x03\x03¹ChFß8\x8bý\x12K^{\x93\x92Eüéå¥¡9«I|sÌRõ.\x92\x96S\x00\x00\x1aÀ/À+À\x11À\x07À\x13À')
+93.174.93.12 - - [06/Oct/2024 19:16:56] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+205.210.31.21 - - [06/Oct/2024 19:25:22] code 400, message Bad request version ('À\x13À')
+205.210.31.21 - - [06/Oct/2024 19:25:22] code 400, message Bad HTTP/0.9 request type ("\x16\x03\x01\x00Ê\x01\x00\x00Æ\x03\x03\x8c\x8eé@:È\x9cs\x93·ÊùoÏ½\x92BTÙó¥T<³þø\x18¤b\x022å\x00\x00hÌ\x14Ì\x13À/À+À0À,À\x11À\x07À'À#À\x13À")
