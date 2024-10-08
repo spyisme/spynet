@@ -372,6 +372,9 @@ def index():
     tokenhref = gethref(mytoken)
 
     result = mpd + '\n' + c_keys
+
+    session['video_orignal_name'] = video_name
+
     used_tokens.add(mytoken)
 
     session['result'] = result
@@ -424,11 +427,15 @@ def index():
     if old != "true":
         status = "new"
         if request.method == 'POST':
+
             name = request.form.get('vidname')
             teacher = request.form.get('dropdown')
+
+            video_orignal_name = video_name
+
             message = {
                 'content':
-                f'```app {result} --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output``` {name} ```watch now``` {url}&title={name}'
+                f'```app {result} --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output``` {name} {video_orignal_name} ```watch now``` {url}&title={name}'
             }
             payload = json.dumps(message)
             userinput = f"app {result} --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output"
@@ -481,11 +488,12 @@ def discord():
     result = session.get('result')
     urlopen = session.get('urlopen')
     name = request.args.get('name')
+    video_orignal_name = session.get('video_orignal_name')
     result = result.replace("\n", " ")
     teacher = request.args.get('teacher')
     message = {
         'content':
-        f'```app {result} --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output``` {name} ```watch now``` {urlopen}&title={name}'
+        f'```app {result} --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output``` {name} {video_orignal_name} ```watch now``` {urlopen}&title={name}'
     }
     payload = json.dumps(message)
     userinput = f"app {result} --save-name {name} -M format=mp4 --auto-select --no-log  & move {name}.mp4 ./output"
