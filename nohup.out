@@ -56383,3 +56383,17 @@ AttributeError: 'AnonymousUserMixin' object has no attribute 'type'
 203.23.128.69 - - [15/Oct/2024 13:15:59] code 400, message Bad request version ('À\x13À')
 66.240.205.34 - - [15/Oct/2024 13:21:34] code 400, message Bad request version ('ô')
 179.60.147.13 - - [15/Oct/2024 13:22:57] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.10/dist-packages/engineio/middleware.py", line 63, in __call__
+    return self.engineio_app.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/socketio/server.py", line 433, in handle_request
+    return self.eio.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/engineio/server.py", line 272, in handle_request
+    socket = self._get_socket(sid)
+  File "/usr/local/lib/python3.10/dist-packages/engineio/base_server.py", line 229, in _get_socket
+    raise KeyError('Session is disconnected')
+KeyError: 'Session is disconnected'
