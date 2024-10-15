@@ -56596,3 +56596,5 @@ Traceback (most recent call last):
 AttributeError: 'AnonymousUserMixin' object has no attribute 'type'
 167.94.146.57 - - [16/Oct/2024 04:36:00] code 505, message Invalid HTTP version (2.0)
 45.79.181.94 - - [16/Oct/2024 04:39:57] code 400, message Bad request version ('À\x13À')
+162.142.125.216 - - [16/Oct/2024 04:57:42] code 505, message Invalid HTTP version (2.0)
+93.174.93.12 - - [16/Oct/2024 05:07:21] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
