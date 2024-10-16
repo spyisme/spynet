@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}" />
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/login.css') }}">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
+    <script src="static/java/connection.js"></script>
+
+</head>
+<body>
+<div class="form">
+
+
+    <form method="post">
+
+
+    <div class="title">Welcome</div>
+    <div class="subtitle">Login to your account ! ( <u><a href="/register">Create an account</a></u> )</div>
+{%if failed%}
+<br>
+
+    <div class="subtitle"><div class="failed">Failed to login</div></div>
+<br>
+
+{%endif%}
+{%if msg%}
+<br>
+
+    <div class="subtitle"><div class="failed">{{msg}} </div></div>
+<br>
+
+{%endif%}
+
+
+{%if password%}
+<br>
+
+    <div class="subtitle"><div class="failed">Incorrect Password! <a href="/forgotpassword?user={{username}}">Click here to login with otp</a> </div></div>
+<br>
+
+{%endif%}
+
+
+{%if maxdevices%}
+<br>
+
+    <div class="subtitle"><div class="failed">Max devices (<u><a href="/logoutotherdevices/{{username}}">Logout other devices?</a></u>)</div></div>
+<br>
+
+{%endif%}
+
+
+
+    <div class="input-container ic2">
+        <input  type="text" placeholder="" class="input" id="username" name="username" required>
+        <div class="cut cut-short"></div>
+        <label class="iLabel" for="email">Username or Email</label>
+    </div>
+
+
+    <div class="input-container ic2">
+        <input type="password" placeholder="Password (Leave Blank if not set)" type="text" class="input" id="password" name="password" >
+        <div class="cut cut-short2"></div>
+        <label class="iLabel" for="password">Password</label>
+    </div>
+
+    <button class="submit" type="text">Login</button>
+</div>
+
+</form>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const inputs = document.querySelectorAll('.input');
+        inputs.forEach(function (input) {
+            input.addEventListener('blur', function () {
+                if (input.value.trim() !== '') {
+                    input.classList.add('valid');
+                } else {
+                    input.classList.remove('valid');
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>
+
+
+

@@ -1,0 +1,126 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+		<script src="https://unpkg.com/unlazy@0.11.3/dist/unlazy.with-hashing.iife.js" defer init></script>
+		<script type="text/javascript">
+			window.tailwind.config = {
+				darkMode: ['class'],
+				theme: {
+					extend: {
+						colors: {
+							border: 'hsl(var(--border))',
+							input: 'hsl(var(--input))',
+							ring: 'hsl(var(--ring))',
+							background: 'hsl(var(--background))',
+							foreground: 'hsl(var(--foreground))',
+							primary: {
+								DEFAULT: 'hsl(var(--primary))',
+								foreground: 'hsl(var(--primary-foreground))'
+							},
+							secondary: {
+								DEFAULT: 'hsl(var(--secondary))',
+								foreground: 'hsl(var(--secondary-foreground))'
+							},
+							destructive: {
+								DEFAULT: 'hsl(var(--destructive))',
+								foreground: 'hsl(var(--destructive-foreground))'
+							},
+							muted: {
+								DEFAULT: 'hsl(var(--muted))',
+								foreground: 'hsl(var(--muted-foreground))'
+							},
+							accent: {
+								DEFAULT: 'hsl(var(--accent))',
+								foreground: 'hsl(var(--accent-foreground))'
+							},
+							popover: {
+								DEFAULT: 'hsl(var(--popover))',
+								foreground: 'hsl(var(--popover-foreground))'
+							},
+							card: {
+								DEFAULT: 'hsl(var(--card))',
+								foreground: 'hsl(var(--card-foreground))'
+							},
+						},
+					}
+				}
+			}
+		</script>
+		<style type="text/tailwindcss">
+			@layer base {
+				:root {
+					--background: 0 0% 100%;
+--foreground: 224 71.4% 4.1%;
+--card: 0 0% 100%;
+--card-foreground: 224 71.4% 4.1%;
+--popover: 0 0% 100%;
+--popover-foreground: 224 71.4% 4.1%;
+--primary: 262.1 83.3% 57.8%;
+--primary-foreground: 210 20% 98%;
+--secondary: 220 14.3% 95.9%;
+--secondary-foreground: 220.9 39.3% 11%;
+--muted: 220 14.3% 95.9%;
+--muted-foreground: 220 8.9% 46.1%;
+--accent: 220 14.3% 95.9%;
+--accent-foreground: 220.9 39.3% 11%;
+--destructive: 0 84.2% 60.2%;
+--destructive-foreground: 210 20% 98%;
+--border: 220 13% 91%;
+--input: 220 13% 91%;
+--ring: 262.1 83.3% 57.8%;
+				}
+				.dark {
+					--background: 224 71.4% 4.1%;
+--foreground: 210 20% 98%;
+--card: 224 71.4% 4.1%;
+--card-foreground: 210 20% 98%;
+--popover: 224 71.4% 4.1%;
+--popover-foreground: 210 20% 98%;
+--primary: 263.4 70% 50.4%;
+--primary-foreground: 210 20% 98%;
+--secondary: 215 27.9% 16.9%;
+--secondary-foreground: 210 20% 98%;
+--muted: 215 27.9% 16.9%;
+--muted-foreground: 217.9 10.6% 64.9%;
+--accent: 215 27.9% 16.9%;
+--accent-foreground: 210 20% 98%;
+--destructive: 0 62.8% 30.6%;
+--destructive-foreground: 210 20% 98%;
+--border: 215 27.9% 16.9%;
+--input: 215 27.9% 16.9%;
+--ring: 263.4 70% 50.4%;
+				}
+			}
+		</style>
+  </head>
+  <body>
+    <div class="flex flex-col items-center justify-center min-h-screen bg-black">
+  <h1 class="text-2xl font-bold mb-6 text-white">Welcome 192400300!</h1>
+  <h1 class="text-2xl font-bold mb-6 text-white">Login</h1>
+  <br>
+  <div class="flex flex-col md:flex-row">
+    <button class="flex items-center justify-center bg-primary/80 text-primary-foreground p-4 rounded-lg mr-4 transition duration-300 ease-in-out transform hover:scale-105">
+		<img aria-hidden="true" alt="email-icon" src="./mail.png"  style="width: 24px; height: 24px;" class="mr-2" />
+		Login with Email
+	  </button>
+  <br>
+	  <button class="flex items-center justify-center bg-primary/80 text-primary-foreground  p-4 rounded-lg mr-4 transition duration-300 ease-in-out transform hover:scale-105">
+		  <img aria-hidden="true" alt="password-icon" src="./padlock.png" style="width: 24px; height: 24px;"  class="mr-2" />
+		  Use password
+		</button>
+  <!-- cursor-not-allowed and remove transform hover:scale-105 -->
+  <br>
+  
+  <button class="flex items-center justify-center bg-primary/50 text-primary-foreground  p-4 rounded-lg mr-4 transition duration-300 ease-in-out cursor-not-allowed ">
+	  <img aria-hidden="true" alt="password-icon" src="./padlock.png" style="width: 24px; height: 24px;"  class="mr-2" />
+	  Use password
+	</button>
+  </div>
+</div>
+
+  </body>
+</html>
