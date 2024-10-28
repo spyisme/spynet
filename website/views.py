@@ -1716,14 +1716,14 @@ import subprocess
 def testtest():
     words = request.args.get('words')
 
-    command = f'python3 website/english.py "{words}" "Amr Ayman 192400300" 1'
+    command = f'python3 website/english.py "{words}" "Amr Ayman 192400300" 2'
 
     process = subprocess.run(command, shell=True, capture_output=True, text=True)
 
 
     return process.stdout
 
-FOLDER_PATH = "website/static/english"
+FOLDER_PATH = "static/english"
 
 @views.route("/testtest2")
 def list_files():
