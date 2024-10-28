@@ -1715,10 +1715,10 @@ import subprocess
 @views.route("/testtest")
 def testtest():
 
-    command = "echo Hello, World!"
+    command = "ls"
 
     process = subprocess.run(command, shell=True, capture_output=True, text=True)
 
     print(process.stdout)
-    
+
     return "testtest"
