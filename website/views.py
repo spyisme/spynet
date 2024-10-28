@@ -1718,5 +1718,7 @@ def testtest():
     command = "echo Hello, World!"
 
     process = subprocess.run(command, shell=True, capture_output=True, text=True)
+
+    print(process.stdout)
     
     return "testtest"
