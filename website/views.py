@@ -1720,8 +1720,9 @@ def testtest():
 
     process = subprocess.run(command, shell=True, capture_output=True, text=True)
 
+    print(process.stdout)
 
-    return process.stdout
+    return "sent isa"
 
 FOLDER_PATH = "static/english"
 
