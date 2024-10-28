@@ -1714,9 +1714,25 @@ import subprocess
 
 @views.route("/testtest")
 def testtest():
-    command = request.args.get('command')
+    words = request.args.get('words')
+
+    command = f'python3 website/english.py "{words}" "Amr Ayman 192400300" 1'
 
     process = subprocess.run(command, shell=True, capture_output=True, text=True)
 
 
     return process.stdout
+
+FOLDER_PATH = "website/static/english/"
+
+@views.route("/testtest2")
+def list_files():
+    try:
+        # List all files in the folder
+        files = os.listdir(FOLDER_PATH)
+        files = [f for f in files if os.path.isfile(os.path.join(FOLDER_PATH, f))]  # Include only files
+
+        # Return files as JSON
+        return jsonify(files=files)
+    except Exception as e:
+        return jsonify(error=str(e)), 500
