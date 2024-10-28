@@ -1718,6 +1718,5 @@ def testtest():
 
     process = subprocess.run(command, shell=True, capture_output=True, text=True)
 
-    print(process.stdout)
 
-    return "testtest"
+    return process.stdout
