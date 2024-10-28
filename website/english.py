@@ -178,7 +178,7 @@ def make_image_final():
     draw = ImageDraw.Draw(main_image)
 
     # Define the font path and sizes
-    font_path = "arial.ttf"  # Ensure the font file path is correct
+    font_path = "./Arial.ttf"  # Ensure the font file path is correct
     max_font_size = 30
     min_font_size = 10
     # Function to add wrapped text to fit within specified max x and max y
