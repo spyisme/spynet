@@ -1723,7 +1723,7 @@ def testtest():
 
     return process.stdout
 
-FOLDER_PATH = "website/static/english/"
+FOLDER_PATH = "website/static/english"
 
 @views.route("/testtest2")
 def list_files():
