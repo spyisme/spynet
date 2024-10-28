@@ -253,7 +253,7 @@ def make_image_final():
     add_image(main_image, "img2.png", 319, 524, 432, 602)
 
     # main_image.show()
-    main_image.save(f"./static/english/imagefor{words}.png")
+    main_image.save(f"./website/static/english/imagefor{words}.png")
     # main_image.save("C:/Users/Spy/Desktop/English/filled_word_wizard_with_images.png")
 
 
