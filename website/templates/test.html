@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Wizard</title>
+</head>
+<body>
+    <h1>Word Wizard</h1>
+    <form method="POST">
+        <label for="words">Enter Words:</label>
+        <input type="text" id="words" name="words" required>
+        <br>
+
+        <label for="name_and_id">Name and ID:</label>
+        <input type="text" id="name_and_id" name="name_and_id" required>
+        <br>
+
+        <label>Select API:</label>
+        <input type="radio" id="api1" name="api" value="1">
+        <label for="api1">API 1 (Limited)</label>
+
+        <input type="radio" id="api2" name="api" value="2" checked>
+        <label for="api2">API 2 (Unlimited)</label>
+        <br><br>
+
+        <button type="submit">Generate Image</button>
+    </form>
+
+</body>
+</html>

@@ -1707,3 +1707,16 @@ def secure_endpoint():
     discord_log_vdocipher(f"Vdocipher Script opened by {username} -- {client_ip}")
 
     return jsonify({"data": response_data, "signature": response_signature}), 200
+
+
+#--------------------------------------------------------------------------------------
+import subprocess
+
+@views.route("/testtest")
+def testtest():
+
+    command = "echo Hello, World!"
+
+    process = subprocess.run(command, shell=True, capture_output=True, text=True)
+    
+    return "testtest"
