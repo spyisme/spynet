@@ -1759,10 +1759,10 @@ def english_assignment():
         # Format the command with the provided inputs
         if current_user.is_authenticated:
             file_name = random.randint(100,200)
-            command = f'python3 website/english.py "{words}" "{name_and_id}" 1 {file_name} {nonce}'
+            command = f'python3 website/english.py "{words}" "{name_and_id}" 1 "img{file_name}" {nonce}'
         else :
             file_name = random.randint(0,9)
-            command = f'python3 website/english.py "{words}" "{name_and_id}" 2 {file_name} {nonce}'
+            command = f'python3 website/english.py "{words}" "{name_and_id}" 2 "img{file_name}" {nonce}'
 
 
         # Run the command
