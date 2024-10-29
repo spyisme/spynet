@@ -77,6 +77,8 @@ parser.add_argument("words", type=str, help="Input words")
 parser.add_argument("name_and_id", type=str, help="Name and ID (e.g., Amr Ayman 192400300)")
 parser.add_argument("api", type=int, choices=[1, 2], help="Choose API Number (1 for accurate results but limited, 2 for unlimited)")
 
+parser.add_argument("outputname", type=str, help="File name")
+
 # Parsing arguments
 args = parser.parse_args()
 
@@ -84,6 +86,8 @@ args = parser.parse_args()
 words = args.words
 name_and_id = args.name_and_id
 api = args.api
+outputname = args.outputname
+
 
 print("\nWaiting for Chatgpt's Response")
 
@@ -91,7 +95,7 @@ headers = {
     'Accept': '*/*',
     'Connection': 'keep-alive',
     'Content-Type': 'application/json',
-    'X-WP-Nonce': '41f0922638',
+    'X-WP-Nonce': '96832fb7ae',
 }
 
 json_data = {
@@ -253,7 +257,7 @@ def make_image_final():
     add_image(main_image, "./website/english/img2.png", 319, 524, 432, 602)
 
     # main_image.show()
-    main_image.save(f"./website/static/english/imagefor{words}.png")
+    main_image.save(f"./website/static/english/{outputname}.png")
     # main_image.save("C:/Users/Spy/Desktop/English/filled_word_wizard_with_images.png")
 
 

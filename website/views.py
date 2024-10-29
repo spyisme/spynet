@@ -1718,19 +1718,20 @@ def english_assignment():
         # Get form data
         words = request.form.get('words')
         name_and_id = request.form.get('name')
-
         # Format the command with the provided inputs
         if current_user.is_authenticated:
-            command = f'python3 website/english.py "{words}" "{name_and_id}" 1'
+            file_name = random.randint(100,200)
+            command = f'python3 website/english.py "{words}" "{name_and_id}" 1 {file_name}'
         else :
-            command = f'python3 website/english.py "{words}" "{name_and_id}" 2'
+            file_name = random.randint(0,9)
+            command = f'python3 website/english.py "{words}" "{name_and_id}" 2 {file_name}'
 
 
         # Run the command
-        process = subprocess.run(command, shell=True, capture_output=True, text=True)
+        subprocess.run(command, shell=True, capture_output=True, text=True)
 
         # Redirect to the generated image
-        return redirect(f"/static/english/imagefor{words}.png")
+        return redirect(f"/static/english/{file_name}.png")
 
     # If GET request, render the form
     return render_template("english_assignment.html")
