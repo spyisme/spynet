@@ -1714,6 +1714,39 @@ import subprocess
 
 @views.route("/english-assignment", methods=["GET", "POST"])
 def english_assignment():
+    #Check if nonce is working ! 
+    headers = {
+    'Accept': '*/*',
+    'Connection': 'keep-alive',
+    'Content-Type': 'application/json',
+    'X-WP-Nonce': '96832fb7ae',
+    }
+
+    json_data = {
+        'botId': 'default',
+        'customId': None,
+        'session': 'N/A',
+        'chatId': '1',
+        'contextId': 1,
+        'messages': [
+            {
+                'id': '',
+                'role': 'assistant',
+                'content': 'hello how are you',
+                'who': 'AI: ',
+                'timestamp': 1,
+            },
+        ],
+        'newMessage': 'hey chatgpt',
+        'newFileId': None,
+        'stream': False,
+    }
+
+    response = requests.post('https://masrgpt.com/wp-json/mwai-ui/v1/chats/submit', headers=headers, json=json_data)
+
+    if response != 200:
+        return "Chatgpt api needs to be updated"
+    
     if request.method == "POST":
         # Get form data
         words = request.form.get('words')
