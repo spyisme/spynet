@@ -30,7 +30,7 @@ def get_image(query , name , api):
             # Check for 'images_results' in the response data
             if "images_results" in data:
                 # Retrieve the first 10 results
-                first_10_results = data["images_results"][:30]
+                first_10_results = data["images_results"][:5]
 
                 # Select a random image result from the first 10
                 random_result = random.choice(first_10_results)
