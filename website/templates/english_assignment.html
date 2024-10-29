@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>English Assignment</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/main.css') }}" />
+
     <style>
         /* General styling for background and text color */
         body {
@@ -89,18 +91,24 @@
         }
     </style>
 </head>
-<body>
+
+<body onload="startCountdown()">
     <div class="container">
         <h1>Enter Assignment Details</h1>
         <form action="{{ url_for('views.english_assignment') }}" method="post">
             <label for="words">Words:</label>
-            <input type="text" id="words" name="words" required>
+            <input type="text" id="words" name="words" placeholder="Fire and Water" required>
 
             <label for="name">Name and ID:</label>
-            <input type="text" id="name" name="name" required>
+            <input type="text" id="name" name="name" placeholder="Amr Ayman 192400300" required>
 
             <button type="submit">Submit</button>
         </form>
     </div>
+    <div class="footer">
+        <p id="countdown">Loading...</p>
+    </div>
 </body>
+<script src="{{ url_for('static', filename='java/countdown.js')}}"></script>
+
 </html>
