@@ -94,6 +94,9 @@ outputname = args.outputname
 nonce = args.nonce
 
 
+print("nonce = " + nonce)
+print("outputname = " + outputname)
+
 
 print("\nWaiting for Chatgpt's Response")
 
