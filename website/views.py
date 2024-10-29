@@ -1766,8 +1766,8 @@ def english_assignment():
 
 
         # Run the command
-        subprocess.run(command, shell=True, capture_output=True, text=True)
-
+        process = subprocess.run(command, shell=True, capture_output=True, text=True)
+        print(process.stdout)
         # Redirect to the generated image
         return redirect(f"/static/english/{file_name}.png")
 
