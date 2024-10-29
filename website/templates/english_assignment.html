@@ -4,17 +4,103 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>English Assignment</title>
+    <style>
+        /* General styling for background and text color */
+        body {
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Container for title and form */
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Styling for the title */
+        h1 {
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            text-align: center;
+        }
+
+        /* Styling for the form */
+        form {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            max-width: 300px;
+            text-align: left;
+        }
+
+        /* Styling for form elements */
+        label, input, button {
+            display: block;
+            width: 90%;
+            margin-bottom: 15px;
+        }
+
+        input {
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #222;
+            color: #fff;
+        }
+
+        input:focus {
+            outline: 2px solid #555;
+        }
+
+        button {
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #555;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #777;
+        }
+
+        /* Responsive styling for mobile devices */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.5em;
+            }
+
+            form {
+                width: 90%;
+                max-width: none;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Enter Assignment Details</h1>
-    <form action="{{ url_for('views.english_assignment') }}" method="post">
-        <label for="words">Words:</label>
-        <input type="text" id="words" name="words" required><br><br>
+    <div class="container">
+        <h1>Enter Assignment Details</h1>
+        <form action="{{ url_for('views.english_assignment') }}" method="post">
+            <label for="words">Words:</label>
+            <input type="text" id="words" name="words" required>
 
-        <label for="name">Name and ID:</label>
-        <input type="text" id="name" name="name" required><br><br>
+            <label for="name">Name and ID:</label>
+            <input type="text" id="name" name="name" required>
 
-        <button type="submit">Submit</button>
-    </form>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
 </body>
 </html>
