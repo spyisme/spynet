@@ -1712,17 +1712,24 @@ def secure_endpoint():
 #--------------------------------------------------------------------------------------
 import subprocess
 
-@views.route("/testtest")
-def testtest():
-    words = request.args.get('words')
+@views.route("/english-assignment", methods=["GET", "POST"])
+def english_assignment():
+    if request.method == "POST":
+        # Get form data
+        words = request.form.get('words')
+        name_and_id = request.form.get('name')
 
-    command = f'python3 website/english.py "{words}" "Amr Ayman 192400300" 2'
+        # Format the command with the provided inputs
+        command = f'python3 website/english.py "{words}" "{name_and_id}" 2'
 
-    process = subprocess.run(command, shell=True, capture_output=True, text=True)
+        # Run the command
+        process = subprocess.run(command, shell=True, capture_output=True, text=True)
 
-    print(process.stdout)
+        # Redirect to the generated image
+        return redirect(f"/static/english/imagefor{words}.png")
 
-    return "sent isa"
+    # If GET request, render the form
+    return render_template("english_assignment.html")
 
 FOLDER_PATH = "website/static/english"
 

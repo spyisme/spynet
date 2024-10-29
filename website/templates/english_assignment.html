@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Assignment</title>
+</head>
+<body>
+    <h1>Enter Assignment Details</h1>
+    <form action="{{ url_for('english_assignment') }}" method="post">
+        <label for="words">Words:</label>
+        <input type="text" id="words" name="words" required><br><br>
+
+        <label for="name">Name and ID:</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
