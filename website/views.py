@@ -1732,7 +1732,8 @@ def english_assignment():
     "Macintosh" if "Macintosh" in user_agent else "Mobile")
 
     if current_user.is_authenticated:
-        discord_log(f"{client_ip} Viewed <{request.path}>  {current_user.username} {device_type} ```{user_agent}```")
+        if current_user.username != 'spy' :
+            discord_log(f"{client_ip} Viewed <{request.path}>  {current_user.username} {device_type} ```{user_agent}```")
     else:
         discord_log(f"{client_ip} Viewed <{request.path}> {device_type} ```{user_agent}```")
 
