@@ -28,7 +28,7 @@ def get_image(query , name , api):
                 # print( random_result.get("original"))
                 response = requests.get(random_result.get("original"))
                 print(f"Saving {name}")
-                with open(f"./website/english/{name}.png", "wb") as file:
+                with open(f"{name}.png", "wb") as file:
                     file.write(response.content)
             else:
                 print("No image results found.")
@@ -56,7 +56,7 @@ def get_image(query , name , api):
             print("Failed to fetch data:", response.json())
         for url in image_urls:
             response = requests.get(url)
-            with open(f"./website/english/{name}.png", "wb") as file:
+            with open(f"{name}.png", "wb") as file:
                 file.write(response.content)    
 
     else :
@@ -173,12 +173,12 @@ updated_fields_data = update_fields_data(fields_data, data)
 
 def make_image_final():
     # Load the main image (worksheet)
-    main_image_path = "./website/english/main.png"
+    main_image_path = "./main.png"
     main_image = Image.open(main_image_path)
     draw = ImageDraw.Draw(main_image)
 
     # Define the font path and sizes
-    font_path = "./website/english/Arial.ttf"  # Ensure the font file path is correct
+    font_path = "./Arial.ttf"  # Ensure the font file path is correct
     max_font_size = 30
     min_font_size = 10
     # Function to add wrapped text to fit within specified max x and max y
@@ -247,10 +247,10 @@ def make_image_final():
         main_image.paste(added_image, (center_x, center_y))
 
     # Add Image 1 within specified coordinates
-    add_image(main_image, "./website/english/img1.png", 319, 255, 432, 338)
+    add_image(main_image, "img1.png", 319, 255, 432, 338)
 
     # Add Image 2 within specified coordinates
-    add_image(main_image, "./website/english/img2.png", 319, 524, 432, 602)
+    add_image(main_image, "img2.png", 319, 524, 432, 602)
 
     # main_image.show()
     main_image.save(f"./website/static/english/imagefor{words}.png")
