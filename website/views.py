@@ -1766,10 +1766,10 @@ def english_assignment():
 
 
         # Run the command
-        process = subprocess.run(command, shell=True, capture_output=True, text=True)
-        print(process.stdout)
+        subprocess.run(command, shell=True, capture_output=True, text=True)
+
         # Redirect to the generated image
-        return redirect(f"/static/english/{file_name}.png")
+        return redirect(f"/static/english/img{file_name}.png")
 
     # If GET request, render the form
     return render_template("english_assignment.html")

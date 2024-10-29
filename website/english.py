@@ -267,7 +267,6 @@ def make_image_final():
 
     # main_image.show()
     main_image.save(f"./website/static/english/{outputname}.png")
-    main_image.open()
     # main_image.save("C:/Users/Spy/Desktop/English/filled_word_wizard_with_images.png")
 
 
