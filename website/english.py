@@ -3,6 +3,17 @@ import requests
 import random
 import json
 
+
+def discord_log(message):
+    messageeeee = {'content': message}
+    payload = json.dumps(messageeeee)
+    headers = {'Content-Type': 'application/json'}
+    requests.post(
+        "https://discord.com/api/webhooks/1220549855185997935/mkFuF-omKjobn77rSBMPqC6cYz2ddGUZGGc0VigjLs0J43cGwApQtQUlB6s1tDuCIQnt",
+        data=payload,
+        headers=headers)
+
+
 def get_image(query , name , api):
     print(f"Getting image for : {query} using api {api}")
     if api == 1 :
@@ -132,7 +143,7 @@ response = requests.post('https://masrgpt.com/wp-json/mwai-ui/v1/chats/submit', 
 
 json_data = response.json()
 
-
+discord_log(f"Creating image for {name_and_id} using words {words} with api {api}")
 # print(json_data["reply"])
 
 
