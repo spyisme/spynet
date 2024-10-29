@@ -115,11 +115,11 @@
                 <input type="text" id="name" name="name" placeholder="Amr Ayman 192400300" required>
                 
                 {%if current_user.is_authenticated%}
-                <p style="font-size: 10px;">Images are accurate (You are logged in)</p>
+                <p style="font-size: 14px;">Images are accurate (You are logged in)</p>
                 <a href="/how-english-assigment" style="font-size: 10px;">ℹ️ How was this made</a>
                 <br>
                 {%else%}
-                <p style="font-size: 10px;">Images might not be accurate (You are not logged in <a href="/">login?</a>)</p>
+                <p style="font-size: 14px;">Images might not be accurate (You are not logged in <a href="/">login?</a>)</p>
                 <a href="/how-english-assigment" style="font-size: 10px;">ℹ️ How was this made</a>
                 <br>
                 {%endif%}
