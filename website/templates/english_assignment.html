@@ -2,14 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.1">
     <title>English Assignment</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/main.css') }}" />
 
     <style>
-        a{
-            color:green;
+        a {
+            color: green;
+            font-size: 1.1em;
         }
+
         /* General styling for background and text color */
         body {
             background-color: #000;
@@ -21,6 +23,7 @@
             height: 100vh;
             margin: 0;
             font-family: Arial, sans-serif;
+            font-size: 1.1em; /* Adjusts overall font size */
         }
 
         /* Container for title and form */
@@ -33,30 +36,32 @@
         /* Styling for the title */
         h1 {
             margin-bottom: 20px;
-            font-size: 1.8em;
+            font-size: 2em; /* Increased font size */
             text-align: center;
         }
 
         /* Styling for the form */
         form {
             background-color: #333;
-            padding: 20px;
+            padding: 25px;
             border-radius: 8px;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
             width: 100%;
             max-width: 400px;
             text-align: left;
+            font-size: 1.1em; /* Slightly larger font for form content */
         }
 
         /* Styling for form elements */
         label, input, button {
             display: block;
             width: 90%;
-            margin-bottom: 15px;
+            margin-bottom: 18px;
+            font-size: 1.1em;
         }
 
         input {
-            padding: 10px;
+            padding: 12px;
             border: none;
             border-radius: 4px;
             background-color: #222;
@@ -68,12 +73,12 @@
         }
 
         button {
-            padding: 10px;
+            padding: 12px;
             border: none;
             border-radius: 4px;
             background-color: #555;
             color: #fff;
-            font-size: 16px;
+            font-size: 1.1em;
             cursor: pointer;
         }
 
@@ -84,7 +89,7 @@
         /* Responsive styling for mobile devices */
         @media (max-width: 600px) {
             h1 {
-                font-size: 1.5em;
+                font-size: 1.7em;
             }
 
             form {
@@ -98,33 +103,33 @@
 <body onload="startCountdown()">
     <section class="banner">
         <canvas id="canvas"> </canvas>
-    <div class="container">
-        <br><br> <br> <br>
+        <div class="container">
+            <br><br> <br> <br>
 
-        <h1>Enter English Assignment Details</h1>
-        <form action="{{ url_for('views.english_assignment') }}" method="post">
-            <label for="words">Words:</label>
-            <input type="text" id="words" name="words" placeholder="Fire and Water" required>
+            <h1>Enter English Assignment Details</h1>
+            <form action="{{ url_for('views.english_assignment') }}" method="post">
+                <label for="words">Words:</label>
+                <input type="text" id="words" name="words" placeholder="Fire and Water" required>
 
-            <label for="name">Name and ID:</label>
-            <input type="text" id="name" name="name" placeholder="Amr Ayman 192400300" required>
-{%if current_user.is_authenticated%}
-<p style="font-size: 10px;">Images are accurate (You are logged in)</p>
-<a href="/how-english-assigment" style="font-size: 10px;">ℹ️ How was this made</a>
-<br>
-{%else%}
-<p style="font-size: 10px;">Images might not be accurate (You are not logged in <a href="/">login?</a>)</p>
-<a href="/how-english-assigment" style="font-size: 10px;">ℹ️ How was this made</a>
-<br>
-
-{%endif%}
-<br>
-            <button type="submit">Submit</button>
-        </form>
-    </div>
-    <div class="footer">
-        <p id="countdown">Loading...</p>
-    </div>
+                <label for="name">Name and ID:</label>
+                <input type="text" id="name" name="name" placeholder="Amr Ayman 192400300" required>
+                
+                {%if current_user.is_authenticated%}
+                <p style="font-size: 10px;">Images are accurate (You are logged in)</p>
+                <a href="/how-english-assigment" style="font-size: 10px;">ℹ️ How was this made</a>
+                <br>
+                {%else%}
+                <p style="font-size: 10px;">Images might not be accurate (You are not logged in <a href="/">login?</a>)</p>
+                <a href="/how-english-assigment" style="font-size: 10px;">ℹ️ How was this made</a>
+                <br>
+                {%endif%}
+                <br>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        <div class="footer">
+            <p id="countdown">Loading...</p>
+        </div>
     </section>
 </body>
 <script src="{{ url_for('static', filename='java/countdown.js')}}"></script>
