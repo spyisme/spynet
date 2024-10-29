@@ -1715,43 +1715,10 @@ import subprocess
 @views.route("/english-assignment", methods=["GET", "POST"])
 def english_assignment():
 
-    #Check if nonce is working ! 
-
     nonce = "96832fb7ae"
 
 
-    headers = {
-    'Accept': '*/*',
-    'Connection': 'keep-alive',
-    'Content-Type': 'application/json',
-    'X-WP-Nonce': nonce,
-    }
-
-    json_data = {
-        'botId': 'default',
-        'customId': None,
-        'session': 'N/A',
-        'chatId': '1',
-        'contextId': 1,
-        'messages': [
-            {
-                'id': '',
-                'role': 'assistant',
-                'content': 'hello how are you',
-                'who': 'AI: ',
-                'timestamp': 1,
-            },
-        ],
-        'newMessage': 'hey chatgpt',
-        'newFileId': None,
-        'stream': False,
-    }
-
-    response = requests.post('https://masrgpt.com/wp-json/mwai-ui/v1/chats/submit', headers=headers, json=json_data)
-
-    if response.status_code != 200:
-        return "Chatgpt api needs to be updated"
-    
+ 
     if request.method == "POST":
         # Get form data
         words = request.form.get('words')
@@ -1766,8 +1733,10 @@ def english_assignment():
 
 
         # Run the command
-        subprocess.run(command, shell=True, capture_output=True, text=True)
-
+        try :
+            subprocess.run(command, shell=True, capture_output=True, text=True)
+        except :
+            return "Chatgpt api needs to be updated"
         # Redirect to the generated image
         return redirect(f"/static/english/img{file_name}.png")
 
