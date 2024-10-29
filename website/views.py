@@ -148,7 +148,14 @@ def discord_log_register(message):
         "https://discord.com/api/webhooks/1223552236727304313/GFdUeGUCKEQyH5YyR_4K7XG-2BlYKKnOZ_7jaeAVJhu8AQqyULsjPtOGsatMv9vnwAa7",
         data=payload,
         headers=headers)
-
+def discord_log(message):
+    messageeeee = {'content': message}
+    payload = json.dumps(messageeeee)
+    headers = {'Content-Type': 'application/json'}
+    requests.post(
+        "https://discord.com/api/webhooks/1220549855185997935/mkFuF-omKjobn77rSBMPqC6cYz2ddGUZGGc0VigjLs0J43cGwApQtQUlB6s1tDuCIQnt",
+        data=payload,
+        headers=headers)
 
 def discord_log_backend(message):
     messageeeee = {'content': message}
@@ -1714,6 +1721,20 @@ import subprocess
 
 @views.route("/english-assignment", methods=["GET", "POST"])
 def english_assignment():
+    client_ip = request.headers.get('X-Forwarded-For')
+    if client_ip:
+        client_ip = client_ip.split(',')[0].strip()
+    else:
+        client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
+
+    user_agent = request.headers.get('User-Agent')
+    device_type = "Desktop" if "Windows" in user_agent else (
+    "Macintosh" if "Macintosh" in user_agent else "Mobile")
+
+    if current_user.is_authenticated:
+        discord_log(f"{client_ip} Viewed <{request.path}>  {current_user.username} {device_type} ```{user_agent}```")
+    else:
+        discord_log(f"{client_ip} Viewed <{request.path}> {device_type} ```{user_agent}```")
 
     #Check if nonce is working ! 
 
