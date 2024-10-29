@@ -1773,7 +1773,7 @@ def english_assignment():
 
     response = requests.post('https://masrgpt.com/wp-json/mwai-ui/v1/chats/submit', headers=headers, json=json_data)
 
-    if response.status_code == 200:
+    if response.status_code != 200:
         return render_template("used_pages/english_assignment_error.html")
     
     if request.method == "POST":
