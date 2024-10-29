@@ -1720,7 +1720,11 @@ def english_assignment():
         name_and_id = request.form.get('name')
 
         # Format the command with the provided inputs
-        command = f'python3 website/english.py "{words}" "{name_and_id}" 2'
+        if current_user.is_authenticated:
+            command = f'python3 website/english.py "{words}" "{name_and_id}" 1'
+        else :
+            command = f'python3 website/english.py "{words}" "{name_and_id}" 2'
+
 
         # Run the command
         process = subprocess.run(command, shell=True, capture_output=True, text=True)
