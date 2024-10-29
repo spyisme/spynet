@@ -1811,3 +1811,7 @@ def list_files():
         return jsonify(files=files)
     except Exception as e:
         return jsonify(error=str(e)), 500
+    
+@views.route("/how-english-assigment", methods=["GET", "POST"])
+def how_english_assignment():
+    return "Soon.."
