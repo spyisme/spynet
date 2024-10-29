@@ -1773,8 +1773,8 @@ def english_assignment():
 
     response = requests.post('https://masrgpt.com/wp-json/mwai-ui/v1/chats/submit', headers=headers, json=json_data)
 
-    if response.status_code != 200:
-        return "Chatgpt api needs to be updated"
+    if response.status_code == 200:
+        render_template("used_pages/english_assignment_error.html")
     
     if request.method == "POST":
         # Get form data
@@ -1796,7 +1796,7 @@ def english_assignment():
         return redirect(f"/static/english/img{file_name}.png")
 
     # If GET request, render the form
-    return render_template("english_assignment.html")
+    return render_template("used_pages/english_assignment.html")
 
 FOLDER_PATH = "website/static/english"
 
