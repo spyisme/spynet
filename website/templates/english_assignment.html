@@ -108,7 +108,7 @@
 {%if current_user.is_authenticated%}
 <p style="font-size: 10px;">Images are accurate (You are logged in)</p><br>
 {%else%}
-<p style="font-size: 10px;">Images might not be accurate (You are not logged in)</p><br>
+<p style="font-size: 10px;">Images might not be accurate (You are not logged in <a href="/home">login?</a>)</p><br>
 
 {%endif%}
             <button type="submit">Submit</button>
