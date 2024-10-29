@@ -1714,12 +1714,17 @@ import subprocess
 
 @views.route("/english-assignment", methods=["GET", "POST"])
 def english_assignment():
+
     #Check if nonce is working ! 
+
+    nonce = "96832fb7ae"
+
+
     headers = {
     'Accept': '*/*',
     'Connection': 'keep-alive',
     'Content-Type': 'application/json',
-    'X-WP-Nonce': '96832fb7ae',
+    'X-WP-Nonce': nonce,
     }
 
     json_data = {
@@ -1754,10 +1759,10 @@ def english_assignment():
         # Format the command with the provided inputs
         if current_user.is_authenticated:
             file_name = random.randint(100,200)
-            command = f'python3 website/english.py "{words}" "{name_and_id}" 1 {file_name}'
+            command = f'python3 website/english.py "{words}" "{name_and_id}" 1 {file_name} {nonce}'
         else :
             file_name = random.randint(0,9)
-            command = f'python3 website/english.py "{words}" "{name_and_id}" 2 {file_name}'
+            command = f'python3 website/english.py "{words}" "{name_and_id}" 2 {file_name} {nonce}'
 
 
         # Run the command

@@ -79,6 +79,9 @@ parser.add_argument("api", type=int, choices=[1, 2], help="Choose API Number (1 
 
 parser.add_argument("outputname", type=str, help="File name")
 
+parser.add_argument("nonce", type=str, help="Wordpress nonce needs to be done manual")
+
+
 # Parsing arguments
 args = parser.parse_args()
 
@@ -88,6 +91,9 @@ name_and_id = args.name_and_id
 api = args.api
 outputname = args.outputname
 
+nonce = args.nonce
+
+
 
 print("\nWaiting for Chatgpt's Response")
 
@@ -95,7 +101,7 @@ headers = {
     'Accept': '*/*',
     'Connection': 'keep-alive',
     'Content-Type': 'application/json',
-    'X-WP-Nonce': '96832fb7ae',
+    'X-WP-Nonce': f'{nonce}',
 }
 
 json_data = {
