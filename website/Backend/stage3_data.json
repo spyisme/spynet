@@ -219,6 +219,48 @@
                                 "title": "S5 | Summary",
                                 "duration": "00:32:08",
                                 "jsid": 34
+                            },
+                            {
+                                "id": "eZ_o2FowAMI",
+                                "title": "S5 | Homework",
+                                "duration": "02:44:51",
+                                "jsid": 35
+                            },
+                            {
+                                "id": "Eca-ia1gCeM",
+                                "title": "S5 | Classwork 1",
+                                "duration": "01:56:30",
+                                "jsid": 36
+                            },
+                            {
+                                "id": "Q-B_VRW8akk",
+                                "title": "S5 | Classwork 2",
+                                "duration": "01:14:01",
+                                "jsid": 37
+                            },
+                            {
+                                "id": "9dv8QdKXDFk",
+                                "title": "Rev | Part 1 A",
+                                "duration": "01:51:26",
+                                "jsid": 38
+                            },
+                            {
+                                "id": "b2Q_FRy4x9o",
+                                "title": "Rev | Part 1 B",
+                                "duration": "00:37:50",
+                                "jsid": 39
+                            },
+                            {
+                                "id": "eoNy-KwbBwc",
+                                "title": "Rev | Part 2 A",
+                                "duration": "00:50:57",
+                                "jsid": 40
+                            },
+                            {
+                                "id": "lU2Gs0UQ6cU",
+                                "title": "Rev | Part 2 B",
+                                "duration": "01:06:44",
+                                "jsid": 41
                             }
                         ],
                         "playlist_id": "PLM-GVlebsoPWV03Kfc9jDQZ3KLZwZMtYT",
@@ -4199,6 +4241,18 @@
                                 "title": "S1",
                                 "duration": "02:53:30",
                                 "jsid": 0
+                            },
+                            {
+                                "id": "fhWdZZMjSqo",
+                                "title": "S2",
+                                "duration": "02:38:41",
+                                "jsid": 1
+                            },
+                            {
+                                "id": "U6YfM7uSkns",
+                                "title": "S3",
+                                "duration": "02:47:07",
+                                "jsid": 2
                             }
                         ],
                         "playlist_id": "PLM-GVlebsoPXbA1Gff0KE40JOebe-vkk9",
@@ -7842,6 +7896,78 @@
                                 "title": "S5 | Law Sa2alak",
                                 "duration": "01:35:44",
                                 "jsid": 33
+                            },
+                            {
+                                "id": "eNxZb37k95k",
+                                "title": "S5 | Homework",
+                                "duration": "01:54:42",
+                                "jsid": 34
+                            },
+                            {
+                                "id": "5AQc2IHZDqM",
+                                "title": "S6 | Quiz",
+                                "duration": "00:18:31",
+                                "jsid": 35
+                            },
+                            {
+                                "id": "OTPkQ0T0dOc",
+                                "title": "S6 | Recap",
+                                "duration": "00:32:50",
+                                "jsid": 36
+                            },
+                            {
+                                "id": "g-d_uahFDXc",
+                                "title": "S6 | Part 1",
+                                "duration": "01:04:49",
+                                "jsid": 37
+                            },
+                            {
+                                "id": "a51wMGWGPnw",
+                                "title": "S6 | Part 2",
+                                "duration": "01:25:55",
+                                "jsid": 38
+                            },
+                            {
+                                "id": "DD-VFSA-y0U",
+                                "title": "S6 | Part 3",
+                                "duration": "00:53:22",
+                                "jsid": 39
+                            },
+                            {
+                                "id": "gXcb5JpfG7Q",
+                                "title": "S6 | Law Sa2alak",
+                                "duration": "01:38:22",
+                                "jsid": 40
+                            },
+                            {
+                                "id": "gfccM4LIQfU",
+                                "title": "S7 | Recap",
+                                "duration": "00:41:08",
+                                "jsid": 41
+                            },
+                            {
+                                "id": "FFHLf6Hju1M",
+                                "title": "S7 | Part 1",
+                                "duration": "00:37:35",
+                                "jsid": 42
+                            },
+                            {
+                                "id": "F45Y4FeCjno",
+                                "title": "S7 | Part 2",
+                                "duration": "01:56:01",
+                                "jsid": 43
+                            },
+                            {
+                                "id": "aEZEGxXKd9g",
+                                "title": "S7 | Part 3",
+                                "duration": "01:07:26",
+                                "jsid": 44
+                            },
+                            {
+                                "id": "dsv0QiAbZsc",
+                                "title": "S7 | Law Sa2alak",
+                                "duration": "02:16:41",
+                                "jsid": 45
                             }
                         ],
                         "playlist_id": "PLM-GVlebsoPWtyKgs1hPQueuu5Qf1LCbN",
