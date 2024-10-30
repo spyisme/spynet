@@ -1764,8 +1764,11 @@ def english_assignment():
             if image.mode in ("RGBA", "P"):
                 image = image.convert("RGB")
             pdf_path = f"website/static/english/img{file_name}.pdf"
+            
             image.save(pdf_path, "PDF", resolution=100.0)
-            send_file(pdf_path)
+
+            send_file(f"static/english/img{file_name}.pdf")
+
             return redirect(f"/static/english/img{file_name}.png")
         else :
             return render_template("used_pages/english_assignment_error.html")
