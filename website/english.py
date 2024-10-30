@@ -9,13 +9,13 @@ def discord_log(message):
     payload = json.dumps(messageeeee)
     headers = {'Content-Type': 'application/json'}
     requests.post(
-        "https://discord.com/api/webhooks/1220549855185997935/mkFuF-omKjobn77rSBMPqC6cYz2ddGUZGGc0VigjLs0J43cGwApQtQUlB6s1tDuCIQnt",
+        "https://discord.com/api/webhooks/1301261615349628998/r2g4m5zE-xedh4tPa9OyTIshOmDxgEOPeXvcfylb4Vo0NB44NJ9pl_fDHDWznTirOC_4",
         data=payload,
         headers=headers)
 
 
 def get_image(query , name , api):
-    print(f"Getting image for : {query} using api {api}")
+    discord_log(f"Getting image for : {query} using api {api}")
     if api == 1 :
         url = f"https://serpapi.com/search.json?engine=google_images&ijn=0&api_key=da75049319abb43ed97ac5e729c1e1cac35280e3d214de6962674b7c0dc9d09a&q={query}"
 
