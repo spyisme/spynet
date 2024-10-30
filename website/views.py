@@ -1719,7 +1719,7 @@ def secure_endpoint():
 
 
 #--------------------------------------------------------------------------------------
-
+#English Assignment
 
 @views.route("/english-assignment", methods=["GET", "POST"])
 def english_assignment():
@@ -1764,10 +1764,15 @@ def english_assignment():
 
     return render_template("used_pages/english_assignment.html")
 
-FOLDER_PATH = "website/static/english"
+
+    
+@views.route("/how-english-assigment", methods=["GET", "POST"])
+def how_english_assignment():
+    return "Soon.."
 
 @views.route("/testtest2")
 def list_files():
+    FOLDER_PATH = "website/static/english"
     try:
         # List all files in the folder
         files = os.listdir(FOLDER_PATH)
@@ -1777,7 +1782,3 @@ def list_files():
         return jsonify(files=files)
     except Exception as e:
         return jsonify(error=str(e)), 500
-    
-@views.route("/how-english-assigment", methods=["GET", "POST"])
-def how_english_assignment():
-    return "Soon.."
