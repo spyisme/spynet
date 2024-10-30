@@ -24,6 +24,7 @@ from flask_mail import Message
 from google.auth.exceptions import GoogleAuthError
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
+from PIL import Image
 
 from . import mail
 from .models import User, db
@@ -1758,6 +1759,13 @@ def english_assignment():
         my_file = Path(f"website/static/english/img{file_name}.png")
 
         if my_file.exists():
+            #Convert image to pdf 
+            image = Image.open(my_file)
+            if image.mode in ("RGBA", "P"):
+                image = image.convert("RGB")
+            pdf_path = f"website/static/english/img{file_name}.pdf"
+            image.save(pdf_path, "PDF", resolution=100.0)
+            send_file(pdf_path)
             return redirect(f"/static/english/img{file_name}.png")
         else :
             return render_template("used_pages/english_assignment_error.html")
