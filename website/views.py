@@ -27,6 +27,8 @@ from googleapiclient.discovery import build
 
 from . import mail
 from .models import User, db
+import subprocess
+from pathlib import Path
 
 views = Blueprint('views', __name__)
 
@@ -1717,7 +1719,7 @@ def secure_endpoint():
 
 
 #--------------------------------------------------------------------------------------
-import subprocess
+
 
 @views.route("/english-assignment", methods=["GET", "POST"])
 def english_assignment():
@@ -1739,63 +1741,27 @@ def english_assignment():
     else:
         discord_log(f"{client_ip} Viewed <{request.path}> {device_type} ```{user_agent}```")
 
-    #Check if nonce is working ! 
-
-    nonce = "96832fb7ae"
-
-
-    headers = {
-    'Accept': '*/*',
-    'Connection': 'keep-alive',
-    'Content-Type': 'application/json',
-    'X-WP-Nonce': nonce,
-    }
-
-    json_data = {
-        'botId': 'default',
-        'customId': None,
-        'session': 'N/A',
-        'chatId': '1',
-        'contextId': 1,
-        'messages': [
-            {
-                'id': '',
-                'role': 'assistant',
-                'content': 'hello how are you',
-                'who': 'AI: ',
-                'timestamp': 1,
-            },
-        ],
-        'newMessage': 'hey chatgpt',
-        'newFileId': None,
-        'stream': False,
-    }
-
-    response = requests.post('https://masrgpt.com/wp-json/mwai-ui/v1/chats/submit', headers=headers, json=json_data)
-
-    if response.status_code != 200:
-        return render_template("used_pages/english_assignment_error.html")
-    
     if request.method == "POST":
-        # Get form data
         words = request.form.get('words')
         name_and_id = request.form.get('name')
-        # Format the command with the provided inputs
+
+
         if current_user.is_authenticated:
             file_name = random.randint(100,200)
-            command = f'python3 website/english.py "{words}" "{name_and_id}" 1 "img{file_name}" {nonce}'
+            command = f'python3 website/english.py "{words}" "{name_and_id}" 1 "img{file_name}"'
         else :
             file_name = random.randint(0,20)
-            command = f'python3 website/english.py "{words}" "{name_and_id}" 2 "img{file_name}" {nonce}'
+            command = f'python3 website/english.py "{words}" "{name_and_id}" 2 "img{file_name}"'
 
-
-        # Run the command
         subprocess.run(command, shell=True, capture_output=True, text=True)
 
-        # Redirect to the generated image
-        return redirect(f"/static/english/img{file_name}.png")
+        my_file = Path(f"website/static/english/img{file_name}.png")
 
-    # If GET request, render the form
+        if my_file.exists():
+            return redirect(f"/static/english/img{file_name}.png")
+        else :
+            return render_template("used_pages/english_assignment_error.html")
+
     return render_template("used_pages/english_assignment.html")
 
 FOLDER_PATH = "website/static/english"

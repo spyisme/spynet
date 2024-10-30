@@ -90,7 +90,6 @@ parser.add_argument("api", type=int, choices=[1, 2], help="Choose API Number (1 
 
 parser.add_argument("outputname", type=str, help="File name")
 
-parser.add_argument("nonce", type=str, help="Wordpress nonce needs to be done manual")
 
 
 # Parsing arguments
@@ -102,10 +101,21 @@ name_and_id = args.name_and_id
 api = args.api
 outputname = args.outputname
 
-nonce = args.nonce
+headers = {
+    'accept': '*/*',
+    'content-type': 'application/json',
+    'origin': 'https://masrgpt.com',
+    'referer': 'https://masrgpt.com/chatgpt/',
+
+}
+
+response = requests.post('https://masrgpt.com/wp-json/mwai/v1/start_session', headers=headers)
+
+json_data = response.json()
+
+nonce = json_data["restNonce"]
 
 
-print("nonce = " + nonce)
 print("outputname = " + outputname)
 
 
