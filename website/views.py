@@ -1763,13 +1763,14 @@ def english_assignment():
             image = Image.open(my_file)
             if image.mode in ("RGBA", "P"):
                 image = image.convert("RGB")
-            pdf_path = f"website/static/english/img{file_name}.pdf"
+
+            pdf_path = f"website/static/english/{file_name}.pdf"
 
             image.save(pdf_path, "PDF", resolution=100.0)
 
 
 
-            return redirect(f"/static/english/img{file_name}.pdf")
+            return redirect(f"/static/english/{file_name}.pdf")
         else :
             return render_template("used_pages/english_assignment_error.html")
 
