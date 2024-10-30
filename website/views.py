@@ -1785,7 +1785,7 @@ def english_assignment():
             file_name = random.randint(100,200)
             command = f'python3 website/english.py "{words}" "{name_and_id}" 1 "img{file_name}" {nonce}'
         else :
-            file_name = random.randint(0,9)
+            file_name = random.randint(0,20)
             command = f'python3 website/english.py "{words}" "{name_and_id}" 2 "img{file_name}" {nonce}'
 
 
