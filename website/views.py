@@ -1767,8 +1767,9 @@ def english_assignment():
 
             image.save(pdf_path, "PDF", resolution=100.0)
 
-            return send_file(f"static/english/img{file_name}.pdf")
 
+
+            return redirect(f"/static/english/img{file_name}.pdf")
         else :
             return render_template("used_pages/english_assignment_error.html")
 
