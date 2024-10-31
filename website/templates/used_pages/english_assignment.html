@@ -113,7 +113,10 @@
 
                 <label for="name">Name and ID:</label>
                 <input type="text" id="name" name="name" placeholder="Amr Ayman 192400300" required>
-                
+                <input type="radio" name="api" value="1"> 1<br>
+                <input type="radio" name="api" value="2"> 2<br>
+                <input type="radio" name="api" value="3"> 3<br>
+
                 {%if current_user.is_authenticated%}
                 <p style="font-size: 14px;">Images are accurate (You are logged in)</p>
                 <a href="/how-english-assigment" style="font-size: 10px;">ℹ️ How was this made</a>
