@@ -1760,11 +1760,11 @@ def english_assignment():
 
 
         if current_user.is_authenticated:
-            file_name = f"EnglishPDF{random.randint(1,200)}"
+            file_name = f"EnglishPDF{random.randint(100,200)}"
             copyrights= ""
         else :
             copyrights = "Made By Spy"
-            file_name = "EnglishPDF"
+            file_name = f"EnglishPDF{random.randint(1,10)}"
 
         def get_image(query , name , api):
             discord_log_english(f"Getting image for : {query} using api {api}")
@@ -2095,6 +2095,8 @@ def english_assignment():
             pdf_path = f"website/static/english/{file_name}.pdf"
 
             image.save(pdf_path, "PDF", resolution=100.0)
+            
+            os.remove(my_file)
             
             return redirect(f"/static/english/{file_name}.pdf")
         else :
