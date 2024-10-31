@@ -134,33 +134,8 @@
 
     <!-- JavaScript to hide the flash message after 3 seconds -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.min.js"></script>
-    <script type="text/javascript">
-        // Connect to SocketIO server
-        const socket = io.connect('https://' + document.domain + ':' + location.port + '/test');
-        // Listen for 'message' events and display them with a fade-out effect
-        socket.on('message', function(msg) {
-            const messagesDiv = document.getElementById('messages');
+    <script src="{{ url_for('static', filename='java/connection.js')}}"></script>
 
-            console.log(msg.data)
-            
-            // Create a new list item for the message
-            const newMessage = document.createElement('li');
-            newMessage.textContent = msg.data;
-            messagesDiv.appendChild(newMessage);
-            
-            // Set a timeout to fade out and remove the message
-            setTimeout(function() {
-                newMessage.style.transition = "opacity 0.5s ease-out";
-                newMessage.style.opacity = "0";
-                setTimeout(() => newMessage.remove(), 500);  // Remove element after fade-out
-            }, 3000);  // 3 seconds before fade-out starts
-        });
-
-        // Clear previous messages on form submission
-        document.getElementById('myForm').addEventListener('submit', function() {
-            document.getElementById('messages').innerHTML = '';  // Clear previous messages
-        });
-    </script>
     <section class="banner">
         <canvas id="canvas"> </canvas>
         <div class="container">

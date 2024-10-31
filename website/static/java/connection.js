@@ -16,9 +16,11 @@ function getDeviceId() {
 // Get the device ID
 var deviceId = getDeviceId();
 
-var socket = io.connect('https://' + document.domain + ':' + location.port);
+// Connect to the /test namespace
+var socket = io.connect('https://' + document.domain + ':' + location.port + '/test');
 
 socket.on('connect', function() {
+    // Emit the register event to the /test namespace
     socket.emit('register', { user: deviceId });
 });
 
@@ -59,4 +61,5 @@ function checkUsername() {
 }
 
 // Check username every 5 seconds
-checkUsername()
+checkUsername();
+
