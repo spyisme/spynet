@@ -117,7 +117,7 @@ parser = argparse.ArgumentParser(description="Process input words, name and ID, 
 # Adding arguments
 parser.add_argument("words", type=str, help="Input words")
 parser.add_argument("name_and_id", type=str, help="Name and ID (e.g., Amr Ayman 192400300)")
-parser.add_argument("api", type=int, choices=[1, 2], help="Choose API Number (1 for accurate results but limited, 2 for unlimited)")
+parser.add_argument("api", type=int, choices=[1, 2 , 3], help="Choose API Number (1 for accurate results but limited, 2 for unlimited)")
 
 parser.add_argument("outputname", type=str, help="File name")
 
