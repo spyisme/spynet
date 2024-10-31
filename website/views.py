@@ -31,8 +31,7 @@ import subprocess
 from pathlib import Path
 from datetime import datetime
 import time
-from . import socketio  # Import socketio instance
-from flask_socketio import emit
+
 views = Blueprint('views', __name__)
 
 SCOPES = ['https://www.googleapis.com/auth/youtube.readonly']
@@ -1722,45 +1721,6 @@ def secure_endpoint():
 
 
 #--------------------------------------------------------------------------------------
-
-
-user_socket_map = {}
-
-
-
-@socketio.on('connect', namespace='/')
-def handle_connect():
-    global connected_clients
-    connected_clients += 1
-    emit('update_clients', {'count': connected_clients}, broadcast=True)
-
-
-@socketio.on('register', namespace='/')
-def handle_register(data):
-    user_id = data.get('user')
-    if user_id:
-        user_socket_map[user_id] = request.sid
-
-
-@socketio.on('disconnect', namespace='/')
-def handle_disconnect():
-    global connected_clients
-    connected_clients -= 1
-
-    # Remove the user from the mapping
-    user_id = None
-    for usr_id, sid in user_socket_map.items():
-        if sid == request.sid:
-            user_id = usr_id
-            break
-    if user_id:
-        del user_socket_map[user_id]
-
-    emit('update_clients', {'count': connected_clients}, broadcast=True)
-
-
-
-
 #English Assignment
 def discord_log_english(message):
     messageeeee = {'content': message}
@@ -1774,6 +1734,7 @@ def discord_log_english(message):
 
 @views.route("/english-assignment", methods=["GET", "POST"])
 def english_assignment():
+
     client_ip = request.headers.get('X-Forwarded-For')
     if client_ip:
         client_ip = client_ip.split(',')[0].strip()
@@ -1808,15 +1769,9 @@ def english_assignment():
             file_name = f"EnglishPDF{random.randint(1,10)}"
 
         discord_log_english(f"Making pdf for {name_and_id} with words {words} <@709799648143081483>")
-        sid = request.form.get('sid')
-        socketio.emit('message', {'data': 'Yarab'}, to=sid)
-        return sid
 
-
-        flash(f"Making pdf for {name_and_id} with words {words}")
         def get_image(query , name , api):
             discord_log_english(f"Getting image for : {query} using api {api}")
-            flash(f"Getting image for : {query} using api {api}")
             if api == "1" :
                 url = f"https://serpapi.com/search.json?engine=google_images&ijn=0&api_key=da75049319abb43ed97ac5e729c1e1cac35280e3d214de6962674b7c0dc9d09a&q={query}"
                 start_time = time.time()
@@ -1839,13 +1794,11 @@ def english_assignment():
                         with open(f"./website/english/{name}.png", "wb") as file:
                             file.write(response.content)
                             elapsed_time = time.time() - start_time
-
-                            flash(f"Took {elapsed_time:.2f} seconds to load download {name}")
+                            discord_log_english(f"Took {elapsed_time:.2f} seconds to load download {name}")
                     else:
                         discord_log_english("No image results found.")
                 except requests.exceptions.RequestException as e:
                     discord_log_english(f"Error: {e}")
-                    flash(f"Error: {e}")
             elif api == "2" :
                 start_time = time.time()
 
@@ -1868,14 +1821,12 @@ def english_assignment():
 
                 else:
                     discord_log_english("Failed to fetch data:", response.json())
-                    flash("Failed to fetch data:", response.json())
                 for url in image_urls:
                     response = requests.get(url)
                     with open(f"./website/english/{name}.png", "wb") as file:
                         file.write(response.content)    
                         elapsed_time = time.time() - start_time
-
-                        flash(f"Took {elapsed_time:.2f} seconds to load download {name}")
+                        discord_log_english(f"Took {elapsed_time:.2f} seconds to load download {name}")
 
             elif api == "3" :
                 start_time = time.time()
@@ -1910,7 +1861,7 @@ def english_assignment():
                 with open(f"./website/english/{name}.png", "wb") as file:
                         file.write(response.content)    
                         elapsed_time = time.time() - start_time
-                        flash(f"Took {elapsed_time:.2f} seconds to load download {name}")
+                        discord_log_english(f"Took {elapsed_time:.2f} seconds to load download {name}")
 
             else :
                 discord_log_english("Choose a valid api number")
@@ -1946,7 +1897,7 @@ def english_assignment():
 
         elapsed_time = time.time() - start_time
 
-        flash("Got Chaptgpt's nonce : " + nonce + f" Took {elapsed_time:.2f} seconds")
+        discord_log_english("Got Chaptgpt's nonce : " + nonce + f" Took {elapsed_time:.2f} seconds")
 
         start_time = time.time()
 
@@ -1986,7 +1937,7 @@ def english_assignment():
         # print(json_data["reply"])
         elapsed_time = time.time() - start_time
 
-        flash(f"Got Chatgpt's reply Took {elapsed_time:.2f} seconds")
+        discord_log_english(f"Got Chatgpt's reply Took {elapsed_time:.2f} seconds")
 
         data = json.loads(json_data["reply"])
         for i, word in enumerate(data["words"], start=1):
@@ -2036,14 +1987,14 @@ def english_assignment():
             return fields_data
 
         # Example usage
-        update_fields_data(fields_data, data)
+        updated_fields_data = update_fields_data(fields_data, data)
 
 
 
         def make_image_final():
             start_time = time.time()
 
-            flash("Making the final image...")
+            discord_log_english("Making the final image...")
             # Load the main image (worksheet)
             main_image_path = "./website/english/main.png"
             main_image = Image.open(main_image_path)
@@ -2128,9 +2079,9 @@ def english_assignment():
             elapsed_time = time.time() - start_time
             elapsed_time2 = time.time() - global_start_time
 
-            flash(f"Took {elapsed_time:.2f} seconds to make the final picture")
+            discord_log_english(f"Took {elapsed_time:.2f} seconds to make the final picture")
 
-            flash(f"Took {elapsed_time2:.2f} seconds total.")
+            discord_log_english(f"Took {elapsed_time2:.2f} seconds total.")
 
             main_image.show()
             main_image.save(f"./website/static/english/{file_name}.png")

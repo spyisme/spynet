@@ -57,17 +57,6 @@ function checkUsername() {
         }
     });
 }
-socket.on('message', function(data) {
-    console.log('Received message:', data);
-    // Display the message in the console or update the UI as needed
-    // Example: Displaying the message in an alert
-    alert(`Message from server: ${data}`);
-});
 
-
-socket.on('connect', function() {
-    // Set the sid in the hidden input when the socket connects
-    document.getElementById('sid').value = socket.id;
-});
 // Check username every 5 seconds
 checkUsername()
