@@ -31,8 +31,8 @@ import subprocess
 from pathlib import Path
 from datetime import datetime
 import time
-from flask_socketio import SocketIO
-
+from . import socketio  # Import socketio instance
+from flask_socketio import emit
 views = Blueprint('views', __name__)
 
 SCOPES = ['https://www.googleapis.com/auth/youtube.readonly']
@@ -1771,7 +1771,7 @@ def english_assignment():
         discord_log_english(f"Making pdf for {name_and_id} with words {words} <@709799648143081483>")
 
         socketio.emit('message', {'data': 'Starting the process...'}, namespace='/test')
-        
+
         flash(f"Making pdf for {name_and_id} with words {words}")
         def get_image(query , name , api):
             discord_log_english(f"Getting image for : {query} using api {api}")
