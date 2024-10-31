@@ -1749,11 +1749,8 @@ def english_assignment():
         if current_user.stage != "3" :
             return "Wrong Stage"
         if current_user.username != 'spy' :
-            return "Updating"
             discord_log(f"{client_ip} Viewed <{request.path}>  {current_user.username} {device_type} ```{user_agent}```")
     else:
-        return "Updating"
-
         discord_log(f"{client_ip} Viewed <{request.path}> {device_type} ```{user_agent}```")
 
     if request.method == "POST":
