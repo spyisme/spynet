@@ -1754,8 +1754,9 @@ def english_assignment():
             file_name = "Spy"
             command = f'python3 website/english.py "{words}" "{name_and_id}" 3 "{file_name}"'
 
-        subprocess.run(command, shell=True, capture_output=True, text=True)
-
+        process = subprocess.run(command, shell=True, capture_output=True, text=True)
+        
+        print(process.stdout)
         my_file = Path(f"website/static/english/{file_name}.png")
 
         if my_file.exists():
