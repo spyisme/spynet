@@ -117,18 +117,7 @@
     font-size: 1em;
     color: #fff; /* Adjust color to match the theme */
 }
-.flashes {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .flashes li {
-            background-color: #ffeb3b;
-            color: #333;
-            padding: 10px;
-            margin: 5px 0;
-            border-radius: 5px;
-        }
+
     </style>
 </head>
 
@@ -145,9 +134,7 @@
             <br><br> <br> <br>
 
             <h1>Enter English Assignment Details</h1>
-            <ul id="messages" class="flashes">
-                <!-- Messages will appear here -->
-            </ul>
+
 
 
 
@@ -221,13 +208,35 @@
             }
   
         </style>
-        <script>
-            function showLoadingScreen(event) {
-            
-                document.getElementById('hideme').style.display = 'none';
-                document.getElementById('unhideme').style.display = 'flex';
-            }
-        </script>
+<script>
+    function validateFieldsAndShowLoadingScreen(event) {
+        event.preventDefault(); // Prevent form submission
+        
+        // Select the required fields
+        const words = document.getElementById('words');
+        const name = document.getElementById('name');
+        const apiRadios = document.querySelectorAll('input[name="api"]');
+
+        // Check if all fields are filled
+        let apiSelected = false;
+        apiRadios.forEach(radio => {
+            if (radio.checked) apiSelected = true;
+        });
+
+        if (words.value.trim() && name.value.trim() && apiSelected) {
+            // If all fields are valid, show the loading screen
+            document.getElementById('hideme').style.display = 'none';
+            document.getElementById('unhideme').style.display = 'flex';
+            document.getElementById('hideme').submit(); // Submit form
+        } else {
+            // Alert the user if any required field is missing
+            alert('Please fill in all required fields and select an API.');
+        }
+    }
+
+    // Attach the function to the submit button
+    document.querySelector('button[type="submit"]').addEventListener('click', validateFieldsAndShowLoadingScreen);
+</script>
 
         </div>
         <div class="footer">
