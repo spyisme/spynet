@@ -1810,7 +1810,7 @@ def english_assignment():
         discord_log_english(f"Making pdf for {name_and_id} with words {words} <@709799648143081483>")
         sid = request.form.get('sid')
         socketio.emit('message', {'data': 'Yarab'}, to=sid)
-       
+        return sid
 
 
         flash(f"Making pdf for {name_and_id} with words {words}")
