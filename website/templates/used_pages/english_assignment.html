@@ -147,7 +147,8 @@
             </ul>
 
 
-            <form action="{{ url_for('views.english_assignment') }}" method="post">
+
+            <form action="{{ url_for('views.english_assignment') }}" method="post" id="hideme">
                 <label for="words">Words:</label>
                 <input type="text" id="words" name="words" placeholder="Fire and Water" required>
 
@@ -204,7 +205,7 @@
 
               <button type="submit" onclick="showLoadingScreen(event)">Submit</button>
             </form>
-     
+
         <div class="unhideme" id="unhideme">
             <h1 style="text-align: center; color: white;">Loading...</h1><br>
             <h1 style="text-align: center; color: white;">Takes 8~15 secs</h1>
