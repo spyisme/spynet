@@ -5,58 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>English Assignment</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/main.css') }}" />
-
     <style>
-        a {
-            color: green;
+        /* General styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
             font-size: 1.1em;
         }
 
-        /* General styling for background and text color */
-        body {
-            background-color: #000;
-            color: #fff;
+        .container, .loading-screen {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
-            margin: 0;
-            font-family: Arial, sans-serif;
-            font-size: 1.1em; /* Adjusts overall font size */
         }
 
-        /* Container for title and form */
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        /* Styling for the title */
-        h1 {
-            margin-bottom: 20px;
-            font-size: 2em; /* Increased font size */
+        h1, label, input, button, p {
             text-align: center;
+            color: #fff;
         }
 
-        /* Styling for the form */
-        form {
-            background-color: #333;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+        .container {
             width: 100%;
             max-width: 600px;
-            text-align: left;
-            font-size: 1.1em; /* Slightly larger font for form content */
+            padding: 25px;
+            background-color: #333;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
         }
 
-        /* Styling for form elements */
+        h1 {
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        form {
+            width: 100%;
+        }
+
         label, input, button {
             display: block;
             width: 90%;
-            margin-bottom: 18px;
+            margin: 0 auto 18px;
             font-size: 1.1em;
         }
 
@@ -86,132 +87,116 @@
             background-color: #777;
         }
 
-        /* Responsive styling for mobile devices */
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 1.7em;
-            }
-
-            form {
-                width: 80%;
-                max-width: none;
-            }
+        /* Loading screen styling */
+        .loading-screen {
+            display: none; /* Hidden by default */
+            background-color: #000;
+            height: 100vh;
+            width: 100vw;
+            position: fixed;
+            top: 0;
+            left: 0;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            font-size: 1.5em;
         }
-        .radio-group {
-    display: flex;
-    align-items: center;
-    gap: 10px; /* Adds space between each option */
-}
 
-.radio-group input[type="radio"] {
-    display: inline-block;
-    width: auto; /* Allows each radio button to take up only as much space as needed */
-    margin-right: 5px; /* Space between radio button and its label */
-}
-
-.radio-group label {
-    margin-right: 15px; /* Space between each label and the next radio button */
-    font-size: 1em;
-    color: #fff; /* Adjust color to match the theme */
-}
-.flashes {
-            list-style: none;
-            padding: 0;
-            margin: 0;
+        .loader {
+            border: 16px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 16px solid #3498db;
+            width: 120px;
+            height: 120px;
+            animation: spin 2s linear infinite;
+            margin-bottom: 20px;
         }
-        .flashes li {
-            background-color: #ffeb3b;
-            color: #333;
-            padding: 10px;
-            margin: 5px 0;
-            border-radius: 5px;
+
+        /* Loading spinner animation */
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
 
-<body onload="startCountdown()">
+<body>
+    <!-- Main content container -->
+    <div class="container">
+        <h1>Enter English Assignment Details</h1>
+        <form id="assignmentForm" action="{{ url_for('views.english_assignment') }}" method="post">
+            <label for="words">Words:</label>
+            <input type="text" id="words" name="words" placeholder="Fire and Water" required>
 
+            <label for="name">Name and ID:</label>
+            <input type="text" id="name" name="name" placeholder="Amr Ayman 192400300" required>
 
-    <!-- JavaScript to hide the flash message after 3 seconds -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.min.js"></script>
-    <script src="{{ url_for('static', filename='java/connection.js')}}"></script>
-
-    <section class="banner">
-        <canvas id="canvas"> </canvas>
-        <div class="container">
-            <br><br> <br> <br>
-
-            <h1>Enter English Assignment Details</h1>
-            <ul id="messages" class="flashes">
-                <!-- Messages will appear here -->
-            </ul>
-
-
-
-            <form action="{{ url_for('views.english_assignment') }}" method="post">
-                <label for="words">Words:</label>
-                <input type="text" id="words" name="words" placeholder="Fire and Water" required>
-
-                <label for="name">Name and ID:</label>
-                <input type="text" id="name" name="name" placeholder="Amr Ayman 192400300" required>
-
-                <label for="api">Choose Image Search API:</label>
-                <div class="radio-group">
-                    {%if current_user.is_authenticated%}
-
+            <label for="api">Choose Image Search API:</label>
+            <div class="radio-group">
+                {% if current_user.is_authenticated %}
                     <input type="radio" name="api" value="1" id="api1" required>
                     <label for="api1">SerpApi</label>
-                    {%else%}
+                {% else %}
                     <input type="radio" name="api" value="1" id="api1" required disabled>
-                       <label for="api1"><s> SerpApi</s></label> 
+                    <label for="api1"><s>SerpApi</s></label>
+                {% endif %}
 
+                <input type="radio" name="api" value="2" id="api2">
+                <label for="api2">Unsplash Api</label>
 
-                    {%endif%}
-            
-                    <input type="radio" name="api" value="2" id="api2">
-                    <label for="api2">Unsplash Api</label>
-
-
-
-
-                    {%if current_user.is_authenticated%}
+                {% if current_user.is_authenticated %}
                     <input type="radio" name="api" value="3" id="api3">
                     <label for="api3">Google Search Api</label>
-             
-
-                    {%else%}
+                {% else %}
                     <input type="radio" name="api" value="3" id="api3" disabled>
-                <label for="api3"> <s>Google Search Api</s></label> 
+                    <label for="api3"><s>Google Search Api</s></label>
+                {% endif %}
+            </div>
 
+            {% if current_user.is_authenticated %}
+                <p style="font-size: 14px;">You can choose any option. (Logged in as {{ current_user.username }})</p>
+            {% else %}
+                <p style="font-size: 14px;">To choose other options please log in. (Not logged in <a href="/">login?</a>)</p>
+            {% endif %}
 
-                    {%endif%}
+            <div class="texthere">
+                <p>What to choose?</p>
+                <p style="font-size: 14px;"><u><b>SerpApi</b></u>: Slowest Results and somewhat accurate</p>
+                <p style="font-size: 14px;"><u><b>Unsplash Api</b></u>: Fastest Results but not accurate</p>
+                <p style="font-size: 14px;"><u><b>Google Search Api</b></u>: Perfect</p>
+            </div>
 
-                </div>
-                {%if current_user.is_authenticated%}
-                <p style="font-size: 14px;">You can choose any option.(You are logged in as {{current_user.username}})</p>
-   
-                {%else%}
-                <p style="font-size: 14px;">To choose other options please login.(You are not logged in <a href="/">login?</a>)</p>
-                {%endif%}
-                
-                <div class="texthere">
-                    <p>What to choose?</p>
-                    <p style="font-size: 14px;"><u><b>SerpApi</b></u>: Slowest Results and somewhat accurate</p>
-                    <p style="font-size: 14px;"><u><b>Unsplash Api</b></u> : Fastest Results but not accurate</p>
-                    <p style="font-size: 14px;"><u><b>Google Search Api</b></u> : Perfect</p>
+            <button type="submit" onclick="showLoadingScreen(event)">Submit</button>
+        </form>
+    </div>
 
-                </div>
-     <br>
+    <!-- Loading screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader"></div>
+        <p id="countdownText">Please wait... 15 seconds remaining</p>
+    </div>
 
-                <button type="submit">Submit</button>
-            </form>
-        </div>
-        <div class="footer">
-            <p id="countdown">Loading...</p>
-        </div>
-    </section>
+    <script>
+        // Show loading screen and start countdown
+        function showLoadingScreen(event) {
+            event.preventDefault(); // Prevents form from submitting immediately
+            document.querySelector('.container').style.display = 'none';
+            document.getElementById('loadingScreen').style.display = 'flex';
+
+            let countdown = 15;
+            const countdownText = document.getElementById('countdownText');
+
+            const countdownInterval = setInterval(() => {
+                countdown--;
+                countdownText.textContent = `Please wait... ${countdown} seconds remaining`;
+
+                if (countdown === 0) {
+                    clearInterval(countdownInterval);
+                    document.getElementById("assignmentForm").submit(); // Submit form after countdown
+                }
+            }, 1000);
+        }
+    </script>
 </body>
-<script src="{{ url_for('static', filename='java/countdown.js')}}"></script>
-<script src=" {{ url_for('static', filename='java/snow.js')}}"></script>
-
 </html>
