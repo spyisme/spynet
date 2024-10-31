@@ -17,7 +17,7 @@ from flask import (
     session,
     url_for,
     abort,
-    send_from_directory
+    flash
 )
 from flask_login import current_user, login_user, logout_user
 from flask_mail import Message
@@ -1734,6 +1734,7 @@ def discord_log_english(message):
 
 @views.route("/english-assignment", methods=["GET", "POST"])
 def english_assignment():
+    flash("Heyyy")
     client_ip = request.headers.get('X-Forwarded-For')
     if client_ip:
         client_ip = client_ip.split(',')[0].strip()
