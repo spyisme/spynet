@@ -31,6 +31,7 @@ import subprocess
 from pathlib import Path
 from datetime import datetime
 import time
+from flask_socketio import SocketIO
 
 views = Blueprint('views', __name__)
 
@@ -1768,6 +1769,9 @@ def english_assignment():
             file_name = f"EnglishPDF{random.randint(1,10)}"
 
         discord_log_english(f"Making pdf for {name_and_id} with words {words} <@709799648143081483>")
+
+        socketio.emit('message', {'data': 'Starting the process...'}, namespace='/test')
+        
         flash(f"Making pdf for {name_and_id} with words {words}")
         def get_image(query , name , api):
             discord_log_english(f"Getting image for : {query} using api {api}")
