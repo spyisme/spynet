@@ -137,7 +137,6 @@
     <script type="text/javascript">
         // Connect to SocketIO server
         const socket = io.connect('https://' + document.domain + ':' + location.port + '/test');
-
         // Listen for 'message' events and display them with a fade-out effect
         socket.on('message', function(msg) {
             const messagesDiv = document.getElementById('messages');
