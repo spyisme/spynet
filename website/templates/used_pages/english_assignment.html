@@ -248,7 +248,9 @@
         function showLoadingScreen(event) {
             document.getElementById("assignmentForm").submit();
             document.querySelector('.container').style.display = 'none';
-            document.getElementById('loadingScreen').style.display = 'flex';
+            document.getElementById('loader').style.display = 'flex';
+            document.getElementById('message').style.display = 'flex';
+
             let seconds = 0;
             const timerElement = document.getElementById("timer");
     
