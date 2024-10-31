@@ -30,6 +30,8 @@ from .models import User, db
 import subprocess
 from pathlib import Path
 from datetime import datetime
+import time
+
 views = Blueprint('views', __name__)
 
 SCOPES = ['https://www.googleapis.com/auth/youtube.readonly']
@@ -1759,7 +1761,9 @@ def english_assignment():
 
         if current_user.is_authenticated:
             file_name = f"EnglishPDF{random.randint(1,200)}"
+            copyrights= ""
         else :
+            copyrights = "Made By Spy"
             file_name = "EnglishPDF"
 
         def get_image(query , name , api):
@@ -1868,11 +1872,6 @@ def english_assignment():
 
         # api = int(input("Choose API Number (1 = accurate results but limited, 2 = unlimited): "))
 
-        words = "Fire and Water"
-
-        name_and_id = "Jana"
-
-        api = 2
 
         global_start_time = time.time()
 
@@ -1967,7 +1966,7 @@ def english_assignment():
             "Related Words 2": {"text": "", "coords": (275, 5284), "max_x": 2856, "max_y": 5386},
             "Your OWN Sentence 2": {"text": "", "coords": (286, 5713), "max_x": 2857, "max_y": 6035},  
             #CopyRights
-            "CopyRight": {"text": "Made By Spy", "coords": (3805 , 6178), "max_x": 4259 , "max_y": 6233},  
+            "CopyRight": {"text": f"{copyrights}", "coords": (3805 , 6178), "max_x": 4259 , "max_y": 6233},  
         }
 
         def update_fields_data(fields_data, data):
