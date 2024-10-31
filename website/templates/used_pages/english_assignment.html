@@ -97,6 +97,23 @@
                 max-width: none;
             }
         }
+        .radio-group {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Adds space between each option */
+}
+
+.radio-group input[type="radio"] {
+    display: inline-block;
+    width: auto; /* Allows each radio button to take up only as much space as needed */
+    margin-right: 5px; /* Space between radio button and its label */
+}
+
+.radio-group label {
+    margin-right: 15px; /* Space between each label and the next radio button */
+    font-size: 1em;
+    color: #fff; /* Adjust color to match the theme */
+}
     </style>
 </head>
 
@@ -113,9 +130,18 @@
 
                 <label for="name">Name and ID:</label>
                 <input type="text" id="name" name="name" placeholder="Amr Ayman 192400300" required>
-                <input type="radio" name="api" value="1"> 1<br>
-                <input type="radio" name="api" value="2"> 2<br>
-                <input type="radio" name="api" value="3"> 3<br>
+
+                <label for="api">Choose API:</label>
+                <div class="radio-group">
+                    <input type="radio" name="api" value="1" id="api1" required>
+                    <label for="api1">1</label>
+                
+                    <input type="radio" name="api" value="2" id="api2">
+                    <label for="api2">2</label>
+                
+                    <input type="radio" name="api" value="3" id="api3">
+                    <label for="api3">3</label>
+                </div>
 
                 {%if current_user.is_authenticated%}
                 <p style="font-size: 14px;">Images are accurate (You are logged in)</p>
