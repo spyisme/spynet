@@ -136,11 +136,11 @@
                     {%if current_user.is_authenticated%}
 
                     <input type="radio" name="api" value="1" id="api1" required>
-                    <label for="api1">SerpApi</label>
+                    <label for="api1">SerpApi</label><br>
                     <p style="font-size: 10px;">Too Slow</p>
                     {%else%}
                     <input type="radio" name="api" value="1" id="api1" required disabled>
-                    <label for="api1">SerpApi</label>
+                    <label for="api1">SerpApi</label><br>
                     <p style="font-size: 10px;">Too Slow</p>
 
 
@@ -148,18 +148,19 @@
             
                     <input type="radio" name="api" value="2" id="api2">
                     <label for="api2">Unsplash Api</label>
+                    <br>
                     <p style="font-size: 10px;">Fastest but not accurate</p>
 
 
 
                     {%if current_user.is_authenticated%}
                     <input type="radio" name="api" value="3" id="api3">
-                    <label for="api3">Google Search Api</label>
+                    <label for="api3">Google Search Api</label><br>
                     <p style="font-size: 10px;">Perfect</p>
 
                     {%else%}
                     <input type="radio" name="api" value="3" id="api3" disabled>
-                    <label for="api3">Google Search Api</label>
+                    <label for="api3">Google Search Api</label><br>
                     <p style="font-size: 10px;">Perfect</p>
 
                     {%endif%}
