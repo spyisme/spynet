@@ -1787,7 +1787,7 @@ def english_assignment():
 
                         response = requests.get(random_result.get("original"))
                         print(f"Saving {name}")
-                        with open(f"{name}.png", "wb") as file:
+                        with open(f"./website/english/{name}.png", "wb") as file:
                             file.write(response.content)
                             elapsed_time = time.time() - start_time
                             discord_log_english(f"Took {elapsed_time:.2f} seconds to load download {name}")
@@ -1819,7 +1819,7 @@ def english_assignment():
                     discord_log_english("Failed to fetch data:", response.json())
                 for url in image_urls:
                     response = requests.get(url)
-                    with open(f"{name}.png", "wb") as file:
+                    with open(f"./website/english/{name}.png", "wb") as file:
                         file.write(response.content)    
                         elapsed_time = time.time() - start_time
                         discord_log_english(f"Took {elapsed_time:.2f} seconds to load download {name}")
@@ -1827,7 +1827,7 @@ def english_assignment():
             elif api == "3" :
                 start_time = time.time()
 
-                def google_image_search(api_key, search_engine_id, query, num=5):
+                def google_image_search(api_key, search_engine_id, query, num=3):
                     url = "https://www.googleapis.com/customsearch/v1"
                     params = {
                         "key": api_key,
@@ -1854,7 +1854,7 @@ def english_assignment():
                     image_link = random_image["link"]
 
                 response = requests.get(image_link)
-                with open(f"{name}.png", "wb") as file:
+                with open(f"./website/english/{name}.png", "wb") as file:
                         file.write(response.content)    
                         elapsed_time = time.time() - start_time
                         discord_log_english(f"Took {elapsed_time:.2f} seconds to load download {name}")
