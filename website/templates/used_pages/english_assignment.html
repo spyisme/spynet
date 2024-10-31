@@ -114,19 +114,43 @@
     font-size: 1em;
     color: #fff; /* Adjust color to match the theme */
 }
+.flashes {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .flashes li {
+            background-color: #ffeb3b;
+            color: #333;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
     </style>
 </head>
 
 <body onload="startCountdown()">
     {% with messages = get_flashed_messages() %}
-  {% if messages %}
-    <ul class=flashes>
-    {% for message in messages %}
-      <li>{{ message }}</li>
-    {% endfor %}
-    </ul>
-  {% endif %}
-{% endwith %}
+    {% if messages %}
+        <ul class="flashes">
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    {% endwith %}
+
+    <!-- JavaScript to hide the flash message after 3 seconds -->
+    <script>
+        setTimeout(function() {
+            const flashes = document.querySelector('.flashes');
+            if (flashes) {
+                flashes.style.transition = "opacity 0.5s";
+                flashes.style.opacity = "0";
+                setTimeout(() => flashes.remove(), 500); // removes element after fade-out
+            }
+        }, 3000); // 3000 ms = 3 seconds
+    </script>
     <section class="banner">
         <canvas id="canvas"> </canvas>
         <div class="container">
