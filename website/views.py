@@ -1766,7 +1766,7 @@ def english_assignment():
         else :
             copyrights = "Made By Spy"
             api = "2"
-            file_name = f"EnglishPDF{random.randint(1,10)}"
+            file_name = f"EnglishPDF"
 
         discord_log_english(f"Making pdf for {name_and_id} with words {words} <@709799648143081483>")
 
