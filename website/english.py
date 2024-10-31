@@ -100,7 +100,10 @@ words = args.words
 name_and_id = args.name_and_id
 api = args.api
 outputname = args.outputname
-
+proxy = {
+    "http": "http://nprofi:6f0reuyu@139.171.104.74:29842",
+    "https": "http://nprofi:6f0reuyu@139.171.104.74:29842"
+}
 headers = {
     'accept': '*/*',
     'content-type': 'application/json',
@@ -109,7 +112,7 @@ headers = {
 
 }
 
-response = requests.post('https://masrgpt.com/wp-json/mwai/v1/start_session', headers=headers)
+response = requests.post('https://masrgpt.com/wp-json/mwai/v1/start_session', headers=headers , proxies= proxy)
 
 json_data = response.json()
 
@@ -148,7 +151,7 @@ json_data = {
     'stream': False,
 }
 
-response = requests.post('https://masrgpt.com/wp-json/mwai-ui/v1/chats/submit', headers=headers, json=json_data)
+response = requests.post('https://masrgpt.com/wp-json/mwai-ui/v1/chats/submit', headers=headers, json=json_data , proxies= proxy)
 
 
 json_data = response.json()
