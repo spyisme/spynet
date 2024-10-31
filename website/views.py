@@ -29,7 +29,7 @@ from . import mail
 from .models import User, db
 import subprocess
 from pathlib import Path
-
+from datetime import datetime
 views = Blueprint('views', __name__)
 
 SCOPES = ['https://www.googleapis.com/auth/youtube.readonly']
@@ -1758,46 +1758,53 @@ def english_assignment():
 
 
         if current_user.is_authenticated:
-            file_name = f"Spy{random.randint(1,200)}"
+            file_name = f"EnglishPDF{random.randint(1,200)}"
         else :
-            file_name = "MadeBySpy"
-
+            file_name = "EnglishPDF"
 
         def get_image(query , name , api):
             discord_log_english(f"Getting image for : {query} using api {api}")
             if api == "1" :
                 url = f"https://serpapi.com/search.json?engine=google_images&ijn=0&api_key=da75049319abb43ed97ac5e729c1e1cac35280e3d214de6962674b7c0dc9d09a&q={query}"
-
+                start_time = time.time()
                 try:
-                    # Send GET request to SerpApi
                     response = requests.get(url)
                     response.raise_for_status()
 
                     data = response.json()
 
+
                     if "images_results" in data:
 
+                        print("Found images in google search for word : " + query)
                         first_10_results = data["images_results"][:5]
-                        random_result = random.choice(first_10_results)
 
+                        random_result = random.choice(first_10_results)
 
                         response = requests.get(random_result.get("original"))
                         print(f"Saving {name}")
-                        with open(f"./website/english/{name}.png", "wb") as file:
+                        with open(f"{name}.png", "wb") as file:
                             file.write(response.content)
+                            elapsed_time = time.time() - start_time
+                            discord_log_english(f"Took {elapsed_time:.2f} seconds to load download {name}")
                     else:
-                        print("No image results found.")
+                        discord_log_english("No image results found.")
                 except requests.exceptions.RequestException as e:
-                    print(f"Error: {e}")
+                    discord_log_english(f"Error: {e}")
             elif api == "2" :
+                start_time = time.time()
+
                 ACCESS_KEY = 'FXdShCO15K4YL4s6myacxoVdl75PjlGBi_sT23CHOGI'
 
                 url = 'https://api.unsplash.com/search/photos'
+
                 headers = {'Authorization': f'Client-ID {ACCESS_KEY}'}
+
                 params = {
                     'query': query,
                     'per_page': 1
                 }
+
                 response = requests.get(url, headers=headers, params=params)
                 
                 if response.status_code == 200:
@@ -1805,14 +1812,18 @@ def english_assignment():
                     image_urls = [photo['urls']['regular'] for photo in data['results']]
 
                 else:
-                    print("Failed to fetch data:", response.json())
+                    discord_log_english("Failed to fetch data:", response.json())
                 for url in image_urls:
                     response = requests.get(url)
-                    with open(f"./website/english/{name}.png", "wb") as file:
+                    with open(f"{name}.png", "wb") as file:
                         file.write(response.content)    
-            elif api == "3" :
+                        elapsed_time = time.time() - start_time
+                        discord_log_english(f"Took {elapsed_time:.2f} seconds to load download {name}")
 
-                def google_image_search(api_key, search_engine_id, query, num=3):
+            elif api == "3" :
+                start_time = time.time()
+
+                def google_image_search(api_key, search_engine_id, query, num=5):
                     url = "https://www.googleapis.com/customsearch/v1"
                     params = {
                         "key": api_key,
@@ -1839,19 +1850,34 @@ def english_assignment():
                     image_link = random_image["link"]
 
                 response = requests.get(image_link)
-                with open(f"./website/english/{name}.png", "wb") as file:
-                        file.write(response.content)  
+                with open(f"{name}.png", "wb") as file:
+                        file.write(response.content)    
+                        elapsed_time = time.time() - start_time
+                        discord_log_english(f"Took {elapsed_time:.2f} seconds to load download {name}")
+
             else :
-                print("Choose a valid api number")
+                discord_log_english("Choose a valid api number")
                 print("exiting...")
-                exit()
+                return "Choose a valid api key"
 
-        prompt = "Hello, I would like assistance similar to how I interacted in a previous chat with ChatGPT. Here’s what I typically need: Text Generation: When I provide two or more words, please give me structured information for each word in JSON format, including: Today's POWER WORD: The word itself. Definition: A clear explanation of what the word means. Part of Speech: Indicate whether it's a noun, verb, adjective, etc. Synonyms: List two or more words that mean the same or similar, as a single text string separated by commas, not as a list. Antonyms: List two or more words that mean the opposite, also as a single text string separated by commas. Related Words: Suggest words that are conceptually related, as a single text string with commas. Your OWN Sentence: Use the word in a clear example sentence. Search: A search query I can use to find an accurate image for the word. Return everything as structured JSON text with words as an array of entries for each word. IMPORTANT DONT SAY A WORD ONLY SEND THE JSON DATA!!!"
+        prompt = "Hello, I would like assistance similar to how I interacted in a previous chat with ChatGPT. Here’s what I typically need: Text Generation: When I provide two or more words, please give me structured information for each word in JSON format, including: Today's POWER WORD: The word itself. Definition: A clear explanation of what the word means. Part of Speech: Indicate whether it's a noun, verb, adjective, etc. Synonyms: List two or more words that mean the same or similar, as a single text string separated by commas, not as a list. Antonyms: List two or more words that mean the opposite, also as a single text string separated by commas. Related Words: Suggest words that are conceptually related, as a single text string with commas. Your OWN Sentence: Use the word in a clear example sentence. Search: A search query I can use to find an accurate image for the word. Return everything as structured JSON text with words as an array of entries for each word. IMPORTANT DONT SAY A WORD ONLY SEND THE JSON DATA AND CAPTLIZE THE FIRST LETTER!!!"
 
-        proxy = {
-            "http": "http://nprofi:6f0reuyu@139.171.104.74:29842",
-            "https": "http://nprofi:6f0reuyu@139.171.104.74:29842"
-        }
+        # words = input("Input words : ")
+
+        # name_and_id  = input("Name and id (Ex: Amr Ayman 192400300): ")
+
+        # api = int(input("Choose API Number (1 = accurate results but limited, 2 = unlimited): "))
+
+        words = "Fire and Water"
+
+        name_and_id = "Jana"
+
+        api = 2
+
+        global_start_time = time.time()
+
+        start_time = time.time()
+
         headers = {
             'accept': '*/*',
             'content-type': 'application/json',
@@ -1860,17 +1886,23 @@ def english_assignment():
 
         }
 
-        response = requests.post('https://masrgpt.com/wp-json/mwai/v1/start_session', headers=headers , proxies= proxy)
+        response = requests.post('https://masrgpt.com/wp-json/mwai/v1/start_session', headers=headers)
 
         json_data = response.json()
 
         nonce = json_data["restNonce"]
 
+        elapsed_time = time.time() - start_time
+
+        discord_log_english("Got Chaptgpt's nonce : " + nonce + f" Took {elapsed_time:.2f} seconds")
+
+        start_time = time.time()
+
         headers = {
             'Accept': '*/*',
             'Connection': 'keep-alive',
             'Content-Type': 'application/json',
-            'X-WP-Nonce': f'{nonce}',
+            'X-WP-Nonce': nonce,
         }
 
         json_data = {
@@ -1893,11 +1925,16 @@ def english_assignment():
             'stream': False,
         }
 
-        response = requests.post('https://masrgpt.com/wp-json/mwai-ui/v1/chats/submit', headers=headers, json=json_data , proxies= proxy)
+        response = requests.post('https://masrgpt.com/wp-json/mwai-ui/v1/chats/submit', headers=headers, json=json_data)
+
 
         json_data = response.json()
 
-        discord_log_english(f"Creating image for {name_and_id} using words {words} with api {api} file name = {file_name}")
+
+        # print(json_data["reply"])
+        elapsed_time = time.time() - start_time
+
+        discord_log_english(f"Got Chatgpt's reply Took {elapsed_time:.2f} seconds")
 
         data = json.loads(json_data["reply"])
         for i, word in enumerate(data["words"], start=1):
@@ -1905,24 +1942,32 @@ def english_assignment():
             filename = f"img{i}"
             get_image(search_term, filename , api)
 
+
+        today_date = datetime.now().strftime("%d-%m-%Y")
         fields_data = {
-            "Name & ID": {"text": f"{name_and_id}", "coords": (100 , 10), "max_x": 330, "max_y": 30},  
+            "Name & ID": {"text": f"{name_and_id}", "coords": (1134 , 33), "max_x": 2785 , "max_y": 166},  
+            "Date": {"text": f"{today_date}", "coords": (3290 , 33), "max_x": 4244 , "max_y": 166},  
+
+
             #Word 1
-            "Today's POWER WORD 1": {"text": "", "coords": (25, 120), "max_x": 144, "max_y": 166},  
-            "Definition 1": {"text": "", "coords": (172, 117), "max_x": 442, "max_y": 166},
-            "Part of Speech 1": {"text": "", "coords": (25, 197), "max_x": 148, "max_y": 216},
-            "Synonyms 1": {"text": "", "coords": (172, 195), "max_x": 295, "max_y": 213},
-            "Antonyms 1": {"text": "", "coords": (315, 197), "max_x": 435, "max_y": 213},
-            "Related Words 1": {"text": "", "coords": (25, 250), "max_x": 290, "max_y": 260},
-            "Your OWN Sentence 1": {"text": "", "coords": (26, 296), "max_x": 289, "max_y": 334},
+            "Today's POWER WORD 1": {"text": "", "coords": (286 , 1133), "max_x": 1604, "max_y": 1475},  
+            "Definition 1": {"text": "", "coords": (1839 , 1089), "max_x": 3998, "max_y": 1492},
+            "Part of Speech 1": {"text": "", "coords": (293 , 1968), "max_x": 1621, "max_y": 2288},
+            "Synonyms 1": {"text": "", "coords": (1859 , 1961), "max_x": 2767, "max_y": 2296},
+            "Antonyms 1": {"text": "", "coords": (3035 , 1944), "max_x": 4087, "max_y": 2283},
+            "Related Words 1": {"text": "", "coords": (275 , 2611), "max_x": 2856, "max_y": 2713},
+            "Your OWN Sentence 1": {"text": "", "coords": (286 , 3040), "max_x": 2857, "max_y": 3362},
+
             #Word 2 
-            "Today's POWER WORD 2": {"text": "", "coords": (25, 383), "max_x": 144, "max_y": 429 },  
-            "Definition 2": {"text": "", "coords": (176 , 387), "max_x": 434, "max_y": 424},
-            "Part of Speech 2": {"text": "", "coords": (25 , 463), "max_x": 148, "max_y": 482},
-            "Synonyms 2": {"text": "", "coords": (172, 463), "max_x": 295, "max_y": 477},
-            "Antonyms 2": {"text": "", "coords": (315, 457), "max_x": 435, "max_y": 484},
-            "Related Words 2": {"text": "", "coords": (25, 510), "max_x": 290, "max_y": 527},
-            "Your OWN Sentence 2": {"text": "", "coords": (26, 560), "max_x": 289, "max_y": 596},  
+            "Today's POWER WORD 2": {"text": "", "coords": (286 , 3806), "max_x": 1604, "max_y": 4148 },  
+            "Definition 2": {"text": "", "coords": (1839 , 3762), "max_x": 3998, "max_y": 4165},
+            "Part of Speech 2": {"text": "", "coords": (293 , 4641), "max_x": 1621, "max_y": 4961},
+            "Synonyms 2": {"text": "", "coords": (1859, 4634), "max_x": 2767, "max_y": 4969},
+            "Antonyms 2": {"text": "", "coords": (3035, 4617), "max_x": 4087, "max_y": 4956},
+            "Related Words 2": {"text": "", "coords": (275, 5284), "max_x": 2856, "max_y": 5386},
+            "Your OWN Sentence 2": {"text": "", "coords": (286, 5713), "max_x": 2857, "max_y": 6035},  
+            #CopyRights
+            "CopyRight": {"text": "Made By Spy", "coords": (3805 , 6178), "max_x": 4259 , "max_y": 6233},  
         }
 
         def update_fields_data(fields_data, data):
@@ -1938,27 +1983,37 @@ def english_assignment():
             
             return fields_data
 
+        # Example usage
+        updated_fields_data = update_fields_data(fields_data, data)
 
-        update_fields_data(fields_data, data)
+
 
         def make_image_final():
-            main_image_path = "./website/english/main.png"
+            start_time = time.time()
+
+            discord_log_english("Making the final image...")
+            # Load the main image (worksheet)
+            main_image_path = "./main.png"
             main_image = Image.open(main_image_path)
             draw = ImageDraw.Draw(main_image)
 
-            font_path = "./website/english/Arial.ttf"  
-            max_font_size = 30
-            min_font_size = 10
+            # Define the font path and sizes
+            font_path = "arial.ttf"  # Ensure the font file path is correct
+            max_font_size = 300
+            min_font_size = 100
+            # Function to add wrapped text to fit within specified max x and max y
             def add_wrapped_text(draw, text, coords, max_x, max_y, font_path, max_font_size, min_font_size):
                 font_size = max_font_size
                 font = ImageFont.truetype(font_path, font_size)
                 max_width = max_x - coords[0]
                 max_height = max_y - coords[1]
 
+                # Adjust font size to fit within width and height
                 while (draw.textlength(text, font=font) > max_width or font.getbbox(text)[3] > max_height) and font_size > min_font_size:
                     font_size -= 1
                     font = ImageFont.truetype(font_path, font_size)
 
+                # Prepare for word wrapping within the box
                 words = text.split()
                 lines = []
                 current_line = ""
@@ -1982,7 +2037,10 @@ def english_assignment():
                     draw.text((coords[0], y_text), line, font=font, fill="black")
                     y_text += line_height
 
+            # Add text fields
             for field_name, field_info in fields_data.items():
+                if field_name == "CopyRight":
+                    min_font_size = 50
                 add_wrapped_text(
                     draw,
                     field_info["text"],
@@ -1994,29 +2052,40 @@ def english_assignment():
                     min_font_size
                 )
 
+            # Function to add an image within a defined box
             def add_image(main_image, added_image_path, x_min, y_min, x_max, y_max):
                 added_image = Image.open(added_image_path)
                 max_width = x_max - x_min
                 max_height = y_max - y_min
 
+                # Resize added image to fit within max width and max height
                 added_image.thumbnail((max_width, max_height))
                 
-
+                # Calculate position to center the image within the area
                 center_x = x_min + (max_width - added_image.width) // 2
                 center_y = y_min + (max_height - added_image.height) // 2
                 
-
+                # Paste the image onto the main image
                 main_image.paste(added_image, (center_x, center_y))
 
-            add_image(main_image, "./website/english/img1.png", 319, 255, 432, 338)
+            # Add Image 1 within specified coordinates
+            add_image(main_image, "img1.png", 2990 , 2601, 4166 , 3381)
 
-            add_image(main_image, "./website/english/img2.png", 319, 524, 432, 602)
+            # Add Image 2 within specified coordinates
+            add_image(main_image, "img2.png", 2990, 5274, 4166, 6054)
+            elapsed_time = time.time() - start_time
+            elapsed_time2 = time.time() - global_start_time
 
-            main_image.save(f"./website/static/english/{file_name}.png")
+            discord_log_english(f"Took {elapsed_time:.2f} seconds to make the final picture")
+
+            discord_log_english(f"Took {elapsed_time2:.2f} seconds total.")
+
+            main_image.show()
+            main_image.save(f"./imagefor{words}.png")
+            # main_image.save("C:/Users/Spy/Desktop/English/filled_word_wizard_with_images.png")
 
 
         make_image_final()
-        
         
         #Convert to PDF
         my_file = Path(f"website/static/english/{file_name}.png")
