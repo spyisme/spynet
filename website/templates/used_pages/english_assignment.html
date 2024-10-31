@@ -140,6 +140,8 @@
         // Listen for 'message' events and display them with a fade-out effect
         socket.on('message', function(msg) {
             const messagesDiv = document.getElementById('messages');
+
+            console.log(msg.data)
             
             // Create a new list item for the message
             const newMessage = document.createElement('li');
