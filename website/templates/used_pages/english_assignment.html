@@ -163,6 +163,14 @@
                     {%endif%}
 
                 </div>
+                {%if current_user.is_authenticated%}
+                <p style="font-size: 14px;">You can choose any option.(You are logged in as {{current_user.username}})</p>
+   
+                {%else%}
+                <p style="font-size: 14px;">To choose other options please login.(You are not logged in <a href="/">login?</a>)</p>
+            
+                {%endif%}
+                
                 <div class="texthere">
                     <p>What to choose?</p>
                     <p style="font-size: 14px;"> <b>SerpApi</b> Slowest Results and somewhat accurate</p>
@@ -171,13 +179,7 @@
 
                 </div>
 
-                {%if current_user.is_authenticated%}
-                <p style="font-size: 14px;">You can choose any option.(You are logged in as {{current_user.username}})</p>
-   
-                {%else%}
-                <p style="font-size: 14px;">To choose other options please login.(You are not logged in <a href="/">login?</a>)</p>
-            
-                {%endif%}
+ 
                 
                 <br>
                 <button type="submit">Submit</button>
