@@ -3,6 +3,7 @@ import requests
 import random
 import json
 
+print("Started English.py")
 
 def discord_log(message):
     messageeeee = {'content': message}
