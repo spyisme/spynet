@@ -20,7 +20,6 @@ socketio = SocketIO()
 
 connected_clients = 0
 
-
 def create_app():
 
     app = Flask(__name__)
@@ -182,35 +181,6 @@ def create_app():
     return app, socketio
 
 
-user_socket_map = {}
 
 
-@socketio.on('connect', namespace='/')
-def handle_connect():
-    global connected_clients
-    connected_clients += 1
-    emit('update_clients', {'count': connected_clients}, broadcast=True)
 
-
-@socketio.on('register', namespace='/')
-def handle_register(data):
-    user_id = data.get('user')
-    if user_id:
-        user_socket_map[user_id] = request.sid
-
-
-@socketio.on('disconnect', namespace='/')
-def handle_disconnect():
-    global connected_clients
-    connected_clients -= 1
-
-    # Remove the user from the mapping
-    user_id = None
-    for usr_id, sid in user_socket_map.items():
-        if sid == request.sid:
-            user_id = usr_id
-            break
-    if user_id:
-        del user_socket_map[user_id]
-
-    emit('update_clients', {'count': connected_clients}, broadcast=True)

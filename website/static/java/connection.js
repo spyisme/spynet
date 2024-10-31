@@ -63,5 +63,11 @@ socket.on('message', function(data) {
     // Example: Displaying the message in an alert
     alert(`Message from server: ${data}`);
 });
+
+
+socket.on('connect', function() {
+    // Set the sid in the hidden input when the socket connects
+    document.getElementById('sid').value = socket.id;
+});
 // Check username every 5 seconds
 checkUsername()

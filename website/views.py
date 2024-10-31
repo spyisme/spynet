@@ -1722,6 +1722,45 @@ def secure_endpoint():
 
 
 #--------------------------------------------------------------------------------------
+
+
+user_socket_map = {}
+
+
+
+@socketio.on('connect', namespace='/')
+def handle_connect():
+    global connected_clients
+    connected_clients += 1
+    emit('update_clients', {'count': connected_clients}, broadcast=True)
+
+
+@socketio.on('register', namespace='/')
+def handle_register(data):
+    user_id = data.get('user')
+    if user_id:
+        user_socket_map[user_id] = request.sid
+
+
+@socketio.on('disconnect', namespace='/')
+def handle_disconnect():
+    global connected_clients
+    connected_clients -= 1
+
+    # Remove the user from the mapping
+    user_id = None
+    for usr_id, sid in user_socket_map.items():
+        if sid == request.sid:
+            user_id = usr_id
+            break
+    if user_id:
+        del user_socket_map[user_id]
+
+    emit('update_clients', {'count': connected_clients}, broadcast=True)
+
+
+
+
 #English Assignment
 def discord_log_english(message):
     messageeeee = {'content': message}
@@ -1769,11 +1808,9 @@ def english_assignment():
             file_name = f"EnglishPDF{random.randint(1,10)}"
 
         discord_log_english(f"Making pdf for {name_and_id} with words {words} <@709799648143081483>")
-        socketio.emit('message', {'data': 'This is a broadcast message to all connected clients.'})
+        sid = request.form.get('sid')
+        socketio.emit('message', {'data': 'Yarab'}, to=sid)
        
-        user_id = data.get('user')
-        
-        emit('message', {'data': f'Welcome, user {user_id}!'})
 
 
         flash(f"Making pdf for {name_and_id} with words {words}")
