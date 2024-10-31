@@ -5,7 +5,7 @@ import json
 
 print("Started English.py")
 
-def discord_log(message):
+def discord_log_english(message):
     messageeeee = {'content': message}
     payload = json.dumps(messageeeee)
     headers = {'Content-Type': 'application/json'}
@@ -16,7 +16,7 @@ def discord_log(message):
 
 
 def get_image(query , name , api):
-    discord_log(f"Getting image for : {query} using api {api}")
+    discord_log_english(f"Getting image for : {query} using api {api}")
     if api == 1 :
         url = f"https://serpapi.com/search.json?engine=google_images&ijn=0&api_key=da75049319abb43ed97ac5e729c1e1cac35280e3d214de6962674b7c0dc9d09a&q={query}"
 
@@ -187,7 +187,7 @@ response = requests.post('https://masrgpt.com/wp-json/mwai-ui/v1/chats/submit', 
 
 json_data = response.json()
 
-discord_log(f"Creating image for {name_and_id} using words {words} with api {api} file name = {outputname}")
+discord_log_english(f"Creating image for {name_and_id} using words {words} with api {api} file name = {outputname}")
 # print(json_data["reply"])
 
 
