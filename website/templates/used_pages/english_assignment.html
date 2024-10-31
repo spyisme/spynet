@@ -136,44 +136,47 @@
                     {%if current_user.is_authenticated%}
 
                     <input type="radio" name="api" value="1" id="api1" required>
-                    <label for="api1">SerpApi</label><br>
-                    <p style="font-size: 10px;">Too Slow</p>
+                    <label for="api1">SerpApi</label>
                     {%else%}
                     <input type="radio" name="api" value="1" id="api1" required disabled>
-                    <label for="api1">SerpApi</label><br>
-                    <p style="font-size: 10px;">Too Slow</p>
+                    <label for="api1">SerpApi</label>
 
 
                     {%endif%}
             
                     <input type="radio" name="api" value="2" id="api2">
                     <label for="api2">Unsplash Api</label>
-                    <br>
-                    <p style="font-size: 10px;">Fastest but not accurate</p>
+
 
 
 
                     {%if current_user.is_authenticated%}
                     <input type="radio" name="api" value="3" id="api3">
-                    <label for="api3">Google Search Api</label><br>
-                    <p style="font-size: 10px;">Perfect</p>
+                    <label for="api3">Google Search Api</label>
+             
 
                     {%else%}
                     <input type="radio" name="api" value="3" id="api3" disabled>
-                    <label for="api3">Google Search Api</label><br>
-                    <p style="font-size: 10px;">Perfect</p>
+                    <label for="api3">Google Search Api</label>
+
 
                     {%endif%}
 
                 </div>
+                <div class="texthere">
+                    <p>What to choose</p>
+                    <p style="font-size: 14px;">SerpApi Slowest Results and somewhat accurate</p>
+                    <p style="font-size: 14px;">Unsplash Api Fastest Results but not accurate</p>
+                    <p style="font-size: 14px;">Google Search Api Perfect</p>
+
+                </div>
 
                 {%if current_user.is_authenticated%}
-                <p style="font-size: 14px;">Images are accurate Choose 1 or 3 (You are logged in)</p>
-                <a href="/how-english-assigment" style="font-size: 10px;">ℹ️ How was this made</a>
-                <br>
+                <p style="font-size: 14px;">You can choose any option.(You are logged in as {{current_user.username}})</p>
+   
                 {%else%}
-                <p style="font-size: 14px;">Images might not be accurate (You are not logged in <a href="/">login?</a>)</p>
-                <a href="/how-english-assigment" style="font-size: 10px;">ℹ️ How was this made</a>
+                <p style="font-size: 14px;">To choose other options please login.(You are not logged in <a href="/">login?</a>)</p>
+            
                 {%endif%}
                 
                 <br>
