@@ -218,6 +218,20 @@
 
         
 <style>
+    .loadingScreen{
+        display: none; /* Initially hidden */
+            background-color: #000;
+            color: #fff;
+            height: 100vh;
+            width: 100vw;
+            position: fixed;
+            top: 0;
+            left: 0;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+    }
             .loader {
             border: 16px solid #f3f3f3;
             border-radius: 50%;
@@ -226,13 +240,13 @@
             height: 120px;
             animation: spin 2s linear infinite;
             text-align: center;
-            display: none;
+
         }
 
         .message {
             margin-top: 20px;
             font-size: 18px;
-            display: none;
+    
             color: #333;
         }
 
@@ -248,9 +262,7 @@
         function showLoadingScreen(event) {
             document.getElementById("assignmentForm").submit();
             document.querySelector('.container').style.display = 'none';
-            document.getElementById('loader').style.display = 'flex';
-            document.getElementById('message').style.display = 'flex';
-
+            document.getElementById('loadingScreen').style.display = 'flex';
             let seconds = 0;
             const timerElement = document.getElementById("timer");
     
