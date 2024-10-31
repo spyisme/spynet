@@ -208,30 +208,15 @@
         </div>
         <div class="unhideme" id="unhideme">
             <h1 style="text-align: center; color: white;">Loading...</h1><br>
-            <h1 style="text-align: center; color: white;">Takes 8~15 secs</h1><br>
-            <div class="loader"></div>
+            <h1 style="text-align: center; color: white;">Takes 8~15 secs</h1>
 
         </div>
         <style>
             .unhideme {
-                white-space: pre-line;
+
                 display: none;
             }
-            .loader {
-            border: 16px solid #f3f3f3;
-            border-radius: 50%;
-            border-top: 16px solid #3498db;
-            width: 120px;
-            height: 120px;
-            animation: spin 2s linear infinite;
-        }
-
-
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+  
         </style>
         <script>
             function showLoadingScreen(event) {
