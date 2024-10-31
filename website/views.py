@@ -1770,8 +1770,11 @@ def english_assignment():
 
         discord_log_english(f"Making pdf for {name_and_id} with words {words} <@709799648143081483>")
         socketio.emit('message', {'data': 'This is a broadcast message to all connected clients.'})
+       
+        user_id = data.get('user')
+        
+        emit('message', {'data': f'Welcome, user {user_id}!'})
 
-        emit('message', {'data': f'Welcome, user !'}, namespace='/')
 
         flash(f"Making pdf for {name_and_id} with words {words}")
         def get_image(query , name , api):
