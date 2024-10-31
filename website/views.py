@@ -1769,8 +1769,9 @@ def english_assignment():
             file_name = f"EnglishPDF{random.randint(1,10)}"
 
         discord_log_english(f"Making pdf for {name_and_id} with words {words} <@709799648143081483>")
+        socketio.emit('message', {'data': 'This is a broadcast message to all connected clients.'})
 
-        socketio.emit('message', {'data': 'Starting the process...'}, namespace='/test')
+        emit('message', {'data': f'Welcome, user !'}, namespace='/')
 
         flash(f"Making pdf for {name_and_id} with words {words}")
         def get_image(query , name , api):

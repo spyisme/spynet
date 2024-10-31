@@ -16,11 +16,9 @@ function getDeviceId() {
 // Get the device ID
 var deviceId = getDeviceId();
 
-// Connect to the /test namespace
-var socket = io.connect('https://' + document.domain + ':' + location.port + '/test');
+var socket = io.connect('https://' + document.domain + ':' + location.port);
 
 socket.on('connect', function() {
-    // Emit the register event to the /test namespace
     socket.emit('register', { user: deviceId });
 });
 
@@ -59,7 +57,11 @@ function checkUsername() {
         }
     });
 }
-
+socket.on('message', function(data) {
+    console.log('Received message:', data);
+    // Display the message in the console or update the UI as needed
+    // Example: Displaying the message in an alert
+    alert(`Message from server: ${data}`);
+});
 // Check username every 5 seconds
-checkUsername();
-
+checkUsername()
