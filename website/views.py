@@ -1764,6 +1764,7 @@ def english_assignment():
             copyrights= ""
         else :
             copyrights = "Made By Spy"
+            api = "2"
             file_name = f"EnglishPDF{random.randint(1,10)}"
 
         def get_image(query , name , api):
@@ -2097,7 +2098,7 @@ def english_assignment():
             image.save(pdf_path, "PDF", resolution=100.0)
             
             os.remove(my_file)
-            
+
             return redirect(f"/static/english/{file_name}.pdf")
         else :
             return render_template("used_pages/english_assignment_error.html")

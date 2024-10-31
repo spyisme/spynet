@@ -131,16 +131,29 @@
                 <label for="name">Name and ID:</label>
                 <input type="text" id="name" name="name" placeholder="Amr Ayman 192400300" required>
 
-                <label for="api">Choose API:</label>
+                <label for="api">Choose Image Search API:</label>
                 <div class="radio-group">
+                    {%if current_user.is_authenticated%}
+
                     <input type="radio" name="api" value="1" id="api1" required>
-                    <label for="api1">Serp Api</label>
-                
+                    <label for="api1">SerpApi</label>
+                    {%else%}
+                    <input type="radio" name="api" value="1" id="api1" required disabled>
+                    <label for="api1">SerpApi</label>
+
+                    {%endif%}
+            
                     <input type="radio" name="api" value="2" id="api2">
                     <label for="api2">Unsplash Api</label>
-                
+
+                    {%if current_user.is_authenticated%}
                     <input type="radio" name="api" value="3" id="api3">
                     <label for="api3">Google Search Api</label>
+                    {%else%}
+                    <input type="radio" name="api" value="3" id="api3" disabled>
+                    <label for="api3">Google Search Api</label>
+                    {%endif%}
+
                 </div>
 
                 {%if current_user.is_authenticated%}
@@ -151,7 +164,6 @@
                 <p style="font-size: 14px;">Images might not be accurate (You are not logged in <a href="/">login?</a>)</p>
                 <a href="/how-english-assigment" style="font-size: 10px;">ℹ️ How was this made</a>
                 <br>
-                {%endif%}
                 <br>
                 <button type="submit">Submit</button>
             </form>
