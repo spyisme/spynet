@@ -2008,9 +2008,9 @@ def english_assignment():
 
                 main_image.paste(added_image, (center_x, center_y))
 
-            add_image(main_image, "./english/img1.png", 319, 255, 432, 338)
+            add_image(main_image, "./website/english/img1.png", 319, 255, 432, 338)
 
-            add_image(main_image, "./english/img2.png", 319, 524, 432, 602)
+            add_image(main_image, "./website/english/img2.png", 319, 524, 432, 602)
 
             main_image.save(f"./static/english/{file_name}.png")
 
