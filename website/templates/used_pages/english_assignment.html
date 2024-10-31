@@ -130,7 +130,7 @@
 </head>
 
 <body onload="startCountdown()">
-    <div class="container">
+
 
     <!-- JavaScript to hide the flash message after 3 seconds -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.min.js"></script>
@@ -148,7 +148,7 @@
 
 
 
-            <form action="{{ url_for('views.english_assignment') }}" method="post" id = "assignmentForm">
+            <form action="{{ url_for('views.english_assignment') }}" method="post">
                 <label for="words">Words:</label>
                 <input type="text" id="words" name="words" placeholder="Fire and Water" required>
 
@@ -201,84 +201,12 @@
                     <p style="font-size: 14px;"><u><b>Google Search Api</b></u> : Perfect</p>
 
                 </div>
-     <br>
+     
 
-                <button type="submit"  onclick="showLoadingScreen(event)">Submit</button>
+                <button type="submit">Submit</button>
+
+                
             </form>
-
-    
-        </div>
-    <!-- Loading screen -->
-    <div class="loadingScreen" id="loadingScreen">
-        <div class="loader"></div>
-        <div class="message">
-            This usually takes from 8 to 15 secs — <span id="timer">0</span> seconds passed
-    </div>
-</div>
-
-        
-<style>
-    .loadingScreen{
-        display: none; /* Initially hidden */
-            background-color: #000;
-            color: #fff;
-            height: 100vh;
-            width: 100vw;
-            position: fixed;
-            top: 0;
-            left: 0;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-    }
-            .loader {
-            border: 16px solid #f3f3f3;
-            border-radius: 50%;
-            border-top: 16px solid #3498db;
-            width: 120px;
-            height: 120px;
-            animation: spin 2s linear infinite;
-            text-align: center;
-
-        }
-
-        .message {
-            margin-top: 20px;
-            font-size: 18px;
-    
-            color: #333;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-</style>
-
-
-            <script>
-
-        function showLoadingScreen(event) {
-            document.getElementById("assignmentForm").submit();
-            document.querySelector('.container').style.display = 'none';
-            document.getElementById('loadingScreen').style.display = 'flex';
-            let seconds = 0;
-            const timerElement = document.getElementById("timer");
-    
-            setInterval(() => {
-                seconds += 1;
-                timerElement.textContent = seconds;
-            }, 1000);
-
-    }
-
-
-         
-            </script>
-
-
-
         </div>
         <div class="footer">
             <p id="countdown">Loading...</p>
