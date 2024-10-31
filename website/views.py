@@ -1765,7 +1765,7 @@ def english_assignment():
 
         def get_image(query , name , api):
             discord_log_english(f"Getting image for : {query} using api {api}")
-            if api == 1 :
+            if api == "1" :
                 url = f"https://serpapi.com/search.json?engine=google_images&ijn=0&api_key=da75049319abb43ed97ac5e729c1e1cac35280e3d214de6962674b7c0dc9d09a&q={query}"
 
                 try:
@@ -1789,7 +1789,7 @@ def english_assignment():
                         print("No image results found.")
                 except requests.exceptions.RequestException as e:
                     print(f"Error: {e}")
-            elif api == 2 :
+            elif api == "2" :
                 ACCESS_KEY = 'FXdShCO15K4YL4s6myacxoVdl75PjlGBi_sT23CHOGI'
 
                 url = 'https://api.unsplash.com/search/photos'
@@ -1810,7 +1810,7 @@ def english_assignment():
                     response = requests.get(url)
                     with open(f"./website/english/{name}.png", "wb") as file:
                         file.write(response.content)    
-            elif api == 3 :
+            elif api == "3" :
 
                 def google_image_search(api_key, search_engine_id, query, num=3):
                     url = "https://www.googleapis.com/customsearch/v1"
