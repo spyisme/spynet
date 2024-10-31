@@ -69,7 +69,37 @@ def get_image(query , name , api):
             response = requests.get(url)
             with open(f"./website/english/{name}.png", "wb") as file:
                 file.write(response.content)    
+    elif api == 3 :
 
+        def google_image_search(api_key, search_engine_id, query, num=5):
+            url = "https://www.googleapis.com/customsearch/v1"
+            params = {
+                "key": api_key,
+                "cx": search_engine_id,
+                "q": query,
+                "searchType": "image",  # Set searchType to image for image search
+                "num": num,  # Number of search results
+            }
+            
+            response = requests.get(url, params=params)
+            if response.status_code == 200:
+                return response.json()
+            else:
+                response.raise_for_status()
+
+        # Replace with your API key and CSE ID
+        api_key = "AIzaSyARZhY-ma5hds-qUSPWWfyaVAfaqQ-k5FU"
+        search_engine_id = "f3fc9931ca6ef42f8"
+
+
+        results = google_image_search(api_key, search_engine_id, query)
+        for item in results.get("items", []):
+            random_image = random.choice(results["items"])
+            image_link = random_image["link"]
+
+        response = requests.get(image_link)
+        with open(f"./website/english/{name}.png", "wb") as file:
+                file.write(response.content)  
     else :
         print("Choose a valid api number")
         print("exiting...")
@@ -156,7 +186,7 @@ response = requests.post('https://masrgpt.com/wp-json/mwai-ui/v1/chats/submit', 
 
 json_data = response.json()
 
-discord_log(f"Creating image for {name_and_id} using words {words} with api {api}")
+discord_log(f"Creating image for {name_and_id} using words {words} with api {api} file name = {outputname}")
 # print(json_data["reply"])
 
 

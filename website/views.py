@@ -1748,15 +1748,15 @@ def english_assignment():
 
 
         if current_user.is_authenticated:
-            file_name = random.randint(100,200)
-            command = f'python3 website/english.py "{words}" "{name_and_id}" 1 "img{file_name}"'
+            file_name = f"Spy{random.randint(1,200)}"
+            command = f'python3 website/english.py "{words}" "{name_and_id}" 3 "{file_name}"'
         else :
-            file_name = random.randint(0,5)
-            command = f'python3 website/english.py "{words}" "{name_and_id}" 2 "img{file_name}"'
+            file_name = "Spy"
+            command = f'python3 website/english.py "{words}" "{name_and_id}" 3 "{file_name}"'
 
         subprocess.run(command, shell=True, capture_output=True, text=True)
 
-        my_file = Path(f"website/static/english/img{file_name}.png")
+        my_file = Path(f"website/static/english/{file_name}.png")
 
         if my_file.exists():
             #Convert image to pdf 
@@ -1768,9 +1768,10 @@ def english_assignment():
 
             image.save(pdf_path, "PDF", resolution=100.0)
 
-
+            
 
             return redirect(f"/static/english/{file_name}.pdf")
+        
         else :
             return render_template("used_pages/english_assignment_error.html")
 
