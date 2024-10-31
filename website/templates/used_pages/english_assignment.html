@@ -203,7 +203,7 @@
                 </div>
      
 
-                <button type="submit" onclick="hidefourm()">Submit</button>
+                <button type="submit" onclick="hidefourm(event)">Submit</button>
             </form>
         </div>
         <div class="unhideme" id="unhideme">
@@ -215,7 +215,8 @@
             }
         </style>
 <script>
-    function hidefourm(){
+    function hidefourm(event){
+        event.preventDefault();
         document.getElementById('.hideme').style.display = 'none';
         document.getElementById('.unhideme').style.display = 'flex';
 
