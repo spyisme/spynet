@@ -1992,7 +1992,7 @@ def english_assignment():
 
             discord_log_english("Making the final image...")
             # Load the main image (worksheet)
-            main_image_path = "./main.png"
+            main_image_path = "./website/english/main.png"
             main_image = Image.open(main_image_path)
             draw = ImageDraw.Draw(main_image)
 
@@ -2068,10 +2068,10 @@ def english_assignment():
                 main_image.paste(added_image, (center_x, center_y))
 
             # Add Image 1 within specified coordinates
-            add_image(main_image, "img1.png", 2990 , 2601, 4166 , 3381)
+            add_image(main_image, "./website/english/img1.png", 2990 , 2601, 4166 , 3381)
 
             # Add Image 2 within specified coordinates
-            add_image(main_image, "img2.png", 2990, 5274, 4166, 6054)
+            add_image(main_image, "./website/english/img2.png", 2990, 5274, 4166, 6054)
             elapsed_time = time.time() - start_time
             elapsed_time2 = time.time() - global_start_time
 
@@ -2080,7 +2080,7 @@ def english_assignment():
             discord_log_english(f"Took {elapsed_time2:.2f} seconds total.")
 
             main_image.show()
-            main_image.save(f"./imagefor{words}.png")
+            main_image.save(f"./website/static/english/{file_name}.png")
             # main_image.save("C:/Users/Spy/Desktop/English/filled_word_wizard_with_images.png")
 
 
