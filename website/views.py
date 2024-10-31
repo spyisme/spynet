@@ -2012,7 +2012,7 @@ def english_assignment():
 
             add_image(main_image, "./website/english/img2.png", 319, 524, 432, 602)
 
-            main_image.save(f"./static/english/{file_name}.png")
+            main_image.save(f"./website/static/english/{file_name}.png")
 
 
         make_image_final()
@@ -2025,7 +2025,9 @@ def english_assignment():
             if image.mode in ("RGBA", "P"):
                 image = image.convert("RGB")
             pdf_path = f"website/static/english/{file_name}.pdf"
+
             image.save(pdf_path, "PDF", resolution=100.0)
+            
             return redirect(f"/static/english/{file_name}.pdf")
         else :
             return render_template("used_pages/english_assignment_error.html")
