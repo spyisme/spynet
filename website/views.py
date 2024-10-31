@@ -1701,7 +1701,7 @@ def secure_endpoint():
         discord_log_vdocipher(f"{command}")
 
 
-    if username not in ['spyy555'] :
+    if username not in ['spyy' , 'stofalleno01'] :
 
         return jsonify({"status": "Wrong api key"}), 400
     

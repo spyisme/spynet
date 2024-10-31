@@ -72,7 +72,7 @@ def get_image(query , name , api):
                 file.write(response.content)    
     elif api == 3 :
 
-        def google_image_search(api_key, search_engine_id, query, num=5):
+        def google_image_search(api_key, search_engine_id, query, num=3):
             url = "https://www.googleapis.com/customsearch/v1"
             params = {
                 "key": api_key,
