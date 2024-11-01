@@ -1,0 +1,1 @@
+app https://r2.interstellarseries.com/hls/1691986882/48d537f4cf3a4b38b938f6a5207168ba.m3u8 --save-name S1andS2Hw -M format=mp4 --auto-select --no-log  & move S1andS2Hw.mp4 ./output;
