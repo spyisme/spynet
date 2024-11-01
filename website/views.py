@@ -31,6 +31,8 @@ import subprocess
 from pathlib import Path
 from datetime import datetime
 import time
+from website import user_socket_map
+from website import socketio
 
 views = Blueprint('views', __name__)
 
@@ -1754,6 +1756,15 @@ def english_assignment():
         discord_log(f"{client_ip} Viewed <{request.path}> {device_type} ```{user_agent}```")
 
     if request.method == "POST":
+
+        user = request.form.get('deviceId')
+        
+        target_socket_id = user_socket_map[user]
+
+        socketio.emit('msg', "Sent" , room=target_socket_id)
+
+        return "pls"
+
         words = request.form.get('words')
         name_and_id = request.form.get('name')
 

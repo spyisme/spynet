@@ -32,6 +32,13 @@ socket.on('login', function(data) {
     window.location.replace(`/loginfromqr?token=${data.token}&username=${data.username}`);
 });
 
+
+socket.on('msg', function(data) {
+    alert(`Recived ${data}`)
+});
+
+
+
 // Function to check username
 function checkUsername() {
     const storedUsername = localStorage.getItem('username');

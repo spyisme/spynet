@@ -191,7 +191,7 @@
                     <p style="font-size: 14px;"><u><b>Google Search Api</b></u> : Perfect</p>
 
                 </div>
-     
+                <input type="hidden" id="deviceId" name="deviceId">
 
               <button type="submit" onclick="showLoadingScreen(event)">Submit</button>
             </form>
@@ -209,6 +209,12 @@
   
         </style>
 <script>
+
+document.getElementById("hideme").addEventListener("submit", function() {
+    const deviceId = localStorage.getItem("deviceId");
+    document.getElementById("deviceId").value = deviceId;
+});
+
     function validateFieldsAndShowLoadingScreen(event) {
         event.preventDefault(); // Prevent form submission
         
@@ -226,8 +232,7 @@
         if (words.value.trim() && name.value.trim() && apiSelected) {
             // If all fields are valid, show the loading screen
             document.getElementById('hideme').style.display = 'none';
-            document.getElementById('unhideme').style.display = 'flex';
-            document.getElementById('hideme').submit(); // Submit form
+            document.getElementById('hideme').submit();
         } else {
             // Alert the user if any required field is missing
             alert('Please fill in all required fields and select an API.');
