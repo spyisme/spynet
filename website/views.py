@@ -1083,8 +1083,7 @@ def manage_user(user_id):
     # Render the manage user template
     return render_template('admin/manage.html',
                            user=user,
-                           data=[{'name': "1"}, {'name': "2"}, {'name': "3"} , {'name': "4"}],
-                           sub_methods = [{'name': "Vodafone Cash" } , {'name' : "InstaPay"}])
+                           data=[{'value': 4 , 'name' : "ECU Freshman"},{'value': 3 , 'name' : "3rd Sec"}, {'value': 2 , 'name' : "2nd Sec"}, {'value': 1 , 'name' : "1st Sec"}])
 
 
 
