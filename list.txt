@@ -1,4 +1,0 @@
-app https://r2.interstellarseries.com/hls/6348494127/ad61e822e9a44e219b81b43a36de7f0c.m3u8 --save-name Ch2S1IntroToMagnetismPart1 -M format=mp4 --auto-select --no-log  & move Ch2S1IntroToMagnetismPart1.mp4 ./output;
-app https://r2.interstellarseries.com/hls/9579753134/17df5cbff18940b8bead830fe6f10b63.m3u8 --save-name Ch2S1MagnetixFluxandMagneticFluxDensityPart2 -M format=mp4 --auto-select --no-log  & move Ch2S1MagnetixFluxandMagneticFluxDensityPart2.mp4 ./output;
-app https://r2.interstellarseries.com/hls/3233744977/66886aace9db4794a4a1a46ab3006c15.m3u8 --save-name Ch2S1MagnetixFluxDensityOfStraightWirePart3 -M format=mp4 --auto-select --no-log  & move Ch2S1MagnetixFluxDensityOfStraightWirePart3.mp4 ./output;
-app https://r2.interstellarseries.com/hls/2345419127/cb3ca54eed9f44b0867a920a18ea17f7.m3u8 --save-name Ch2S2OneStepFurther -M format=mp4 --auto-select --no-log  & move Ch2S2OneStepFurther.mp4 ./output;
