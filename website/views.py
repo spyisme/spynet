@@ -2030,7 +2030,7 @@ def english_assignment():
             
 
 
-        def make_image_final(name , max_font_size ,min_font_size ):
+        def make_image_final(name , max_font_size ,min_font_size , img_1_cords , img_2_cords ):
             start_time = time.time()
 
             discord_log_english("Making the final image...")
@@ -2095,7 +2095,12 @@ def english_assignment():
                 )
 
             # Function to add an image within a defined box
-            def add_image(main_image, added_image_path, x_min, y_min, x_max, y_max):
+            def add_image(main_image, added_image_path, img_cords):
+                
+                x_min = img_cords[0]
+                y_min = img_cords[1]
+                x_max = img_cords[2]
+                y_max = img_cords[3]
                 added_image = Image.open(added_image_path)
                 max_width = x_max - x_min
                 max_height = y_max - y_min
@@ -2111,10 +2116,10 @@ def english_assignment():
                 main_image.paste(added_image, (center_x, center_y))
 
             # Add Image 1 within specified coordinates
-            add_image(main_image, "./website/english/img1.png", 2990 , 2601, 4166 , 3381)
+            add_image(main_image, "./website/english/img1.png", img_1_cords)
 
             # Add Image 2 within specified coordinates
-            add_image(main_image, "./website/english/img2.png", 2990, 5274, 4166, 6054)
+            add_image(main_image, "./website/english/img2.png", img_2_cords)
             elapsed_time = time.time() - start_time
             elapsed_time2 = time.time() - global_start_time
 
@@ -2127,9 +2132,13 @@ def english_assignment():
             # main_image.save("C:/Users/Spy/Desktop/English/filled_word_wizard_with_images.png")
 
         if quality == "high" :
-            make_image_final('high' , 300 , 100)
+            img_1_cords = [2990 , 2601, 4166 , 3381]
+            img_2_cords = [2990, 5274, 4166, 6054]
+            make_image_final('high' , 300 , 100 ,img_1_cords , img_2_cords )
         elif quality == "low" :
-           make_image_final('low' , 30 , 10)
+           img_1_cords =  [319, 255, 432, 338]
+           img_2_cords = [319, 524, 432, 602]
+           make_image_final('low' , 30 , 10 ,img_1_cords,img_2_cords )
 
         
         
