@@ -71,8 +71,9 @@
                 <p><button class="button" id="pdfsBtn" onclick="showDiv('pdfsstuff', 'pdfsBtn')">Pdfs</button></p>
 {%endif%}
   {% if current_user.stage == "4"%} 
-
+{% if current_user.username !=spy%}
                 <p><button class="button" id="extraBtn" onclick="showDiv('extrastuff', 'extraBtn')">Tools</button></p>
+                {%endif%}
                 {%endif%}
 
             </div>
