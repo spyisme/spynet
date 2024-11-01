@@ -65,11 +65,12 @@
         <label for="stage">Stage:</label>
 
             <select name="stage" id="stage">
+
                 <option value="{{ user.stage }}" selected>{{ user.stage }}</option>
             
                 {% for o in data %}
     
-                    {% if o.name != user.stage %}
+                    {% if o.value != user.stage %}
                         <option value="{{ o.value }}">{{ o.name }}</option>
            
                     {% endif %}
