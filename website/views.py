@@ -2028,7 +2028,7 @@ def english_assignment():
         elif quality == "low" :
            fields_data =  update_fields_data(fields_data_low, data)
             
-        return fields_data
+
 
         def make_image_final(name):
             start_time = time.time()
@@ -2135,6 +2135,8 @@ def english_assignment():
         
         #Convert to PDF
         my_file = Path(f"website/static/english/{file_name}.png")
+        return redirect(f"/static/english/{file_name}.png")
+
         if my_file.exists():
             image = Image.open(my_file)
             if image.mode in ("RGBA", "P"):
