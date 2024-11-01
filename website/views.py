@@ -2028,7 +2028,7 @@ def english_assignment():
         elif quality == "low" :
            fields_data =  update_fields_data(fields_data_low, data)
             
-
+        return fields_data
 
         def make_image_final(name):
             start_time = time.time()
