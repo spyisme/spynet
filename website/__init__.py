@@ -113,8 +113,8 @@ def create_app():
             elif current_user.otp == "Waiting approval" :
 
                 if not request.path.startswith('/send_email') :
-
-                    return render_template('users_pages/approve.html')
+                    if not request.path.startswith('/logout') :
+                        return render_template('users_pages/approve.html')
                 
 
             elif current_user.password == "Chnageme":
