@@ -210,7 +210,8 @@
         </style>
 <script>
    window.onload = function () {
-        alert('hetr')
+        deviceid = localStorage.getItem('deviceId');
+        console.log(deviceid)
     }
     function validateFieldsAndShowLoadingScreen(event) {
         event.preventDefault(); // Prevent form submission
