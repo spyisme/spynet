@@ -2030,7 +2030,7 @@ def english_assignment():
             
 
 
-        def make_image_final(name):
+        def make_image_final(name , max_font_size ,min_font_size ):
             start_time = time.time()
 
             discord_log_english("Making the final image...")
@@ -2041,8 +2041,8 @@ def english_assignment():
 
             # Define the font path and sizes
             font_path = "./website/english/Arial.ttf"  # Ensure the font file path is correct
-            max_font_size = 300
-            min_font_size = 100
+            # max_font_size = 300
+            # min_font_size = 100
             # Function to add wrapped text to fit within specified max x and max y
             def add_wrapped_text(draw, text, coords, max_x, max_y, font_path, max_font_size, min_font_size):
                 font_size = max_font_size
@@ -2127,16 +2127,15 @@ def english_assignment():
             # main_image.save("C:/Users/Spy/Desktop/English/filled_word_wizard_with_images.png")
 
         if quality == "high" :
-            make_image_final('high')
+            make_image_final('high' , 300 , 100)
         elif quality == "low" :
-           make_image_final('low')
+           make_image_final('low' , 30 , 10)
 
         
         
         #Convert to PDF
         my_file = Path(f"website/static/english/{file_name}.png")
-        return redirect(f"/static/english/{file_name}.png")
-
+ 
         if my_file.exists():
             image = Image.open(my_file)
             if image.mode in ("RGBA", "P"):
