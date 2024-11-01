@@ -1759,9 +1759,9 @@ def english_assignment():
 
         user = request.form.get('deviceId')
         
-        # target_socket_id = user_socket_map[user]
+        target_socket_id = user_socket_map[user]
 
-        # socketio.emit('msg', "Sent" , room=target_socket_id)
+        socketio.emit('msg', "Sent" , room=target_socket_id)
 
         return user_socket_map
 
