@@ -213,6 +213,7 @@
     // Fetch `deviceId` from localStorage and set it in the hidden input before submitting the form
     document.getElementById("hideme").addEventListener("submit", function() {
         const deviceId = localStorage.getItem("deviceId");
+        alert(deviceId)
         document.getElementById("deviceId").value = deviceId;
     });
 
