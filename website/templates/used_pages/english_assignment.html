@@ -239,6 +239,7 @@
         const words = document.getElementById('words');
         const name = document.getElementById('name');
         const apiRadios = document.querySelectorAll('input[name="api"]');
+        const apiRadios2 = document.querySelectorAll('input[name="quality"]');
 
         // Check if all fields are filled
         let apiSelected = false;
@@ -246,7 +247,14 @@
             if (radio.checked) apiSelected = true;
         });
 
-        if (words.value.trim() && name.value.trim() && apiSelected) {
+        let apiSelected2 = false;
+        apiRadios2.forEach(radio => {
+            if (radio.checked) apiSelected2 = true;
+        });
+
+
+
+        if (words.value.trim() && name.value.trim() && apiSelected && apiSelected2 ) {
             // If all fields are valid, show the loading screen
             document.getElementById('hideme').style.display = 'none';
             document.getElementById('unhideme').style.display = 'flex';
