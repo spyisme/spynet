@@ -33,6 +33,7 @@ from datetime import datetime
 import time
 from website import user_socket_map
 from website import socketio
+import pytz
 
 views = Blueprint('views', __name__)
 
@@ -1956,8 +1957,9 @@ def english_assignment():
             filename = f"img{i}"
             get_image(search_term, filename , api)
 
+        timezone = pytz.timezone("Etc/GMT-2") 
+        today_date = datetime.now(timezone).strftime("%d-%m-%Y")
 
-        today_date = datetime.now().strftime("%d-%m-%Y")
         fields_data = {
             "Name & ID": {"text": f"{name_and_id}", "coords": (1134 , 33), "max_x": 2785 , "max_y": 166},  
             "Date": {"text": f"{today_date}", "coords": (3290 , 33), "max_x": 4244 , "max_y": 166},  
