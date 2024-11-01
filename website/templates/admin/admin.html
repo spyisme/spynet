@@ -60,6 +60,7 @@
             </thead>
             <tbody>
                 {% for user in users %}
+                {% set selected_name = (data | selectattr("value", "equalto", user.stage) | first).name %}
 
                 <tr style="{% if 'Waiting' in user.otp %}color: red;{% endif %} {% if user.expired %}text-decoration: line-through; font-weight: bold;{% endif %}">
 

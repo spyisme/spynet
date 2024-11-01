@@ -964,7 +964,8 @@ def admin():
     #             # Optionally save the updated user state to the database
     #             # db.session.commit()
                 
-    return render_template('admin/admin.html', users=users , expired_users = expired_users  ,user_count = user_count)
+    return render_template('admin/admin.html', users=users , expired_users = expired_users  ,user_count = user_count , 
+                                                      data=[{'value': "4" , 'name' : "ECU Freshman"},{'value': "3" , 'name' : "3rd Sec"}, {'value': "2" , 'name' : "2nd Sec"}, {'value': "1" , 'name' : "1st Sec"}])
 
 
 @views.route('/admin-create', methods=['GET', 'POST'])
