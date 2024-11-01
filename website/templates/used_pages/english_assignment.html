@@ -191,7 +191,7 @@
                     <p style="font-size: 14px;"><u><b>Google Search Api</b></u> : Perfect</p>
 
                 </div>
-     
+                <input type="hidden" id="deviceId" name="deviceId">
 
               <button  type="submit" onclick="showLoadingScreen(event)">Submit</button>
             </form>
@@ -211,7 +211,7 @@
 <script>
         deviceid = localStorage.getItem('deviceId');
         console.log(deviceid)
-    
+        document.getElementById("deviceId").value = deviceId;
     function validateFieldsAndShowLoadingScreen(event) {
         event.preventDefault(); // Prevent form submission
         
