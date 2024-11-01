@@ -74,13 +74,14 @@
         });
     });
 
-          function validateInput(inputField) {
-            // Remove white spaces
-            inputField.value = inputField.value.replace(/\s/g, '');
+    function validateInput(inputField) {
+    // Remove white spaces
+    inputField.value = inputField.value.replace(/\s/g, '');
 
-            // Remove non-alphanumeric characters
-            inputField.value = inputField.value.replace(/[^a-zA-Z0-9]/g, '');
-        }
+    // Remove non-alphanumeric characters and convert to lowercase
+    inputField.value = inputField.value.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+}
+
 
 
         function validateInput2(inputField) {
