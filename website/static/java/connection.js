@@ -58,5 +58,5 @@ function checkUsername() {
     });
 }
 
-// Check username every 5 seconds
+// Check username every refresh
 checkUsername()
