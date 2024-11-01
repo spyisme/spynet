@@ -1763,7 +1763,7 @@ def english_assignment():
 
         socketio.emit('msg', "Sent" , room=target_socket_id)
 
-        return "pls"
+        return user
 
         words = request.form.get('words')
         name_and_id = request.form.get('name')
