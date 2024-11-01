@@ -65,8 +65,9 @@
         <label for="stage">Stage:</label>
 
             <select name="stage" id="stage">
+                {% set selected_name = (data | selectattr("value", "equalto", user.stage) | first).name %}
 
-                <option value="{{ user.stage }}" selected>{{ user.stage }}</option>
+                <option value="{{ user.stage }}" selected>{{ selected_name }}</option>
             
                 {% for o in data %}
     
