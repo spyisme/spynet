@@ -1750,7 +1750,7 @@ def english_assignment():
 
     if current_user.is_authenticated:
         if current_user.otp == "Waiting approval" :
-            return 'Wait for approval or <a href="/logout">log-out</a>'
+           return render_template('users_pages/approve.html')
         if current_user.username != 'spy' :
             discord_log(f"{client_ip} Viewed <{request.path}>  {current_user.username} {device_type} ```{user_agent}```")
     else:
