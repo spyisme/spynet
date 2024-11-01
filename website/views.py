@@ -512,14 +512,13 @@ def registeracc():
             otp="Waiting approval",
             type ="student_register",
             stage = stage ,
-            phone_number =number,
-            created_by= "registration")  
+            phone_number =number,)  
 
         db.session.add(new_user)
         db.session.commit()
 
         discord_log_register(
-            f"New user  : {username} ====== {email} ====== {number} ====== {client_ip} ====== {user_agent} <@709799648143081483>"
+            f"New user  : {username} ====== {email} ====== {number} ====== {stage} ======{client_ip} ====== {user_agent} <@709799648143081483>"
         )
 
         login_user(new_user)
@@ -528,13 +527,7 @@ def registeracc():
         return redirect(f"/send_email?to={email}")
     return render_template('users_pages/register.html',
                            done=request.args.get("done") ,
-                           data=[{
-                               'name': 3
-                           }, {
-                               'name': 2
-                           }, {
-                               'name': 1
-                           }])
+                           data=[{'value': 4 , 'name' : "ECU Freshman"},{'value': 3 , 'name' : "3rd Sec"}, {'value': 2 , 'name' : "2nd Sec"}, {'value': 1 , 'name' : "1st Sec"}])
 
 
 #Dont edit------------------------------------------------------------------------------------------------
