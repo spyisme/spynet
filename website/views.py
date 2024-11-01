@@ -1744,6 +1744,9 @@ def english_assignment():
     "Macintosh" if "Macintosh" in user_agent else "Mobile")
 
     if current_user.is_authenticated:
+        if current_user.stage != 4 :
+            # if current_user.username != 'spy' :
+                return 404
         if current_user.otp == "Waiting approval" :
            return render_template('users_pages/approve.html')
         if current_user.username != 'spy' :
