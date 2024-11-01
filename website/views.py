@@ -1771,6 +1771,7 @@ def english_assignment():
 
         api = request.form.get('api')
 
+        quality = request.form.get('quality')
 
         if current_user.is_authenticated:
             file_name = f"EnglishPDF{random.randint(100,200)}"
@@ -1960,7 +1961,7 @@ def english_assignment():
         timezone = pytz.timezone("Etc/GMT-2") 
         today_date = datetime.now(timezone).strftime("%d-%m-%Y")
 
-        fields_data = {
+        fields_data_high = {
             "Name & ID": {"text": f"{name_and_id}", "coords": (1134 , 33), "max_x": 2785 , "max_y": 166},  
             "Date": {"text": f"{today_date}", "coords": (3290 , 33), "max_x": 4244 , "max_y": 166},  
 
@@ -1985,7 +1986,27 @@ def english_assignment():
             #CopyRights
             "CopyRight": {"text": f"{copyrights}", "coords": (3805 , 6178), "max_x": 4259 , "max_y": 6233},  
         }
+        
+        fields_data_low = {
+            "Name & ID": {"text": f"{name_and_id}", "coords": (100 , 10), "max_x": 330, "max_y": 30},  
+            #Word 1
+            "Today's POWER WORD 1": {"text": "", "coords": (25, 120), "max_x": 144, "max_y": 166},  
+            "Definition 1": {"text": "", "coords": (172, 117), "max_x": 442, "max_y": 166},
+            "Part of Speech 1": {"text": "", "coords": (25, 197), "max_x": 148, "max_y": 216},
+            "Synonyms 1": {"text": "", "coords": (172, 195), "max_x": 295, "max_y": 213},
+            "Antonyms 1": {"text": "", "coords": (315, 197), "max_x": 435, "max_y": 213},
+            "Related Words 1": {"text": "", "coords": (25, 250), "max_x": 290, "max_y": 260},
+            "Your OWN Sentence 1": {"text": "", "coords": (26, 296), "max_x": 289, "max_y": 334},
 
+            #Word 2 
+            "Today's POWER WORD 2": {"text": "", "coords": (25, 383), "max_x": 144, "max_y": 429 },  
+            "Definition 2": {"text": "", "coords": (176 , 387), "max_x": 434, "max_y": 424},
+            "Part of Speech 2": {"text": "", "coords": (25 , 463), "max_x": 148, "max_y": 482},
+            "Synonyms 2": {"text": "", "coords": (172, 463), "max_x": 295, "max_y": 477},
+            "Antonyms 2": {"text": "", "coords": (315, 457), "max_x": 435, "max_y": 484},
+            "Related Words 2": {"text": "", "coords": (25, 510), "max_x": 290, "max_y": 527},
+            "Your OWN Sentence 2": {"text": "", "coords": (26, 560), "max_x": 289, "max_y": 596},  
+        }
         def update_fields_data(fields_data, data):
             for i, word_data in enumerate(data["words"], start=1):
                 # Update each field for the current word
@@ -1999,17 +2020,22 @@ def english_assignment():
             
             return fields_data
 
-        # Example usage
-        updated_fields_data = update_fields_data(fields_data, data)
 
 
 
-        def make_image_final():
+        if quality == "high" :
+            fields_data = update_fields_data(fields_data_high, data)
+        elif quality == "low" :
+           fields_data =  update_fields_data(fields_data_low, data)
+            
+
+
+        def make_image_final(name):
             start_time = time.time()
 
             discord_log_english("Making the final image...")
             # Load the main image (worksheet)
-            main_image_path = "./website/english/main.png"
+            main_image_path = f"./website/english/{name}.png"
             main_image = Image.open(main_image_path)
             draw = ImageDraw.Draw(main_image)
 
@@ -2100,8 +2126,12 @@ def english_assignment():
             main_image.save(f"./website/static/english/{file_name}.png")
             # main_image.save("C:/Users/Spy/Desktop/English/filled_word_wizard_with_images.png")
 
+        if quality == "high" :
+            make_image_final('high')
+        elif quality == "low" :
+           make_image_final('low')
 
-        make_image_final()
+        
         
         #Convert to PDF
         my_file = Path(f"website/static/english/{file_name}.png")

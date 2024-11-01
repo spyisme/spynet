@@ -179,6 +179,23 @@
                     {%endif%}
 
                 </div>
+                <label for="quality">Choose quality of pdf:</label>
+                <div class="radio-group">
+      
+
+                    <input type="radio" name="quality" value="high" id="quality1">
+                    <label for="quality1">High</label>
+
+        
+                    <input type="radio" name="quality" value="low" id="quality2">
+                    <label for="quality2">Low</label>
+
+                </div>
+
+
+
+
+
                 {%if current_user.is_authenticated%}
                 <p style="font-size: 14px;">You can choose any option.(You are logged in as {{current_user.username}})</p>
    
