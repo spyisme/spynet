@@ -1061,21 +1061,16 @@ def manage_user(user_id):
             'phone_number': user.phone_number,
             'password': user.password,
             'active_sessions': user.active_sessions,
-            'subscription_method': user.subscription_method,
-            'subscription_date': user.subscription_date,
         }
         user.username = request.form.get('username')
         user.email = request.form.get('email')
         user.stage = request.form.get('stage')
         user.phone_number =  request.form.get('phone')
 
-        if current_user.username == 'spy' :
-            user.password = request.form.get('password')
+        user.password = request.form.get('password')
 
         user.active_sessions = request.form.get('devices')
-        if user.type != 'admin' :
-            user.subscription_method = request.form.get('sub_method')
-            user.subscription_date = datetime.strptime(request.form.get('sub_date'), '%Y-%m-%d').date()
+
         changes = {}
 
         # Compare each field to identify changes
