@@ -121,7 +121,7 @@
     </style>
 </head>
 
-<body onload="startCountdown()">
+<body onload="startCountdown(); deviceid();">
 
 
     <!-- JavaScript to hide the flash message after 3 seconds -->
@@ -191,10 +191,9 @@
                     <p style="font-size: 14px;"><u><b>Google Search Api</b></u> : Perfect</p>
 
                 </div>
-                <input type="hidden" id="deviceId" name="deviceId">
+     
 
-
-              <button type="submit" onclick="showLoadingScreen(event)">Submit</button>
+              <button  type="submit" onclick="showLoadingScreen(event)">Submit</button>
             </form>
 
         <div class="unhideme" id="unhideme">
@@ -209,17 +208,14 @@
             }
   
         </style>
-  <script>
-    // Fetch `deviceId` from localStorage and set it in the hidden input before submitting the form
-    document.getElementById("hideme").addEventListener("submit", function() {
-        const deviceId = localStorage.getItem("deviceId");
-        alert(deviceId)
-        document.getElementById("deviceId").value = deviceId;
-    });
-
+<script>
+    function deviceid(){
+        alert('hetr')
+    }
     function validateFieldsAndShowLoadingScreen(event) {
         event.preventDefault(); // Prevent form submission
         
+        // Select the required fields
         const words = document.getElementById('words');
         const name = document.getElementById('name');
         const apiRadios = document.querySelectorAll('input[name="api"]');
@@ -231,14 +227,17 @@
         });
 
         if (words.value.trim() && name.value.trim() && apiSelected) {
+            // If all fields are valid, show the loading screen
             document.getElementById('hideme').style.display = 'none';
-            document.getElementById('unhideme').style.display = 'block';
-            document.getElementById('hideme').submit();
+            document.getElementById('unhideme').style.display = 'flex';
+            document.getElementById('hideme').submit(); // Submit form
         } else {
+            // Alert the user if any required field is missing
             alert('Please fill in all required fields and select an API.');
         }
     }
 
+    // Attach the function to the submit button
     document.querySelector('button[type="submit"]').addEventListener('click', validateFieldsAndShowLoadingScreen);
 </script>
 
