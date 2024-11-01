@@ -1757,13 +1757,13 @@ def english_assignment():
 
     if request.method == "POST":
 
-        user = request.form.get('deviceId')
+        # user = request.form.get('deviceId')
         
-        target_socket_id = user_socket_map[user]
+        # target_socket_id = user_socket_map[user]
 
-        socketio.emit('msg', "Sent" , room=target_socket_id)
+        # socketio.emit('msg', "Sent" , room=target_socket_id)
 
-        return user_socket_map
+        # return user_socket_map
 
         words = request.form.get('words')
         name_and_id = request.form.get('name')
