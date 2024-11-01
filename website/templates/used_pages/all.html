@@ -66,11 +66,11 @@
 
             <div class="textcont">
                 <p><button class="button" id="homeBtn" onclick="showDiv('homestuff', 'homeBtn')">Videos</button></p>
-  {% if current_user.stage != "4"%} 
+  {% if current_user.stage != "4"  or current_user.username== "spy"%} 
 
                 <p><button class="button" id="pdfsBtn" onclick="showDiv('pdfsstuff', 'pdfsBtn')">Pdfs</button></p>
 {%endif%}
-  {% if current_user.stage == "4" or current_user.username== "spy1"%} 
+  {% if current_user.stage == "4" or current_user.username== "spy"%} 
                 <p><button class="button" id="extraBtn" onclick="showDiv('extrastuff', 'extraBtn')">Tools</button></p>
      {%endif%}
 
@@ -96,7 +96,7 @@
                     {% endfor %}
                 </ul>
             </div>
-  {% if current_user.stage != "4"%} 
+  {% if current_user.stage != "4"  or current_user.username== "spy"%} 
 
             <div id="pdfsstuff" class="content hidden">
                 <ul>
@@ -115,7 +115,7 @@
                 </ul>
             </div>
             {% endif%} 
-            {% if current_user.stage == "4"%} 
+            {% if current_user.stage == "4"  or current_user.username== "spy"%} 
 
             <div id="extrastuff" class="content hidden">
                 <ul>
