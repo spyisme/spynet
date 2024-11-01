@@ -1761,7 +1761,7 @@ def english_assignment():
         
         # target_socket_id = user_socket_map[user]
 
-        socketio.emit('msg', "Sent" , room=target_socket_id)
+        # socketio.emit('msg', "Sent" , room=target_socket_id)
 
         return user
 
