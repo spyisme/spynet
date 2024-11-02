@@ -1967,6 +1967,8 @@ def english_assignment():
             "Antonyms 2": {"text": "", "coords": (315, 457), "max_x": 435, "max_y": 484},
             "Related Words 2": {"text": "", "coords": (25, 510), "max_x": 290, "max_y": 527},
             "Your OWN Sentence 2": {"text": "", "coords": (26, 560), "max_x": 289, "max_y": 596},  
+            "CopyRightLOW": {"text": f"{copyrights}", "coords": (448, 635), "max_x": 375, "max_y": 619},  
+
         }
         def update_fields_data(fields_data, data):
             for i, word_data in enumerate(data["words"], start=1):
@@ -2044,6 +2046,8 @@ def english_assignment():
             for field_name, field_info in fields_data.items():
                 if field_name == "CopyRight":
                     min_font_size = 50
+                elif file_name == "CopyRightLOW" :
+                    max_font_size = 10 
                 add_wrapped_text(
                     draw,
                     field_info["text"],
