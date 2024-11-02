@@ -527,7 +527,7 @@ def registeracc():
         return redirect(f"/send_email?to={email}")
     return render_template('users_pages/register.html',
                            done=request.args.get("done") ,
-                           data=[{'value': 4 , 'name' : "ECU Freshman"},{'value': 3 , 'name' : "3rd Sec"}, {'value': 2 , 'name' : "2nd Sec"}, {'value': 1 , 'name' : "1st Sec"}])
+                           data=[{'value': "4" , 'name' : "ECU Freshman"},{'value': "3" , 'name' : "3rd Sec"}, {'value': "2" , 'name' : "2nd Sec"}, {'value': "1" , 'name' : "1st Sec"}])
 
 
 #Dont edit------------------------------------------------------------------------------------------------
@@ -1707,7 +1707,7 @@ def english_assignment():
     "Macintosh" if "Macintosh" in user_agent else "Mobile")
 
     if current_user.is_authenticated:
-        if current_user.stage != 4 :
+        if current_user.stage != "4" :
             if current_user.username != 'spy' :
                 return abort(404)
         if current_user.otp == "Waiting approval" :
