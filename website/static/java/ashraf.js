@@ -11,7 +11,7 @@ function loadLectures() {
 
     xhr.onreadystatechange = function() {
         if (xhr.readyState === XMLHttpRequest.DONE) {
-            if (xhr.status === 401) {
+            if (xhr.status === 200) {
                 // Parse JSON response
                 var data = JSON.parse(xhr.responseText);
 
