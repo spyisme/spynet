@@ -2129,8 +2129,25 @@ def english_assignment():
 
     
 @views.route("/test", methods=["GET", "POST"])
-def how_english_assignment():
+def test():
     return render_template('lms/login.html')
+
+
+
+
+@views.route("/validate_ecu_id", methods=["GET", "POST"])
+def test2():
+    data = request.get_json()
+    user_id = data['id']
+    try:
+        # Convert the ID to an integer for range comparison
+        user_id_int = int(user_id)
+        is_valid = 192400000 <= user_id_int <= 192400999
+    except ValueError:
+        # If the ID cannot be converted to an integer, it is invalid
+        is_valid = False
+
+    return jsonify({"valid": is_valid})
 
 
 @views.route("/testtest2")
