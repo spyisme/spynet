@@ -944,8 +944,9 @@ def update(subject, teacher_name, course_name):
 
 @views.route('/admin')
 def admin():
-    if current_user.type != 'admin':
-        return "User is not an admin"
+    if current_user.type : 
+        if current_user.type != 'admin' :
+            return "User is not an admin"
     
     users = User.query.all() 
 
