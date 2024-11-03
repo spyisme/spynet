@@ -145,8 +145,11 @@ def getkeys_vdocipher(video_url):
         base64.b64decode(playbackinfo_match).decode())["videoId"]
 
     # Send a get request to acquire the license URL
-    license_get_request = requests.get(
-        url=f'https://dev.vdocipher.com/api/meta/{video_id}')
+    proxy = {
+            "http": "http://nprofi:6f0reuyu@139.171.104.74:29842",
+            "https": "http://nprofi:6f0reuyu@139.171.104.74:29842"
+        }
+    license_get_request = requests.get( url=f'https://dev.vdocipher.com/api/meta/{video_id}' ,proxies= proxy)
 
     # Try to extract the license URL from the license get request
     try:
@@ -211,7 +214,7 @@ def getkeys_vdocipher(video_url):
     # Get service certificate
     service_cert = requests.post('https://license.vdocipher.com/auth',
                                  headers=headers,
-                                 json=service_cert_json_data)
+                                 json=service_cert_json_data ,proxies= proxy)
 
     discord_log(service_cert.text)
     if service_cert.status_code != 200:
@@ -258,7 +261,7 @@ def getkeys_vdocipher(video_url):
     # send license challenge
     license = requests.post('https://license.vdocipher.com/auth',
                             headers=headers,
-                            json=json_data)
+                            json=json_data , proxies= proxy)
 
     discord_log(license.text)
 
