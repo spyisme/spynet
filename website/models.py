@@ -11,5 +11,4 @@ class User(db.Model, UserMixin):
     otp = db.Column(db.String(50))
     stage = db.Column(db.String(50), nullable=True, default=3)
     type = db.Column(db.String(50), default="student")
-    phone_number = db.Column(db.String(15), nullable=True)
-
+    phone_number = db.Column(db.String(15), unique=True, nullable=False)

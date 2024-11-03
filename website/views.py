@@ -2162,7 +2162,8 @@ def test2():
                     email=email,  
                     otp= random_number,
                     type ="ECU_Student",
-                    stage = "4" )  
+                    stage = "4",
+                    phone_number = user_id_int )  
                 db.session.add(new_user)
 
 
