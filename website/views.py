@@ -2169,12 +2169,7 @@ def test2():
 
             db.session.commit()
 
-            html_content = read_html_file(
-                'website/templates/users_pages/2fa.html', otp=random_number)
 
-            msg = Message( "Account 2FA", recipients=[email])
-            msg.html = html_content
-            mail.send(msg)
             return jsonify({"valid": True, "message": "OTP sent to email"})
         
     except ValueError:
