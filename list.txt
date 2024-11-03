@@ -1,1 +1,14 @@
 app https://r2.interstellarseries.com/hls/1691986882/48d537f4cf3a4b38b938f6a5207168ba.m3u8 --save-name S1andS2Hw -M format=mp4 --auto-select --no-log  & move S1andS2Hw.mp4 ./output;
+python iframe.py https://iframe.mediadelivery.net/embed/33074/7e385115-6266-412b-adbc-29c73f536b0c CalculusSession3SkillsampPrestudy
+python iframe.py https://iframe.mediadelivery.net/embed/33074/80d7122b-f7a5-443f-b344-59a68e0b7b77 CalculusSession3BehavioroffunctionPart1
+python iframe.py https://iframe.mediadelivery.net/embed/33074/b3156689-aa53-482f-be6c-45c573108af3 CalculusSession3BehavioroffunctionPart2
+python iframe.py https://iframe.mediadelivery.net/embed/33074/aa54af9f-b752-42ff-ab01-3e47da8187e9 CalculusSession3ClassworkSolve
+python iframe.py https://iframe.mediadelivery.net/embed/33074/6a537bf3-edba-496c-b29e-ede65bf33834 CalculusSession3HomeworkSolve
+python iframe.py https://iframe.mediadelivery.net/embed/33074/50eac7e4-6cdf-4ffe-8b0b-ecf672a6f8d9 CalculusSession4Absoluteextremevalues
+python iframe.py https://iframe.mediadelivery.net/embed/33074/52fb0960-4cc2-4e11-9694-bb4c6c5777da CalculusSession4Importantideas
+python iframe.py https://iframe.mediadelivery.net/embed/33074/731401d8-c22f-45a0-a8d9-b8c6387fb635 CalculusSession4ClassworkSolve
+python iframe.py https://iframe.mediadelivery.net/embed/33074/c28ec3aa-0793-463e-abc4-7f6bf2b8aec9 CalculusSession4HomeworkSolve
+python iframe.py https://iframe.mediadelivery.net/embed/33074/bb6246bf-587a-4d3d-aa26-e6f2fb3ec7f0 CalculusSession5Graphs
+python iframe.py https://iframe.mediadelivery.net/embed/33074/d11dda67-bee6-46e6-a17f-fb1fdfd08a7b CalculusSession5Graphsimportantideas
+python iframe.py https://iframe.mediadelivery.net/embed/33074/bc0aa3fe-ea00-4d0c-b20d-31afd783c418 CalculusSession5HomeworkSolve
+python iframe.py https://iframe.mediadelivery.net/embed/33074/c1eea3aa-68bd-4fe1-a695-18dd6f489f87 CalculusSession6Integrationsrules

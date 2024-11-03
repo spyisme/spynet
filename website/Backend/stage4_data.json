@@ -2,37 +2,49 @@
     "Calculus": {
         "teachers": [
             {
-                "name": "Dr Emad",
+                "name": "Dr. Emad",
                 "link": "dremad",
                 "courses": [
                     {
                         "name": "Calculus 1",
-                        "description": "",
+                        "description": "1st Semester",
                         "videos": [
                             {
-                                "id": "NWbXHg7BnKA",
-                                "title": "Calculus 1 | Lecture 1 Dr. Emad",
+                                "id": "oF3ZvY6-R-w",
+                                "title": "Lecture 1 calculus 1 Ecu",
                                 "duration": "00:52:34",
                                 "jsid": 0
                             },
                             {
-                                "id": "z1kqQjsUx_Y",
-                                "title": "Calculus 1 | Lecture 2 Dr. Emad",
+                                "id": "xxqIFw-98WE",
+                                "title": "Lecture 2 calculus 1",
                                 "duration": "00:40:38",
                                 "jsid": 1
                             },
                             {
-                                "id": "3KULASS6lKI",
-                                "title": "Calculus 1 | Lecture 3 Dr. Emad",
+                                "id": "1ThomuvyuRg",
+                                "title": "Lecture 3 calculus 1",
                                 "duration": "00:53:38",
                                 "jsid": 2
+                            },
+                            {
+                                "id": "2mxfUTwgJpA",
+                                "title": "Lecture 4 (calculus 1)",
+                                "duration": "01:10:46",
+                                "jsid": 3
+                            },
+                            {
+                                "id": "Ebws-lD31zI",
+                                "title": "Lecture 5 calculus 1",
+                                "duration": "00:45:28",
+                                "jsid": 4
                             }
                         ],
-                        "playlist_id": "PLM-GVlebsoPVNw5BEZy-mLNn0ZiCtiEhR",
+                        "playlist_id": "PLM-GVlebsoPUM8S7yeQ2ilTn2ZNbzhzd5",
                         "folder": ""
                     }
                 ],
-                "description": "Dr Emad ECU"
+                "description": "ECU"
             }
         ]
     }
