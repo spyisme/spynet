@@ -6,51 +6,76 @@
     <title>Login</title>
 
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}" />
-
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/login.css') }}">
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
     <script src="static/java/connection.js"></script>
-
 </head>
 <body>
 <div class="form">
+    <form id="login-form" method="post">
+        <div class="title">Welcome</div>
+        <div class="subtitle">ECU Students Only! ( <u><a href="/">Other</a></u> )</div>
 
 
-    <form method="post">
+        {% if msg %}
+        <br>
+        <div class="subtitle"><div class="failed">{{ msg }} </div></div>
+        <br>
+        {% endif %}
 
+        <div class="input-container ic2">
+            <input type="text" placeholder="" class="input" id="id" name="id" required>
+            <div class="cut cut-short"></div>
+            <label class="iLabel" for="id">ID</label>
+        </div>
 
-    <div class="title">Welcome</div>
-    <div class="subtitle">ECU Students Only ! ( <u><a href="/">Other</a></u> )</div>
-{%if failed%}
-<br>
+        <!-- OTP field, initially hidden -->
+        <div class="input-container ic2" id="otp-container" style="display: none;">
+            <input type="text" placeholder="" class="input" id="otp" name="otp" required>
+            <div class="cut cut-short"></div>
+            <label class="iLabel" for="otp">Email OTP</label>
+        </div>
 
-    <div class="subtitle"><div class="failed">Failed to login</div></div>
-<br>
-
-{%endif%}
-{%if msg%}
-<br>
-
-    <div class="subtitle"><div class="failed">{{msg}} </div></div>
-<br>
-
-{%endif%}
-
-
-    <div class="input-container ic2">
-        <input  type="text" placeholder="" class="input" id="id" name="id" required>
-        <div class="cut cut-short"></div>
-        <label class="iLabel" for="email">ID</label>
-    </div>
-
-    <button class="submit" type="text">Login</button>
+        <!-- Button to validate ID or submit form -->
+        <button class="submit" type="button" id="submit-btn" onclick="validateId()">Next</button>
+    </form>
 </div>
 
-</form>
-
-
 <script>
+    function validateId() {
+        const id = document.getElementById('id').value;
+
+        // Step 1: Send request to validate ID
+        fetch('/validate_ecu_id', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ id: id })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.valid) { // Assuming `data.valid` is true if the ID is valid
+                // Step 2: Show OTP field and change button text to 'Login'
+                document.getElementById('otp-container').style.display = 'block';
+                const submitBtn = document.getElementById('submit-btn');
+                submitBtn.innerText = 'Login';
+                
+                // Step 3: Change button action to submit the form
+                submitBtn.onclick = function() {
+                    document.getElementById('login-form').submit();
+                };
+            } else {
+                alert('Invalid ID. Please try again.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred. Please try again later.');
+        });
+    }
+
+    // Input styling on blur
     document.addEventListener('DOMContentLoaded', function () {
         const inputs = document.querySelectorAll('.input');
         inputs.forEach(function (input) {
@@ -66,6 +91,3 @@
 </script>
 </body>
 </html>
-
-
-

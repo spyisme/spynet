@@ -2128,9 +2128,10 @@ def english_assignment():
 
 
     
-@views.route("/how-english-assigment", methods=["GET", "POST"])
+@views.route("/test", methods=["GET", "POST"])
 def how_english_assignment():
-    return "Soon.."
+    return render_template('lms/login.html')
+
 
 @views.route("/testtest2")
 def list_files():
