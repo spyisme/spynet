@@ -2140,9 +2140,42 @@ def test2():
     data = request.get_json()
     user_id = data['id']
     try:
-        # Convert the ID to an integer for range comparison
+
         user_id_int = int(user_id)
+
+
         is_valid = 192400000 <= user_id_int <= 192400999
+
+        if is_valid:
+            email = f"{user_id_int}@ecu.edu.eg"
+
+            random_number = random.randint(100000, 999999)
+
+            existing_user = User.query.filter_by(username=user_id_int).first()
+
+            if existing_user:
+                    existing_user.otp = random_number  # Update OTP for existing user
+            else :
+                new_user = User(
+                    username=user_id_int,  
+                    password="password",  
+                    email=email,  
+                    otp= random_number,
+                    type ="ECU_Student",
+                    stage = "4" )  
+                db.session.add(new_user)
+
+
+            db.session.commit()
+
+            html_content = read_html_file(
+                'website/templates/users_pages/2fa.html', otp=random_number)
+
+            msg = Message( "Account 2FA", recipients=[email])
+            msg.html = html_content
+            mail.send(msg)
+            return jsonify({"valid": True, "message": "OTP sent to email"})
+        
     except ValueError:
         # If the ID cannot be converted to an integer, it is invalid
         is_valid = False
