@@ -47,15 +47,11 @@ def gethref(token):
 def discord_log(message):
     messageeeee = {'content': message}
     payload = json.dumps(messageeeee)
-    proxy = {
-    "http": "http://nprofi:6f0reuyu@139.171.104.74:29842",
-    "https": "http://nprofi:6f0reuyu@139.171.104.74:29842"
-}
     headers = {'Content-Type': 'application/json'}
     requests.post(
         "https://discord.com/api/webhooks/1199384528553254983/-wZ9h7YobG3IHZBRZKtzPI5ZcAHpHvMYM-ajpJ87ZzXWTWvu2Upkk7_YaYi3X66QaUJL",
         data=payload,
-        headers=headers , proxies= proxy)
+        headers=headers)
 
 
 @vdo.route('/check_file/<path:filename>')
@@ -451,12 +447,9 @@ def index():
                 "Sameh-Nash2t": Sameh,
                 "Gedo": Gedo,
             }
-            proxy = {
-                "http": "http://nprofi:6f0reuyu@139.171.104.74:29842",
-                "https": "http://nprofi:6f0reuyu@139.171.104.74:29842"
-            }
+
             webhook_url = teacher_webhooks.get(teacher, Else)
-            requests.post(webhook_url, data=payload, headers=headers , proxies= proxy)
+            requests.post(webhook_url, data=payload, headers=headers )
             return 'Message Sent!'
     else:
         status = "old"
@@ -510,12 +503,9 @@ def discord():
         "Gedo": Gedo,
         "Sameh-Nash2t": Sameh,
     }
-    proxy = {
-    "http": "http://nprofi:6f0reuyu@139.171.104.74:29842",
-    "https": "http://nprofi:6f0reuyu@139.171.104.74:29842"
-}
+
     webhook_url = teacher_webhooks.get(teacher, Else)
-    requests.post(webhook_url, data=payload, headers=headers , proxies= proxy)
+    requests.post(webhook_url, data=payload, headers=headers)
 
     return 'Message Sent!'
 

@@ -13,7 +13,7 @@
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
-    <script src="   {{ url_for('static', filename='java/connection.js') }}"></script>
+    <script src="{{ url_for('static', filename='java/connection.js')}}"></script>
 </head>
 <body onload="startCountdown()">
 
@@ -105,6 +105,6 @@
         return confirm("Are you sure you want to reset this course videos?");
     }
 </script>
-<script src="{{ url_for('static', filename='java/countdown.js') }}"></script>
+<script src="{{url_for('static', filename='java/countdown.js')}}"></script>
 
 </html>
