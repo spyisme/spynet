@@ -11,21 +11,19 @@ log.setLevel(logging.ERROR)
 app, socketio = create_app()
 
 
-
-
 @app.errorhandler(404)
-def page_not_found(e):  #type: ignore
+def page_not_found(e):  
+
     if request.path.endswith('/'):
         return redirect(request.path[:-1])
-    if "admin" in request.path or "edit" in request.path:
-        if current_user.type == "admin" :
-            return redirect(url_for('views.admin'))
+    
+    if current_user.is_authenticated :
+        if current_user.type :
+            if "admin" in request.path or "edit" in request.path:
+                if current_user.type == "admin" :
+                    return redirect(url_for('views.admin'))
 
-    return render_template('used_pages/404.html')
-
-
-
-
+    return render_template('used_pages/404.html' , error = e)
 
 
 
