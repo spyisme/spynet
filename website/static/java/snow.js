@@ -120,3 +120,35 @@ startAnimation();
 
 window.addEventListener("resize", startAnimation);
 
+document.addEventListener("DOMContentLoaded", () => {
+  const images = document.querySelectorAll("img");
+
+  images.forEach((img) => {
+    img.onload = () => compressImage(img);
+  });
+
+  function compressImage(img) {
+    const MAX_SIZE = 300 * 1024; // 300 KB
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+
+    // Set canvas dimensions to the image dimensions
+    canvas.width = img.width;
+    canvas.height = img.height;
+
+    // Draw the image onto the canvas
+    ctx.drawImage(img, 0, 0, img.width, img.height);
+
+    let quality = 0.7; // Initial compression quality (adjustable)
+    let dataURL = canvas.toDataURL("image/jpeg", quality);
+
+    // Keep reducing quality until the image is under the size limit
+    while (dataURL.length > MAX_SIZE && quality > 0.1) {
+      quality -= 0.05;
+      dataURL = canvas.toDataURL("image/jpeg", quality);
+    }
+
+    // Replace the original image source with the compressed data URL
+    img.src = dataURL;
+  }
+});
