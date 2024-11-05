@@ -271,64 +271,16 @@
                         "description": "Chemical Analysis",
                         "videos": [
                             {
-                                "id": "a3EBgJ5V7MQ",
-                                "title": "S1 | Part 1",
-                                "duration": "01:12:53",
-                                "jsid": 0
-                            },
-                            {
-                                "id": "LAwevcR3-3Q",
-                                "title": "S1 | Part 2",
-                                "duration": "01:39:51",
-                                "jsid": 1
-                            },
-                            {
-                                "id": "ZDmmMvZHAtA",
-                                "title": "S1 | Part 3",
-                                "duration": "00:40:03",
-                                "jsid": 2
-                            },
-                            {
-                                "id": "6VMYieqkZ3E",
-                                "title": "S1 | Summarry",
-                                "duration": "00:43:04",
-                                "jsid": 3
-                            },
-                            {
                                 "id": "47qELpEZ5wM",
                                 "title": "S1 | Classwork 1",
                                 "duration": "01:39:27",
-                                "jsid": 4
+                                "jsid": 0
                             },
                             {
                                 "id": "GovHlB62aCI",
                                 "title": "S1 | Classwork 2",
                                 "duration": "01:02:22",
-                                "jsid": 5
-                            },
-                            {
-                                "id": "9nzs8Fp6658",
-                                "title": "S2 | Part 1",
-                                "duration": "01:18:47",
-                                "jsid": 6
-                            },
-                            {
-                                "id": "XoZFiMmAjQQ",
-                                "title": "S2 | Part 2",
-                                "duration": "00:24:31",
-                                "jsid": 7
-                            },
-                            {
-                                "id": "keUQh2bexrg",
-                                "title": "S2 | Part 3",
-                                "duration": "00:52:44",
-                                "jsid": 8
-                            },
-                            {
-                                "id": "DFe5sKrcgd8",
-                                "title": "S2 | Summary",
-                                "duration": "00:34:54",
-                                "jsid": 9
+                                "jsid": 1
                             }
                         ],
                         "playlist_id": "PLM-GVlebsoPUNwwm_7PD3R9FePeFeJnpb",
@@ -8093,7 +8045,7 @@
                     },
                     {
                         "name": "Chapter 2",
-                        "description": "Chapter 2",
+                        "description": "",
                         "videos": [
                             {
                                 "id": "LfH9YbJEkIA",
