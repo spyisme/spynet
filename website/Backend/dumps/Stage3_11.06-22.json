@@ -6032,57 +6032,8 @@
                     {
                         "name": "Month 3",
                         "description": "Session 9 ~ 12",
-                        "videos": [
-                            {
-                                "id": "awtSxLLu9yI",
-                                "title": "S9 | Intro",
-                                "duration": "00:01:40",
-                                "jsid": 0
-                            },
-                            {
-                                "id": "qC2Bf0NzmRI",
-                                "title": "S9 | Part 1",
-                                "duration": "00:07:51",
-                                "jsid": 1
-                            },
-                            {
-                                "id": "K5PyohRraZM",
-                                "title": "S9 | Part 2",
-                                "duration": "00:44:02",
-                                "jsid": 2
-                            },
-                            {
-                                "id": "SgQntErujco",
-                                "title": "S9 | Part 3",
-                                "duration": "00:10:38",
-                                "jsid": 3
-                            },
-                            {
-                                "id": "WUvb8MrBrX8",
-                                "title": "S9 | Part 4",
-                                "duration": "00:21:36",
-                                "jsid": 4
-                            },
-                            {
-                                "id": "GMLWOgveSXI",
-                                "title": "S9 | Part 5",
-                                "duration": "00:53:49",
-                                "jsid": 5
-                            },
-                            {
-                                "id": "fRUlsw5PMFE",
-                                "title": "S9 | Nsos",
-                                "duration": "00:42:12",
-                                "jsid": 6
-                            },
-                            {
-                                "id": "rzfDnMnMQ3A",
-                                "title": "S9 | Reading",
-                                "duration": "00:19:47",
-                                "jsid": 7
-                            }
-                        ],
-                        "playlist_id": "PLM-GVlebsoPUCzsSb24HH86T9u9eQynUF",
+                        "videos": "",
+                        "playlist_id": "",
                         "folder": ""
                     }
                 ]
