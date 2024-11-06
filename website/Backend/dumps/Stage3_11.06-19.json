@@ -4333,18 +4333,6 @@
                                 "title": "S7",
                                 "duration": "02:56:03",
                                 "jsid": 19
-                            },
-                            {
-                                "id": "qGvg5twAVDI",
-                                "title": "S7 | Hw Mrs . Fatma",
-                                "duration": "04:50:10",
-                                "jsid": 20
-                            },
-                            {
-                                "id": "5Fbwcvz88u8",
-                                "title": "S7 | Hw Mr . Hady",
-                                "duration": "03:27:04",
-                                "jsid": 21
                             }
                         ],
                         "playlist_id": "PLM-GVlebsoPXERuHteoa6a_vGYV5pMqKK",
@@ -4361,46 +4349,28 @@
                                 "jsid": 0
                             },
                             {
-                                "id": "bLSmZzAxM1A",
-                                "title": "S1 | Hw Mr . Hady",
-                                "duration": "02:36:48",
-                                "jsid": 1
-                            },
-                            {
                                 "id": "xiwhqsM6geM",
                                 "title": "S1 | Hw Mrs . Fatma",
                                 "duration": "03:36:03",
-                                "jsid": 2
+                                "jsid": 1
                             },
                             {
                                 "id": "fhWdZZMjSqo",
                                 "title": "S2",
                                 "duration": "02:38:41",
-                                "jsid": 3
-                            },
-                            {
-                                "id": "-8wvHINikLs",
-                                "title": "S2 | Hw Mr . Hady",
-                                "duration": "03:00:02",
-                                "jsid": 4
+                                "jsid": 2
                             },
                             {
                                 "id": "DSEjf570Nm4",
                                 "title": "S2 | Hw Mrs . Fatma",
                                 "duration": "03:46:21",
-                                "jsid": 5
+                                "jsid": 3
                             },
                             {
                                 "id": "U6YfM7uSkns",
                                 "title": "S3",
                                 "duration": "02:47:07",
-                                "jsid": 6
-                            },
-                            {
-                                "id": "votOJNdnadM",
-                                "title": "S4",
-                                "duration": "02:41:00",
-                                "jsid": 7
+                                "jsid": 4
                             }
                         ],
                         "playlist_id": "PLM-GVlebsoPXbA1Gff0KE40JOebe-vkk9",
@@ -5885,7 +5855,7 @@
                     },
                     {
                         "name": "Month 2",
-                        "description": "Session 5 ~ 8",
+                        "description": "Session 4 ~ 8",
                         "videos": [
                             {
                                 "id": "dH3DM7PavWg",
@@ -7880,7 +7850,7 @@
                             },
                             {
                                 "id": "zNcIkWnGCRI",
-                                "title": "S1 | Homework",
+                                "title": "S1 | Hw",
                                 "duration": "01:57:38",
                                 "jsid": 5
                             },
@@ -7922,7 +7892,7 @@
                             },
                             {
                                 "id": "VF4Re5DprEc",
-                                "title": "S2 | Homework",
+                                "title": "S2 | Hw",
                                 "duration": "01:57:49",
                                 "jsid": 12
                             },
@@ -8095,46 +8065,34 @@
                                 "jsid": 40
                             },
                             {
-                                "id": "cSvzV5HBlwc",
-                                "title": "S6 | Homework",
-                                "duration": "01:21:38",
-                                "jsid": 41
-                            },
-                            {
                                 "id": "gfccM4LIQfU",
                                 "title": "S7 | Recap",
                                 "duration": "00:41:08",
-                                "jsid": 42
+                                "jsid": 41
                             },
                             {
                                 "id": "FFHLf6Hju1M",
                                 "title": "S7 | Part 1",
                                 "duration": "00:37:35",
-                                "jsid": 43
+                                "jsid": 42
                             },
                             {
                                 "id": "F45Y4FeCjno",
                                 "title": "S7 | Part 2",
                                 "duration": "01:56:01",
-                                "jsid": 44
+                                "jsid": 43
                             },
                             {
                                 "id": "aEZEGxXKd9g",
                                 "title": "S7 | Part 3",
                                 "duration": "01:07:26",
-                                "jsid": 45
+                                "jsid": 44
                             },
                             {
                                 "id": "dsv0QiAbZsc",
                                 "title": "S7 | Law Sa2alak",
                                 "duration": "02:16:41",
-                                "jsid": 46
-                            },
-                            {
-                                "id": "gV-voxRW8Xw",
-                                "title": "S7 | Homework",
-                                "duration": "04:42:18",
-                                "jsid": 47
+                                "jsid": 45
                             }
                         ],
                         "playlist_id": "PLM-GVlebsoPWtyKgs1hPQueuu5Qf1LCbN",
