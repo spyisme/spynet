@@ -949,6 +949,45 @@ def update(subject, teacher_name, course_name):
 
 
 #Admin pages
+#data
+def analyze_data(data):
+    # Extract necessary counts and information
+    teachers = data['maths']['teachers'] + data['arabic']['teachers']
+    total_teachers = len(teachers)
+    
+    total_courses = 0
+    total_videos = 0
+    most_videos = {"teacher": None, "course": None, "count": 0}
+    least_videos = {"teacher": None, "course": None, "count": float('inf')}
+
+    # Loop through teachers and their courses
+    for teacher in teachers:
+        for course in teacher['courses']:
+            course_video_count = len(course['videos'])
+            total_courses += 1
+            total_videos += course_video_count
+
+            # Check for most videos
+            if course_video_count > most_videos["count"]:
+                most_videos = {"teacher": teacher["name"], "course": course["name"], "count": course_video_count}
+
+            # Check for least videos
+            if course_video_count < least_videos["count"]:
+                least_videos = {"teacher": teacher["name"], "course": course["name"], "count": course_video_count}
+
+    return {
+        "total_teachers": total_teachers,
+        "total_courses": total_courses,
+        "total_videos": total_videos,
+        "most_videos": most_videos,
+        "least_videos": least_videos
+    }
+
+@views.route('/data')
+def data():
+    data = load_stage_data(current_user.stage)
+    analysis = analyze_data(data)
+    return render_template('index.html', analysis=analysis)
 
 #Manage users-----------------------------------------------------------------------
 
