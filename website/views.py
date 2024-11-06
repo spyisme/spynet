@@ -952,7 +952,12 @@ def update(subject, teacher_name, course_name):
 #data
 def analyze_data(data):
     # Extract necessary counts and information
-    teachers = data['maths']['teachers'] + data['arabic']['teachers']
+    teachers = []
+
+    # Loop through each subject in the data
+    for subject in data.values():
+        # Each subject contains a "teachers" key with a list of teachers
+        teachers.extend(subject['teachers'])
     total_teachers = len(teachers)
     
     total_courses = 0
