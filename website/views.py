@@ -990,10 +990,13 @@ def analyze_data(data):
 
 @views.route('/data')
 def data():
-    stage = request.args.get('stage')
-    data = load_stage_data(stage)
-    analysis = analyze_data(data)
-    return render_template('data/data.html', analysis=analysis)
+
+    analysis1 = analyze_data(load_stage_data(1))
+    analysis3 = analyze_data(load_stage_data(3))
+    analysis4 = analyze_data(load_stage_data(4))
+
+
+    return render_template('data/data.html', analysis1=analysis1 , analysis3 = analysis3 , analysis4 = analysis4)
 
 #Manage users-----------------------------------------------------------------------
 

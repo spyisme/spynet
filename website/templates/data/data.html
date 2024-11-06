@@ -7,12 +7,32 @@
 </head>
 <body>
     <h1>Education Data Analysis</h1>
+    <hr>
+    <h1>Stage 1</h1>
     <ul>
-        <li>Total Teachers: {{ analysis.total_teachers }}</li>
-        <li>Total Courses: {{ analysis.total_courses }}</li>
+        <li>Total Teachers: {{ analysis1.total_teachers }}</li>
+        <li>Total Courses: {{ analysis1.total_courses }}</li>
+        <li>Total Videos: {{ analysis1.total_videos }}</li>
+        <li>Teacher & Course with Most Videos: {{ analysis1.most_videos.teacher }} - {{ analysis1.most_videos.course }} ({{ analysis1.most_videos.count }} videos)</li>
+        <li>Teacher & Course with Least Videos: {{ analysis1.least_videos.teacher }} - {{ analysis1.least_videos.course }} ({{ analysis1.least_videos.count }} videos)</li>
+    </ul>
+    <hr>
+    <h1>Stage 3</h1>
+    <ul>
+        <li>Total Teachers: {{ analysis3.total_teachers }}</li>
+        <li>Total Courses: {{ analysis3.total_courses }}</li>
         <li>Total Videos: {{ analysis.total_videos }}</li>
-        <li>Teacher & Course with Most Videos: {{ analysis.most_videos.teacher }} - {{ analysis.most_videos.course }} ({{ analysis.most_videos.count }} videos)</li>
-        <li>Teacher & Course with Least Videos: {{ analysis.least_videos.teacher }} - {{ analysis.least_videos.course }} ({{ analysis.least_videos.count }} videos)</li>
+        <li>Teacher & Course with Most Videos: {{ analysis3.most_videos.teacher }} - {{ analysis3.most_videos.course }} ({{ analysis3.most_videos.count }} videos)</li>
+        <li>Teacher & Course with Least Videos: {{ analysis3.least_videos.teacher }} - {{ analysis3.least_videos.course }} ({{ analysis3.least_videos.count }} videos)</li>
+    </ul>
+    <hr>
+    <h1>Stage 4</h1>
+    <ul>
+        <li>Total Teachers: {{ analysis4.total_teachers }}</li>
+        <li>Total Courses: {{ analysis4.total_courses }}</li>
+        <li>Total Videos: {{ analysis.total_videos }}</li>
+        <li>Teacher & Course with Most Videos: {{ analysis4.most_videos.teacher }} - {{ analysis4.most_videos.course }} ({{ analysis4.most_videos.count }} videos)</li>
+        <li>Teacher & Course with Least Videos: {{ analysis4.least_videos.teacher }} - {{ analysis4.least_videos.course }} ({{ analysis4.least_videos.count }} videos)</li>
     </ul>
 </body>
 </html>
