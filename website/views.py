@@ -522,7 +522,8 @@ def registeracc():
             otp="Waiting approval",
             type ="student_register",
             stage = stage ,
-            phone_number =phone_number,)  
+            phone_number =phone_number,
+            active_sessions = 1)  
 
         db.session.add(new_user)
         db.session.commit()
@@ -1044,7 +1045,7 @@ def manage_user(user_id):
 
         user.password = request.form.get('password')
 
-        user.active_sessions = request.form.get('devices')
+        user.active_sessions = int(request.form.get('devices'))
 
         changes = {}
 
