@@ -474,12 +474,22 @@ def registeracc():
 
     if request.method == 'POST':
         username = request.form.get('username')
+        email = request.form.get('email')
+
+        phone_number = request.form.get('number')
+
         user = User.query.filter_by(username=username).first()
+        email1 = User.query.filter_by(email=email).first()
+
+        number1 = User.query.filter_by(phone_number=phone_number).first()
 
         if user:
             return "Username is taken try another"
-        email = request.form.get('email')
-        number = request.form.get('number')
+        if email1 :
+            return "Email is taken try another"  
+        if number1 :
+            return "Phone number is taken try another"  
+
         stage = request.form.get('stage')
 
 
@@ -492,7 +502,7 @@ def registeracc():
         else :
             return 'Invaild Email Address'
         
-        if re.match(r'^01\d{8,}$', number):
+        if re.match(r'^01\d{8,}$', phone_number):
             pass
         else :
             return "Invaild Phone Number"
@@ -512,13 +522,13 @@ def registeracc():
             otp="Waiting approval",
             type ="student_register",
             stage = stage ,
-            phone_number =number,)  
+            phone_number =phone_number,)  
 
         db.session.add(new_user)
         db.session.commit()
 
         discord_log_register(
-            f"New user  : {username} ====== {email} ====== {number} ====== {stage} ======{client_ip} ====== {user_agent} <@709799648143081483>"
+            f"New user  : {username} ====== {email} ====== {phone_number} ====== {stage} ======{client_ip} ====== {user_agent} <@709799648143081483>"
         )
 
         login_user(new_user)
