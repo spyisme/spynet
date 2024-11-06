@@ -987,7 +987,7 @@ def analyze_data(data):
 def data():
     data = load_stage_data(current_user.stage)
     analysis = analyze_data(data)
-    return render_template('index.html', analysis=analysis)
+    return render_template('data/data.html', analysis=analysis)
 
 #Manage users-----------------------------------------------------------------------
 

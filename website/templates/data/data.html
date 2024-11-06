@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Education Data Analysis</title>
+</head>
+<body>
+    <h1>Education Data Analysis</h1>
+    <ul>
+        <li>Total Teachers: {{ analysis.total_teachers }}</li>
+        <li>Total Courses: {{ analysis.total_courses }}</li>
+        <li>Total Videos: {{ analysis.total_videos }}</li>
+        <li>Teacher & Course with Most Videos: {{ analysis.most_videos.teacher }} - {{ analysis.most_videos.course }} ({{ analysis.most_videos.count }} videos)</li>
+        <li>Teacher & Course with Least Videos: {{ analysis.least_videos.teacher }} - {{ analysis.least_videos.course }} ({{ analysis.least_videos.count }} videos)</li>
+    </ul>
+</body>
+</html>
