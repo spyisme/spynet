@@ -1753,7 +1753,7 @@ def english_assignment():
             api = "2"
             file_name = f"EnglishPDF"
 
-        discord_log_english(f"Making pdf for {name_and_id} with words {words} <@709799648143081483>")
+        discord_log_english(f"Making pdf for {name_and_id} with words {words} ip = {client_ip} <@709799648143081483>")
 
         def get_image(query , name , api):
             discord_log_english(f"Getting image for : {query} using api {api}")
