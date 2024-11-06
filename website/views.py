@@ -985,7 +985,8 @@ def analyze_data(data):
 
 @views.route('/data')
 def data():
-    data = load_stage_data(current_user.stage)
+    stage = request.args.get('stage')
+    data = load_stage_data(stage)
     analysis = analyze_data(data)
     return render_template('data/data.html', analysis=analysis)
 
