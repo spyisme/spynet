@@ -295,64 +295,40 @@
                                 "jsid": 3
                             },
                             {
-                                "id": "yo3X5xBJvz4",
-                                "title": "S1 | Homework",
-                                "duration": "03:31:26",
-                                "jsid": 4
-                            },
-                            {
                                 "id": "47qELpEZ5wM",
                                 "title": "S1 | Classwork 1",
                                 "duration": "01:39:27",
-                                "jsid": 5
+                                "jsid": 4
                             },
                             {
                                 "id": "GovHlB62aCI",
                                 "title": "S1 | Classwork 2",
                                 "duration": "01:02:22",
-                                "jsid": 6
+                                "jsid": 5
                             },
                             {
                                 "id": "9nzs8Fp6658",
                                 "title": "S2 | Part 1",
                                 "duration": "01:18:47",
-                                "jsid": 7
+                                "jsid": 6
                             },
                             {
                                 "id": "XoZFiMmAjQQ",
                                 "title": "S2 | Part 2",
                                 "duration": "00:24:31",
-                                "jsid": 8
+                                "jsid": 7
                             },
                             {
                                 "id": "keUQh2bexrg",
                                 "title": "S2 | Part 3",
                                 "duration": "00:52:44",
-                                "jsid": 9
+                                "jsid": 8
                             },
                             {
                                 "id": "DFe5sKrcgd8",
                                 "title": "S2 | Summary",
                                 "duration": "00:34:54",
-                                "jsid": 10
-                            },
-                            {
-                                "id": "ydc6JPrDysE",
-                                "title": "S2 | Classwork 1",
-                                "duration": "01:24:12",
-                                "jsid": 11
-                            },
-                            {
-                                "id": "0h8quelucLM",
-                                "title": "S2 | Classwork 2",
-                                "duration": "01:58:47",
-                                "jsid": 12
-                            },
-                            {
-                                "id": "WpqdWaTmBnw",
-                                "title": "S2 | Classwork 3",
-                                "duration": "01:37:30",
-                                "jsid": 13
+                                "jsid": 9
                             }
                         ],
                         "playlist_id": "PLM-GVlebsoPUNwwm_7PD3R9FePeFeJnpb",
@@ -3879,6 +3855,13 @@
                 "description": "Year 2024/2025",
                 "courses": [
                     {
+                        "name": "Basic Course",
+                        "description": "2:25:02",
+                        "videos": "",
+                        "playlist_id": "",
+                        "folder": ""
+                    },
+                    {
                         "name": "Chapter 1",
                         "description": "Electricity and Ohm's law",
                         "videos": [
@@ -5170,18 +5153,6 @@
                                 "title": "S3 | Story",
                                 "duration": "00:42:03",
                                 "jsid": 2
-                            },
-                            {
-                                "id": "N1B4NfoD6Ws",
-                                "title": "S8 | Part 1",
-                                "duration": "01:28:43",
-                                "jsid": 3
-                            },
-                            {
-                                "id": "6uN1D7Yyim4",
-                                "title": "S8 | Part 2",
-                                "duration": "00:39:02",
-                                "jsid": 4
                             }
                         ],
                         "playlist_id": "PLM-GVlebsoPVYYWT428oBFUTFNRlEEMVk",

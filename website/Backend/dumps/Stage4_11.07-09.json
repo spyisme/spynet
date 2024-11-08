@@ -960,28 +960,9 @@
                     {
                         "name": "Videos",
                         "description": "Starts from S3",
-                        "videos": [
-                            {
-                                "id": "Vt2N404CL0c",
-                                "title": "S3",
-                                "duration": "00:15:23",
-                                "jsid": 0
-                            },
-                            {
-                                "id": "149EUpFi0HM",
-                                "title": "S4",
-                                "duration": "00:09:05",
-                                "jsid": 1
-                            },
-                            {
-                                "id": "3mi4q2-gW0Q",
-                                "title": "S5",
-                                "duration": "00:07:23",
-                                "jsid": 2
-                            }
-                        ],
+                        "videos": "",
                         "playlist_id": "PLM-GVlebsoPULRNcYCfCbzd2J12eowzS2",
-                        "folder": "https://drive.google.com/drive/folders/1F9xYfPfC62Cz7wO1ZLPyB1ePi8vDbg2r"
+                        "folder": ""
                     }
                 ],
                 "description": "ECU"
