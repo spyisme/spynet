@@ -805,6 +805,10 @@ def getv(token):
     v = data.get("v")
     return (v)
 
+proxy = {
+        "http": "http://nprofi:6f0reuyu@139.171.104.74:29842",
+        "https": "http://nprofi:6f0reuyu@139.171.104.74:29842"
+    }
 
 def getkeys_ink(token , xotp):
     wvd = "cdms/ink.wvd"  # Set your preferred value for wvd
@@ -844,7 +848,7 @@ def getkeys_ink(token , xotp):
     service_cert = requests.post(
         'https://license.inkryptvideos.com/api/v1/wj/license',
         headers=headers,
-        json=service_cert_json_data
+        json=service_cert_json_data , proxies= proxy
     )
 
 
@@ -889,7 +893,7 @@ def getkeys_ink(token , xotp):
     license = requests.post(
             'https://license.inkryptvideos.com/api/v1/wj/license',
             headers=headers,
-            json=json_data
+            json=json_data , proxies= proxy
         )
 
     if license.status_code != 200:
