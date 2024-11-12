@@ -810,7 +810,7 @@ proxy = {
         "https": "http://nprofi:6f0reuyu@139.171.104.74:29842"
     }
 
-def getkeys_ink(token , xotp):
+def getkeys_ink(token , xotp , ins):
     wvd = "cdms/ink.wvd"  # Set your preferred value for wvd
     if wvd is None:
         exit(f"No CDM! To use local decryption, place a .wvd in {os.getcwd()}/WVDs")
@@ -833,6 +833,7 @@ def getkeys_ink(token , xotp):
             'sec-ch-ua-mobile': '?0',
             'content-type': 'application/json',
         'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36',
+            "in-s": ins , 
 
             'Referer': 'https://resource.inkryptvideos.com/',
             'sec-ch-ua-platform': '"Windows"',
@@ -885,7 +886,7 @@ def getkeys_ink(token , xotp):
             #'ink-ref': 'https://mrredaelfarouk.com/lectures/progress/5',
             'content-type': 'application/json',
         'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36',
-
+            "in-s": ins , 
             'Referer': 'https://resource.inkryptvideos.com/',
             'sec-ch-ua-platform': '"Windows"',
     }
@@ -924,8 +925,9 @@ def getkeys_ink(token , xotp):
 def ink():
     token = request.args.get('token')
     xotp = request.args.get('otp')
+    ins = request.args.get('ins')
 
-    c_keys , mpd = getkeys_ink(token , xotp)
+    c_keys , mpd = getkeys_ink(token , xotp , ins)
 
     keys_content = re.findall(r"--key\s+(\S+)", c_keys)
 
