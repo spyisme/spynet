@@ -9671,21 +9671,8 @@
                 "courses": [
                     {
                         "name": "Chapter 1",
-                        "description": "New Videos",
-                        "videos": [
-                            {
-                                "id": "BunY9KeJMd8",
-                                "title": "S1",
-                                "duration": "02:31:42",
-                                "jsid": 0
-                            },
-                            {
-                                "id": "x9GH1b2E0zQ",
-                                "title": "S2",
-                                "duration": "02:09:52",
-                                "jsid": 1
-                            }
-                        ],
+                        "description": "",
+                        "videos": "",
                         "playlist_id": "PLM-GVlebsoPXT_13a7IOF_UHGsLH114Gs",
                         "folder": ""
                     }
