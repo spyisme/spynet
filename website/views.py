@@ -569,16 +569,17 @@ def monitor():
 
 @views.route('/check_username', methods=['POST'])
 def check_username():
-    data = request.get_json()
-    stored_username = data.get('username')
-    if current_user.type != 'admin': 
-    # Compare the stored username with the current_user's username
-        if current_user.is_authenticated and stored_username != current_user.username:
-            # Log out the user if the usernames don't match
-            logout_user()
-            return jsonify(logout=True)
-    
-    return jsonify(logout=False)
+    if current_user.is_authenticated : 
+        data = request.get_json()
+        stored_username = data.get('username')
+        if current_user.type != 'admin': 
+        # Compare the stored username with the current_user's username
+            if current_user.is_authenticated and stored_username != current_user.username:
+                # Log out the user if the usernames don't match
+                logout_user()
+                return jsonify(logout=True)
+        
+        return jsonify(logout=False)
 
 #Home---------------------------------------------------------------------------------------------
 
