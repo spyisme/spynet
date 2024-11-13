@@ -574,7 +574,7 @@ def check_username():
         stored_username = data.get('username')
         if current_user.type != 'admin': 
         # Compare the stored username with the current_user's username
-            if current_user.is_authenticated and stored_username != current_user.username:
+            if stored_username != current_user.username:
                 # Log out the user if the usernames don't match
                 logout_user()
                 return jsonify(logout=True)
