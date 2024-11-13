@@ -832,9 +832,8 @@ def getkeys_ink(token , xotp , ins):
             'x-otp': f'{xotp}',
             'sec-ch-ua-mobile': '?0',
             'content-type': 'application/json',
-        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36',
+            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/130.0.2849.80',
             "in-s": ins , 
-
             'Referer': 'https://resource.inkryptvideos.com/',
             'sec-ch-ua-platform': '"Windows"',
     }
@@ -879,13 +878,11 @@ def getkeys_ink(token , xotp , ins):
         }
 
     headers = {
-            'sec-ch-ua': '"Google Chrome";v="117", "Not;A=Brand";v="8", "Chromium";v="117"',
             'x-version': '2.1.63',
             'x-otp': f'{xotp}',
             'sec-ch-ua-mobile': '?0',
-            #'ink-ref': 'https://mrredaelfarouk.com/lectures/progress/5',
             'content-type': 'application/json',
-        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36',
+            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36 Edg/130.0.2849.80',
             "in-s": ins , 
             'Referer': 'https://resource.inkryptvideos.com/',
             'sec-ch-ua-platform': '"Windows"',
