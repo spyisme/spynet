@@ -1059,11 +1059,11 @@ def create_user_route():
                            sub_methods = [{'name': "Vodafone Cash" } , {'name' : "InstaPay"}])
 
 
-@views.route('/user-manage/<int:user_id>', methods=['GET', 'POST'])
+@views.route('/user-manage/<user_id>', methods=['GET', 'POST'])
 def manage_user(user_id):
     user = User.query.get(user_id)
 
-    if user_id == -1:
+    if int(user_id) == -1:
         # if current_user.id != -1:
             return "You cant edit"
 
