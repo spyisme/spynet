@@ -1,9 +1,0 @@
-ssh -i ./spy.txt spy@95.179.222.63
-
-Amoor2019
-
-sudo nohup python3 main.py &
-
-sudo pkill python3
-
-
