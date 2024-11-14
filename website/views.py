@@ -1270,35 +1270,36 @@ def delete_user(user_id):
 
 
 
-def send_emails(recipient, username, stage, phone, user_id, user_email):
-    try:
-        # Prepare first email
-        html_content = read_html_file('website/templates/users_pages/email.html')
-        msg = Message(
-            "Account Registration Confirmation",
-            recipients=[recipient]
-        )
-        msg.html = html_content
+def send_emails(app, recipient, username, stage, phone, user_id, user_email):
+    with app.app_context():  # Push application context
+        try:
+            # Prepare first email
+            html_content = read_html_file('website/templates/users_pages/email.html')
+            msg = Message(
+                "Account Registration Confirmation",
+                recipients=[recipient]
+            )
+            msg.html = html_content
 
-        # Prepare second email
-        admin_email = 'spycode736x@gmail.com'
-        html_content2 = read_html_file(
-            'website/templates/users_pages/email2.html',
-            username=username,
-            stage=stage,
-            phone=phone,
-            id=user_id,
-            email=user_email
-        )
-        msg2 = Message('New Account Created', recipients=[admin_email])
-        msg2.html = html_content2
+            # Prepare second email
+            admin_email = 'spycode736x@gmail.com'
+            html_content2 = read_html_file(
+                'website/templates/users_pages/email2.html',
+                username=username,
+                stage=stage,
+                phone=phone,
+                id=user_id,
+                email=user_email
+            )
+            msg2 = Message('New Account Created', recipients=[admin_email])
+            msg2.html = html_content2
 
-        # Send emails
-        mail.send(msg)
-        mail.send(msg2)
-    except Exception as e:
-        discord_log_backend(f"Error Sending the email to {recipient}: {e}")
-        
+            # Send emails
+            mail.send(msg)
+            mail.send(msg2)
+        except Exception as e:
+            discord_log_backend(f"Error Sending the email to {recipient}: {e}")
+
 @views.route('/send_email', methods=['GET', 'POST'])
 def send_email():
     recipient = request.args.get('to')
