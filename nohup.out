@@ -664,3 +664,4 @@ Traceback (most recent call last):
   File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1174, in make_response
     raise TypeError(
 TypeError: The view function for 'views.check_username' did not return a valid response. The function either returned None or ended without a return statement.
+78.153.140.177 - - [14/Nov/2024 12:57:55] code 400, message Bad request syntax ('\x16\x03\x01\x00¬\x01\x00\x00¨\x03\x03\x11li\x99(\x87»<é\x89\x04x$çåõïo\x18r=\x9f\x7f¦®òÎí\x84û\x99¨\x00\x008À,À')
