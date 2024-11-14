@@ -1063,7 +1063,7 @@ def create_user_route():
 def manage_user(user_id):
     user = User.query.get(user_id)
 
-    if int(user_id) == -1:
+    if int(user_id) == -1 or int(user_id) == 1:
         # if current_user.id != -1:
             return "You cant edit"
 
