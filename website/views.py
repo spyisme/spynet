@@ -1064,7 +1064,7 @@ def manage_user(user_id):
     user = User.query.get(user_id)
 
     if user.type == 'admin' :
-        if current_user.id != -1:
+        # if current_user.id != -1:
             return "You cant edit"
 
     if not user:
