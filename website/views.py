@@ -34,7 +34,6 @@ import time
 from website import user_socket_map
 from website import socketio
 import pytz
-from threading import Thread
 
 views = Blueprint('views', __name__)
 
@@ -1267,64 +1266,38 @@ def delete_user(user_id):
 
     return redirect("/admin")
 
-
-
-
-def send_emails(app, recipient, username, stage, phone, user_id, user_email):
-    with app.app_context():  # Push application context
-        try:
-            # Prepare first email
-            html_content = read_html_file('website/templates/users_pages/email.html')
-            msg = Message(
-                "Account Registration Confirmation",
-                recipients=[recipient]
-            )
-            msg.html = html_content
-
-            # Prepare second email
-            admin_email = 'spycode736x@gmail.com'
-            html_content2 = read_html_file(
-                'website/templates/users_pages/email2.html',
-                username=username,
-                stage=stage,
-                phone=phone,
-                id=user_id,
-                email=user_email
-            )
-            msg2 = Message('New Account Created', recipients=[admin_email])
-            msg2.html = html_content2
-
-            # Send emails
-            mail.send(msg)
-            mail.send(msg2)
-        except Exception as e:
-            discord_log_backend(f"Error Sending the email to {recipient}: {e}")
-
 @views.route('/send_email', methods=['GET', 'POST'])
 def send_email():
+
     recipient = request.args.get('to')
+    subject = "Account Registration Confirmation"
 
     email = User.query.filter_by(email=recipient).first()
 
     if email:
-        # Get current user details
-        username = current_user.username
-        stage = current_user.stage
-        phone = current_user.phone_number
-        user_id = current_user.id
-        user_email = current_user.email
 
-        # Start a thread to send emails in the background
-        email_thread = Thread(
-            target=send_emails,
-            args=(recipient, username, stage, phone, user_id, user_email)
-        )
-        email_thread.start()
+        html_content = read_html_file(
+            'website/templates/users_pages/email.html')
 
-        # Redirect immediately to the landing page
-        return render_template('used_pages/landing.html')
+        msg = Message(subject, recipients=[recipient])  
+        msg.html = html_content
+
+        msg2 = Message('New Account Created' , recipients=['spycode736x@gmail.com'])
+
+        html_content = read_html_file(
+            'website/templates/users_pages/email2.html' , username = current_user.username , stage = current_user.stage , phone = current_user.phone_number , id = current_user.id  , email = current_user.email)
+        msg2.html = html_content
+
+        try:
+            mail.send(msg) 
+            mail.send(msg2)
+            return render_template('used_pages/landing.html')
+    
+        except Exception as e:
+            discord_log_backend(f"Error Sending the email to {recipient} : {e}")
+            return render_template('used_pages/landing.html')
     else:
-        return "Email doesn't exist"
+        return "Email doesnt exist"
 
 
 
