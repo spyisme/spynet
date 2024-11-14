@@ -1059,7 +1059,7 @@ def create_user_route():
                            sub_methods = [{'name': "Vodafone Cash" } , {'name' : "InstaPay"}])
 
 
-@views.route('/user-manage/<user_id>', methods=['GET', 'POST'])
+@views.route('/user-manage/<int:user_id>', methods=['GET', 'POST'])
 def manage_user(user_id):
     user = User.query.get(user_id)
 
