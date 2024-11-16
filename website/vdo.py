@@ -814,51 +814,30 @@ def getkeys_ink(token , xotp , ins):
     wvd = "cdms/ink.wvd"  # Set your preferred value for wvd
     if wvd is None:
         exit(f"No CDM! To use local decryption, place a .wvd in {os.getcwd()}/WVDs")
-
     mpd = get_mpd_ink(token , xotp)
-
     pssh = PSSH(get_pssh(mpd))
-
-
     device = Device.load(wvd)
-
     cdm = Cdm.from_device(device)
-
     session_id = cdm.open()
 
-
-
-    headers = {
-        'accept': '*/*',
-        'accept-language': 'en-US,en;q=0.9',
-        'content-type': 'application/json',
-        'in-s': ins,
-        # 'ink-ref': 'https://bassthalk.com/course/19/sections/89/video/25004',
-        'origin': 'https://resource.inkryptvideos.com',
-        'priority': 'u=1, i',
-        'referer': 'https://resource.inkryptvideos.com/',
-        'sec-ch-ua': '"Chromium";v="130", "Microsoft Edge";v="130", "Not?A_Brand";v="99"',
-        'sec-ch-ua-mobile': '?0',
-        'sec-ch-ua-platform': '"Windows"',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-site',
-        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 Edg/130.0.0.0',
-        'x-otp': xotp,
-        'x-version': '2.1.83',
+    service_cert_json_data = {
+        'token': f'{token}',
     }
 
+    headers = {
+        "host": "license.inkryptvideos.com",
+        "in-s": ins ,
+        "x-otp": f"{xotp}",
+        "content-type": "application/json",
+        "content-length" : "1012"
 
-    service_cert_json_data = {
-
-        'token': f'{token}',
     }
 
 
     service_cert = requests.post(
         'https://license.inkryptvideos.com/api/v1/wj/license',
         headers=headers,
-        json=service_cert_json_data , proxies= proxy
+        json=service_cert_json_data 
     )
 
 
@@ -886,52 +865,32 @@ def getkeys_ink(token , xotp , ins):
     json_data = {
             'token': f'{base64.b64encode(json.dumps(token).encode("utf-8")).decode()}',
         }
+
     headers = {
-        'accept': '*/*',
-        'accept-language': 'en-US,en;q=0.9',
-        'content-type': 'application/json',
-        'in-s': ins,
-        # 'ink-ref': 'https://bassthalk.com/course/19/sections/89/video/25004',
-        'origin': 'https://resource.inkryptvideos.com',
-        'priority': 'u=1, i',
-        'referer': 'https://resource.inkryptvideos.com/',
-        'sec-ch-ua': '"Chromium";v="130", "Microsoft Edge";v="130", "Not?A_Brand";v="99"',
-        'sec-ch-ua-mobile': '?0',
-        'sec-ch-ua-platform': '"Windows"',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-site',
-        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36 Edg/130.0.0.0',
-        'x-otp': xotp,
-        'x-version': '2.1.83',
+        "host": "license.inkryptvideos.com",
+        "in-s": ins ,
+        "x-otp": f"{xotp}",
+        "content-type": "application/json",
+        "content-length" : "8680"
+
     }
-
-
     license = requests.post(
             'https://license.inkryptvideos.com/api/v1/wj/license',
             headers=headers,
-            json=json_data , proxies= proxy
+            json=json_data 
         )
 
     if license.status_code != 200:
             print(license.content)
             exit("Could not complete license challenge")
-
-
     license = license.json()["l"]
-
     cdm.parse_license(session_id, license)
-
-
 
     c_keys = ""
     for key in cdm.get_keys(session_id):
         if key.type != "SIGNING":
             c_keys += f"--key {key.kid.hex}:{key.key.hex()} "
-
-
     cdm.close(session_id)
-
     return c_keys , mpd 
 
 
