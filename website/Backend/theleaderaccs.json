@@ -1,5 +1,9 @@
 [
-    {
+      {
+        "email": "mariz.samy2018@yahoo.com",
+        "password": "mariz2511"
+    }
+    ,{
         "email": "om2505388@gmail.com",
         "password": "omar2000"
     },
@@ -83,5 +87,5 @@
     {
         "email": "youssefzaky879@gmail.com",
         "password": "828282yz"
-    }
+    }  
 ]
