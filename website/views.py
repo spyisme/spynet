@@ -1813,7 +1813,12 @@ def english_assignment():
         discord_log_english(f"Making pdf for {name_and_id} with words {words} ip = {client_ip} <@709799648143081483>")
 
         def get_image(query , name , api):
+            img = Path(f"website/english/{name}.png")
+
+            # while img.exists():
+            # API 1 = sera 2 = upsplash 3 = google search
             discord_log_english(f"Getting image for : {query} using api {api}")
+
             if api == "1" :
                 url = f"https://serpapi.com/search.json?engine=google_images&ijn=0&api_key=da75049319abb43ed97ac5e729c1e1cac35280e3d214de6962674b7c0dc9d09a&q={query}"
                 start_time = time.time()
@@ -1869,7 +1874,6 @@ def english_assignment():
                         file.write(response.content)    
                         elapsed_time = time.time() - start_time
                         discord_log_english(f"Took {elapsed_time:.2f} seconds to load download {name}")
-
             elif api == "3" :
                 start_time = time.time()
 
@@ -1904,7 +1908,6 @@ def english_assignment():
                         file.write(response.content)    
                         elapsed_time = time.time() - start_time
                         discord_log_english(f"Took {elapsed_time:.2f} seconds to load download {name}")
-
             else :
                 discord_log_english("Choose a valid api number")
                 print("exiting...")
