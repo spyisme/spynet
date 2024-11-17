@@ -2059,8 +2059,14 @@ def english_assignment():
         elif quality == "low" :
            fields_data =  update_fields_data(fields_data_low, data)
             
-
-
+        img1 = Path(f"website/english/img1.png")
+        img2 = Path(f"website/english/img1.png")
+ 
+        if img1.exists():
+            return f"Image 1 not downloaded ! (You used api {api})"
+        elif img2.exits() :
+            return f"Image 2 not downloaded ! (You used api {api})"
+        
         def make_image_final(name , max_font_size ,min_font_size , img_1_cords , img_2_cords ):
             start_time = time.time()
 
