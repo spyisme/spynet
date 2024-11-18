@@ -39,7 +39,7 @@
         {% for command in cmds_queue %}
         <li>
             <div>
-                <input type="checkbox" class="arrow" data-line="{{ loop.index }}">
+                <input type="checkbox" class="dropdown" data-line="{{ loop.index }}">
                 <strong>Video Name:</strong> {{ extract_save_name(command) }}
                 <br>
                 <strong>Video Type:</strong> {{ commandtype(command) }}
