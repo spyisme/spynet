@@ -255,9 +255,7 @@
     </div>
 
     <script>
-        // Toggles the dropdown on click
-function toggleDropdown(event) {
-    function toggleDropdown(event) {
+        function toggleDropdown(event) {
     event.stopPropagation(); // Prevent click from propagating to document
     const dropdown = event.currentTarget;
     const dropdownContent = dropdown.querySelector('.dropdown-content');
@@ -284,6 +282,31 @@ function closeAllDropdowns() {
     });
 }
 
+        // Toggles the dropdown on click
+function toggleDropdown(event) {
+    event.stopPropagation(); // Prevents click from propagating to document
+    const dropdownContent = event.currentTarget.querySelector('.dropdown-content');
+
+    // Toggle the active state
+    if (dropdownContent.classList.contains('active')) {
+        dropdownContent.classList.remove('active');
+    } else {
+        closeAllDropdowns(); // Close other dropdowns
+        dropdownContent.classList.add('active');
+    }
+}
+
+// Closes all dropdowns when clicking anywhere else
+function closeAllDropdowns() {
+    document.querySelectorAll('.dropdown-content').forEach(content => {
+        content.classList.remove('active');
+    });
+}
+
+// Attach document click listener to close dropdowns
+document.addEventListener('click', () => {
+    closeAllDropdowns();
+});
 
         let currentCommand = null;
 
