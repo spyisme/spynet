@@ -8,258 +8,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Commands List</title>
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #000;
-            color: #ddd;
-            margin: 0;
-            padding: 20px;
-            line-height: 1.6;
-        }
-
-        h1 {
-            color: #fff;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .action-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-
-        .action-buttons button {
-            background-color: #1a73e8;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .action-buttons button:hover {
-            background-color: #135cb7;
-        }
-
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        li {
-            border-color: white;
-            border-style: solid;
-            border-width: 0.1px;
-            position: relative;
-            background-color: #121212;
-            margin: 10px 0;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        strong {
-            color: #1a73e8;
-            font-weight: 600;
-        }
-
-        .dropdown {
-            position: relative;
-            cursor: pointer;
-            color: #1a73e8;
-            font-size: 20px;
-        }
-
-        .dropdown-content {
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-            background-color: #222;
-            position: absolute;
-            right: 0;
-            min-width: 200px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
-            border-radius: 5px;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .dropdown-content.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .dropdown-content button {
-            width: 100%;
-            padding: 10px;
-            text-align: left;
-            border: none;
-            background: none;
-            color: #ddd;
-            cursor: pointer;
-            font-size: 14px;
-            transition: background-color 0.2s, color 0.2s;
-        }
-
-        .dropdown-content button:hover {
-            background-color: #444;
-            color: #fff;
-        }
-
-        .arrow {
-            display: inline-block;
-            transition: transform 0.3s ease;
-        }
-
-        .arrow.rotated {
-            transform: rotate(180deg);
-        }
-
-        .popup-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-
-        .popup {
-            background-color: #222;
-            color: #ddd;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
-        }
-
-        .popup input[type="text"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #555;
-            border-radius: 5px;
-            background-color: #333;
-            color: #ddd;
-        }
-
-        .popup label {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-            cursor: pointer;
-        }
-
-        .popup input[type="checkbox"] {
-            margin-right: 10px;
-        }
-
-        .popup button {
-            margin: 10px 5px;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .popup .confirm {
-            background-color: #1a73e8;
-            color: #fff;
-        }
-
-        .popup .confirm:hover {
-            background-color: #135cb7;
-        }
-
-        .popup .cancel {
-            background-color: #6c757d;
-            color: #fff;
-        }
-
-        .popup .cancel:hover {
-            background-color: #5a6268;
-        }
-
-        @media (max-width: 768px) {
-            .action-buttons {
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            .dropdown-content {
-                left: 0;
-            }
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/list.css') }}" />
 </head>
 <body>
     <h1>Commands List</h1>
-    <h1>Number of videos : {{ count }}</h1>
+    <h1>Number of videos: {{ count }}</h1>
     <div class="action-buttons">
         <button onclick="addnew()">Add</button>
+        <button onclick="deleteSelected()">Delete Selected</button>
         <button onclick="clearr()">Clear All</button>
         <button onclick="createcmd()">Create Command</button>
     </div>
     <hr>
-        <!-- Add Command Popup -->
-        <div class="popup-overlay" id="add-popup">
-            <div class="popup">
-                <h2>Add Command</h2>
-                <form id="add-command-form" method="POST" action="/addcmd">
-                    <input type="text" name="userinput" placeholder="Enter command" required />
-                    <label>
-                        <input type="checkbox" name="checkbox" />
-                        Youtube link?
-                    </label>
-                    <button type="submit" class="confirm">Submit</button>
-                    <button type="button" class="cancel" onclick="closePopup('add-popup')">Cancel</button>
-                </form>
-            </div>
+    <div class="popup-overlay" id="add-popup">
+        <div class="popup">
+            <h2>Add Command</h2>
+            <form id="add-command-form" method="POST" action="/addcmd">
+                <input type="text" name="userinput" placeholder="Enter command" required />
+                <label>
+                    <input type="checkbox" name="checkbox" />
+                    Youtube link?
+                </label>
+                <button type="submit" class="confirm">Submit</button>
+                <button type="button" class="cancel" onclick="closePopup('add-popup')">Cancel</button>
+            </form>
         </div>
-    {%if cmds_queue%}
+    </div>
+    {% if cmds_queue %}
     <ul>
         {% for command in cmds_queue %}
         <li>
             <div>
+                <input type="checkbox" class="select-command" data-line="{{ loop.index }}">
                 <strong>Video Name:</strong> {{ extract_save_name(command) }}
                 <br>
                 <strong>Video Type:</strong> {{ commandtype(command) }}
             </div>
-            <div class="dropdown" onclick="toggleDropdown(event)">
-                <span class="arrow">&#9660;</span>
-                <div class="dropdown-content">
-                    <button onclick="openShowPopup('{{ command }}')">Show Full Command</button>
-                    <button onclick="showDeleteConfirmation({{ loop.index }})">Delete</button>
-                </div>
-            </div>
         </li>
         {% endfor %}
     </ul>
-    {%else%}
-    <br><br>
-<h1>Add Commands to see them here</h1>
-    {%endif%}
-
+    {% else %}
+    <h1>Add Commands to see them here</h1>
+    {% endif %}
     <div class="popup-overlay" id="delete-popup">
         <div class="popup">
             <p id="delete-text"></p>
@@ -267,55 +57,29 @@
             <button class="cancel" onclick="closePopup('delete-popup')">Cancel</button>
         </div>
     </div>
-
-    <div class="popup-overlay" id="show-popup">
-        <div class="popup">
-            <p id="command-text"></p>
-            <button class="cancel" onclick="closePopup('show-popup')">Close</button>
-        </div>
-    </div>
-
     <script>
-        let currentLineNumber = null;
+        let selectedCommands = [];
 
-        function showDeleteConfirmation(lineNumber) {
-            currentLineNumber = lineNumber;
-            document.getElementById('delete-text').innerText = `Are you sure you want to delete command #${lineNumber}?`;
+        function deleteSelected() {
+            // Collect all selected checkboxes
+            const checkboxes = document.querySelectorAll('.select-command:checked');
+            selectedCommands = Array.from(checkboxes).map(cb => cb.getAttribute('data-line'));
+
+            if (selectedCommands.length === 0) {
+                alert("No commands selected for deletion.");
+                return;
+            }
+
+            // Show confirmation popup
+            document.getElementById('delete-text').innerText = `Are you sure you want to delete commands: ${selectedCommands.join(', ')}?`;
             document.getElementById('delete-popup').style.display = 'flex';
         }
 
         function confirmDelete() {
-            if (currentLineNumber) {
-                window.location.href = `/deletecmd?line=${currentLineNumber}`;
+            if (selectedCommands.length > 0) {
+                // Send selected lines to the backend for deletion
+                window.location.href = `/deletecmd?lines=${selectedCommands.join(',')}`;
             }
-        }
-
-        function toggleDropdown(event) {
-            event.stopPropagation();
-            const dropdown = event.currentTarget;
-            const dropdownContent = dropdown.querySelector('.dropdown-content');
-            const arrow = dropdown.querySelector('.arrow');
-
-            if (dropdownContent.classList.contains('active')) {
-                dropdownContent.classList.remove('active');
-                arrow.classList.remove('rotated');
-            } else {
-                closeAllDropdowns();
-                dropdownContent.classList.add('active');
-                arrow.classList.add('rotated');
-            }
-        }
-
-        function closeAllDropdowns() {
-            document.querySelectorAll('.dropdown-content').forEach(content => content.classList.remove('active'));
-            document.querySelectorAll('.arrow').forEach(arrow => arrow.classList.remove('rotated'));
-        }
-
-        document.addEventListener('click', () => closeAllDropdowns());
-
-        function openShowPopup(command) {
-            document.getElementById('command-text').innerText = `${command}`;
-            document.getElementById('show-popup').style.display = 'flex';
         }
 
         function closePopup(popupId) {
@@ -328,14 +92,13 @@
             }
         }
 
-
-
         function createcmd() {
             window.open("/createcmd", '_blank');
         }
+
         function addnew() {
-    document.getElementById('add-popup').style.display = 'flex';
-}
+            document.getElementById('add-popup').style.display = 'flex';
+        }
     </script>
 </body>
 </html>
