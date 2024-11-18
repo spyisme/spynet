@@ -39,12 +39,13 @@
         {% for command in cmds_queue %}
         <li>
             <div>
-                <input type="checkbox" class="dropdown" data-line="{{ loop.index }}">
+               
                 <strong>Video Name:</strong> {{ extract_save_name(command) }}
                 <br>
                 <strong>Video Type:</strong> {{ commandtype(command) }}
             </div>
             <div class="dropdown" onclick="toggleDropdown(event)">
+                <input type="checkbox" class="dropdown" data-line="{{ loop.index }}">
                 <span class="arrow">&#9660;</span>
                 <div class="dropdown-content">
                     <button onclick="openShowPopup('{{ command }}')">Show Full Command</button>
