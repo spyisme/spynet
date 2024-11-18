@@ -45,7 +45,7 @@
                 <strong>Video Type:</strong> {{ commandtype(command) }}
             </div>
             <div class="dropdown" onclick="toggleDropdown(event)">
-                <input type="checkbox" class="dropdown" data-line="{{ loop.index }}">
+                <input type="checkbox" class="checkboxx" data-line="{{ loop.index }}">
                 <span class="arrow">&#9660;</span>
                 <div class="dropdown-content">
                     <button onclick="openShowPopup('{{ command }}')">Show Full Command</button>
@@ -66,7 +66,52 @@
             <button class="cancel" onclick="closePopup('delete-popup')">Cancel</button>
         </div>
     </div>
+    <div class="popup-overlay" id="show-popup">
+        <div class="popup">
+            <p id="command-text"></p>
+            <button class="cancel" onclick="closePopup('show-popup')">Close</button>
+        </div>
+    </div>
     <script>
+                let currentLineNumber = null;
+        function showDeleteConfirmation(lineNumber) {
+            currentLineNumber = lineNumber;
+            document.getElementById('delete-text').innerText = `Are you sure you want to delete command #${lineNumber}?`;
+            document.getElementById('delete-popup').style.display = 'flex';
+        }
+        function confirmDelete() {
+            if (currentLineNumber) {
+                window.location.href = `/deletecmd?line=${currentLineNumber}`;
+            }
+        }
+        function toggleDropdown(event) {
+            event.stopPropagation();
+            const dropdown = event.currentTarget;
+            const dropdownContent = dropdown.querySelector('.dropdown-content');
+            const arrow = dropdown.querySelector('.arrow');
+
+            if (dropdownContent.classList.contains('active')) {
+                dropdownContent.classList.remove('active');
+                arrow.classList.remove('rotated');
+            } else {
+                closeAllDropdowns();
+                dropdownContent.classList.add('active');
+                arrow.classList.add('rotated');
+            }
+        }
+        function closeAllDropdowns() {
+            document.querySelectorAll('.dropdown-content').forEach(content => content.classList.remove('active'));
+            document.querySelectorAll('.arrow').forEach(arrow => arrow.classList.remove('rotated'));
+        }
+        document.addEventListener('click', () => closeAllDropdowns());
+
+        function openShowPopup(command) {
+            document.getElementById('command-text').innerText = `${command}`;
+            document.getElementById('show-popup').style.display = 'flex';
+        }
+        function closePopup(popupId) {
+            document.getElementById(popupId).style.display = 'none';
+        }
         let selectedCommands = [];
 
         function deleteSelected() {
