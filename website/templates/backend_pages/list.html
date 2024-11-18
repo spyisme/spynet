@@ -95,26 +95,25 @@
         let selectedCommands = [];
 
         function toggleDropdown(event) {
-            event.stopPropagation(); // Prevent event propagation
-            const dropdown = event.currentTarget;
-            const arrow = dropdown.querySelector('.arrow');
-            const dropdownContent = dropdown.querySelector('.dropdown-content');
+    event.stopPropagation(); // Prevents the click event from propagating to parent elements
+    const dropdown = event.currentTarget;
+    const arrow = dropdown.querySelector('.arrow');
+    const dropdownContent = dropdown.querySelector('.dropdown-content');
 
-            if (dropdown.classList.contains('active')) {
-                dropdown.classList.remove('active');
-                arrow.classList.remove('rotated'); // Reset arrow rotation
-            } else {
-                closeAllDropdowns(); // Close other dropdowns
-                dropdown.classList.add('active');
-                arrow.classList.add('rotated'); // Rotate arrow
-            }
-        }
+    if (dropdownContent.classList.contains('active')) {
+        dropdownContent.classList.remove('active'); // Hide dropdown
+        arrow.classList.remove('rotated'); // Reset arrow rotation
+    } else {
+        closeAllDropdowns(); // Close other open dropdowns
+        dropdownContent.classList.add('active'); // Show this dropdown
+        arrow.classList.add('rotated'); // Rotate arrow
+    }
+}
 
-        function closeAllDropdowns() {
-            document.querySelectorAll('.dropdown').forEach(dropdown => dropdown.classList.remove('active'));
-            document.querySelectorAll('.arrow').forEach(arrow => arrow.classList.remove('rotated'));
-        }
-
+function closeAllDropdowns() {
+    document.querySelectorAll('.dropdown-content').forEach(content => content.classList.remove('active')); // Hide all dropdowns
+    document.querySelectorAll('.arrow').forEach(arrow => arrow.classList.remove('rotated')); // Reset all arrows
+}
         function deleteSelected() {
             const checkboxes = document.querySelectorAll('.select-command:checked');
             selectedCommands = Array.from(checkboxes).map(cb => cb.getAttribute('data-line'));
@@ -152,7 +151,8 @@
             document.getElementById('add-popup').style.display = 'flex';
         }
 
-        document.addEventListener('click', closeAllDropdowns); // Close dropdowns when clicking outside
+        document.addEventListener('click', closeAllDropdowns);
+
     </script>
 </body>
 </html>
