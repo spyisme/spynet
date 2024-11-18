@@ -688,24 +688,41 @@ def commandslist():
 
 @vdo.route('/deletecmd', methods=['GET'])
 def delete_command():
-    line_number = request.args.get('line', type=int)  # Get the line number as an integer
-
-    if line_number is None:
-        return "Line number not provided", 400  # Bad Request if no line number is provided
+    line_number = request.args.get('line', type=int)  # Single line number as an integer
+    lines_to_delete = request.args.get('lines')  # Comma-separated list of line numbers (optional)
 
     with open('list.txt', 'r') as file:
         lines = file.readlines()
 
-    if line_number < 1 or line_number > len(lines):
-        return f"Invalid line number: {line_number}. Must be between 1 and {len(lines)}.", 400
+    if line_number:
+        if line_number < 1 or line_number > len(lines):
+            return f"Invalid line number: {line_number}. Must be between 1 and {len(lines)}.", 400
 
-    # Remove the specified line (subtract 1 because line_number is 1-based)
-    del lines[line_number - 1]
+        # Remove the single specified line
+        del lines[line_number - 1]
+    elif lines_to_delete:
+        # Parse the list of line numbers
+        try:
+            line_numbers = sorted(set(int(num.strip()) for num in lines_to_delete.split(',')), reverse=True)
+        except ValueError:
+            return "Invalid line numbers provided. Must be integers separated by commas.", 400
+
+        # Validate line numbers
+        for num in line_numbers:
+            if num < 1 or num > len(lines):
+                return f"Invalid line number: {num}. Must be between 1 and {len(lines)}.", 400
+
+        # Remove lines in reverse order to avoid shifting indices
+        for num in line_numbers:
+            del lines[num - 1]
+    else:
+        return "No line number(s) provided.", 400
 
     with open('list.txt', 'w') as file:
         file.writelines(lines)
 
     return redirect(url_for('vdo.commandslist'))
+
 
 
 
