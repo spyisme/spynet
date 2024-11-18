@@ -89,15 +89,16 @@
 
         .dropdown-content {
             opacity: 0; /* Initially hidden */
-    visibility: hidden; /* Prevent interaction when hidden */
-    transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth fade effect */
-    background-color: #222;
-    right: 0;
-    min-width: 200px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
-    border-radius: 5px;
-    overflow: hidden;
-    z-index: 1;
+            visibility: hidden; /* Prevent interaction when hidden */
+            transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth fade effect */
+            background-color: #222;
+            position: absolute;
+            right: 0;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
+            border-radius: 5px;
+            overflow: hidden;
+            z-index: 1;
         }
 
         .dropdown-content button {
@@ -122,6 +123,11 @@
             visibility: visible; /* Allow interaction */
         }
 
+                /* Additional class to keep the dropdown visible when clicked */
+        .dropdown-content.active {
+            opacity: 1; /* Keep visible */
+            visibility: visible;
+        }
         /* Popup styles */
         .popup-overlay {
             position: fixed;
@@ -207,13 +213,14 @@
                     <br>
                     <strong>Video Type:</strong> {{ commandtype(command) }}
                 </div>
-                <div class="dropdown">
+                <div class="dropdown" onclick="toggleDropdown(event)">
                     &#9660;
                     <div class="dropdown-content">
                         <button onclick="openShowPopup('{{ command }}')">Show Full Command</button>
                         <button onclick="openDeletePopup('{{ command }}')">Delete</button>
                     </div>
                 </div>
+                
             </li>
         {% endfor %}
     </ul>
@@ -236,6 +243,32 @@
     </div>
 
     <script>
+        // Toggles the dropdown on click
+function toggleDropdown(event) {
+    event.stopPropagation(); // Prevents click from propagating to document
+    const dropdownContent = event.currentTarget.querySelector('.dropdown-content');
+
+    // Toggle the active state
+    if (dropdownContent.classList.contains('active')) {
+        dropdownContent.classList.remove('active');
+    } else {
+        closeAllDropdowns(); // Close other dropdowns
+        dropdownContent.classList.add('active');
+    }
+}
+
+// Closes all dropdowns when clicking anywhere else
+function closeAllDropdowns() {
+    document.querySelectorAll('.dropdown-content').forEach(content => {
+        content.classList.remove('active');
+    });
+}
+
+// Attach document click listener to close dropdowns
+document.addEventListener('click', () => {
+    closeAllDropdowns();
+});
+
         let currentCommand = null;
 
         // Opens the Show Command Popup
