@@ -211,7 +211,7 @@
                 <span class="arrow">&#9660;</span>
                 <div class="dropdown-content">
                     <button onclick="openShowPopup('{{ command }}')">Show Full Command</button>
-                    <button onclick="openDeletePopup('{{ command }}')">Delete</button>
+                    <button onclick="confirmDeleteCommand({{ loop.index }})">Delete</button>
                 </div>
             </div>
         </li>
@@ -273,11 +273,11 @@
             document.getElementById(popupId).style.display = 'none';
         }
 
-        function confirmDeleteCommand() {
-            if (currentCommand) {
-                window.location.href = "/deletecmd?command=" + encodeURIComponent(currentCommand);
-            }
-        }
+        function confirmDeleteCommand(lineNumber) {
+    if (lineNumber) {
+        window.location.href = "/deletecmd?line=" + lineNumber;
+    }
+}
 
         function clearr() {
             if (window.confirm("Are you sure you want to clear the list?")) {
