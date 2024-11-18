@@ -733,7 +733,7 @@ def addtolist():
         with open('list.txt', 'r') as file:
             cmds_from_file = [line.strip() for line in file if line.strip()]
 
-        return redirect(f'/addcmd?newcmd={len(cmds_from_file)}')
+        return redirect(url_for('vdo.commandslist'))
 
     return render_template("backend_pages/addtolist.html", newcmd=newcmd)
 
