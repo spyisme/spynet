@@ -199,6 +199,7 @@
         <button onclick="clearr()">Clear All</button>
         <button onclick="createcmd()">Create Command</button>
     </div>
+    {%if cmds_queue%}
     <ul>
         {% for command in cmds_queue %}
         <li>
@@ -217,6 +218,9 @@
         </li>
         {% endfor %}
     </ul>
+    {%else%}
+<h1>Add Commands to see them here</h1>
+    {%endif%}
 
     <div class="popup-overlay" id="delete-popup">
         <div class="popup">
