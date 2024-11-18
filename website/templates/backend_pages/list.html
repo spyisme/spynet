@@ -31,7 +31,6 @@
             color: #fff;
             text-align: center;
             margin-bottom: 20px;
-            font-size: 1.5rem;
         }
 
         .action-buttons {
@@ -39,7 +38,6 @@
             justify-content: center;
             gap: 15px;
             margin-bottom: 20px;
-            flex-wrap: wrap;
         }
 
         .action-buttons button {
@@ -70,8 +68,8 @@
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
             display: flex;
-            flex-direction: column;
-            gap: 10px;
+            align-items: center;
+            justify-content: space-between;
         }
 
         strong {
@@ -84,8 +82,6 @@
             cursor: pointer;
             color: #1a73e8;
             font-size: 20px;
-            display: flex;
-            justify-content: flex-end;
         }
 
         .dropdown-content {
@@ -142,8 +138,7 @@
             border-radius: 10px;
             text-align: center;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
-            width: 90%;
-            max-width: 400px;
+            width: 300px;
         }
 
         .popup button {
@@ -175,32 +170,20 @@
 
         /* Responsive styles */
         @media (max-width: 768px) {
-            h1 {
-                font-size: 1.2rem;
-            }
-
             .action-buttons {
                 flex-direction: column;
                 gap: 10px;
             }
 
-            li {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .dropdown {
-                justify-content: flex-start;
-            }
-
-            .popup {
-                width: 80%;
+            .dropdown-content {
+                right: auto;
+                left: 0;
             }
         }
     </style>
 </head>
 <body>
-    <h1>List</h1>
+    <h1>Commands List</h1>
     <h1>Number of videos : {{ count }}</h1>
     <div class="action-buttons">
         <button onclick="addnew()">Add</button>
