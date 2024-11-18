@@ -2206,8 +2206,8 @@ def english_assignment():
 
 
 
-@views.route('/search', methods=['POST'])
-def search():
+@views.route('/ecu-search', methods=['POST'])
+def ecu_search():
     query = request.form.get('query')
     results = []
     with open('website/static/ECU24.json', 'r') as f:
@@ -2223,5 +2223,5 @@ def search():
     return jsonify(results)
 
 @views.route('/ecu')
-def ecusearch():
+def ecu_search_display():
     return render_template('used_pages/ecu.html')
