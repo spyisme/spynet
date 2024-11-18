@@ -196,6 +196,17 @@
                 left: 0;
             }
         }
+        /* Normal arrow state */
+.arrow {
+    display: inline-block;
+    transition: transform 0.3s ease; /* Smooth rotation effect */
+}
+
+/* Rotated arrow state */
+.arrow.rotated {
+    transform: rotate(180deg); /* Rotates the arrow upside down */
+}
+
     </style>
 </head><body>
     <h1>Commands List</h1>
@@ -214,12 +225,13 @@
                     <strong>Video Type:</strong> {{ commandtype(command) }}
                 </div>
                 <div class="dropdown" onclick="toggleDropdown(event)">
-                    &#9660;
+                    <span class="arrow">&#9660;</span> <!-- Add a class to the arrow for easier styling -->
                     <div class="dropdown-content">
                         <button onclick="openShowPopup('{{ command }}')">Show Full Command</button>
                         <button onclick="openDeletePopup('{{ command }}')">Delete</button>
                     </div>
                 </div>
+                
                 
             </li>
         {% endfor %}
@@ -245,29 +257,33 @@
     <script>
         // Toggles the dropdown on click
 function toggleDropdown(event) {
-    event.stopPropagation(); // Prevents click from propagating to document
-    const dropdownContent = event.currentTarget.querySelector('.dropdown-content');
+    function toggleDropdown(event) {
+    event.stopPropagation(); // Prevent click from propagating to document
+    const dropdown = event.currentTarget;
+    const dropdownContent = dropdown.querySelector('.dropdown-content');
+    const arrow = dropdown.querySelector('.arrow');
 
     // Toggle the active state
     if (dropdownContent.classList.contains('active')) {
         dropdownContent.classList.remove('active');
+        arrow.classList.remove('rotated'); // Reset arrow rotation
     } else {
         closeAllDropdowns(); // Close other dropdowns
         dropdownContent.classList.add('active');
+        arrow.classList.add('rotated'); // Rotate arrow
     }
 }
 
-// Closes all dropdowns when clicking anywhere else
+// Close all dropdowns and reset arrows
 function closeAllDropdowns() {
     document.querySelectorAll('.dropdown-content').forEach(content => {
         content.classList.remove('active');
     });
+    document.querySelectorAll('.arrow').forEach(arrow => {
+        arrow.classList.remove('rotated');
+    });
 }
 
-// Attach document click listener to close dropdowns
-document.addEventListener('click', () => {
-    closeAllDropdowns();
-});
 
         let currentCommand = null;
 
