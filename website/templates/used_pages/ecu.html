@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Search by ID or Phone Number</h1>
+    <form id="search-form">
+        <input type="text" id="query" name="query" placeholder="Enter ID or Phone Number" required>
+        <button type="submit">Search</button>
+    </form>
+    <div id="results"></div>
+
+    <script>
+        $(document).ready(function() {
+            $('#search-form').on('submit', function(event) {
+                event.preventDefault();
+                const query = $('#query').val();
+                $.ajax({
+                    url: '/search',
+                    method: 'POST',
+                    data: { query: query },
+                    success: function(response) {
+                        const resultsDiv = $('#results');
+                        resultsDiv.empty();
+                        if (response.length > 0) {
+                            response.forEach(item => {
+                                resultsDiv.append(
+                                    `<p>Name: ${item.Name}</p>
+                                     <p>Email: ${item.Email}</p>
+                                     <p>Phone Number: ${item.Number}</p><hr>`
+                                );
+                            });
+                        } else {
+                            resultsDiv.html('<p>No results found</p>');
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
