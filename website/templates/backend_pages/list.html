@@ -34,24 +34,30 @@
             </form>
         </div>
     </div>
-    {% if cmds_queue %}
+    {%if cmds_queue%}
     <ul>
         {% for command in cmds_queue %}
         <li>
-            <div class="command-container">
-        
+            <div>
+                <input type="checkbox" class="select-command" data-line="{{ loop.index }}">
                 <strong>Video Name:</strong> {{ extract_save_name(command) }}
                 <br>
                 <strong>Video Type:</strong> {{ commandtype(command) }}
-
-                <input type="checkbox" class="select-command" data-line="{{ loop.index }}">
+            </div>
+            <div class="dropdown" onclick="toggleDropdown(event)">
+                <span class="arrow">&#9660;</span>
+                <div class="dropdown-content">
+                    <button onclick="openShowPopup('{{ command }}')">Show Full Command</button>
+                    <button onclick="showDeleteConfirmation({{ loop.index }})">Delete</button>
+                </div>
             </div>
         </li>
         {% endfor %}
     </ul>
-    {% else %}
-    <h1>Add Commands to see them here</h1>
-    {% endif %}
+    {%else%}
+    <br><br>
+        <h1>Add Commands to see them here</h1>
+    {%endif%}
     <div class="popup-overlay" id="delete-popup">
         <div class="popup">
             <p id="delete-text"></p>
