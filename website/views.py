@@ -2214,11 +2214,11 @@ def search():
         data2 = json.load(f)
     for entry in data2:
         email_id = entry['Email'].split('@')[0]
-        if query == email_id or query == entry['Number']:
+        if query == email_id or query == entry['Phone']:
             results.append({
                 'Name': entry['Name'],
                 'Email': entry['Email'],
-                'Number': entry['Number']
+                'Phone': entry['Phone']
             })
     return jsonify(results)
 
