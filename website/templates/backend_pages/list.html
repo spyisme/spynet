@@ -20,15 +20,15 @@
 
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #f9fafa;
-            color: #333;
+            background-color: #000;
+            color: #ddd;
             margin: 0;
             padding: 20px;
             line-height: 1.6;
         }
 
         h1 {
-            color: #444;
+            color: #fff;
             text-align: center;
             margin-bottom: 20px;
         }
@@ -41,7 +41,7 @@
         }
 
         .action-buttons button {
-            background-color: #007bff;
+            background-color: #1a73e8;
             color: #fff;
             border: none;
             padding: 10px 20px;
@@ -52,7 +52,7 @@
         }
 
         .action-buttons button:hover {
-            background-color: #0056b3;
+            background-color: #135cb7;
         }
 
         ul {
@@ -62,35 +62,35 @@
 
         li {
             position: relative;
-            background-color: #fff;
+            background-color: #121212;
             margin: 10px 0;
             padding: 15px;
             border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
 
         strong {
-            color: #007bff;
+            color: #1a73e8;
             font-weight: 600;
         }
 
         .dropdown {
             position: relative;
             cursor: pointer;
-            color: #007bff;
+            color: #1a73e8;
             font-size: 20px;
         }
 
         .dropdown-content {
             display: none;
             position: absolute;
-            background-color: #f9f9f9;
+            background-color: #222;
             right: 0;
             min-width: 200px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
             border-radius: 5px;
             overflow: hidden;
             z-index: 1;
@@ -102,17 +102,70 @@
             text-align: left;
             border: none;
             background: none;
+            color: #ddd;
             cursor: pointer;
             font-size: 14px;
-            transition: background-color 0.2s;
+            transition: background-color 0.2s, color 0.2s;
         }
 
         .dropdown-content button:hover {
-            background-color: #f1f1f1;
+            background-color: #444;
+            color: #fff;
         }
 
         .dropdown:hover .dropdown-content {
             display: block;
+        }
+
+        /* Popup styles */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .popup {
+            background-color: #222;
+            color: #ddd;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+            width: 300px;
+        }
+
+        .popup button {
+            margin: 10px 5px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .popup .confirm {
+            background-color: #d9534f;
+            color: #fff;
+        }
+
+        .popup .confirm:hover {
+            background-color: #c9302c;
+        }
+
+        .popup .cancel {
+            background-color: #6c757d;
+            color: #fff;
+        }
+
+        .popup .cancel:hover {
+            background-color: #5a6268;
         }
 
         /* Responsive styles */
@@ -147,15 +200,25 @@
                     &#9660;
                     <div class="dropdown-content">
                         <button onclick="showFullCommand('{{ command }}')">Show Full Command</button>
-                        <button onclick="confirmDelete('{{ command }}')">Delete</button>
-
+                        <button onclick="openDeletePopup('{{ command }}')">Delete</button>
                     </div>
                 </div>
             </li>
         {% endfor %}
     </ul>
 
+    <!-- Popup Overlay -->
+    <div class="popup-overlay" id="delete-popup">
+        <div class="popup">
+            <p>Are you sure you want to delete this command?</p>
+            <button class="confirm" onclick="confirmDeleteCommand()">Yes, Delete</button>
+            <button class="cancel" onclick="closeDeletePopup()">Cancel</button>
+        </div>
+    </div>
+
     <script>
+        let currentCommand = null;
+
         function toggleDropdown(dropdown) {
             var content = dropdown.querySelector('.dropdown-content');
             if (content) {
@@ -167,13 +230,21 @@
             alert(command);
         }
 
-        function confirmDelete(command) {
-            var confirmDelete = window.confirm("Are you sure you want to delete?");
-            if (confirmDelete) {
-                window.location.href = "/deletecmd?command=" + encodeURIComponent(command);
-            }
+        function openDeletePopup(command) {
+            currentCommand = command;
+            document.getElementById('delete-popup').style.display = 'flex';
         }
 
+        function closeDeletePopup() {
+            document.getElementById('delete-popup').style.display = 'none';
+            currentCommand = null;
+        }
+
+        function confirmDeleteCommand() {
+            if (currentCommand) {
+                window.location.href = "/deletecmd?command=" + encodeURIComponent(currentCommand);
+            }
+        }
 
         function clearr() {
             var confirmClear = window.confirm("Are you sure you want to clear the list?");
