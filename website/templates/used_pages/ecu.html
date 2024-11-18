@@ -6,10 +6,11 @@
     <title>Search</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
+        /* Permanent Dark Mode Styling */
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
+            background-color: #000000; /* Black background */
+            color: #e4e4e7; /* Light text color */
             margin: 0;
             padding: 0;
             display: flex;
@@ -26,25 +27,26 @@
 
         form {
             margin-top: 20px;
-            background: #ffffff;
-            border: 1px solid #ddd;
+            background: #1e1e2e; /* Dark gray background */
+            border: 1px solid #444; /* Dark border */
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: background-color 0.3s, border-color 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
         }
 
         input {
             width: 300px;
             padding: 10px;
             margin-right: 10px;
-            border: 1px solid #ccc;
+            border: 1px solid #666; /* Darker border for input */
             border-radius: 5px;
             font-size: 1rem;
+            background-color: #2e2e3e; /* Input background */
+            color: #e4e4e7; /* Input text color */
         }
 
         button {
-            background-color: #007bff;
+            background-color: #4a90e2; /* Bright blue button */
             color: #fff;
             padding: 10px 15px;
             border: none;
@@ -55,19 +57,18 @@
         }
 
         button:hover {
-            background-color: #0056b3;
+            background-color: #3a7bd5; /* Darker blue on hover */
         }
 
         #results {
             margin-top: 30px;
-            background: #ffffff;
-            border: 1px solid #ddd;
+            background: #1e1e2e; /* Dark gray background */
+            border: 1px solid #444; /* Dark border */
             padding: 20px;
             border-radius: 10px;
             width: 80%;
             max-width: 600px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: background-color 0.3s, border-color 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
         }
 
         #results p {
@@ -78,53 +79,11 @@
         hr {
             border: 0;
             height: 1px;
-            background: #ddd;
-        }
-
-        .dark-mode {
-            background-color: #1e1e2e;
-            color: #e4e4e7;
-        }
-
-        .dark-mode form {
-            background: #2e2e3e;
-            border-color: #444;
-        }
-
-        .dark-mode #results {
-            background: #2e2e3e;
-            border-color: #444;
-        }
-
-        .dark-mode button {
-            background-color: #4a90e2;
-        }
-
-        .dark-mode button:hover {
-            background-color: #3a7bd5;
-        }
-
-        .toggle-btn {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            transition: background-color 0.3s;
-        }
-
-        .toggle-btn:hover {
-            background-color: #0056b3;
+            background: #444; /* Darker horizontal rule */
         }
     </style>
 </head>
 <body>
-    <button class="toggle-btn" id="toggle-dark-mode">Toggle Dark Mode</button>
     <h1>Search by ID or Phone Number</h1>
     <form id="search-form">
         <input type="text" id="query" name="query" placeholder="Enter ID or Phone Number" required>
@@ -157,12 +116,6 @@
                         }
                     }
                 });
-            });
-
-            // Dark mode toggle functionality
-            const toggleButton = $('#toggle-dark-mode');
-            toggleButton.on('click', function() {
-                $('body').toggleClass('dark-mode');
             });
         });
     </script>
