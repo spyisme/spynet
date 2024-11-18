@@ -2206,7 +2206,7 @@ def english_assignment():
 
 
 
-@views.route('/ecu-search', methods=['POST'])
+@views.route('/search', methods=['POST'])
 def ecu_search():
     query = request.form.get('query')
     results = []

@@ -108,7 +108,7 @@
                 event.preventDefault();
                 const query = $('#query').val();
                 $.ajax({
-                    url: '/ecu-search',
+                    url: '/search',
                     method: 'POST',
                     data: { query: query },
                     success: function(response) {
