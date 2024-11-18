@@ -7,20 +7,52 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2812078112067783"
      crossorigin="anonymous"></script>
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Commands List</title>
 
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4;
+        /* General styles */
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9fafa;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
         }
 
         h1 {
-            color: #333;
+            color: #444;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .action-buttons button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .action-buttons button:hover {
+            background-color: #0056b3;
         }
 
         ul {
@@ -32,21 +64,24 @@
             position: relative;
             background-color: #fff;
             margin: 10px 0;
-            padding: 10px;
-            border-radius: 5px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
 
         strong {
             color: #007bff;
+            font-weight: 600;
         }
 
         .dropdown {
-            position: absolute;
-            top: 0;
-            right: 50px;
+            position: relative;
             cursor: pointer;
-            padding: 5px;
+            color: #007bff;
+            font-size: 20px;
         }
 
         .dropdown-content {
@@ -54,46 +89,66 @@
             position: absolute;
             background-color: #f9f9f9;
             right: 0;
-            min-width: 160px;
+            min-width: 200px;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            overflow: hidden;
             z-index: 1;
         }
 
         .dropdown-content button {
             width: 100%;
-            padding: 8px;
+            padding: 10px;
             text-align: left;
             border: none;
             background: none;
             cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.2s;
         }
 
         .dropdown-content button:hover {
-            background-color: #ddd;
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .action-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .dropdown-content {
+                right: auto;
+                left: 0;
+            }
         }
     </style>
 </head>
 <body>
     <h1>Commands List</h1>
-    <h1>Count : {{count}}</h1>
+    <h1>Count: {{ count }}</h1>
     <div class="action-buttons">
         <button onclick="addnew()">Add</button>
-        <button onclick="clearr()">Clear all</button>
-        <button onclick="createcmd()">Create cmd</button>
-
-
+        <button onclick="clearr()">Clear All</button>
+        <button onclick="createcmd()">Create Command</button>
     </div>
     <ul>
         {% for command in cmds_queue %}
             <li>
-                <strong>Video Name:</strong> {{ extract_save_name(command) }}<br>
-                <div class="dropdown" onclick="toggleDropdown(this)">
+                <div>
+                    <strong>Video Name:</strong> {{ extract_save_name(command) }}
+                </div>
+                <div class="dropdown">
                     &#9660;
                     <div class="dropdown-content">
                         <button onclick="showFullCommand('{{ command }}')">Show Full Command</button>
-                                
                         <button onclick="confirmDelete('{{ command }}')">Delete</button>
-
+                        <button onclick="Download('{{ command }}')">Download</button>
                     </div>
                 </div>
             </li>
@@ -110,7 +165,6 @@
 
         function showFullCommand(command) {
             alert(command);
-            console.log("show");
         }
 
         function confirmDelete(command) {
@@ -119,29 +173,32 @@
                 window.location.href = "/deletecmd?command=" + encodeURIComponent(command);
             }
         }
-        
+
         function Download(command) {
-            var confirmDelete = window.confirm("Are you sure you want to download and upload this video to storj?");
-            if (confirmDelete) {
+            var confirmDownload = window.confirm("Are you sure you want to download and upload this video to Storj?");
+            if (confirmDownload) {
                 window.location.href = "/downloadsingle?command=" + encodeURIComponent(command);
             }
         }
 
         function downloadall() {
-            var confirmDelete = window.confirm("Are you sure you want to download and upload all the videos below to storj?");
-            if (confirmDelete) {
+            var confirmDownloadAll = window.confirm("Are you sure you want to download and upload all videos?");
+            if (confirmDownloadAll) {
                 window.location.href = "/downloadall";
             }
         }
+
         function clearr() {
-            var confirmDelete = window.confirm("Are you sure you want to clear all the list?");
-            if (confirmDelete) {
+            var confirmClear = window.confirm("Are you sure you want to clear the list?");
+            if (confirmClear) {
                 window.location.href = "/clear";
             }
         }
+
         function addnew() {
             window.location.href = "/addcmd";
         }
+
         function createcmd() {
             window.location.href = "/createcmd";
         }
