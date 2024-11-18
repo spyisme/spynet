@@ -649,7 +649,11 @@ def commandslist():
     def extract_save_name(command):
         if command.startswith("python"):
             if "sprouts" not in command:
-                return command.split(' ')[3]
+                try :
+                    return command.split(' ')[3]
+                except :
+                    save_name_match = "Unknown video"
+                    return save_name_match
             else:
                 save_name_match = "Tamer-El-Kady video"
                 return save_name_match
