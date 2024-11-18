@@ -199,6 +199,7 @@
         <button onclick="clearr()">Clear All</button>
         <button onclick="createcmd()">Create Command</button>
     </div>
+    <hr>
     {%if cmds_queue%}
     <ul>
         {% for command in cmds_queue %}
@@ -219,6 +220,7 @@
         {% endfor %}
     </ul>
     {%else%}
+    <br><br>
 <h1>Add Commands to see them here</h1>
     {%endif%}
 
