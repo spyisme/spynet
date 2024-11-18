@@ -647,20 +647,19 @@ def skillshare():
 def commandslist():
 
     def extract_save_name(command):
-        if command.startswith("python"):
-            if "sprouts" not in command:
-                try :
-                    return command.split(' ')[3]
-                except :
-                    save_name_match = "Unknown video"
-                    return save_name_match
-            else:
-                save_name_match = "Tamer-El-Kady video"
+        if command.startswith("python"): #Iframe commands
+
+            try :
+                return command.split(' ')[3]
+            except :
+                save_name_match = "Command has no name"
                 return save_name_match
-        elif command.startswith("yt-dlp"):
+
+        elif command.startswith("yt-dlp"): #yt-dlp commands
             return command.split(' ')[7]
 
-        else:
+        else: #app.exe normal commands
+
             save_name_match = re.search(r'--save-name\s+(\S+)', command)
             match = re.search(r'--save-name\s*"([^"]+)"', command)
             if match:
@@ -669,7 +668,13 @@ def commandslist():
                 return save_name_match.group(1)
             else:
                 return "Command has no name"
-
+    def commandtype(command):
+        if command.startswith("python"): #Iframe commands
+            return "Iframe Video"
+        elif command.startswith("app"):
+            return "DRM Video"
+        elif command.startswith("yt-"):
+            return "Youtube Video"
     # Read commands from the file
     with open('list.txt', 'r') as file:
         cmds_from_file = [line.strip() for line in file if line.strip()]
@@ -677,7 +682,8 @@ def commandslist():
     return render_template("backend_pages/list.html",
                            count=len(cmds_from_file),
                            cmds_queue=cmds_from_file,
-                           extract_save_name=extract_save_name)
+                           extract_save_name=extract_save_name,
+                           commandtype = commandtype )
 
 
 @vdo.route('/deletecmd', methods=['GET'])
