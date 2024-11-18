@@ -5,6 +5,95 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            color: #333;
+            margin-top: 50px;
+            font-size: 2rem;
+        }
+
+        form {
+            margin-top: 20px;
+            background: #ffffff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        input {
+            width: 300px;
+            padding: 10px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #results {
+            margin-top: 30px;
+            background: #ffffff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        #results p {
+            margin: 5px 0;
+            font-size: 1rem;
+            color: #555;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: #ddd;
+        }
+
+        @media (max-width: 768px) {
+            input {
+                width: 80%;
+                margin-bottom: 10px;
+            }
+
+            button {
+                width: 100%;
+            }
+
+            form {
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 <body>
     <h1>Search by ID or Phone Number</h1>
@@ -29,9 +118,9 @@
                         if (response.length > 0) {
                             response.forEach(item => {
                                 resultsDiv.append(
-                                    `<p>Name: ${item.Name}</p>
-                                     <p>Email: ${item.Email}</p>
-                                     <p>Phone Number: ${item.Number}</p><hr>`
+                                    `<p><strong>Name:</strong> ${item.Name}</p>
+                                     <p><strong>Email:</strong> ${item.Email}</p>
+                                     <p><strong>Phone Number:</strong> ${item.Number}</p><hr>`
                                 );
                             });
                         } else {
