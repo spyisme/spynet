@@ -148,7 +148,7 @@
                     <div class="dropdown-content">
                         <button onclick="showFullCommand('{{ command }}')">Show Full Command</button>
                         <button onclick="confirmDelete('{{ command }}')">Delete</button>
-                        <button onclick="Download('{{ command }}')">Download</button>
+
                     </div>
                 </div>
             </li>
@@ -174,19 +174,6 @@
             }
         }
 
-        function Download(command) {
-            var confirmDownload = window.confirm("Are you sure you want to download and upload this video to Storj?");
-            if (confirmDownload) {
-                window.location.href = "/downloadsingle?command=" + encodeURIComponent(command);
-            }
-        }
-
-        function downloadall() {
-            var confirmDownloadAll = window.confirm("Are you sure you want to download and upload all videos?");
-            if (confirmDownloadAll) {
-                window.location.href = "/downloadall";
-            }
-        }
 
         function clearr() {
             var confirmClear = window.confirm("Are you sure you want to clear the list?");
