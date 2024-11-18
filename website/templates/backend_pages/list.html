@@ -69,6 +69,15 @@
             <button class="cancel" onclick="closePopup('delete-popup')">Cancel</button>
         </div>
     </div>
+
+    <div class="popup-overlay" id="deletelist-popup">
+        <div class="popup">
+            <p id="delete-text"></p>
+            <button class="confirm" onclick="confirmDelete()">Yes, Delete</button>
+            <button class="cancel" onclick="closePopup('delete-popup')">Cancel</button>
+        </div>
+    </div>
+
     <div class="popup-overlay" id="show-popup">
         <div class="popup">
             <p id="command-text"></p>
@@ -129,7 +138,7 @@
 
             // Show confirmation popup
             document.getElementById('delete-text').innerText = `Are you sure you want to delete commands: ${selectedCommands.join(', ')}?`;
-            document.getElementById('delete-popup').style.display = 'flex';
+            document.getElementById('deletelist-popup').style.display = 'flex';
         }
 
         function confirmDelete() {
