@@ -174,8 +174,15 @@ strong {
     background-color: #1a73e8;
     color: #fff;
 }
-.select-command{
-    
+.command-container {
+    display: flex; /* Enable flexbox */
+    justify-content: space-between; /* Push items to the edges */
+    align-items: center; /* Vertically align items */
+    padding: 10px;
+}
+
+.select-command {
+    margin-left: auto; /* Push checkbox to the far right */
 }
 
 .popup .confirm:hover {
