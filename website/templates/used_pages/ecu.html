@@ -9,16 +9,17 @@
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f9;
+            color: #333;
             margin: 0;
             padding: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
+            transition: background-color 0.3s, color 0.3s;
         }
 
         h1 {
-            color: #333;
             margin-top: 50px;
             font-size: 2rem;
         }
@@ -30,6 +31,7 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, border-color 0.3s;
         }
 
         input {
@@ -65,12 +67,12 @@
             width: 80%;
             max-width: 600px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, border-color 0.3s;
         }
 
         #results p {
             margin: 5px 0;
             font-size: 1rem;
-            color: #555;
         }
 
         hr {
@@ -79,23 +81,50 @@
             background: #ddd;
         }
 
-        @media (max-width: 768px) {
-            input {
-                width: 80%;
-                margin-bottom: 10px;
-            }
+        .dark-mode {
+            background-color: #1e1e2e;
+            color: #e4e4e7;
+        }
 
-            button {
-                width: 100%;
-            }
+        .dark-mode form {
+            background: #2e2e3e;
+            border-color: #444;
+        }
 
-            form {
-                text-align: center;
-            }
+        .dark-mode #results {
+            background: #2e2e3e;
+            border-color: #444;
+        }
+
+        .dark-mode button {
+            background-color: #4a90e2;
+        }
+
+        .dark-mode button:hover {
+            background-color: #3a7bd5;
+        }
+
+        .toggle-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background-color 0.3s;
+        }
+
+        .toggle-btn:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
+    <button class="toggle-btn" id="toggle-dark-mode">Toggle Dark Mode</button>
     <h1>Search by ID or Phone Number</h1>
     <form id="search-form">
         <input type="text" id="query" name="query" placeholder="Enter ID or Phone Number" required>
@@ -128,6 +157,12 @@
                         }
                     }
                 });
+            });
+
+            // Dark mode toggle functionality
+            const toggleButton = $('#toggle-dark-mode');
+            toggleButton.on('click', function() {
+                $('body').toggleClass('dark-mode');
             });
         });
     </script>
