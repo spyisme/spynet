@@ -704,7 +704,7 @@ def addtolist():
             if checkbox :
                 with open('list.txt', 'r') as file:
                     cmds_from_file = [line.strip() for line in file if line.strip()]
-                userinput = f'yt-dlp.exe "{userinput}" --cookies-from-browser chrome -f b -o "output/randomname{len(cmds_from_file)}.mp4" '
+                userinput = f'yt-dlp -f "bv+ba" --cookies ./cookies.txt --merge-output-format mp4 {userinput}'
 
             with open('list.txt', 'a') as file:
                 file.write(userinput + '\n')
