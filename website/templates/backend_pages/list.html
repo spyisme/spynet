@@ -38,11 +38,13 @@
     <ul>
         {% for command in cmds_queue %}
         <li>
-            <div>
-                <input type="checkbox" class="select-command" data-line="{{ loop.index }}"><br>
+            <div class="command-container">
+        
                 <strong>Video Name:</strong> {{ extract_save_name(command) }}
                 <br>
                 <strong>Video Type:</strong> {{ commandtype(command) }}
+
+                <input type="checkbox" class="select-command" data-line="{{ loop.index }}">
             </div>
         </li>
         {% endfor %}
