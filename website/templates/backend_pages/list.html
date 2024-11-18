@@ -45,7 +45,7 @@
                 <strong>Video Type:</strong> {{ commandtype(command) }}
             </div>
             <div class="dropdown" onclick="toggleDropdown(event)">
-                <input type="checkbox" class="checkboxx" data-line="{{ loop.index }}">
+                <input type="checkbox" class="select-command" data-line="{{ loop.index }}">
                 <span class="arrow">&#9660;</span>
                 <div class="dropdown-content">
                     <button onclick="openShowPopup('{{ command }}')">Show Full Command</button>
