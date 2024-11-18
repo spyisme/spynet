@@ -2202,3 +2202,26 @@ def english_assignment():
             return render_template("used_pages/english_assignment_error.html")
     return render_template("used_pages/english_assignment.html")
 
+
+
+
+
+@views.route('/search', methods=['POST'])
+def search():
+    query = request.form.get('query')
+    results = []
+    with open('website/static/ECU24.json', 'r') as f:
+        data2 = json.load(f)
+    for entry in data2:
+        email_id = entry['Email'].split('@')[0]
+        if query == email_id or query == entry['Number']:
+            results.append({
+                'Name': entry['Name'],
+                'Email': entry['Email'],
+                'Number': entry['Number']
+            })
+    return jsonify(results)
+
+@views.route('/ecu')
+def ecusearch():
+    return render_template('used_pages/ecu.html')
