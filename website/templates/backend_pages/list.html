@@ -86,7 +86,6 @@
 
         .dropdown-content {
             display: none;
-            position: absolute;
             background-color: #222;
             right: 0;
             min-width: 200px;
@@ -169,6 +168,12 @@
         }
 
         /* Responsive styles */
+        @media (min-width: 800px) {
+
+            .dropdown-content {
+                position: absolute;
+            }
+        }
         @media (max-width: 768px) {
             .action-buttons {
                 flex-direction: column;
@@ -176,7 +181,6 @@
             }
 
             .dropdown-content {
-                position: none;
                 left: 0;
             }
         }
