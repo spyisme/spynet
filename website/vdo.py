@@ -688,17 +688,25 @@ def commandslist():
 
 @vdo.route('/deletecmd', methods=['GET'])
 def delete_command():
-    command_to_delete = request.args.get('command')
+    line_number = request.args.get('line', type=int)  # Get the line number as an integer
+
+    if line_number is None:
+        return "Line number not provided", 400  # Bad Request if no line number is provided
 
     with open('list.txt', 'r') as file:
         lines = file.readlines()
 
+    if line_number < 1 or line_number > len(lines):
+        return f"Invalid line number: {line_number}. Must be between 1 and {len(lines)}.", 400
+
+    # Remove the specified line (subtract 1 because line_number is 1-based)
+    del lines[line_number - 1]
+
     with open('list.txt', 'w') as file:
-        for line in lines:
-            if line.strip() != command_to_delete:
-                file.write(line)
+        file.writelines(lines)
 
     return redirect(url_for('vdo.commandslist'))
+
 
 
 @vdo.route("/addcmd", methods=['GET', 'POST'])
