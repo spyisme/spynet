@@ -152,6 +152,27 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
         }
 
+        .popup input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #555;
+            border-radius: 5px;
+            background-color: #333;
+            color: #ddd;
+        }
+
+        .popup label {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .popup input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
         .popup button {
             margin: 10px 5px;
             padding: 10px 20px;
@@ -162,12 +183,12 @@
         }
 
         .popup .confirm {
-            background-color: #d9534f;
+            background-color: #1a73e8;
             color: #fff;
         }
 
         .popup .confirm:hover {
-            background-color: #c9302c;
+            background-color: #135cb7;
         }
 
         .popup .cancel {
@@ -200,6 +221,21 @@
         <button onclick="createcmd()">Create Command</button>
     </div>
     <hr>
+        <!-- Add Command Popup -->
+        <div class="popup-overlay" id="add-popup">
+            <div class="popup">
+                <h2>Add Command</h2>
+                <form id="add-command-form" method="POST" action="/addcmd">
+                    <input type="text" name="userinput" placeholder="Enter command" required />
+                    <label>
+                        <input type="checkbox" name="checkbox" />
+                        Checkbox option
+                    </label>
+                    <button type="submit" class="confirm">Submit</button>
+                    <button type="button" class="cancel" onclick="closePopup('add-popup')">Cancel</button>
+                </form>
+            </div>
+        </div>
     {%if cmds_queue%}
     <ul>
         {% for command in cmds_queue %}
@@ -299,6 +335,9 @@
         function createcmd() {
             window.open("/createcmd", '_blank');
         }
+        function addnew() {
+    document.getElementById('add-popup').style.display = 'flex';
+}
     </script>
 </body>
 </html>
