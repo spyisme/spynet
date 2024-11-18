@@ -188,8 +188,7 @@
             }
         }
     </style>
-</head>
-<body>
+</head><body>
     <h1>Commands List</h1>
     <h1>Number of videos : {{ count }}</h1>
     <div class="action-buttons">
@@ -203,12 +202,12 @@
                 <div>
                     <strong>Video Name:</strong> {{ extract_save_name(command) }}
                     <br>
-                    <strong>Video Type:</strong> {{commandtype(command)}}
+                    <strong>Video Type:</strong> {{ commandtype(command) }}
                 </div>
                 <div class="dropdown">
                     &#9660;
                     <div class="dropdown-content">
-                        <button onclick="showFullCommand('{{ command }}')">Show Full Command</button>
+                        <button onclick="openShowPopup('{{ command }}')">Show Full Command</button>
                         <button onclick="openDeletePopup('{{ command }}')">Delete</button>
                     </div>
                 </div>
@@ -216,39 +215,47 @@
         {% endfor %}
     </ul>
 
-    <!-- Popup Overlay -->
+    <!-- Delete Popup Overlay -->
     <div class="popup-overlay" id="delete-popup">
         <div class="popup">
             <p>Are you sure you want to delete this command?</p>
             <button class="confirm" onclick="confirmDeleteCommand()">Yes, Delete</button>
-            <button class="cancel" onclick="closeDeletePopup()">Cancel</button>
+            <button class="cancel" onclick="closePopup('delete-popup')">Cancel</button>
+        </div>
+    </div>
+
+    <!-- Show Command Popup Overlay -->
+    <div class="popup-overlay" id="show-popup">
+        <div class="popup">
+            <p id="command-text"></p>
+            <button class="cancel" onclick="closePopup('show-popup')">Close</button>
         </div>
     </div>
 
     <script>
         let currentCommand = null;
 
-        function toggleDropdown(dropdown) {
-            var content = dropdown.querySelector('.dropdown-content');
-            if (content) {
-                content.style.display = (content.style.display === "block") ? "none" : "block";
-            }
+        // Opens the Show Command Popup
+        function openShowPopup(command) {
+            document.getElementById('command-text').innerText = `Full Command: ${command}`;
+            document.getElementById('show-popup').style.display = 'flex';
         }
 
-        function showFullCommand(command) {
-            alert(command);
-        }
-
+        // Opens the Delete Popup
         function openDeletePopup(command) {
             currentCommand = command;
             document.getElementById('delete-popup').style.display = 'flex';
         }
 
-        function closeDeletePopup() {
-            document.getElementById('delete-popup').style.display = 'none';
-            currentCommand = null;
+        // Closes a given popup
+        function closePopup(popupId) {
+            document.getElementById(popupId).style.display = 'none';
+            if (popupId === 'delete-popup') {
+                currentCommand = null;
+            }
         }
 
+        // Confirms deletion of the command
         function confirmDeleteCommand() {
             if (currentCommand) {
                 window.location.href = "/deletecmd?command=" + encodeURIComponent(currentCommand);
