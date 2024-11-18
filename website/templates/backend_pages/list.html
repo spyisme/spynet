@@ -65,7 +65,7 @@
     <div class="popup-overlay" id="delete-popup">
         <div class="popup">
             <p id="delete-text"></p>
-            <button class="confirm" onclick="confirmDelete()">Yes, Delete</button>
+            <button class="confirm" onclick="confirmDelete2()">Yes, Delete</button>
             <button class="cancel" onclick="closePopup('delete-popup')">Cancel</button>
         </div>
     </div>
@@ -82,7 +82,7 @@
             document.getElementById('delete-text').innerText = `Are you sure you want to delete command #${lineNumber}?`;
             document.getElementById('delete-popup').style.display = 'flex';
         }
-        function confirmDelete() {
+        function confirmDelete2() {
             if (currentLineNumber) {
                 window.location.href = `/deletecmd?line=${currentLineNumber}`;
             }
