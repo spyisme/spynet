@@ -672,7 +672,7 @@ def commandslist():
         if command.startswith("python"): #Iframe commands
             return "Iframe Video"
         elif command.startswith("app"):
-            return "DRM Video"
+            return "DRM Video&nbsp&nbsp&nbsp&nbsp"
         elif command.startswith("yt-"):
             return "Youtube Video"
     # Read commands from the file
