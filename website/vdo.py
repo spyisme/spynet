@@ -670,9 +670,9 @@ def commandslist():
                 return "Command has no name"
     def commandtype(command):
         if command.startswith("python"): #Iframe commands
-            return "Iframe Video‎ "
+            return "Iframe Video"
         elif command.startswith("app"):
-            return "DRM Video‎‎‎‎"
+            return "DRM Video"
         elif command.startswith("yt-"):
             return "Youtube Video"
     # Read commands from the file
