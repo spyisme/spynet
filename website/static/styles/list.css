@@ -85,6 +85,16 @@ strong {
     display: flex;
     font-size: 20px;
 }
+.dropdown2{
+    position: relative;
+    cursor: pointer;
+    color: #1a73e8;
+    align-items: center;
+    gap: 5px; /* Space between checkbox and dropdown */
+
+    display: flex;
+    font-size: 20px;
+}
 
 
 .dropdown-content {
