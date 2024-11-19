@@ -165,6 +165,17 @@ strong {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
 }
 
+
+.popup2 {
+    background-color: #222;
+    color: #ddd;
+    width: 400px;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+}
+
 .popup input[type="text"] {
     width: 100%;
     padding: 10px;

@@ -21,17 +21,37 @@
     </div>
     <hr>
     <div class="popup-overlay" id="add-popup">
-        <div class="popup">
+        <div class="popup2">
             <h2>Add Command</h2>
             <form id="add-command-form" method="POST" action="/addcmd">
                 <input type="text" name="userinput" placeholder="Enter command" required />
+                
+                <!-- Container for the additional input box -->
+                <div id="video-name-container" style="display: none;">
+                    <input type="text" name="videoname" placeholder="Enter video name" />
+                </div>
+                
                 <label>
-                    <input type="checkbox" name="checkbox" />
+                    <input type="checkbox" name="checkbox" id="youtube-checkbox" />
                     Youtube link?
                 </label>
+                
                 <button type="submit" class="confirm">Submit</button>
                 <button type="button" class="cancel" onclick="closePopup('add-popup')">Cancel</button>
             </form>
+            
+            <script>
+                // JavaScript to handle the checkbox toggle
+                document.getElementById('youtube-checkbox').addEventListener('change', function () {
+                    const videoNameContainer = document.getElementById('video-name-container');
+                    if (this.checked) {
+                        videoNameContainer.style.display = 'block'; // Show the input box
+                    } else {
+                        videoNameContainer.style.display = 'none'; // Hide the input box
+                    }
+                });
+            </script>
+            
         </div>
     </div>
     {%if cmds_queue%}
