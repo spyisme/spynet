@@ -60,10 +60,16 @@ li {
     align-items: center;
     justify-content: space-between;
 }
-li .select-command {
-    position: fixed;
 
+
+
+.select-command {
+    position: relative; /* Or remove this entirely */
+    margin-right: 10px; /* Adjust as needed for spacing */
+    display: inline-block;
+    vertical-align: middle; /* Aligns with text vertically */
 }
+
 strong {
     color: #1a73e8;
     font-weight: 600;
@@ -73,8 +79,13 @@ strong {
     position: relative;
     cursor: pointer;
     color: #1a73e8;
+    align-items: center;
+    gap: 5px; /* Space between checkbox and dropdown */
+
+    display: flex;
     font-size: 20px;
 }
+
 
 .dropdown-content {
     opacity: 0;
