@@ -64,8 +64,6 @@ li {
     position: fixed;
     top: 10px; /* Distance from the top of the viewport */
     right: 10px; /* Distance from the right of the viewport */
-    /* Add optional styles */
-    z-index: 1000; /* Ensures it stays on top of other elements */
 }
 strong {
     color: #1a73e8;
