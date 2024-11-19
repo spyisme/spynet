@@ -81,7 +81,7 @@ strong {
     color: #1a73e8;
     align-items: center;
     gap: 5px; /* Space between checkbox and dropdown */
-
+    user-select: none;
     display: flex;
     font-size: 20px;
 }
