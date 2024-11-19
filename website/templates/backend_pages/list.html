@@ -48,7 +48,7 @@
 
                 <div class="dropdown" onclick="toggleDropdown(event)">
  
-                     <span class="arrow" >&#9660;</span>
+                     <span class="arrow" unselectable="on" >&#9660;</span>
                      <div class="dropdown-content">
                         <button onclick="openShowPopup('{{ command }}')">Show Full Command</button>
                         <button onclick="showDeleteConfirmation({{ loop.index }})">Delete</button>
