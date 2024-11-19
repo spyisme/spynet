@@ -62,8 +62,7 @@ li {
 }
 li .select-command {
     position: fixed;
-    top: 10px; /* Distance from the top of the viewport */
-    right: 10px; /* Distance from the right of the viewport */
+
 }
 strong {
     color: #1a73e8;
