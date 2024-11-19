@@ -657,7 +657,7 @@ def commandslist():
 
         elif command.startswith("yt-dlp"): #yt-dlp commands
             commandsplit= command.split(' ')[9]
-            command = commandsplit.split('/')[1]
+            command = commandsplit.split('/')[2]
             return command
 
         else: #app.exe normal commands
