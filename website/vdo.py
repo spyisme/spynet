@@ -656,7 +656,9 @@ def commandslist():
                 return save_name_match
 
         elif command.startswith("yt-dlp"): #yt-dlp commands
-            return command.split(' ')[7]
+            commandsplit= command.split(' ')[9]
+            command = commandsplit.split('/')[1]
+            return command
 
         else: #app.exe normal commands
 
@@ -734,12 +736,14 @@ def addtolist():
     if request.method == 'POST':
         userinput = request.form['userinput']
         checkbox = request.form.get('checkbox')
+        videoname = request.form['videoname']
+
 
         if "youtu" in userinput :
             if checkbox :
                 with open('list.txt', 'r') as file:
                     cmds_from_file = [line.strip() for line in file if line.strip()]
-                userinput = f'yt-dlp -f "bv+ba" --cookies ./cookies.txt --merge-output-format mp4 {userinput}'
+                userinput = f'yt-dlp -f "bv+ba" --cookies ./cookies.txt --merge-output-format mp4 {userinput} -o ./output/{videoname}.mp4'
 
             with open('list.txt', 'a') as file:
                 file.write(userinput + '\n')
