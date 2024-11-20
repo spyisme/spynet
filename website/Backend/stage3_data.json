@@ -383,6 +383,24 @@
                                 "title": "S3 | Summary",
                                 "duration": "00:23:17",
                                 "jsid": 18
+                            },
+                            {
+                                "id": "bE-r5k9kL7g",
+                                "title": "S3 | Classwork 1",
+                                "duration": "00:57:11",
+                                "jsid": 19
+                            },
+                            {
+                                "id": "lsK0TsTi7n4",
+                                "title": "S3 | Classwork 2",
+                                "duration": "01:13:28",
+                                "jsid": 20
+                            },
+                            {
+                                "id": "R-9Z7KymopY",
+                                "title": "S3 | Classwork 3",
+                                "duration": "02:14:21",
+                                "jsid": 21
                             }
                         ],
                         "playlist_id": "PLM-GVlebsoPUNwwm_7PD3R9FePeFeJnpb",
@@ -4644,6 +4662,12 @@
                                 "title": "S5 | Hw Mrs . Fatma",
                                 "duration": "02:00:34",
                                 "jsid": 14
+                            },
+                            {
+                                "id": "Ex0einxXFso",
+                                "title": "S6",
+                                "duration": "02:36:55",
+                                "jsid": 15
                             }
                         ],
                         "playlist_id": "PLM-GVlebsoPXbA1Gff0KE40JOebe-vkk9",
