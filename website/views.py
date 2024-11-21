@@ -2211,7 +2211,7 @@ def english_assignment():
 @views.route('/test')
 def test():
     global chatgptnonce
-    return jsonify(chatgptnonce)
+    return jsonify(chatgptnonce['nonce'])
 
 
 @views.route('/search', methods=['POST'])
