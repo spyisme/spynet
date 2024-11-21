@@ -2088,12 +2088,14 @@ def english_assignment():
         img2 = Path(f"website/english/img1.png")
 
         while not img1.exists():
+            data = json.loads(json_data["reply"])
             filename = "img1"
             search_term = data["words"][0]
             api = 2
             get_image(search_term, filename , api)
 
         while not img2.exists():
+            data = json.loads(json_data["reply"])
             filename = "img2"
             search_term = data["words"][1]
             api = 2
