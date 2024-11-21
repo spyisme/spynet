@@ -1799,15 +1799,15 @@ def english_assignment():
         quality = request.form.get('quality')
 
         if current_user.is_authenticated:
-            file_name = f"EnglishPDF{random.randint(100,200)}"
+            file_name = f"EnglishPDF"
             copyrights= ""
-            discord_log_english(f"{current_user.username} -- Making pdf for {name_and_id} with words {words} ip = {client_ip} <@709799648143081483>")
+            discord_log_english(f"{current_user.username} -- Making pdf for {name_and_id} with words {words} , api = {api} , quality = {quality} , ip = {client_ip} <@709799648143081483>")
 
         else :
             copyrights = "Made By Spy"
             api = "2"
             file_name = f"EnglishPDF"
-            discord_log_english(f"Not logged -- Making pdf for {name_and_id} with words {words} ip = {client_ip} <@709799648143081483>")
+            discord_log_english(f"Not logged -- Making pdf for {name_and_id} with words {words} api = {api} , quality = {quality} , ip = {client_ip} <@709799648143081483>")
 
     
 
