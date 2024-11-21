@@ -1938,7 +1938,7 @@ def english_assignment():
                     'timestamp': 1,
                 },
             ],
-            'newMessage': f'{words}',
+            'newMessage': f'Use the words : "{words}"',
             'newFileId': None,
             'stream': False,
         }
