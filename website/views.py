@@ -2090,7 +2090,7 @@ def english_assignment():
         while not img1.exists():
             data = json.loads(json_data["reply"])
             filename = "img1"
-            search_term = data["words"][0]
+            search_term = data["words"][0]["Search"]
 
             return search_term
             api = 2
