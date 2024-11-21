@@ -1969,11 +1969,12 @@ def english_assignment():
 
         json_data = response.json()
 
-        return f"{response.status_code}"
         # print(json_data["reply"])
         elapsed_time = time.time() - start_time
 
         discord_log_english(f"Got Chatgpt's reply Took {elapsed_time:.2f} seconds")
+        
+        return f"{response.status_code}"
 
         data = json.loads(json_data["reply"])
         for i, word in enumerate(data["words"], start=1):
