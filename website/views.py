@@ -1787,15 +1787,8 @@ def english_assignment():
 
     if request.method == "POST":
 
-        # user = request.form.get('deviceId')
-        
-        # target_socket_id = user_socket_map[user]
-
-        # socketio.emit('msg', "Sent" , room=target_socket_id)
-
-        # return user_socket_map
-
         words = request.form.get('words')
+
         name_and_id = request.form.get('name')
 
         api = request.form.get('api')
@@ -1814,11 +1807,9 @@ def english_assignment():
 
         def get_image(query , name , api):
             img = Path(f"website/english/{name}.png")
-
             # while img.exists():
             # API 1 = sera 2 = upsplash 3 = google search
             discord_log_english(f"Getting image for : {query} using api {api}")
-
             if api == "1" :
                 url = f"https://serpapi.com/search.json?engine=google_images&ijn=0&api_key=da75049319abb43ed97ac5e729c1e1cac35280e3d214de6962674b7c0dc9d09a&q={query}"
                 start_time = time.time()
@@ -1938,7 +1929,7 @@ def english_assignment():
 
         json_data = response.json()
 
-        nonce = json_data["restNonce"]
+        nonce = "wrong"
 
         elapsed_time = time.time() - start_time
 
@@ -1978,7 +1969,7 @@ def english_assignment():
 
         json_data = response.json()
 
-
+        return response.status_code
         # print(json_data["reply"])
         elapsed_time = time.time() - start_time
 
