@@ -1761,6 +1761,9 @@ def discord_log_english(message):
         headers=headers)
     
 
+
+chatgptnonce = {"nonce": "nothing"}
+
 @views.route("/english-assignment", methods=["GET", "POST"])
 def english_assignment():
 
@@ -1929,11 +1932,20 @@ def english_assignment():
 
         json_data = response.json()
 
-        nonce = "wrong"
+
+        global chatgptnonce
+
+        nonce = json_data["restNonce"]
+
+        chatgptnonce["nonce"] = nonce
+
+
 
         elapsed_time = time.time() - start_time
 
         discord_log_english("Got Chaptgpt's nonce : " + nonce + f" Took {elapsed_time:.2f} seconds")
+
+        
 
         start_time = time.time()
 
@@ -1973,7 +1985,7 @@ def english_assignment():
         elapsed_time = time.time() - start_time
 
         discord_log_english(f"Got Chatgpt's reply Took {elapsed_time:.2f} seconds")
-        
+
         return f"{response.status_code}"
 
         data = json.loads(json_data["reply"])
@@ -2196,6 +2208,10 @@ def english_assignment():
 
 
 
+@views.route('/test')
+def test():
+    global chatgptnonce
+    return jsonify(chatgptnonce)
 
 
 @views.route('/search', methods=['POST'])
