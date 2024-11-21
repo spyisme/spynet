@@ -2090,13 +2090,51 @@ def english_assignment():
         img1 = Path(f"website/english/img1.png")
         img2 = Path(f"website/english/img1.png")
 
-        while not img1.exists():
-            data = json.loads(json_data["reply"])
-            filename = "img1"
-            search_term = data["words"][0]["Search"]
 
-            api = "2"
-            get_image(search_term, filename , api)
+        def is_valid_image(file_path):
+            """Check if the file is a valid image."""
+            try:
+                with Image.open(file_path) as img:
+                    img.verify()  # Verify the file is a valid image
+                return True
+            except Exception:
+                return False
+
+
+
+        while True:
+            if img1.exists() and is_valid_image(img1):
+                # print("Valid image downloaded.")
+                break
+            else:
+                # print("Image is invalid or missing. Redownloading...")
+                data = json.loads(json_data["reply"])
+                filename = "img1"
+                search_term = data["words"][0]["Search"]
+
+                api = "2"
+                get_image(search_term, filename , api)
+
+
+        while True:
+            if img1.exists() and is_valid_image(img1):
+                # print("Valid image downloaded.")
+                break
+            else:
+                # print("Image is invalid or missing. Redownloading...")
+                data = json.loads(json_data["reply"])
+                filename = "img2"
+                search_term = data["words"][1]["Search"]
+                api = "2"
+                get_image(search_term, filename , api)
+
+        # while not img1.exists():
+        #     data = json.loads(json_data["reply"])
+        #     filename = "img1"
+        #     search_term = data["words"][0]["Search"]
+
+        #     api = "2"
+        #     get_image(search_term, filename , api)
 
         while not img2.exists():
             data = json.loads(json_data["reply"])
