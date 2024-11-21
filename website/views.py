@@ -2205,8 +2205,9 @@ def english_assignment():
 
             discord_log_english(f"Took {elapsed_time2:.2f} seconds total.")
 
-            main_image.show()
-            main_image.save(f"./website/static/english/{file_name}.png")
+            if image.mode in ("RGBA", "P"):
+                image = image.convert("RGB")
+            main_image.save(f"./website/static/english/{file_name}.pdf" , "PDF", resolution=100.0)
             # main_image.save("C:/Users/Spy/Desktop/English/filled_word_wizard_with_images.png")
 
         if quality == "high" :
