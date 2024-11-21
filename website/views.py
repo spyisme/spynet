@@ -1918,73 +1918,110 @@ def english_assignment():
 
         global_start_time = time.time()
 
-        start_time = time.time()
+        try :
+            global chatgptnonce
+            nonce = chatgptnonce['nonce']
+            start_time = time.time()
 
-        headers = {
-            'accept': '*/*',
-            'content-type': 'application/json',
-            'origin': 'https://masrgpt.com',
-            'referer': 'https://masrgpt.com/chatgpt/',
+            headers = {
+                'Accept': '*/*',
+                'Connection': 'keep-alive',
+                'Content-Type': 'application/json',
+                'X-WP-Nonce': nonce,
+            }
 
-        }
+            json_data = {
+                'botId': 'default',
+                'customId': None,
+                'session': 'N/A',
+                'chatId': '1',
+                'contextId': 1,
+                'messages': [
+                    {
+                        'id': '',
+                        'role': 'assistant',
+                        'content': f'{prompt}',
+                        'who': 'AI: ',
+                        'timestamp': 1,
+                    },
+                ],
+                'newMessage': f'{words}',
+                'newFileId': None,
+                'stream': False,
+            }
 
-        response = requests.post('https://masrgpt.com/wp-json/mwai/v1/start_session', headers=headers)
+            response = requests.post('https://masrgpt.com/wp-json/mwai-ui/v1/chats/submit', headers=headers, json=json_data)
 
-        json_data = response.json()
+            json_data = response.json()
 
+            # print(json_data["reply"])
+            elapsed_time = time.time() - start_time
 
-        global chatgptnonce
+            discord_log_english(f"Got Chatgpt's reply Took {elapsed_time:.2f} seconds")
 
-        nonce = json_data["restNonce"]
+        except response.status_code != 200 :
+            start_time = time.time()
 
-        chatgptnonce["nonce"] = nonce
+            headers = {
+                'accept': '*/*',
+                'content-type': 'application/json',
+                'origin': 'https://masrgpt.com',
+                'referer': 'https://masrgpt.com/chatgpt/',
 
+            }
 
+            response = requests.post('https://masrgpt.com/wp-json/mwai/v1/start_session', headers=headers)
 
-        elapsed_time = time.time() - start_time
-
-        discord_log_english("Got Chaptgpt's nonce : " + nonce + f" Took {elapsed_time:.2f} seconds")
-
-        
-
-        start_time = time.time()
-
-        headers = {
-            'Accept': '*/*',
-            'Connection': 'keep-alive',
-            'Content-Type': 'application/json',
-            'X-WP-Nonce': nonce,
-        }
-
-        json_data = {
-            'botId': 'default',
-            'customId': None,
-            'session': 'N/A',
-            'chatId': '1',
-            'contextId': 1,
-            'messages': [
-                {
-                    'id': '',
-                    'role': 'assistant',
-                    'content': f'{prompt}',
-                    'who': 'AI: ',
-                    'timestamp': 1,
-                },
-            ],
-            'newMessage': f'{words}',
-            'newFileId': None,
-            'stream': False,
-        }
-
-        response = requests.post('https://masrgpt.com/wp-json/mwai-ui/v1/chats/submit', headers=headers, json=json_data)
+            json_data = response.json()
 
 
-        json_data = response.json()
+            global chatgptnonce
 
-        # print(json_data["reply"])
-        elapsed_time = time.time() - start_time
+            nonce = json_data["restNonce"]
 
-        discord_log_english(f"Got Chatgpt's reply Took {elapsed_time:.2f} seconds")
+            chatgptnonce["nonce"] = nonce
+
+            elapsed_time = time.time() - start_time
+
+            discord_log_english("Got Chaptgpt's nonce : " + nonce + f" Took {elapsed_time:.2f} seconds")
+
+
+            headers = {
+                'Accept': '*/*',
+                'Connection': 'keep-alive',
+                'Content-Type': 'application/json',
+                'X-WP-Nonce': nonce,
+            }
+
+            json_data = {
+                'botId': 'default',
+                'customId': None,
+                'session': 'N/A',
+                'chatId': '1',
+                'contextId': 1,
+                'messages': [
+                    {
+                        'id': '',
+                        'role': 'assistant',
+                        'content': f'{prompt}',
+                        'who': 'AI: ',
+                        'timestamp': 1,
+                    },
+                ],
+                'newMessage': f'{words}',
+                'newFileId': None,
+                'stream': False,
+            }
+
+            response = requests.post('https://masrgpt.com/wp-json/mwai-ui/v1/chats/submit', headers=headers, json=json_data)
+
+            json_data = response.json()
+
+            # print(json_data["reply"])
+            elapsed_time = time.time() - start_time
+
+            discord_log_english(f"Got Chatgpt's reply Took {elapsed_time:.2f} seconds")
+
 
         return f"{response.status_code}"
 
