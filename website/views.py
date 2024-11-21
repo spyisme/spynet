@@ -1918,49 +1918,48 @@ def english_assignment():
 
         global_start_time = time.time()
 
-        try :
-            global chatgptnonce
-            nonce = chatgptnonce['nonce']
-            start_time = time.time()
 
-            headers = {
-                'Accept': '*/*',
-                'Connection': 'keep-alive',
-                'Content-Type': 'application/json',
-                'X-WP-Nonce': nonce,
-            }
+        global chatgptnonce
+        nonce = chatgptnonce['nonce']
+        start_time = time.time()
 
-            json_data = {
-                'botId': 'default',
-                'customId': None,
-                'session': 'N/A',
-                'chatId': '1',
-                'contextId': 1,
-                'messages': [
-                    {
-                        'id': '',
-                        'role': 'assistant',
-                        'content': f'{prompt}',
-                        'who': 'AI: ',
-                        'timestamp': 1,
-                    },
-                ],
-                'newMessage': f'{words}',
-                'newFileId': None,
-                'stream': False,
-            }
+        headers = {
+            'Accept': '*/*',
+            'Connection': 'keep-alive',
+            'Content-Type': 'application/json',
+            'X-WP-Nonce': nonce,
+        }
 
-            response = requests.post('https://masrgpt.com/wp-json/mwai-ui/v1/chats/submit', headers=headers, json=json_data)
+        json_data = {
+            'botId': 'default',
+            'customId': None,
+            'session': 'N/A',
+            'chatId': '1',
+            'contextId': 1,
+            'messages': [
+                {
+                    'id': '',
+                    'role': 'assistant',
+                    'content': f'{prompt}',
+                    'who': 'AI: ',
+                    'timestamp': 1,
+                },
+            ],
+            'newMessage': f'{words}',
+            'newFileId': None,
+            'stream': False,
+        }
 
-            json_data = response.json()
+        response = requests.post('https://masrgpt.com/wp-json/mwai-ui/v1/chats/submit', headers=headers, json=json_data)
 
-            # print(json_data["reply"])
-            elapsed_time = time.time() - start_time
+        json_data = response.json()
 
-            discord_log_english(f"Got Chatgpt's reply Took {elapsed_time:.2f} seconds")
+        # print(json_data["reply"])
+        elapsed_time = time.time() - start_time
 
-        except response.status_code != 200 :
-            start_time = time.time()
+        discord_log_english(f"Got Chatgpt's reply Took {elapsed_time:.2f} seconds")
+
+        if response.status_code != 200 :
 
             headers = {
                 'accept': '*/*',
