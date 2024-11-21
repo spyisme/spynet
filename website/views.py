@@ -580,7 +580,8 @@ def check_username():
                 return jsonify(logout=True)
         
         return jsonify(logout=False)
-
+    else:
+        return ""
 #Home---------------------------------------------------------------------------------------------
 
 
