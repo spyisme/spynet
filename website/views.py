@@ -1813,7 +1813,7 @@ def english_assignment():
 
         def get_image(query , name , api):
             # API 1 = sera 2 = upsplash 3 = google search
-            discord_log_english(f"Getting image for : {query} using api {api}")
+            # discord_log_english(f"Getting image for : {query} using api {api}")
             if api == "1" :
                 url = f"https://serpapi.com/search.json?engine=google_images&ijn=0&api_key=da75049319abb43ed97ac5e729c1e1cac35280e3d214de6962674b7c0dc9d09a&q={query}"
                 start_time = time.time()
@@ -1836,7 +1836,7 @@ def english_assignment():
                         with open(f"./website/english/{name}.png", "wb") as file:
                             file.write(response.content)
                             elapsed_time = time.time() - start_time
-                            discord_log_english(f"Took {elapsed_time:.2f} seconds to load download {name}")
+                            # discord_log_english(f"Took {elapsed_time:.2f} seconds to download {name}")
                     else:
                         discord_log_english("No image results found.")
                 except requests.exceptions.RequestException as e:
@@ -1868,7 +1868,7 @@ def english_assignment():
                     with open(f"./website/english/{name}.png", "wb") as file:
                         file.write(response.content)    
                         elapsed_time = time.time() - start_time
-                        discord_log_english(f"Took {elapsed_time:.2f} seconds to load download {name}")
+                        # discord_log_english(f"Took {elapsed_time:.2f} seconds to download {name}")
             elif api == "3" :
                 start_time = time.time()
 
@@ -1902,7 +1902,7 @@ def english_assignment():
                 with open(f"./website/english/{name}.png", "wb") as file:
                         file.write(response.content)    
                         elapsed_time = time.time() - start_time
-                        discord_log_english(f"Took {elapsed_time:.2f} seconds to load download {name}")
+                        # discord_log_english(f"Took {elapsed_time:.2f} seconds to download {name}")
             else :
                 discord_log_english("Choose a valid api number")
                 print("exiting...")
@@ -1950,8 +1950,8 @@ def english_assignment():
         # print(json_data["reply"])
         elapsed_time = time.time() - start_time
 
-        if response.status_code == 200 :
-            discord_log_english(f"Got Chatgpt's reply Took {elapsed_time:.2f} seconds")
+        # if response.status_code == 200 :
+        #     discord_log_english(f"Got Chatgpt's reply Took {elapsed_time:.2f} seconds")
 
         #Get correct nonce
         if response.status_code != 200 :
@@ -1974,7 +1974,7 @@ def english_assignment():
 
             elapsed_time = time.time() - start_time
 
-            discord_log_english("Got Chaptgpt's nonce : " + nonce + f" Took {elapsed_time:.2f} seconds")
+            # discord_log_english("Got Chaptgpt's nonce : " + nonce + f" Took {elapsed_time:.2f} seconds")
 
 
             headers = {
@@ -2011,7 +2011,7 @@ def english_assignment():
             # print(json_data["reply"])
             elapsed_time = time.time() - start_time
 
-            discord_log_english(f"Got Chatgpt's reply Took {elapsed_time:.2f} seconds")
+            # discord_log_english(f"Got Chatgpt's reply Took {elapsed_time:.2f} seconds")
 
 
         data = json.loads(json_data["reply"])
@@ -2109,7 +2109,7 @@ def english_assignment():
         def make_image_final(name , max_font_size ,min_font_size , img_1_cords , img_2_cords ):
             start_time = time.time()
 
-            discord_log_english("Making the final image...")
+            # discord_log_english("Making the final image...")
             # Load the main image (worksheet)
             main_image_path = f"./website/english/{name}.png"
             main_image = Image.open(main_image_path)
@@ -2201,7 +2201,7 @@ def english_assignment():
             elapsed_time = time.time() - start_time
             elapsed_time2 = time.time() - global_start_time
 
-            discord_log_english(f"Took {elapsed_time:.2f} seconds to make the final picture")
+            # discord_log_english(f"Took {elapsed_time:.2f} seconds to make the final picture")
 
             discord_log_english(f"Took {elapsed_time2:.2f} seconds total.")
 
