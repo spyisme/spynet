@@ -1969,7 +1969,7 @@ def english_assignment():
 
         json_data = response.json()
 
-        return response.status_code
+        return f"{response.status_code}"
         # print(json_data["reply"])
         elapsed_time = time.time() - start_time
 
