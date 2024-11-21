@@ -1790,11 +1790,7 @@ def english_assignment():
             discord_log(f"{client_ip} Viewed <{request.path}> {device_type} ```{user_agent}```")
 
     if request.method == "POST":
-        client_ip = request.headers.get('X-Forwarded-For')
-        if client_ip:
-            client_ip = client_ip.split(',')[0].strip()
-        else:
-            client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
+
         words = request.form.get('words')
 
         name_and_id = request.form.get('name')
@@ -1806,13 +1802,11 @@ def english_assignment():
         if current_user.is_authenticated:
             file_name = f"EnglishPDF"
             copyrights= ""
-            discord_log_english(f"{current_user.username} -- Making pdf for {name_and_id} with words {words} , api = {api} , quality = {quality} , ip = {client_ip} <@709799648143081483>")
 
         else :
             copyrights = "Made By Spy"
             api = "2"
             file_name = f"EnglishPDF"
-            discord_log_english(f"Not logged -- Making pdf for {name_and_id} with words {words} api = {api} , quality = {quality} , ip = {client_ip} <@709799648143081483>")
 
     
 
@@ -2266,6 +2260,7 @@ def english_assignment():
 
         my_file = Path(f"website/static/english/{file_name}.pdf")
         if my_file.exists():
+   
             return redirect(f"/static/english/{file_name}.pdf")
         else :
             return render_template("used_pages/english_assignment_error.html")
