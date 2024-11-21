@@ -1974,9 +1974,6 @@ def english_assignment():
 
             json_data = response.json()
 
-
-            global chatgptnonce
-
             nonce = json_data["restNonce"]
 
             chatgptnonce["nonce"] = nonce
