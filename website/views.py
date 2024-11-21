@@ -1806,11 +1806,9 @@ def english_assignment():
             api = "2"
             file_name = f"EnglishPDF"
 
-        discord_log_english(f"Making pdf for {name_and_id} with words {words} ip = {client_ip} <@709799648143081483>")
+        discord_log_english(f"{current_user.username} -- Making pdf for {name_and_id} with words {words} ip = {client_ip} <@709799648143081483>")
 
         def get_image(query , name , api):
-            img = Path(f"website/english/{name}.png")
-            # while img.exists():
             # API 1 = sera 2 = upsplash 3 = google search
             discord_log_english(f"Getting image for : {query} using api {api}")
             if api == "1" :
@@ -1909,15 +1907,7 @@ def english_assignment():
 
         prompt = "Hello, I would like assistance similar to how I interacted in a previous chat with ChatGPT. Here’s what I typically need: Text Generation: When I provide two or more words, please give me structured information for each word in JSON format, including: Today's POWER WORD: The word itself. Definition: A clear explanation of what the word means. Part of Speech: Indicate whether it's a noun, verb, adjective, etc. Synonyms: List two or more words that mean the same or similar, as a single text string separated by commas, not as a list. Antonyms: List two or more words that mean the opposite, also as a single text string separated by commas. Related Words: Suggest words that are conceptually related, as a single text string with commas. Your OWN Sentence: Use the word in a clear example sentence. Search: A search query I can use to find an accurate image for the word. Return everything as structured JSON text with words as an array of entries for each word. IMPORTANT DONT SAY A WORD ONLY SEND THE JSON DATA AND CAPTLIZE THE FIRST LETTER!!!"
 
-        # words = input("Input words : ")
-
-        # name_and_id  = input("Name and id (Ex: Amr Ayman 192400300): ")
-
-        # api = int(input("Choose API Number (1 = accurate results but limited, 2 = unlimited): "))
-
-
         global_start_time = time.time()
-
 
         global chatgptnonce
         nonce = chatgptnonce['nonce']
@@ -1957,8 +1947,10 @@ def english_assignment():
         # print(json_data["reply"])
         elapsed_time = time.time() - start_time
 
-        discord_log_english(f"Got Chatgpt's reply Took {elapsed_time:.2f} seconds")
+        if response.status_code == 200 :
+            discord_log_english(f"Got Chatgpt's reply Took {elapsed_time:.2f} seconds")
 
+        #Get correct nonce
         if response.status_code != 200 :
 
             headers = {
@@ -2019,8 +2011,6 @@ def english_assignment():
             discord_log_english(f"Got Chatgpt's reply Took {elapsed_time:.2f} seconds")
 
 
-        return f"{response.status_code}"
-
         data = json.loads(json_data["reply"])
         for i, word in enumerate(data["words"], start=1):
             search_term = word["Search"]
@@ -2078,6 +2068,7 @@ def english_assignment():
             "CopyRightLOW": {"text": f"{copyrights}", "coords": (448, 635), "max_x": 375, "max_y": 619},  
 
         }
+        
         def update_fields_data(fields_data, data):
             for i, word_data in enumerate(data["words"], start=1):
                 # Update each field for the current word
@@ -2092,20 +2083,22 @@ def english_assignment():
             return fields_data
 
 
-
-
-        if quality == "high" :
-            fields_data = update_fields_data(fields_data_high, data)
-        elif quality == "low" :
-           fields_data =  update_fields_data(fields_data_low, data)
-            
+        #Fail save (might add a limit)
         img1 = Path(f"website/english/img1.png")
         img2 = Path(f"website/english/img1.png")
- 
-        if img1.exists():
-            return f"Image 1 not downloaded ! (You used api {api})"
-        elif img2.exits() :
-            return f"Image 2 not downloaded ! (You used api {api})"
+
+        while not img1.exists():
+            filename = "img1"
+            search_term = data["words"][0]
+            api = 2
+            get_image(search_term, filename , api)
+
+        while not img2.exists():
+            filename = "img2"
+            search_term = data["words"][1]
+            api = 2
+            get_image(search_term, filename , api)
+
         
         def make_image_final(name , max_font_size ,min_font_size , img_1_cords , img_2_cords ):
             start_time = time.time()
@@ -2211,10 +2204,12 @@ def english_assignment():
             # main_image.save("C:/Users/Spy/Desktop/English/filled_word_wizard_with_images.png")
 
         if quality == "high" :
+            fields_data = update_fields_data(fields_data_high, data)
             img_1_cords = [2990 , 2601, 4166 , 3381]
             img_2_cords = [2990, 5274, 4166, 6054]
             make_image_final('high' , 300 , 100 ,img_1_cords , img_2_cords )
         elif quality == "low" :
+           fields_data =  update_fields_data(fields_data_low, data)
            img_1_cords =  [319, 255, 432, 338]
            img_2_cords = [319, 524, 432, 602]
            make_image_final('low' , 30 , 10 ,img_1_cords,img_2_cords )
