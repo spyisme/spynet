@@ -412,7 +412,8 @@
                 "name": "Mr. Ashraf el shenawy",
                 "link": "ashrafelshenawy",
                 "description": "Year 2024/2025",
-                "courses": []
+                "courses": [],
+                "badge" : "NOT WORKING!"
             },
             {
                 "name": "Dr. Nasser el batal",
@@ -5452,7 +5453,7 @@
                 "name": "Mr. Hossam Sameh",
                 "link": "theleader",
                 "description": "All sessions",
-                "badge": "New",
+                "badge": "NOT WORKING!",
                 "courses": []
             },
             {
