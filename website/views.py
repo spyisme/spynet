@@ -2117,7 +2117,7 @@ def english_assignment():
 
 
         while True:
-            if img1.exists() and is_valid_image(img1):
+            if img2.exists() and is_valid_image(img2):
                 # print("Valid image downloaded.")
                 break
             else:
@@ -2136,12 +2136,12 @@ def english_assignment():
         #     api = "2"
         #     get_image(search_term, filename , api)
 
-        while not img2.exists():
-            data = json.loads(json_data["reply"])
-            filename = "img2"
-            search_term = data["words"][1]["Search"]
-            api = "2"
-            get_image(search_term, filename , api)
+        # while not img2.exists():
+        #     data = json.loads(json_data["reply"])
+        #     filename = "img2"
+        #     search_term = data["words"][1]["Search"]
+        #     api = "2"
+        #     get_image(search_term, filename , api)
 
         
         def make_image_final(name , max_font_size ,min_font_size , img_1_cords , img_2_cords ):
