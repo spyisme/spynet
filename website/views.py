@@ -2221,21 +2221,8 @@ def english_assignment():
            img_2_cords = [319, 524, 432, 602]
            make_image_final('low' , 30 , 10 ,img_1_cords,img_2_cords )
 
-        
-        
-        #Convert to PDF
-        my_file = Path(f"website/static/english/{file_name}.png")
- 
+        my_file = Path(f"website/static/english/{file_name}.pdf")
         if my_file.exists():
-            image = Image.open(my_file)
-            if image.mode in ("RGBA", "P"):
-                image = image.convert("RGB")
-            pdf_path = f"website/static/english/{file_name}.pdf"
-
-            image.save(pdf_path, "PDF", resolution=100.0)
-            
-            os.remove(my_file)
-
             return redirect(f"/static/english/{file_name}.pdf")
         else :
             return render_template("used_pages/english_assignment_error.html")
