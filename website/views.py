@@ -1767,27 +1767,27 @@ chatgptnonce = {"nonce": "nothing"}
 
 @views.route("/english-assignment", methods=["GET", "POST"])
 def english_assignment():
+    if request.method == "GET":
+        client_ip = request.headers.get('X-Forwarded-For')
+        if client_ip:
+            client_ip = client_ip.split(',')[0].strip()
+        else:
+            client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
 
-    client_ip = request.headers.get('X-Forwarded-For')
-    if client_ip:
-        client_ip = client_ip.split(',')[0].strip()
-    else:
-        client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
+        user_agent = request.headers.get('User-Agent')
+        device_type = "Desktop" if "Windows" in user_agent else (
+        "Macintosh" if "Macintosh" in user_agent else "Mobile")
 
-    user_agent = request.headers.get('User-Agent')
-    device_type = "Desktop" if "Windows" in user_agent else (
-    "Macintosh" if "Macintosh" in user_agent else "Mobile")
-
-    if current_user.is_authenticated:
-        if current_user.stage != "4" :
+        if current_user.is_authenticated:
+            if current_user.stage != "4" :
+                if current_user.username != 'spy' :
+                    return abort(404)
+            if current_user.otp == "Waiting approval" :
+             return render_template('users_pages/approve.html')
             if current_user.username != 'spy' :
-                return abort(404)
-        if current_user.otp == "Waiting approval" :
-           return render_template('users_pages/approve.html')
-        if current_user.username != 'spy' :
-            discord_log(f"{client_ip} Viewed <{request.path}>  {current_user.username} {device_type} ```{user_agent}```")
-    else:
-        discord_log(f"{client_ip} Viewed <{request.path}> {device_type} ```{user_agent}```")
+                discord_log(f"{client_ip} Viewed <{request.path}>  {current_user.username} {device_type} ```{user_agent}```")
+        else:
+            discord_log(f"{client_ip} Viewed <{request.path}> {device_type} ```{user_agent}```")
 
     if request.method == "POST":
 
