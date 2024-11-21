@@ -2091,6 +2091,8 @@ def english_assignment():
             data = json.loads(json_data["reply"])
             filename = "img1"
             search_term = data["words"][0]
+
+            return search_term
             api = 2
             get_image(search_term, filename , api)
 
