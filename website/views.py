@@ -1790,7 +1790,11 @@ def english_assignment():
             discord_log(f"{client_ip} Viewed <{request.path}> {device_type} ```{user_agent}```")
 
     if request.method == "POST":
-
+        client_ip = request.headers.get('X-Forwarded-For')
+        if client_ip:
+            client_ip = client_ip.split(',')[0].strip()
+        else:
+            client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
         words = request.form.get('words')
 
         name_and_id = request.form.get('name')
