@@ -948,23 +948,6 @@ def ink():
     result = mpd + '\n' + c_keys
 
     session['result'] = result
-    components = result.split()
-    input_url = components[0]
-    components = result.split("--key")[1:]
-    keys = [key.strip() for key in components[1:]]
-    ckvaluetobeused = {}
-    for key in keys:
-        parts = key.split(":")
-        if len(parts) == 2:
-            ckvaluetobeused[parts[0]] = parts[1]
-
-    keysbase64 = base64.urlsafe_b64encode(
-        str(ckvaluetobeused).encode()).decode()
-
-    url = input_url + "?ck=" + keysbase64
-#
-    discord_log(f"{ckvaluetobeused}")
-    discord_log("ss")
 
     result = result.replace("\n", " ")
 
