@@ -799,3 +799,15 @@ KeyError: 'words'
 209.38.23.177 - - [26/Nov/2024 05:04:11] code 400, message Bad request version ('À\x14À')
 209.38.23.177 - - [26/Nov/2024 05:04:11] code 400, message Bad request version ('À\x14À')
 5.8.11.202 - - [26/Nov/2024 05:29:56] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+b'{"code":2074,"message":"Please update app from Play Store","isErrorRecoverable":true}'
+b'{"code":2074,"message":"Please update app from Play Store","isErrorRecoverable":true}'
+No OTP found in the decoded string.
+No playbackInfo found in the decoded string.
+No OTP found in the decoded string.
+No playbackInfo found in the decoded string.
+b'{"code":2014,"message":"Domain not allowed"}'
+b'{"code":2014,"message":"Domain not allowed"}'
+No OTP found in the decoded string.
+No playbackInfo found in the decoded string.
+b'{"code":2074,"message":"Please update app from Play Store","isErrorRecoverable":true}'
+b'{"code":2074,"message":"Please update app from Play Store","isErrorRecoverable":true}'
