@@ -66,10 +66,10 @@
 
             <div class="textcont">
                 <p><button class="button" id="homeBtn" onclick="showDiv('homestuff', 'homeBtn')">Videos</button></p>
-  {% if current_user.stage != "4"  or current_user.username== "spy"%} 
+
 
                 <p><button class="button" id="pdfsBtn" onclick="showDiv('pdfsstuff', 'pdfsBtn')">Pdfs</button></p>
-{%endif%}
+
   {% if current_user.stage == "4" or current_user.username== "spy"%} 
                 <p><button class="button" id="extraBtn" onclick="showDiv('extrastuff', 'extraBtn')">Tools</button></p>
      {%endif%}
@@ -96,11 +96,11 @@
                     {% endfor %}
                 </ul>
             </div>
-  {% if current_user.stage != "4"  or current_user.username== "spy"%} 
 
             <div id="pdfsstuff" class="content hidden">
                 <ul>
           
+                    {% if current_user.stage != "4"  or current_user.username== "spy"%} 
 
                     <li>
                         <a href="/books" target="_blank">
@@ -109,12 +109,18 @@
                             </div>
                         </a>
                     </li>
-       
+                    {% endif%} 
+                    <li>
+                        <a href="https://drive.google.com/drive/folders/11n20liqBhwT_zoMoDqeWXog6q4jAfAMK?usp=drive_link" target="_blank">
+                            <div class="card2">
+                                Computation Pdfs
+                            </div>
+                        </a>
+                    </li>
             
     
                 </ul>
             </div>
-            {% endif%} 
             {% if current_user.stage == "4"  or current_user.username== "spy"%} 
 
             <div id="extrastuff" class="content hidden">
