@@ -23,7 +23,7 @@ def books():
 
 @shortlinks.route("/tools")
 def tools():
-    return redirect("https://github.com/spyisme/new/releases/download/toos/Spy.zip")
+    return redirect("https://github.com/spyisme/spynet/releases/download/ols/Spy.zip")
 
 
 
