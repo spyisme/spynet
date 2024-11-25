@@ -401,6 +401,18 @@
                                 "title": "S3 | Classwork 3",
                                 "duration": "02:14:21",
                                 "jsid": 21
+                            },
+                            {
+                                "id": "lThA0nipqQM",
+                                "title": "S3 | Homework 1",
+                                "duration": "02:57:40",
+                                "jsid": 22
+                            },
+                            {
+                                "id": "SbckGLJThz0",
+                                "title": "S3 | Homework 2",
+                                "duration": "02:27:07",
+                                "jsid": 23
                             }
                         ],
                         "playlist_id": "PLM-GVlebsoPUNwwm_7PD3R9FePeFeJnpb",
@@ -413,7 +425,7 @@
                 "link": "ashrafelshenawy",
                 "description": "Year 2024/2025",
                 "courses": [],
-                "badge" : "NOT WORKING!"
+                "badge": "NOT WORKING!"
             },
             {
                 "name": "Dr. Nasser el batal",
@@ -2170,6 +2182,24 @@
                                 "title": "S8 | Applications of integrations",
                                 "duration": "01:32:30",
                                 "jsid": 28
+                            },
+                            {
+                                "id": "F6pjgrG1dFs",
+                                "title": "S9 | Area & volume Important ideas",
+                                "duration": "00:53:17",
+                                "jsid": 29
+                            },
+                            {
+                                "id": "wtdglWZd9HQ",
+                                "title": "S9 | Area & volume Part 1",
+                                "duration": "01:25:24",
+                                "jsid": 30
+                            },
+                            {
+                                "id": "NRqOwYrxY3Q",
+                                "title": "S9 | Area & volume Part 2",
+                                "duration": "01:31:24",
+                                "jsid": 31
                             }
                         ],
                         "playlist_id": "PLM-GVlebsoPXQRhX_Nwv0NXNr3lYO3Tlx",
@@ -6486,6 +6516,60 @@
                                 "title": "S11 | \u0627\u0644\u0627\u062f\u0628",
                                 "duration": "00:35:16",
                                 "jsid": 22
+                            },
+                            {
+                                "id": "FBJRRUmO8r4",
+                                "title": "S12 | \u0645\u0642\u062f\u0645\u0647",
+                                "duration": "00:01:02",
+                                "jsid": 23
+                            },
+                            {
+                                "id": "fijPA1Z6RK0",
+                                "title": "S12 | Part 1 \u0646\u062d\u0648",
+                                "duration": "00:49:31",
+                                "jsid": 24
+                            },
+                            {
+                                "id": "hZdUg3YMgK8",
+                                "title": "S12 | Part 2 \u0646\u062d\u0648",
+                                "duration": "00:28:39",
+                                "jsid": 25
+                            },
+                            {
+                                "id": "N3pl59OlSKg",
+                                "title": "S12 | Part 3 \u0646\u062d\u0648",
+                                "duration": "00:34:00",
+                                "jsid": 26
+                            },
+                            {
+                                "id": "OgIL0PqkiLU",
+                                "title": "S12 | Part 4 \u0646\u062d\u0648",
+                                "duration": "00:29:35",
+                                "jsid": 27
+                            },
+                            {
+                                "id": "Y22MHh8FSII",
+                                "title": "S12 | Part 5 \u0646\u062d\u0648",
+                                "duration": "00:28:03",
+                                "jsid": 28
+                            },
+                            {
+                                "id": "12w0LM_pgHw",
+                                "title": "S12 | \u0627\u0644\u0627\u062f\u0628",
+                                "duration": "00:22:53",
+                                "jsid": 29
+                            },
+                            {
+                                "id": "Xu4Ub5iJkOM",
+                                "title": "S12 | \u0627\u0644\u0646\u0635\u0648\u0635",
+                                "duration": "00:49:41",
+                                "jsid": 30
+                            },
+                            {
+                                "id": "0KJQ8HmTTpc",
+                                "title": "S12 | \u0627\u0644\u0642\u0635\u0647",
+                                "duration": "00:48:35",
+                                "jsid": 31
                             }
                         ],
                         "playlist_id": "PLM-GVlebsoPUCzsSb24HH86T9u9eQynUF",

