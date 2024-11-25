@@ -128,6 +128,7 @@ select option {
 
     <br><br>
     <h1 class="center">Sanawya Sessions</h1>
+    {%if current_user.username == 'spy'%}
     <div class="center">
     <form method="POST" action="/inkform">
         <br>
@@ -137,7 +138,7 @@ select option {
         <button type="submit">Send Discord Message</button>
     </form>
 </div>
-
+{%endif%}
     <div class="output">
         <h2>Keys :</h2>
         <p>{{mpd}}</p>
