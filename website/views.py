@@ -2309,7 +2309,7 @@ import pandas as pd
 import plotly.express as px
 
 
-with open("./Chinese.json", "r") as file:
+with open("./website/static/Chinese.json", "r") as file:
     data = json.load(file)
 
 @views.route("/ecu-chinese")
