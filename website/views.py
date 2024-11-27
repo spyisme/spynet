@@ -1807,11 +1807,9 @@ def english_assignment():
 
         if current_user.is_authenticated:
             file_name = f"EnglishPDF"
-            copyrights= ""
             discord_log_english(f"{current_user.username} -- Making pdf for {name_and_id} with words {words} , api = {api} , quality = {quality} , ip = {client_ip} <@709799648143081483>")
 
         else :
-            copyrights = "Made By Spy"
             api = "2"
             file_name = f"EnglishPDF"
             discord_log_english(f"Not logged -- Making pdf for {name_and_id} with words {words} api = {api} , quality = {quality} , ip = {client_ip} <@709799648143081483>")
@@ -2029,7 +2027,7 @@ def english_assignment():
 
         timezone = pytz.timezone("Etc/GMT-2") 
         today_date = datetime.now(timezone).strftime("%d-%m-%Y")
-
+#-----------------------------------------------------------------------------------------------------------------
         if assignment == '1to4' :
             fields_data_high = {
                 "Name & ID": {"text": f"{name_and_id}", "coords": (1134 , 33), "max_x": 2785 , "max_y": 166},  
@@ -2053,8 +2051,6 @@ def english_assignment():
                 "Antonyms 2": {"text": "", "coords": (3035, 4617), "max_x": 4087, "max_y": 4956},
                 "Related Words 2": {"text": "", "coords": (275, 5284), "max_x": 2856, "max_y": 5386},
                 "Your OWN Sentence 2": {"text": "", "coords": (286, 5713), "max_x": 2857, "max_y": 6035},  
-                #CopyRights
-                "CopyRight": {"text": f"{copyrights}", "coords": (3805 , 6178), "max_x": 4259 , "max_y": 6233},  
             }
             
             fields_data_low = {
@@ -2076,7 +2072,6 @@ def english_assignment():
                 "Antonyms 2": {"text": "", "coords": (315, 457), "max_x": 435, "max_y": 484},
                 "Related Words 2": {"text": "", "coords": (25, 510), "max_x": 290, "max_y": 527},
                 "Your OWN Sentence 2": {"text": "", "coords": (26, 560), "max_x": 289, "max_y": 596},  
-                "CopyRightLOW": {"text": f"{copyrights}", "coords": (448, 635), "max_x": 375, "max_y": 619},  
 
             }
             
@@ -2096,7 +2091,7 @@ def english_assignment():
 
             #Fail save (might add a limit)
             img1 = Path(f"website/english/img1.png")
-            img2 = Path(f"website/english/img1.png")
+            img2 = Path(f"website/english/img2.png")
 
 
             def is_valid_image(file_path):
@@ -2246,18 +2241,186 @@ def english_assignment():
                 fields_data = update_fields_data(fields_data_high, data)
                 img_1_cords = [2990 , 2601, 4166 , 3381]
                 img_2_cords = [2990, 5274, 4166, 6054]
-                make_image_final('high' , 300 , 100 ,img_1_cords , img_2_cords )
+                make_image_final('assignment1to4high' , 300 , 100 ,img_1_cords , img_2_cords )
             elif quality == "low" :
                 fields_data =  update_fields_data(fields_data_low, data)
                 img_1_cords =  [319, 255, 432, 338]
                 img_2_cords = [319, 524, 432, 602]
-                make_image_final('low' , 30 , 10 ,img_1_cords,img_2_cords )
+                make_image_final('assignment1to4low' , 30 , 10 ,img_1_cords,img_2_cords )
 
             my_file = Path(f"website/static/english/{file_name}.pdf")
             if my_file.exists():
                 return redirect(f"/static/english/{file_name}.pdf")
             else :
                 return render_template("used_pages/english_assignment_error.html")
+    
+        elif assignment == '5to8' :
+            fields_data = {
+                "Name & ID": {"text": f"{name_and_id}", "coords": (1684 , 87), "max_x": 2472, "max_y": 127},  
+
+                "Date": {"text": f"{today_date}", "coords": (1684 , 197), "max_x": 2473 , "max_y": 239},  
+
+                #Word 1
+                "Today's POWER WORD 1": {"text": "", "coords": (988, 967), "max_x": 1618, "max_y": 1243},  
+                "Definition 1": {"text": "", "coords": (99,845), "max_x": 805, "max_y": 1291},
+                # "Part of Speech 1": {"text": "", "coords": (25, 197), "max_x": 148, "max_y": 216},
+                "Synonyms 1": {"text": "", "coords": (366,432), "max_x": 1005, "max_y": 528},
+                "Antonyms 1": {"text": "", "coords": (1529,426), "max_x": 2175, "max_y": 541},
+                "Related Words 1": {"text": "", "coords": (1750,825), "max_x": 2447, "max_y": 1328},
+                "Your OWN Sentence 1": {"text": "", "coords": (135,2156), "max_x": 2401, "max_y": 2337},
+
+
+            }
+            
+            def update_fields_data(fields_data, data):
+                for i, word_data in enumerate(data["words"], start=1):
+                    # Update each field for the current word
+                    fields_data[f"Today's POWER WORD {i}"]["text"] = word_data["Today's POWER WORD"]
+                    fields_data[f"Definition {i}"]["text"] = word_data["Definition"]
+                    fields_data[f"Part of Speech {i}"]["text"] = word_data["Part of Speech"]
+                    fields_data[f"Synonyms {i}"]["text"] = word_data["Synonyms"]
+                    fields_data[f"Antonyms {i}"]["text"] = word_data["Antonyms"]
+                    fields_data[f"Related Words {i}"]["text"] = word_data["Related Words"]
+                    fields_data[f"Your OWN Sentence {i}"]["text"] = word_data["Your OWN Sentence"]
+                
+                return fields_data
+            
+            img1 = Path(f"website/english/img1.png")
+
+            def is_valid_image(file_path):
+                """Check if the file is a valid image."""
+                try:
+                    with Image.open(file_path) as img:
+                        img.verify()  # Verify the file is a valid image
+                    return True
+                except Exception:
+                    return False
+
+            while True:
+                if img1.exists() and is_valid_image(img1):
+                    # print("Valid image downloaded.")
+                    break
+                else:
+                    # print("Image is invalid or missing. Redownloading...")
+                    data = json.loads(json_data["reply"])
+                    filename = "img1"
+                    search_term = data["words"][0]["Search"]
+                    api = "2"
+                    get_image(search_term, filename , api)
+
+
+            def make_image_final(name , max_font_size ,min_font_size , img_1_cords):
+                start_time = time.time()
+
+                # discord_log_english("Making the final image...")
+                # Load the main image (worksheet)
+                main_image_path = f"./website/english/{name}.png"
+                main_image = Image.open(main_image_path)
+                draw = ImageDraw.Draw(main_image)
+
+                # Define the font path and sizes
+                font_path = "./website/english/Arial.ttf"  # Ensure the font file path is correct
+                # max_font_size = 300
+                # min_font_size = 100
+                # Function to add wrapped text to fit within specified max x and max y
+                def add_wrapped_text(draw, text, coords, max_x, max_y, font_path, max_font_size, min_font_size):
+                    font_size = max_font_size
+                    font = ImageFont.truetype(font_path, font_size)
+                    max_width = max_x - coords[0]
+                    max_height = max_y - coords[1]
+
+                    # Adjust font size to fit within width and height
+                    while (draw.textlength(text, font=font) > max_width or font.getbbox(text)[3] > max_height) and font_size > min_font_size:
+                        font_size -= 1
+                        font = ImageFont.truetype(font_path, font_size)
+
+                    # Prepare for word wrapping within the box
+                    words = text.split()
+                    lines = []
+                    current_line = ""
+                    
+                    for word in words:
+                        test_line = f"{current_line} {word}".strip()
+                        if draw.textlength(test_line, font=font) <= max_width:
+                            current_line = test_line
+                        else:
+                            lines.append(current_line)
+                            current_line = word
+
+                    if current_line:
+                        lines.append(current_line)
+
+                    y_text = coords[1]
+                    line_height = font.getbbox("A")[3]
+                    for line in lines:
+                        if y_text + line_height > max_y:
+                            break
+                        draw.text((coords[0], y_text), line, font=font, fill="black")
+                        y_text += line_height
+
+                # Add text fields
+                for field_name, field_info in fields_data.items():
+                    add_wrapped_text(
+                        draw,
+                        field_info["text"],
+                        field_info["coords"],
+                        field_info["max_x"],
+                        field_info["max_y"],
+                        font_path,
+                        max_font_size,
+                        min_font_size
+                    )
+
+                # Function to add an image within a defined box
+                def add_image(main_image, added_image_path, img_cords):
+                    
+                    x_min = img_cords[0]
+                    y_min = img_cords[1]
+                    x_max = img_cords[2]
+                    y_max = img_cords[3]
+                    added_image = Image.open(added_image_path)
+                    max_width = x_max - x_min
+                    max_height = y_max - y_min
+
+                    # Resize added image to fit within max width and max height
+                    added_image.thumbnail((max_width, max_height))
+                    
+                    # Calculate position to center the image within the area
+                    center_x = x_min + (max_width - added_image.width) // 2
+                    center_y = y_min + (max_height - added_image.height) // 2
+                    
+                    # Paste the image onto the main image
+                    main_image.paste(added_image, (center_x, center_y))
+
+                # Add Image 1 within specified coordinates
+                add_image(main_image, "./website/english/img1.png", img_1_cords)
+
+
+                elapsed_time2 = time.time() - global_start_time
+
+                # discord_log_english(f"Took {elapsed_time:.2f} seconds to make the final picture")
+
+                discord_log_english(f"Took {elapsed_time2:.2f} seconds total.")
+
+                if main_image.mode in ("RGBA", "P"):
+                    main_image = main_image.convert("RGB")
+                main_image.save(f"./website/static/english/{file_name}.pdf" , "PDF", resolution=100.0)
+                # main_image.save("C:/Users/Spy/Desktop/English/filled_word_wizard_with_images.png")
+
+
+            img_1_cords = [900 , 2612,1657,3031]
+
+            make_image_final('assignment5to8' , 300 , 100 ,img_1_cords)
+
+
+
+            my_file = Path(f"website/static/english/{file_name}.pdf")
+            if my_file.exists():
+                return redirect(f"/static/english/{file_name}.pdf")
+            else :
+                return render_template("used_pages/english_assignment_error.html")
+
+
     return render_template("used_pages/english_assignment.html")
 
 
