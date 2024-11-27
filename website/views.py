@@ -2280,7 +2280,7 @@ def english_assignment():
   
         elif assignment == '5to8' :
             fields_data = {
-                "Today's POWER WORD 1": {"text": "", "coords": (957,973), "max_x": 1618, "max_y": 1243},  
+                "Today's POWER WORD 1": {"text": "", "coords": (955,973), "max_x": 1618, "max_y": 1243},  
                 "Definition 1": {"text": "", "coords": (99,845), "max_x": 805, "max_y": 1291},
                 # "Part of Speech 1": {"text": "", "coords": (25, 197), "max_x": 148, "max_y": 216},
                 "Synonyms 1": {"text": "", "coords": (366,432), "max_x": 1005, "max_y": 528},
