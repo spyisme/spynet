@@ -2398,7 +2398,7 @@ def english_assignment():
                 # Add text fields
                 for field_name, field_info in fields_data.items():
                     if field_name == 'Name & ID' :
-                        min_font_size = 10
+                        min_font_size = 20
                     add_wrapped_text(
                         draw,
                         field_info["text"],
