@@ -2396,8 +2396,8 @@ def english_assignment():
                         y_text += line_height
 
                 # Add text fields
-                for field_info in fields_data.items():
-                    if field_info == 'Name & ID' :
+                for field_name, field_info in fields_data.items():
+                    if field_name == 'Name & ID' :
                         min_font_size = 10
                     add_wrapped_text(
                         draw,
