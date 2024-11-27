@@ -2299,6 +2299,7 @@ def english_assignment():
                 discord_log_english(fields_data)
 
                 return fields_data
+            update_fields_data(fields_data , data)
             img1 = Path(f"website/english/img1.png")
 
             def is_valid_image(file_path):
