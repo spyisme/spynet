@@ -2449,7 +2449,7 @@ def english_assignment():
 
             img_1_cords = [900 , 2612,1657,3031]
 
-            make_image_final('assignment5to8' , 3000 , 50 ,img_1_cords)
+            make_image_final('assignment5to8' , 3000 , 70 ,img_1_cords)
 
 
 
