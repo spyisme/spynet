@@ -2321,7 +2321,7 @@ def english_assignment():
 
                 # discord_log_english("Making the final image...")
                 # Load the main image (worksheet)
-                main_image_path = f"./website/english/{name}.png"
+                main_image_path = f"./website/english/{name}.jpg"
                 main_image = Image.open(main_image_path)
                 draw = ImageDraw.Draw(main_image)
 
