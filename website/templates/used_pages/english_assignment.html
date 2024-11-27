@@ -206,7 +206,6 @@
         // Show the quality section when '1 to 4' is selected
         document.getElementById('quality-section').style.display = 'block';
         document.getElementById('quality-section2').style.display = 'block';
-        document.getElementById('quality-section3').style.display = 'block';
 
 
     }
@@ -215,7 +214,7 @@
         // Hide the quality section when '5 to 8' is selected
         document.getElementById('quality-section').style.display = 'none';
         document.getElementById('quality-section2').style.display = 'none';
-        document.getElementById('quality-section3').style.display = 'none';
+
 
 
     }
@@ -226,10 +225,10 @@
 
 
                 {%if current_user.is_authenticated%}
-                <p style="font-size: 14px; display:none;" id="quality-section3">You can choose any option.(You are logged in as {{current_user.username}})</p>
+                <p style="font-size: 14px;">You can choose any option.(You are logged in as {{current_user.username}})</p>
    
                 {%else%}
-                <p style="font-size: 14px; display:none;" id="quality-section3">To choose other options please login.(You are not logged in <a href="/">login?</a>)</p>
+                <p style="font-size: 14px;">To choose other options please login.(You are not logged in <a href="/">login?</a>)</p>
                 {%endif%}
                 
                 <div class="texthere" id="quality-section2" style="display:none;">
