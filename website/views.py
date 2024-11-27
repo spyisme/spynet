@@ -2296,8 +2296,9 @@ def english_assignment():
             }
             
             def update_fields_data(fields_data, data):
+                i = 1
                 try : 
-                    for i, word_data in enumerate(data["words"], start=1):
+                    for word_data in data["words"]:
                         # Update each field for the current word
                         fields_data[f"Today's POWER WORD {i}"]["text"] = word_data["Today's POWER WORD"]
                         fields_data[f"Definition {i}"]["text"] = word_data["Definition"]
@@ -2307,7 +2308,8 @@ def english_assignment():
                         fields_data[f"Related Words {i}"]["text"] = word_data["Related Words"]
                         fields_data[f"Your OWN Sentence {i}"]["text"] = word_data["Your OWN Sentence"]
                 except : 
-                    for i, word_data in enumerate(data["Words"], start=1):
+                    for word_data in data["words"]:
+
                         # Update each field for the current word
                         fields_data[f"Today's POWER WORD {i}"]["text"] = word_data["Today's POWER WORD"]
                         fields_data[f"Definition {i}"]["text"] = word_data["Definition"]
