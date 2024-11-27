@@ -180,18 +180,38 @@
                     {%endif%}
 
                 </div>
-                <label for="quality">Choose quality of pdf:</label>
-                <div class="radio-group">
-      
 
-                    <input type="radio" name="quality" value="high" id="quality1" required>
-                    <label for="quality1">High (Not same as college one)</label>
+               <label for="assignment">Choose Assignment:</label>
+<div class="radio-group">
+    <input type="radio" name="assignment" value="1to4" id="1to4" required onclick="showQuality()">
+    <label for="1to4">1 to 4</label>
 
-        
-                    <input type="radio" name="quality" value="low" id="quality2">
-                    <label for="quality2">Low (Orignal one)</label>
+    <input type="radio" name="assignment" value="5to8" id="5to8" onclick="hideQuality()">
+    <label for="5to8">5 to 8</label>
+</div>
 
-                </div>
+<div id="quality-section" style="display:none;">
+    <label for="quality">Choose quality of pdf:</label>
+    <div class="radio-group">
+        <input type="radio" name="quality" value="high" id="quality1" required>
+        <label for="quality1">High (Not same as college one)</label>
+
+        <input type="radio" name="quality" value="low" id="quality2">
+        <label for="quality2">Low (Original one)</label>
+    </div>
+</div>
+
+<script>
+    function showQuality() {
+        // Show the quality section when '1 to 4' is selected
+        document.getElementById('quality-section').style.display = 'block';
+    }
+
+    function hideQuality() {
+        // Hide the quality section when '5 to 8' is selected
+        document.getElementById('quality-section').style.display = 'none';
+    }
+</script>
 
 
 
