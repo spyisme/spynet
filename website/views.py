@@ -1807,12 +1807,12 @@ def english_assignment():
 
         if current_user.is_authenticated:
             file_name = f"EnglishPDF"
-            discord_log_english(f"{current_user.username} -- Making pdf for {name_and_id} with words {words} , api = {api} , quality = {quality} , ip = {client_ip} <@709799648143081483>")
+            discord_log_english(f"{current_user.username} -- Making pdf for {name_and_id} {assignment} with words {words} , api = {api} , quality = {quality} , ip = {client_ip} <@709799648143081483>")
 
         else :
             api = "2"
             file_name = f"EnglishPDF"
-            discord_log_english(f"Not logged -- Making pdf for {name_and_id} with words {words} api = {api} , quality = {quality} , ip = {client_ip} <@709799648143081483>")
+            discord_log_english(f"Not logged -- Making pdf for {name_and_id} {assignment}  with words {words} api = {api} , quality = {quality} , ip = {client_ip} <@709799648143081483>")
 
     
 
@@ -1913,7 +1913,7 @@ def english_assignment():
                 print("exiting...")
                 return "Choose a valid api key"
 
-        prompt = "Hello, I would like assistance similar to how I interacted in a previous chat with ChatGPT. Here’s what I typically need: Text Generation: When I provide one or more words, please give me structured information for each word in JSON format, including: Today's POWER WORD: The word itself. Definition: A clear explanation of what the word means. Part of Speech: Indicate whether it's a noun, verb, adjective, etc. Synonyms: List two or more words that mean the same or similar, as a single text string separated by commas, not as a list. Antonyms: List two or more words that mean the opposite, also as a single text string separated by commas. Related Words: Suggest words that are conceptually related, as a single text string with commas. Your OWN Sentence: Use the word in a clear example sentence. Search: A search query I can use to find an accurate image for the word. Return everything as structured JSON text with words as an array of entries for each word. IMPORTANT DONT SAY A WORD ONLY SEND THE JSON DATA AND CAPTLIZE THE FIRST LETTER!!!"
+        prompt = "Hello, I would like assistance similar to how I interacted in a previous chat with ChatGPT. Here’s what I typically need: Text Generation: When I provide one or more words, please give me structured information for each word in JSON format, including: Today's POWER WORD: The word itself. Definition: A clear explanation of what the word means. Part of Speech: Indicate whether it's a noun, verb, adjective, etc. Synonyms: List two or more words that mean the same or similar, as a single text string separated by commas, not as a list. Antonyms: List two or more words that mean the opposite, also as a single text string separated by commas. Related Words: Suggest words that are conceptually related, as a single text string with commas. Your OWN Sentence: Use the word in a clear example sentence. Search: A search query I can use to find an accurate image for the word. Return everything as structured JSON text with words as an array of entries for each word. IMPORTANT DONT SAY A WORD ONLY SEND THE JSON DATA AND CAPTLIZE THE FIRST LETTER!!!, GIVE 2 synonyms and 2 antynoms only if i asked for 1 word if i asked for 2 words give 3 and 3 for each word"
 
         global_start_time = time.time()
 
