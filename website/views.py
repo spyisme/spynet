@@ -2289,9 +2289,10 @@ def english_assignment():
                     fields_data[f"Antonyms {i}"]["text"] = word_data["Antonyms"]
                     fields_data[f"Related Words {i}"]["text"] = word_data["Related Words"]
                     fields_data[f"Your OWN Sentence {i}"]["text"] = word_data["Your OWN Sentence"]
-                
+
+                discord_log_english(fields_data)
+
                 return fields_data
-            
             img1 = Path(f"website/english/img1.png")
 
             def is_valid_image(file_path):
@@ -2417,7 +2418,7 @@ def english_assignment():
 
             img_1_cords = [900 , 2612,1657,3031]
 
-            make_image_final('assignment5to8' , 300 , 10 ,img_1_cords)
+            make_image_final('assignment5to8' , 3000 , 10 ,img_1_cords)
 
 
 
