@@ -922,3 +922,44 @@ Traceback (most recent call last):
 requests.exceptions.HTTPError: 403 Client Error: Forbidden for url: https://api.inkryptvideos.com/api/s1/v_info/e165b91a2d274852b6ffddc1da67f58f
 172.105.128.13 - - [27/Nov/2024 02:42:39] code 400, message Bad request version ('À\x13À')
 94.156.166.117 - - [27/Nov/2024 02:47:02] code 400, message Bad request syntax ('\x04\x01\x01»Ô/ú\x0e\x00')
+Traceback (most recent call last):
+  File "/root/spysnet/main.py", line 11, in <module>
+    app, socketio = create_app()
+  File "/root/spysnet/website/__init__.py", line 65, in create_app
+    from .views import views
+  File "/root/spysnet/website/views.py", line 2312, in <module>
+    with open("./Chinese.json", "r") as file:
+FileNotFoundError: [Errno 2] No such file or directory: './Chinese.json'
+ * Serving Flask app 'website'
+ * Debug mode: on
+198.235.24.143 - - [27/Nov/2024 06:26:23] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00î\x01\x00\x00ê\x03\x03WÆ*\\X\x1aDRL\x8bN-x]\x1bà£!6¾¢\x91oÉD\x0ep¬)\x13û8')
+198.235.24.143 - - [27/Nov/2024 06:26:23] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00Ê\x01\x00\x00Æ\x03\x03\x9bC\x96XQ<òsáma\x8cåïò')
+147.185.132.90 - - [27/Nov/2024 07:12:18] code 400, message Bad request version ('À\x13À')
+147.185.132.90 - - [27/Nov/2024 07:12:19] code 400, message Bad HTTP/0.9 request type ("\x16\x03\x01\x00Ê\x01\x00\x00Æ\x03\x03\x82\x7f<´à.Ð\x05Ãñ@\x9eÛ¸\x8eÝn\x12D\x8eøNóüucy9\x06Zä©\x00\x00hÌ\x14Ì\x13À/À+À0À,À\x11À\x07À'À#À\x13À")
+152.42.247.210 - - [27/Nov/2024 08:03:04] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x01')
+152.42.174.244 - - [27/Nov/2024 08:03:10] code 400, message Bad request version ('À\x13À')
+192.155.90.118 - - [27/Nov/2024 09:53:56] code 400, message Bad request version ('À\x13À')
+78.153.140.223 - - [27/Nov/2024 09:54:51] code 400, message Bad request syntax ('\x16\x03\x01\x00¬\x01\x00\x00¨\x03\x03\x08\x8cÎÌ|\x95)\x90ïy\x16:\x07\x10ÃF¼¡ð\x00Ä\x9d&K÷@øE\x9e\x08\x8b!\x00\x008À,À')
+Invalid session qY7W0q1Q64WtQenmAAAc (further occurrences of this error will be logged with level INFO)
+Invalid session LUQHBMMabNiVL1zKAAAb (further occurrences of this error will be logged with level INFO)
+5.8.11.202 - - [27/Nov/2024 14:11:37] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+167.94.146.55 - - [27/Nov/2024 15:09:24] code 505, message Invalid HTTP version (2.0)
+172.202.156.196 - - [27/Nov/2024 15:30:30] code 400, message Bad request syntax ('MGLNDD_47.250.51.78_80')
+152.42.219.47 - - [27/Nov/2024 16:03:13] code 400, message Bad request version ('éÎiÒ\x80jªö8')
+152.42.243.206 - - [27/Nov/2024 16:03:14] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x01')
+66.240.205.34 - - [27/Nov/2024 16:05:27] code 400, message Bad request version ("x64|'|'|No|'|'|0.7d|'|'|..|'|'|AA==|'|'|112.inf|'|'|SGFjS2VkDQoxOTIuMTY4LjkyLjIyMjo1NTUyDQpEZXNrdG9wDQpjbGllbnRhLmV4ZQ0KRmFsc2UNCkZhbHNlDQpUcnVlDQpGYWxzZQ==12.act|'|'|AA==")
+104.152.52.23 - - [27/Nov/2024 16:14:54] code 400, message Bad request version ('RTSP/1.0')
+104.152.52.23 - - [27/Nov/2024 16:14:59] code 400, message Bad HTTP/0.9 request type ('l\x00')
+104.152.52.23 - - [27/Nov/2024 16:15:06] code 400, message Bad request version ('\x00\x01\x97|\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00')
+104.152.52.23 - - [27/Nov/2024 16:15:11] code 400, message Bad HTTP/0.9 request type ('\x00')
+104.152.52.23 - - [27/Nov/2024 16:15:16] code 400, message Bad HTTP/0.9 request type ('\x00')
+104.152.52.23 - - [27/Nov/2024 16:15:17] code 400, message Bad request syntax ('HELP')
+104.152.52.23 - - [27/Nov/2024 16:15:17] code 400, message Bad request syntax ('\x16\x03\x00\x00S\x01\x00\x00O\x03\x00?G×÷º,îê²`~ó\x00ý\x82{¹Õ\x96Èw\x9bæÄÛ<=Ûoï\x10n\x00\x00(\x00\x16\x00\x13\x00')
+104.152.52.23 - - [27/Nov/2024 16:15:18] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00*%à\x00\x00\x00\x00\x00Cookie:')
+104.152.52.23 - - [27/Nov/2024 16:15:18] code 400, message Bad request version ('\x00/\x00')
+104.152.52.23 - - [27/Nov/2024 16:15:19] code 400, message Bad request syntax ('\x00\x00\x00qj\x81n0\x81k¡\x03\x02\x01\x05¢\x03\x02\x01')
+104.152.52.23 - - [27/Nov/2024 16:15:24] code 400, message Bad request version ('0.12\x00')
+104.152.52.23 - - [27/Nov/2024 16:15:25] code 400, message Bad request syntax ('\x01default')
+93.174.93.12 - - [27/Nov/2024 16:45:11] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+184.105.139.69 - - [27/Nov/2024 17:07:31] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00{\x01\x00\x00w\x03\x03\xad°¶þ±öRÝ\x9a¸Q\x13q\x0e6\x88i>åÜl/¿é¿\x8fO\x11`ý=¢\x00\x00\x1aÀ/À+À\x11À\x07À\x13À')
+66.175.213.4 - - [27/Nov/2024 17:46:39] code 400, message Bad request version ('À\x13À')
