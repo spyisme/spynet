@@ -1803,6 +1803,8 @@ def english_assignment():
 
         quality = request.form.get('quality')
 
+        assignment = request.form.get('assignment')
+
         if current_user.is_authenticated:
             file_name = f"EnglishPDF"
             copyrights= ""
@@ -2106,47 +2108,33 @@ def english_assignment():
                 return False
 
 
+        if assignment == '1to4' :
+            while True:
+                if img1.exists() and is_valid_image(img1):
+                    # print("Valid image downloaded.")
+                    break
+                else:
+                    # print("Image is invalid or missing. Redownloading...")
+                    data = json.loads(json_data["reply"])
+                    filename = "img1"
+                    search_term = data["words"][0]["Search"]
 
-        while True:
-            if img1.exists() and is_valid_image(img1):
-                # print("Valid image downloaded.")
-                break
-            else:
-                # print("Image is invalid or missing. Redownloading...")
-                data = json.loads(json_data["reply"])
-                filename = "img1"
-                search_term = data["words"][0]["Search"]
-
-                api = "2"
-                get_image(search_term, filename , api)
+                    api = "2"
+                    get_image(search_term, filename , api)
 
 
-        while True:
-            if img2.exists() and is_valid_image(img2):
-                # print("Valid image downloaded.")
-                break
-            else:
-                # print("Image is invalid or missing. Redownloading...")
-                data = json.loads(json_data["reply"])
-                filename = "img2"
-                search_term = data["words"][1]["Search"]
-                api = "2"
-                get_image(search_term, filename , api)
+            while True:
+                if img2.exists() and is_valid_image(img2):
+                    # print("Valid image downloaded.")
+                    break
+                else:
+                    # print("Image is invalid or missing. Redownloading...")
+                    data = json.loads(json_data["reply"])
+                    filename = "img2"
+                    search_term = data["words"][1]["Search"]
+                    api = "2"
+                    get_image(search_term, filename , api)
 
-        # while not img1.exists():
-        #     data = json.loads(json_data["reply"])
-        #     filename = "img1"
-        #     search_term = data["words"][0]["Search"]
-
-        #     api = "2"
-        #     get_image(search_term, filename , api)
-
-        # while not img2.exists():
-        #     data = json.loads(json_data["reply"])
-        #     filename = "img2"
-        #     search_term = data["words"][1]["Search"]
-        #     api = "2"
-        #     get_image(search_term, filename , api)
 
         
         def make_image_final(name , max_font_size ,min_font_size , img_1_cords , img_2_cords ):
