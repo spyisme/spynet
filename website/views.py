@@ -2284,7 +2284,7 @@ def english_assignment():
                 "Date": {"text": f"{today_date}", "coords": (1684 , 197), "max_x": 2473 , "max_y": 239},  
 
                 #Word 1
-                "Today's POWER WORD 1": {"text": "", "coords": (988, 967), "max_x": 1618, "max_y": 1243},  
+                "Today's POWER WORD 1": {"text": "", "coords": (967,973), "max_x": 1618, "max_y": 1243},  
                 "Definition 1": {"text": "", "coords": (99,845), "max_x": 805, "max_y": 1291},
                 # "Part of Speech 1": {"text": "", "coords": (25, 197), "max_x": 148, "max_y": 216},
                 "Synonyms 1": {"text": "", "coords": (366,432), "max_x": 1005, "max_y": 528},
@@ -2447,7 +2447,7 @@ def english_assignment():
 
             img_1_cords = [900 , 2612,1657,3031]
 
-            make_image_final('assignment5to8' , 3000 , 100 ,img_1_cords)
+            make_image_final('assignment5to8' , 3000 , 70 ,img_1_cords)
 
 
 
