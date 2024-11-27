@@ -2020,7 +2020,6 @@ def english_assignment():
 
 
         data = json.loads(json_data["reply"])
-        discord_log_english(f"{data}")
         try : 
             for i, word in enumerate(data["words"], start=1):
                 search_term = word["Search"]
