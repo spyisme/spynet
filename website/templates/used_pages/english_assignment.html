@@ -205,11 +205,15 @@
     function showQuality() {
         // Show the quality section when '1 to 4' is selected
         document.getElementById('quality-section').style.display = 'block';
+        document.getElementById('quality-section2').style.display = 'block';
+
     }
 
     function hideQuality() {
         // Hide the quality section when '5 to 8' is selected
         document.getElementById('quality-section').style.display = 'none';
+        document.getElementById('quality-section2').style.display = 'none';
+
     }
 </script>
 
@@ -224,7 +228,7 @@
                 <p style="font-size: 14px;" id="quality-section" style="display:none;">To choose other options please login.(You are not logged in <a href="/">login?</a>)</p>
                 {%endif%}
                 
-                <div class="texthere" id="quality-section" style="display:none;">
+                <div class="texthere" id="quality-section2" style="display:none;">
                     <p>What should i choose?</p>
                     <p style="font-size: 14px;"><u><b>SerpApi</b></u>: Slowest Results and somewhat accurate (Doesnt Always Work)</p>
                     <p style="font-size: 14px;"><u><b>Unsplash Api</b></u> : Fastest Results but not accurate</p>
