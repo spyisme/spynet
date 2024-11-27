@@ -2120,7 +2120,10 @@ def english_assignment():
                     # print("Image is invalid or missing. Redownloading...")
                     data = json.loads(json_data["reply"])
                     filename = "img1"
-                    search_term = data["words"][0]["Search"]
+                    try : 
+                        search_term = data["words"][0]["Search"]
+                    except :
+                        search_term = data["Words"][0]["Search"]
 
                     api = "2"
                     get_image(search_term, filename , api)
@@ -2134,7 +2137,10 @@ def english_assignment():
                     # print("Image is invalid or missing. Redownloading...")
                     data = json.loads(json_data["reply"])
                     filename = "img2"
-                    search_term = data["words"][1]["Search"]
+                    try : 
+                        search_term = data["words"][1]["Search"]
+                    except :
+                        search_term = data["Words"][1]["Search"]
                     api = "2"
                     get_image(search_term, filename , api)
 
@@ -2312,7 +2318,11 @@ def english_assignment():
                     # print("Image is invalid or missing. Redownloading...")
                     data = json.loads(json_data["reply"])
                     filename = "img1"
-                    search_term = data["words"][0]["Search"]
+                    try : 
+                        search_term = data["words"][0]["Search"]
+                    except :
+                        search_term = data["Words"][0]["Search"]
+
                     api = "2"
                     get_image(search_term, filename , api)
 
