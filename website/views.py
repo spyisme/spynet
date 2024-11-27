@@ -2276,15 +2276,11 @@ def english_assignment():
                 return redirect(f"/static/english/{file_name}.pdf")
             else :
                 return render_template("used_pages/english_assignment_error.html")
-    
+#-----------------------------------------------------------------------------------------------------------------
+  
         elif assignment == '5to8' :
             fields_data = {
-                "Name & ID": {"text": f"{name_and_id}", "coords": (1684 , 87), "max_x": 2472, "max_y": 127},  
-
-                "Date": {"text": f"{today_date}", "coords": (1684 , 197), "max_x": 2473 , "max_y": 239},  
-
-                #Word 1
-                "Today's POWER WORD 1": {"text": "", "coords": (967,973), "max_x": 1618, "max_y": 1243},  
+                "Today's POWER WORD 1": {"text": "", "coords": (957,973), "max_x": 1618, "max_y": 1243},  
                 "Definition 1": {"text": "", "coords": (99,845), "max_x": 805, "max_y": 1291},
                 # "Part of Speech 1": {"text": "", "coords": (25, 197), "max_x": 148, "max_y": 216},
                 "Synonyms 1": {"text": "", "coords": (366,432), "max_x": 1005, "max_y": 528},
@@ -2292,6 +2288,10 @@ def english_assignment():
                 "Related Words 1": {"text": "", "coords": (1750,825), "max_x": 2447, "max_y": 1328},
                 "Your OWN Sentence 1": {"text": "", "coords": (135,2156), "max_x": 2401, "max_y": 2337},
 
+                
+                "Name & ID": {"text": f"{name_and_id}", "coords": (1684 , 87), "max_x": 2472, "max_y": 127},  
+
+                "Date": {"text": f"{today_date}", "coords": (1684 , 197), "max_x": 2473 , "max_y": 239},  
 
             }
             
@@ -2396,7 +2396,9 @@ def english_assignment():
                         y_text += line_height
 
                 # Add text fields
-                for field_name, field_info in fields_data.items():
+                for field_info in fields_data.items():
+                    if field_info == 'Name & ID' :
+                        min_font_size = 10
                     add_wrapped_text(
                         draw,
                         field_info["text"],
