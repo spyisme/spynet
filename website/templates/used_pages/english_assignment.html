@@ -218,13 +218,13 @@
 
 
                 {%if current_user.is_authenticated%}
-                <p style="font-size: 14px;">You can choose any option.(You are logged in as {{current_user.username}})</p>
+                <p style="font-size: 14px;" id="quality-section" style="display:none;">You can choose any option.(You are logged in as {{current_user.username}})</p>
    
                 {%else%}
-                <p style="font-size: 14px;">To choose other options please login.(You are not logged in <a href="/">login?</a>)</p>
+                <p style="font-size: 14px;" id="quality-section" style="display:none;">To choose other options please login.(You are not logged in <a href="/">login?</a>)</p>
                 {%endif%}
                 
-                <div class="texthere">
+                <div class="texthere" id="quality-section" style="display:none;">
                     <p>What should i choose?</p>
                     <p style="font-size: 14px;"><u><b>SerpApi</b></u>: Slowest Results and somewhat accurate (Doesnt Always Work)</p>
                     <p style="font-size: 14px;"><u><b>Unsplash Api</b></u> : Fastest Results but not accurate</p>
