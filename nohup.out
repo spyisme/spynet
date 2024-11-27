@@ -975,3 +975,15 @@ Invalid session qfv_G2Mf7c3jwscNAAAH (further occurrences of this error will be 
 164.52.24.188 - - [28/Nov/2024 00:31:09] code 400, message Bad request version ("\x07ÚSKOvÚïú¬w¨\x00ôZIËY\x13\x9bæM¹Ð\x8e§þf\x8d×F{\x00>\x13\x02\x13\x03\x13\x01À,À0\x00\x9fÌ©Ì¨ÌªÀ+À/\x00\x9eÀ$À(\x00kÀ#À'\x00gÀ")
 210.176.44.217 - - [28/Nov/2024 00:43:59] code 400, message Bad request version ('Z\x96Ò\x0eK\x88Ã\x00>y¶ò.k§ã!]\x99Õ\x12N\x8aÇ')
 172.105.128.11 - - [28/Nov/2024 03:45:15] code 400, message Bad request version ('À\x13À')
+b'{"code":2013,"message":"Please go to the video website page again, refresh the webpage and play the video again."}'
+Traceback (most recent call last):
+  File "/root/spysnet/main.py", line 11, in <module>
+    app, socketio = create_app()
+  File "/root/spysnet/website/__init__.py", line 65, in create_app
+    from .views import views
+  File "/root/spysnet/website/views.py", line 2251
+    fields_data =  update_fields_data(fields_data_low, data)
+    ^
+IndentationError: expected an indented block after 'elif' statement on line 2250
+ * Serving Flask app 'website'
+ * Debug mode: on
