@@ -2029,7 +2029,7 @@ def english_assignment():
 
         timezone = pytz.timezone("Etc/GMT-2") 
         today_date = datetime.now(timezone).strftime("%d-%m-%Y")
-        
+
         if assignment == '1to4' :
             fields_data_high = {
                 "Name & ID": {"text": f"{name_and_id}", "coords": (1134 , 33), "max_x": 2785 , "max_y": 166},  
@@ -2248,10 +2248,10 @@ def english_assignment():
                 img_2_cords = [2990, 5274, 4166, 6054]
                 make_image_final('high' , 300 , 100 ,img_1_cords , img_2_cords )
             elif quality == "low" :
-            fields_data =  update_fields_data(fields_data_low, data)
-            img_1_cords =  [319, 255, 432, 338]
-            img_2_cords = [319, 524, 432, 602]
-            make_image_final('low' , 30 , 10 ,img_1_cords,img_2_cords )
+                fields_data =  update_fields_data(fields_data_low, data)
+                img_1_cords =  [319, 255, 432, 338]
+                img_2_cords = [319, 524, 432, 602]
+                make_image_final('low' , 30 , 10 ,img_1_cords,img_2_cords )
 
             my_file = Path(f"website/static/english/{file_name}.pdf")
             if my_file.exists():
