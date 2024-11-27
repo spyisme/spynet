@@ -2301,7 +2301,7 @@ def english_assignment():
                         # Update each field for the current word
                         fields_data[f"Today's POWER WORD {i}"]["text"] = word_data["Today's POWER WORD"]
                         fields_data[f"Definition {i}"]["text"] = word_data["Definition"]
-                        fields_data[f"Part of Speech {i}"]["text"] = word_data["Part of Speech"]
+                        # fields_data[f"Part of Speech {i}"]["text"] = word_data["Part of Speech"]
                         fields_data[f"Synonyms {i}"]["text"] = word_data["Synonyms"]
                         fields_data[f"Antonyms {i}"]["text"] = word_data["Antonyms"]
                         fields_data[f"Related Words {i}"]["text"] = word_data["Related Words"]
@@ -2311,7 +2311,7 @@ def english_assignment():
                         # Update each field for the current word
                         fields_data[f"Today's POWER WORD {i}"]["text"] = word_data["Today's POWER WORD"]
                         fields_data[f"Definition {i}"]["text"] = word_data["Definition"]
-                        fields_data[f"Part of Speech {i}"]["text"] = word_data["Part of Speech"]
+                        # fields_data[f"Part of Speech {i}"]["text"] = word_data["Part of Speech"]
                         fields_data[f"Synonyms {i}"]["text"] = word_data["Synonyms"]
                         fields_data[f"Antonyms {i}"]["text"] = word_data["Antonyms"]
                         fields_data[f"Related Words {i}"]["text"] = word_data["Related Words"]
