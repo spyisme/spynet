@@ -2021,10 +2021,16 @@ def english_assignment():
 
         data = json.loads(json_data["reply"])
         discord_log_english(f"{data}")
-        for i, word in enumerate(data["words"], start=1):
-            search_term = word["Search"]
-            filename = f"img{i}"
-            get_image(search_term, filename , api)
+        try : 
+            for i, word in enumerate(data["words"], start=1):
+                search_term = word["Search"]
+                filename = f"img{i}"
+                get_image(search_term, filename , api)
+        except :
+            for i, word in enumerate(data["Words"], start=1):
+                search_term = word["Search"]
+                filename = f"img{i}"
+                get_image(search_term, filename , api)  
 
         timezone = pytz.timezone("Etc/GMT-2") 
         today_date = datetime.now(timezone).strftime("%d-%m-%Y")
