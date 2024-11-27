@@ -2305,39 +2305,41 @@ def ecu_search_display():
 
 
 
-import pandas as pd
-import plotly.express as px
+# import pandas as pd
+# import plotly.express as px
 
 
-with open("./website/static/Chinese.json", "r") as file:
-    data = json.load(file)
+# with open("./website/static/Chinese.json", "r") as file:
+#     data = json.load(file)
 
 @views.route("/ecu-chinese")
 def ecumid1ch():
-    """Generate and display the interactive chart."""
-    # Generate the chart
-    chart_html = create_interactive_chart(data)
-    return render_template("chart.html", chart_html=chart_html)
+    # """Generate and display the interactive chart."""
+    # # Generate the chart
+    # chart_html = create_interactive_chart(data)
+    # return render_template("chart.html", chart_html=chart_html)
+    return render_template("test_pages/chinese.html")
 
-def create_interactive_chart(data):
-    """Create a Plotly chart and return it as HTML."""
-    # Convert JSON to DataFrame
-    df = pd.DataFrame(data)
-    df['Grade'] = pd.to_numeric(df['Grade'], errors='coerce')  # Convert Grade to numeric
-    df.dropna(subset=['Grade'], inplace=True)  # Remove invalid grades
 
-    # Create scatter plot
-    fig = px.scatter(
-        df, 
-        x="ID", 
-        y="Grade", 
-        title="Grades by Student IDs", 
-        labels={"ID": "Student ID", "Grade": "Grade"},
-        hover_name="ID"
-    )
+# def create_interactive_chart(data):
+#     """Create a Plotly chart and return it as HTML."""
+#     # Convert JSON to DataFrame
+#     df = pd.DataFrame(data)
+#     df['Grade'] = pd.to_numeric(df['Grade'], errors='coerce')  # Convert Grade to numeric
+#     df.dropna(subset=['Grade'], inplace=True)  # Remove invalid grades
 
-    # Render the chart as HTML
-    return fig.to_html(full_html=False)
+#     # Create scatter plot
+#     fig = px.scatter(
+#         df, 
+#         x="ID", 
+#         y="Grade", 
+#         title="Grades by Student IDs", 
+#         labels={"ID": "Student ID", "Grade": "Grade"},
+#         hover_name="ID"
+#     )
+
+#     # Render the chart as HTML
+#     return fig.to_html(full_html=False)
 
 
 
