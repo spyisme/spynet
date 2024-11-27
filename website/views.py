@@ -2020,7 +2020,7 @@ def english_assignment():
 
 
         data = json.loads(json_data["reply"])
-        discord_log_english(data)
+        discord_log_english(f"{data}")
         for i, word in enumerate(data["words"], start=1):
             search_term = word["Search"]
             filename = f"img{i}"
