@@ -2083,16 +2083,26 @@ def english_assignment():
             }
             
             def update_fields_data(fields_data, data):
-                for i, word_data in enumerate(data["words"], start=1):
-                    # Update each field for the current word
-                    fields_data[f"Today's POWER WORD {i}"]["text"] = word_data["Today's POWER WORD"]
-                    fields_data[f"Definition {i}"]["text"] = word_data["Definition"]
-                    fields_data[f"Part of Speech {i}"]["text"] = word_data["Part of Speech"]
-                    fields_data[f"Synonyms {i}"]["text"] = word_data["Synonyms"]
-                    fields_data[f"Antonyms {i}"]["text"] = word_data["Antonyms"]
-                    fields_data[f"Related Words {i}"]["text"] = word_data["Related Words"]
-                    fields_data[f"Your OWN Sentence {i}"]["text"] = word_data["Your OWN Sentence"]
-                
+                try : 
+                    for i, word_data in enumerate(data["words"], start=1):
+                        # Update each field for the current word
+                        fields_data[f"Today's POWER WORD {i}"]["text"] = word_data["Today's POWER WORD"]
+                        fields_data[f"Definition {i}"]["text"] = word_data["Definition"]
+                        fields_data[f"Part of Speech {i}"]["text"] = word_data["Part of Speech"]
+                        fields_data[f"Synonyms {i}"]["text"] = word_data["Synonyms"]
+                        fields_data[f"Antonyms {i}"]["text"] = word_data["Antonyms"]
+                        fields_data[f"Related Words {i}"]["text"] = word_data["Related Words"]
+                        fields_data[f"Your OWN Sentence {i}"]["text"] = word_data["Your OWN Sentence"]
+                except : 
+                    for i, word_data in enumerate(data["Words"], start=1):
+                        # Update each field for the current word
+                        fields_data[f"Today's POWER WORD {i}"]["text"] = word_data["Today's POWER WORD"]
+                        fields_data[f"Definition {i}"]["text"] = word_data["Definition"]
+                        fields_data[f"Part of Speech {i}"]["text"] = word_data["Part of Speech"]
+                        fields_data[f"Synonyms {i}"]["text"] = word_data["Synonyms"]
+                        fields_data[f"Antonyms {i}"]["text"] = word_data["Antonyms"]
+                        fields_data[f"Related Words {i}"]["text"] = word_data["Related Words"]
+                        fields_data[f"Your OWN Sentence {i}"]["text"] = word_data["Your OWN Sentence"]            
                 return fields_data
 
 
@@ -2286,18 +2296,26 @@ def english_assignment():
             }
             
             def update_fields_data(fields_data, data):
-                for i, word_data in enumerate(data["words"], start=1):
-                    # Update each field for the current word
-                    fields_data[f"Today's POWER WORD {i}"]["text"] = word_data["Today's POWER WORD"]
-                    fields_data[f"Definition {i}"]["text"] = word_data["Definition"]
-                    fields_data[f"Part of Speech {i}"]["text"] = word_data["Part of Speech"]
-                    fields_data[f"Synonyms {i}"]["text"] = word_data["Synonyms"]
-                    fields_data[f"Antonyms {i}"]["text"] = word_data["Antonyms"]
-                    fields_data[f"Related Words {i}"]["text"] = word_data["Related Words"]
-                    fields_data[f"Your OWN Sentence {i}"]["text"] = word_data["Your OWN Sentence"]
-
-                discord_log_english(fields_data)
-
+                try : 
+                    for i, word_data in enumerate(data["words"], start=1):
+                        # Update each field for the current word
+                        fields_data[f"Today's POWER WORD {i}"]["text"] = word_data["Today's POWER WORD"]
+                        fields_data[f"Definition {i}"]["text"] = word_data["Definition"]
+                        fields_data[f"Part of Speech {i}"]["text"] = word_data["Part of Speech"]
+                        fields_data[f"Synonyms {i}"]["text"] = word_data["Synonyms"]
+                        fields_data[f"Antonyms {i}"]["text"] = word_data["Antonyms"]
+                        fields_data[f"Related Words {i}"]["text"] = word_data["Related Words"]
+                        fields_data[f"Your OWN Sentence {i}"]["text"] = word_data["Your OWN Sentence"]
+                except : 
+                    for i, word_data in enumerate(data["Words"], start=1):
+                        # Update each field for the current word
+                        fields_data[f"Today's POWER WORD {i}"]["text"] = word_data["Today's POWER WORD"]
+                        fields_data[f"Definition {i}"]["text"] = word_data["Definition"]
+                        fields_data[f"Part of Speech {i}"]["text"] = word_data["Part of Speech"]
+                        fields_data[f"Synonyms {i}"]["text"] = word_data["Synonyms"]
+                        fields_data[f"Antonyms {i}"]["text"] = word_data["Antonyms"]
+                        fields_data[f"Related Words {i}"]["text"] = word_data["Related Words"]
+                        fields_data[f"Your OWN Sentence {i}"]["text"] = word_data["Your OWN Sentence"]
                 return fields_data
             update_fields_data(fields_data , data)
             img1 = Path(f"website/english/img1.png")
