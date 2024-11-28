@@ -418,7 +418,7 @@ def index():
         default_options = ['Else', 'Tamer-el-kady', 'Nasser-El-Batal', 'Bio', 'Gedo',]
         options = default_options
 
-    result = result.replace("\n", " ").replace("https://" , "`https://")
+    result = result.replace("\n", " ")
 
 
     old = request.args.get('old')
