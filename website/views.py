@@ -2457,7 +2457,7 @@ def test():
 def ecu_search():
     query = request.form.get('query')
     results = []
-    with open('website/static/ECU24.json', 'r') as f:
+    with open('website/static/ECU24~23.json', 'r') as f:
         data2 = json.load(f)
     for entry in data2:
         email_id = entry['Email'].split('@')[0]
