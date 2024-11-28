@@ -146,7 +146,7 @@
                 <label for="word1">Word 1:</label>
                 <input type="text" id="word1" name="word1" placeholder="Extract (as in machines)" required>
 
-                <label id="word2" for="word2" style="display:none;">Word 2:</label>
+                <label id="lword2" for="word2" style="display:none;">Word 2:</label>
                 <input type="text" style="display:none;" id="word2" name="word2" placeholder="Collide">
 
                 <label for="name">Name and ID:</label>
@@ -210,6 +210,7 @@
         // Show the quality section when '1 to 4' is selected
         document.getElementById('quality-section').style.display = 'block';
         document.getElementById('word2').style.display = 'block';
+        document.getElementById('lword2').style.display = 'block';
 
 
 
@@ -219,6 +220,7 @@
         // Hide the quality section when '5 to 8' is selected
         document.getElementById('quality-section').style.display = 'none';
         document.getElementById('word2').style.display = 'none';
+        document.getElementById('lword2').style.display = 'none';
 
 
 
