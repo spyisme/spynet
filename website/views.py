@@ -2520,6 +2520,34 @@ def ecumid1ch():
     # return render_template("chart.html", chart_html=chart_html)
     return render_template("test_pages/chinese.html")
 
+@views.route("/computer-pdfs")
+def computerpdfs():
+    
+    if request.method == "GET":
+        client_ip = request.headers.get('X-Forwarded-For')
+        if client_ip:
+            client_ip = client_ip.split(',')[0].strip()
+        else:
+            client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
+
+        user_agent = request.headers.get('User-Agent')
+        device_type = "Desktop" if "Windows" in user_agent else (
+        "Macintosh" if "Macintosh" in user_agent else "Mobile")
+
+        if current_user.is_authenticated:
+            if current_user.stage != "4" :
+                if current_user.username != 'spy' :
+                    return abort(404)
+
+            if current_user.username != 'spy' :
+                discord_log(f"{client_ip} Viewed <{request.url}>  {current_user.username} {device_type} ```{user_agent}```")
+        else:
+            discord_log(f"{client_ip} Viewed <{request.url}> {device_type} ```{user_agent}```")
+
+
+    return redirect("https://drive.google.com/drive/folders/11n20liqBhwT_zoMoDqeWXog6q4jAfAMK?usp=sharing")
+
+
 
 # def create_interactive_chart(data):
 #     """Create a Plotly chart and return it as HTML."""
