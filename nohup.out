@@ -1386,3 +1386,208 @@ Traceback (most recent call last):
     fields_data[f"Today's POWER WORD {i}"]["text"] = word_data["Today's POWER WORD"]
 KeyError: "Today's POWER WORD"
 Invalid session 7EaY4jwdXmBY8iqrAAAE (further occurrences of this error will be logged with level INFO)
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.10/dist-packages/engineio/middleware.py", line 63, in __call__
+    return self.engineio_app.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/socketio/server.py", line 433, in handle_request
+    return self.eio.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/engineio/server.py", line 272, in handle_request
+    socket = self._get_socket(sid)
+  File "/usr/local/lib/python3.10/dist-packages/engineio/base_server.py", line 229, in _get_socket
+    raise KeyError('Session is disconnected')
+KeyError: 'Session is disconnected'
+35.179.107.58 - - [28/Nov/2024 07:25:06] code 400, message Bad request version ('À\x14À')
+35.179.107.58 - - [28/Nov/2024 07:27:16] code 400, message Bad request version ('À\x14À')
+35.179.107.58 - - [28/Nov/2024 07:30:31] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00±\x01\x00\x00\xad\x03\x03\x17á\x91x½v*O*«ÊVå\x18\x00\xadÅÓpí\x92Vþ¡\x86¾\x9cÎ¢íË\x98\x00\x00PÀ/À+À\x11À\x07À\x13À')
+35.179.107.58 - - [28/Nov/2024 07:34:58] code 400, message Bad request version ('À\x14À')
+35.179.107.58 - - [28/Nov/2024 07:38:43] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00±\x01\x00\x00\xad\x03\x03äºç¯åB\x84Ù¿óiÈ²oBÑ¸yÕ\x88\x1b\x86Ðöc´}úæLÖÈ\x00\x00PÀ/À+À\x11À\x07À\x13À')
+35.179.107.58 - - [28/Nov/2024 07:42:47] code 400, message Bad request version ('À\x14À')
+172.104.11.51 - - [28/Nov/2024 07:46:01] code 400, message Bad request version ('À\x13À')
+35.179.107.58 - - [28/Nov/2024 07:46:34] code 400, message Bad request syntax ('\x16\x03\x01\x00±\x01\x00\x00\xad\x03\x03\x1b\x95þ.U\x0f·è\x16\\')
+35.179.107.58 - - [28/Nov/2024 07:50:12] code 400, message Bad request version ('À\x14À')
+35.179.107.58 - - [28/Nov/2024 07:53:59] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00±\x01\x00\x00\xad\x03\x03þ\x1bb\x1báûN\x00Ø\\¬F«XñÐüäp©\x87eÝ\x03\\95\x93úö\x9eñ\x00\x00PÀ/À+À\x11À\x07À\x13À')
+35.179.107.58 - - [28/Nov/2024 07:57:41] code 400, message Bad request syntax ('\x16\x03\x01\x00±\x01\x00\x00\xad\x03\x03\x12\x18\x80YB2\x9eXTålNëUÈ|\x1b\x9eoÈö')
+35.179.107.58 - - [28/Nov/2024 08:01:59] code 400, message Bad request version ('À\x14À')
+159.223.69.51 - - [28/Nov/2024 08:03:11] code 400, message Bad request version ('À\x13À')
+152.42.247.210 - - [28/Nov/2024 08:03:14] code 400, message Bad request version ('À\x13À')
+198.235.24.82 - - [28/Nov/2024 08:12:27] code 400, message Bad request version ('À\x13À')
+198.235.24.82 - - [28/Nov/2024 08:12:27] code 400, message Bad request version ('À(À$À\x14À')
+Traceback (most recent call last):
+  File "/root/spysnet/website/views.py", line 2088, in update_fields_data
+    fields_data[f"Today's POWER WORD {i}"]["text"] = word_data["Today's POWER WORD"]
+KeyError: "Today's POWER WORD"
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.10/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/root/spysnet/website/views.py", line 2268, in english_assignment
+    fields_data =  update_fields_data(fields_data_low, data)
+  File "/root/spysnet/website/views.py", line 2096, in update_fields_data
+    for i, word_data in enumerate(data["Words"], start=1):
+KeyError: 'Words'
+80.66.83.49 - - [28/Nov/2024 08:25:32] code 400, message Bad request syntax ('\x04\x01\x00\x194eI')
+80.66.83.49 - - [28/Nov/2024 08:26:32] code 400, message Bad request syntax ('\x05\x01\x00')
+185.85.239.13 - - [28/Nov/2024 10:04:09] code 400, message Bad request version ("ð¹\x1b}*û\xadR7\x8aôl\x9a4\x12µ\x9fF\x0e½y\x9fFÿ£JTÒ\x00È\x13\x01\x13\x02\x13\x03\x13\x04\x13\x05À,À0\x00£\x00\x9fÌ©Ì¨ÌªÀ¯À\xadÀ£À\x9fÀ]ÀaÀWÀS\x00§À+À/\x00¢\x00\x9eÀ®À¬À¢À\x9eÀ\\À`ÀVÀR\x00¦À$À(\x00k\x00jÀsÀw\x00Ä\x00Ã\x00m\x00ÅÀ#À'\x00g\x00@ÀrÀv\x00¾\x00½\x00l\x00¿À")
+192.155.90.220 - - [28/Nov/2024 11:47:20] code 400, message Bad request version ('À\x13À')
+185.91.127.43 - - [28/Nov/2024 13:32:29] code 400, message Bad request syntax ('\x05\x01\x00')
+179.43.163.250 - - [28/Nov/2024 13:42:57] code 400, message Bad request syntax ('\x16\x03\x01\x00î\x01\x00\x00ê\x03\x03\x9e\x97}\x9a')
+93.174.93.12 - - [28/Nov/2024 14:14:28] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+80.66.83.49 - - [28/Nov/2024 14:43:18] code 400, message Bad request syntax ('\x04\x01\x00PPBS1\x00')
+80.66.83.49 - - [28/Nov/2024 14:44:19] code 400, message Bad request syntax ('\x05\x01\x00')
+198.235.24.35 - - [28/Nov/2024 15:30:30] code 400, message Bad request version ('À\x13À')
+198.235.24.35 - - [28/Nov/2024 15:30:30] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00Ê\x01\x00\x00Æ\x03\x03Ð\x8eY½gz_¤\x99µÆ7Û¢á')
+152.42.219.47 - - [28/Nov/2024 16:02:57] code 400, message Bad request version ('À\x13À')
+178.128.54.126 - - [28/Nov/2024 16:03:02] code 400, message Bad request version ('À\x13À')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.10/dist-packages/engineio/middleware.py", line 63, in __call__
+    return self.engineio_app.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/socketio/server.py", line 433, in handle_request
+    return self.eio.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/engineio/server.py", line 272, in handle_request
+    socket = self._get_socket(sid)
+  File "/usr/local/lib/python3.10/dist-packages/engineio/base_server.py", line 229, in _get_socket
+    raise KeyError('Session is disconnected')
+KeyError: 'Session is disconnected'
+Traceback (most recent call last):
+  File "/root/spysnet/website/views.py", line 2302, in english_assignment
+    update_fields_data(fields_data , data)
+  File "/root/spysnet/website/views.py", line 2293, in update_fields_data
+    fields_data[f"Today's POWER WORD {i}"]["text"] = word_data["Today's POWER WORD"]
+KeyError: "Today's POWER WORD 2"
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.10/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/root/spysnet/website/views.py", line 2441, in english_assignment
+    return render_template("used_pages/english_assignment_error.html" , error = e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "/usr/local/lib/python3.10/dist-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+  File "/usr/local/lib/python3.10/dist-packages/jinja2/environment.py", line 1304, in render
+    self.environment.handle_exception()
+  File "/usr/local/lib/python3.10/dist-packages/jinja2/environment.py", line 939, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/root/spysnet/website/templates/used_pages/english_assignment_error.html", line 17, in top-level template code
+    {%if "POWER WORD" in error%}
+TypeError: argument of type 'KeyError' is not iterable
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.10/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/root/spysnet/website/views.py", line 2470, in ecu_search
+    results.append({
+UnboundLocalError: local variable 'results' referenced before assignment
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.10/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/root/spysnet/website/views.py", line 2470, in ecu_search
+    results.append({
+UnboundLocalError: local variable 'results' referenced before assignment
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.10/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/root/spysnet/website/views.py", line 2470, in ecu_search
+    results.append({
+UnboundLocalError: local variable 'results' referenced before assignment
