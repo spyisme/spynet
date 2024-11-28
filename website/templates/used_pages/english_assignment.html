@@ -142,8 +142,12 @@
 
 
             <form action="{{ url_for('views.english_assignment') }}" method="post" id="hideme">
-                <label for="words">Words:</label>
-                <input type="text" id="words" name="words" placeholder="Extract (as in machines) , Collide" required>
+
+                <label for="word1">Word 1:</label>
+                <input type="text" id="word1" name="word1" placeholder="Extract (as in machines)" required>
+
+                <label for="word2" style="display:none;">Word 2:</label>
+                <input type="text" id="word2" name="word2" placeholder="Collide">
 
                 <label for="name">Name and ID:</label>
                 <input type="text" id="name" name="name" placeholder="Jana Diab 192400XXX" required>
@@ -161,7 +165,7 @@
 
                     {%endif%}
             
-                    <input type="radio" name="api" value="2" id="api2">
+                    <input type="radio" name="api" value="2" id="api2" checked>
                     <label for="api2">Unsplash Api</label>
 
 
@@ -205,6 +209,8 @@
     function showQuality() {
         // Show the quality section when '1 to 4' is selected
         document.getElementById('quality-section').style.display = 'block';
+        document.getElementById('word2').style.display = 'block';
+
 
 
     }
@@ -212,6 +218,8 @@
     function hideQuality() {
         // Hide the quality section when '5 to 8' is selected
         document.getElementById('quality-section').style.display = 'none';
+        document.getElementById('word2').style.display = 'none';
+
 
 
 
@@ -261,7 +269,7 @@
         event.preventDefault(); // Prevent form submission
         
         // Select the required fields
-        const words = document.getElementById('words');
+        const words = document.getElementById('word1');
         const name = document.getElementById('name');
         const apiRadios = document.querySelectorAll('input[name="api"]');
         const apiRadios2 = document.querySelectorAll('input[name="quality"]');
