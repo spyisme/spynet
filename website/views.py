@@ -1883,7 +1883,7 @@ def english_assignment():
                         image_urls = [photo['urls']['regular'] for photo in data['results']]
 
                     else:
-                        discord_log_english("Failed to fetch data:", response.json())
+                        discord_log_english("Failed to fetch data: "  + response.json())
                     for url in image_urls:
                         response = requests.get(url)
                         with open(f"./website/english/{name}.png", "wb") as file:
