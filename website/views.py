@@ -2467,6 +2467,8 @@ def ecu_search():
                 })
         return jsonify(results)
     else :
+        results = []
+
         results.append({
             'Name': "Login to see results",
             'Email': "Login to see results",
