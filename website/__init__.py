@@ -90,9 +90,6 @@ def create_app():
 
     # Before request callback to check if the user is logged in
 
-
-
-
     def before_request():
 
         excluded_routes = [
@@ -102,7 +99,11 @@ def create_app():
             'vdo.commandslist', 'shortlinks.youtube', 'vdo.cmdcommand', "views.english_assignment",
             'vdo.storjflask2' , 'views.uptimebackup' , 'views.home' , 'shortlinks.netflix' , 'views.check_username'
         ]
-
+        if request.host.startswith("www."):
+            non_www_host = request.host[4:]  # Remove 'www.'
+            url = request.url.replace(request.host, non_www_host)
+            return redirect(url, code=301)
+        
         if request.endpoint and request.endpoint not in excluded_routes and not request.path.startswith(
                 '/static/') :
             if not current_user.is_authenticated:
