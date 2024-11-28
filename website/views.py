@@ -2452,30 +2452,27 @@ def test():
 
 @views.route('/search', methods=['POST'])
 def ecu_search():
-    if current_user.is_authenticated:
-        query = request.form.get('query')
-        results = []
-        with open('website/static/ECU24.json', 'r') as f:
-            data2 = json.load(f)
-        for entry in data2:
-            email_id = entry['Email'].split('@')[0]
-            if query == email_id or query == entry['Phone']:
+    query = request.form.get('query')
+    results = []
+    with open('website/static/ECU24.json', 'r') as f:
+        data2 = json.load(f)
+    for entry in data2:
+        email_id = entry['Email'].split('@')[0]
+        if query == email_id or query == entry['Phone']:
+            if current_user.is_authenticated:
                 results.append({
                     'Name': entry['Name'],
                     'Email': entry['Email'],
                     'Phone': entry['Phone']
                 })
-        return jsonify(results)
-    else :
-        results = []
-
-        results.append({
+            else :
+                results.append({
             'Name': "Login to see results",
             'Email': "Login to see results",
             'Phone': "Login to see results"
-        })
-        
-        return jsonify(results)
+                })
+    return jsonify(results)
+
 @views.route('/ecu')
 def ecu_search_display():
     return render_template('used_pages/ecu.html')
