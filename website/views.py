@@ -1960,7 +1960,7 @@ def english_assignment():
             'newFileId': None,
             'stream': False,
         }
-            response = requests.post('https://masrgpt.com/wp-json/mwai-ui/v1/chats/submit', headers=headers, json=json_data)
+            response = requests.post('http://masrgpt.com/wp-json/mwai-ui/v1/chats/submit', headers=headers, json=json_data)
 
             json_data = response.json()
 
