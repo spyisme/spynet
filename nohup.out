@@ -1655,3 +1655,6 @@ b'{"code":2014,"message":"Domain not allowed"}'
 91.238.181.31 - - [28/Nov/2024 21:23:25] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
 94.156.166.117 - - [28/Nov/2024 21:31:56] code 400, message Bad request syntax ('\x05\x01\x00')
 66.240.205.34 - - [28/Nov/2024 21:40:22] code 400, message Bad request version ('®¯]')
+152.42.214.50 - - [29/Nov/2024 00:03:14] code 400, message Bad request version ('À\x13À')
+178.128.54.126 - - [29/Nov/2024 00:03:17] code 400, message Bad request version ('À\x13À')
+80.82.77.202 - - [29/Nov/2024 00:49:38] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
