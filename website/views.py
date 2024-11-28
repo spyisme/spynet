@@ -1820,14 +1820,17 @@ def english_assignment():
 
 
             if not word2 :
-                new_message = f'Use the 1 word : "{word1}"'
+                if assignment == "5to8" : 
+                    new_message = f'Use the 1 word : "{word1}"'
 
                 if assignment == "1to4" : 
                     return "Provide 2 words ! (Refresh the page)"
             else :
-                new_message = f'Use the 2 words : "{word1}" and "{word2}" '
+                if assignment == "1to4" : 
+                    new_message = f'Use the 2 words : "{word1}" and "{word2}" '
                 if assignment == "5to8" : 
-                    return "Provide 1 word ! (Refresh the page)"
+                    new_message = f'Use the 1 word : "{word1}"'
+
 
             def get_image(query , name , api):
                 # API 1 = sera 2 = upsplash 3 = google search
