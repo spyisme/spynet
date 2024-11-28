@@ -13,6 +13,12 @@
     <div class="form">
         <h1 class="title">An unexpected error occurred</h1>
         <p class="subtitle">{{error}}</p>
+
+        {%if "POWER WORD" in error%}
+        
+        <p class="subtitle"><b>You might have entered 2 words for assignment 5 to 8 .</b></p>
+
+        {%endif%}
     </div>
 </body>
 </html>
