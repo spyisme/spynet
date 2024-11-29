@@ -1738,7 +1738,7 @@ def secure_endpoint():
     
     if not username:
 
-        return jsonify({"status": "missing message"}), 400
+        return jsonify({"status": "wrong api key"}), 400
 
     response_data = {"status": "true", "message": username}
     # Serialize the data consistently
