@@ -590,20 +590,6 @@ def load_stage_data(stage):
         return json.load(file)
 
 
-@views.route("/subjects")
-def subjectspage():
-
-    password = request.args.get("password")
-
-    data = load_stage_data(current_user.stage)
-    # with open('website/Backend/data.json') as f:
-    #     data = json.load(f)
-
-    lines = list(data.keys())
-    return render_template('used_pages/all.html',
-                           lines=lines,
-                           teachername="All",
-                           password=password )
 
 
 
@@ -620,6 +606,21 @@ def home():
 
 #User pages---------------------------------------------------------------------------
 
+
+@views.route("/subjects")
+def subjectspage():
+
+    password = request.args.get("password")
+
+    data = load_stage_data(current_user.stage)
+    # with open('website/Backend/data.json') as f:
+    #     data = json.load(f)
+
+    lines = list(data.keys())
+    return render_template('used_pages/all.html',
+                           lines=lines,
+                           teachername="All",
+                           password=password )
 
 #Subject
 @views.route("/subjects/<subject>")
