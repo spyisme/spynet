@@ -660,7 +660,7 @@ def teacher(subject, teacher_name):
             if teacher["link"] == teacher_name:
                 courses = teacher.get("courses")
                 description = teacher.get("description")
-                lastvideo = teacher.get("videos")[-1]
+                lastvideo = teacher.get("videos")
 
                 for item in courses:
                     item['link'] = item['name']
