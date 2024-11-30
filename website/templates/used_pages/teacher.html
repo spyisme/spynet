@@ -101,6 +101,7 @@
 
        
                       <p>{{ x.name }}</p>
+
                       {%if "2023" in x.description%}
                       <span class="card_old-description">
             
@@ -108,8 +109,9 @@
                       <span class="card-description">
 
                         {%endif%}
+
                         {{ x.description if x.description else 'description' }}
-                      
+                        {{lastvideo}}
                       </span>
 
 
@@ -123,7 +125,7 @@
 
       </ul>
       {%else%}
-      <h1 style="color: white; text-align: center;">No Content uploaded yet</h1>
+      <h1 style="color: white; text-align: center;">No Content added Yet.</h1>
       {%endif%}
 <br>
 <br>
