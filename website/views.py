@@ -655,26 +655,33 @@ def subjects(subject):
 def teacher(subject, teacher_name):
     courses = None
     data = load_stage_data(current_user.stage)
+    lastvideo = None  # Initialize lastvideo
+
     if subject in data:
         for teacher in data[subject]["teachers"]:
             if teacher["link"] == teacher_name:
                 courses = teacher.get("courses")
                 description = teacher.get("description")
-                lastvideo = teacher.get("videos")
 
                 for item in courses:
                     item['link'] = item['name']
+                    
+                    # Get the last video for each course (if available)
+                    if item.get("videos"):
+                        lastvideo = item["videos"][-1]  # Get the last video in the list
+                        item['last_video'] = lastvideo  # Add last_video to the course info
+                
                 break
 
     if courses == None:  
         abort(404)
 
-
     return render_template('used_pages/teacher.html',
                            teachername=subject,
                            teacher_links=courses,
                            teacher_name=teacher_name,
-                           description=description, lastvideo= lastvideo)
+                           description=description, 
+                           lastvideo=lastvideo)
 
 
 #Videos
