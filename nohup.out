@@ -1658,3 +1658,275 @@ b'{"code":2014,"message":"Domain not allowed"}'
 152.42.214.50 - - [29/Nov/2024 00:03:14] code 400, message Bad request version ('À\x13À')
 178.128.54.126 - - [29/Nov/2024 00:03:17] code 400, message Bad request version ('À\x13À')
 80.82.77.202 - - [29/Nov/2024 00:49:38] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+5.8.11.202 - - [29/Nov/2024 02:42:33] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+167.172.108.68 - - [29/Nov/2024 04:15:46] code 400, message Bad request version ('Ü$L¥Ifc\x8e\x82\x8aÖ[5-ëÛ¥¡\x95hæÌrYÖ«{GÌ')
+167.172.108.68 - - [29/Nov/2024 04:15:47] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00î\x01\x00\x00ê\x03\x03¦P\x06¼\x87Ì')
+167.172.108.68 - - [29/Nov/2024 04:15:47] code 400, message Bad request version ('À\x13À')
+185.208.156.160 - - [29/Nov/2024 05:19:39] code 400, message Bad request version ('À\x13À')
+179.43.163.250 - - [29/Nov/2024 06:12:56] code 400, message Bad request version ('À\x13À')
+52.160.37.158 - - [29/Nov/2024 06:16:26] code 400, message Bad request syntax ('MGLNDD_47.250.51.78_80')
+152.42.219.47 - - [29/Nov/2024 08:02:56] code 400, message Bad request version ('À\x13À')
+159.223.69.51 - - [29/Nov/2024 08:03:00] code 400, message Bad request version ('À\x13À')
+80.82.77.202 - - [29/Nov/2024 09:13:00] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+93.174.93.12 - - [29/Nov/2024 09:31:41] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+66.175.213.4 - - [29/Nov/2024 09:46:02] code 400, message Bad request version ('À\x13À')
+179.43.163.250 - - [29/Nov/2024 10:04:25] code 400, message Bad request version ('À\x13À')
+179.43.163.250 - - [29/Nov/2024 10:04:49] code 400, message Bad request version ('À\x13À')
+164.92.235.66 - - [29/Nov/2024 11:13:01] code 400, message Bad request version ("\x93Íe\x00>\x13\x02\x13\x03\x13\x01À,À0\x00\x9fÌ©Ì¨ÌªÀ+À/\x00\x9eÀ$À(\x00kÀ#À'\x00gÀ")
+198.235.24.156 - - [29/Nov/2024 11:15:45] code 400, message Bad request version ('À\x13À')
+198.235.24.156 - - [29/Nov/2024 11:15:45] code 400, message Bad request version ('À(À$À\x14À')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.10/dist-packages/engineio/middleware.py", line 63, in __call__
+    return self.engineio_app.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/socketio/server.py", line 433, in handle_request
+    return self.eio.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/engineio/server.py", line 272, in handle_request
+    socket = self._get_socket(sid)
+  File "/usr/local/lib/python3.10/dist-packages/engineio/base_server.py", line 229, in _get_socket
+    raise KeyError('Session is disconnected')
+KeyError: 'Session is disconnected'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.10/dist-packages/engineio/middleware.py", line 63, in __call__
+    return self.engineio_app.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/socketio/server.py", line 433, in handle_request
+    return self.eio.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/engineio/server.py", line 272, in handle_request
+    socket = self._get_socket(sid)
+  File "/usr/local/lib/python3.10/dist-packages/engineio/base_server.py", line 229, in _get_socket
+    raise KeyError('Session is disconnected')
+KeyError: 'Session is disconnected'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.10/dist-packages/engineio/middleware.py", line 63, in __call__
+    return self.engineio_app.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/socketio/server.py", line 433, in handle_request
+    return self.eio.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/engineio/server.py", line 292, in handle_request
+    socket = self._get_socket(sid)
+  File "/usr/local/lib/python3.10/dist-packages/engineio/base_server.py", line 229, in _get_socket
+    raise KeyError('Session is disconnected')
+KeyError: 'Session is disconnected'
+Invalid session JCpQXfThoThbiqUTAAAh (further occurrences of this error will be logged with level INFO)
+45.79.181.223 - - [29/Nov/2024 13:46:52] code 400, message Bad request version ('À\x13À')
+68.183.134.63 - - [29/Nov/2024 15:05:18] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00{\x01\x00\x00w\x03\x03\x8e÷ÊDf÷¤Í¥¾aE\x16C¨7A4jü\\Àö\x7f\x8fÆ"\\~ùP~\x00\x00\x1aÀ/À+À\x11À\x07À\x13À')
+68.183.134.63 - - [29/Nov/2024 15:05:18] code 400, message Bad request version ('À\x14À')
+202.112.238.240 - - [29/Nov/2024 15:22:34] code 400, message Bad request version ('À\x13À')
+202.112.238.240 - - [29/Nov/2024 15:22:34] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00î\x01\x00\x00ê\x03\x032à»6Ä')
+152.42.219.47 - - [29/Nov/2024 16:03:04] code 400, message Bad request version ('\x94¦v\x9dm9xD\x9e')
+152.42.247.210 - - [29/Nov/2024 16:03:09] code 400, message Bad request version ('À\x13À')
+5.8.11.202 - - [29/Nov/2024 16:25:06] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+157.230.114.190 - - [29/Nov/2024 16:32:51] code 400, message Bad request version ('À\x13À')
+165.227.172.179 - - [29/Nov/2024 16:32:51] code 400, message Bad request version ("0UÏbï\x8cEæ£úi\x88¤ÞnÙ\x00>\x13\x02\x13\x03\x13\x01À,À0\x00\x9fÌ©Ì¨ÌªÀ+À/\x00\x9eÀ$À(\x00kÀ#À'\x00gÀ")
+157.230.114.190 - - [29/Nov/2024 16:32:52] code 400, message Bad request version ('À\x13À')
+157.230.114.190 - - [29/Nov/2024 16:32:52] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00î\x01\x00\x00ê\x03\x03\x8dyqâ/O\x8by\x97u\x83\x94¼\x00\x16\x8c[\x11a«º|\x89\x8dA\x12í¼¸\x95éC')
+199.45.154.139 - - [29/Nov/2024 17:12:25] code 505, message Invalid HTTP version (2.0)
+64.62.197.77 - - [29/Nov/2024 17:33:22] code 400, message Bad request version ('À\x14À')
+205.210.31.32 - - [29/Nov/2024 18:00:17] code 400, message Bad request version ('À\x13À')
+205.210.31.32 - - [29/Nov/2024 18:00:18] code 400, message Bad HTTP/0.9 request type ("\x16\x03\x01\x00Ê\x01\x00\x00Æ\x03\x03`s+?ØÅ\x9b\x82\x9bL\x0f\x19sÚ|Ýï\x8f\xadüà7*^É\x7f\x7fèó·X\x0f\x00\x00hÌ\x14Ì\x13À/À+À0À,À\x11À\x07À'À#À\x13À")
+80.66.76.134 - - [29/Nov/2024 18:04:58] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+178.79.184.212 - - [29/Nov/2024 18:09:05] code 400, message Bad request version ('\x00\x04\x03\x00\x01\x02\x00')
+178.79.184.212 - - [29/Nov/2024 18:09:06] code 400, message Bad request version ('\x00\x04\x03\x00\x01\x02\x00')
+178.79.184.212 - - [29/Nov/2024 18:09:06] code 400, message Bad request version ('\x00\x04\x03\x00\x01\x02\x00')
+192.155.90.118 - - [29/Nov/2024 19:48:28] code 400, message Bad request version ('À\x13À')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.10/dist-packages/engineio/middleware.py", line 63, in __call__
+    return self.engineio_app.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/socketio/server.py", line 433, in handle_request
+    return self.eio.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/engineio/server.py", line 272, in handle_request
+    socket = self._get_socket(sid)
+  File "/usr/local/lib/python3.10/dist-packages/engineio/base_server.py", line 229, in _get_socket
+    raise KeyError('Session is disconnected')
+KeyError: 'Session is disconnected'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.10/dist-packages/engineio/middleware.py", line 63, in __call__
+    return self.engineio_app.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/socketio/server.py", line 433, in handle_request
+    return self.eio.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/engineio/server.py", line 272, in handle_request
+    socket = self._get_socket(sid)
+  File "/usr/local/lib/python3.10/dist-packages/engineio/base_server.py", line 229, in _get_socket
+    raise KeyError('Session is disconnected')
+KeyError: 'Session is disconnected'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.10/dist-packages/engineio/middleware.py", line 63, in __call__
+    return self.engineio_app.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/socketio/server.py", line 433, in handle_request
+    return self.eio.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/engineio/server.py", line 272, in handle_request
+    socket = self._get_socket(sid)
+  File "/usr/local/lib/python3.10/dist-packages/engineio/base_server.py", line 229, in _get_socket
+    raise KeyError('Session is disconnected')
+KeyError: 'Session is disconnected'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.10/dist-packages/engineio/middleware.py", line 63, in __call__
+    return self.engineio_app.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/socketio/server.py", line 433, in handle_request
+    return self.eio.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/engineio/server.py", line 272, in handle_request
+    socket = self._get_socket(sid)
+  File "/usr/local/lib/python3.10/dist-packages/engineio/base_server.py", line 229, in _get_socket
+    raise KeyError('Session is disconnected')
+KeyError: 'Session is disconnected'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.10/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/root/spysnet/website/views.py", line 872, in theleaderfinal
+    video = find_a_working_acc(f"https://api.theleadersacademy.online/api/video/play/{id}")
+  File "/root/spysnet/website/views.py", line 833, in find_a_working_acc
+    token = response.json()['data']['token']
+KeyError: 'token'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.10/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/root/spysnet/website/views.py", line 872, in theleaderfinal
+    video = find_a_working_acc(f"https://api.theleadersacademy.online/api/video/play/{id}")
+  File "/root/spysnet/website/views.py", line 833, in find_a_working_acc
+    token = response.json()['data']['token']
+KeyError: 'token'
+45.79.181.223 - - [29/Nov/2024 23:48:37] code 400, message Bad request version ('À\x13À')
+152.42.214.140 - - [30/Nov/2024 00:03:18] code 400, message Bad request version ('À\x13À')
+159.223.67.34 - - [30/Nov/2024 00:03:20] code 400, message Bad request version ('÷Z\x8b<Èñ`ÁMx[\x91´\x8f\x0f')
+66.240.205.34 - - [30/Nov/2024 01:03:25] code 400, message Bad request version ('ô')
+185.91.127.43 - - [30/Nov/2024 01:26:05] code 400, message Bad request syntax ('\x05\x01\x00')
+185.91.127.43 - - [30/Nov/2024 02:02:30] code 400, message Bad request syntax ('\x05\x01\x00')
+5.8.11.202 - - [30/Nov/2024 04:44:13] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.10/dist-packages/engineio/middleware.py", line 63, in __call__
+    return self.engineio_app.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/socketio/server.py", line 433, in handle_request
+    return self.eio.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/engineio/server.py", line 272, in handle_request
+    socket = self._get_socket(sid)
+  File "/usr/local/lib/python3.10/dist-packages/engineio/base_server.py", line 229, in _get_socket
+    raise KeyError('Session is disconnected')
+KeyError: 'Session is disconnected'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.10/dist-packages/engineio/middleware.py", line 63, in __call__
+    return self.engineio_app.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/socketio/server.py", line 433, in handle_request
+    return self.eio.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/engineio/server.py", line 292, in handle_request
+    socket = self._get_socket(sid)
+  File "/usr/local/lib/python3.10/dist-packages/engineio/base_server.py", line 229, in _get_socket
+    raise KeyError('Session is disconnected')
+KeyError: 'Session is disconnected'
+Invalid session q1WAJLFvhd7rPinBAADV (further occurrences of this error will be logged with level INFO)
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.10/dist-packages/engineio/middleware.py", line 63, in __call__
+    return self.engineio_app.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/socketio/server.py", line 433, in handle_request
+    return self.eio.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/engineio/server.py", line 292, in handle_request
+    socket = self._get_socket(sid)
+  File "/usr/local/lib/python3.10/dist-packages/engineio/base_server.py", line 229, in _get_socket
+    raise KeyError('Session is disconnected')
+KeyError: 'Session is disconnected'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.10/dist-packages/engineio/middleware.py", line 63, in __call__
+    return self.engineio_app.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/socketio/server.py", line 433, in handle_request
+    return self.eio.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/engineio/server.py", line 292, in handle_request
+    socket = self._get_socket(sid)
+  File "/usr/local/lib/python3.10/dist-packages/engineio/base_server.py", line 229, in _get_socket
+    raise KeyError('Session is disconnected')
+KeyError: 'Session is disconnected'
+198.235.24.148 - - [30/Nov/2024 06:29:42] code 400, message Bad request version ('À\x13À')
+198.235.24.148 - - [30/Nov/2024 06:29:43] code 400, message Bad HTTP/0.9 request type ("\x16\x03\x01\x00Ê\x01\x00\x00Æ\x03\x03F9\x02ÓªKÓ\x04\x8a¹ôô¸¬ò¨K2p\x87ÖIk)Ë1\x97ÏÊg\x81ë\x00\x00hÌ\x14Ì\x13À/À+À0À,À\x11À\x07À'À#À\x13À")
+147.185.132.189 - - [30/Nov/2024 06:38:45] code 400, message Bad request version ('À\x13À')
+147.185.132.189 - - [30/Nov/2024 06:38:46] code 400, message Bad request version ('À(À$À\x14À')
+159.223.67.34 - - [30/Nov/2024 08:02:52] code 400, message Bad request version ('0!')
+152.42.219.47 - - [30/Nov/2024 08:02:58] code 400, message Bad request version ('À\x13À')
+179.43.163.250 - - [30/Nov/2024 08:49:16] code 400, message Bad request version ('À\x13À')
+179.43.163.250 - - [30/Nov/2024 10:57:40] code 400, message Bad request syntax ('\x16\x03\x01\x00î\x01\x00\x00ê\x03\x03é»\x06z¼V®')
+194.165.16.73 - - [30/Nov/2024 14:18:47] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+152.42.214.50 - - [30/Nov/2024 16:03:01] code 400, message Bad request version ('À\x13À')
+178.128.54.126 - - [30/Nov/2024 16:03:02] code 400, message Bad request version ('À\x13À')
+5.8.11.202 - - [30/Nov/2024 16:55:41] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+45.95.169.130 - - [30/Nov/2024 21:12:43] code 400, message Bad HTTP/0.9 request type ('\x10')
+45.95.169.130 - - [30/Nov/2024 21:12:53] code 400, message Bad request version ('Ý%d1\x17¦%nÅ')
+172.168.158.161 - - [30/Nov/2024 21:41:44] code 400, message Bad request syntax ('MGLNDD_47.250.51.78_80')
+64.62.197.26 - - [30/Nov/2024 21:49:58] code 400, message Bad request version ('À\x14À')
+167.94.138.50 - - [30/Nov/2024 23:34:57] code 505, message Invalid HTTP version (2.0)
+152.42.214.50 - - [01/Dec/2024 00:02:57] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x01')
+159.223.67.34 - - [01/Dec/2024 00:03:09] code 400, message Bad request version ('À\x13À')

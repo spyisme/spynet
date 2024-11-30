@@ -413,6 +413,60 @@
                                 "title": "S3 | Homework 2",
                                 "duration": "02:27:07",
                                 "jsid": 23
+                            },
+                            {
+                                "id": "3dOpLoL2zEE",
+                                "title": "S4 | Part 1",
+                                "duration": "01:02:27",
+                                "jsid": 24
+                            },
+                            {
+                                "id": "-SaqSGCR1Wk",
+                                "title": "S4 | Part 2",
+                                "duration": "00:53:09",
+                                "jsid": 25
+                            },
+                            {
+                                "id": "7JDq13woRog",
+                                "title": "S4 | Part 3",
+                                "duration": "00:48:08",
+                                "jsid": 26
+                            },
+                            {
+                                "id": "yu9PrL1ncG0",
+                                "title": "S4 | Summary",
+                                "duration": "00:31:23",
+                                "jsid": 27
+                            },
+                            {
+                                "id": "juoNwd6AUYg",
+                                "title": "S4 | Homework",
+                                "duration": "02:08:32",
+                                "jsid": 28
+                            },
+                            {
+                                "id": "jRPFhCx7bMM",
+                                "title": "S5 | Part 1",
+                                "duration": "01:20:53",
+                                "jsid": 29
+                            },
+                            {
+                                "id": "no1D4KA4uLQ",
+                                "title": "S5 | Part 2",
+                                "duration": "01:21:48",
+                                "jsid": 30
+                            },
+                            {
+                                "id": "htFs2FUn9sU",
+                                "title": "S5 | Part 3",
+                                "duration": "00:41:47",
+                                "jsid": 31
+                            },
+                            {
+                                "id": "X2A-84BkMd0",
+                                "title": "S5 | Summary",
+                                "duration": "00:18:21",
+                                "jsid": 32
                             }
                         ],
                         "playlist_id": "PLM-GVlebsoPUNwwm_7PD3R9FePeFeJnpb",
@@ -4448,6 +4502,36 @@
                                 "title": "S4 | One Step Further",
                                 "duration": "00:31:00",
                                 "jsid": 13
+                            },
+                            {
+                                "id": "oOftANemZd0",
+                                "title": "S5 | Mutual Magnetic force between TWO parallel straight wires",
+                                "duration": "00:20:18",
+                                "jsid": 14
+                            },
+                            {
+                                "id": "rDnyLNUNl5g",
+                                "title": "S5 | Magnetic force between THREE parallel straight wires",
+                                "duration": "00:21:50",
+                                "jsid": 15
+                            },
+                            {
+                                "id": "hdCZcbdZr3A",
+                                "title": "S5 | Magnetic force acting on straight wire and Fleming left hand rule",
+                                "duration": "01:09:01",
+                                "jsid": 16
+                            },
+                            {
+                                "id": "dtengx0MWCg",
+                                "title": "S5 | One Step Further",
+                                "duration": "00:56:44",
+                                "jsid": 17
+                            },
+                            {
+                                "id": "1SDG9eddZ84",
+                                "title": "S5 | Homework",
+                                "duration": "02:10:17",
+                                "jsid": 18
                             }
                         ],
                         "playlist_id": "PLM-GVlebsoPU-_aFt8aTLDeK6ZHYhBFPE",
@@ -4699,6 +4783,36 @@
                                 "title": "S6",
                                 "duration": "02:36:55",
                                 "jsid": 15
+                            },
+                            {
+                                "id": "J_7HDb8-6DA",
+                                "title": "S6 | Hw Mr . Hady",
+                                "duration": "01:44:12",
+                                "jsid": 16
+                            },
+                            {
+                                "id": "DQBxADyfdCo",
+                                "title": "S6 | Hw Mrs . Fatma",
+                                "duration": "01:54:20",
+                                "jsid": 17
+                            },
+                            {
+                                "id": "6HhXdDcPJCQ",
+                                "title": "S7",
+                                "duration": "02:46:19",
+                                "jsid": 18
+                            },
+                            {
+                                "id": "RLOznVDDf6U",
+                                "title": "S7 | Hw Mr . Hady",
+                                "duration": "03:04:39",
+                                "jsid": 19
+                            },
+                            {
+                                "id": "yL2Vy9TCLC8",
+                                "title": "S7 | Hw Mrs . Fatma",
+                                "duration": "03:44:05",
+                                "jsid": 20
                             }
                         ],
                         "playlist_id": "PLM-GVlebsoPXbA1Gff0KE40JOebe-vkk9",
@@ -8780,40 +8894,64 @@
                                 "jsid": 15
                             },
                             {
+                                "id": "EZPDRL68KX4",
+                                "title": "S3 | Homework",
+                                "duration": "02:45:14",
+                                "jsid": 16
+                            },
+                            {
                                 "id": "LLgkDxIrFt4",
                                 "title": "S4 | Recap",
                                 "duration": "00:45:38",
-                                "jsid": 16
+                                "jsid": 17
                             },
                             {
                                 "id": "kJsj4erfgtc",
                                 "title": "S4 | Quiz",
                                 "duration": "00:20:19",
-                                "jsid": 17
+                                "jsid": 18
                             },
                             {
                                 "id": "GUW764jnvfc",
                                 "title": "S4 | Part 1",
                                 "duration": "01:36:01",
-                                "jsid": 18
+                                "jsid": 19
                             },
                             {
                                 "id": "K9I7kS0DIuw",
                                 "title": "S4 | Part 2",
                                 "duration": "01:43:30",
-                                "jsid": 19
+                                "jsid": 20
                             },
                             {
                                 "id": "iSNj45axspA",
                                 "title": "S4 | Part 3",
                                 "duration": "00:33:21",
-                                "jsid": 20
+                                "jsid": 21
                             },
                             {
                                 "id": "ntanuUlNKrU",
                                 "title": "S4 | Law Sa2alak",
                                 "duration": "02:28:02",
-                                "jsid": 21
+                                "jsid": 22
+                            },
+                            {
+                                "id": "7febMz6fe5w",
+                                "title": "S4 | Homework 1",
+                                "duration": "02:02:38",
+                                "jsid": 23
+                            },
+                            {
+                                "id": "BD_xcBTiCXg",
+                                "title": "S4 | Homework 2",
+                                "duration": "02:44:01",
+                                "jsid": 24
+                            },
+                            {
+                                "id": "h45K7WzWoXc",
+                                "title": "Exam 1",
+                                "duration": "01:23:21",
+                                "jsid": 25
                             }
                         ],
                         "playlist_id": "PLM-GVlebsoPVUZOTDWJPlNLqrtBHnH80A",
@@ -10249,6 +10387,12 @@
                                 "title": "S3 | Homework",
                                 "duration": "01:37:33",
                                 "jsid": 5
+                            },
+                            {
+                                "id": "oGXReTMSi3w",
+                                "title": "S4",
+                                "duration": "02:21:49",
+                                "jsid": 6
                             }
                         ],
                         "playlist_id": "PLM-GVlebsoPXT_13a7IOF_UHGsLH114Gs",
