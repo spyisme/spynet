@@ -1775,9 +1775,9 @@ def discord_log_english(message):
         data=payload,
         headers=headers)
     
-GOOGLESEACHAPI = os.getenv('SECRET_KEY')
-SERASEARCHAPI = os.getenv('SECRET_KEY')
-UNSPLASHSEARCHAPI = os.getenv('SECRET_KEY')
+GOOGLESEACHAPI = os.getenv('GOOGLESEACHAPI')
+SERASEARCHAPI = os.getenv('SERASEARCHAPI')
+UNSPLASHSEARCHAPI = os.getenv('UNSPLASHSEARCHAPI')
 
 
 chatgptnonce = {"nonce": "Not set yet!"}
