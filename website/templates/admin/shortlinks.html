@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Short URLs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        .form-container {
+            margin-bottom: 20px;
+        }
+        .form-container input, .form-container button {
+            padding: 8px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Manage Short URLs</h1>
+    
+    <!-- Form to Add a New URL -->
+    <div class="form-container">
+        <h2>Add New URL</h2>
+        <form action="/manage" method="POST">
+            <input type="text" name="key" placeholder="Short Key" required>
+            <input type="text" name="url" placeholder="Original URL" required>
+            <button type="submit" name="action" value="add">Add URL</button>
+        </form>
+    </div>
+    
+    <!-- List Existing URLs -->
+    <h2>Existing Short URLs</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Short Key</th>
+                <th>Original URL</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for key, url in shortlinks.items() %}
+            <tr>
+                <td>{{ key }}</td>
+                <td><a href="{{ url }}" target="_blank">{{ url }}</a></td>
+                <td>
+                    <form action="/manage" method="POST" style="display:inline;">
+                        <input type="hidden" name="key" value="{{ key }}">
+                        <button type="submit" name="action" value="delete">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

@@ -61,7 +61,7 @@ def manage_urls():
                 save_shortlinks(shortlinks)
 
     shortlinks = load_shortlinks()
-    return render_template('manage_urls.html', shortlinks=shortlinks)
+    return render_template('admin/shortlink.html', shortlinks=shortlinks)
 
 @shortlinks.route("/short/<key>")
 def shorturl(key):
