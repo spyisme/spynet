@@ -1779,6 +1779,11 @@ GOOGLESEACHAPI = os.getenv('GOOGLESEACHAPI')
 SERASEARCHAPI = os.getenv('SERASEARCHAPI')
 UNSPLASHSEARCHAPI = os.getenv('UNSPLASHSEARCHAPI')
 
+usproxy = {
+        "http": "http://nprofi:6f0reuyu@139.171.104.74:29842",
+        "https": "http://nprofi:6f0reuyu@139.171.104.74:29842"
+    }
+
 
 chatgptnonce = {"nonce": "Not set yet!"}
 
@@ -1980,7 +1985,7 @@ def english_assignment():
             'newFileId': None,
             'stream': False,
         }
-            response = requests.post('https://masrgpt.com/wp-json/mwai-ui/v1/chats/submit', headers=headers, json=json_data)
+            response = requests.post('https://masrgpt.com/wp-json/mwai-ui/v1/chats/submit', headers=headers, json=json_data , proxies=usproxy)
 
             json_data = response.json()
 
@@ -2001,7 +2006,7 @@ def english_assignment():
 
                 }
 
-                response = requests.post('https://masrgpt.com/wp-json/mwai/v1/start_session', headers=headers)
+                response = requests.post('https://masrgpt.com/wp-json/mwai/v1/start_session', headers=headers , proxies=usproxy)
 
                 json_data = response.json()
 
@@ -2041,7 +2046,7 @@ def english_assignment():
                     'stream': False,
                 }
 
-                response = requests.post('https://masrgpt.com/wp-json/mwai-ui/v1/chats/submit', headers=headers, json=json_data)
+                response = requests.post('https://masrgpt.com/wp-json/mwai-ui/v1/chats/submit', headers=headers, json=json_data , proxies=usproxy)
 
                 json_data = response.json()
 
@@ -2496,7 +2501,7 @@ def chatgptapi():
     'newFileId': None,
     'stream': False,
 }
-    response = requests.post('https://masrgpt.com/wp-json/mwai-ui/v1/chats/submit', headers=headers, json=json_data)
+    response = requests.post('https://masrgpt.com/wp-json/mwai-ui/v1/chats/submit', headers=headers, json=json_data , proxies=usproxy)
 
     json_data = response.json()
 
@@ -2510,7 +2515,7 @@ def chatgptapi():
 
         }
 
-        response = requests.post('https://masrgpt.com/wp-json/mwai/v1/start_session', headers=headers)
+        response = requests.post('https://masrgpt.com/wp-json/mwai/v1/start_session', headers=headers , proxies=usproxy)
 
         json_data = response.json()
 
@@ -2547,7 +2552,7 @@ def chatgptapi():
             'stream': False,
         }
 
-        response = requests.post('https://masrgpt.com/wp-json/mwai-ui/v1/chats/submit', headers=headers, json=json_data)
+        response = requests.post('https://masrgpt.com/wp-json/mwai-ui/v1/chats/submit', headers=headers, json=json_data , proxies=usproxy)
 
         json_data = response.json()
 
