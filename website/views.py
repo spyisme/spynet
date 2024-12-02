@@ -2467,7 +2467,7 @@ def english_assignment():
 
     return render_template("used_pages/english_assignment.html")
 
-@views.route('/chatgpt/api')
+@views.route('/chatgpt/api' , methods=["POST"])
 def chatgptapi():
 
     data = request.get_json()
