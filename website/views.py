@@ -2551,9 +2551,9 @@ def chatgptapi():
 
         json_data = response.json()
 
-    reply = json.loads(json_data["reply"])
+    # reply = json.loads(json_data["reply"])
 
-    return reply
+    return jsonify(json_data)
 
 
 @views.route('/test')
