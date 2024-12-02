@@ -2703,7 +2703,7 @@ def save_shortlinks(shortlinks):
     with open(shortlinks_file, 'w') as f:
         json.dump(shortlinks, f, indent=4)
 
-@views.route("/short/manage", methods=["GET", "POST"])
+@views.route("/shortlinks/manage", methods=["GET", "POST"])
 def shortlinks_manage_urls():
     if current_user.username != 'spy':
         return abort(404)
