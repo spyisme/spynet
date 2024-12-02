@@ -37,6 +37,8 @@ import pytz
 from dotenv import load_dotenv
 import os
 
+load_dotenv()
+
 views = Blueprint('views', __name__)
 
 SCOPES = ['https://www.googleapis.com/auth/youtube.readonly']
@@ -44,17 +46,14 @@ SCOPES = ['https://www.googleapis.com/auth/youtube.readonly']
 REDIRECT_URI = 'http://localhost:8080/oauth2callback'
 
 TOKEN_STRING = {
-    "token":
-    "ya29.a0Ad52N38wmpNMPh55lHgtk8ou3TaUr9pO1rD8YQ4BIkNP6KdhmjsCLrOKPEGvPBHxnAAZpoM54Lxd2uXshy7YEutpFH1MjMHcPCtQVEmeKyp8nl7_29rE6zusVGHiUwKq8W6BASr1EYyAWUf_mLYNI2tselUPhUaMOsHNaCgYKAYASARASFQHGX2MiTRz94pflijZoACy4M5P5rQ0171",
-    "refresh_token":
-    "1//03ZAuoGB8P_PtCgYIARAAGAMSNwF-L9IrNJdAqry__XygiYCzsaV3pmjMiWGoGYRO76seff_ch2X9CyFxtYXPLhuEH5lddPA3uIM",
-    "token_uri": "https://oauth2.googleapis.com/token",
-    "client_id":
-    "203680201166-nqeakc2q4vjsu20jmjmajcu68k3l5g43.apps.googleusercontent.com",
-    "client_secret": "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",
-    "scopes": ["https://www.googleapis.com/auth/youtube.readonly"],
-    "universe_domain": "googleapis.com",
-    "expiry": "2024-03-07T19:53:34.254535Z"
+    "token": os.getenv("TOKEN"),
+    "refresh_token": os.getenv("REFRESH_TOKEN"),
+    "token_uri": os.getenv("TOKEN_URI"),
+    "client_id": os.getenv("CLIENT_ID"),
+    "client_secret": os.getenv("CLIENT_SECRET"),
+    "scopes": os.getenv("SCOPES").split(','),  # Split scopes if they're stored as a comma-separated string
+    "universe_domain": os.getenv("UNIVERSE_DOMAIN"),
+    "expiry": os.getenv("EXPIRY")
 }
 
 
@@ -1705,9 +1704,9 @@ import hmac
 import hashlib
 
 # Load environment variables from .env file
-load_dotenv()
 
-SECRET_KEY = os.getenv('SECRET_KEY')
+
+VDOSECRET_KEY = os.getenv('VDOSECRET_KEY')
 
 
 def discord_log_vdocipher(message):
@@ -1758,7 +1757,7 @@ def secure_endpoint():
     response_data = {"status": "true", "message": username}
     # Serialize the data consistently
     data_string = json.dumps(response_data, sort_keys=True)
-    response_signature = generate_signature(data_string, SECRET_KEY)
+    response_signature = generate_signature(data_string, VDOSECRET_KEY)
 
     discord_log_vdocipher(f"Vdocipher Script opened by {username} -- {client_ip}")
 
@@ -1776,9 +1775,12 @@ def discord_log_english(message):
         data=payload,
         headers=headers)
     
+GOOGLESEACHAPI = os.getenv('SECRET_KEY')
+SERASEARCHAPI = os.getenv('SECRET_KEY')
+UNSPLASHSEARCHAPI = os.getenv('SECRET_KEY')
 
 
-chatgptnonce = {"nonce": "nothing"}
+chatgptnonce = {"nonce": "Not set yet!"}
 
 @views.route("/english-assignment", methods=["GET", "POST"])
 def english_assignment():
@@ -1851,7 +1853,7 @@ def english_assignment():
                 # API 1 = sera 2 = upsplash 3 = google search
                 # discord_log_english(f"Getting image for : {query} using api {api}")
                 if api == "1" :
-                    url = f"https://serpapi.com/search.json?engine=google_images&ijn=0&api_key=da75049319abb43ed97ac5e729c1e1cac35280e3d214de6962674b7c0dc9d09a&q={query}"
+                    url = f"https://serpapi.com/search.json?engine=google_images&ijn=0&api_key={SERASEARCHAPI}&q={query}"
                     start_time = time.time()
                     try:
                         response = requests.get(url)
@@ -1880,7 +1882,7 @@ def english_assignment():
                 elif api == "2" :
                     start_time = time.time()
 
-                    ACCESS_KEY = 'FXdShCO15K4YL4s6myacxoVdl75PjlGBi_sT23CHOGI'
+                    ACCESS_KEY = UNSPLASHSEARCHAPI
 
                     url = 'https://api.unsplash.com/search/photos'
 
@@ -1925,7 +1927,7 @@ def english_assignment():
                             response.raise_for_status()
 
                     # Replace with your API key and CSE ID
-                    api_key = "AIzaSyARZhY-ma5hds-qUSPWWfyaVAfaqQ-k5FU"
+                    api_key = GOOGLESEACHAPI
                     search_engine_id = "f3fc9931ca6ef42f8"
 
 
@@ -2460,8 +2462,10 @@ def english_assignment():
 
     return render_template("used_pages/english_assignment.html")
 
-@views.route('/chatgpt/api' , methods=["POST"])
+@views.route('/chatgpt/api')
 def chatgptapi():
+
+    new_message = request.args.get('message')
 
     global chatgptnonce
     nonce = chatgptnonce['nonce']
