@@ -66,7 +66,7 @@ def manage_urls():
 @shortlinks.route("/short/<key>")
 def shorturl(key):
     try :
-        with open('Backend/shortlinks.json', 'r') as f:
+        with open('website/Backend/shortlinks.json', 'r') as f:
             shortlinks = json.load(f)
             url= shortlinks.get(key)
         if url :
