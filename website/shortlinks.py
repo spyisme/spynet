@@ -1,4 +1,4 @@
-from flask import redirect, Blueprint , jsonify , request, redirect , render_template
+from flask import redirect, Blueprint , jsonify , redirect , abort
 import json
 
 shortlinks = Blueprint('shortlinks', __name__)
@@ -21,7 +21,7 @@ def books():
     return redirect("https://drive.google.com/drive/folders/12OIgF6ceqUP6yxHdaX22fpQfGWvB-5e8?usp=sharing")
 
 #------------------------------------------------------------------------------------------------------
-@shortlinks.route("/short/<key>")
+@shortlinks.route("/<key>")
 def shorturl(key):
     try :
         with open('website/Backend/shortlinks.json', 'r') as f:
@@ -29,6 +29,8 @@ def shorturl(key):
             url= shortlinks.get(key)
         if url :
             return redirect(url)
+        else :
+            return abort(404)
     except:
         return jsonify({"error": "URL not found"}), 404
 
