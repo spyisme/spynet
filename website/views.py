@@ -34,6 +34,8 @@ import time
 from website import user_socket_map
 from website import socketio
 import pytz
+from dotenv import load_dotenv
+import os
 
 views = Blueprint('views', __name__)
 
@@ -1701,8 +1703,11 @@ def edit_course(subject, teachername, course_name):
 #Vdocipher Api access--------------------------------------------------------------------------
 import hmac
 import hashlib
-SECRET_KEY = b'sssss'  # Should be securely generated and consistent
 
+# Load environment variables from .env file
+load_dotenv()
+
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 
 def discord_log_vdocipher(message):
@@ -2455,6 +2460,96 @@ def english_assignment():
 
     return render_template("used_pages/english_assignment.html")
 
+@views.route('/chatgpt/api' , methods=["POST"])
+def chatgptapi():
+
+    global chatgptnonce
+    nonce = chatgptnonce['nonce']
+    
+    headers = {
+        'Accept': '*/*',
+        'Connection': 'keep-alive',
+        'Content-Type': 'application/json',
+        'X-WP-Nonce': nonce,
+    }
+
+    json_data = {
+    'botId': 'default',
+    'customId': None,
+    'session': 'N/A',
+    'chatId': '1',
+    'contextId': 1,
+    'messages': [
+        {
+            'id': '',
+            'role': 'assistant',
+            'content': 'Hi how can i help you?',
+            'who': 'AI: ',
+            'timestamp': 1,
+        },
+    ],
+    'newMessage': new_message,
+    'newFileId': None,
+    'stream': False,
+}
+    response = requests.post('https://masrgpt.com/wp-json/mwai-ui/v1/chats/submit', headers=headers, json=json_data)
+
+    json_data = response.json()
+
+    if response.status_code != 200 :
+        #Request new nonce
+        headers = {
+            'accept': '*/*',
+            'content-type': 'application/json',
+            'origin': 'https://masrgpt.com',
+            'referer': 'https://masrgpt.com/chatgpt/',
+
+        }
+
+        response = requests.post('https://masrgpt.com/wp-json/mwai/v1/start_session', headers=headers)
+
+        json_data = response.json()
+
+        nonce = json_data["restNonce"]
+
+        chatgptnonce["nonce"] = nonce
+
+
+
+        headers = {
+            'Accept': '*/*',
+            'Connection': 'keep-alive',
+            'Content-Type': 'application/json',
+            'X-WP-Nonce': nonce,
+        }
+
+        json_data = {
+            'botId': 'default',
+            'customId': None,
+            'session': 'N/A',
+            'chatId': '1',
+            'contextId': 1,
+            'messages': [
+                {
+                    'id': '',
+                    'role': 'assistant',
+                    'content': 'Hi how can i help you?',
+                    'who': 'AI: ',
+                    'timestamp': 1,
+                },
+            ],
+            'newMessage': new_message,
+            'newFileId': None,
+            'stream': False,
+        }
+
+        response = requests.post('https://masrgpt.com/wp-json/mwai-ui/v1/chats/submit', headers=headers, json=json_data)
+
+        json_data = response.json()
+
+    reply = json.loads(json_data["reply"])
+
+    return reply
 
 
 @views.route('/test')
