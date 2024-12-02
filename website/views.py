@@ -2470,7 +2470,10 @@ def english_assignment():
 @views.route('/chatgpt/api')
 def chatgptapi():
 
-    new_message = request.args.get('message')
+    data = request.get_json()
+    
+    # Extract the 'message' from the JSON
+    new_message = data.get('message')
 
     global chatgptnonce
     nonce = chatgptnonce['nonce']
