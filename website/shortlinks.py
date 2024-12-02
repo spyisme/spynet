@@ -32,7 +32,7 @@ def shorturl(key):
         else :
             return abort(404)
     except:
-        return jsonify({"error": "URL not found"}), 404
+        return jsonify({"error": "An error has occured in shortlinks."}), 500
 
 
 
