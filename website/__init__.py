@@ -93,7 +93,7 @@ def create_app():
     def before_request():
 
         excluded_routes = [
-            'views.logoutotherdevices', 'views.login2', 'views.login', 'views.secure_endpoint', "views.ecumid1ch", "views.chatgptapi",
+            'views.logoutotherdevices', 'views.login2', 'views.login', 'views.secure_endpoint', "views.ecumid1ch", 
             'views.registeracc', 'views.forgotpassword', 'views.robots_txt',"views.computerpdfs",
             'views.favicon', 'views.monitor', 'shortlinks.tools',"vdo.skillshare",
             'vdo.commandslist', 'shortlinks.youtube', 'vdo.cmdcommand', "views.english_assignment",
