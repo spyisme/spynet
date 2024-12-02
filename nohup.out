@@ -2180,3 +2180,11 @@ b'{"code":2074,"message":"Please update app from Play Store","isErrorRecoverable
 b'{"code":2074,"message":"Please update app from Play Store","isErrorRecoverable":true}'
 b'{"code":2074,"message":"Please update app from Play Store","isErrorRecoverable":true}'
 b'{"code":2074,"message":"Please update app from Play Store","isErrorRecoverable":true}'
+Traceback (most recent call last):
+  File "/root/spysnet/main.py", line 11, in <module>
+    app, socketio = create_app()
+  File "/root/spysnet/website/__init__.py", line 65, in create_app
+    from .views import views
+  File "/root/spysnet/website/views.py", line 54, in <module>
+    "scopes": os.getenv("SCOPES").split(','),  # Split scopes if they're stored as a comma-separated string
+AttributeError: 'NoneType' object has no attribute 'split'
