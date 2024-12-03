@@ -2381,3 +2381,139 @@ Invalid session CD6B9cyPxwqM7S8oAAAS (further occurrences of this error will be 
 147.45.112.8 - - [03/Dec/2024 13:21:11] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
 192.155.90.220 - - [03/Dec/2024 13:49:31] code 400, message Bad request syntax ('\x16\x03\x01\x00î\x01\x00\x00ê\x03\x03!x\x81RÒ«S¼©h²º¼\x13øì\x07óN\x8a\x95')
 179.43.163.250 - - [03/Dec/2024 14:00:00] code 400, message Bad request version ('À\x13À')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.10/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 883, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 902, in finalize_request
+    response = self.make_response(rv)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1174, in make_response
+    raise TypeError(
+TypeError: The view function for 'shortlinks.shorturl' did not return a valid response. The function either returned None or ended without a return statement.
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.10/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 883, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 902, in finalize_request
+    response = self.make_response(rv)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1174, in make_response
+    raise TypeError(
+TypeError: The view function for 'shortlinks.shorturl' did not return a valid response. The function either returned None or ended without a return statement.
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.10/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 883, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 902, in finalize_request
+    response = self.make_response(rv)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1174, in make_response
+    raise TypeError(
+TypeError: The view function for 'shortlinks.shorturl' did not return a valid response. The function either returned None or ended without a return statement.
+172.245.232.22 - - [03/Dec/2024 14:46:33] code 400, message Bad request version ('À\x13À')
+54.176.44.5 - - [03/Dec/2024 14:47:55] code 400, message Bad request version ('À\x13À')
+54.176.44.5 - - [03/Dec/2024 14:47:55] code 400, message Bad request version ('i\x03@wf//\x93CÍrAª:ææ\x9b}Q¼O®\x1aÓ\x19köÎ0\x00\x00*À+À/\x00\x9eÌ©Ì¨ÌªÀ')
+179.43.163.250 - - [03/Dec/2024 14:50:23] code 400, message Bad request version ('À\x13À')
+152.42.243.111 - - [03/Dec/2024 16:03:07] code 400, message Bad request version ("ô¡:\x87\x11im}\x97\x0eI\x13^¬$äF'qè´µg\x96°")
+178.128.54.126 - - [03/Dec/2024 16:03:09] code 400, message Bad request version ('À\x13À')
+202.112.238.240 - - [03/Dec/2024 16:57:22] code 400, message Bad request version ('À\x13À')
+198.235.24.219 - - [03/Dec/2024 17:33:15] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00î\x01\x00\x00ê\x03\x03\x9e')
+198.235.24.219 - - [03/Dec/2024 17:33:15] code 400, message Bad HTTP/0.9 request type ("\x16\x03\x01\x00Ê\x01\x00\x00Æ\x03\x03ù\x98=¼ÚÐá¥Û¥\x1bª\xadù\x01\x89\x99\x84ÃõÉ'øcFwÂyP?ô<\x00\x00hÌ\x14Ì\x13À/À+À0À,À\x11À\x07À'À#À\x13À")
+64.62.197.153 - - [03/Dec/2024 18:10:57] code 400, message Bad request version ('À\x14À')
+80.82.70.133 - - [03/Dec/2024 18:33:36] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+80.82.77.202 - - [03/Dec/2024 21:39:07] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+5.8.11.202 - - [03/Dec/2024 21:40:40] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.10/dist-packages/engineio/middleware.py", line 63, in __call__
+    return self.engineio_app.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/socketio/server.py", line 433, in handle_request
+    return self.eio.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/engineio/server.py", line 272, in handle_request
+    socket = self._get_socket(sid)
+  File "/usr/local/lib/python3.10/dist-packages/engineio/base_server.py", line 229, in _get_socket
+    raise KeyError('Session is disconnected')
+KeyError: 'Session is disconnected'
+Invalid session SXIVzs-e7fZXxssFAABu (further occurrences of this error will be logged with level INFO)
+152.42.219.47 - - [04/Dec/2024 00:03:00] code 400, message Bad request version ('À\x13À')
+152.42.243.206 - - [04/Dec/2024 00:03:03] code 400, message Bad request version ('À\x13À')
+209.38.144.40 - - [04/Dec/2024 00:57:56] code 400, message Bad request syntax ('\x00\x0e8q\x10H\x05VB\x15\x06\x00\x00\x00\x00\x00')
+185.100.87.136 - - [04/Dec/2024 03:42:58] code 400, message Bad HTTP/0.9 request type ('\x83F\x02\x00\x15\x00\x00\x00R%}gI\\m')
+172.105.128.13 - - [04/Dec/2024 03:47:59] code 400, message Bad request version ('Hìõô\x9dÈj')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.10/dist-packages/engineio/middleware.py", line 63, in __call__
+    return self.engineio_app.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/socketio/server.py", line 433, in handle_request
+    return self.eio.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/engineio/server.py", line 272, in handle_request
+    socket = self._get_socket(sid)
+  File "/usr/local/lib/python3.10/dist-packages/engineio/base_server.py", line 229, in _get_socket
+    raise KeyError('Session is disconnected')
+KeyError: 'Session is disconnected'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.10/dist-packages/engineio/middleware.py", line 63, in __call__
+    return self.engineio_app.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/socketio/server.py", line 433, in handle_request
+    return self.eio.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/engineio/server.py", line 272, in handle_request
+    socket = self._get_socket(sid)
+  File "/usr/local/lib/python3.10/dist-packages/engineio/base_server.py", line 229, in _get_socket
+    raise KeyError('Session is disconnected')
+KeyError: 'Session is disconnected'
+93.174.93.12 - - [04/Dec/2024 05:14:58] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.10/dist-packages/engineio/middleware.py", line 63, in __call__
+    return self.engineio_app.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/socketio/server.py", line 433, in handle_request
+    return self.eio.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/engineio/server.py", line 272, in handle_request
+    socket = self._get_socket(sid)
+  File "/usr/local/lib/python3.10/dist-packages/engineio/base_server.py", line 229, in _get_socket
+    raise KeyError('Session is disconnected')
+KeyError: 'Session is disconnected'
