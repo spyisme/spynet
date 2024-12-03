@@ -2495,7 +2495,7 @@ def chatgptapi():
         {
             'id': '',
             'role': 'user',
-            'content': 'If a i tell you anything that means show me the reminders for a spesifc period like 5 hours next week this week reply with {Command : "SHOWREMINDERS{$Periodoftimegiven}"} only dont say anyhting more deal?',
+            'content': 'If a i tell you anything that means show me the reminders for a spesifc period like 5 hours next week this week reply with {Command : "SHOWREMINDERS{$Periodoftimegiven}"} only dont say anyhting more deal? JUST REPLY WITH THE JSON DONT SAY HERE IT IS',
             'who': 'user: ',
             'timestamp': 1,
         },
