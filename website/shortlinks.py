@@ -27,7 +27,8 @@ def shorturl(key):
         with open('website/Backend/shortlinks.json', 'r') as f:
             shortlinks = json.load(f)
             url= shortlinks.get(key)
-        return redirect(url)
+        if url :
+            return redirect(url)
     except:
          return abort(404)
 
