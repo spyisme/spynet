@@ -29,6 +29,8 @@ def shorturl(key):
             url= shortlinks.get(key)
         if url :
             return redirect(url)
+        else : 
+            return abort(404)
     except:
          return abort(404)
 
