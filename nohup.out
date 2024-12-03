@@ -2264,3 +2264,120 @@ Traceback (most recent call last):
   File "/usr/local/lib/python3.10/dist-packages/engineio/base_server.py", line 229, in _get_socket
     raise KeyError('Session is disconnected')
 KeyError: 'Session is disconnected'
+35.228.239.225 - - [02/Dec/2024 17:56:30] code 400, message Bad request version ('t£')
+93.174.93.12 - - [02/Dec/2024 19:03:22] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+216.218.206.67 - - [02/Dec/2024 19:04:47] code 400, message Bad request version ('À\x14À')
+147.45.112.151 - - [02/Dec/2024 20:08:45] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+5.8.11.202 - - [02/Dec/2024 20:38:27] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+179.43.163.250 - - [03/Dec/2024 00:01:47] code 400, message Bad request version ('À\x13À')
+152.42.174.244 - - [03/Dec/2024 00:02:50] code 400, message Bad request version ('\x034[\x88Æ')
+152.42.247.210 - - [03/Dec/2024 00:02:51] code 400, message Bad request version ('À\x13À')
+78.153.140.151 - - [03/Dec/2024 02:28:09] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00¬\x01\x00\x00¨\x03\x03¹\x8eÈâ#\x9blG,åTx\x81\x08>Â')
+87.122.20.151 - - [03/Dec/2024 03:06:22] code 400, message Bad request syntax ('\x05\x01\x00')
+87.122.20.151 - - [03/Dec/2024 03:06:33] code 400, message Bad request syntax ('\x05\x01\x00')
+5.196.113.3 - - [03/Dec/2024 03:27:50] code 400, message Bad request version ('À#À¬À®À+À')
+167.94.138.42 - - [03/Dec/2024 03:30:19] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00î\x01\x00\x00ê\x03\x03@\x8aþ\x8eø=d,$ØB¼/I£®¹iE£Þ')
+167.94.138.42 - - [03/Dec/2024 03:30:57] code 400, message Bad request syntax ('ZG\x00\x00\x00\x05\x00+\x0e\x01\x00')
+213.32.32.95 - - [03/Dec/2024 03:34:08] code 400, message Bad request version ('À#À¬À®À+À')
+198.235.24.28 - - [03/Dec/2024 04:15:10] code 400, message Bad request version ('À\x13À')
+198.235.24.28 - - [03/Dec/2024 04:15:11] code 400, message Bad request version ('À(À$À\x14À')
+172.214.114.136 - - [03/Dec/2024 04:15:28] code 400, message Bad request syntax ('MGLNDD_47.250.51.78_80')
+5.8.11.202 - - [03/Dec/2024 05:17:02] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.10/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/root/spysnet/website/shortlinks.py", line 63, in manage_urls
+    shortlinks = load_shortlinks()
+  File "/root/spysnet/website/shortlinks.py", line 37, in load_shortlinks
+    return json.load(f)
+  File "/usr/lib/python3.10/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+  File "/usr/lib/python3.10/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.10/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.10/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.10/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/root/spysnet/website/shortlinks.py", line 64, in manage_urls
+    return render_template('admin/shortlink.html', shortlinks=shortlinks)
+  File "/usr/local/lib/python3.10/dist-packages/flask/templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "/usr/local/lib/python3.10/dist-packages/jinja2/environment.py", line 1084, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/usr/local/lib/python3.10/dist-packages/jinja2/environment.py", line 1013, in get_template
+    return self._load_template(name, globals)
+  File "/usr/local/lib/python3.10/dist-packages/jinja2/environment.py", line 972, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/usr/local/lib/python3.10/dist-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/usr/local/lib/python3.10/dist-packages/flask/templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+  File "/usr/local/lib/python3.10/dist-packages/flask/templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: admin/shortlink.html
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.10/dist-packages/engineio/middleware.py", line 63, in __call__
+    return self.engineio_app.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/socketio/server.py", line 433, in handle_request
+    return self.eio.handle_request(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/engineio/server.py", line 272, in handle_request
+    socket = self._get_socket(sid)
+  File "/usr/local/lib/python3.10/dist-packages/engineio/base_server.py", line 229, in _get_socket
+    raise KeyError('Session is disconnected')
+KeyError: 'Session is disconnected'
+54.176.44.5 - - [03/Dec/2024 06:15:04] code 400, message Bad request version ('fî\x82ùI5]G+\x0f')
+54.176.44.5 - - [03/Dec/2024 06:15:04] code 400, message Bad request version ('1í¡¤mÀPO\x9fÎ¨\x9cCÓ$V\x9dnrÝÜ\x0fî\x89W\\2Ì\x00\x00*À+À/\x00\x9eÌ©Ì¨ÌªÀ')
+78.153.140.224 - - [03/Dec/2024 06:26:40] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00¬\x01\x00\x00¨\x03\x03Áù\x87L\x10=[¡´JlN|$ü\x06û\x81(T?êo\x10\x9fT')
+179.43.163.250 - - [03/Dec/2024 06:43:01] code 400, message Bad request version ('À\x13À')
+152.42.219.47 - - [03/Dec/2024 08:02:53] code 400, message Bad request version ('À\x13À')
+152.42.174.244 - - [03/Dec/2024 08:02:57] code 400, message Bad request version ('À\x13À')
+199.45.154.148 - - [03/Dec/2024 08:46:30] code 505, message Invalid HTTP version (2.0)
+93.174.93.12 - - [03/Dec/2024 09:06:56] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+Invalid session CD6B9cyPxwqM7S8oAAAS (further occurrences of this error will be logged with level INFO)
+147.45.112.8 - - [03/Dec/2024 13:21:11] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+192.155.90.220 - - [03/Dec/2024 13:49:31] code 400, message Bad request syntax ('\x16\x03\x01\x00î\x01\x00\x00ê\x03\x03!x\x81RÒ«S¼©h²º¼\x13øì\x07óN\x8a\x95')
+179.43.163.250 - - [03/Dec/2024 14:00:00] code 400, message Bad request version ('À\x13À')
