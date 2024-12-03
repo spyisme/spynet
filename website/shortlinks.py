@@ -27,12 +27,9 @@ def shorturl(key):
         with open('website/Backend/shortlinks.json', 'r') as f:
             shortlinks = json.load(f)
             url= shortlinks.get(key)
-        if url :
-            return redirect(url)
-        else :
-            return abort(404)
+        return redirect(url)
     except:
-        return jsonify({"error": "An error has occured in shortlinks."}), 500
+         return abort(404)
 
 
 
