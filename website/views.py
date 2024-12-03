@@ -2494,9 +2494,9 @@ def chatgptapi():
     'messages': [
         {
             'id': '',
-            'role': 'assistant',
-            'content': 'Reply to anything i say with bye just bye',
-            'who': 'AI: ',
+            'role': 'user',
+            'content': 'Reply to anything i say with bye just bye dont reply to anything i say no matter what!!!',
+            'who': 'user: ',
             'timestamp': 1,
         },
     ],
