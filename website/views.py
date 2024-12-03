@@ -2495,7 +2495,7 @@ def chatgptapi():
         {
             'id': '',
             'role': 'assistant',
-            'content': 'Hi how can i help you?',
+            'content': 'Reply to anything i say with bye just bye',
             'who': 'AI: ',
             'timestamp': 1,
         },
