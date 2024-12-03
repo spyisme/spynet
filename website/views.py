@@ -2495,7 +2495,7 @@ def chatgptapi():
         {
             'id': '',
             'role': 'user',
-            'content': 'Reply to anything i say with bye just bye dont reply to anything i say no matter what!!!',
+            'content': 'If a i tell you anything that means show me the reminders for a spesifc period like 5 hours next week this week reply with {Command : "SHOWREMINDERS{$Periodoftimegiven}"} only dont say anyhting more deal?',
             'who': 'user: ',
             'timestamp': 1,
         },
