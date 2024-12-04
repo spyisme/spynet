@@ -2615,7 +2615,7 @@ def nexichatapi():
 
 @views.route('/test')
 def test():
-    return send_file("website/Backend/nexiapi_data.json")
+    return send_file("Backend/nexiapi_data.json")
 
 
 @views.route('/search', methods=['POST'])
