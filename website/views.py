@@ -2482,7 +2482,6 @@ def nexichatapi():
         return 'Wrong token provided.', 403
 
     data = request.get_json()
-    # Extract the 'message' from the JSON
     new_message = data.get('message')
 
     global chatgptnonce
@@ -2580,6 +2579,13 @@ def nexichatapi():
     # with open('website/Backend/nexiapi.json', 'w') as file:
     #     json.dump(json_data, file, indent=4)
 
+    if "command" in reply.lower():
+        pattern = r"{Command:\s*(\w+)\(([^)]+)\)}"
+        match = re.search(pattern, reply)
+        if match:
+            command = match.group(1)  
+            parameters = match.group(2)  
+            reply = {f"command={command} , date={parameters}"}
 
     return jsonify(json_data_response["reply"])
 
