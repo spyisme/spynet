@@ -11,9 +11,30 @@
             "content": "hi",
             "who": "user: ",
             "timestamp": 1
+        },
+        {
+            "id": "",
+            "role": "user",
+            "content": "If a i tell you anything that means show me the reminders for a spesifc period reply with {Command : SHOWREMINDERS($Periodoftimegiven)} only dont say anyhting more deal?For today use today tommorow use tommorow yesterday use yesterday anything else use the date like month.day JUST REPLY WITH THE JSON DONT SAY HERE IT IS BECAUSE I WILL BE USING YOUR REPLY TO RUN MY TEST APP understood?",
+            "who": "user: ",
+            "timestamp": 2
+        },
+        {
+            "id": "",
+            "role": "assistant",
+            "content": "Understood! When you request to see reminders for a specific period, I'll respond with the JSON format: {Command: SHOWREMINDERS($Periodoftimegiven)}. Remember, for today use \"today,\" for tomorrow use \"tomorrow,\" for yesterday use \"yesterday,\" and for any other date, use the format month.day. Let me know if you need any more assistance!",
+            "who": "AI: ",
+            "timestamp": 3
+        },
+        {
+            "id": "",
+            "role": "user",
+            "content": "Also reply to smaller reminders in this format 6hrs , 6mins",
+            "who": "user: ",
+            "timestamp": 4
         }
     ],
-    "newMessage": "Heyy (from the instructions i provided before)",
+    "newMessage": "Also reply to smaller reminders in this format 6hrs , 6mins",
     "newFileId": null,
     "stream": false
 }
