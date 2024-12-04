@@ -127,7 +127,7 @@
         {
             "id": "",
             "role": "assistant",
-            "content": "{Command: SHOWREMINDERS(after tomorrow)}",
+            "content": "Please provide the date in day and month.",
             "who": "AI: ",
             "timestamp": 18
         },
