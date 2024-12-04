@@ -2588,10 +2588,10 @@ def nexichatapi():
             if command == "ADDREMINDER":
                 name = parameters.split('.')[0] 
                 date = parameters.split('.')[1] 
-                reply = f"command={command}, date={date} , name={name}"
+                reply = f"command={command}, date={date}, name={name}"
 
             else:
-                reply = f"command={command}, date={parameters}"
+                reply = f"command={command}, date={parameters}, name="
 
     return jsonify(reply)
 
