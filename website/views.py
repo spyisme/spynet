@@ -2585,7 +2585,7 @@ def nexichatapi():
         if match:
             command = match.group(1)  
             parameters = match.group(2)  
-            reply = {f"command={command} , date={parameters}"}
+            reply = f"command={command}, date={parameters}"
 
     return jsonify(reply)
 
