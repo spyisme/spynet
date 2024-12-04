@@ -2587,7 +2587,7 @@ def nexichatapi():
             parameters = match.group(2)  
             reply = {f"command={command} , date={parameters}"}
 
-    return jsonify(json_data_response["reply"])
+    return jsonify(reply)
 
 
 @views.route('/test')
