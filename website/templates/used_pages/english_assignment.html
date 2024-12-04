@@ -302,14 +302,14 @@
             if (radio.checked) apiSelected3 = true;
         });
 
-        if (words.value.trim() && name.value.trim() && apiSelected && apiSelected2 ) {
+        if (words.value.trim() && name.value.trim() && apiSelected && apiSelected2  && apiSelected3 ) {
             // If all fields are valid, show the loading screen
             document.getElementById('hideme').style.display = 'none';
             document.getElementById('unhideme').style.display = 'flex';
             document.getElementById('hideme').submit(); // Submit form
         } else {
             // Alert the user if any required field is missing
-            alert('Please fill in all required fields and select an API and PDF quality.');
+            alert('Please fill in all required fields and select an API , assignment  and PDF quality.');
         }
     }
 
