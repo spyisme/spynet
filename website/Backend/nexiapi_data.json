@@ -1,9 +1,14 @@
 {
     "reminders": [
-      {
-        "name": "Interview Preparation",
-        "time": "December.5"
-      }
+        {
+            "name": "Interview Preparation",
+            "time": "December.5"
+        },
+        [
+            {
+                "name": "set alarm",
+                "time": " today"
+            }
+        ]
     ]
-  }
-  
+}
