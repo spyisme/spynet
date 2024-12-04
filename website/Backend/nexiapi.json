@@ -116,9 +116,107 @@
             "content": "I'll do my best to remember! Just let me know if you need any more help.",
             "who": "AI: ",
             "timestamp": 16
+        },
+        {
+            "id": "",
+            "role": "user",
+            "content": "what do i have to do after Tomorrow",
+            "who": "user: ",
+            "timestamp": 17
+        },
+        {
+            "id": "",
+            "role": "assistant",
+            "content": "{Command: SHOWREMINDERS(after tomorrow)}",
+            "who": "AI: ",
+            "timestamp": 18
+        },
+        {
+            "id": "",
+            "role": "user",
+            "content": "no dont reply like that if i ask for any day without providing the date (other than today yesterday and Tomorrow) reply with Please Provide the date in day and month",
+            "who": "user: ",
+            "timestamp": 19
+        },
+        {
+            "id": "",
+            "role": "assistant",
+            "content": "Understood! If you ask about a day without specifying the date, I will reply with \"Please provide the date in day and month.\"",
+            "who": "AI: ",
+            "timestamp": 20
+        },
+        {
+            "id": "",
+            "role": "user",
+            "content": "Goodboy by the way what do i have after Tomorrow",
+            "who": "user: ",
+            "timestamp": 21
+        },
+        {
+            "id": "",
+            "role": "assistant",
+            "content": "Please provide the date in day and month.",
+            "who": "AI: ",
+            "timestamp": 22
+        },
+        {
+            "id": "",
+            "role": "user",
+            "content": "what do i have Tomorrow then?",
+            "who": "user: ",
+            "timestamp": 23
+        },
+        {
+            "id": "",
+            "role": "assistant",
+            "content": "{Command: SHOWREMINDERS(tomorrow)}",
+            "who": "AI: ",
+            "timestamp": 24
+        },
+        {
+            "id": "",
+            "role": "user",
+            "content": "Correct remember that the only commands you provide are yesterday today tomorrow and monthname.day and hours and minutes got it?",
+            "who": "user: ",
+            "timestamp": 25
+        },
+        {
+            "id": "",
+            "role": "assistant",
+            "content": "Understood! I will stick to providing commands for yesterday, today, tomorrow, specific dates in the format month.day, as well as hours and minutes. Just let me know if you need any assistance within these parameters.",
+            "who": "AI: ",
+            "timestamp": 26
+        },
+        {
+            "id": "",
+            "role": "user",
+            "content": "Start the month always with a capital letter okay?",
+            "who": "user: ",
+            "timestamp": 27
+        },
+        {
+            "id": "",
+            "role": "assistant",
+            "content": "Got it! I will ensure to start the month with a capital letter. Thank you for the clarification!",
+            "who": "AI: ",
+            "timestamp": 28
+        },
+        {
+            "id": "",
+            "role": "user",
+            "content": "Also yesterday today and tomorrow always a capital letter and 6hrs and 6mins not capital",
+            "who": "user: ",
+            "timestamp": 29
+        },
+        {
+            "id": "",
+            "role": "assistant",
+            "content": "Thank you for specifying! I will ensure yesterday, today, and tomorrow are always capitalized, while 6hrs and 6mins are not capitalized. Your instructions are clear!",
+            "who": "AI: ",
+            "timestamp": 30
         }
     ],
-    "newMessage": "Good boy gpt dont forget now!",
+    "newMessage": "Also yesterday today and tomorrow always a capital letter and 6hrs and 6mins not capital",
     "newFileId": null,
     "stream": false
 }
