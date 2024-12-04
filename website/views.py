@@ -2468,7 +2468,7 @@ def english_assignment():
 
     return render_template("used_pages/english_assignment.html")
 
-@views.route('/chatgpt/api' , methods=["POST"])
+@views.route('/chatgpt/nexi' , methods=["POST"])
 def chatgptapi():
 
     data = request.get_json()
@@ -2534,7 +2534,7 @@ def chatgptapi():
             json_data = json.load(file)
 
         json_data['newMessage'] = new_message
-        
+
         headers = {
             'Accept': '*/*',
             'Connection': 'keep-alive',
