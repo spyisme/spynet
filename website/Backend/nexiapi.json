@@ -358,16 +358,9 @@
         {
             "id": "",
             "role": "user",
-            "content": "foucs gpt foucs!",
+            "content": "Always the date use this format MonthName.Daynumber never ever add the year",
             "who": "user: ",
             "timestamp": 51
-        },
-        {
-            "id": "",
-            "role": "assistant",
-            "content": "I'm here and ready to assist! How can I help you focus better today?",
-            "who": "AI: ",
-            "timestamp": 52
         }
     ],
     "newMessage": "foucs gpt foucs!",
