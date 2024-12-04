@@ -2873,3 +2873,4 @@ Traceback (most recent call last):
   File "/usr/local/lib/python3.10/dist-packages/werkzeug/utils.py", line 428, in send_file
     stat = os.stat(path)
 FileNotFoundError: [Errno 2] No such file or directory: '/root/spysnet/website/website/Backend/nexiapi_data.json'
+Invalid session _T86_h2wpF25m0nkAAAN (further occurrences of this error will be logged with level INFO)
