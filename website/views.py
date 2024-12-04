@@ -2504,8 +2504,8 @@ def chatgptapi():
 
     json_data['messages'].append(msg_new_message)
 
-    # with open('website/Backend/nexiapi.json', 'w') as file:
-    #     json.dump(json_data, file, indent=4)
+    with open('website/Backend/nexiapi.json', 'w') as file:
+        json.dump(json_data, file, indent=4)
 
     response = requests.post('https://masrgpt.com/wp-json/mwai-ui/v1/chats/submit', headers=headers, json=json_data , proxies=usproxy)
 
@@ -2567,8 +2567,8 @@ def chatgptapi():
 
     json_data['messages'].append(msg_new_message)
 
-    # with open('website/Backend/nexiapi.json', 'w') as file:
-    #     json.dump(json_data, file, indent=4)
+    with open('website/Backend/nexiapi.json', 'w') as file:
+        json.dump(json_data, file, indent=4)
 
 
     return jsonify(json_data_response["reply"])
