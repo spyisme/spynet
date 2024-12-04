@@ -2509,7 +2509,7 @@ def chatgptapi():
 
     response = requests.post('https://masrgpt.com/wp-json/mwai-ui/v1/chats/submit', headers=headers, json=json_data , proxies=usproxy)
 
-    json_data = response.json()
+    json_data_response = response.json()
 
     if response.status_code != 200 :
         #Request new nonce
@@ -2562,7 +2562,7 @@ def chatgptapi():
 
         json_data = response.json()
 
-    reply = json_data["reply"]
+    reply = json_data_response["reply"]
 
 
     with open('website/Backend/nexiapi.json', 'r') as file:
@@ -2587,7 +2587,7 @@ def chatgptapi():
         json.dump(json_data, file, indent=4)
 
 
-    return jsonify(json_data["reply"])
+    return jsonify(json_data_response["reply"])
 
 
 @views.route('/test')
