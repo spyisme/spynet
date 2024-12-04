@@ -2509,7 +2509,7 @@ def chatgptapi():
         {
             'id': '',
             'role': 'user',
-            'content': 'Also you have to reply to normal messages never mention that you would provide json data from now on remember everything but never mention it unless i ask for what do i have at a time or am i free on that day.',
+            'content': 'If i ask for what i have today or what i have at {time} show command',
             'who': 'user: ',
             'timestamp': 3,
         },
