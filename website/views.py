@@ -2610,6 +2610,22 @@ def nexichatapi():
 
             elif command == "SHOWREMINDERS":
                 reply = f"command={command}, date={parameters}"
+                requested_date = parameters.strip().lower()
+                all_reminders = []
+                for reminder_group in backend_data.get("reminders", []):
+                    if isinstance(reminder_group, list): 
+                        all_reminders.extend(reminder_group)
+
+                filtered_reminders = [
+                    reminder for reminder in all_reminders if requested_date in reminder["time"].lower()
+                ]
+
+                # Prepare the response
+                if filtered_reminders:
+                    reminder_texts = [f"{reminder['name']} at {reminder['time']}" for reminder in filtered_reminders]
+                    reply = "Reminders for " + requested_date + ":\n" + "\n".join(reminder_texts)
+                else:
+                    reply = f"No reminders found for {requested_date}."
 
     return jsonify(reply)
 
