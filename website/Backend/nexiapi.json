@@ -25,34 +25,6 @@
             "content": "If i ask for what i have today or what i have at {time} show command",
             "who": "user: ",
             "timestamp": 3
-        },
-        {
-            "id": "",
-            "role": "user",
-            "content": "What do i have tomorrow?",
-            "who": "user: ",
-            "timestamp": 4
-        },
-        {
-            "id": "",
-            "role": "user",
-            "content": "What do i have tomorrow?",
-            "who": "user: ",
-            "timestamp": 5
-        },
-        {
-            "id": "",
-            "role": "user",
-            "content": "What do i have tomorrow?",
-            "who": "user: ",
-            "timestamp": 6
-        },
-        {
-            "id": "",
-            "role": "assistant",
-            "content": "I can help you set reminders or check your calendar if you provide me with the necessary information. Just let me know what you need help with!",
-            "who": "AI: ",
-            "timestamp": 7
         }
     ],
     "newMessage": "What do i have tomorrow?",
