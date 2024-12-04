@@ -1,3 +1,34 @@
 {
-    "message": "What do i have tomorrow?"
-}
+    "botId": "default",
+    "customId": null,
+    "session": "N/A",
+    "chatId": "1",
+    "contextId": 1,
+    "messages": [
+      {
+        "id": "",
+        "role": "user",
+        "content": "If a i tell you anything that means show me the reminders for a spesifc period reply with {Command : SHOWREMINDERS($Periodoftimegiven)} only dont say anyhting more deal? JUST REPLY WITH THE JSON DONT SAY HERE IT IS For today use today tommorow use tommorow yesterday use yesterday anything else use the date like month.day",
+        "who": "user: ",
+        "timestamp": 1
+      },
+      {
+        "id": "",
+        "role": "assistant",
+        "content": "Got it i will reply to all messages normmaly unless you ask for reminders or for what you have",
+        "who": "AI: ",
+        "timestamp": 2
+      },
+      {
+        "id": "",
+        "role": "user",
+        "content": "If i ask for what i have today or what i have at {time} show command",
+        "who": "user: ",
+        "timestamp": 3
+      }
+    ],
+    "newMessage": "new_message",
+    "newFileId": null,
+    "stream": false
+  }
+  
