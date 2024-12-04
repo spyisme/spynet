@@ -2621,8 +2621,8 @@ def nexichatapi():
 
                 if filtered_reminders:
                     reminders_data = [
-                        {"reminder": index + 1, "name": reminder['name'], "time": reminder['time']}
-                        for index, reminder in enumerate(filtered_reminders)
+                        {"name": reminder['name'], "time": reminder['time']}
+                        for reminder in filtered_reminders
                     ]
                     reply = {
                         "status": "success",
