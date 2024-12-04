@@ -2542,7 +2542,13 @@ def chatgptapi():
             'chatId': '1',
             'contextId': 1,
             'messages': [
-
+                {
+                    'id': '',
+                    'role': 'assistant',
+                    'content': 'Hi how can i help you?',
+                    'who': 'AI: ',
+                    'timestamp': 1,
+                },
             ],
             'newMessage': new_message,
             'newFileId': None,
