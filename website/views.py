@@ -2491,7 +2491,21 @@ def chatgptapi():
 
     json_data['newMessage'] = new_message
 
+    timestamp = json_data['messages'][-1]['timestamp'] + 1
 
+
+    msg_new_message = {
+    "id": "",
+    "role": "user",
+    "content": new_message,
+    "who": "user: ",
+    "timestamp": timestamp
+    }
+
+    json_data['messages'].append(msg_new_message)
+
+    with open('website/Backend/nexiapi.json', 'w') as file:
+        json.dump(data, file, indent=4)
 
     response = requests.post('https://masrgpt.com/wp-json/mwai-ui/v1/chats/submit', headers=headers, json=json_data , proxies=usproxy)
 
@@ -2548,7 +2562,30 @@ def chatgptapi():
 
         json_data = response.json()
 
-    # reply = json.loads(json_data["reply"])
+    reply = json.loads(json_data["reply"])
+
+
+    with open('website/Backend/nexiapi.json', 'r') as file:
+        json_data = json.load(file)
+
+    json_data['newMessage'] = new_message
+
+    timestamp = json_data['messages'][-1]['timestamp'] + 1
+
+
+    msg_new_message = {
+    "id": "",
+    "role": "assistant",
+    "content": reply,
+    "who": "AI: ",
+    "timestamp": timestamp
+    }
+
+    json_data['messages'].append(msg_new_message)
+
+    with open('website/Backend/nexiapi.json', 'w') as file:
+        json.dump(data, file, indent=4)
+
 
     return jsonify(json_data["reply"])
 
