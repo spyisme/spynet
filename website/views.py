@@ -2595,7 +2595,7 @@ def nexichatapi():
                 parts = parameters.split('.', 1)
                 name = parts[0]
                 date = parts[1]
-                reply = f"Remminder for {name} Set at {date}"
+                reply = f"Remminder for {name} \nSet at {date}"
 
                 new_reminder ={
                 "name": name,
@@ -2608,7 +2608,7 @@ def nexichatapi():
                     json.dump(backend_data, file, indent=4)
 
             elif command == "SHOWREMINDERS":
-                reply = f"command={command}, date={parameters}, name="
+                reply = f"command={command}, date={parameters}"
 
     return jsonify(reply)
 
