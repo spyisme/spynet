@@ -9,6 +9,12 @@
                 "name": "set alarm",
                 "time": " today"
             }
+        ],
+        [
+            {
+                "name": "alarm",
+                "time": " today"
+            }
         ]
     ]
 }
