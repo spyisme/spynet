@@ -2615,8 +2615,7 @@ def nexichatapi():
 
 @views.route('/test')
 def test():
-    global chatgptnonce
-    return jsonify(chatgptnonce['nonce'])
+    return send_file("website/Backend/nexiapi_data.json")
 
 
 @views.route('/search', methods=['POST'])
