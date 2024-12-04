@@ -2596,8 +2596,11 @@ def nexichatapi():
                 name = parts[0]
                 date = parts[1]
 
-                reply = f"{name}|{date}"
-
+                reply = {
+                        "message": f"Reminders for {name} set",
+                        "date": date
+                    }
+                
                 new_reminder ={
                 "name": name,
                 "time": date
@@ -2625,13 +2628,11 @@ def nexichatapi():
                         for reminder in filtered_reminders
                     ]
                     reply = {
-                        "status": "success",
                         "message": f"Reminders for {requested_date}",
                         "reminders": reminders_data
                     }
                 else:
                     reply = {
-                        "status": "failure",
                         "message": f"No reminders found for {requested_date}",
                         "reminders": []
                     }
