@@ -18,9 +18,107 @@
             "content": "Understood! When you request to see reminders for a specific period, I'll respond with the JSON format: {Command: SHOWREMINDERS($Periodoftimegiven)}. Remember, for today use \"today,\" for tomorrow use \"tomorrow,\" for yesterday use \"yesterday,\" and for any other date, use the format month.day. Let me know if you need any more assistance!",
             "who": "AI: ",
             "timestamp": 2
+        },
+        {
+            "id": "",
+            "role": "user",
+            "content": "Also reply to smaller reminders in this format 6hrs , 6mins",
+            "who": "user: ",
+            "timestamp": 3
+        },
+        {
+            "id": "",
+            "role": "assistant",
+            "content": "Got it! When responding to smaller reminders, I'll format the time in hours and minutes like this: 6hrs, 6mins. Just let me know the time frame, and I'll provide the reminder in that format. Feel free to ask me anything else!",
+            "who": "AI: ",
+            "timestamp": 4
+        },
+        {
+            "id": "",
+            "role": "user",
+            "content": "Okay lets test it now what do i have in 5 hours",
+            "who": "user: ",
+            "timestamp": 5
+        },
+        {
+            "id": "",
+            "role": "assistant",
+            "content": "{Command: SHOWREMINDERS(5hrs)}",
+            "who": "AI: ",
+            "timestamp": 6
+        },
+        {
+            "id": "",
+            "role": "user",
+            "content": "good keep using this format to reply okay another one am i free on june 18?",
+            "who": "user: ",
+            "timestamp": 7
+        },
+        {
+            "id": "",
+            "role": "assistant",
+            "content": "{Command: SHOWREMINDERS(6.18)}",
+            "who": "AI: ",
+            "timestamp": 8
+        },
+        {
+            "id": "",
+            "role": "user",
+            "content": "pretty okay instead of using 6 use the word June (use months names not their number okay?)",
+            "who": "user: ",
+            "timestamp": 9
+        },
+        {
+            "id": "",
+            "role": "assistant",
+            "content": "{Command: SHOWREMINDERS(June.18)}",
+            "who": "AI: ",
+            "timestamp": 10
+        },
+        {
+            "id": "",
+            "role": "user",
+            "content": "Correct one more what do i have tomorrow?",
+            "who": "user: ",
+            "timestamp": 11
+        },
+        {
+            "id": "",
+            "role": "assistant",
+            "content": "{Command: SHOWREMINDERS(tomorrow)}",
+            "who": "AI: ",
+            "timestamp": 12
+        },
+        {
+            "id": "",
+            "role": "user",
+            "content": "do i have something the next 3 hours?",
+            "who": "user: ",
+            "timestamp": 13
+        },
+        {
+            "id": "",
+            "role": "assistant",
+            "content": "{Command: SHOWREMINDERS(3hrs)}",
+            "who": "AI: ",
+            "timestamp": 14
+        },
+        {
+            "id": "",
+            "role": "user",
+            "content": "Good boy gpt dont forget now!",
+            "who": "user: ",
+            "timestamp": 15
+        },
+        {
+            "id": "",
+            "role": "assistant",
+            "content": "I'll do my best to remember! Just let me know if you need any more help.",
+            "who": "AI: ",
+            "timestamp": 16
         }
     ],
-    "newMessage": "Also reply to smaller reminders in this format 6hrs , 6mins",
+    "newMessage": "Good boy gpt dont forget now!",
     "newFileId": null,
     "stream": false
 }
