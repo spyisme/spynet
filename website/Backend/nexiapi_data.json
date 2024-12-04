@@ -1,25 +1,36 @@
 {
     "reminders": [
-      {
-        "name": "Interview Preparation",
-        "time": "December.5"
-      },
-      {
-        "name": "set alarm",
-        "time": "today"
-      },
-      {
-        "name": "alarm",
-        "time": "today"
-      },
-      {
-        "name": "go out",
-        "time": "today"
-      },
-      {
-        "name": "go out",
-        "time": "june"
-      }
+        {
+            "name": "Interview Preparation",
+            "time": "December.5"
+        },
+        {
+            "name": "set alarm",
+            "time": "today"
+        },
+        {
+            "name": "alarm",
+            "time": "today"
+        },
+        {
+            "name": "go out",
+            "time": "today"
+        },
+        {
+            "name": "go out",
+            "time": "june"
+        },
+        [
+            {
+                "name": "go out",
+                "time": "june.19.9pm.0mins"
+            }
+        ],
+        [
+            {
+                "name": "go out",
+                "time": "june.20.9pm.0mins"
+            }
+        ]
     ]
-  }
-  
+}
