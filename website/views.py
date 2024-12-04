@@ -2560,7 +2560,7 @@ def chatgptapi():
 
         response = requests.post('https://masrgpt.com/wp-json/mwai-ui/v1/chats/submit', headers=headers, json=json_data , proxies=usproxy)
 
-        json_data = response.json()
+        json_data_response = response.json()
 
     reply = json_data_response["reply"]
 
