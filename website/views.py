@@ -2562,7 +2562,7 @@ def chatgptapi():
 
         json_data = response.json()
 
-    reply = json.loads(json_data["reply"])
+    reply = json_data["reply"]
 
 
     with open('website/Backend/nexiapi.json', 'r') as file:
