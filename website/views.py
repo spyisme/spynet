@@ -1843,16 +1843,16 @@ def english_assignment():
             if assignment == "8to10":
                 return render_template("used_pages/english_assignment_error.html" , error = "Please wait Not ready yet !")
 
-        if not word2:
-            if assignment == "5to7" or assignment == "8to10" :
-                new_message = f'Use the 1 word : "{word1}"'
-            elif assignment == "1to4":
-                new_message = "Provide 2 words! (Refresh the page)"
-        else:
-            if assignment == "1to4":
-                new_message = f'Use the 2 words : "{word1}" and "{word2}"'
-            elif assignment == "5to7" or assignment == "8to10":
-                new_message = f'Use the 1 word : "{word1}"'
+            if not word2:
+                if assignment == "5to7" or assignment == "8to10" :
+                    new_message = f'Use the 1 word : "{word1}"'
+                elif assignment == "1to4":
+                    new_message = "Provide 2 words! (Refresh the page)"
+            else:
+                if assignment == "1to4":
+                    new_message = f'Use the 2 words : "{word1}" and "{word2}"'
+                elif assignment == "5to7" or assignment == "8to10":
+                    new_message = f'Use the 1 word : "{word1}"'
 
 
             def get_image(query , name , api):
