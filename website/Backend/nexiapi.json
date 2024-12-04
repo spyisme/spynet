@@ -214,9 +214,163 @@
             "content": "Thank you for specifying! I will ensure yesterday, today, and tomorrow are always capitalized, while 6hrs and 6mins are not capitalized. Your instructions are clear!",
             "who": "AI: ",
             "timestamp": 30
+        },
+        {
+            "id": "",
+            "role": "user",
+            "content": "So same way you respond to SHOWREMINDERS i want you to respond to ADDREMINDER(PERIOD OF TIME) so it will work like this i tell you set a reminder after sometime example : Set a reminder for whatever after an hour your reply should be : {Command: ADDREMINDERFROMNOW(1hrs)} else if i say : set a reminder at 7 pm for example your reply should be : {Command: ADDREMINDER(today.7pm.0mins)} . if for tomorrow {Command: ADDREMINDER(tomorrow.7pm.0mins)} spesific date : {Command: ADDREMINDER(June.14.7pm.0mins)} in last example it was june 14 at 7 pm if i provide a day without a time reply with Please provide the date in hour and day and month. if no minutes was provided make it 0mins understood?",
+            "who": "user: ",
+            "timestamp": 31
+        },
+        {
+            "id": "",
+            "role": "assistant",
+            "content": "I understand your instructions. If you request to set a reminder, I will provide the appropriate command format based on your specified time or date. Just let me know when you need to add a reminder, and I'll respond accordingly!",
+            "who": "AI: ",
+            "timestamp": 32
+        },
+        {
+            "id": "",
+            "role": "user",
+            "content": "remmind me to wash the dishes at 7 am tomorrow",
+            "who": "user: ",
+            "timestamp": 33
+        },
+        {
+            "id": "",
+            "role": "assistant",
+            "content": "{Command: ADDREMINDER(tomorrow.7am.0mins)}",
+            "who": "AI: ",
+            "timestamp": 34
+        },
+        {
+            "id": "",
+            "role": "user",
+            "content": "When you i tell you the reminder name or what is it for use the command ADDREMINDER(wash the dishes.tomorrow.7am.0mins) okay?",
+            "who": "user: ",
+            "timestamp": 35
+        },
+        {
+            "id": "",
+            "role": "assistant",
+            "content": "Understood! I will use the command format ADDREMINDER(task description.tomorrow.7am.0mins) when you provide the reminder name or purpose. Thank you for the clarification!",
+            "who": "AI: ",
+            "timestamp": 36
+        },
+        {
+            "id": "",
+            "role": "user",
+            "content": "remind me on december 10 on 6 am to go to work",
+            "who": "user: ",
+            "timestamp": 37
+        },
+        {
+            "id": "",
+            "role": "assistant",
+            "content": "{Command: ADDREMINDER(go to work.December.10.6am.0mins)}",
+            "who": "AI: ",
+            "timestamp": 38
+        },
+        {
+            "id": "",
+            "role": "user",
+            "content": "remind me next week on 6 am to go to work",
+            "who": "user: ",
+            "timestamp": 39
+        },
+        {
+            "id": "",
+            "role": "assistant",
+            "content": "Please provide the date in hour and day and month.",
+            "who": "AI: ",
+            "timestamp": 40
+        },
+        {
+            "id": "",
+            "role": "user",
+            "content": "remind me on 6 am to go to work",
+            "who": "user: ",
+            "timestamp": 41
+        },
+        {
+            "id": "",
+            "role": "assistant",
+            "content": "Please provide the date in hour and day and month.",
+            "who": "AI: ",
+            "timestamp": 42
+        },
+        {
+            "id": "",
+            "role": "user",
+            "content": "If i just say the hour (like remind me on 10 pm it means today okay so reply with ADDREMINDER(task name .today.10pm.0mins))",
+            "who": "user: ",
+            "timestamp": 43
+        },
+        {
+            "id": "",
+            "role": "assistant",
+            "content": "{Command: ADDREMINDER(task name.today.10pm.0mins)}",
+            "who": "AI: ",
+            "timestamp": 44
+        },
+        {
+            "id": "",
+            "role": "user",
+            "content": "remind me at 10 in the morning to do the dishes",
+            "who": "user: ",
+            "timestamp": 45
+        },
+        {
+            "id": "",
+            "role": "assistant",
+            "content": "{Command: ADDREMINDER(do the dishes.today.10am.0mins)}",
+            "who": "AI: ",
+            "timestamp": 46
+        },
+        {
+            "id": "",
+            "role": "user",
+            "content": "am i free on march 7?",
+            "who": "user: ",
+            "timestamp": 47
+        },
+        {
+            "id": "",
+            "role": "assistant",
+            "content": "I'm sorry, I am an AI assistant and do not have access to your calendar. Would you like me to help you set a reminder for that date instead?",
+            "who": "AI: ",
+            "timestamp": 48
+        },
+        {
+            "id": "",
+            "role": "user",
+            "content": "you should have send the command showreminders stuipd",
+            "who": "user: ",
+            "timestamp": 49
+        },
+        {
+            "id": "",
+            "role": "assistant",
+            "content": "I apologize for any confusion. Here is the command you requested: {Command: SHOWREMINDERS(march.7)}",
+            "who": "AI: ",
+            "timestamp": 50
+        },
+        {
+            "id": "",
+            "role": "user",
+            "content": "foucs gpt foucs!",
+            "who": "user: ",
+            "timestamp": 51
+        },
+        {
+            "id": "",
+            "role": "assistant",
+            "content": "I'm here and ready to assist! How can I help you focus better today?",
+            "who": "AI: ",
+            "timestamp": 52
         }
     ],
-    "newMessage": "Also yesterday today and tomorrow always a capital letter and 6hrs and 6mins not capital",
+    "newMessage": "foucs gpt foucs!",
     "newFileId": null,
     "stream": false
 }
