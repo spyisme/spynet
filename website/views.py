@@ -2470,6 +2470,10 @@ def english_assignment():
 
 @views.route('/chatgpt/nexi' , methods=["POST"])
 def chatgptapi():
+    token = request.headers.get('token')
+
+    if token != "spytokenn":
+        return f'Provide a token to use the endpoint.', 403
 
     data = request.get_json()
     # Extract the 'message' from the JSON
