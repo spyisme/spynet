@@ -1844,14 +1844,14 @@ def english_assignment():
                 return render_template("used_pages/english_assignment_error.html" , error = "Please wait Not ready yet !")
 
         if not word2:
-            if assignment == "5to7":
+            if assignment == "5to7" or assignment == "8to10" :
                 new_message = f'Use the 1 word : "{word1}"'
             elif assignment == "1to4":
                 new_message = "Provide 2 words! (Refresh the page)"
         else:
             if assignment == "1to4":
                 new_message = f'Use the 2 words : "{word1}" and "{word2}"'
-            elif assignment == "5to7":
+            elif assignment == "5to7" or assignment == "8to10":
                 new_message = f'Use the 1 word : "{word1}"'
 
 
@@ -1952,7 +1952,7 @@ def english_assignment():
                     print("exiting...")
                     return "Choose a valid api key"
 
-            prompt = "Hello, I would like assistance similar to how I interacted in a previous chat with ChatGPT. Here is what I typically need: Text Generation: When I provide one or more words, please give me structured information for each word in JSON format, including: Today's POWER WORD: The word itself. Definition: A clear explanation of what the word means. Part of Speech: Indicate whether it's a noun, verb, adjective, etc. Synonyms: List two or more words that mean the same or similar, as a single text string separated by commas, not as a list. Antonyms: List two or more words that mean the opposite, also as a single text string separated by commas. Related Words: Suggest words that are conceptually related, as a single text string with commas. Your OWN Sentence: Use the word in a clear example sentence. Search: A search query I can use to find an accurate image for the word. Return everything as structured JSON text with words as an array of entries for each word. IMPORTANT DONT SAY A WORD ONLY SEND THE JSON DATA AND CAPTLIZE THE FIRST LETTER!!!, GIVE 2 synonyms and 2 antynoms only if i asked for 1 word if i asked for 2 words give 3 and 3 for each word"
+            prompt = "Hello, I would like assistance similar to how I interacted in a previous chat with ChatGPT. Here is what I typically need: Text Generation: When I provide one or more words, please give me structured information for each word in JSON format, including: Today's POWER WORD: The word itself. Definition: A clear explanation of what the word means. Part of Speech: Indicate whether it's a noun, verb, adjective, etc. Synonyms: List two or more words that mean the same or similar, as a single text string separated by commas, not as a list. Antonyms: List two or more words that mean the opposite, also as a single text string separated by commas. Related Words: Suggest words that are conceptually related, as a single text string with commas. Your OWN Sentence: Use the word in a clear example sentence.Prefix of the word(s) provided. Search: A search query I can use to find an accurate image for the word. Return everything as structured JSON text with words as an array of entries for each word. IMPORTANT DONT SAY A WORD ONLY SEND THE JSON DATA AND CAPTLIZE THE FIRST LETTER!!!, GIVE 2 synonyms and 2 antynoms only if i asked for 1 word if i asked for 2 words give 3 and 3 for each word"
 
             global_start_time = time.time()
 
