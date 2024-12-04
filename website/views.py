@@ -2615,17 +2615,26 @@ def nexichatapi():
                 for reminder_group in backend_data.get("reminders", []):
                     if isinstance(reminder_group, list): 
                         all_reminders.extend(reminder_group)
-
                 filtered_reminders = [
                     reminder for reminder in all_reminders if requested_date in reminder["time"].lower()
                 ]
 
                 if filtered_reminders:
-                    reminder_texts = [f"{reminder['name']} at {reminder['time']}" for reminder in filtered_reminders]
-                    reply = reminder_texts
+                    reminders_data = [
+                        {"reminder": index + 1, "name": reminder['name'], "time": reminder['time']}
+                        for index, reminder in enumerate(filtered_reminders)
+                    ]
+                    reply = {
+                        "status": "success",
+                        "message": f"Reminders for {requested_date}",
+                        "reminders": reminders_data
+                    }
                 else:
-                    reply = f"You have no reminders found for {requested_date}."
-
+                    reply = {
+                        "status": "failure",
+                        "message": f"No reminders found for {requested_date}",
+                        "reminders": []
+                    }
     return jsonify(reply)
 
 
