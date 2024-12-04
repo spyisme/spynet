@@ -25,6 +25,13 @@
             "content": "If i ask for what i have today or what i have at {time} show command",
             "who": "user: ",
             "timestamp": 3
+        },
+        {
+            "id": "",
+            "role": "user",
+            "content": "What do i have tomorrow?",
+            "who": "user: ",
+            "timestamp": 4
         }
     ],
     "newMessage": "What do i have tomorrow?",
