@@ -2530,7 +2530,11 @@ def chatgptapi():
         chatgptnonce["nonce"] = nonce
 
 
+        with open('website/Backend/nexiapi.json', 'r') as file:
+            json_data = json.load(file)
 
+        json_data['newMessage'] = new_message
+        
         headers = {
             'Accept': '*/*',
             'Connection': 'keep-alive',
