@@ -2579,6 +2579,12 @@ def nexichatapi():
     # with open('website/Backend/nexiapi.json', 'w') as file:
     #     json.dump(json_data, file, indent=4)
 
+
+
+    with open('website/Backend/nexiapi_data.json', 'r') as file:
+        backend_data = json.load(file)
+
+
     if "command" in reply.lower():
         pattern = r"{Command:\s*(\w+)\(([^)]+)\)}"
         match = re.search(pattern, reply)
@@ -2588,9 +2594,18 @@ def nexichatapi():
             if command == "ADDREMINDER":
                 name = parameters.split('.')[0] 
                 date = parameters.split('.')[1] 
-                reply = f"command={command}, date={date}, name={name}"
+                reply = f"Remminder for {name} Set at {date}"
 
-            else:
+                new_reminder ={
+                "name": name,
+                "time": date
+                },
+                backend_data["reminders"].append(new_reminder)
+                
+                with open('website/Backend/nexiapi_data.json', 'w') as file:
+                    json.dump(backend_data, file, indent=4)
+
+            elif command == "SHOWREMINDERS":
                 reply = f"command={command}, date={parameters}, name="
 
     return jsonify(reply)
