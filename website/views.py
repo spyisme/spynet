@@ -1842,7 +1842,7 @@ def english_assignment():
 
 
             if not word2 :
-                if assignment == "5to8" : 
+                if assignment == "5to7" : 
                     new_message = f'Use the 1 word : "{word1}"'
 
                 if assignment == "1to4" : 
@@ -1850,7 +1850,7 @@ def english_assignment():
             else :
                 if assignment == "1to4" : 
                     new_message = f'Use the 2 words : "{word1}" and "{word2}" '
-                if assignment == "5to8" : 
+                if assignment == "5to7" : 
                     new_message = f'Use the 1 word : "{word1}"'
 
 
@@ -2294,7 +2294,7 @@ def english_assignment():
                     return render_template("used_pages/english_assignment_error.html")
     #-----------------------------------------------------------------------------------------------------------------
     
-            elif assignment == '5to8' :
+            elif assignment == '5to7' :
                 fields_data = {
                     "Today's POWER WORD 1": {"text": "", "coords": (955,973), "max_x": 1618, "max_y": 1243},  
                     "Definition 1": {"text": "", "coords": (99,845), "max_x": 805, "max_y": 1291},
@@ -2452,7 +2452,7 @@ def english_assignment():
 
                 img_1_cords = [900 , 2612,1657,3031]
 
-                make_image_final('assignment5to8' , 3000 , 70 ,img_1_cords)
+                make_image_final('assignment5to7' , 3000 , 70 ,img_1_cords)
 
 
 
