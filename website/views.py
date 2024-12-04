@@ -2584,8 +2584,14 @@ def nexichatapi():
         match = re.search(pattern, reply)
         if match:
             command = match.group(1)  
-            parameters = match.group(2)  
-            reply = f"command={command}, date={parameters}"
+            parameters = match.group(2) 
+            if command == "ADDREMINDER":
+                name = parameters.split('.')[0] 
+                date = parameters.split('.')[1] 
+                reply = f"command={command}, date={date} , name={name}"
+
+            else:
+                reply = f"command={command}, date={parameters}"
 
     return jsonify(reply)
 
