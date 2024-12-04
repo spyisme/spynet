@@ -2620,12 +2620,11 @@ def nexichatapi():
                     reminder for reminder in all_reminders if requested_date in reminder["time"].lower()
                 ]
 
-                # Prepare the response
                 if filtered_reminders:
                     reminder_texts = [f"{reminder['name']} at {reminder['time']}" for reminder in filtered_reminders]
-                    reply = "Reminders for " + requested_date + ":\n" + "\n".join(reminder_texts)
+                    reply = reminder_texts
                 else:
-                    reply = f"No reminders found for {requested_date}."
+                    reply = f"You have no reminders found for {requested_date}."
 
     return jsonify(reply)
 
