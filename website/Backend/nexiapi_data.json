@@ -1,26 +1,5 @@
 {
-    "contextId": 1,
     "reminders": [
-        {
-            "name": "Interview Preparation",
-            "time": "December.5"
-        },
-        {
-            "name": "set alarm",
-            "time": "today"
-        },
-        {
-            "name": "alarm",
-            "time": "today"
-        },
-        {
-            "name": "go out",
-            "time": "today"
-        },
-        {
-            "name": "go out",
-            "time": "june"
-        },
         [
             {
                 "name": "go out",
@@ -33,6 +12,5 @@
                 "time": "May.20.9pm.0mins"
             }
         ]
-    ],
-    "contextId2": 1
+    ]
 }
