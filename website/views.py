@@ -2472,7 +2472,6 @@ def english_assignment():
 def chatgptapi():
 
     data = request.get_json()
-    
     # Extract the 'message' from the JSON
     new_message = data.get('message')
 
@@ -2486,39 +2485,14 @@ def chatgptapi():
         'X-WP-Nonce': nonce,
     }
 
-    json_data = {
-    'botId': 'default',
-    'customId': None,
-    'session': 'N/A',
-    'chatId': '1',
-    'contextId': 1,
-    'messages': [
-        {
-            'id': '',
-            'role': 'user',
-            'content': 'If a i tell you anything that means show me the reminders for a spesifc period reply with {Command : SHOWREMINDERS{$Periodoftimegiven}} only dont say anyhting more deal? JUST REPLY WITH THE JSON DONT SAY HERE IT IS For today use today tommorow use tommorow yesterday use yesterday anything else use the date like month.day',
-            'who': 'user: ',
-            'timestamp': 1,
-        },
-        {
-            'id': '',
-            'role': 'assistant',
-            'content': 'Got it i will reply to all messages normmaly unless you ask for reminders or for what you have',
-            'who': 'AI: ',
-            'timestamp': 2,
-        },
-        {
-            'id': '',
-            'role': 'user',
-            'content': 'If i ask for what i have today or what i have at {time} show command',
-            'who': 'user: ',
-            'timestamp': 3,
-        },
-    ],
-    'newMessage': new_message,
-    'newFileId': None,
-    'stream': False,
-}
+
+    with open('website/Backend/nexiapi.json', 'r') as file:
+        json_data = json.load(file)
+
+    json_data['newMessage'] = new_message
+
+
+
     response = requests.post('https://masrgpt.com/wp-json/mwai-ui/v1/chats/submit', headers=headers, json=json_data , proxies=usproxy)
 
     json_data = response.json()
