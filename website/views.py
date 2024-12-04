@@ -2592,8 +2592,9 @@ def nexichatapi():
             command = match.group(1)  
             parameters = match.group(2) 
             if command == "ADDREMINDER":
-                name = parameters.split('.')[0] 
-                date = parameters.split('.')[1] 
+                parts = parameters.split('.', 1)
+                name = parts[0]
+                date = parts[1]
                 reply = f"Remminder for {name} Set at {date}"
 
                 new_reminder ={
