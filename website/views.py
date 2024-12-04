@@ -2535,25 +2535,6 @@ def chatgptapi():
             'X-WP-Nonce': nonce,
         }
 
-        json_data = {
-            'botId': 'default',
-            'customId': None,
-            'session': 'N/A',
-            'chatId': '1',
-            'contextId': 1,
-            'messages': [
-                {
-                    'id': '',
-                    'role': 'assistant',
-                    'content': 'Hi how can i help you?',
-                    'who': 'AI: ',
-                    'timestamp': 1,
-                },
-            ],
-            'newMessage': new_message,
-            'newFileId': None,
-            'stream': False,
-        }
 
         response = requests.post('https://masrgpt.com/wp-json/mwai-ui/v1/chats/submit', headers=headers, json=json_data , proxies=usproxy)
 
