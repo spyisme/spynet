@@ -2600,8 +2600,9 @@ def nexichatapi():
                 "name": name,
                 "time": date
                 },
-                backend_data["reminders"].append(new_reminder)
                 
+                backend_data['reminders'].append(new_reminder)
+
                 with open('website/Backend/nexiapi_data.json', 'w') as file:
                     json.dump(backend_data, file, indent=4)
 
