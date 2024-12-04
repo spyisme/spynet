@@ -15,6 +15,18 @@
                 "name": "alarm",
                 "time": " today"
             }
+        ],
+        [
+            {
+                "name": "go out",
+                "time": "today"
+            }
+        ],
+        [
+            {
+                "name": "go out",
+                "time": "june"
+            }
         ]
     ]
 }
