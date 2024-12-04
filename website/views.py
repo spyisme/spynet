@@ -1839,7 +1839,9 @@ def english_assignment():
                 api = "2"
                 file_name = f"EnglishPDF"
                 discord_log_english(f"Not logged -- Making pdf for {name_and_id} , assignment {assignment}  with words {word1} {word2} , api = {api} , quality = {quality} , ip = {client_ip}")
-
+            
+            if assignment == "8to10":
+                return render_template("used_pages/english_assignment_error.html" , error = "Not public yet!")
 
             if not word2 :
                 if assignment == "5to7" : 
