@@ -2591,12 +2591,14 @@ def nexichatapi():
         if match:
             command = match.group(1)  
             parameters = match.group(2) 
+#---------------------------------------------------------------------------------------------------------------
             if command == "ADDREMINDER":
                 parts = parameters.split('.', 1)
                 name = parts[0]
                 date = parts[1]
 
                 reply = {
+                        "command" : "add",
                         "message": f"Reminders for {name} set",
                         "date": date
                     }
@@ -2640,11 +2642,13 @@ def nexichatapi():
                         reminders_data.append({"Name": reminder['name'].capitalize(), "Time": time_str})
 
                     reply = {
+                        "command" : "show",
                         "message": f"Reminders for {requested_date.capitalize()}",
                         "reminders": reminders_data
                     }
                 else:
                     reply = {
+                        "command" : "show",
                         "message": f"No reminders found for {requested_date}",
                         "reminders": []
                     }
@@ -2678,10 +2682,14 @@ def nexichatapi():
                              json.dump(updated_data, file, indent=4)
 
                         reply = {
+                        "command" : "delete",
+
                         "message": f"Deleted reminder(s) for {parameters}!",
                             }
                     else:
                         reply = {
+                        "command" : "delete",
+
                         "message": f"No reminder found for {parameters}.",
                             }
 
