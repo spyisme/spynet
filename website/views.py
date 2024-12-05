@@ -2630,15 +2630,14 @@ def nexichatapi():
                         time_parts = reminder['Time'].split('.')
                         if time_parts[0] in ['today', 'tomorrow'] : #today.hour.min
 
-                            if len(time_parts) < 2 :
+                            if len(time_parts) <= 2 :
                                 time_str = f"{time_parts[0].capitalize()} at {time_parts[1]}"
                             else :
                                 time_str = f"{time_parts[0].capitalize()} at {time_parts[1]} and {time_parts[2]}"
                         else : #Month.day.hour.min
 
-                            if len(time_parts) > 3:
-                                if  time_parts[3] == '0mins' : 
-                                    time_str = f"{time_parts[0].capitalize()} {time_parts[1]} at {time_parts[2]}"
+                            if len(time_parts) <= 3:
+                                time_str = f"{time_parts[0].capitalize()} {time_parts[1]} at {time_parts[2]}"
                             else :
                                 time_str = f"{time_parts[0].capitalize()} {time_parts[1]} at {time_parts[2]} and {time_parts[3]}"
 
