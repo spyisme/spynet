@@ -2874,3 +2874,97 @@ Traceback (most recent call last):
     stat = os.stat(path)
 FileNotFoundError: [Errno 2] No such file or directory: '/root/spysnet/website/website/Backend/nexiapi_data.json'
 Invalid session _T86_h2wpF25m0nkAAAN (further occurrences of this error will be logged with level INFO)
+205.210.31.30 - - [05/Dec/2024 04:14:31] code 400, message Bad request version ('À\x13À')
+205.210.31.30 - - [05/Dec/2024 04:14:32] code 400, message Bad request version ('À(À$À\x14À')
+78.153.140.179 - - [05/Dec/2024 04:15:46] code 400, message Bad request syntax ("\x16\x03\x01\x00¬\x01\x00\x00¨\x03\x03¿'\x8a4îªåÂtÂb¥/\x02|«JúÜÕ\x8e\x9b÷;â\x18\x7f)yßi´\x00\x008À,À")
+93.174.93.12 - - [05/Dec/2024 04:19:03] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+88.130.154.206 - - [05/Dec/2024 04:51:30] code 400, message Bad request syntax ('\x04\x01\x00P-OÙ»\x00')
+88.130.154.206 - - [05/Dec/2024 04:51:54] code 400, message Bad request syntax ('\x04\x01\x00P3KNg\x00')
+88.130.154.206 - - [05/Dec/2024 04:52:16] code 400, message Bad request syntax ('\x04\x01\x01»\x17X!å\x00')
+5.8.11.202 - - [05/Dec/2024 05:10:24] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+88.130.154.206 - - [05/Dec/2024 05:15:43] code 400, message Bad request syntax ('\x05\x01\x00')
+88.130.154.206 - - [05/Dec/2024 05:16:06] code 400, message Bad request syntax ('\x05\x01\x00')
+88.130.154.206 - - [05/Dec/2024 05:16:28] code 400, message Bad request syntax ('\x05\x01\x00')
+88.130.154.206 - - [05/Dec/2024 05:16:58] code 400, message Bad request syntax ('\x05\x01\x00')
+88.130.154.206 - - [05/Dec/2024 05:17:21] code 400, message Bad request syntax ('\x05\x01\x00')
+88.130.154.206 - - [05/Dec/2024 05:17:43] code 400, message Bad request syntax ('\x05\x01\x00')
+88.214.25.63 - - [05/Dec/2024 05:25:41] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+152.42.214.50 - - [05/Dec/2024 08:03:15] code 400, message Bad request version ('À\x13À')
+152.42.219.47 - - [05/Dec/2024 08:03:20] code 400, message Bad request version ('}.¡æ£«º')
+80.82.77.202 - - [05/Dec/2024 10:44:43] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+174.138.61.44 - - [05/Dec/2024 10:57:14] code 400, message Bad request version ("x64|'|'|No|'|'|S17|'|'|..|'|'|SW5ib3ggLSBPdXRsb29rIERhdGEgRmlsZSAtIE1pY3Jvc29mdCBPdXRsb29rAA==|'|'|")
+78.153.140.151 - - [05/Dec/2024 11:00:29] code 400, message Bad request version ('ccè\x10ÐìE\x92\x97N\x18Z\x00|ØFs$mDª\x00\x008À,À')
+80.82.77.202 - - [05/Dec/2024 12:09:43] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+5.8.11.202 - - [05/Dec/2024 13:23:30] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+152.42.243.206 - - [05/Dec/2024 16:03:10] code 400, message Bad request version ('\xad`ºÌ')
+152.42.247.210 - - [05/Dec/2024 16:03:14] code 400, message Bad request version ('À\x13À')
+198.235.24.231 - - [05/Dec/2024 16:57:45] code 400, message Bad request syntax ('\x16\x03\x01\x00î\x01\x00\x00ê\x03\x03Û~ü\x82"Ä\x11,bô')
+198.235.24.231 - - [05/Dec/2024 16:57:45] code 400, message Bad request syntax ('\x16\x03\x01\x00Ê\x01\x00\x00Æ\x03\x03¦@+Mß\x87e\x8cGê\x14âÁ\x17H²|\x01')
+68.183.81.186 - - [05/Dec/2024 18:28:28] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00{\x01\x00\x00w\x03\x03LQ÷^Å\x89TV³\x93"þPW8x¸¢¹\x9bk\x02BI÷\x7f;b^å\x9eÜ\x00\x00\x1aÀ/À+À\x11À\x07À\x13À')
+68.183.81.186 - - [05/Dec/2024 18:28:28] code 400, message Bad request version ('À\x14À')
+45.79.172.21 - - [05/Dec/2024 19:46:31] code 400, message Bad request version ('À\x13À')
+93.174.93.12 - - [05/Dec/2024 20:21:52] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.10/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/root/spysnet/website/views.py", line 2662, in nexi
+    return render_template('reminders.html', reminders=backend_data['reminders'])
+  File "/usr/local/lib/python3.10/dist-packages/flask/templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "/usr/local/lib/python3.10/dist-packages/jinja2/environment.py", line 1084, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/usr/local/lib/python3.10/dist-packages/jinja2/environment.py", line 1013, in get_template
+    return self._load_template(name, globals)
+  File "/usr/local/lib/python3.10/dist-packages/jinja2/environment.py", line 972, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/usr/local/lib/python3.10/dist-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/usr/local/lib/python3.10/dist-packages/flask/templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+  File "/usr/local/lib/python3.10/dist-packages/flask/templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: reminders.html
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.10/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/root/spysnet/website/views.py", line 2697, in test
+    sorted_reminders = sorted(flattened_reminders, key=parse_time)
+  File "/root/spysnet/website/views.py", line 2676, in parse_time
+    month_str, day, time, _, _ = reminder['time'].split('.')
+ValueError: not enough values to unpack (expected 5, got 4)

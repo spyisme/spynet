@@ -11,7 +11,8 @@
                 "name": "go out",
                 "time": "May.20.9pm.0mins"
             }
-        ],[
+        ],
+        [
             {
                 "name": "haa",
                 "time": "march.5.10:30pm.0mins"
@@ -21,6 +22,18 @@
             {
                 "name": "haa",
                 "time": "march.5.10:30pm.0mins"
+            }
+        ],
+        [
+            {
+                "name": "assignment 5 static",
+                "time": "march.6.6:30pm.0mins"
+            }
+        ],
+        [
+            {
+                "name": "do the dishes",
+                "time": "today.7pm.0mins"
             }
         ]
     ]
