@@ -2639,7 +2639,7 @@ def nexichatapi():
                                 time_str = f"{time_parts[0].capitalize()} {time_parts[1]} at {time_parts[2]} and {time_parts[3]}"
 
 
-                        reminders_data.append({"Title": reminder['name'].capitalize(), "Time": time_str})
+                        reminders_data.append({"Name": reminder['name'].capitalize(), "Time": time_str})
 
                     reply = {
                         "message": f"Reminders for {requested_date.capitalize()}",
