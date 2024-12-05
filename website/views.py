@@ -2677,10 +2677,14 @@ def nexichatapi():
                         with open('website/Backend/nexiapi_data.json', 'w') as file:
                              json.dump(updated_data, file, indent=4)
 
-                        reply = f"Deleted reminder(s) for {parameters}!"
+                        reply = {
+                        "message": f"Deleted reminder(s) for {parameters}!",
+                            }
                     else:
-                        reply = f"No reminder found for {parameters}."
-    
+                        reply = {
+                        "message": f"No reminder found for {parameters}.",
+                            }
+
     return jsonify(reply)
 
 
