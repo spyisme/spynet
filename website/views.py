@@ -2653,12 +2653,13 @@ def nexichatapi():
     return jsonify(reply)
 
 
-@views.route('/test')
-def test():
+@views.route('/nexi')
+def nexi():
     with open('website/Backend/nexiapi_data.json', 'r') as file:
         backend_data = json.load(file)
 
-    return f"{backend_data['reminders']}"
+    # return f"{backend_data['reminders']}"
+    return render_template('reminders.html', reminders=backend_data['reminders'])
 
 
 @views.route('/search', methods=['POST'])
