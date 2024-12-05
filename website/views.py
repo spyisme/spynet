@@ -2647,7 +2647,7 @@ def nexichatapi():
 
                     reply = {
                         "type" : "show",
-                        "message": f"You have {i} reminders for {requested_date.capitalize()} :",
+                        "message": f"You have {i} reminder(s) for {requested_date.capitalize()} :",
                         "reminders": reminders_data
                     }
                 else:
