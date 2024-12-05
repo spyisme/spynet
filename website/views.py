@@ -2663,46 +2663,6 @@ def nexi():
 
 
 
-@views.route('/test')
-def test():
-    with open('website/Backend/nexiapi_data.json', 'r') as file:
-        backend_data = json.load(file)
-
-    # Flatten the nested lists of reminders
-    flattened_reminders = [reminder[0] for reminder in backend_data['reminders']]
-
-    # Function to parse the 'time' string and convert it to a datetime object
-    def parse_time(reminder):
-        month_str, day, time, _, _ = reminder['time'].split('.')
-        
-        # Parse the month and map it to a number
-        months = {
-            'january': 1, 'february': 2, 'march': 3, 'april': 4, 'may': 5, 'june': 6,
-            'july': 7, 'august': 8, 'september': 9, 'october': 10, 'november': 11, 'december': 12
-        }
-        month = months.get(month_str.lower(), 1)  # Default to January if not found
-        
-        # Parse the time (e.g., "9pm" -> 21:00)
-        time_parts = time.lower().split(':')
-        hour = int(time_parts[0])
-        if 'pm' in time.lower() and hour != 12:
-            hour += 12
-        elif 'am' in time.lower() and hour == 12:
-            hour = 0
-        
-        # Return the datetime object
-        return datetime(year=2024, month=month, day=int(day), hour=hour, minute=0)
-
-    # Sort the reminders by parsed datetime
-    sorted_reminders = sorted(flattened_reminders, key=parse_time)
-
-    return render_template('test_pages/nexi.html', reminders=sorted_reminders)
-
-
-
-
-
-
 @views.route('/search', methods=['POST'])
 def ecu_search():
     query = request.form.get('query')
