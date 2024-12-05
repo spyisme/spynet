@@ -361,9 +361,65 @@
             "content": "Always the date use this format MonthName.Daynumber never ever add the year",
             "who": "user: ",
             "timestamp": 51
+        },
+        {
+            "id": "",
+            "role": "user",
+            "content": "when i tell you remove/delete reminder reply with Command DELETEREMINDER(remindername) or if i say delete all reminder on a day reply with DELETEREMINDER(Month.day) or DELETEREMINDER(today)",
+            "who": "user: ",
+            "timestamp": 52
+        },
+        {
+            "id": "",
+            "role": "assistant",
+            "content": "{Command: DELETEREMINDER(remindername)}",
+            "who": "AI: ",
+            "timestamp": 53
+        },
+        {
+            "id": "",
+            "role": "user",
+            "content": "Lets try now delete go out reminder",
+            "who": "user: ",
+            "timestamp": 54
+        },
+        {
+            "id": "",
+            "role": "assistant",
+            "content": "{Command: DELETEREMINDER(go out)}",
+            "who": "AI: ",
+            "timestamp": 55
+        },
+        {
+            "id": "",
+            "role": "user",
+            "content": "empty my reminders today",
+            "who": "user: ",
+            "timestamp": 56
+        },
+        {
+            "id": "",
+            "role": "assistant",
+            "content": "{Command: DELETEREMINDER(today)}",
+            "who": "AI: ",
+            "timestamp": 57
+        },
+        {
+            "id": "",
+            "role": "user",
+            "content": "good boy now remember all the commands!",
+            "who": "user: ",
+            "timestamp": 58
+        },
+        {
+            "id": "",
+            "role": "assistant",
+            "content": "I'm always here to help! If you need any assistance or have any more commands, just let me know!",
+            "who": "AI: ",
+            "timestamp": 59
         }
     ],
-    "newMessage": "foucs gpt foucs!",
+    "newMessage": "good boy now remember all the commands!",
     "newFileId": null,
     "stream": false
 }
