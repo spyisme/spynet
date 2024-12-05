@@ -2612,7 +2612,6 @@ def nexichatapi():
                     json.dump(backend_data, file, indent=4)
 
             elif command == "SHOWREMINDERS":
-                reply = f"command={command}, date={parameters}"
                 requested_date = parameters.strip().lower()
                 all_reminders = []
                 for reminder_group in backend_data.get("reminders", []):
@@ -2651,7 +2650,7 @@ def nexichatapi():
                         "reminders": []
                     }
             elif command == "DELETEREMINDER" :
-                reply = "Delete a reminder !"
+                reply = f"Delete a reminder {parameters} ! "
     
     
     
