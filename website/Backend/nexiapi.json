@@ -407,9 +407,16 @@
         {
             "id": "",
             "role": "user",
-            "content": "good boy now remember all the commands!",
+            "content": "when i say what do i have today show reminders for today and so on",
             "who": "user: ",
             "timestamp": 58
+        },
+        {
+            "id": "",
+            "role": "assistant",
+            "content": "Understood",
+            "who": "AI: ",
+            "timestamp": 59
         }
     ],
     "newMessage": "good boy now remember all the commands!",
