@@ -2598,7 +2598,7 @@ def nexichatapi():
 
                 reply = {
                         "type" : "add",
-                        "message": f"Reminders for {name} set",
+                        "message": f"Reminder for {name} set",
                         "date": date
                     }
                 
