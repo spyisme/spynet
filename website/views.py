@@ -2626,11 +2626,19 @@ def nexichatapi():
                     reminders_data = []
                     for reminder in filtered_reminders:
                         time_parts = reminder['time'].split('.')
+                        if time_parts[0] in ['today', 'tomorrow'] : #today.hour.min
+                            if time_parts[2] == '0mins' :
+                                time_str = f"{time_parts[0].capitalize()} at {time_parts[1]}"
+                            else :
+                                time_str = f"{time_parts[0].capitalize()} at {time_parts[1]} and {time_parts[2]}"
+                        else : #Month.day.hour.min
 
-                        if time_parts[2] == '0mins' :
-                            time_str = f"{time_parts[0].capitalize()} at {time_parts[1]}"
-                        else :
-                            time_str = f"{time_parts[0].capitalize()} at {time_parts[1]} and {time_parts[2]}"
+                            if time_parts[3] == '0mins' :
+                                time_str = f"{time_parts[0].capitalize()} {time_parts[1]} at {time_parts[2]}"
+                            else :
+                                time_str = f"{time_parts[0].capitalize()} {time_parts[1]} at {time_parts[2]} and {time_parts[3]}"
+
+
 
                         reminders_data.append({"Title": reminder['name'].capitalize(), "Time": time_str})
 
