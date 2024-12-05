@@ -2657,9 +2657,9 @@ def nexichatapi():
 def nexi():
     with open('website/Backend/nexiapi_data.json', 'r') as file:
         backend_data = json.load(file)
-
+    flattened_reminders = [reminder[0] for reminder in backend_data['reminders']]
     # return f"{backend_data['reminders']}"
-    return render_template('test_pages/nexi.html', reminders=backend_data['reminders'])
+    return render_template('test_pages/nexi.html', reminders=flattened_reminders)
 
 
 @views.route('/search', methods=['POST'])
