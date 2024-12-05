@@ -2,30 +2,6 @@
     "reminders": [
         [
             {
-                "name": "go out",
-                "time": "june.20.9pm.0mins"
-            }
-        ],
-        [
-            {
-                "name": "go out",
-                "time": "May.20.9pm.0mins"
-            }
-        ],
-        [
-            {
-                "name": "haa",
-                "time": "march.5.10:30pm.0mins"
-            }
-        ],
-        [
-            {
-                "name": "haa",
-                "time": "march.5.10:30pm.0mins"
-            }
-        ],
-        [
-            {
                 "name": "do the dishes",
                 "time": "today.7pm.0mins"
             }
