@@ -2611,6 +2611,7 @@ def nexichatapi():
 
                 with open('website/Backend/nexiapi_data.json', 'w') as file:
                     json.dump(backend_data, file, indent=4)
+
             elif command == "SHOWREMINDERS":
                 requested_date = parameters.strip().lower()
                 all_reminders = []
@@ -2618,13 +2619,13 @@ def nexichatapi():
                     if isinstance(reminder_group, list): 
                         all_reminders.extend(reminder_group)
                 filtered_reminders = [
-                    reminder for reminder in all_reminders if requested_date in reminder["time"].lower()
+                    reminder for reminder in all_reminders if requested_date in reminder["Time"].lower()
                 ]
 
                 if filtered_reminders:
                     reminders_data = []
                     for reminder in filtered_reminders:
-                        time_parts = reminder['time'].split('.')
+                        time_parts = reminder['Time'].split('.')
                         if time_parts[0] in ['today', 'tomorrow'] : #today.hour.min
                             if time_parts[2] == '0mins' :
                                 time_str = f"{time_parts[0].capitalize()} at {time_parts[1]}"
@@ -2638,7 +2639,7 @@ def nexichatapi():
                                 time_str = f"{time_parts[0].capitalize()} {time_parts[1]} at {time_parts[2]} and {time_parts[3]}"
 
 
-                        reminders_data.append({"Name": reminder['name'].capitalize(), "Time": time_str})
+                        reminders_data.append({"Name": reminder['Name'].capitalize(), "Time": time_str})
 
                     reply = {
                         "type" : "show",
@@ -2657,19 +2658,19 @@ def nexichatapi():
                     matching_reminders = []
                     
                     if parameters.lower() == "today":
-                        matching_reminders = [reminder for reminder in flattened_reminders if "today" in reminder['time'].lower()]
+                        matching_reminders = [reminder for reminder in flattened_reminders if "today" in reminder['Time'].lower()]
                     
                     elif parameters.lower() == "tomorrow":
-                        matching_reminders = [reminder for reminder in flattened_reminders if "tomorrow" in reminder['time'].lower()]
+                        matching_reminders = [reminder for reminder in flattened_reminders if "tomorrow" in reminder['Time'].lower()]
                     
                     else:
                         # If it's a specific date like "March.5"
                         date_to_match = parameters.strip().lower()
-                        matching_reminders = [reminder for reminder in flattened_reminders if date_to_match in reminder['time'].lower()]
+                        matching_reminders = [reminder for reminder in flattened_reminders if date_to_match in reminder['Time'].lower()]
                     
                     if not matching_reminders:
 
-                        matching_reminders = [reminder for reminder in flattened_reminders if reminder['name'].lower() == parameters.lower()]
+                        matching_reminders = [reminder for reminder in flattened_reminders if reminder['Name'].lower() == parameters.lower()]
                     # Delete matching reminders
                     if matching_reminders:
                         for reminder in matching_reminders:
