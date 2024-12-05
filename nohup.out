@@ -3142,3 +3142,76 @@ Traceback (most recent call last):
   File "/usr/lib/python3.10/json/decoder.py", line 355, in raw_decode
     raise JSONDecodeError("Expecting value", s, err.value) from None
 json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+179.43.163.250 - - [05/Dec/2024 21:21:51] code 400, message Bad request version ('À\x13À')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.10/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/root/spysnet/website/views.py", line 2706, in nexi
+    return render_template('test_pages/nexi.html', reminders=flattened_reminders)
+  File "/usr/local/lib/python3.10/dist-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "/usr/local/lib/python3.10/dist-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+  File "/usr/local/lib/python3.10/dist-packages/jinja2/environment.py", line 1304, in render
+    self.environment.handle_exception()
+  File "/usr/local/lib/python3.10/dist-packages/jinja2/environment.py", line 939, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/root/spysnet/website/templates/test_pages/nexi.html", line 54, in top-level template code
+    <h3>{{ reminder['name'].capitalize() }}</h3>
+  File "/usr/local/lib/python3.10/dist-packages/jinja2/environment.py", line 487, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'dict object' has no attribute 'name'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask_socketio/__init__.py", line 43, in __call__
+    return super(_SocketIOMiddleware, self).__call__(environ,
+  File "/usr/local/lib/python3.10/dist-packages/engineio/middleware.py", line 74, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/root/spysnet/website/views.py", line 2706, in nexi
+    return render_template('test_pages/nexi.html', reminders=flattened_reminders)
+  File "/usr/local/lib/python3.10/dist-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "/usr/local/lib/python3.10/dist-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+  File "/usr/local/lib/python3.10/dist-packages/jinja2/environment.py", line 1304, in render
+    self.environment.handle_exception()
+  File "/usr/local/lib/python3.10/dist-packages/jinja2/environment.py", line 939, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/root/spysnet/website/templates/test_pages/nexi.html", line 54, in top-level template code
+    <h3>{{ reminder['name'].capitalize() }}</h3>
+  File "/usr/local/lib/python3.10/dist-packages/jinja2/environment.py", line 487, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'dict object' has no attribute 'name'
