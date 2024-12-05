@@ -2653,7 +2653,7 @@ def nexichatapi():
                 else:
                     reply = {
                         "type" : "show",
-                        "message": f"No you dont have reminders for {requested_date}",
+                        "message": f"No you dont have reminders for {requested_date} !",
                         "reminders": []
                     }
             elif command == "DELETEREMINDER" :
