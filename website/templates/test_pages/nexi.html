@@ -37,20 +37,26 @@
             font-size: 1em;
             color: #666;
         }
+        .reminder .time {
+            color: #444;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
 
     <div class="container">
         <h1>Reminders</h1>
-        {% for reminder in reminders %}
-            <div class="reminder">
-                <h3>{{ reminder['name'] }}</h3>
-                <p><strong>Date:</strong> {{ reminder['time'] }}</p>
-            </div>
+        {% if reminders %}
+            {% for reminder in reminders %}
+                <div class="reminder">
+                    <h3>{{ reminder['name'] }}</h3>
+                    <p><strong>Time:</strong> {{ reminder['time'].replace('.', ' ') }}</p>
+                </div>
+            {% endfor %}
         {% else %}
             <p>No reminders available.</p>
-        {% endfor %}
+        {% endif %}
     </div>
 
 </body>
