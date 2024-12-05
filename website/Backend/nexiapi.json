@@ -410,13 +410,6 @@
             "content": "good boy now remember all the commands!",
             "who": "user: ",
             "timestamp": 58
-        },
-        {
-            "id": "",
-            "role": "assistant",
-            "content": "I'm always here to help! If you need any assistance or have any more commands, just let me know!",
-            "who": "AI: ",
-            "timestamp": 59
         }
     ],
     "newMessage": "good boy now remember all the commands!",
