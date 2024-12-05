@@ -3215,3 +3215,4 @@ Traceback (most recent call last):
   File "/usr/local/lib/python3.10/dist-packages/jinja2/environment.py", line 487, in getattr
     return getattr(obj, attribute)
 jinja2.exceptions.UndefinedError: 'dict object' has no attribute 'name'
+167.172.179.99 - - [05/Dec/2024 22:01:49] code 400, message Bad request version ("FÝe\x12úò´iQ\x89Jß±C<¬J^\x17\x18\x17PÿPè\x89ÍÛkct\x00>\x13\x02\x13\x03\x13\x01À,À0\x00\x9fÌ©Ì¨ÌªÀ+À/\x00\x9eÀ$À(\x00kÀ#À'\x00gÀ")
