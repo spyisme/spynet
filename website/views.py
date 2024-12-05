@@ -2635,7 +2635,6 @@ def nexichatapi():
                             else :
                                 time_str = f"{time_parts[0].capitalize()} at {time_parts[1]} and {time_parts[2]}"
                         else : #Month.day.hour.min
-
                             if len(time_parts) <= 3:
                                 time_str = f"{time_parts[0].capitalize()} {time_parts[1]} at {time_parts[2]}"
                             else :
@@ -2652,7 +2651,7 @@ def nexichatapi():
                 else:
                     reply = {
                         "type" : "show",
-                        "message": f"No reminders found for {requested_date}",
+                        "message": f"No you dont have reminders for {requested_date}",
                         "reminders": []
                     }
             elif command == "DELETEREMINDER" :
