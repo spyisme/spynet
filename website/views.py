@@ -2511,10 +2511,10 @@ def nexichatapi():
     "timestamp": timestamp
     }
 
-    json_data['messages'].append(msg_new_message)
+    # json_data['messages'].append(msg_new_message)
 
-    with open('website/Backend/nexiapi.json', 'w') as file:
-        json.dump(json_data, file, indent=4)
+    # with open('website/Backend/nexiapi.json', 'w') as file:
+    #     json.dump(json_data, file, indent=4)
 
     response = requests.post('https://masrgpt.com/wp-json/mwai-ui/v1/chats/submit', headers=headers, json=json_data , proxies=usproxy)
 
@@ -2574,84 +2574,84 @@ def nexichatapi():
     "timestamp": timestamp
     }
 
-    json_data['messages'].append(msg_new_message)
+    # json_data['messages'].append(msg_new_message)
 
-    with open('website/Backend/nexiapi.json', 'w') as file:
-        json.dump(json_data, file, indent=4)
-
-
-
-    # with open('website/Backend/nexiapi_data.json', 'r') as file:
-    #     backend_data = json.load(file)
+    # with open('website/Backend/nexiapi.json', 'w') as file:
+    #     json.dump(json_data, file, indent=4)
 
 
-    # if "command" in reply.lower():
-    #     pattern = r"{Command:\s*(\w+)\(([^)]+)\)}"
-    #     match = re.search(pattern, reply)
-    #     if match:
-    #         command = match.group(1)  
-    #         parameters = match.group(2) 
-    #         if command == "ADDREMINDER":
-    #             parts = parameters.split('.', 1)
-    #             name = parts[0]
-    #             date = parts[1]
 
-    #             reply = {
-    #                     "message": f"Reminders for {name} set",
-    #                     "date": date
-    #                 }
+    with open('website/Backend/nexiapi_data.json', 'r') as file:
+        backend_data = json.load(file)
+
+
+    if "command" in reply.lower():
+        pattern = r"{Command:\s*(\w+)\(([^)]+)\)}"
+        match = re.search(pattern, reply)
+        if match:
+            command = match.group(1)  
+            parameters = match.group(2) 
+            if command == "ADDREMINDER":
+                parts = parameters.split('.', 1)
+                name = parts[0]
+                date = parts[1]
+
+                reply = {
+                        "message": f"Reminders for {name} set",
+                        "date": date
+                    }
                 
-    #             new_reminder ={
-    #             "name": name,
-    #             "time": date
-    #             },
+                new_reminder ={
+                "name": name,
+                "time": date
+                },
                 
-    #             backend_data['reminders'].append(new_reminder)
+                backend_data['reminders'].append(new_reminder)
 
-    #             with open('website/Backend/nexiapi_data.json', 'w') as file:
-    #                 json.dump(backend_data, file, indent=4)
+                with open('website/Backend/nexiapi_data.json', 'w') as file:
+                    json.dump(backend_data, file, indent=4)
 
-    #         elif command == "SHOWREMINDERS":
-    #             reply = f"command={command}, date={parameters}"
-    #             requested_date = parameters.strip().lower()
-    #             all_reminders = []
-    #             for reminder_group in backend_data.get("reminders", []):
-    #                 if isinstance(reminder_group, list): 
-    #                     all_reminders.extend(reminder_group)
-    #             filtered_reminders = [
-    #                 reminder for reminder in all_reminders if requested_date in reminder["time"].lower()
-    #             ]
+            elif command == "SHOWREMINDERS":
+                reply = f"command={command}, date={parameters}"
+                requested_date = parameters.strip().lower()
+                all_reminders = []
+                for reminder_group in backend_data.get("reminders", []):
+                    if isinstance(reminder_group, list): 
+                        all_reminders.extend(reminder_group)
+                filtered_reminders = [
+                    reminder for reminder in all_reminders if requested_date in reminder["time"].lower()
+                ]
 
-    #             if filtered_reminders:
-    #                 reminders_data = []
-    #                 for reminder in filtered_reminders:
-    #                     time_parts = reminder['time'].split('.')
-    #                     if time_parts[0] in ['today', 'tomorrow'] : #today.hour.min
-    #                         if time_parts[2] == '0mins' :
-    #                             time_str = f"{time_parts[0].capitalize()} at {time_parts[1]}"
-    #                         else :
-    #                             time_str = f"{time_parts[0].capitalize()} at {time_parts[1]} and {time_parts[2]}"
-    #                     else : #Month.day.hour.min
+                if filtered_reminders:
+                    reminders_data = []
+                    for reminder in filtered_reminders:
+                        time_parts = reminder['time'].split('.')
+                        if time_parts[0] in ['today', 'tomorrow'] : #today.hour.min
+                            if time_parts[2] == '0mins' :
+                                time_str = f"{time_parts[0].capitalize()} at {time_parts[1]}"
+                            else :
+                                time_str = f"{time_parts[0].capitalize()} at {time_parts[1]} and {time_parts[2]}"
+                        else : #Month.day.hour.min
 
-    #                         if time_parts[3] == '0mins' :
-    #                             time_str = f"{time_parts[0].capitalize()} {time_parts[1]} at {time_parts[2]}"
-    #                         else :
-    #                             time_str = f"{time_parts[0].capitalize()} {time_parts[1]} at {time_parts[2]} and {time_parts[3]}"
+                            if time_parts[3] == '0mins' :
+                                time_str = f"{time_parts[0].capitalize()} {time_parts[1]} at {time_parts[2]}"
+                            else :
+                                time_str = f"{time_parts[0].capitalize()} {time_parts[1]} at {time_parts[2]} and {time_parts[3]}"
 
 
-    #                     reminders_data.append({"Name": reminder['name'].capitalize(), "Time": time_str})
+                        reminders_data.append({"Name": reminder['name'].capitalize(), "Time": time_str})
 
-    #                 reply = {
-    #                     "message": f"Reminders for {requested_date.capitalize()}",
-    #                     "reminders": reminders_data
-    #                 }
-    #             else:
-    #                 reply = {
-    #                     "message": f"No reminders found for {requested_date}",
-    #                     "reminders": []
-    #                 }
-    #         elif command == "DELETEREMINDER" :
-    #             reply = "Delete a reminder !"
+                    reply = {
+                        "message": f"Reminders for {requested_date.capitalize()}",
+                        "reminders": reminders_data
+                    }
+                else:
+                    reply = {
+                        "message": f"No reminders found for {requested_date}",
+                        "reminders": []
+                    }
+            elif command == "DELETEREMINDER" :
+                reply = "Delete a reminder !"
     
     
     
