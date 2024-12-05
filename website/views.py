@@ -2624,7 +2624,7 @@ def nexichatapi():
 
                 if filtered_reminders:
                     reminders_data = [
-                        {"name": reminder['name'], "time": reminder['time']}
+                        {"name": reminder['name'], "time": f"{reminder['time'].split('.')[0]}" + f"at {reminder['time'].split('.')[1]}" + f" and {reminder['time'].split('.')[2]}" }
                         for reminder in filtered_reminders
                     ]
                     reply = {
