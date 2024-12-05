@@ -2672,13 +2672,12 @@ def nexichatapi():
                     # Delete matching reminders
                     if matching_reminders:
                         for reminder in matching_reminders:
-                            flattened_reminders.remove(reminder)  # Remove the matched reminder
-
+                            flattened_reminders.remove(reminder)
+                        updated_data = {
+                            'reminders': [[reminder] for reminder in flattened_reminders]  # Re-nest each reminder
+                        }
                         with open('website/Backend/nexiapi_data.json', 'w') as file:
-                            data = json.load(file) 
-                            data['reminders'] = [ [reminder] for reminder in flattened_reminders] 
-                            file.seek(0) 
-                            json.dump(data, file, indent=4) 
+                             json.dump(updated_data, file, indent=4)
 
                         reply = f"Deleted reminder(s) for {parameters}!"
                     else:
