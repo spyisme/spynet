@@ -2596,12 +2596,14 @@ def nexichatapi():
                 name = parts[0]
                 date = parts[1]
 
-                reply = {
-                        "type" : "add",
-                        "message": f"Reminder for {name} set",
-                        "date": date
-                    }
-                
+                if date.split('.')[-1] == "0mins":
+                    date = '.'.join(date.split('.')[:-1])
+                    reply = {
+                            "type" : "add",
+                            "message": f"Reminder for {name} set",
+                            "date": date
+                        }
+                    
                 new_reminder ={
                 "Name": name,
                 "Time": date
