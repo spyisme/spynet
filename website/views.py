@@ -2668,7 +2668,6 @@ def nexichatapi():
                     if not matching_reminders:
 
                         matching_reminders = [reminder for reminder in flattened_reminders if reminder['name'].lower() == parameters.lower()]
-                    
                     # Delete matching reminders
                     if matching_reminders:
                         for reminder in matching_reminders:
