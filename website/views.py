@@ -2503,13 +2503,13 @@ def nexichatapi():
     timestamp = json_data['messages'][-1]['timestamp'] + 1
 
 
-    msg_new_message = {
-    "id": "",
-    "role": "user",
-    "content": new_message,
-    "who": "user: ",
-    "timestamp": timestamp
-    }
+    # msg_new_message = {
+    # "id": "",
+    # "role": "user",
+    # "content": new_message,
+    # "who": "user: ",
+    # "timestamp": timestamp
+    # }
 
     # json_data['messages'].append(msg_new_message)
 
@@ -2566,13 +2566,13 @@ def nexichatapi():
     timestamp = json_data['messages'][-1]['timestamp'] + 1
 
 
-    msg_new_message = {
-    "id": "",
-    "role": "assistant",
-    "content": reply,
-    "who": "AI: ",
-    "timestamp": timestamp
-    }
+    # msg_new_message = {
+    # "id": "",
+    # "role": "assistant",
+    # "content": reply,
+    # "who": "AI: ",
+    # "timestamp": timestamp
+    # }
 
     # json_data['messages'].append(msg_new_message)
 
@@ -2591,14 +2591,13 @@ def nexichatapi():
         if match:
             command = match.group(1)  
             parameters = match.group(2) 
-#---------------------------------------------------------------------------------------------------------------
             if command == "ADDREMINDER":
                 parts = parameters.split('.', 1)
                 name = parts[0]
                 date = parts[1]
 
                 reply = {
-                        "command" : "add",
+                        "type" : "add",
                         "message": f"Reminders for {name} set",
                         "date": date
                     }
@@ -2642,13 +2641,13 @@ def nexichatapi():
                         reminders_data.append({"Name": reminder['name'].capitalize(), "Time": time_str})
 
                     reply = {
-                        "command" : "show",
+                        "type" : "show",
                         "message": f"Reminders for {requested_date.capitalize()}",
                         "reminders": reminders_data
                     }
                 else:
                     reply = {
-                        "command" : "show",
+                        "type" : "show",
                         "message": f"No reminders found for {requested_date}",
                         "reminders": []
                     }
@@ -2682,16 +2681,18 @@ def nexichatapi():
                              json.dump(updated_data, file, indent=4)
 
                         reply = {
-                        "command" : "delete",
-
+                        "type" : "delete",
                         "message": f"Deleted reminder(s) for {parameters}!",
                             }
                     else:
                         reply = {
-                        "command" : "delete",
-
+                        "type" : "delete",
                         "message": f"No reminder found for {parameters}.",
                             }
+
+    else :
+        reply = {"type" : "message",
+                "message" : json_data_response["reply"]}
 
     return jsonify(reply)
 
