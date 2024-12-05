@@ -2659,7 +2659,7 @@ def nexi():
         backend_data = json.load(file)
 
     # return f"{backend_data['reminders']}"
-    return render_template('reminders.html', reminders=backend_data['reminders'])
+    return render_template('test_pages/nexi.html', reminders=backend_data['reminders'])
 
 
 @views.route('/search', methods=['POST'])
