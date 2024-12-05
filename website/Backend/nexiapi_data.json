@@ -1,3 +1,10 @@
 {
-    "reminders": []
+    "reminders": [
+        [
+            {
+                "Name": "submit my project",
+                "Time": "today.6pm.0mins"
+            }
+        ]
+    ]
 }
