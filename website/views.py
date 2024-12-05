@@ -2626,7 +2626,9 @@ def nexichatapi():
 
                 if filtered_reminders:
                     reminders_data = []
+                    i = 0
                     for reminder in filtered_reminders:
+                        i = i + 1
                         time_parts = reminder['Time'].split('.')
                         if time_parts[0] in ['today', 'tomorrow'] : #today.hour.min
 
@@ -2645,7 +2647,7 @@ def nexichatapi():
 
                     reply = {
                         "type" : "show",
-                        "message": f"Reminders for {requested_date.capitalize()}",
+                        "message": f"You have {i} reminders for {requested_date.capitalize()} :",
                         "reminders": reminders_data
                     }
                 else:
