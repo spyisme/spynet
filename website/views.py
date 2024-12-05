@@ -2650,9 +2650,32 @@ def nexichatapi():
                         "reminders": []
                     }
             elif command == "DELETEREMINDER" :
-                reply = f"Delete a reminder {parameters} ! "
-    
-    
+                    
+                    flattened_reminders = [reminder[0] for reminder in backend_data['reminders']]
+                    matching_reminders = []
+                    
+                    if parameters.lower() == "today":
+                        matching_reminders = [reminder for reminder in flattened_reminders if "today" in reminder['time'].lower()]
+                    
+                    elif parameters.lower() == "tomorrow":
+                        matching_reminders = [reminder for reminder in flattened_reminders if "tomorrow" in reminder['time'].lower()]
+                    
+                    else:
+                        # If it's a specific date like "March.5"
+                        date_to_match = parameters.strip().lower()
+                        matching_reminders = [reminder for reminder in flattened_reminders if date_to_match in reminder['time'].lower()]
+                    
+                    if not matching_reminders:
+
+                        matching_reminders = [reminder for reminder in flattened_reminders if reminder['name'].lower() == parameters.lower()]
+                    
+                    # Delete matching reminders
+                    if matching_reminders:
+                        for reminder in matching_reminders:
+                            flattened_reminders.remove(reminder)  # Remove the matched reminder
+                        reply = f"Deleted reminder(s) for {parameters}!"
+                    else:
+                        reply = f"No reminder found for {parameters}."
     
     return jsonify(reply)
 
