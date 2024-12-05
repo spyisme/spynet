@@ -51,8 +51,8 @@
         {% if reminders %}
             {% for reminder in reminders %}
                 <div class="reminder">
-                    <h3>{{ reminder['name'].capitalize() }}</h3>
-                    <p><strong>Time:</strong> {{ reminder['time'].capitalize().replace('.', ' ') }}</p>
+                    <h3>{{ reminder['Name'].capitalize() }}</h3>
+                    <p><strong>Time:</strong> {{ reminder['Time'].capitalize().replace('.', ' ') }}</p>
                 </div>
             {% endfor %}
         {% else %}

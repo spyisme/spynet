@@ -2,8 +2,8 @@
     "reminders": [
         [
             {
-                "name": "do the dishes",
-                "time": "today.7pm.0mins"
+                "Name": "do the dishes",
+                "Time": "today.7pm.0mins"
             }
         ],
         [
