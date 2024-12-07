@@ -572,10 +572,11 @@ def english_assignment():
                 }
 
 
+
                 fields_data_8to10 = {
                     "Today's POWER WORD 1": {"text": "", "coords": (814 , 874), "max_x": 1385, "max_y": 1148},  
                     "Definition 1": {"text": "", "coords": (2019 , 867), "max_x": 2757, "max_y": 1014},
-                    # "Part of Speech 1": {"text": "", "coords": (25, 197), "max_x": 148, "max_y": 216},
+                    "Part of Speech 1": {"text": "", "coords": (777 , 1632), "max_x": 1215 , "max_y": 1902},
                     "Synonyms 1": {"text": "", "coords": (347 , 196), "max_x": 928, "max_y": 474},
                     "Antonyms 1": {"text": "", "coords": (1205 , 183), "max_x": 1765, "max_y": 467},
                     "Your OWN Sentence 1": {"text": "", "coords": (1522 , 1555), "max_x": 2827, "max_y": 1856},
