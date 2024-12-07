@@ -31,7 +31,7 @@ load_dotenv()
 @website.route("/")
 def home():
     if current_user.is_authenticated:
-        return redirect(url_for('views.subjectspage'))
+        return redirect(url_for('website.subjectspage'))
     
     return render_template('users_pages/home.html')
 
@@ -106,7 +106,7 @@ def login():
     user_agent = request.headers.get('User-Agent')
 
     if current_user.is_authenticated:
-        return redirect(url_for('views.home'))
+        return redirect(url_for('website.home'))
 
     if client_ip == "127.0.0.1":
         whitelist_ips.add(client_ip)
@@ -196,7 +196,7 @@ def logout():
         f"<@709799648143081483> {current_user.username} Logged out from {client_ip}")
 
     logout_user()
-    return redirect(url_for('views.login'))
+    return redirect(url_for('website.login'))
 
 #Send html Email with var
 def read_html_file(file_path, **kwargs):
@@ -208,7 +208,7 @@ def read_html_file(file_path, **kwargs):
 @website.route('/register', methods=['GET', 'POST'])
 def registeracc():
     if current_user.is_authenticated:
-        return redirect(url_for('views.home'))
+        return redirect(url_for('website.home'))
     
 
     client_ip = request.headers.get('X-Forwarded-For')
@@ -315,7 +315,7 @@ def registeracc():
 @website.route('/forgotpassword', methods=['GET', 'POST'])
 def forgotpassword():
     if current_user.is_authenticated:
-        return redirect(url_for('views.home'))
+        return redirect(url_for('website.home'))
 
     client_ip = request.headers.get('X-Forwarded-For')
 
@@ -343,7 +343,7 @@ def forgotpassword():
                 db.session.commit()
                 discord_send( login_webhook , f"{client_ip} just logged in with {username} Device ```{user_agent}```  <@709799648143081483>" )
                 session.permanent = True
-                return redirect(url_for('views.home'))
+                return redirect(url_for('website.home'))
             elif user.otp == "Waiting approval":
                 return 'Please wait to get approved'
             recipient = user.email
@@ -916,7 +916,7 @@ def manage_user(user_id):
 
 
         db.session.commit()
-        return redirect(url_for('views.manage_user',user_id=user_id)) 
+        return redirect(url_for('website.manage_user',user_id=user_id)) 
 
     # Render the manage user template
     return render_template('admin/manage.html',
@@ -945,7 +945,7 @@ def approve(user_id):
     msg.html = html_content
     mail.send(msg)
     discord_send( backend_webhook ,f"{current_user.username} approved {user.username}")
-    return redirect(url_for('views.manage_user', user_id=user_id))
+    return redirect(url_for('website.manage_user', user_id=user_id))
 
 
 @website.route('/disable/<user_id>', methods=['GET', 'POST'])
@@ -961,7 +961,7 @@ def disable(user_id):
 
     discord_send( backend_webhook ,f"{current_user.username} disabled {user.username}")
 
-    return redirect(url_for('views.manage_user', user_id=user_id))
+    return redirect(url_for('website.manage_user', user_id=user_id))
 
 
 def upload_file_to_discord(webhook_url, file_path):
@@ -1151,7 +1151,7 @@ def manage_subjects():
             if subject not in data:
                 data[subject] = {"teachers": []}
                 save_data(data, current_user.stage)
-                return redirect(url_for('views.manage_subjects'))
+                return redirect(url_for('website.manage_subjects'))
 
             else:
                 return jsonify(
@@ -1173,7 +1173,7 @@ def manage_subjects():
             if subject in data:
                 del data[subject]
                 save_data(data, current_user.stage)
-                return redirect(url_for('views.manage_subjects'))
+                return redirect(url_for('website.manage_subjects'))
             else:
                 return jsonify(
                     {"message": f"Subject '{subject}' does not exist!"}), 400
@@ -1228,7 +1228,7 @@ def manage_teachers(subject):
                 data[subject]['teachers'].append(new_teacher)
                 save_data(data, current_user.stage)
                 return redirect(
-                    url_for('views.manage_teachers', subject=subject))
+                    url_for('website.manage_teachers', subject=subject))
 
             else:
                 return jsonify(
@@ -1258,7 +1258,7 @@ def manage_teachers(subject):
                         ]
                         save_data(data, current_user.stage)
                         return redirect(
-                            url_for('views.manage_teachers', subject=subject))
+                            url_for('website.manage_teachers', subject=subject))
                     else:
                         return jsonify({
                             "message":
@@ -1305,7 +1305,7 @@ def manage_courses(subject, teachername):
             save_data(data, current_user.stage)
 
             return redirect(
-                url_for('views.manage_courses',
+                url_for('website.manage_courses',
                         subject=subject,
                         teachername=teachername))
 
@@ -1339,7 +1339,7 @@ def manage_courses(subject, teachername):
             data[subject]['teachers'] = teachers
             save_data(data, current_user.stage)
             return redirect(
-                url_for('views.manage_courses',
+                url_for('website.manage_courses',
                         subject=subject,
                         teachername=teachername))
 
@@ -1367,7 +1367,7 @@ def manage_courses(subject, teachername):
             save_data(data, current_user.stage)
 
             return redirect(
-                url_for('views.manage_courses',
+                url_for('website.manage_courses',
                         subject=subject,
                         teachername=teachername))
 
@@ -1404,7 +1404,7 @@ def edit_course(subject, teachername, course_name):
                         save_data(data, current_user.stage)
                         course_name = course_name.replace(' ', '-')
                         return redirect(
-                            url_for('views.edit_course',
+                            url_for('website.edit_course',
                                     subject=subject,
                                     teachername=teachername,
                                     course_name=course_name))
