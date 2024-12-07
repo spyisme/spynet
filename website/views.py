@@ -2,7 +2,7 @@ import json
 import os
 import random
 from datetime import date, time, datetime , timedelta
-from sqlalchemy import not_
+# from sqlalchemy import not_
 import shutil
 import re
 import requests
@@ -17,7 +17,7 @@ from flask import (
     session,
     url_for,
     abort,
-    flash
+    # flash
 )
 from flask_login import current_user, login_user, logout_user
 from flask_mail import Message
@@ -27,15 +27,17 @@ from googleapiclient.discovery import build
 from PIL import Image, ImageDraw, ImageFont
 from . import mail
 from .models import User, db
-import subprocess
+# import subprocess
 from pathlib import Path
 from datetime import datetime
 import time
-from website import user_socket_map
-from website import socketio
+# from website import user_socket_map
+# from website import socketio
 import pytz
 from dotenv import load_dotenv
 import os
+
+import base64
 
 load_dotenv()
 
