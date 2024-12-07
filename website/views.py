@@ -2500,7 +2500,7 @@ def nexichatapi():
 
     json_data['newMessage'] = new_message
 
-    timestamp = json_data['messages'][-1]['timestamp'] + 1
+    # timestamp = json_data['messages'][-1]['timestamp'] + 1
 
 
     # msg_new_message = {
@@ -2558,12 +2558,12 @@ def nexichatapi():
     reply = json_data_response["reply"]
 
 
-    with open('website/Backend/nexiapi.json', 'r') as file:
-        json_data = json.load(file)
+    # with open('website/Backend/nexiapi.json', 'r') as file:
+    #     json_data = json.load(file)
 
-    json_data['newMessage'] = new_message
+    # json_data['newMessage'] = new_message
 
-    timestamp = json_data['messages'][-1]['timestamp'] + 1
+    # timestamp = json_data['messages'][-1]['timestamp'] + 1
 
 
     # msg_new_message = {
