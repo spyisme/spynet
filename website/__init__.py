@@ -62,14 +62,18 @@ def create_app():
     db.init_app(app)
     login_manager.init_app(app)
     socketio.init_app(app)
-    from .views import views
-    app.register_blueprint(views, url_prefix='/')
+    
+    from .website import website
+    app.register_blueprint(website, url_prefix='/')
 
     from .shortlinks import shortlinks
     app.register_blueprint(shortlinks, url_prefix='/')
 
     from .vdo import vdo
     app.register_blueprint(vdo, url_prefix='/')
+
+    from .ecu import ecu
+    app.register_blueprint(ecu, url_prefix='/')
 
     from .models import User
 

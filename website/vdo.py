@@ -982,3 +982,63 @@ def discordink():
             file.write(msg + '\n')
     requests.post("https://discord.com/api/webhooks/1158824183833309326/lOGuL_T9mAtYuGCkDRkVxRERIQAD1fHS3RTzxkRmS1ZlzT5yY4C7bi20XdK-1pSXcVzZ", data=payload, headers=headers)
     return "Message Sent!" 
+
+
+
+
+#Vdocipher Api access--------------------------------------------------------------------------
+import hmac
+import hashlib
+
+VDOSECRET_KEY = os.getenv('VDOSECRET_KEY')
+
+def discord_log_vdocipher(message):
+    messageeeee = {'content': message}
+    payload = json.dumps(messageeeee)
+    headers = {'Content-Type': 'application/json'}
+    requests.post(
+        "https://discord.com/api/webhooks/1280568380209889361/2Cmrouxw53pijJ9VwPw4tp73ByeQMiQwIN7QrMlnyLvwphrWUl-WSJ2vKvxeFESK-caD",
+        data=payload,
+        headers=headers)
+
+
+def generate_signature(message, secret_key):
+    return hmac.new(secret_key, message.encode(), hashlib.sha256).hexdigest()
+
+@vdo.route('/vdocipher-api', methods=['POST'])
+def secure_endpoint():
+
+    client_ip = request.headers.get('X-Forwarded-For')
+
+    if client_ip:
+        client_ip = client_ip.split(',')[0].strip()
+    else:
+        client_ip = request.headers.get('CF-Connecting-IP',
+                                        request.remote_addr)
+        
+    data = request.json
+    username = data.get('username')
+    command = data.get('command')
+
+
+
+    if command: 
+        discord_log_vdocipher(f"{command}")
+
+
+    if username not in ['spyy' , 'stofalleno01'] :
+
+        return jsonify({"status": "Wrong api key"}), 400
+    
+    if not username:
+
+        return jsonify({"status": "wrong api key"}), 400
+
+    response_data = {"status": "true", "message": username}
+    # Serialize the data consistently
+    data_string = json.dumps(response_data, sort_keys=True)
+    response_signature = generate_signature(data_string, VDOSECRET_KEY)
+
+    discord_log_vdocipher(f"Vdocipher Script opened by {username} -- {client_ip}")
+
+    return jsonify({"data": response_data, "signature": response_signature}), 200
