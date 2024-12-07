@@ -606,6 +606,11 @@ def english_assignment():
                          fields_data[f"Prefix {i}"]["text"] = word_data["Prefix"]
                     return fields_data
 
+                if assignment == '5to7':
+                    update_fields_data(fields_data_5to7 , data)
+
+                elif assignment == '8to10':
+                    update_fields_data(fields_data_8to10 , data)
 
                 img1 = Path(f"website/english/img1.png")
 
@@ -732,12 +737,10 @@ def english_assignment():
                     # main_image.save("C:/Users/Spy/Desktop/English/filled_word_wizard_with_images.png")
 
                 if assignment == '5to7':
-                    update_fields_data(fields_data_5to7 , data)
                     img_1_cords = [900 , 2612,1657,3031]
                     make_image_final('assignment5to7' , 3000 , 70 ,img_1_cords)
 
                 elif assignment == '8to10':
-                    update_fields_data(fields_data_8to10 , data)
                     img_1_cords = [146 , 884,444 , 1111 ]
                     make_image_final('assignment8to10' , 3000 , 70 ,img_1_cords)
 
