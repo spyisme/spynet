@@ -101,8 +101,6 @@ def english_assignment():
                 file_name = f"EnglishPDF"
                 discord_log_english(f"Not logged -- Making pdf for {name_and_id} , assignment {assignment}  with words {word1} {word2} , api = {api} , quality = {quality} , ip = {client_ip}")
             
-            if assignment == "8to10":
-                return render_template("used_pages/english_assignment_error.html" , error = "Please wait Not ready yet !")
 
             if not word2:
                 if assignment == "5to7" or assignment == "8to10" :
@@ -556,8 +554,8 @@ def english_assignment():
                     return render_template("used_pages/english_assignment_error.html")
     #-----------------------------------------------------------------------------------------------------------------
     
-            elif assignment == '5to7' :
-                fields_data = {
+            elif assignment == '5to7' or assignment == '8to10' :
+                fields_data_5to7 = {
                     "Today's POWER WORD 1": {"text": "", "coords": (955,973), "max_x": 1618, "max_y": 1243},  
                     "Definition 1": {"text": "", "coords": (99,845), "max_x": 805, "max_y": 1291},
                     # "Part of Speech 1": {"text": "", "coords": (25, 197), "max_x": 148, "max_y": 216},
@@ -572,21 +570,42 @@ def english_assignment():
                     "Date": {"text": f"{today_date}", "coords": (1684 , 197), "max_x": 2473 , "max_y": 239},  
 
                 }
+
+
+                fields_data_8to10 = {
+                    "Today's POWER WORD 1": {"text": "", "coords": (814 , 874), "max_x": 1385, "max_y": 1148},  
+                    "Definition 1": {"text": "", "coords": (2019 , 867), "max_x": 2757, "max_y": 1014},
+                    # "Part of Speech 1": {"text": "", "coords": (25, 197), "max_x": 148, "max_y": 216},
+                    "Synonyms 1": {"text": "", "coords": (347 , 196), "max_x": 928, "max_y": 474},
+                    "Antonyms 1": {"text": "", "coords": (1205 , 183), "max_x": 1765, "max_y": 467},
+                    "Your OWN Sentence 1": {"text": "", "coords": (1522 , 1555), "max_x": 2827, "max_y": 1856},
+
+                    "Prefix 1": {"text": "", "coords": (166 , 1622), "max_x": 647 , "max_y": 1902},
+                    
+                    # "Name & ID": {"text": f"{name_and_id}", "coords": (1684 , 87), "max_x": 2472, "max_y": 127},  
+
+                    # "Date": {"text": f"{today_date}", "coords": (1684 , 197), "max_x": 2473 , "max_y": 239},  
+
+                }
                 
+
                 def update_fields_data(fields_data, data):
 
                     for i, word_data in enumerate(data[key], start=1):
-                        # Update each field for the current word
                         fields_data[f"Today's POWER WORD {i}"]["text"] = word_data["Today's POWER WORD"]
                         fields_data[f"Definition {i}"]["text"] = word_data["Definition"]
-                        # fields_data[f"Part of Speech {i}"]["text"] = word_data["Part of Speech"]
                         fields_data[f"Synonyms {i}"]["text"] = word_data["Synonyms"]
                         fields_data[f"Antonyms {i}"]["text"] = word_data["Antonyms"]
-                        fields_data[f"Related Words {i}"]["text"] = word_data["Related Words"]
                         fields_data[f"Your OWN Sentence {i}"]["text"] = word_data["Your OWN Sentence"]
 
+                        if assignment =='5to7':
+                            fields_data[f"Related Words {i}"]["text"] = word_data["Related Words"]
+                        if assignment == '8to10' :
+                         fields_data[f"Part of Speech {i}"]["text"] = word_data["Part of Speech"]
+                         fields_data[f"Prefix {i}"]["text"] = word_data["Prefix"]
                     return fields_data
-                update_fields_data(fields_data , data)
+
+
                 img1 = Path(f"website/english/img1.png")
 
                 def is_valid_image(file_path):
@@ -711,10 +730,15 @@ def english_assignment():
                     main_image.save(f"./website/static/english/{file_name}.pdf" , "PDF", resolution=100.0)
                     # main_image.save("C:/Users/Spy/Desktop/English/filled_word_wizard_with_images.png")
 
+                if assignment == '5to7':
+                    update_fields_data(fields_data_5to7 , data)
+                    img_1_cords = [900 , 2612,1657,3031]
+                    make_image_final('assignment5to7' , 3000 , 70 ,img_1_cords)
 
-                img_1_cords = [900 , 2612,1657,3031]
-
-                make_image_final('assignment5to7' , 3000 , 70 ,img_1_cords)
+                elif assignment == '8to10':
+                    update_fields_data(fields_data_8to10 , data)
+                    img_1_cords = [146 , 884,444 , 1111 ]
+                    make_image_final('assignment8to10' , 3000 , 70 ,img_1_cords)
 
 
 
