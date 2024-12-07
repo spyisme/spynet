@@ -9,7 +9,7 @@ from flask import Blueprint,jsonify,  redirect,render_template, render_template_
 from . import mail
 from flask_mail import Message
 from .models import User, db
-from youtube import get_playlist_videos
+from .youtube import get_playlist_videos
 
 #Discord webhooks links  --------------------------------------------------------------------------------------------------------
 
