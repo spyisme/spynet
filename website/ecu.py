@@ -579,7 +579,7 @@ def english_assignment():
                     "Part of Speech 1": {"text": "", "coords": (777 , 1632), "max_x": 1215 , "max_y": 1902},
                     "Synonyms 1": {"text": "", "coords": (347 , 196), "max_x": 928, "max_y": 474},
                     "Antonyms 1": {"text": "", "coords": (1205 , 183), "max_x": 1765, "max_y": 467},
-                    "Your OWN Sentence 1": {"text": "", "coords": (1522 , 1555), "max_x": 2827, "max_y": 1856},
+                    "Your OWN Sentence 1": {"text": "", "coords": (2036 , 206), "max_x": 2957, "max_y": 353},
 
                     "Prefix 1": {"text": "", "coords": (166 , 1622), "max_x": 647 , "max_y": 1902},
                     
