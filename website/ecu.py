@@ -73,7 +73,7 @@ def english_assignment():
             discord_log(f"{client_ip} Viewed <{request.url}> {device_type} ```{user_agent}```")
 
     if request.method == "POST":
-        try : 
+        # try : 
             client_ip = request.headers.get('X-Forwarded-For')
             if client_ip:
                 client_ip = client_ip.split(',')[0].strip()
@@ -600,7 +600,9 @@ def english_assignment():
                         fields_data[f"Your OWN Sentence {i}"]["text"] = word_data["Your OWN Sentence"]
 
                         if assignment =='5to7':
+
                             fields_data[f"Related Words {i}"]["text"] = word_data["Related Words"]
+
                         if assignment == '8to10' :
                          fields_data[f"Part of Speech {i}"]["text"] = word_data["Part of Speech"]
                          fields_data[f"Prefix {i}"]["text"] = word_data["Prefix"]
@@ -751,9 +753,9 @@ def english_assignment():
                     return redirect(f"/static/english/{file_name}.pdf")
                 else :
                     return render_template("used_pages/english_assignment_error.html")
-        except Exception as e:
-            discord_log_english(f"<@709799648143081483> An unexpected error occurred: {e}")
-            return render_template("used_pages/english_assignment_error.html" , error = e)
+        # except Exception as e:
+        #     discord_log_english(f"<@709799648143081483> An unexpected error occurred: {e}")
+        #     return render_template("used_pages/english_assignment_error.html" , error = e)
 
     return render_template("used_pages/english_assignment.html")
 nexiapitoken = "spytokenn"
