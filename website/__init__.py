@@ -3,15 +3,12 @@ from flask import Flask, request, redirect, url_for, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, current_user
 from flask_mail import Mail
-from datetime import datetime, timezone
-import pytz
 import json, requests  
 
 mail = Mail()
 db = SQLAlchemy()
 login_manager = LoginManager()
 
-connected_clients = 0
 
 
 def create_app():
