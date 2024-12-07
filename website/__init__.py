@@ -63,10 +63,10 @@ def create_app():
     def before_request():
 
         excluded_routes = [
-            'website.logoutotherdevices', 'website.login2', 'website.login', 'website.secure_endpoint', "website.ecumid1ch", "website.nexichatapi",
-            'website.registeracc', 'website.forgotpassword', 'website.robots_txt',"website.computerpdfs",
+            'website.logoutotherdevices', 'website.login2', 'website.login', 'website.secure_endpoint', "ecu.ecumid1ch", "ecu.nexichatapi",
+            'website.registeracc', 'website.forgotpassword', 'website.robots_txt',"ecu.computerpdfs",
             'website.favicon', 'website.monitor', 'shortlinks.tools',"vdo.skillshare","shortlinks.shorturl",
-            'vdo.commandslist', 'shortlinks.youtube', 'vdo.cmdcommand', "website.english_assignment",
+            'vdo.commandslist', 'shortlinks.youtube', 'vdo.cmdcommand', "ecu.english_assignment",
             'vdo.storjflask2' , 'website.uptimebackup' , 'website.home' , 'shortlinks.netflix' , 'website.check_username']
         
 
