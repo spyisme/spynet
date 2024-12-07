@@ -1,13 +1,13 @@
 # __init__.py
-from flask import Flask, request, redirect, url_for, render_template , send_file #type: ignore
+from flask import Flask, request, redirect, url_for, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, current_user
 from flask_socketio import SocketIO, emit
-from flask_mail import Mail, Message
+from flask_mail import Mail
 from datetime import datetime, timezone
 import pytz
 import random
-import json, requests  #type: ignore
+import json, requests  
 import os 
 from flask_cors import CORS
 from datetime import datetime, timedelta
@@ -48,7 +48,7 @@ def create_app():
         if current_user.username == 'spy':
             socketio.emit('refresh', namespace='/')
             return 'Page refresh signal sent to all clients'
-        return redirect(url_for('views.home'))
+        return redirect(url_for('website.home'))
 
 
 
@@ -97,11 +97,11 @@ def create_app():
     def before_request():
 
         excluded_routes = [
-            'views.logoutotherdevices', 'views.login2', 'views.login', 'views.secure_endpoint', "views.ecumid1ch", "views.nexichatapi",
-            'views.registeracc', 'views.forgotpassword', 'views.robots_txt',"views.computerpdfs",
-            'views.favicon', 'views.monitor', 'shortlinks.tools',"vdo.skillshare","shortlinks.shorturl",
-            'vdo.commandslist', 'shortlinks.youtube', 'vdo.cmdcommand', "views.english_assignment",
-            'vdo.storjflask2' , 'views.uptimebackup' , 'views.home' , 'shortlinks.netflix' , 'views.check_username'
+            'website.logoutotherdevices', 'website.login2', 'website.login', 'website.secure_endpoint', "website.ecumid1ch", "website.nexichatapi",
+            'website.registeracc', 'website.forgotpassword', 'website.robots_txt',"website.computerpdfs",
+            'website.favicon', 'website.monitor', 'shortlinks.tools',"vdo.skillshare","shortlinks.shorturl",
+            'vdo.commandslist', 'shortlinks.youtube', 'vdo.cmdcommand', "website.english_assignment",
+            'vdo.storjflask2' , 'website.uptimebackup' , 'website.home' , 'shortlinks.netflix' , 'website.check_username'
         ]
         if request.host.startswith("www."):
             non_www_host = request.host[4:]  # Remove 'www.'
@@ -111,7 +111,7 @@ def create_app():
         if request.endpoint and request.endpoint not in excluded_routes and not request.path.startswith(
                 '/static/') :
             if not current_user.is_authenticated:
-                return redirect(url_for('views.home'))
+                return redirect(url_for('website.home'))
 
             
 
@@ -124,7 +124,7 @@ def create_app():
 
             elif current_user.password == "Chnageme":
                 if not request.path.startswith('/change_password') :
-                    return  redirect(url_for('views.change_password'))  
+                    return  redirect(url_for('website.change_password'))  
                 
 
 
