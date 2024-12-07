@@ -1,6 +1,6 @@
-from flask import redirect, Blueprint , jsonify , redirect , abort
+from flask import redirect, Blueprint , redirect , abort , request , render_template
 import json
-
+from flask_login import current_user
 shortlinks = Blueprint('shortlinks', __name__)
 
 #------------------------------------------------------------------------------------------------------
@@ -35,6 +35,38 @@ def shorturl(key):
          return abort(404)
 
 
+#Short links manage--------------------------------------------------------------------------------------
+def load_shortlinks():
+    with open('website/Backend/shortlinks.json', 'r') as f:
+        return json.load(f)
+    return {}
 
+
+def save_shortlinks(shortlinks):
+    with open('website/Backend/shortlinks.json', 'w') as f:
+        json.dump(shortlinks, f, indent=4)
+
+@shortlinks.route("/shortlinks/manage", methods=["GET", "POST"])
+def shortlinks_manage_urls():
+    if current_user.username != 'spy':
+        return abort(404)
+    if request.method == "POST":
+
+        action = request.form.get("action")
+        key = request.form.get("key")
+        url = request.form.get("url")
+        
+        shortlinks = load_shortlinks()
+
+        if action == "add" and key and url:
+            shortlinks[key] = url
+            save_shortlinks(shortlinks)
+        elif action == "delete" and key:
+            if key in shortlinks:
+                del shortlinks[key]
+                save_shortlinks(shortlinks)
+
+    shortlinks = load_shortlinks()
+    return render_template('admin/shortlinks.html', shortlinks=shortlinks)
 
 
