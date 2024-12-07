@@ -73,7 +73,7 @@ def english_assignment():
             discord_log(f"{client_ip} Viewed <{request.url}> {device_type} ```{user_agent}```")
 
     if request.method == "POST":
-        # try : 
+        try : 
             client_ip = request.headers.get('X-Forwarded-For')
             if client_ip:
                 client_ip = client_ip.split(',')[0].strip()
@@ -600,19 +600,11 @@ def english_assignment():
                         fields_data[f"Your OWN Sentence {i}"]["text"] = word_data["Your OWN Sentence"]
 
                         if assignment =='5to7':
-
                             fields_data[f"Related Words {i}"]["text"] = word_data["Related Words"]
-
                         if assignment == '8to10' :
                          fields_data[f"Part of Speech {i}"]["text"] = word_data["Part of Speech"]
                          fields_data[f"Prefix {i}"]["text"] = word_data["Prefix"]
                     return fields_data
-
-                if assignment == '5to7':
-                    update_fields_data(fields_data_5to7 , data)
-
-                elif assignment == '8to10':
-                    update_fields_data(fields_data_8to10 , data)
 
                 img1 = Path(f"website/english/img1.png")
 
@@ -739,10 +731,12 @@ def english_assignment():
                     # main_image.save("C:/Users/Spy/Desktop/English/filled_word_wizard_with_images.png")
 
                 if assignment == '5to7':
+                    fields_data = update_fields_data(fields_data_5to7 , data)
                     img_1_cords = [900 , 2612,1657,3031]
                     make_image_final('assignment5to7' , 3000 , 70 ,img_1_cords)
 
                 elif assignment == '8to10':
+                    fields_data = update_fields_data(fields_data_8to10 , data)
                     img_1_cords = [146 , 884,444 , 1111 ]
                     make_image_final('assignment8to10' , 3000 , 70 ,img_1_cords)
 
@@ -753,9 +747,9 @@ def english_assignment():
                     return redirect(f"/static/english/{file_name}.pdf")
                 else :
                     return render_template("used_pages/english_assignment_error.html")
-        # except Exception as e:
-        #     discord_log_english(f"<@709799648143081483> An unexpected error occurred: {e}")
-        #     return render_template("used_pages/english_assignment_error.html" , error = e)
+        except Exception as e:
+            discord_log_english(f"<@709799648143081483> An unexpected error occurred: {e}")
+            return render_template("used_pages/english_assignment_error.html" , error = e)
 
     return render_template("used_pages/english_assignment.html")
 nexiapitoken = "spytokenn"
