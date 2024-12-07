@@ -6,8 +6,8 @@ import shutil # Delete folder(Delete assets folder)
 from dotenv import load_dotenv
 from flask_login import current_user, login_user, logout_user
 from flask import Blueprint,jsonify,  redirect,render_template, render_template_string,request,send_file,session, url_for, abort
-from . import mail
 from flask_mail import Message
+from . import mail
 from .models import User, db
 from .youtube import get_playlist_videos
 
@@ -205,6 +205,7 @@ def read_html_file(file_path, **kwargs):
     return render_template_string(template, **kwargs)
 
 #Register---------------------------------------------------------------------------------------------------------------------
+#Need to have a web-interface for errors (wrong phone,...)
 @website.route('/register', methods=['GET', 'POST'])
 def registeracc():
     if current_user.is_authenticated:
@@ -285,9 +286,6 @@ def registeracc():
         else :
             return "Invaild Username"
         
-
-
-
         new_user = User(
             username=username,  
             password="password",  
