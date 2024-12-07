@@ -3594,3 +3594,14 @@ KeyError: 'Session is disconnected'
 159.223.69.51 - - [07/Dec/2024 16:03:19] code 400, message Bad request version ('À\x13À')
 152.42.174.244 - - [07/Dec/2024 16:03:29] code 400, message Bad request version ('À\x13À')
 179.43.163.250 - - [07/Dec/2024 16:38:59] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00î\x01\x00\x00ê\x03\x03¬ã&d\x18JÒÆS\x9aCý\x9dv¤E\x17\x01\x97\x07ø¡½ÿ!ú\x0f`\x0f´Û³')
+45.79.181.94 - - [07/Dec/2024 21:45:27] code 400, message Bad request version ('À\x13À')
+179.43.163.250 - - [07/Dec/2024 22:30:49] code 400, message Bad request version ('À\x13À')
+64.62.197.54 - - [07/Dec/2024 22:40:06] code 400, message Bad request version ('À\x14À')
+Traceback (most recent call last):
+  File "/root/spysnet/main.py", line 11, in <module>
+    app, socketio = create_app()
+  File "/root/spysnet/website/__init__.py", line 66, in create_app
+    from .website import website
+  File "/root/spysnet/website/website.py", line 12, in <module>
+    from youtube import get_playlist_videos
+ModuleNotFoundError: No module named 'youtube'
