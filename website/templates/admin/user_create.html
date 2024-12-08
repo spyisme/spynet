@@ -45,45 +45,6 @@
         </script>
 
 
- <div class="control">
-    <label for="check">User paid?</label>
-
-    <label class="radio">
-      <input type="radio" name="paid" value="Yes" onclick="toggleContent(true)" />
-      Yes
-    </label>
-    <label class="radio">
-      <input type="radio" name="paid" value="No" onclick="toggleContent(false)" checked />
-      No
-    </label>
-</div>
-
-<div id="subscription-content" style="display: none;">
-    <label for="sub_date">Subscription date:</label>
-    <input type="date" id="sub_date" name="sub_date"><br><br>
-
-    <label for="sub_method">Subscription Method:</label>
-    <select name="sub_method" id="sub_method">
-        {% for o in sub_methods %}
-            <option value="{{ o.name }}">{{ o.name }}</option>
-        {% endfor %}
-    </select>
-</div>
-
-<script>
-    function toggleContent(show) {
-        const content = document.getElementById('subscription-content');
-        content.style.display = show ? 'block' : 'none';
-    }
-
-    // Trigger the correct state on page load (if "Yes" is pre-selected)
-    document.addEventListener('DOMContentLoaded', function() {
-        const isPaid = document.querySelector('input[name="paid"]:checked').value === 'Yes';
-        toggleContent(isPaid);
-    });
-</script>
-
-
 
 
 
