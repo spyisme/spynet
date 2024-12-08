@@ -3778,3 +3778,100 @@ werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'views.
 152.42.219.47 - - [08/Dec/2024 00:03:03] code 400, message Bad request version ('À\x13À')
 159.223.67.34 - - [08/Dec/2024 00:03:05] code 400, message Bad request version ('À\x13À')
 172.214.115.114 - - [08/Dec/2024 00:43:03] code 400, message Bad request syntax ('MGLNDD_47.250.51.78_80')
+179.43.163.250 - - [08/Dec/2024 02:02:58] code 400, message Bad request version ('À\x13À')
+179.43.163.250 - - [08/Dec/2024 02:02:59] code 400, message Bad request version ('À\x13À')
+205.210.31.76 - - [08/Dec/2024 02:38:44] code 400, message Bad request version ('À\x13À')
+205.210.31.76 - - [08/Dec/2024 02:38:44] code 400, message Bad request version ('À(À$À\x14À')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/root/spysnet/website/ecu.py", line 743, in english_assignment
+    make_image_final('assignment5to7' , 3000 , 70 ,img_1_cords)
+  File "/root/spysnet/website/ecu.py", line 691, in make_image_final
+    for field_name, field_info in fields_data.items():
+NameError: free variable 'fields_data' referenced before assignment in enclosing scope
+ * Serving Flask app 'website'
+ * Debug mode: on
+151.115.78.129 - - [08/Dec/2024 06:05:31] code 400, message Bad request version ('À\x13À')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/root/spysnet/website/website.py", line 920, in manage_user
+    return render_template('admin/manage.html',
+  File "/usr/local/lib/python3.10/dist-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "/usr/local/lib/python3.10/dist-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+  File "/usr/local/lib/python3.10/dist-packages/jinja2/environment.py", line 1304, in render
+    self.environment.handle_exception()
+  File "/usr/local/lib/python3.10/dist-packages/jinja2/environment.py", line 939, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/root/spysnet/website/templates/admin/manage.html", line 30, in top-level template code
+    <form action="{{ url_for('views.disable', user_id=user.id) }}" method="post" style="text-align: center;margin-top: 20px;">
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1084, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1073, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+  File "/usr/local/lib/python3.10/dist-packages/werkzeug/routing/map.py", line 924, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'views.disable' with values ['user_id']. Did you mean 'website.disable' instead?
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/root/spysnet/website/website.py", line 920, in manage_user
+    return render_template('admin/manage.html',
+  File "/usr/local/lib/python3.10/dist-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "/usr/local/lib/python3.10/dist-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+  File "/usr/local/lib/python3.10/dist-packages/jinja2/environment.py", line 1304, in render
+    self.environment.handle_exception()
+  File "/usr/local/lib/python3.10/dist-packages/jinja2/environment.py", line 939, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/root/spysnet/website/templates/admin/manage.html", line 30, in top-level template code
+    <form action="{{ url_for('views.disable', user_id=user.id) }}" method="post" style="text-align: center;margin-top: 20px;">
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1084, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1073, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+  File "/usr/local/lib/python3.10/dist-packages/werkzeug/routing/map.py", line 924, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'views.disable' with values ['user_id']. Did you mean 'website.disable' instead?
+205.210.31.136 - - [08/Dec/2024 06:23:24] code 400, message Bad request version ('À\x13À')
+205.210.31.136 - - [08/Dec/2024 06:23:25] code 400, message Bad request version ('À(À$À\x14À')
+152.42.214.140 - - [08/Dec/2024 08:03:01] code 400, message Bad request version ('À\x13À')
+159.223.69.51 - - [08/Dec/2024 08:03:13] code 400, message Bad request version ('À\x13À')
+147.45.112.158 - - [08/Dec/2024 09:00:59] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+162.142.125.196 - - [08/Dec/2024 09:13:50] code 505, message Invalid HTTP version (2.0)
+137.184.237.203 - - [08/Dec/2024 09:39:45] code 400, message Bad request syntax ('\x00\x0e8n}¸.\x17CÌq\x00\x00\x00\x00\x00')
+93.174.93.12 - - [08/Dec/2024 12:20:35] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
