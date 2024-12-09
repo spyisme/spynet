@@ -888,7 +888,7 @@ def nexichatapi():
                 "Name": name,
                 "Time": date
                 },
-                
+
                 date = date.replace(".", " ")
 
                 reply = {
@@ -1016,7 +1016,7 @@ def nexi_login():
         if account['email'] == email and account['password'] == password:
             return jsonify({"message": "Login successful", "status": "success"}), 200
     
-    return jsonify({"message": "Invalid email or password", "status": "error"}), 401
+    return jsonify({"message": "Invalid email or password", "status": "error"}), 403
 
 #Ecu database ----------------------------------------------------------------------------------------------------------------
 
