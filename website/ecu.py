@@ -780,7 +780,7 @@ def nexichatapi():
     }
 
 
-    with open('website/Backend/nexiapi.json', 'r') as file:
+    with open('website/Backend/nexi/nexiapi_model.json', 'r') as file:
         json_data = json.load(file)
 
     json_data['newMessage'] = new_message
@@ -798,7 +798,7 @@ def nexichatapi():
 
     # json_data['messages'].append(msg_new_message)
 
-    # with open('website/Backend/nexiapi.json', 'w') as file:
+    # with open('website/Backend/nexi/nexiapi_model.json', 'w') as file:
     #     json.dump(json_data, file, indent=4)
 
     response = requests.post('https://masrgpt.com/wp-json/mwai-ui/v1/chats/submit', headers=headers, json=json_data , proxies=usproxy)
@@ -824,7 +824,7 @@ def nexichatapi():
         chatgptnonce["nonce"] = nonce
 
 
-        with open('website/Backend/nexiapi.json', 'r') as file:
+        with open('website/Backend/nexi/nexiapi_model.json', 'r') as file:
             json_data = json.load(file)
 
         json_data['newMessage'] = new_message
@@ -843,7 +843,7 @@ def nexichatapi():
     reply = json_data_response["reply"]
 
 
-    # with open('website/Backend/nexiapi.json', 'r') as file:
+    # with open('website/Backend/nexi/nexiapi_model.json', 'r') as file:
     #     json_data = json.load(file)
 
     # json_data['newMessage'] = new_message
@@ -866,7 +866,7 @@ def nexichatapi():
 
 
 
-    with open('website/Backend/nexiapi_data.json', 'r') as file:
+    with open('website/Backend/nexi/nexiapi_data.json', 'r') as file:
         backend_data = json.load(file)
 
 
@@ -896,7 +896,7 @@ def nexichatapi():
                 
                 backend_data['reminders'].append(new_reminder)
 
-                with open('website/Backend/nexiapi_data.json', 'w') as file:
+                with open('website/Backend/nexi/nexiapi_data.json', 'w') as file:
                     json.dump(backend_data, file, indent=4)
 
             elif command == "SHOWREMINDERS":
@@ -967,7 +967,7 @@ def nexichatapi():
                         updated_data = {
                             'reminders': [[reminder] for reminder in flattened_reminders]  # Re-nest each reminder
                         }
-                        with open('website/Backend/nexiapi_data.json', 'w') as file:
+                        with open('website/Backend/nexi/nexiapi_data.json', 'w') as file:
                              json.dump(updated_data, file, indent=4)
 
                         reply = {
@@ -989,12 +989,29 @@ def nexichatapi():
 #Nexi frontend page ------------------------------------------------------------------------------------------------------------
 @ecu.route('/nexi')
 def nexi():
-    with open('website/Backend/nexiapi_data.json', 'r') as file:
+    with open('website/Backend/nexi/nexiapi_data.json', 'r') as file:
         backend_data = json.load(file)
     flattened_reminders = [reminder[0] for reminder in backend_data['reminders']]
     # return f"{backend_data['reminders']}"
     return render_template('test_pages/nexi.html', reminders=flattened_reminders)
 
+
+
+#Nexi Login auth ------------------------------------------------------------------------------------------------------------
+
+@ecu.route('/nexi-login', methods=['POST'])
+def nexi_login():
+    with open('website/Backend/nexi/nexiapi_login.json', 'r') as file:
+        accs = json.load(file)
+
+    email = request.json.get('email')
+    password = request.json.get('password')
+
+    for account in accs:
+        if account['email'] == email and account['password'] == password:
+            return jsonify({"message": "Login successful", "status": "success"}), 200
+    
+    return jsonify({"message": "Invalid email or password", "status": "error"}), 401
 
 #Ecu database ----------------------------------------------------------------------------------------------------------------
 
