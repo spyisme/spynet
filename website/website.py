@@ -624,7 +624,7 @@ def getuploadedlec():
     return  lectures_with_units
 
 def find_a_working_acc(url):
-        with open('website/Backend/theleaderaccs.json', 'r') as file:
+        with open('website/Backend/theleader/theleaderaccs.json', 'r') as file:
             accounts = json.load(file)
 
         for account in accounts:
@@ -675,7 +675,7 @@ def find_a_working_acc(url):
                 return response 
 
 
-def add_to_json(video_id, link, json_file_path='website/Backend/theleader.json', content_type='video'):
+def add_to_json(video_id, link, json_file_path='website/Backend/theleader/theleader.json', content_type='video'):
     if os.path.exists(json_file_path):
         with open(json_file_path, 'r') as json_file:
             data = json.load(json_file)

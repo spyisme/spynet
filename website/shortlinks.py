@@ -24,7 +24,7 @@ def books():
 @shortlinks.route("/<key>")
 def shorturl(key):
     try :
-        with open('website/Backend/shortlinks.json', 'r') as f:
+        with open('website/Backend/shortlinks/shortlinks.json', 'r') as f:
             shortlinks = json.load(f)
             url= shortlinks.get(key)
         if url :
@@ -37,13 +37,13 @@ def shorturl(key):
 
 #Short links manage--------------------------------------------------------------------------------------
 def load_shortlinks():
-    with open('website/Backend/shortlinks.json', 'r') as f:
+    with open('website/Backend/shortlinks/shortlinks.json', 'r') as f:
         return json.load(f)
     return {}
 
 
 def save_shortlinks(shortlinks):
-    with open('website/Backend/shortlinks.json', 'w') as f:
+    with open('website/Backend/shortlinks/shortlinks.json', 'w') as f:
         json.dump(shortlinks, f, indent=4)
 
 @shortlinks.route("/shortlinks/manage", methods=["GET", "POST"])
