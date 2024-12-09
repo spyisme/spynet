@@ -1018,6 +1018,39 @@ def nexi_login():
     
     return jsonify({"message": "Invalid email or password", "status": "error"}), 200
 
+#Nexi register ------------------------------------------------------------------------------------------------------------
+
+@ecu.route('/nexi-register', methods=['POST'])
+def nexi_register():
+    # Load existing accounts from the JSON file
+    with open('website/Backend/nexi/nexiapi_login.json', 'r') as file:
+        accs = json.load(file)
+
+    # Get email and password from the request
+    email = request.json.get('email')
+    password = request.json.get('password')
+
+    # Check if the email already exists in the accounts
+    for account in accs:
+        if account['email'] == email:
+            return jsonify({"message": "Email already registered", "status": "error"}), 200
+
+    # Create a new account dictionary
+    new_account = {
+        "email": email,
+        "password": password
+    }
+
+    # Add the new account to the accounts list
+    accs.append(new_account)
+
+    # Save the updated accounts list back to the JSON file
+    with open('website/Backend/nexi/nexiapi_login.json', 'w') as file:
+        json.dump(accs, file)
+
+    return jsonify({"message": "Registration successful", "status": "success"}), 200
+
+
 #Ecu database ----------------------------------------------------------------------------------------------------------------
 
 @ecu.route('/search', methods=['POST'])
