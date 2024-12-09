@@ -938,7 +938,7 @@ def nexichatapi():
                 else:
                     reply = {
                         "type" : "show",
-                        "message": f"There is no for {requested_date} !",
+                        "message": f"There is no reminder(s) for {requested_date} !",
                         "reminders": []
                     }
             elif command == "DELETEREMINDER" :
