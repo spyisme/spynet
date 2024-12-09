@@ -63,11 +63,16 @@ def create_app():
     def before_request():
 
         excluded_routes = [
-            'website.logoutotherdevices', 'website.login2', 'website.login', 'website.secure_endpoint', "ecu.ecumid1ch", "ecu.nexichatapi",
-            'website.registeracc', 'website.forgotpassword', 'website.robots_txt',"ecu.computerpdfs","ecu.nexi_login",
-            'website.favicon', 'website.monitor', 'shortlinks.tools',"vdo.skillshare","shortlinks.shorturl",
-            'vdo.commandslist', 'shortlinks.youtube', 'vdo.cmdcommand', "ecu.english_assignment","ecu.nexi_register"
-            'vdo.storjflask2' , 'website.uptimebackup' , 'website.home' , 'shortlinks.netflix' , 'website.check_username']
+            "website.monitor",
+
+            'website.home' ,'website.login','website.registeracc', 'website.forgotpassword', 'website.robots_txt',
+            'website.check_username' ,'website.favicon',
+
+            "ecu.ecumid1ch","ecu.computerpdfs", "ecu.english_assignment",
+            "ecu.nexi_login" , "ecu.nexi_register", "ecu.nexichatapi",
+
+            'shortlinks.tools',"shortlinks.shorturl", 'shortlinks.youtube',
+            'vdo.commandslist' , 'vdo.cmdcommand' , 'vdo.secure_endpoint']
         
 
         if request.host.startswith("www."):
