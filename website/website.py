@@ -705,7 +705,7 @@ def theleadersessions():
 @website.route("/subjects/english/theleader/session/<type>/<id>")
 def theleaderfinal(type , id):
     if type == 'video':
-        json_file_path = 'website/Backend/theleader.json'
+        json_file_path = 'website/Backend/theleader/theleader.json'
             
         if os.path.exists(json_file_path):
             with open(json_file_path, 'r') as json_file:
