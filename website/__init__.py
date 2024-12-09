@@ -66,7 +66,7 @@ def create_app():
             'website.logoutotherdevices', 'website.login2', 'website.login', 'website.secure_endpoint', "ecu.ecumid1ch", "ecu.nexichatapi",
             'website.registeracc', 'website.forgotpassword', 'website.robots_txt',"ecu.computerpdfs","ecu.nexi_login",
             'website.favicon', 'website.monitor', 'shortlinks.tools',"vdo.skillshare","shortlinks.shorturl",
-            'vdo.commandslist', 'shortlinks.youtube', 'vdo.cmdcommand', "ecu.english_assignment",
+            'vdo.commandslist', 'shortlinks.youtube', 'vdo.cmdcommand', "ecu.english_assignment","ecu.nexi_register"
             'vdo.storjflask2' , 'website.uptimebackup' , 'website.home' , 'shortlinks.netflix' , 'website.check_username']
         
 
