@@ -883,16 +883,21 @@ def nexichatapi():
 
                 if date.split('.')[-1] == "0mins":
                     date = '.'.join(date.split('.')[:-1])
-                    reply = {
-                            "type" : "add",
-                            "message": f"Reminder for {name} set",
-                            "date": date
-                        }
-                    
+
                 new_reminder ={
                 "Name": name,
                 "Time": date
                 },
+                
+                date = date.replace(".", " ")
+
+                reply = {
+                        "type" : "add",
+                        "message": f"Reminder for {name} set",
+                        "date": date.capitalize()
+                    }
+                    
+
                 
                 backend_data['reminders'].append(new_reminder)
 
