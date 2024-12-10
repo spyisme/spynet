@@ -756,8 +756,17 @@ nexiapitoken = "spytokenn"
 
 
 #Nexi ai -----------------------------------------------------------------------------------------------------------------------
-@ecu.route('/chatgpt/nexi' , methods=["POST"])
-def nexichatapi():
+@ecu.route('/nexi' , methods=["POST" , "GET"])
+def nexi():
+
+    if request.method == "GET":
+
+        with open('website/Backend/nexi/nexiapi_data.json', 'r') as file:
+            backend_data = json.load(file)
+        flattened_reminders = [reminder[0] for reminder in backend_data['reminders']]
+        # return f"{backend_data['reminders']}"
+        return render_template('test_pages/nexi.html', reminders=flattened_reminders)
+
     token = request.headers.get('token')
 
     if not token:
@@ -992,15 +1001,15 @@ def nexichatapi():
     return jsonify(reply)
 
 #Nexi frontend page ------------------------------------------------------------------------------------------------------------
-@ecu.route('/nexi')
-def nexi():
+# @ecu.route('/nexi')
+# def nexi():
 
 
-    with open('website/Backend/nexi/nexiapi_data.json', 'r') as file:
-        backend_data = json.load(file)
-    flattened_reminders = [reminder[0] for reminder in backend_data['reminders']]
-    # return f"{backend_data['reminders']}"
-    return render_template('test_pages/nexi.html', reminders=flattened_reminders)
+#     with open('website/Backend/nexi/nexiapi_data.json', 'r') as file:
+#         backend_data = json.load(file)
+#     flattened_reminders = [reminder[0] for reminder in backend_data['reminders']]
+#     # return f"{backend_data['reminders']}"
+#     return render_template('test_pages/nexi.html', reminders=flattened_reminders)
 
 
 
