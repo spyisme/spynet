@@ -1,4 +1,7 @@
-from flask import Blueprint , request , abort , redirect , render_template , jsonify
+#Imports ------------------------------------------------------------------------------------------------------------------------
+
+
+from flask import Blueprint , request , abort , redirect , render_template , jsonify , render_template_string
 import os
 from dotenv import load_dotenv
 from datetime import datetime
@@ -10,9 +13,11 @@ import random , re
 from PIL import Image, ImageDraw, ImageFont
 import pytz  #Time Zone 
 from pathlib import Path
+from . import mail
+from flask_mail import Message
 
 
-
+#------------------------------------------------------------------------------------------------------------------------
 ecu = Blueprint('ecu', __name__)
 load_dotenv()
 
@@ -756,6 +761,13 @@ nexiapitoken = "spytokenn"
 
 
 #Nexi ai -----------------------------------------------------------------------------------------------------------------------
+
+def read_html_file(file_path, **kwargs):
+    with open(file_path, 'r') as file:
+        template = file.read()
+    return render_template_string(template, **kwargs)
+
+
 @ecu.route('/nexi' , methods=["POST" , "GET"])
 def nexi():
 
@@ -912,6 +924,19 @@ def nexi():
 
                 with open('website/Backend/nexi/nexiapi_data.json', 'w') as file:
                     json.dump(backend_data, file, indent=4)
+
+
+                subject = "Reminder Set"
+
+
+                html_content = read_html_file(
+                    'website/templates/users_pages/2fa.html', time=date.capitalize() , name = name)
+
+                msg = Message(subject, recipients=["survivingangelina@awgarstone.com"])
+                msg.html = html_content
+                mail.send(msg)
+
+                    
 
             elif command == "SHOWREMINDERS":
                 requested_date = parameters.strip().lower()
