@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}" />
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexi Ai</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/login.css') }}">
+
+</head>
+<body>
+    <div class="form">
+        <h1 class="title">Reminder for {{name}} is set !</h1>
+        <p class="subtitle">You have a reminder set at {{time}}</p>
+    </div>
+</body>
+</html>
