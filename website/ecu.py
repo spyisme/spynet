@@ -926,11 +926,11 @@ def nexi():
                     json.dump(backend_data, file, indent=4)
 
 
-                subject = "Reminder Set"
+                subject = "Nexi Ai"
 
 
                 html_content = read_html_file(
-                    'website/templates/users_pages/2fa.html', time=date.capitalize() , name = name)
+                    'website/templates/test_pages/nexi_email.html', time=date.capitalize() , name = name)
 
                 msg = Message(subject, recipients=["survivingangelina@awgarstone.com"])
                 msg.html = html_content
