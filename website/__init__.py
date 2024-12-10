@@ -66,7 +66,7 @@ def create_app():
             'website.robots_txt1', 'website.check_username' ,'website.favicon',
 
             'ecu.ecumid1ch','ecu.computerpdfs', 'ecu.english_assignment',
-            'ecu.nexi_login' , 'ecu.nexi_register', 'ecu.nexichatapi',
+            'ecu.nexi' , 'ecu.nexi_register', 'ecu.nexichatapi',
 
             'shortlinks.tools','shortlinks.shorturl', 'shortlinks.youtube',
             'vdo.commandslist' , 'vdo.cmdcommand' , 'vdo.secure_endpoint']
