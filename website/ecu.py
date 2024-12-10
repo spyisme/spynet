@@ -994,6 +994,8 @@ def nexichatapi():
 #Nexi frontend page ------------------------------------------------------------------------------------------------------------
 @ecu.route('/nexi')
 def nexi():
+
+
     with open('website/Backend/nexi/nexiapi_data.json', 'r') as file:
         backend_data = json.load(file)
     flattened_reminders = [reminder[0] for reminder in backend_data['reminders']]
@@ -1014,6 +1016,23 @@ def nexi_login():
 
     for account in accs:
         if account['email'] == email and account['password'] == password:
+            global chatgptnonce
+            headers = {
+            'accept': '*/*',
+            'content-type': 'application/json',
+            'origin': 'https://masrgpt.com',
+            'referer': 'https://masrgpt.com/chatgpt/',
+
+            }
+
+            response = requests.post('https://masrgpt.com/wp-json/mwai/v1/start_session', headers=headers , proxies=usproxy)
+
+            json_data = response.json()
+
+            nonce = json_data["restNonce"]
+
+            chatgptnonce["nonce"] = nonce
+
             return jsonify({"message": "Login successful", "status": "success"}), 200
     
     return jsonify({"message": "Invalid email or password", "status": "error"}), 200
