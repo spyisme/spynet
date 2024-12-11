@@ -55,6 +55,10 @@ chatgptnonce = {"nonce": "Not set yet!"}
 
 @ecu.route("/english-assignment", methods=["GET", "POST"])
 def english_assignment():
+
+    return render_template("ecu/english_assignment_off.html")
+
+
     if request.method == "GET":
         client_ip = request.headers.get('X-Forwarded-For')
         if client_ip:
@@ -757,8 +761,9 @@ def english_assignment():
             return render_template("ecu/english_assignment_error.html" , error = e)
 
     return render_template("ecu/english_assignment.html")
-nexiapitoken = "spytokenn"
 
+
+nexiapitoken = "spytokenn"
 
 #Nexi ai -----------------------------------------------------------------------------------------------------------------------
 
