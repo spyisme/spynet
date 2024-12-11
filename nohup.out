@@ -4126,3 +4126,62 @@ UnboundLocalError: local variable 'link' referenced before assignment
 198.235.24.139 - - [11/Dec/2024 02:31:38] code 400, message Bad request version ('À\x13À')
 198.235.24.139 - - [11/Dec/2024 02:31:39] code 400, message Bad request version ('À(À$À\x14À')
 93.174.93.12 - - [11/Dec/2024 04:34:02] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+45.134.26.5 - - [11/Dec/2024 05:45:06] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+162.142.125.200 - - [11/Dec/2024 05:59:37] code 505, message Invalid HTTP version (2.0)
+80.82.77.202 - - [11/Dec/2024 08:04:02] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+152.42.219.47 - - [11/Dec/2024 08:04:35] code 400, message Bad request version ('À\x13À')
+172.202.158.131 - - [11/Dec/2024 09:02:29] code 400, message Bad request syntax ('MGLNDD_47.250.51.78_80')
+198.235.24.95 - - [11/Dec/2024 11:18:14] code 400, message Bad request version ('À\x13À')
+198.235.24.95 - - [11/Dec/2024 11:18:15] code 400, message Bad request version ('À(À$À\x14À')
+167.94.145.108 - - [11/Dec/2024 12:27:29] code 505, message Invalid HTTP version (2.0)
+45.79.181.94 - - [11/Dec/2024 13:46:33] code 400, message Bad request version ('À\x13À')
+184.105.247.254 - - [11/Dec/2024 15:08:11] code 400, message Bad HTTP/0.9 request type ("\x16\x03\x01\x00{\x01\x00\x00w\x03\x03y'ÅõÙàß%\x0føqR¡æÙ¸eF\x8b")
+45.95.169.130 - - [11/Dec/2024 15:17:15] code 400, message Bad HTTP/0.9 request type ('\x83F\x02\x00\x15\x00\x00\x00R%}gI\\m')
+159.223.69.51 - - [11/Dec/2024 16:04:43] code 400, message Bad request version ('À\x13À')
+45.134.26.5 - - [11/Dec/2024 16:33:31] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+66.175.213.4 - - [11/Dec/2024 17:45:57] code 400, message Bad request version ('À\x13À')
+5.101.0.66 - - [11/Dec/2024 19:22:47] code 400, message Bad request version ('À\x13À')
+5.101.0.66 - - [11/Dec/2024 19:22:47] code 400, message Bad request version ('À\x13À')
+93.174.93.12 - - [11/Dec/2024 23:24:54] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+159.223.69.51 - - [12/Dec/2024 00:05:14] code 400, message Bad request version ('À\x13À')
+162.142.125.207 - - [12/Dec/2024 02:49:00] code 505, message Invalid HTTP version (2.0)
+167.94.146.56 - - [12/Dec/2024 03:09:11] code 505, message Invalid HTTP version (2.0)
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/root/spysnet/website/ecu.py", line 864, in nexi
+    reply = json_data_response["reply"]
+KeyError: 'reply'
+45.79.181.104 - - [12/Dec/2024 03:51:39] code 400, message Bad request version ('À\x13À')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/root/spysnet/website/ecu.py", line 864, in nexi
+    reply = json_data_response["reply"]
+KeyError: 'reply'
+147.185.132.138 - - [12/Dec/2024 04:11:23] code 400, message Bad request version ('À\x13À')
+147.185.132.138 - - [12/Dec/2024 04:11:24] code 400, message Bad HTTP/0.9 request type ("\x16\x03\x01\x00Ê\x01\x00\x00Æ\x03\x03åÝõ\x9cýKÏ\x80\xadxÚóã\x10äÃ\x80q\x9e\x878'Ê'\x8c\x9c%¹_\x8fvá\x00\x00hÌ\x14Ì\x13À/À+À0À,À\x11À\x07À'À#À\x13À")
+Found images in google search for word : Torque force
+Saving img1
+Found images in google search for word : Purify water
+Saving img1

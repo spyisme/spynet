@@ -2,14 +2,20 @@
     "reminders": [
         [
             {
-                "Name": "school",
-                "Time": "today.5am"
+                "Name": "meeting",
+                "Time": "may.8.7am"
             }
         ],
         [
             {
-                "Name": "school",
-                "Time": "may8.7am"
+                "Name": "kaza",
+                "Time": "may.8.7:30am"
+            }
+        ],
+        [
+            {
+                "Name": "meeting",
+                "Time": "today"
             }
         ]
     ]
