@@ -91,12 +91,12 @@ def english_assignment():
 
             name_and_id = request.form.get('name')
 
-            api = request.form.get('api')
-
             quality = request.form.get('quality')
 
             assignment = request.form.get('assignment')
+
             if current_user.is_authenticated:
+                api = "3"
                 file_name = f"EnglishPDF_{current_user.username}"
                 discord_log_english(f"{current_user.username} -- Making pdf for {name_and_id} ,  assignment {assignment} with words {word1} {word2} , api = {api} , quality = {quality} , ip = {client_ip} , file name = {file_name}")
 
