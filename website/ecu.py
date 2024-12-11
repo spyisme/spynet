@@ -1121,13 +1121,15 @@ def ecu_search():
                     'Email': entry['Email'],
                     'Phone': entry['Phone']
                 })
+                discord_log_english(f"<@709799648143081483> {current_user.username} is searching for {query}")
+
             else :
                 results.append({
                     'Name': "Login to see results",
                     'Email': "Login to see results",
                     'Phone': "Login to see results"
                 })
-            discord_log_english(f"<@709799648143081483> Someone is searching for {query}")
+                discord_log_english(f"<@709799648143081483> Someone is searching for {query}")
 
     return jsonify(results)
 
