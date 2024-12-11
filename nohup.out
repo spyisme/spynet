@@ -4185,3 +4185,7 @@ Found images in google search for word : Torque force
 Saving img1
 Found images in google search for word : Purify water
 Saving img1
+/usr/local/lib/python3.10/dist-packages/PIL/Image.py:1054: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  warnings.warn(
+45.58.159.29 - - [12/Dec/2024 05:14:57] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00{\x01\x00\x00w\x03\x03hä\x13\x8d')
+45.58.159.29 - - [12/Dec/2024 05:14:57] code 400, message Bad request version ('À\x14À')
