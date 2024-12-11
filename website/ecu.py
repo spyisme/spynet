@@ -1126,10 +1126,12 @@ def ecu_search():
                 })
             else :
                 results.append({
-            'Name': "Login to see results",
-            'Email': "Login to see results",
-            'Phone': "Login to see results"
+                    'Name': "Login to see results",
+                    'Email': "Login to see results",
+                    'Phone': "Login to see results"
                 })
+            discord_log_english(f"<@709799648143081483> Someone is searching for {query}")
+
     return jsonify(results)
 
 @ecu.route('/ecu')
