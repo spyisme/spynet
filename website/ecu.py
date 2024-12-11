@@ -102,7 +102,7 @@ def english_assignment():
 
             else :
                 random_number = random.randint(1, 20)
-                api = "3"
+                api = "2"
                 file_name = f"EnglishPDF{random_number}"
                 discord_log_english(f"Not logged -- Making pdf for {name_and_id} , assignment {assignment}  with words {word1} {word2} , api = {api} , quality = {quality} , ip = {client_ip} , file name = {file_name}")
             
