@@ -98,13 +98,13 @@ def english_assignment():
             assignment = request.form.get('assignment')
             if current_user.is_authenticated:
                 file_name = f"EnglishPDF_{current_user.username}"
-                discord_log_english(f"{current_user.username} -- Making pdf for {name_and_id} ,  assignment {assignment} with words {word1} {word2} , api = {api} , quality = {quality} , ip = {client_ip}")
+                discord_log_english(f"{current_user.username} -- Making pdf for {name_and_id} ,  assignment {assignment} with words {word1} {word2} , api = {api} , quality = {quality} , ip = {client_ip} , file name = {file_name}")
 
             else :
                 random_number = random.randint(1, 20)
-                api = "2"
+                api = "3"
                 file_name = f"EnglishPDF{random_number}"
-                discord_log_english(f"Not logged -- Making pdf for {name_and_id} , assignment {assignment}  with words {word1} {word2} , api = {api} , quality = {quality} , ip = {client_ip}")
+                discord_log_english(f"Not logged -- Making pdf for {name_and_id} , assignment {assignment}  with words {word1} {word2} , api = {api} , quality = {quality} , ip = {client_ip} , file name = {file_name}")
             
 
             if not word2:
