@@ -111,7 +111,7 @@ def english_assignment():
                 if assignment == "5to7" or assignment == "8to10" :
                     new_message = f'Use the 1 word : "{word1}"'
                 elif assignment == "1to4":
-                    return render_template("used_pages/english_assignment_error.html" , error = "Provide 2 words for assignment 1 to 4")
+                    return render_template("ecu/english_assignment_error.html" , error = "Provide 2 words for assignment 1 to 4")
             else:
                 if assignment == "1to4":
                     new_message = f'Use the 2 words : "{word1}" and "{word2}"'
@@ -556,10 +556,7 @@ def english_assignment():
                     make_image_final('assignment1to4low' , 30 , 10 ,img_1_cords,img_2_cords )
 
                 my_file = Path(f"website/static/english/{file_name}.pdf")
-                if my_file.exists():
-                    return redirect(f"/static/english/{file_name}.pdf")
-                else :
-                    return render_template("used_pages/english_assignment_error.html")
+
     #-----------------------------------------------------------------------------------------------------------------
     
             elif assignment == '5to7' or assignment == '8to10' :
@@ -754,12 +751,12 @@ def english_assignment():
                 if my_file.exists():
                     return redirect(f"/static/english/{file_name}.pdf")
                 else :
-                    return render_template("used_pages/english_assignment_error.html")
+                    return render_template("ecu/english_assignment_error.html")
         except Exception as e:
             discord_log_english(f"<@709799648143081483> An unexpected error occurred: {e}")
-            return render_template("used_pages/english_assignment_error.html" , error = e)
+            return render_template("ecu/english_assignment_error.html" , error = e)
 
-    return render_template("used_pages/english_assignment.html")
+    return render_template("ecu/english_assignment.html")
 nexiapitoken = "spytokenn"
 
 
@@ -780,7 +777,7 @@ def nexi():
             backend_data = json.load(file)
         flattened_reminders = [reminder[0] for reminder in backend_data['reminders']]
         # return f"{backend_data['reminders']}"
-        return render_template('test_pages/nexi.html', reminders=flattened_reminders)
+        return render_template('ecu/test_pages/nexi.html', reminders=flattened_reminders)
 
     token = request.headers.get('token')
 
@@ -933,7 +930,7 @@ def nexi():
 
 
                 html_content = read_html_file(
-                    'website/templates/test_pages/nexi_email.html', time=date.capitalize() , name = name)
+                    'website/templates/ecu/test_pages/nexi_email.html', time=date.capitalize() , name = name)
 
                 msg = Message(subject, recipients=["survivingangelina@awgarstone.com"])
                 msg.html = html_content
@@ -1037,7 +1034,7 @@ def nexi():
 #         backend_data = json.load(file)
 #     flattened_reminders = [reminder[0] for reminder in backend_data['reminders']]
 #     # return f"{backend_data['reminders']}"
-#     return render_template('test_pages/nexi.html', reminders=flattened_reminders)
+#     return render_template('ecu/test_pages/nexi.html', reminders=flattened_reminders)
 
 
 
@@ -1136,7 +1133,7 @@ def ecu_search():
 
 @ecu.route('/ecu')
 def ecu_search_display():
-    return render_template('used_pages/ecu.html')
+    return render_template('ecu/ecu.html')
 
 #Ecu chinese graph ----------------------------------------------------------------------------------------------------------------
 
@@ -1180,7 +1177,7 @@ def ecumid1ch():
     # # Generate the chart
     # chart_html = create_interactive_chart(data)
     # return render_template("chart.html", chart_html=chart_html)
-    return render_template("test_pages/chinese.html")
+    return render_template("ecu/test_pages/chinese.html")
 
 # def create_interactive_chart(data):
 #     """Create a Plotly chart and return it as HTML."""
