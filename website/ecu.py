@@ -111,7 +111,7 @@ def english_assignment():
                 if assignment == "5to7" or assignment == "8to10" :
                     new_message = f'Use the 1 word : "{word1}"'
                 elif assignment == "1to4":
-                    new_message = "Provide 2 words! (Refresh the page)"
+                    return "Provide 2 words! (Refresh the page)"
             else:
                 if assignment == "1to4":
                     new_message = f'Use the 2 words : "{word1}" and "{word2}"'
