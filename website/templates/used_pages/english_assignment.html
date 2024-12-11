@@ -152,7 +152,7 @@
                 <label for="name">Name and ID:</label>
                 <input type="text" id="name" name="name" placeholder="Jana Diab 192400XXX" required>
 
-                <label for="api">Choose Image Search API:</label>
+                <!-- <label for="api">Choose Image Search API:</label>
                 <div class="radio-group">
                     {%if current_user.is_authenticated%}
 
@@ -183,7 +183,7 @@
 
                     {%endif%}
 
-                </div>
+                </div> -->
 
                <label for="assignment">Choose Assignment:</label>
 <div class="radio-group">
@@ -235,7 +235,7 @@
 
 
 
-                {%if current_user.is_authenticated%}
+                <!-- {%if current_user.is_authenticated%}
                 <p style="font-size: 14px;">You can choose any option.(You are logged in as {{current_user.username}})</p>
    
                 {%else%}
@@ -248,7 +248,7 @@
                     <p style="font-size: 14px;"><u><b>Unsplash Api</b></u> : Fastest Results but not accurate</p>
                     <p style="font-size: 14px;"><u><b>Google Search Api</b></u> : Perfect</p>
 
-                </div>
+                </div> -->
                 <input type="hidden" id="deviceId" name="deviceId">
 
               <button  type="submit" onclick="showLoadingScreen(event)">Submit</button>
