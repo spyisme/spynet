@@ -68,7 +68,7 @@ def create_app():
             'ecu.ecumid1ch','ecu.computerpdfs', 'ecu.english_assignment',
             'ecu.nexi_login' , 'ecu.nexi_register', 'ecu.nexi',
 
-            'ecu_search_display' , 'ecu_search',
+            'ecu.ecu_search_display' , 'ecu.ecu_search',
 
             'shortlinks.tools','shortlinks.shorturl', 'shortlinks.youtube',
             'vdo.commandslist' , 'vdo.cmdcommand' , 'vdo.secure_endpoint']
