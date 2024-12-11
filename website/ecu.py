@@ -178,39 +178,42 @@ def english_assignment():
                             elapsed_time = time.time() - start_time
                             # discord_log_english(f"Took {elapsed_time:.2f} seconds to download {name}")
                 elif api == "3" :
-                    start_time = time.time()
+                    try :
+                        start_time = time.time()
 
-                    def google_image_search(api_key, search_engine_id, query, num=3):
-                        url = "https://www.googleapis.com/customsearch/v1"
-                        params = {
-                            "key": api_key,
-                            "cx": search_engine_id,
-                            "q": query,
-                            "searchType": "image",  # Set searchType to image for image search
-                            "num": num,  # Number of search results
-                        }
-                        
-                        response = requests.get(url, params=params)
-                        if response.status_code == 200:
-                            return response.json()
-                        else:
-                            response.raise_for_status()
+                        def google_image_search(api_key, search_engine_id, query, num=3):
+                            url = "https://www.googleapis.com/customsearch/v1"
+                            params = {
+                                "key": api_key,
+                                "cx": search_engine_id,
+                                "q": query,
+                                "searchType": "image",  # Set searchType to image for image search
+                                "num": num,  # Number of search results
+                            }
+                            
+                            response = requests.get(url, params=params)
+                            if response.status_code == 200:
+                                return response.json()
+                            else:
+                                response.raise_for_status()
 
-                    # Replace with your API key and CSE ID
-                    api_key = GOOGLESEACHAPI
-                    search_engine_id = "f3fc9931ca6ef42f8"
+                        # Replace with your API key and CSE ID
+                        api_key = GOOGLESEACHAPI
+                        search_engine_id = "f3fc9931ca6ef42f8"
 
 
-                    results = google_image_search(api_key, search_engine_id, query)
-                    for item in results.get("items", []):
-                        random_image = random.choice(results["items"])
-                        image_link = random_image["link"]
+                        results = google_image_search(api_key, search_engine_id, query)
+                        for item in results.get("items", []):
+                            random_image = random.choice(results["items"])
+                            image_link = random_image["link"]
 
-                    response = requests.get(image_link)
-                    with open(f"./website/english/{name}.png", "wb") as file:
-                            file.write(response.content)    
-                            elapsed_time = time.time() - start_time
-                            # discord_log_english(f"Took {elapsed_time:.2f} seconds to download {name}")
+                        response = requests.get(image_link)
+                        with open(f"./website/english/{name}.png", "wb") as file:
+                                file.write(response.content)    
+                                elapsed_time = time.time() - start_time
+                                # discord_log_english(f"Took {elapsed_time:.2f} seconds to download {name}")
+                    except : 
+                        pass
                 else :
                     discord_log_english("Choose a valid api number")
                     print("exiting...")
