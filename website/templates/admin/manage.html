@@ -27,7 +27,7 @@
      User is not approved yet.   <input style="background-color: green;" type="submit" value="Approve User?" onclick="return confirm('Are you sure you want to approve this user?');">
     </form>
 {%else%}
-<form action="{{ url_for('websie.disable', user_id=user.id) }}" method="post" style="text-align: center;margin-top: 20px;">
+<form action="{{ url_for('website.disable', user_id=user.id) }}" method="post" style="text-align: center;margin-top: 20px;">
    To disable user click <input type="submit" value="Disable User" onclick="return confirm('Are you sure you want to disable this user?');">
 </form>
     {%endif%}
