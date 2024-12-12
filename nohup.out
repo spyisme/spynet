@@ -4189,3 +4189,59 @@ Saving img1
   warnings.warn(
 45.58.159.29 - - [12/Dec/2024 05:14:57] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00{\x01\x00\x00w\x03\x03hä\x13\x8d')
 45.58.159.29 - - [12/Dec/2024 05:14:57] code 400, message Bad request version ('À\x14À')
+93.174.93.12 - - [12/Dec/2024 06:48:42] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/root/spysnet/website/ecu.py", line 869, in nexi
+    reply = json_data_response["reply"]
+KeyError: 'reply'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/requests/models.py", line 974, in json
+    return complexjson.loads(self.text, **kwargs)
+  File "/usr/lib/python3.10/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.10/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.10/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/root/spysnet/website/ecu.py", line 867, in nexi
+    json_data_response = response.json()
+  File "/usr/local/lib/python3.10/dist-packages/requests/models.py", line 978, in json
+    raise RequestsJSONDecodeError(e.msg, e.doc, e.pos)
+requests.exceptions.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+172.104.11.51 - - [12/Dec/2024 07:45:23] code 400, message Bad request version ('À\x13À')
+159.223.67.34 - - [12/Dec/2024 08:04:53] code 400, message Bad request version ('À\x13À')
+198.235.24.143 - - [12/Dec/2024 15:14:33] code 400, message Bad request version ('À\x13À')
+198.235.24.143 - - [12/Dec/2024 15:14:33] code 400, message Bad request version ('À(À$À\x14À')
+152.42.219.47 - - [12/Dec/2024 16:04:53] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x01')
+64.62.197.41 - - [12/Dec/2024 17:13:11] code 400, message Bad request version ('À\x14À')
+202.112.238.240 - - [12/Dec/2024 17:50:09] code 400, message Bad request version ('À\x13À')
+202.112.238.240 - - [12/Dec/2024 17:50:09] code 400, message Bad request version ('À\x13À')
