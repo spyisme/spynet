@@ -1094,7 +1094,7 @@ def nexi_register():
     # Check if the email already exists in the accounts
     for account in accs:
         if account['email'] == email:
-            return jsonify({"message": "Email already registered", "status": "error"}), 200
+            return jsonify({"message": "Username already registered", "status": "error"}), 200
 
     # Create a new account dictionary
     new_account = {
