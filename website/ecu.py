@@ -782,7 +782,10 @@ def nexi():
             backend_data = json.load(file)
         flattened_reminders = [reminder[0] for reminder in backend_data['reminders']]
         # return f"{backend_data['reminders']}"
-        return render_template('ecu/test_pages/nexi.html', reminders=flattened_reminders)
+
+        with open('website/Backend/nexi/nexiapi_login.json', 'r') as file:
+            accs = json.load(file)
+        return render_template('ecu/test_pages/nexi.html', reminders=flattened_reminders , accs = accs)
 
     token = request.headers.get('token')
 
