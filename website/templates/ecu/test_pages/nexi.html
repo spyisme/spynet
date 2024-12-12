@@ -41,13 +41,28 @@
             color: #444;
             font-weight: bold;
         }
+        .accounts {
+            margin-top: 30px;
+        }
+        .accounts table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .accounts th, .accounts td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        .accounts th {
+            background-color: #f4f4f4;
+        }
     </style>
 </head>
 <body>
 
     <div class="container">
         <h1>Nexi Reminders</h1>
-        <p>You can ask nexi to <b>Show</b> , <b>Add</b> or <b>Delete</b> a reminder</p>
+        <p>You can ask Nexi to <b>Show</b>, <b>Add</b>, or <b>Delete</b> a reminder</p>
         {% if reminders %}
             {% for reminder in reminders %}
                 <div class="reminder">
@@ -58,6 +73,30 @@
         {% else %}
             <p>No reminders available.</p>
         {% endif %}
+
+        <div class="accounts">
+            <h2>Registered Accounts</h2>
+            {% if accs %}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Email</th>
+                            <th>Password</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for account in accs %}
+                            <tr>
+                                <td>{{ account['email'] }}</td>
+                                <td>{{ account['password'] }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p>No accounts registered.</p>
+            {% endif %}
+        </div>
     </div>
 
 </body>
