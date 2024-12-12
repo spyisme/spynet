@@ -1075,7 +1075,7 @@ def nexi_login():
 
             chatgptnonce["nonce"] = nonce
 
-            return jsonify({"message": "Login successful", "status": "success"}), 200
+            return jsonify({"message": "Login successful", "status": "success" , "nonce" : nonce}), 200
     
     return jsonify({"message": "Invalid email or password", "status": "error"}), 200
 
