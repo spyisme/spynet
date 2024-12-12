@@ -778,15 +778,18 @@ def read_html_file(file_path, **kwargs):
 def nexi():
 
     if request.method == "GET":
+        if current_user.is_authenticated : 
 
-        with open('website/Backend/nexi/nexiapi_data.json', 'r') as file:
-            backend_data = json.load(file)
-        flattened_reminders = [reminder[0] for reminder in backend_data['reminders']]
-        # return f"{backend_data['reminders']}"
+            with open('website/Backend/nexi/nexiapi_data.json', 'r') as file:
+                backend_data = json.load(file)
+            flattened_reminders = [reminder[0] for reminder in backend_data['reminders']]
+            # return f"{backend_data['reminders']}"
 
-        with open('website/Backend/nexi/nexiapi_login.json', 'r') as file:
-            accs = json.load(file)
-        return render_template('ecu/test_pages/nexi.html', reminders=flattened_reminders , accs = accs)
+            with open('website/Backend/nexi/nexiapi_login.json', 'r') as file:
+                accs = json.load(file)
+            return render_template('ecu/test_pages/nexi.html', reminders=flattened_reminders , accs = accs)
+        else :
+            return "Login"
 
     token = request.headers.get('token')
 
