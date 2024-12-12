@@ -529,6 +529,48 @@
                                 "title": "S3 | Summary",
                                 "duration": "00:38:18",
                                 "jsid": 3
+                            },
+                            {
+                                "id": "v5dWmMb8xWo",
+                                "title": "S1 | Classwork 1",
+                                "duration": "01:52:15",
+                                "jsid": 4
+                            },
+                            {
+                                "id": "gUOYpkktR2w",
+                                "title": "S1 | Classwork 2",
+                                "duration": "00:59:58",
+                                "jsid": 5
+                            },
+                            {
+                                "id": "Ay5NRpYECpU",
+                                "title": "S1 | Classwork 3",
+                                "duration": "00:10:30",
+                                "jsid": 6
+                            },
+                            {
+                                "id": "i3fHyy1y4NM",
+                                "title": "S2 | Part 1",
+                                "duration": "01:05:10",
+                                "jsid": 7
+                            },
+                            {
+                                "id": "OQ9h6EWEch8",
+                                "title": "S2 | Part 2",
+                                "duration": "01:17:15",
+                                "jsid": 8
+                            },
+                            {
+                                "id": "F5Oshux27DU",
+                                "title": "S2 | Part 3",
+                                "duration": "01:08:46",
+                                "jsid": 9
+                            },
+                            {
+                                "id": "3QTmGSjBt9I",
+                                "title": "S2 | Summary",
+                                "duration": "00:31:29",
+                                "jsid": 10
                             }
                         ],
                         "playlist_id": "PLM-GVlebsoPV5mQx4AbyWFrZjsuhQ0PKI",
@@ -9120,6 +9162,12 @@
                                 "title": "S1 | Law Sa2alak",
                                 "duration": "01:15:27",
                                 "jsid": 6
+                            },
+                            {
+                                "id": "eiOITu8niJk",
+                                "title": "S1 | Homework",
+                                "duration": "01:27:32",
+                                "jsid": 7
                             }
                         ],
                         "playlist_id": "PLM-GVlebsoPVa3zdoArInzMbNT6rCpFpJ",
@@ -10561,6 +10609,12 @@
                                 "title": "S4",
                                 "duration": "02:21:49",
                                 "jsid": 6
+                            },
+                            {
+                                "id": "1G3mB3W-bZc",
+                                "title": "S5",
+                                "duration": "02:29:12",
+                                "jsid": 7
                             }
                         ],
                         "playlist_id": "PLM-GVlebsoPXT_13a7IOF_UHGsLH114Gs",

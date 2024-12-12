@@ -1,22 +1,3 @@
 {
-    "reminders": [
-        [
-            {
-                "Name": "meeting",
-                "Time": "may.8.7am"
-            }
-        ],
-        [
-            {
-                "Name": "kaza",
-                "Time": "may.8.7:30am"
-            }
-        ],
-        [
-            {
-                "Name": "meeting",
-                "Time": "today"
-            }
-        ]
-    ]
+    "reminders": []
 }
