@@ -145,7 +145,7 @@ def english_assignment():
 
                             response = requests.get(random_result.get("original"))
                             print(f"Saving {name}")
-                            with open(f"./website/english/{name}.png", "wb") as file:
+                            with open(f"./website/static/english/{name}.png", "wb") as file:
                                 file.write(response.content)
                                 elapsed_time = time.time() - start_time
                                 # discord_log_english(f"Took {elapsed_time:.2f} seconds to download {name}")
@@ -177,7 +177,7 @@ def english_assignment():
                         discord_log_english("Failed to fetch data: "  + response.json())
                     for url in image_urls:
                         response = requests.get(url)
-                        with open(f"./website/english/{name}.png", "wb") as file:
+                        with open(f"./website/static/english/{name}.png", "wb") as file:
                             file.write(response.content)    
                             elapsed_time = time.time() - start_time
                             # discord_log_english(f"Took {elapsed_time:.2f} seconds to download {name}")
@@ -212,7 +212,7 @@ def english_assignment():
                             image_link = random_image["link"]
 
                         response = requests.get(image_link)
-                        with open(f"./website/english/{name}.png", "wb") as file:
+                        with open(f"./website/static/english/{name}.png", "wb") as file:
                                 file.write(response.content)    
                                 elapsed_time = time.time() - start_time
                                 # discord_log_english(f"Took {elapsed_time:.2f} seconds to download {name}")
@@ -398,8 +398,8 @@ def english_assignment():
 
 
                 #Fail save (might add a limit)
-                img1 = Path(f"website/english/img1.png")
-                img2 = Path(f"website/english/img2.png")
+                img1 = Path(f"website/static/english/img1.png")
+                img2 = Path(f"website/static/english/img2.png")
 
 
                 def is_valid_image(file_path):
@@ -449,12 +449,12 @@ def english_assignment():
 
                     # discord_log_english("Making the final image...")
                     # Load the main image (worksheet)
-                    main_image_path = f"./website/english/{name}.png"
+                    main_image_path = f"./website/static/english/{name}.png"
                     main_image = Image.open(main_image_path)
                     draw = ImageDraw.Draw(main_image)
 
                     # Define the font path and sizes
-                    font_path = "./website/english/Arial.ttf"  # Ensure the font file path is correct
+                    font_path = "./website/static/english/Arial.ttf"  # Ensure the font file path is correct
                     # max_font_size = 300
                     # min_font_size = 100
                     # Function to add wrapped text to fit within specified max x and max y
@@ -532,10 +532,10 @@ def english_assignment():
                         main_image.paste(added_image, (center_x, center_y))
 
                     # Add Image 1 within specified coordinates
-                    add_image(main_image, "./website/english/img1.png", img_1_cords)
+                    add_image(main_image, "./website/static/english/img1.png", img_1_cords)
 
                     # Add Image 2 within specified coordinates
-                    add_image(main_image, "./website/english/img2.png", img_2_cords)
+                    add_image(main_image, "./website/static/english/img2.png", img_2_cords)
                     elapsed_time = time.time() - start_time
                     elapsed_time2 = time.time() - global_start_time
 
@@ -644,12 +644,12 @@ def english_assignment():
 
                     # discord_log_english("Making the final image...")
                     # Load the main image (worksheet)
-                    main_image_path = f"./website/english/{name}.jpg"
+                    main_image_path = f"./website/static/english/{name}.jpg"
                     main_image = Image.open(main_image_path)
                     draw = ImageDraw.Draw(main_image)
 
                     # Define the font path and sizes
-                    font_path = "./website/english/Arial.ttf"  # Ensure the font file path is correct
+                    font_path = "./website/static/english/Arial.ttf"  # Ensure the font file path is correct
                     # max_font_size = 300
                     # min_font_size = 100
                     # Function to add wrapped text to fit within specified max x and max y
@@ -725,7 +725,7 @@ def english_assignment():
                         main_image.paste(added_image, (center_x, center_y))
 
                     # Add Image 1 within specified coordinates
-                    add_image(main_image, "./website/english/img1.png", img_1_cords)
+                    add_image(main_image, "./website/static/english/img1.png", img_1_cords)
 
 
                     elapsed_time2 = time.time() - global_start_time
