@@ -326,8 +326,7 @@ def english_assignment():
                 json_data = response.json()
 
             data = json.loads(json_data["reply"])
-            
-            discord_log_english(f"{data}")
+
 
             key = next((k for k in data.keys() if k.lower() in ['words', 'word']), None)
 
@@ -569,7 +568,6 @@ def english_assignment():
     #-----------------------------------------------------------------------------------------------------------------
     
             elif assignment == '5to7' or assignment == '8to10' :
-                discord_log_english("Assignment 5ot7 or 8to10")
                 fields_data_5to7 = {
                     "Today's POWER WORD 1": {"text": "", "coords": (955,973), "max_x": 1618, "max_y": 1243},  
                     "Definition 1": {"text": "", "coords": (99,845), "max_x": 805, "max_y": 1291},
@@ -621,7 +619,7 @@ def english_assignment():
                          fields_data[f"Prefix {i}"]["text"] = word_data["Prefix"]
                     return fields_data
 
-                img1 = Path(f"website/english/img1.png")
+                img1 = Path(f"website/static/english/img1.png")
 
                 def is_valid_image(file_path):
                     """Check if the file is a valid image."""
@@ -644,12 +642,9 @@ def english_assignment():
                         api = "2"
                         get_image(search_term, filename , api)
 
-                discord_log_english("Everything ready")
 
 
                 def make_image_final(name , max_font_size ,min_font_size , img_1_cords):
-                    discord_log_english("Started")
-
                     start_time = time.time()
 
                     # discord_log_english("Making the final image...")
