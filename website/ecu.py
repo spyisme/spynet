@@ -325,8 +325,10 @@ def english_assignment():
 
                 json_data = response.json()
 
-            discord_log_english(f"{json_data["reply"]}")
             data = json.loads(json_data["reply"])
+            
+            discord_log_english(f"{data}")
+
             key = next((k for k in data.keys() if k.lower() in ['words', 'word']), None)
 
 
