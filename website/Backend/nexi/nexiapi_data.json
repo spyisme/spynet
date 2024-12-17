@@ -1,3 +1,10 @@
 {
-    "reminders": []
+    "reminders": [
+        [
+            {
+                "Name": "go to bed",
+                "Time": "today.9pm"
+            }
+        ]
+    ]
 }
