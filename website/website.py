@@ -21,7 +21,7 @@ TOKEN_STRING = {
     "token_uri": os.getenv("TOKEN_URI"),
     "client_id": os.getenv("CLIENT_ID"),
     "client_secret": os.getenv("CLIENT_SECRET"),
-    "scopes": os.getenv("SCOPES").split(','),  # Split scopes if they're stored as a comma-separated string
+    "scopes": os.getenv("SCOPES"),  # .split(',') Split scopes if they're stored as a comma-separated string
     "universe_domain": os.getenv("UNIVERSE_DOMAIN"),
     "expiry": os.getenv("EXPIRY")
 }
