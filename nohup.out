@@ -4519,3 +4519,43 @@ KeyError: 'reply'
 172.104.11.4 - - [18/Dec/2024 01:46:54] code 400, message Bad request version ('À\x13À')
 92.255.57.150 - - [18/Dec/2024 02:36:14] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
 45.140.17.52 - - [18/Dec/2024 02:36:18] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+80.82.77.202 - - [18/Dec/2024 03:32:53] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+Traceback (most recent call last):
+  File "/root/spysnet/main.py", line 9, in <module>
+    app = create_app()
+  File "/root/spysnet/website/__init__.py", line 45, in create_app
+    from .ecu import ecu
+  File "/root/spysnet/website/ecu.py", line 328
+    discord_log_english(f"{json_data["reply"]}")
+                                      ^^^^^
+SyntaxError: f-string: unmatched '['
+ * Serving Flask app 'website'
+ * Debug mode: on
+45.79.128.205 - - [18/Dec/2024 03:46:31] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00î\x01\x00\x00ê\x03\x03¶\x19\x040P$s\x9cøô')
+172.206.147.254 - - [18/Dec/2024 03:54:36] code 400, message Bad request syntax ('MGLNDD_47.250.51.78_80')
+93.174.93.12 - - [18/Dec/2024 06:25:19] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+159.223.69.51 - - [18/Dec/2024 08:04:33] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x01')
+185.7.214.69 - - [18/Dec/2024 08:44:13] code 400, message Bad request version ('\\\x87¨³Õ;x6"\x7f£[c\x1bÐ|<\x07\x00\x00*À,À+À0À/\x00\x9f\x00\x9eÀ$À#À(À\'À')
+185.7.214.69 - - [18/Dec/2024 08:44:13] code 400, message Bad request version ("\x00\x00*À,À+À0À/\x00\x9f\x00\x9eÀ$À#À(À'À")
+205.210.31.24 - - [18/Dec/2024 09:18:05] code 400, message Bad request version ('À\x13À')
+205.210.31.24 - - [18/Dec/2024 09:18:05] code 400, message Bad request version ('À(À$À\x14À')
+80.82.77.202 - - [18/Dec/2024 10:08:36] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+104.152.52.31 - - [18/Dec/2024 12:37:09] code 400, message Bad request version ('RTSP/1.0')
+104.152.52.31 - - [18/Dec/2024 12:37:14] code 400, message Bad HTTP/0.9 request type ('l\x00')
+104.152.52.31 - - [18/Dec/2024 12:37:21] code 400, message Bad request version ('\x00\x01\x97|\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00')
+104.152.52.31 - - [18/Dec/2024 12:37:26] code 400, message Bad HTTP/0.9 request type ('\x00')
+104.152.52.31 - - [18/Dec/2024 12:37:31] code 400, message Bad HTTP/0.9 request type ('\x00')
+104.152.52.31 - - [18/Dec/2024 12:37:31] code 400, message Bad request syntax ('HELP')
+104.152.52.31 - - [18/Dec/2024 12:37:32] code 400, message Bad request syntax ('\x16\x03\x00\x00S\x01\x00\x00O\x03\x00?G×÷º,îê²`~ó\x00ý\x82{¹Õ\x96Èw\x9bæÄÛ<=Ûoï\x10n\x00\x00(\x00\x16\x00\x13\x00')
+104.152.52.31 - - [18/Dec/2024 12:37:32] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00*%à\x00\x00\x00\x00\x00Cookie:')
+104.152.52.31 - - [18/Dec/2024 12:37:33] code 400, message Bad request version ('\x00/\x00')
+104.152.52.31 - - [18/Dec/2024 12:37:33] code 400, message Bad request syntax ('\x00\x00\x00qj\x81n0\x81k¡\x03\x02\x01\x05¢\x03\x02\x01')
+104.152.52.31 - - [18/Dec/2024 12:37:39] code 400, message Bad request version ('0.12\x00')
+104.152.52.31 - - [18/Dec/2024 12:37:39] code 400, message Bad request syntax ('\x01default')
+104.152.52.31 - - [18/Dec/2024 12:37:40] code 400, message Bad request syntax ('0\x84\x00\x00\x00-\x02\x01\x07c\x84\x00\x00\x00$\x04\x00')
+104.152.52.31 - - [18/Dec/2024 12:37:45] code 400, message Bad HTTP/0.9 request type ('0')
+172.104.11.46 - - [18/Dec/2024 13:52:48] code 400, message Bad request version ('À\x13À')
+45.140.17.52 - - [18/Dec/2024 15:24:42] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+147.45.112.177 - - [18/Dec/2024 15:38:33] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+152.42.247.210 - - [18/Dec/2024 16:04:22] code 400, message Bad request version (';2T³{Õ\x87\x8f\x99K¿à\x120')
+66.240.205.34 - - [18/Dec/2024 16:45:03] code 400, message Bad request version ('®¯]')
