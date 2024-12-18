@@ -4565,3 +4565,6 @@ SyntaxError: f-string: unmatched '['
 198.235.24.41 - - [18/Dec/2024 18:59:28] code 400, message Bad request version ('À\x13À')
 198.235.24.41 - - [18/Dec/2024 18:59:28] code 400, message Bad request version ('À(À$À\x14À')
 45.140.17.52 - - [18/Dec/2024 19:47:16] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+202.112.238.240 - - [18/Dec/2024 20:25:42] code 400, message Bad request version ('À\x13À')
+202.112.238.240 - - [18/Dec/2024 20:25:42] code 400, message Bad request version ('À\x13À')
+167.94.146.59 - - [18/Dec/2024 20:45:12] code 505, message Invalid HTTP version (2.0)
