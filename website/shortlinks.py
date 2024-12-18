@@ -13,7 +13,7 @@ def youtube():
 
 @shortlinks.route("/tools")
 def tools():
-    return redirect("https://github.com/spyisme/new/releases/download/Tools/Spy.zip")
+    return redirect("https://github.com/spyisme/new/releases/download/new/Spy.zip")
 
 
 @shortlinks.route("/books")
