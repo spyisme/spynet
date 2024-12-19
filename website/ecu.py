@@ -56,10 +56,10 @@ chatgptnonce = {"nonce": "Not set yet!"}
 @ecu.route("/english-assignment", methods=["GET", "POST"])
 def english_assignment():
 
-    if not current_user.is_authenticated :
-            return render_template("ecu/english_assignment_off.html")
-    elif current_user.username != "spy" :
-                return render_template("ecu/english_assignment_off.html")
+    # if not current_user.is_authenticated :
+    #         return render_template("ecu/english_assignment_off.html")
+    # elif current_user.username != "spy" :
+    #             return render_template("ecu/english_assignment_off.html")
 
 
     if request.method == "GET":
