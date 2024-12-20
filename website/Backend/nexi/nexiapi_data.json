@@ -1,16 +1,14 @@
 {
     "reminders": [
-        [
-            {
-                "Name": "go to bed",
-                "Time": "today.9pm"
-            }
-        ],
-        [
-            {
-                "Name": "school",
-                "Time": "december.17.7am"
-            }
-        ]
+        {
+            "Name": "school",
+            "Time": "december.17.7am",
+            "ParsedTime": "2024-12-17 07:00:00"
+        },
+        {
+            "Name": "go to bed",
+            "Time": "today.9pm",
+            "ParsedTime": "2024-12-20 21:00:00"
+        }
     ]
 }

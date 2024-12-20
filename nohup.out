@@ -4644,3 +4644,39 @@ Traceback (most recent call last):
   File "/root/spysnet/website/ecu.py", line 793, in parse_time
     raise ValueError(f"Error parsing time: {time_str}. {e}")
 ValueError: Error parsing time: december.17.7am. invalid literal for int() with base 10: 'december'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/root/spysnet/website/ecu.py", line 806, in nexi
+    flattened_reminders = [reminder[0] for reminder in backend_data['reminders']]
+  File "/root/spysnet/website/ecu.py", line 806, in <listcomp>
+    flattened_reminders = [reminder[0] for reminder in backend_data['reminders']]
+KeyError: 0
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/root/spysnet/website/ecu.py", line 806, in nexi
+    flattened_reminders = [reminder[0] for reminder in backend_data['reminders']]
+  File "/root/spysnet/website/ecu.py", line 806, in <listcomp>
+    flattened_reminders = [reminder[0] for reminder in backend_data['reminders']]
+KeyError: 0
