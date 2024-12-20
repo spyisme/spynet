@@ -778,6 +778,22 @@ def read_html_file(file_path, **kwargs):
     return render_template_string(template, **kwargs)
 
 
+def parse_time(time_str):
+    today = datetime.now()
+    if 'today' in time_str.lower():
+        time_str = time_str.lower().replace('today.', '')
+        parsed_time = datetime.strptime(time_str, '%I%p')
+        return today.replace(hour=parsed_time.hour, minute=parsed_time.minute, second=0, microsecond=0)
+    elif '.' in time_str and time_str.count('.') == 2:
+        try:
+            month, day, hour = time_str.split('.')
+            parsed_time = datetime.strptime(hour, '%I%p')
+            return today.replace(month=int(month), day=int(day), hour=parsed_time.hour, minute=parsed_time.minute, second=0, microsecond=0)
+        except Exception as e:
+            raise ValueError(f"Error parsing time: {time_str}. {e}")
+    raise ValueError(f"Unsupported time format: {time_str}")
+
+
 @ecu.route('/nexi' , methods=["POST" , "GET"])
 def nexi():
 
@@ -787,6 +803,11 @@ def nexi():
             with open('website/Backend/nexi/nexiapi_data.json', 'r') as file:
                 backend_data = json.load(file)
             flattened_reminders = [reminder[0] for reminder in backend_data['reminders']]
+
+            for reminder in flattened_reminders:
+                reminder['ParsedTime'] = parse_time(reminder['Time'])
+
+            sorted_reminders = sorted(flattened_reminders, key=lambda r: r['ParsedTime'])
             # return f"{backend_data['reminders']}"
 
             with open('website/Backend/nexi/nexiapi_login.json', 'r') as file:
