@@ -813,7 +813,7 @@ def nexi():
 
             with open('website/Backend/nexi/nexiapi_login.json', 'r') as file:
                 accs = json.load(file)
-            return render_template('ecu/test_pages/nexi.html', reminders=flattened_reminders , accs = accs)
+            return render_template('ecu/test_pages/nexi.html', reminders=sorted_reminders , accs = accs)
         else :
             return "Login"
 
