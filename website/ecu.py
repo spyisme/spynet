@@ -794,7 +794,6 @@ def parse_time(time_str):
             raise ValueError(f"Error parsing time: {time_str}. {e}")
     raise ValueError(f"Unsupported time format: {time_str}")
 
-
 @ecu.route('/nexi' , methods=["POST" , "GET"])
 def nexi():
 
@@ -803,6 +802,7 @@ def nexi():
 
             with open('website/Backend/nexi/nexiapi_data.json', 'r') as file:
                 backend_data = json.load(file)
+
             flattened_reminders = [reminder[0] for reminder in backend_data['reminders']]
 
             for reminder in flattened_reminders:
@@ -811,7 +811,7 @@ def nexi():
             sorted_reminders = sorted(flattened_reminders, key=lambda r: r['ParsedTime'])
 
             with open('website/Backend/nexi/nexiapi_data.json', 'w') as file:
-                json.dump({"reminders": sorted_reminders}, file, indent=4, default=str)
+                json.dump({"reminders": [[reminder] for reminder in sorted_reminders]}, file, indent=4, default=str)
 
             with open('website/Backend/nexi/nexiapi_login.json', 'r') as file:
                 accs = json.load(file)
