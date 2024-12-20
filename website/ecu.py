@@ -4,7 +4,7 @@
 from flask import Blueprint , request , abort , redirect , render_template , jsonify , render_template_string
 import os
 from dotenv import load_dotenv
-from datetime import datetime
+from datetime import datetime , timedelta
 import requests
 import json
 import time
@@ -781,9 +781,16 @@ def read_html_file(file_path, **kwargs):
 def parse_time(time_str):
     today = datetime.now()
     if 'today' in time_str.lower():
-        time_str = time_str.lower().replace('today.', '')
+        time_str = time_str.lower().replace('today', '').strip()
         parsed_time = datetime.strptime(time_str, '%I%p')
         return today.replace(hour=parsed_time.hour, minute=parsed_time.minute, second=0, microsecond=0)
+    
+    elif 'tomorrow' in time_str.lower():
+        time_str = time_str.lower().replace('tomorrow', '').strip()
+        parsed_time = datetime.strptime(time_str, '%I%p')
+        tomorrow = today + timedelta(days=1)
+        return tomorrow.replace(hour=parsed_time.hour, minute=parsed_time.minute, second=0, microsecond=0)
+    
     elif '.' in time_str and time_str.count('.') == 2:
         try:
             month_str, day, hour = time_str.split('.')
@@ -792,6 +799,7 @@ def parse_time(time_str):
             return today.replace(month=month, day=int(day), hour=parsed_time.hour, minute=parsed_time.minute, second=0, microsecond=0)
         except Exception as e:
             raise ValueError(f"Error parsing time: {time_str}. {e}")
+    
     raise ValueError(f"Unsupported time format: {time_str}")
 
 @ecu.route('/nexi' , methods=["POST" , "GET"])
