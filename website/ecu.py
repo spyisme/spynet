@@ -804,15 +804,16 @@ def nexi():
                 backend_data = json.load(file)
 
             flattened_reminders = [reminder[0] for reminder in backend_data['reminders']]
+            try :
+                for reminder in flattened_reminders:
+                    reminder['ParsedTime'] = parse_time(reminder['Time'])
 
-            for reminder in flattened_reminders:
-                reminder['ParsedTime'] = parse_time(reminder['Time'])
+                sorted_reminders = sorted(flattened_reminders, key=lambda r: r['ParsedTime'])
 
-            sorted_reminders = sorted(flattened_reminders, key=lambda r: r['ParsedTime'])
-
-            with open('website/Backend/nexi/nexiapi_data.json', 'w') as file:
-                json.dump({"reminders": [[reminder] for reminder in sorted_reminders]}, file, indent=4, default=str)
-
+                with open('website/Backend/nexi/nexiapi_data.json', 'w') as file:
+                    json.dump({"reminders": [[reminder] for reminder in sorted_reminders]}, file, indent=4, default=str)
+            except :
+                sorted_reminders = flattened_reminders
             with open('website/Backend/nexi/nexiapi_login.json', 'r') as file:
                 accs = json.load(file)
             return render_template('ecu/test_pages/nexi.html', reminders=sorted_reminders , accs = accs)
