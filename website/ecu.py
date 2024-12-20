@@ -809,7 +809,9 @@ def nexi():
                 reminder['ParsedTime'] = parse_time(reminder['Time'])
 
             sorted_reminders = sorted(flattened_reminders, key=lambda r: r['ParsedTime'])
-            # return f"{backend_data['reminders']}"
+            
+            with open('website/Backend/nexi/nexiapi_data_sorted.json', 'w') as file:
+                json.dump({"reminders": sorted_reminders}, file, indent=4, default=str)
 
             with open('website/Backend/nexi/nexiapi_login.json', 'r') as file:
                 accs = json.load(file)
