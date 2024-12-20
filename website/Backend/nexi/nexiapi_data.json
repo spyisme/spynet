@@ -5,6 +5,12 @@
                 "Name": "go to bed",
                 "Time": "today.9pm"
             }
+        ],
+        [
+            {
+                "Name": "school",
+                "Time": "december.17.7am"
+            }
         ]
     ]
 }
