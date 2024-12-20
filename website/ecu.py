@@ -786,9 +786,10 @@ def parse_time(time_str):
         return today.replace(hour=parsed_time.hour, minute=parsed_time.minute, second=0, microsecond=0)
     elif '.' in time_str and time_str.count('.') == 2:
         try:
-            month, day, hour = time_str.split('.')
+            month_str, day, hour = time_str.split('.')
+            month = datetime.strptime(month_str, '%B').month
             parsed_time = datetime.strptime(hour, '%I%p')
-            return today.replace(month=int(month), day=int(day), hour=parsed_time.hour, minute=parsed_time.minute, second=0, microsecond=0)
+            return today.replace(month=month, day=int(day), hour=parsed_time.hour, minute=parsed_time.minute, second=0, microsecond=0)
         except Exception as e:
             raise ValueError(f"Error parsing time: {time_str}. {e}")
     raise ValueError(f"Unsupported time format: {time_str}")
