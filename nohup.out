@@ -4680,3 +4680,67 @@ Traceback (most recent call last):
   File "/root/spysnet/website/ecu.py", line 806, in <listcomp>
     flattened_reminders = [reminder[0] for reminder in backend_data['reminders']]
 KeyError: 0
+80.82.77.202 - - [20/Dec/2024 20:09:28] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+164.52.24.188 - - [20/Dec/2024 21:33:51] code 400, message Bad request version ('÷R\x8bò¶:ÉÓåÜ\x83ÙËÐ\x07ÀÃ³Tª\x16²Ä\x9ef\x07\x0e')
+45.79.181.104 - - [20/Dec/2024 21:46:17] code 400, message Bad request version ('À\x13À')
+64.62.197.153 - - [20/Dec/2024 23:08:53] code 400, message Bad HTTP/0.9 request type ("\x16\x03\x01\x00{\x01\x00\x00w\x03\x03\x94\xadùpû:é\x893\x11Õ\x08\x05\x8bþÄÇ5&KÂ%¯\x80«Æ\x90'ÅÊù¶\x00\x00\x1aÀ/À+À\x11À\x07À\x13À")
+152.42.219.47 - - [21/Dec/2024 00:04:20] code 400, message Bad request version ('À\x13À')
+159.223.67.34 - - [21/Dec/2024 00:04:40] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x01')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/root/spysnet/website/ecu.py", line 809, in nexi
+    reminder['ParsedTime'] = parse_time(reminder['Time'])
+  File "/root/spysnet/website/ecu.py", line 795, in parse_time
+    raise ValueError(f"Unsupported time format: {time_str}")
+ValueError: Unsupported time format: tomorrow
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/root/spysnet/website/ecu.py", line 817, in nexi
+    reminder['ParsedTime'] = parse_time(reminder['Time'])
+  File "/root/spysnet/website/ecu.py", line 785, in parse_time
+    parsed_time = datetime.strptime(time_str, '%I%p')
+  File "/usr/lib/python3.10/_strptime.py", line 568, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+  File "/usr/lib/python3.10/_strptime.py", line 349, in _strptime
+    raise ValueError("time data %r does not match format %r" %
+ValueError: time data '.9pm' does not match format '%I%p'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/root/spysnet/website/ecu.py", line 809, in nexi
+    reminder['ParsedTime'] = parse_time(reminder['Time'])
+  File "/root/spysnet/website/ecu.py", line 795, in parse_time
+    raise ValueError(f"Unsupported time format: {time_str}")
+ValueError: Unsupported time format: tomorrow

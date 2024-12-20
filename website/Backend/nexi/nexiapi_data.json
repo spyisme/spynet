@@ -6,6 +6,12 @@
                 "Time": "today.9pm",
                 "ParsedTime": "2024-12-20 21:00:00"
             }
+        ],
+        [
+            {
+                "Name": "example reminder",
+                "Time": "tomorrow"
+            }
         ]
     ]
 }
