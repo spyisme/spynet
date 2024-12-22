@@ -4995,3 +4995,12 @@ Traceback (most recent call last):
     raise TypeError("key: expected bytes or bytearray, but got %r" % type(key).__name__)
 TypeError: key: expected bytes or bytearray, but got 'str'
 172.105.128.12 - - [22/Dec/2024 23:51:34] code 400, message Bad request version ('À\x13À')
+159.223.67.34 - - [23/Dec/2024 00:04:11] code 400, message Bad request version ('À\x13À')
+152.42.219.47 - - [23/Dec/2024 00:04:31] code 400, message Bad request version ('À\x13À')
+185.208.156.160 - - [23/Dec/2024 00:28:19] code 400, message Bad request version ('À\x13À')
+63.141.246.226 - - [23/Dec/2024 01:18:31] code 400, message Bad request version ('À\x13À')
+152.32.235.78 - - [23/Dec/2024 02:30:45] code 400, message Bad request version ('\x00\x9eÌ¨Ìª\x003\x00=\x00\x16À')
+13.91.241.182 - - [23/Dec/2024 03:46:03] code 400, message Bad request syntax ('MGLNDD_47.250.51.78_80')
+172.104.11.51 - - [23/Dec/2024 05:45:40] code 400, message Bad request version ('À\x13À')
+63.141.246.226 - - [23/Dec/2024 07:45:07] code 400, message Bad request version ('À\x13À')
+172.105.128.11 - - [23/Dec/2024 07:45:40] code 400, message Bad request version ('À\x13À')
