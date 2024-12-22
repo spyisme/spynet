@@ -992,7 +992,7 @@ def discordink():
 import hmac
 import hashlib
 
-VDOSECRET_KEY = "ss"
+VDOSECRET_KEY = b'sssss' 
 
 def discord_log_vdocipher(message):
     message_payload = {'content': message}
