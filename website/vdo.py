@@ -8,6 +8,8 @@ from pywidevine import PSSH
 from pywidevine import Cdm
 from pywidevine import Device
 import os
+from dotenv import load_dotenv
+load_dotenv()
 
 Nawar = 'https://discord.com/api/webhooks/1159805446039797780/bE4xU3lkcjlb4vfCVQ9ky5BS2OuD01Y8g9godljNBfoApGt59-VfKf19GQuMUmH0IYzw'
 Bio = "https://discord.com/api/webhooks/1158548096012259422/jQ5sEAZBIrvfBNTA-w4eR-p6Yw0zv7GBC9JTUcEOAWfmqYJXbOpgysATjKPXLwd8HZOs"
@@ -990,54 +992,59 @@ def discordink():
 import hmac
 import hashlib
 
-VDOSECRET_KEY = 'ss'
+VDOSECRET_KEY = os.getenv('VDOSECRET_KEY')
 
 def discord_log_vdocipher(message):
-    messageeeee = {'content': message}
-    payload = json.dumps(messageeeee)
+    message_payload = {'content': message}
     headers = {'Content-Type': 'application/json'}
-    requests.post(
-        "https://discord.com/api/webhooks/1280568380209889361/2Cmrouxw53pijJ9VwPw4tp73ByeQMiQwIN7QrMlnyLvwphrWUl-WSJ2vKvxeFESK-caD",
-        data=payload,
-        headers=headers)
-
+    try:
+        requests.post(
+            "https://discord.com/api/webhooks/1280568380209889361/2Cmrouxw53pijJ9VwPw4tp73ByeQMiQwIN7QrMlnyLvwphrWUl-WSJ2vKvxeFESK-caD",
+            data=json.dumps(message_payload),
+            headers=headers
+        )
+    except requests.RequestException as e:
+        print(f"Discord logging failed: {e}")
 
 def generate_signature(message, secret_key):
+    # Ensure secret_key is bytes
+    if isinstance(secret_key, str):
+        secret_key = secret_key.encode()
     return hmac.new(secret_key, message.encode(), hashlib.sha256).hexdigest()
 
 @vdo.route('/vdocipher-api', methods=['POST'])
 def secure_endpoint():
-
     client_ip = request.headers.get('X-Forwarded-For')
-
     if client_ip:
         client_ip = client_ip.split(',')[0].strip()
     else:
-        client_ip = request.headers.get('CF-Connecting-IP',
-                                        request.remote_addr)
-        
+        client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
+
     data = request.json
+    if not data:
+        return jsonify({"status": "error", "message": "Invalid JSON payload"}), 400
+
     username = data.get('username')
     command = data.get('command')
 
-
-
-    if command: 
+    if command:
         discord_log_vdocipher(f"{command}")
 
+    # Validate username
+    if username not in ['spyy', 'stofalleno01']:
+        return jsonify({"status": "Wrong API key"}), 400
 
-    if username not in ['spyy' , 'stofalleno01'] :
-
-        return jsonify({"status": "Wrong api key"}), 400
-    
     if not username:
-
-        return jsonify({"status": "wrong api key"}), 400
+        return jsonify({"status": "wrong API key"}), 400
 
     response_data = {"status": "true", "message": username}
-    # Serialize the data consistently
     data_string = json.dumps(response_data, sort_keys=True)
-    response_signature = generate_signature(data_string, VDOSECRET_KEY)
+
+    # Generate signature
+    try:
+        response_signature = generate_signature(data_string, VDOSECRET_KEY)
+    except TypeError as e:
+        return jsonify({"status": "error", "message": str(e)}), 500
 
     discord_log_vdocipher(f"Vdocipher Script opened by {username} -- {client_ip}")
 
