@@ -1218,9 +1218,9 @@ def ecu_search():
 
     #Extra for me
     if current_user.is_authenticated:
-        if current_user.username == 'spy' :
-            max_search = 999999
-
+        max_search = 999999
+    else :
+        discord_log_english(f"<@709799648143081483> There is a search for {query}")
     if faculty:
         # Search by query and filter by faculty
         cursor.execute('''
