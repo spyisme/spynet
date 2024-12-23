@@ -1214,19 +1214,28 @@ def ecu_search():
     conn = sqlite3.connect('website/Backend/ECU/ecu_students.db')
     cursor = conn.cursor()
 
+    max_search = 15
+
+    #Extra for me
+    if current_user.is_authenticated:
+        if current_user.username == 'spy' :
+            max_search = 999999
+
     if faculty:
         # Search by query and filter by faculty
         cursor.execute('''
             SELECT id, name, email, phone, faculty FROM students
             WHERE (id LIKE ? OR name LIKE ? OR email LIKE ? OR phone LIKE ?)
               AND faculty LIKE ?
-        ''', (f"%{query}%", f"%{query}%", f"%{query}%", f"%{query}%", f"%{faculty}%"))
+                        LIMIT ? 
+        ''', (f"%{query}%", f"%{query}%", f"%{query}%", f"%{query}%", f"%{faculty}%" , max_search))
     else:
         # Search by query without filtering by faculty
         cursor.execute('''
             SELECT id, name, email, phone, faculty FROM students
             WHERE id LIKE ? OR name LIKE ? OR email LIKE ? OR phone LIKE ? OR faculty LIKE ?
-        ''', (f"%{query}%", f"%{query}%", f"%{query}%", f"%{query}%", f"%{query}%"))
+                        LIMIT ? 
+        ''', (f"%{query}%", f"%{query}%", f"%{query}%", f"%{query}%", f"%{query}%" , max_search))
 
     results = cursor.fetchall()
     conn.close()
@@ -1235,12 +1244,6 @@ def ecu_search():
 
     search = 0
 
-    max_search = 15
-
-    #Extra for me
-    if current_user.is_authenticated:
-        if current_user.username == 'spy' :
-            max_search = 999999
 
     response = []
     for row in results:
