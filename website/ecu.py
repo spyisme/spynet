@@ -1149,6 +1149,11 @@ def nexi_register():
 
 @ecu.route('/search', methods=['POST'])
 def ecu_search():
+    client_ip = request.headers.get('X-Forwarded-For')
+    if client_ip:
+        client_ip = client_ip.split(',')[0].strip()
+    else:
+        client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
     query = request.form.get('query', '').strip().lower()
     results = []
     search = 0
@@ -1164,7 +1169,7 @@ def ecu_search():
         name_match = query in entry['Name'].lower()
         id_match = query in str(entry['id']).lower()
         email_match = query in entry['Email'].lower()
-        
+
         if id_match or phone_match or name_match or email_match:
 
             search = search + 1
@@ -1187,14 +1192,36 @@ def ecu_search():
                         'Phone': "Login to see results",
                         'Faculty': entry['Faculty'],
                     })
+    
 
-    if current_user.username != 'spy' : 
-            discord_log_english(f"<@709799648143081483> {current_user.username} is searching for {query}")
+    discord_log_english(f"<@709799648143081483> {query} is being searched for by {client_ip}")
     return jsonify(results)
 
 
 @ecu.route('/ecu')
 def ecu_search_display():
+
+    if request.method == "GET":
+        client_ip = request.headers.get('X-Forwarded-For')
+        if client_ip:
+            client_ip = client_ip.split(',')[0].strip()
+        else:
+            client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
+
+        user_agent = request.headers.get('User-Agent')
+        device_type = "Desktop" if "Windows" in user_agent else (
+        "Macintosh" if "Macintosh" in user_agent else "Mobile")
+
+        if current_user.is_authenticated:
+            if current_user.stage != "4" :
+                if current_user.username != 'spy' :
+                    return abort(404)
+
+            if current_user.username != 'spy' :
+                discord_log(f"{client_ip} Viewed <{request.url}>  {current_user.username} {device_type} ```{user_agent}```")
+        else:
+            discord_log(f"{client_ip} Viewed <{request.url}> {device_type} ```{user_agent}```")
+
     return render_template('ecu/ecu.html')
 
 #Ecu chinese graph ----------------------------------------------------------------------------------------------------------------
