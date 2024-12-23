@@ -1237,7 +1237,7 @@ def ecu_search():
         else :
             response.append({
                     "name": row[1],
-                    "phone": "Login",
+                    "phone": "Login to see results",
                     "id": row[0],
                     "faculty": row[4]
                 })
