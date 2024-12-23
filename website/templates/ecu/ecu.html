@@ -117,7 +117,7 @@
     <h3>Disclaimer: All data hosted here is public. (Students of Year 2023 and 2024)</h3>
     {%if current_user.is_authenticated%}
     {%else%}
-    <h3>Login to get more than 15 result per search</h3>
+
     {%endif%}
     <form id="search-form">
         <input type="text" id="query" name="query" placeholder="Search by ID, Name, or Phone" required>
@@ -134,48 +134,55 @@
     <div id="results">Make a search!</div>
 
     <script>
-        $(document).ready(function() {
-            $('#search-form').on('submit', function(event) {
-                event.preventDefault();
-                const query = $('#query').val();
-                const faculty = $('#faculty').val(); // Get the selected faculty
-                const searchButton = $(this).find('button');
-                searchButton.prop('disabled', true); // Disable the button
+$(document).ready(function() {
+    $('#search-form').on('submit', function(event) {
+        event.preventDefault();
+        const query = $('#query').val();
+        const faculty = $('#faculty').val(); // Get the selected faculty
+        const searchButton = $(this).find('button');
+        searchButton.prop('disabled', true); // Disable the button
 
-                $.ajax({
-                    url: '/search',
-                    method: 'POST',
-                    data: { query: query, faculty: faculty }, // Include faculty in the request
-                    success: function(response) {
-                        const resultsDiv = $('#results');
-                        resultsDiv.empty();
-                        resultsDiv.append(`<p><b>Results found ${response.length}</b> </p> <br>`);
+        // Start timing the request
+        const startTime = performance.now();
 
-                        if (response.length > 0) {
-                            response.forEach((item, index) => {
-                                resultsDiv.append(
-                                    `<p><strong>Name:</strong> ${item.name}</p>
-                                    <p><strong>Phone:</strong> ${item.phone}</p>
-                                    <p><strong>ID:</strong> ${item.id}</p>
-                                    <p><strong>Faculty:</strong> ${item.faculty}</p>`
-                                );
+        $.ajax({
+            url: '/search',
+            method: 'POST',
+            data: { query: query, faculty: faculty }, // Include faculty in the request
+            success: function(response) {
+                const resultsDiv = $('#results');
+                resultsDiv.empty();
 
-                                if (index !== response.length - 1) {
+                // End timing the request
+                const endTime = performance.now();
+                const timeTaken = (endTime - startTime).toFixed(2); // Time in milliseconds, rounded to 2 decimals
+
+                resultsDiv.append(`<p><b>Results found: ${response.length} in ${timeTaken} ms</b></p><br>`);
+
+                if (response.length > 0) {
+                    response.forEach((item, index) => {
+                        resultsDiv.append(
+                            `<p><strong>Name:</strong> ${item.name}</p>
+                            <p><strong>Phone:</strong> ${item.phone}</p>
+                            <p><strong>ID:</strong> ${item.id}</p>
+                            <p><strong>Faculty:</strong> ${item.faculty}</p>`
+                        );
+
+                        if (index !== response.length - 1) {
                             resultsDiv.append('<hr>');
                         }
                     });
-
- 
-                        } else {
-                            resultsDiv.html('<p>No results found</p>');
-                        }
-                    },
-                    complete: function() {
-                        searchButton.prop('disabled', false); // Re-enable the button
-                    }
-                });
-            });
+                } else {
+                    resultsDiv.html('<p>No results found</p>');
+                }
+            },
+            complete: function() {
+                searchButton.prop('disabled', false); // Re-enable the button
+            }
         });
+    });
+});
+
     </script>
 </body>
 </html>
