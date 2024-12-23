@@ -5004,3 +5004,102 @@ TypeError: key: expected bytes or bytearray, but got 'str'
 172.104.11.51 - - [23/Dec/2024 05:45:40] code 400, message Bad request version ('À\x13À')
 63.141.246.226 - - [23/Dec/2024 07:45:07] code 400, message Bad request version ('À\x13À')
 172.105.128.11 - - [23/Dec/2024 07:45:40] code 400, message Bad request version ('À\x13À')
+178.128.54.126 - - [23/Dec/2024 08:58:08] code 400, message Bad request version ('À\x13À')
+159.223.67.34 - - [23/Dec/2024 08:58:46] code 400, message Bad request version ('À\x13À')
+64.62.197.123 - - [23/Dec/2024 10:02:17] code 400, message Bad HTTP/0.9 request type ("\x16\x03\x01\x00{\x01\x00\x00w\x03\x03º\x8bÓünm\x0f!\x07iÁµOí'\x80»@\x86ê£_¶6+Ãä\x9cTß|X\x00\x00\x1aÀ/À+À\x11À\x07À\x13À")
+80.82.77.202 - - [23/Dec/2024 10:57:08] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+79.143.20.2 - - [23/Dec/2024 11:03:20] code 400, message Bad request version ('À(À$À\x14À')
+198.235.24.153 - - [23/Dec/2024 14:08:41] code 400, message Bad request version ('À\x13À')
+198.235.24.153 - - [23/Dec/2024 14:08:41] code 400, message Bad HTTP/0.9 request type ("\x16\x03\x01\x00Ê\x01\x00\x00Æ\x03\x03~7Ó»I\x8eÏ\x89^~»é±I;\x89eTQá\x8aÉÇN\x92°õ]úý\x99?\x00\x00hÌ\x14Ì\x13À/À+À0À,À\x11À\x07À'À#À\x13À")
+80.66.76.121 - - [23/Dec/2024 15:19:25] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+202.112.47.148 - - [23/Dec/2024 16:44:30] code 400, message Bad request version ('À\x13À')
+80.82.77.202 - - [23/Dec/2024 17:21:58] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+147.185.132.165 - - [23/Dec/2024 17:39:43] code 400, message Bad request version ('À\x13À')
+147.185.132.165 - - [23/Dec/2024 17:39:43] code 400, message Bad request version ('À(À$À\x14À')
+35.246.165.45 - - [23/Dec/2024 18:04:26] code 400, message Bad request version ('\x9f')
+93.174.93.12 - - [23/Dec/2024 20:59:33] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+159.223.67.34 - - [24/Dec/2024 00:03:37] code 400, message Bad request version ('À\x13À')
+159.223.69.51 - - [24/Dec/2024 00:04:07] code 400, message Bad request version ('À\x13À')
+45.79.181.104 - - [24/Dec/2024 01:46:26] code 400, message Bad request version ('\x87\x84')
+137.74.239.146 - - [24/Dec/2024 02:49:50] code 400, message Bad request syntax ('\x16\x03\x03\x01¥\x01\x00\x01¡\x03\x03¨ý÷¦ûÝÛ÷¤\x89Gh1\x8d¼j{ÌîëDÐ')
+5.196.113.10 - - [24/Dec/2024 02:57:19] code 400, message Bad request version ('À#À¬À®À+À')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/root/spysnet/website/ecu.py", line 1191, in ecu_search
+    if current_user.username != 'spy' :
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/root/spysnet/website/ecu.py", line 1191, in ecu_search
+    if current_user.username != 'spy' :
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/root/spysnet/website/ecu.py", line 1191, in ecu_search
+    if current_user.username != 'spy' :
+AttributeError: 'AnonymousUserMixin' object has no attribute 'username'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/root/spysnet/website/ecu.py", line 1178, in ecu_search
+    if search <= max_search :
+UnboundLocalError: local variable 'max_search' referenced before assignment
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/root/spysnet/website/ecu.py", line 1178, in ecu_search
+    if search <= max_search :
+UnboundLocalError: local variable 'max_search' referenced before assignment
