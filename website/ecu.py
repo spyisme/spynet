@@ -1223,11 +1223,14 @@ def search_students():
     conn.close()
 
     # Format results as JSON
-    response = [
-        {"id": row[0], "name": row[1], "email": row[2], "phone": row[3], "faculty": row[4]}
-        for row in results
-    ]
-
+    response = []
+    for row in results:
+        response.append({
+            "name": row[1],
+            "phone": row[3],
+            "id": row[0],
+            "faculty": row[4]
+        })
     return jsonify(response)
 
 @ecu.route('/ecu')
