@@ -5103,3 +5103,5 @@ Traceback (most recent call last):
   File "/root/spysnet/website/ecu.py", line 1178, in ecu_search
     if search <= max_search :
 UnboundLocalError: local variable 'max_search' referenced before assignment
+198.235.24.10 - - [24/Dec/2024 05:34:39] code 400, message Bad request version ('À\x13À')
+198.235.24.10 - - [24/Dec/2024 05:34:39] code 400, message Bad request version ('À(À$À\x14À')
