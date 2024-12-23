@@ -1245,7 +1245,7 @@ def ecu_search():
     response = []
     for row in results:
         search = search + 1
-        if search >= max_search :
+        if search <= max_search :
             if current_user.is_authenticated:
                 response.append({
                     "name": row[1],
