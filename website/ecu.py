@@ -1203,7 +1203,7 @@ def nexi_register():
 #     discord_log_english(f"<@709799648143081483> {query} is being searched for by {client_ip}")
 #     return jsonify(results)
 
-@ecu.route('/search', methods=['POST'])
+@ecu.route('/search', methods=['GET','POST'])
 def ecu_search():
     query = request.form.get('query', '').strip()
     faculty = request.form.get('faculty', '').strip()
