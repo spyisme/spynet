@@ -15,6 +15,7 @@ import pytz  #Time Zone
 from pathlib import Path
 from . import mail
 from flask_mail import Message
+import sqlite3
 
 
 #------------------------------------------------------------------------------------------------------------------------
@@ -1147,61 +1148,87 @@ def nexi_register():
 
 #Ecu database ----------------------------------------------------------------------------------------------------------------
 
-@ecu.route('/search', methods=['POST'])
-def ecu_search():
-    client_ip = request.headers.get('X-Forwarded-For')
-    if client_ip:
-        client_ip = client_ip.split(',')[0].strip()
-    else:
-        client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
-    query = request.form.get('query', '').strip().lower()
-    results = []
-    search = 0
+# @ecu.route('/search', methods=['POST'])
+# def ecu_search():
+#     client_ip = request.headers.get('X-Forwarded-For')
+#     if client_ip:
+#         client_ip = client_ip.split(',')[0].strip()
+#     else:
+#         client_ip = request.headers.get('CF-Connecting-IP', request.remote_addr)
+#     query = request.form.get('query', '').strip().lower()
+#     results = []
+#     search = 0
 
-    max_search = 15
+#     max_search = 15
 
-    #Extra for me
-    if current_user.is_authenticated:
-        if current_user.username == 'spy' :
-            max_search = 999999
+#     #Extra for me
+#     if current_user.is_authenticated:
+#         if current_user.username == 'spy' :
+#             max_search = 999999
 
-    with open('website/Backend/ECU/ECU24~23.json', 'r') as f:
-        data2 = json.load(f)
+#     with open('website/Backend/ECU/ECU24~23.json', 'r') as f:
+#         data2 = json.load(f)
 
-    # Perform partial search
-    for entry in data2:
-        phone_match = query in str(entry['Phone']).lower()
-        name_match = query in entry['Name'].lower()
-        id_match = query in str(entry['id']).lower()
-        email_match = query in entry['Email'].lower()
+#     # Perform partial search
+#     for entry in data2:
+#         phone_match = query in str(entry['Phone']).lower()
+#         name_match = query in entry['Name'].lower()
+#         id_match = query in str(entry['id']).lower()
+#         email_match = query in entry['Email'].lower()
 
-        if id_match or phone_match or name_match or email_match:
+#         if id_match or phone_match or name_match or email_match:
 
-            search = search + 1
+#             search = search + 1
 
-            if search <= max_search :
+#             if search <= max_search :
 
-                if current_user.is_authenticated:
+#                 if current_user.is_authenticated:
 
-                    results.append({
-                        'Name': entry['Name'],
-                        'Phone': entry['Phone'],
-                        'Email': entry['Email'],
-                        'Faculty': entry['Faculty'],
-                    })  
+#                     results.append({
+#                         'Name': entry['Name'],
+#                         'Phone': entry['Phone'],
+#                         'Email': entry['Email'],
+#                         'Faculty': entry['Faculty'],
+#                     })  
 
-                else:
-                    results.append({
-                        'Name':  entry['Name'],
-                        'Phone': "Login to see results",
-                        'Email': entry['Email'],
-                        'Faculty': entry['Faculty'],
-                    })
+#                 else:
+#                     results.append({
+#                         'Name':  entry['Name'],
+#                         'Phone': "Login to see results",
+#                         'Email': entry['Email'],
+#                         'Faculty': entry['Faculty'],
+#                     })
     
 
-    discord_log_english(f"<@709799648143081483> {query} is being searched for by {client_ip}")
-    return jsonify(results)
+#     discord_log_english(f"<@709799648143081483> {query} is being searched for by {client_ip}")
+#     return jsonify(results)
 
+@ecu.route('/search', methods=['POST'])
+def search_students():
+    query = request.form.get('query', '').strip()
+    if not query:
+        return jsonify({"error": "Query cannot be empty"}), 400
+
+    conn = sqlite3.connect('website/Backend/ECU/ecu_students.db')
+    cursor = conn.cursor()
+    cursor.execute('''
+        SELECT id, name, email, phone, faculty FROM students
+        WHERE id LIKE ? OR
+              name LIKE ? OR
+              email LIKE ? OR
+              phone LIKE ? OR
+              faculty LIKE ?
+    ''', (f"%{query}%", f"%{query}%", f"%{query}%", f"%{query}%", f"%{query}%"))
+    results = cursor.fetchall()
+    conn.close()
+
+    # Format results as JSON
+    response = [
+        {"id": row[0], "name": row[1], "email": row[2], "phone": row[3], "faculty": row[4]}
+        for row in results
+    ]
+
+    return jsonify(response)
 
 @ecu.route('/ecu')
 def ecu_search_display():
