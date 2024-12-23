@@ -115,10 +115,7 @@
     <h1>ECU DATABASE BY SPY</h1>
 
     <h3>Disclaimer: All data hosted here is public. (Students of Year 2023 and 2024)</h3>
-    {%if current_user.is_authenticated%}
-    {%else%}
 
-    {%endif%}
     <form id="search-form">
         <input type="text" id="query" name="query" placeholder="Search by ID, Name, or Phone" required>
         <select id="faculty" name="faculty">
@@ -156,8 +153,13 @@ $(document).ready(function() {
                 // End timing the request
                 const endTime = performance.now();
                 const timeTaken = (endTime - startTime).toFixed(2); // Time in milliseconds, rounded to 2 decimals
-
+                {%if current_user.is_authenticated%}
                 resultsDiv.append(`<p><b>Results found: ${response.length} in ${timeTaken} ms</b></p><br>`);
+
+    {%else%}
+    resultsDiv.append(`<p><b>Results found: ${response.length} in ${timeTaken} ms (To get more results login)</b></p><br>`);
+
+    {%endif%}
 
                 if (response.length > 0) {
                     response.forEach((item, index) => {
