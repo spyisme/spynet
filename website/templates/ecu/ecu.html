@@ -24,9 +24,8 @@
             font-size: 2rem;
             text-align: center;
         }
-        h3{
+        h3 {
             text-align: center;
-
         }
 
         form {
@@ -36,28 +35,37 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
+
         @media only screen and (max-width: 768px) {
-            form{
+            form {
                 width: 80%;
-            }
-            #search-form {
-                text-align: center;
-            }
-            button{
-                margin-top: 10px ;
             }
         }
 
         input {
             width: 300px;
             padding: 10px;
-            margin-right: 10px;
+            margin-bottom: 10px;
             border: 1px solid #666; /* Darker border for input */
             border-radius: 5px;
             font-size: 1rem;
             background-color: #2e2e3e; /* Input background */
             color: #e4e4e7; /* Input text color */
+        }
+
+        select {
+            width: 320px;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #666; /* Darker border */
+            border-radius: 5px;
+            font-size: 1rem;
+            background-color: #2e2e3e; /* Dropdown background */
+            color: #e4e4e7; /* Dropdown text color */
         }
 
         button {
@@ -105,13 +113,8 @@
 </head>
 <body>
     <h1>ECU DATABASE BY SPY</h1>
-        
+
     <h3>Disclaimer: All data hosted here is public. (Students of Year 2023 and 2024)</h3>
-
-    <h5>Last update at 15-11-2024</h5>
-
-    <h6>The phone numbers of 2024 Engineering students are incorrect !</h6>
-
 
     <form id="search-form">
         <input type="text" id="query" name="query" placeholder="Search by ID, Name, or Phone" required>
@@ -124,57 +127,48 @@
         </select>
         <button type="submit">Search</button>
     </form>
-    <div id="results">Make a search!</div>
-    
 
-<br>
-<br>
+    <div id="results">Make a search!</div>
 
     <script>
-$(document).ready(function() {
-    $('#search-form').on('submit', function(event) {
-        event.preventDefault();
-        const query = $('#query').val();
-        const faculty = $('#faculty').val(); // Get the selected faculty
-        const searchButton = $(this).find('button');
-        searchButton.prop('disabled', true); // Disable the button
+        $(document).ready(function() {
+            $('#search-form').on('submit', function(event) {
+                event.preventDefault();
+                const query = $('#query').val();
+                const faculty = $('#faculty').val(); // Get the selected faculty
+                const searchButton = $(this).find('button');
+                searchButton.prop('disabled', true); // Disable the button
 
-        $.ajax({
-            url: '/search',
-            method: 'POST',
-            data: { query: query, faculty: faculty }, // Include faculty in the request
-            success: function(response) {
-                const resultsDiv = $('#results');
-                resultsDiv.empty();
+                $.ajax({
+                    url: '/search',
+                    method: 'POST',
+                    data: { query: query, faculty: faculty }, // Include faculty in the request
+                    success: function(response) {
+                        const resultsDiv = $('#results');
+                        resultsDiv.empty();
 
-                if (response.length > 0) {
-                    response.forEach((item, index) => {
-                        resultsDiv.append(
-                            `<p><strong>Name:</strong> ${item.name}</p>
-                            <p><strong>Phone:</strong> ${item.phone}</p>
-                            <p><strong>ID:</strong> ${item.id}</p>
-                             <p><strong>Faculty:</strong> ${item.faculty}</p>`
-                        );
-                        // Add <hr> only if it's not the last item or if the total is 15
-                        if (index !== response.length - 1 || response.length === 15) {
-                            resultsDiv.append('<hr>');
+                        if (response.length > 0) {
+                            response.forEach((item, index) => {
+                                resultsDiv.append(
+                                    `<p><strong>Name:</strong> ${item.name}</p>
+                                    <p><strong>Phone:</strong> ${item.phone}</p>
+                                    <p><strong>ID:</strong> ${item.id}</p>
+                                    <p><strong>Faculty:</strong> ${item.faculty}</p>`
+                                );
+                                if (index !== response.length - 1) {
+                                    resultsDiv.append('<hr>');
+                                }
+                            });
+                        } else {
+                            resultsDiv.html('<p>No results found</p>');
                         }
-                    });
-
-                    if (response.length === 15) {
-                        resultsDiv.append("Max results are 15!");
+                    },
+                    complete: function() {
+                        searchButton.prop('disabled', false); // Re-enable the button
                     }
-                } else {
-                    resultsDiv.html('<p>No results found</p>');
-                }
-            },
-            complete: function() {
-                searchButton.prop('disabled', false); // Re-enable the button
-            }
+                });
+            });
         });
-    });
-});
-
     </script>
 </body>
 </html>
