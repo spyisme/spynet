@@ -1151,11 +1151,13 @@ def nexi_register():
 def ecu_search():
     query = request.form.get('query')
     results = []
+    
     with open('website/Backend/ECU/ECU24~23.json', 'r') as f:
         data2 = json.load(f)
+
     for entry in data2:
-        email_id = entry['Email'].split('@')[0]
-        if query == email_id or query == entry['Phone']:
+        if query == entry['id'] or query == entry['Phone']:
+
             if current_user.is_authenticated:
                 results.append({
                     'Name': entry['Name'],
