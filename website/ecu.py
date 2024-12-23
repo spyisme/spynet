@@ -1224,13 +1224,23 @@ def search_students():
 
     # Format results as JSON
     response = []
+        
     for row in results:
-        response.append({
-            "name": row[1],
-            "phone": row[3],
-            "id": row[0],
-            "faculty": row[4]
-        })
+        if current_user.is_authenticated :
+
+                response.append({
+                    "name": row[1],
+                    "phone": row[3],
+                    "id": row[0],
+                    "faculty": row[4]
+                })
+        else :
+            response.append({
+                    "name": row[1],
+                    "phone": "Login",
+                    "id": row[0],
+                    "faculty": row[4]
+                })
     return jsonify(response)
 
 @ecu.route('/ecu')
