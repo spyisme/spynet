@@ -1206,42 +1206,51 @@ def nexi_register():
 @ecu.route('/search', methods=['POST'])
 def ecu_search():
     query = request.form.get('query', '').strip()
+    faculty = request.form.get('faculty', '').strip()
+
     if not query:
         return jsonify({"error": "Query cannot be empty"}), 400
 
     conn = sqlite3.connect('website/Backend/ECU/ecu_students.db')
     cursor = conn.cursor()
-    cursor.execute('''
-        SELECT id, name, email, phone, faculty FROM students
-        WHERE id LIKE ? OR
-              name LIKE ? OR
-              email LIKE ? OR
-              phone LIKE ? OR
-              faculty LIKE ?
-    ''', (f"%{query}%", f"%{query}%", f"%{query}%", f"%{query}%", f"%{query}%"))
+
+    if faculty:
+        # Search by query and filter by faculty
+        cursor.execute('''
+            SELECT id, name, email, phone, faculty FROM students
+            WHERE (id LIKE ? OR name LIKE ? OR email LIKE ? OR phone LIKE ?)
+              AND faculty LIKE ?
+        ''', (f"%{query}%", f"%{query}%", f"%{query}%", f"%{query}%", f"%{faculty}%"))
+    else:
+        # Search by query without filtering by faculty
+        cursor.execute('''
+            SELECT id, name, email, phone, faculty FROM students
+            WHERE id LIKE ? OR name LIKE ? OR email LIKE ? OR phone LIKE ? OR faculty LIKE ?
+        ''', (f"%{query}%", f"%{query}%", f"%{query}%", f"%{query}%", f"%{query}%"))
+
     results = cursor.fetchall()
     conn.close()
 
     # Format results as JSON
     response = []
-        
     for row in results:
-        if current_user.is_authenticated :
-
-                response.append({
-                    "name": row[1],
-                    "phone": row[3],
-                    "id": row[0],
-                    "faculty": row[4]
-                })
-        else :
+        if current_user.is_authenticated:
             response.append({
-                    "name": row[1],
-                    "phone": "Login to see results",
-                    "id": row[0],
-                    "faculty": row[4]
-                })
+                "name": row[1],
+                "phone": row[3],
+                "id": row[0],
+                "faculty": row[4]
+            })
+        else:
+            response.append({
+                "name": row[1],
+                "phone": "Login to see results",
+                "id": row[0],
+                "faculty": row[4]
+            })
+
     return jsonify(response)
+
 
 @ecu.route('/ecu')
 def ecu_search_display():

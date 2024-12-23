@@ -113,11 +113,19 @@
     <h6>The phone numbers of 2024 Engineering students are incorrect !</h6>
 
 
-<form id="search-form">
-    <input type="text" id="query" name="query" placeholder="Search by ID, Name, Phone, or Faculty" required>
-    <button type="submit">Search</button>
-</form>
-<div id="results">Make a search!</div>
+    <form id="search-form">
+        <input type="text" id="query" name="query" placeholder="Search by ID, Name, or Phone" required>
+        <select id="faculty" name="faculty">
+            <option value="">All Faculties</option>
+            <option value="Engineering">Engineering</option>
+            <option value="Economics">Economics</option>
+            <option value="Physical Therapy">Physical Therapy</option>
+            <option value="Pharmacy">Pharmacy</option>
+        </select>
+        <button type="submit">Search</button>
+    </form>
+    <div id="results">Make a search!</div>
+    
 
 <br>
 <br>
@@ -127,13 +135,14 @@ $(document).ready(function() {
     $('#search-form').on('submit', function(event) {
         event.preventDefault();
         const query = $('#query').val();
+        const faculty = $('#faculty').val(); // Get the selected faculty
         const searchButton = $(this).find('button');
         searchButton.prop('disabled', true); // Disable the button
 
         $.ajax({
             url: '/search',
             method: 'POST',
-            data: { query: query },
+            data: { query: query, faculty: faculty }, // Include faculty in the request
             success: function(response) {
                 const resultsDiv = $('#results');
                 resultsDiv.empty();
@@ -153,7 +162,7 @@ $(document).ready(function() {
                     });
 
                     if (response.length === 15) {
-                        resultsDiv.append("Max results are 15 !");
+                        resultsDiv.append("Max results are 15!");
                     }
                 } else {
                     resultsDiv.html('<p>No results found</p>');
