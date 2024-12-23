@@ -1166,9 +1166,9 @@ def ecu_search():
         email_match = query in entry['Email'].lower()
         if id_match or phone_match or name_match or email_match:
             search = search + 1
-            if search < max_search :
+            if search <= max_search :
                 if current_user.is_authenticated:
-                    
+
                     if entry['Email'] == '192400300@ecu.edu.eg' :
                         results.append({
                             'Name': "Hidden",
