@@ -1214,13 +1214,15 @@ def ecu_search():
     conn = sqlite3.connect('website/Backend/ECU/ecu_students.db')
     cursor = conn.cursor()
 
-    max_search = 15
 
-    #Extra for me
+
     if current_user.is_authenticated:
         max_search = 999999
     else :
+        max_search = 15
         discord_log_english(f"<@709799648143081483> There is a search for {query}")
+
+        
     if faculty:
         # Search by query and filter by faculty
         cursor.execute('''
