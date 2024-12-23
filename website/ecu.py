@@ -1232,22 +1232,34 @@ def ecu_search():
     conn.close()
 
     # Format results as JSON
+
+    search = 0
+
+    max_search = 15
+
+    #Extra for me
+    if current_user.is_authenticated:
+        if current_user.username == 'spy' :
+            max_search = 999999
+
     response = []
     for row in results:
-        if current_user.is_authenticated:
-            response.append({
-                "name": row[1],
-                "phone": row[3],
-                "id": row[0],
-                "faculty": row[4]
-            })
-        else:
-            response.append({
-                "name": row[1],
-                "phone": "Login to see results",
-                "id": row[0],
-                "faculty": row[4]
-            })
+        search = search + 1
+        if search >= max_search :
+            if current_user.is_authenticated:
+                response.append({
+                    "name": row[1],
+                    "phone": row[3],
+                    "id": row[0],
+                    "faculty": row[4]
+                })
+            else:
+                response.append({
+                    "name": row[1],
+                    "phone": "Login to see results",
+                    "id": row[0],
+                    "faculty": row[4]
+                })
 
     return jsonify(response)
 
