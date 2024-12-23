@@ -1158,9 +1158,9 @@ def ecu_search():
 
     # Perform partial search
     for entry in data2:
-        id_match = query in str(entry['id']).lower()
         phone_match = query in str(entry['Phone']).lower()
         name_match = query in entry['Name'].lower()
+        id_match = query in str(entry['id']).lower()
         email_match = query in entry['Email'].lower()
 
         if id_match or phone_match or name_match or email_match:
