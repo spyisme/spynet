@@ -1260,7 +1260,6 @@ def ecu_search():
                     "id": row[0],
                     "faculty": row[4]
                 })
-
     return jsonify(response)
 
 

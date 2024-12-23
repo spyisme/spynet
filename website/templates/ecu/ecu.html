@@ -146,6 +146,7 @@
                     success: function(response) {
                         const resultsDiv = $('#results');
                         resultsDiv.empty();
+                        resultsDiv.append(`Results found ${response.length}`);
 
                         if (response.length > 0) {
                             response.forEach((item, index) => {
