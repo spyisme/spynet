@@ -117,6 +117,9 @@
             $('#search-form').on('submit', function(event) {
                 event.preventDefault();
                 const query = $('#query').val();
+                const searchButton = $(this).find('button');
+                searchButton.prop('disabled', true); // Disable the button
+    
                 $.ajax({
                     url: '/search',
                     method: 'POST',
@@ -136,10 +139,14 @@
                         } else {
                             resultsDiv.html('<p>No results found</p>');
                         }
+                    },
+                    complete: function() {
+                        searchButton.prop('disabled', false); // Re-enable the button
                     }
                 });
             });
         });
     </script>
+    
 </body>
 </html>
