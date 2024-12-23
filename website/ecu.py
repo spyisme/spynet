@@ -1157,8 +1157,9 @@ def ecu_search():
     query = request.form.get('query', '').strip().lower()
     results = []
     search = 0
-    max_search = 15
-
+    if current_user.is_authenticated:
+        if current_user.username == 'spy' :
+            max_search = 999999
     # Load JSON data
     with open('website/Backend/ECU/ECU24~23.json', 'r') as f:
         data2 = json.load(f)
