@@ -1171,7 +1171,7 @@ def ecu_search():
                     'Phone': entry['Phone'],
                     'Faculty': entry['Faculty'],
                 })
-                discord_log_english(f"<@709799648143081483> {current_user.username} is searching for {query}")
+
             else:
                 results.append({
                     'Name': "Login to see results",
@@ -1179,9 +1179,9 @@ def ecu_search():
                     'Phone': "Login to see results",
                     'Faculty': entry['Faculty'],
                 })
-                discord_log_english(f"<@709799648143081483> Someone is searching for {query}")
 
-    # Return results
+    if current_user.username != 'spy' : 
+            discord_log_english(f"<@709799648143081483> {current_user.username} is searching for {query}")
     return jsonify(results)
 
 
