@@ -1240,29 +1240,26 @@ def ecu_search():
     results = cursor.fetchall()
     conn.close()
 
-    # Format results as JSON
 
-    search = 0
 
 
     response = []
     for row in results:
-        search = search + 1
-        if search <= max_search :
-            if current_user.is_authenticated:
-                response.append({
-                    "name": row[1],
-                    "phone": row[3],
-                    "id": row[0],
-                    "faculty": row[4]
-                })
-            else:
-                response.append({
-                    "name": row[1],
-                    "phone": "Login to see results",
-                    "id": row[0],
-                    "faculty": row[4]
-                })
+
+        if current_user.is_authenticated:
+            response.append({
+                "name": row[1],
+                "phone": row[3],
+                "id": row[0],
+                "faculty": row[4]
+            })
+        else:
+            response.append({
+                "name": row[1],
+                "phone": "Login to see results",
+                "id": row[0],
+                "faculty": row[4]
+            })
     return jsonify(response)
 
 
