@@ -1185,16 +1185,16 @@ def ecu_search():
 
                     results.append({
                         'Name': entry['Name'],
-                        'Email': entry['Email'],
                         'Phone': entry['Phone'],
+                        'Email': entry['Email'],
                         'Faculty': entry['Faculty'],
                     })  
 
                 else:
                     results.append({
                         'Name':  entry['Name'],
-                        'Email': entry['Email'],
                         'Phone': "Login to see results",
+                        'Email': entry['Email'],
                         'Faculty': entry['Faculty'],
                     })
     
