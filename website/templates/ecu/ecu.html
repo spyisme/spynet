@@ -155,10 +155,16 @@
                                     <p><strong>ID:</strong> ${item.id}</p>
                                     <p><strong>Faculty:</strong> ${item.faculty}</p>`
                                 );
-                                if (index !== response.length - 1) {
-                                    resultsDiv.append('<hr>');
-                                }
-                            });
+
+                                if (index !== response.length - 1 || response.length === 15) {
+                            resultsDiv.append('<hr>');
+                        }
+                    });
+
+                    if (response.length === 15) {
+                        resultsDiv.append("Max results are 15!");
+                    }
+ 
                         } else {
                             resultsDiv.html('<p>No results found</p>');
                         }
