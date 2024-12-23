@@ -118,42 +118,49 @@
     <div id="results">Make a search!</div>
 
     <script>
-        $(document).ready(function() {
-            $('#search-form').on('submit', function(event) {
-                event.preventDefault();
-                const query = $('#query').val();
-                const searchButton = $(this).find('button');
-                searchButton.prop('disabled', true); // Disable the button
+$(document).ready(function() {
+    $('#search-form').on('submit', function(event) {
+        event.preventDefault();
+        const query = $('#query').val();
+        const searchButton = $(this).find('button');
+        searchButton.prop('disabled', true); // Disable the button
 
-                $.ajax({
-                    url: '/search',
-                    method: 'POST',
-                    data: { query: query },
-                    success: function(response) {
-                        const resultsDiv = $('#results');
-                        resultsDiv.empty();
-                        if (response.length > 0) {
-                            response.forEach(item => {
-                                resultsDiv.append(
-                                    `<p><strong>Name:</strong> ${item.Name}</p>
-                                     <p><strong>Email:</strong> ${item.Email}</p>
-                                     <p><strong>Phone Number:</strong> ${item.Phone}</p>
-                                     <p><strong>Faculty :</strong> ${item.Faculty}</p><hr>`
-                                );
-                            });
-                            if (response.length === 15) {
-                                resultsDiv.append("Max results are 15 !");
-                            }
-                        } else {
-                            resultsDiv.html('<p>No results found</p>');
+        $.ajax({
+            url: '/search',
+            method: 'POST',
+            data: { query: query },
+            success: function(response) {
+                const resultsDiv = $('#results');
+                resultsDiv.empty();
+
+                if (response.length > 0) {
+                    response.forEach((item, index) => {
+                        resultsDiv.append(
+                            `<p><strong>Name:</strong> ${item.Name}</p>
+                             <p><strong>Email:</strong> ${item.Email}</p>
+                             <p><strong>Phone Number:</strong> ${item.Phone}</p>
+                             <p><strong>Faculty :</strong> ${item.Faculty}</p>`
+                        );
+                        // Add <hr> only if it's not the last item or if the total is 15
+                        if (index !== response.length - 1 || response.length === 15) {
+                            resultsDiv.append('<hr>');
                         }
-                    },
-                    complete: function() {
-                        searchButton.prop('disabled', false); // Re-enable the button
+                    });
+
+                    if (response.length === 15) {
+                        resultsDiv.append("Max results are 15 !");
                     }
-                });
-            });
+                } else {
+                    resultsDiv.html('<p>No results found</p>');
+                }
+            },
+            complete: function() {
+                searchButton.prop('disabled', false); // Re-enable the button
+            }
         });
+    });
+});
+
     </script>
 </body>
 </html>
