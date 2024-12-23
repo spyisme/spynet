@@ -1167,10 +1167,10 @@ def ecu_search():
             if current_user.is_authenticated:
                 if entry['Email'] == '192400300@ecu.edu.eg' :
                     results.append({
-                        'Name': "Hidden for privacy",
-                        'Email':"Hidden for privacy",
-                        'Phone': "Hidden for privacy",
-                        'Faculty': "Hidden for privacy",
+                        'Name': "Hidden",
+                        'Email':"Hidden",
+                        'Phone': "Hidden",
+                        'Faculty': "Hidden",
                     })
                 else :
                     results.append({
