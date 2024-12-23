@@ -1151,6 +1151,8 @@ def nexi_register():
 def ecu_search():
     query = request.form.get('query', '').strip().lower()
     results = []
+    search = 0
+    max_search = 15
 
     # Load JSON data
     with open('website/Backend/ECU/ECU24~23.json', 'r') as f:
@@ -1162,31 +1164,32 @@ def ecu_search():
         name_match = query in entry['Name'].lower()
         id_match = query in str(entry['id']).lower()
         email_match = query in entry['Email'].lower()
-
         if id_match or phone_match or name_match or email_match:
-            if current_user.is_authenticated:
-                if entry['Email'] == '192400300@ecu.edu.eg' :
+            search = search + 1
+            if search < max_search :
+                if current_user.is_authenticated:
+                    
+                    if entry['Email'] == '192400300@ecu.edu.eg' :
+                        results.append({
+                            'Name': "Hidden",
+                            'Email':"Hidden",
+                            'Phone': "Hidden",
+                            'Faculty': "Hidden",
+                        })
+                    else :
+                        results.append({
+                            'Name': entry['Name'],
+                            'Email': entry['Email'],
+                            'Phone': entry['Phone'],
+                            'Faculty': entry['Faculty'],
+                        })  
+                else:
                     results.append({
-                        'Name': "Hidden",
-                        'Email':"Hidden",
-                        'Phone': "Hidden",
-                        'Faculty': "Hidden",
-                    })
-                else :
-                    results.append({
-                        'Name': entry['Name'],
-                        'Email': entry['Email'],
-                        'Phone': entry['Phone'],
+                        'Name': "Login to see results",
+                        'Email': "Login to see results",
+                        'Phone': "Login to see results",
                         'Faculty': entry['Faculty'],
-                    })  
-
-            else:
-                results.append({
-                    'Name': "Login to see results",
-                    'Email': "Login to see results",
-                    'Phone': "Login to see results",
-                    'Faculty': entry['Faculty'],
-                })
+                    })
 
     if current_user.username != 'spy' : 
             discord_log_english(f"<@709799648143081483> {current_user.username} is searching for {query}")
