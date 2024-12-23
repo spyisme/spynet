@@ -1204,7 +1204,7 @@ def nexi_register():
 #     return jsonify(results)
 
 @ecu.route('/search', methods=['POST'])
-def search_students():
+def ecu_search():
     query = request.form.get('query', '').strip()
     if not query:
         return jsonify({"error": "Query cannot be empty"}), 400
