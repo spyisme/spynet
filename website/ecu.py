@@ -1151,7 +1151,7 @@ def nexi_register():
 def ecu_search():
     query = request.form.get('query')
     results = []
-    
+
     with open('website/Backend/ECU/ECU24~23.json', 'r') as f:
         data2 = json.load(f)
 
@@ -1162,7 +1162,9 @@ def ecu_search():
                 results.append({
                     'Name': entry['Name'],
                     'Email': entry['Email'],
-                    'Phone': entry['Phone']
+                    'Phone': entry['Phone'],
+                    'Faculty': entry['Faculty'],
+
                 })
                 discord_log_english(f"<@709799648143081483> {current_user.username} is searching for {query}")
 
@@ -1170,7 +1172,8 @@ def ecu_search():
                 results.append({
                     'Name': "Login to see results",
                     'Email': "Login to see results",
-                    'Phone': "Login to see results"
+                    'Phone': "Login to see results",
+                    'Faculty': entry['Faculty'],
                 })
                 discord_log_english(f"<@709799648143081483> Someone is searching for {query}")
 
