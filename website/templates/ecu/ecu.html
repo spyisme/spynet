@@ -141,7 +141,9 @@
                                      <p><strong>Faculty :</strong> ${item.Faculty}</p><hr>`
                                 );
                             });
-                            resultsDiv.append("Max results 15");
+                            if (response.length = 15) {
+                                resultsDiv.append("Max results are 15 !");
+                            }
                         } else {
                             resultsDiv.html('<p>No results found</p>');
                         }
