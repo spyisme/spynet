@@ -115,7 +115,10 @@
     <h1>ECU DATABASE BY SPY</h1>
 
     <h3>Disclaimer: All data hosted here is public. (Students of Year 2023 and 2024)</h3>
-
+    {%if current_user.is_authenticated%}
+    {%else%}
+    <h3>Login to get more than 15 result per search</h3>
+    {%endif%}
     <form id="search-form">
         <input type="text" id="query" name="query" placeholder="Search by ID, Name, or Phone" required>
         <select id="faculty" name="faculty">
