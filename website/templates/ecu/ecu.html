@@ -42,8 +42,8 @@
                 width: 80%;
             }
             #search-form {
-        text-align: center;
-    }
+                text-align: center;
+            }
             button{
                 margin-top: 10px ;
             }
@@ -73,6 +73,11 @@
 
         button:hover {
             background-color: #3a7bd5; /* Darker blue on hover */
+        }
+
+        button:disabled {
+            background-color: #1e3a8a; /* Dark blue when disabled */
+            cursor: not-allowed; /* Change cursor to not-allowed */
         }
 
         #results {
@@ -119,7 +124,7 @@
                 const query = $('#query').val();
                 const searchButton = $(this).find('button');
                 searchButton.prop('disabled', true); // Disable the button
-    
+
                 $.ajax({
                     url: '/search',
                     method: 'POST',
@@ -147,6 +152,5 @@
             });
         });
     </script>
-    
 </body>
 </html>
