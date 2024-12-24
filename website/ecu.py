@@ -1215,16 +1215,13 @@ def ecu_search():
     cursor = conn.cursor()
 
 
-
     if current_user.is_authenticated:
         max_search = 999999
     else :
         max_search = 15
         discord_log_english(f"<@709799648143081483> There is a search for {query}")
 
-        
     if faculty:
-        # Search by query and filter by faculty
         cursor.execute('''
             SELECT id, name, email, phone, faculty FROM students
             WHERE (id LIKE ? OR name LIKE ? OR email LIKE ? OR phone LIKE ?)
@@ -1232,7 +1229,7 @@ def ecu_search():
                         LIMIT ? 
         ''', (f"%{query}%", f"%{query}%", f"%{query}%", f"%{query}%", f"%{faculty}%" , max_search))
     else:
-        # Search by query without filtering by faculty
+
         cursor.execute('''
             SELECT id, name, email, phone, faculty FROM students
             WHERE id LIKE ? OR name LIKE ? OR email LIKE ? OR phone LIKE ? OR faculty LIKE ?
@@ -1241,9 +1238,6 @@ def ecu_search():
 
     results = cursor.fetchall()
     conn.close()
-
-
-
 
     response = []
     for row in results:
