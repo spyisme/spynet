@@ -1231,8 +1231,11 @@ def ecu_search():
             SELECT id, name, email, phone, faculty FROM students
             WHERE (id LIKE ? OR name LIKE ? OR email LIKE ? OR phone LIKE ?)
         '''
+        params = [f"%{query}%", f"%{query}%", f"%{query}%", f"%{query}%"]
+
         if faculty:
             base_query += " AND faculty LIKE ?"
+            params.append(f"%{faculty}%")
 
         base_query += '''
             ORDER BY
@@ -1245,11 +1248,7 @@ def ecu_search():
             LIMIT ? OFFSET ?
         '''
 
-        params = [
-            f"%{query}%", f"%{query}%", f"%{query}%", f"%{query}%",
-            f"%{faculty}%" if faculty else f"%{query}%",
-            f"{query}", f"%{query}%", items_per_page, offset
-        ]
+        params.extend([f"{query}", f"%{query}%", items_per_page, offset])
 
         cursor.execute(base_query, params)
         results = cursor.fetchall()
@@ -1279,7 +1278,6 @@ def ecu_search():
         return jsonify({"error": f"Database error: {e}"}), 500
     except Exception as e:
         return jsonify({"error": f"Unexpected error: {e}"}), 500
-
 
 
 
