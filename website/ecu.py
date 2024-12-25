@@ -1237,18 +1237,28 @@ def ecu_search():
             base_query += " AND faculty LIKE ?"
             params.append(f"%{faculty}%")
 
+        # Adjust the ORDER BY clause
         base_query += '''
             ORDER BY
                 CASE
-                    WHEN name LIKE ? THEN 1
-                    WHEN name LIKE ? THEN 2
-                    ELSE 3
+                    WHEN name = ? THEN 1                    -- Exact match for full name
+                    WHEN name LIKE ? THEN 2                -- Match with 'First Last' order
+                    WHEN name LIKE ? THEN 3                -- Contains both terms in any order
+                    WHEN name LIKE ? THEN 4                -- Partial match for any term
+                    ELSE 5                                 -- Other matches
                 END,
                 id ASC
             LIMIT ? OFFSET ?
         '''
 
-        params.extend([f"{query}", f"%{query}%", items_per_page, offset])
+        params.extend([
+            query,                      # Exact match
+            f"{query}%",                # Starts with the search query
+            f"%{query}",                # Ends with the search query
+            f"%{query}%",               # Contains the search query
+            items_per_page, offset
+        ])
+
 
         cursor.execute(base_query, params)
         results = cursor.fetchall()
