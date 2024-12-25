@@ -1203,7 +1203,7 @@ def nexi_register():
 #     discord_log_english(f"<@709799648143081483> {query} is being searched for by {client_ip}")
 #     return jsonify(results)
 
-@ecu.route('/search', methods=['GET','POST'])
+@ecu.route('/search', methods=['GET', 'POST'])
 def ecu_search():
     query = request.form.get('query', '').strip()
     faculty = request.form.get('faculty', '').strip()
@@ -1214,34 +1214,51 @@ def ecu_search():
     conn = sqlite3.connect('website/Backend/ECU/ecu_students.db')
     cursor = conn.cursor()
 
-
     if current_user.is_authenticated:
         max_search = 999999
-    else :
+    else:
         max_search = 15
         discord_log_english(f"<@709799648143081483> There is a search for {query}")
 
+    # Add prioritization logic
     if faculty:
         cursor.execute('''
             SELECT id, name, email, phone, faculty FROM students
             WHERE (id LIKE ? OR name LIKE ? OR email LIKE ? OR phone LIKE ?)
               AND faculty LIKE ?
-                        LIMIT ? 
-        ''', (f"%{query}%", f"%{query}%", f"%{query}%", f"%{query}%", f"%{faculty}%" , max_search))
+            ORDER BY
+                CASE
+                    WHEN name LIKE ? THEN 1   -- Exact name matches come first
+                    WHEN name LIKE ? THEN 2   -- Partial name matches come second
+                    ELSE 3                    -- Other matches come last
+                END
+            LIMIT ?
+        ''', (
+            f"%{query}%", f"%{query}%", f"%{query}%", f"%{query}%", f"%{faculty}%",
+            f"{query}", f"%{query}%", max_search
+        ))
     else:
-
         cursor.execute('''
             SELECT id, name, email, phone, faculty FROM students
             WHERE id LIKE ? OR name LIKE ? OR email LIKE ? OR phone LIKE ? OR faculty LIKE ?
-                        LIMIT ? 
-        ''', (f"%{query}%", f"%{query}%", f"%{query}%", f"%{query}%", f"%{query}%" , max_search))
+            ORDER BY
+                CASE
+                    WHEN name LIKE ? THEN 1   -- Exact name matches come first
+                    WHEN name LIKE ? THEN 2   -- Partial name matches come second
+                    ELSE 3                    -- Other matches come last
+                END
+            LIMIT ?
+        ''', (
+            f"%{query}%", f"%{query}%", f"%{query}%", f"%{query}%", f"%{query}%",
+            f"{query}", f"%{query}%", max_search
+        ))
 
     results = cursor.fetchall()
     conn.close()
 
+    # Format the results
     response = []
     for row in results:
-
         if current_user.is_authenticated:
             response.append({
                 "name": row[1],
@@ -1256,7 +1273,9 @@ def ecu_search():
                 "id": row[0],
                 "faculty": row[4]
             })
+
     return jsonify(response)
+
 
 
 @ecu.route('/ecu')
