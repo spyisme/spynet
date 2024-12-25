@@ -1205,77 +1205,81 @@ def nexi_register():
 
 @ecu.route('/search', methods=['GET', 'POST'])
 def ecu_search():
-    query = request.form.get('query', '').strip()
-    faculty = request.form.get('faculty', '').strip()
+    try:
+        query = request.form.get('query', '').strip()
+        faculty = request.form.get('faculty', '').strip()
 
-    if not query:
-        return jsonify({"error": "Query cannot be empty"}), 400
+        if not query:
+            return jsonify({"error": "Query cannot be empty"}), 400
 
-    conn = sqlite3.connect('website/Backend/ECU/ecu_students.db')
-    cursor = conn.cursor()
+        conn = sqlite3.connect('website/Backend/ECU/ecu_students.db')
+        cursor = conn.cursor()
 
-    if current_user.is_authenticated:
-        max_search = 999999
-    else:
-        max_search = 15
-        discord_log_english(f"<@709799648143081483> There is a search for {query}")
+        if current_user.is_authenticated:
+            max_search = 999999
+        else:
+            max_search = 15
+            discord_log_english(f"<@709799648143081483> Unauthenticated search for '{query}'")
 
-    # Add prioritization logic
-    if faculty:
-        cursor.execute('''
+        # Add pagination (page number and items per page)
+        page = int(request.form.get('page', 1))
+        items_per_page = int(request.form.get('items_per_page', max_search))
+        offset = (page - 1) * items_per_page
+
+        # Construct the query dynamically
+        base_query = '''
             SELECT id, name, email, phone, faculty FROM students
             WHERE (id LIKE ? OR name LIKE ? OR email LIKE ? OR phone LIKE ?)
-            AND faculty LIKE ?
+        '''
+        if faculty:
+            base_query += " AND faculty LIKE ?"
+
+        base_query += '''
             ORDER BY
                 CASE
-                    WHEN name LIKE ? THEN 1  -- Exact name match
-                    WHEN name LIKE ? THEN 2  -- Partial match: Both terms in order
-                    ELSE 3                   -- All other matches
+                    WHEN name LIKE ? THEN 1
+                    WHEN name LIKE ? THEN 2
+                    ELSE 3
                 END,
-                id ASC -- Maintain secondary order by ID
-            LIMIT ?
-        ''', (
-            f"%{query}%", f"%{query}%", f"%{query}%", f"%{query}%", f"%{faculty}%",
-            f"{query}", f"%{query}%", max_search
-        ))
-    else:
-        cursor.execute('''
-            SELECT id, name, email, phone, faculty FROM students
-            WHERE id LIKE ? OR name LIKE ? OR email LIKE ? OR phone LIKE ? OR faculty LIKE ?
-            ORDER BY
-                CASE
-                    WHEN name LIKE ? THEN 1  -- Exact name match
-                    WHEN name LIKE ? THEN 2  -- Partial match: Both terms in order
-                    ELSE 3                   -- All other matches
-                END,
-                id ASC -- Maintain secondary order by ID
-            LIMIT ?
-        ''', (
-            f"%{query}%", f"%{query}%", f"%{query}%", f"%{query}%", f"%{query}%",
-            f"{query}", f"%{query}%", max_search
-        ))
-    results = cursor.fetchall()
-    conn.close()
+                id ASC
+            LIMIT ? OFFSET ?
+        '''
 
-    # Format the results
-    response = []
-    for row in results:
-        if current_user.is_authenticated:
-            response.append({
-                "name": row[1],
-                "phone": row[3],
-                "id": row[0],
-                "faculty": row[4]
-            })
-        else:
-            response.append({
-                "name": row[1],
-                "phone": "Login to see results",
-                "id": row[0],
-                "faculty": row[4]
-            })
+        params = [
+            f"%{query}%", f"%{query}%", f"%{query}%", f"%{query}%",
+            f"%{faculty}%" if faculty else f"%{query}%",
+            f"{query}", f"%{query}%", items_per_page, offset
+        ]
 
-    return jsonify(response)
+        cursor.execute(base_query, params)
+        results = cursor.fetchall()
+        conn.close()
+
+        # Format and return the results
+        response = []
+        for row in results:
+            if current_user.is_authenticated:
+                response.append({
+                    "name": row[1],
+                    "phone": row[3],
+                    "id": row[0],
+                    "faculty": row[4]
+                })
+            else:
+                response.append({
+                    "name": row[1],
+                    "phone": "Login to see results",
+                    "id": row[0],
+                    "faculty": row[4]
+                })
+
+        return jsonify(response)
+
+    except sqlite3.Error as e:
+        return jsonify({"error": f"Database error: {e}"}), 500
+    except Exception as e:
+        return jsonify({"error": f"Unexpected error: {e}"}), 500
+
 
 
 
