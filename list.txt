@@ -1,0 +1,6 @@
+yt-dlp -f "bv+ba" --cookies ./cookies.txt --merge-output-format mp4 https://youtu.be/as0Ky-o_OKw -o ./output/TamerCh3S2HWFatma.mp4
+yt-dlp -f "bv+ba" --cookies ./cookies.txt --merge-output-format mp4 https://youtu.be/e4z7hAsuQ2s -o ./output/TamerCh3S2HWHady.mp4
+yt-dlp -f "bv+ba" --cookies ./cookies.txt --merge-output-format mp4 https://youtu.be/4VLCq-QcCu0 -o ./output/TamerCh3S3HWFatma.mp4
+yt-dlp -f "bv+ba" --cookies ./cookies.txt --merge-output-format mp4 https://youtu.be/1LA2i_HsgnA -o ./output/TamerCh3S3HWHady.mp4
+yt-dlp -f "bv+ba" --cookies ./cookies.txt --merge-output-format mp4 https://www.youtube.com/watch?v=yDIb1xQIPYA -o ./output/SamehS4hw.mp4
+yt-dlp -f "bv+ba" --cookies ./cookies.txt --merge-output-format mp4 https://youtu.be/07DLRB4evVA -o ./output/SamehS5Hw.mp4
