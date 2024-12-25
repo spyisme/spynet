@@ -1225,13 +1225,14 @@ def ecu_search():
         cursor.execute('''
             SELECT id, name, email, phone, faculty FROM students
             WHERE (id LIKE ? OR name LIKE ? OR email LIKE ? OR phone LIKE ?)
-              AND faculty LIKE ?
+            AND faculty LIKE ?
             ORDER BY
                 CASE
-                    WHEN name LIKE ? THEN 1   -- Exact name matches come first
-                    WHEN name LIKE ? THEN 2   -- Partial name matches come second
-                    ELSE 3                    -- Other matches come last
-                END
+                    WHEN name LIKE ? THEN 1  -- Exact name match
+                    WHEN name LIKE ? THEN 2  -- Partial match: Both terms in order
+                    ELSE 3                   -- All other matches
+                END,
+                id ASC -- Maintain secondary order by ID
             LIMIT ?
         ''', (
             f"%{query}%", f"%{query}%", f"%{query}%", f"%{query}%", f"%{faculty}%",
@@ -1243,16 +1244,16 @@ def ecu_search():
             WHERE id LIKE ? OR name LIKE ? OR email LIKE ? OR phone LIKE ? OR faculty LIKE ?
             ORDER BY
                 CASE
-                    WHEN name LIKE ? THEN 1   -- Exact name matches come first
-                    WHEN name LIKE ? THEN 2   -- Partial name matches come second
-                    ELSE 3                    -- Other matches come last
-                END
+                    WHEN name LIKE ? THEN 1  -- Exact name match
+                    WHEN name LIKE ? THEN 2  -- Partial match: Both terms in order
+                    ELSE 3                   -- All other matches
+                END,
+                id ASC -- Maintain secondary order by ID
             LIMIT ?
         ''', (
             f"%{query}%", f"%{query}%", f"%{query}%", f"%{query}%", f"%{query}%",
             f"{query}", f"%{query}%", max_search
         ))
-
     results = cursor.fetchall()
     conn.close()
 
