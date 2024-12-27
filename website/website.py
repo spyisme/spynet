@@ -1068,11 +1068,12 @@ def stages_data():
     zip_filename = 'website/stagesdata.zip'
     files_to_zip = [
         'website/Backend/stage1_data.json', 'website/Backend/stage2_data.json',
-        'website/Backend/stage3_data.json'
+        'website/Backend/stage3_data.json',
+        'website/Backend/stage4_data.json' , 
     ]
 
     try:
-        os.remove('website/stagesdata.zip')
+        os.remove(zip_filename)
     except:
         pass
 
