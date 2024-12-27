@@ -12,7 +12,6 @@ font-family: Arial, sans-serif;
     background-color: black;
     border-radius: 20px;
     box-sizing: border-box;
-    height: 500px; /* You can adjust the height as needed */
     padding: 20px;
     width: 100%; /* Full width */
     max-width: 400px; /* Limiting maximum width for better readability */
