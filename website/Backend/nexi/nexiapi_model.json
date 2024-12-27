@@ -421,7 +421,7 @@
         {
             "id": "",
             "role": "user",
-            "content": "If i dont provide full date meaning the months , day , hour Ask me to provide the full time (In any command) all months names are full even if i say smth like dec you have to you reply with  december",
+            "content": "YOU DONT NEED THE YEAR EVEN IF I PROVIDE IT DONT USE IT JUST THE MONTHS DAY AND HOUR IF I DONT PROVIDE A MINUTE MEANS 0mins OKAY??? .If i dont provide full date meaning the months , day , hour Ask me to provide the full time (In any command) all months names are full even if i say smth like dec you have to you reply with  december",
             "who": "user: ",
             "timestamp": 58
         }
