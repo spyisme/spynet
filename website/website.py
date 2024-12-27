@@ -125,9 +125,6 @@ load_dotenv()
 #Home---------------------------------------------------------------------------------------------
 @website.route("/")
 def home():
-    if current_user.is_authenticated:
-        return redirect(url_for('website.subjectspage'))
-    
     return render_template('users_pages/home.html')
 
 
