@@ -779,37 +779,51 @@ def parse_time(time_str):
     today = datetime.now()
     try:
         if 'today' in time_str.lower():
-            # Remove "today." and split the remaining components
+            # Handle "today" case
             time_str = time_str.lower().replace('today.', '').strip()
             parts = time_str.split('.')
-            
-            # Extract time and optional extra minutes
             if len(parts) == 2:  # Format: "7pm.20mins"
                 hour, extra = parts
-                extra_minutes = 0
-                if 'mins' in extra:
-                    extra_minutes = int(extra.replace('mins', '').strip())
+                extra_minutes = int(extra.replace('mins', '').strip()) if 'mins' in extra else 0
             elif len(parts) == 1:  # Format: "7pm"
                 hour = parts[0]
                 extra_minutes = 0
             else:
                 raise ValueError(f"Invalid 'today' format: {time_str}")
 
-            # Parse hour (e.g., "7pm")
-            if ':' in hour:  # If time includes minutes
-                parsed_time = datetime.strptime(hour, '%I:%M%p')
-            else:  # Only hours
-                parsed_time = datetime.strptime(hour, '%I%p')
-
-            # Combine parsed data into a datetime object for today
-            final_time = today.replace(
-                hour=parsed_time.hour, minute=parsed_time.minute, second=0, microsecond=0
-            )
-            # Add extra minutes
+            # Parse hour
+            parsed_time = datetime.strptime(hour, '%I%p')
+            final_time = today.replace(hour=parsed_time.hour, minute=parsed_time.minute, second=0, microsecond=0)
             final_time += timedelta(minutes=extra_minutes)
             return final_time
 
-        raise ValueError(f"Unsupported time format: {time_str}")
+        elif '.' in time_str and time_str.count('.') >= 2:
+            # Handle specific date case (e.g., "march.7.7pm.20mins")
+            parts = time_str.split('.')
+            if len(parts) == 4:  # Format: "month.day.hour.extra"
+                month_str, day, hour, extra = parts
+                extra_minutes = int(extra.replace('mins', '').strip()) if 'mins' in extra else 0
+            elif len(parts) == 3:  # Format: "month.day.hour"
+                month_str, day, hour = parts
+                extra_minutes = 0
+            else:
+                raise ValueError(f"Invalid date format: {time_str}")
+
+            # Parse month and day
+            month = datetime.strptime(month_str, '%B').month
+            day = int(day)
+
+            # Parse hour
+            parsed_time = datetime.strptime(hour, '%I%p')
+            final_time = today.replace(
+                month=month, day=day, hour=parsed_time.hour, minute=parsed_time.minute, second=0, microsecond=0
+            )
+            final_time += timedelta(minutes=extra_minutes)
+            return final_time
+
+        else:
+            raise ValueError(f"Unsupported time format: {time_str}")
+
     except Exception as e:
         raise ValueError(f"Error parsing time: {time_str}. {e}")
     
@@ -823,16 +837,16 @@ def nexi():
             backend_data = json.load(file)
 
         flattened_reminders = [reminder[0] for reminder in backend_data['reminders']]
-        # try :
-        for reminder in flattened_reminders:
-            reminder['ParsedTime'] = parse_time(reminder['Time'])
+        try :
+            for reminder in flattened_reminders:
+                reminder['ParsedTime'] = parse_time(reminder['Time'])
 
-        sorted_reminders = sorted(flattened_reminders, key=lambda r: r['ParsedTime'])
+            sorted_reminders = sorted(flattened_reminders, key=lambda r: r['ParsedTime'])
 
-        with open('website/Backend/nexi/nexiapi_data.json', 'w') as file:
-            json.dump({"reminders": [[reminder] for reminder in sorted_reminders]}, file, indent=4, default=str)
-        # except :
-        #     sorted_reminders = flattened_reminders
+            with open('website/Backend/nexi/nexiapi_data.json', 'w') as file:
+                json.dump({"reminders": [[reminder] for reminder in sorted_reminders]}, file, indent=4, default=str)
+        except :
+            sorted_reminders = flattened_reminders
         with open('website/Backend/nexi/nexiapi_login.json', 'r') as file:
             accs = json.load(file)
         return render_template('ecu/test_pages/nexi.html', reminders=sorted_reminders , accs = accs)
