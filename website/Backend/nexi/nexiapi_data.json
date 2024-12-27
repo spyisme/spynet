@@ -13,6 +13,12 @@
                 "Time": "today.7pm",
                 "ParsedTime": "2024-12-27 19:00:00"
             }
+        ],
+        [
+            {
+                "Name": "do the hw",
+                "Time": "march.8.8pm.10mins"
+            }
         ]
     ]
 }
