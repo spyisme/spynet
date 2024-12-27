@@ -2,7 +2,7 @@
 html, body {
     margin: 0;
     padding: 0;
-    zoom: 90%;
+    zoom: 90%; /*Zoom to 90*/
     overflow: auto;
     height:100%;
     width: 100%;
