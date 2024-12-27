@@ -42,13 +42,14 @@ function loadLectures() {
                     filteredLectures.push(filteredLecture);
                 });
 
+                // Sort lectures by ID in ascending order
+                filteredLectures.sort((a, b) => a.id - b.id);
+
                 // Prepare result object
                 var lectures = {
                     "filtered_lectures": filteredLectures
                 };
                 console.log("Filtered Lectures:", lectures.filtered_lectures);
-
-
 
                 populateLectureDropdown(lectures.filtered_lectures);
                 populateParts(lectures.filtered_lectures[0]); // Initialize with the first lecture's parts
@@ -66,7 +67,6 @@ function loadLectures() {
     };
 
     xhr.send();
-
 
 }
 
