@@ -951,7 +951,7 @@ def create_user_route():
         return redirect("/admin")
 
     return render_template('admin/user_create.html',
-                           data=[{'name' : '4'},{'name': "3"}, {'name': "2"}, {'name': "1"}])
+                           data=[{'value': "4" , 'name' : "ECU Freshman"},{'value': "3" , 'name' : "3rd Sec"}, {'value': "2" , 'name' : "2nd Sec"}, {'value': "1" , 'name' : "1st Sec"}])
 
 
 @website.route('/user-manage/<user_id>', methods=['GET', 'POST'])
