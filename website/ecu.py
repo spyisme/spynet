@@ -4,7 +4,7 @@
 from flask import Blueprint , request , abort , redirect , render_template , jsonify , render_template_string
 import os
 from dotenv import load_dotenv
-from datetime import datetime
+from datetime import datetime , timedelta
 import requests
 import json
 import time
@@ -777,20 +777,42 @@ def read_html_file(file_path, **kwargs):
 
 def parse_time(time_str):
     today = datetime.now()
-    if 'today' in time_str.lower():
-        time_str = time_str.lower().replace('today.', '')
-        parsed_time = datetime.strptime(time_str, '%I%p')
-        return today.replace(hour=parsed_time.hour, minute=parsed_time.minute, second=0, microsecond=0)
-    elif '.' in time_str and time_str.count('.') == 2:
-        try:
-            month_str, day, hour = time_str.split('.')
-            month = datetime.strptime(month_str, '%B').month
-            parsed_time = datetime.strptime(hour, '%I%p')
-            return today.replace(month=month, day=int(day), hour=parsed_time.hour, minute=parsed_time.minute, second=0, microsecond=0)
-        except Exception as e:
-            raise ValueError(f"Error parsing time: {time_str}. {e}")
-    raise ValueError(f"Unsupported time format: {time_str}")
+    try:
+        if 'today' in time_str.lower():
+            # Remove "today." and split the remaining components
+            time_str = time_str.lower().replace('today.', '').strip()
+            parts = time_str.split('.')
+            
+            # Extract time and optional extra minutes
+            if len(parts) == 2:  # Format: "7pm.20mins"
+                hour, extra = parts
+                extra_minutes = 0
+                if 'mins' in extra:
+                    extra_minutes = int(extra.replace('mins', '').strip())
+            elif len(parts) == 1:  # Format: "7pm"
+                hour = parts[0]
+                extra_minutes = 0
+            else:
+                raise ValueError(f"Invalid 'today' format: {time_str}")
 
+            # Parse hour (e.g., "7pm")
+            if ':' in hour:  # If time includes minutes
+                parsed_time = datetime.strptime(hour, '%I:%M%p')
+            else:  # Only hours
+                parsed_time = datetime.strptime(hour, '%I%p')
+
+            # Combine parsed data into a datetime object for today
+            final_time = today.replace(
+                hour=parsed_time.hour, minute=parsed_time.minute, second=0, microsecond=0
+            )
+            # Add extra minutes
+            final_time += timedelta(minutes=extra_minutes)
+            return final_time
+
+        raise ValueError(f"Unsupported time format: {time_str}")
+    except Exception as e:
+        raise ValueError(f"Error parsing time: {time_str}. {e}")
+    
 @ecu.route('/nexi' , methods=["POST" , "GET"])
 def nexi():
 
