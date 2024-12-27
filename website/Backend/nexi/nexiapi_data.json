@@ -13,13 +13,6 @@
                 "Time": "today.7pm",
                 "ParsedTime": "2024-12-27 19:00:00"
             }
-        ],
-        [
-            {
-                "Name": "Project",
-                "Time": "December.31.7pm",
-                "ParsedTime": "2024-12-31 19:00:00"
-            }
         ]
     ]
 }
