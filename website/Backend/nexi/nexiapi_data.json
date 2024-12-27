@@ -3,9 +3,23 @@
         [
             {
                 "Name": "Birthday",
-                "Time": "march.7.7pm"
+                "Time": "march.7.7pm",
+                "ParsedTime": "2024-03-07 19:00:00"
+            }
+        ],
+        [
+            {
+                "Name": "School hw",
+                "Time": "today.7pm",
+                "ParsedTime": "2024-12-27 19:00:00"
+            }
+        ],
+        [
+            {
+                "Name": "Project",
+                "Time": "December.31.7pm",
+                "ParsedTime": "2024-12-31 19:00:00"
             }
         ]
-
     ]
 }
