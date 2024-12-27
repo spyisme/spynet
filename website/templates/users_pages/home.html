@@ -92,9 +92,13 @@
 
             <p class="subtitle"><a href="/computer-pdfs" target="_blank">Computer PDFs</a></p>
             <p class="subtitle"><a href="/english-assignment" target="_blank">ECU English Assignment Creator</a></p>
+            
+            {%if current_user.is_authenticated%}
+            <a href="/subjects"> <button class="submit">Home</button> </a> 
+{%else%}
+<a href="/register"> <button class="submit">Register</button> </a> <a href="/login"> <button class="submit">Login</button> </a>
 
-            <a href="/register"> <button class="submit">Register</button> </a> <a href="/login"> <button class="submit">Login</button> </a>
-
+{%endif%}
         </div>
 
   
