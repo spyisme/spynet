@@ -1146,7 +1146,7 @@ def nexi_register():
         return jsonify({"message": "Registration successful", "status": "success"}), 200
     else :
         
-        return jsonify({"message": "Please login", "status": "fail"}), 403
+        return jsonify({"message": "Please login to create accounts", "status": "error"}), 403
 
 
 #Ecu database ----------------------------------------------------------------------------------------------------------------
