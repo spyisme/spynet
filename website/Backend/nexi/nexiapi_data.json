@@ -13,6 +13,7 @@
                 "Time": "today.7pm",
                 "ParsedTime": "2024-12-27 19:00:00"
             }
+<<<<<<< HEAD
         ],
         [
             {
@@ -32,6 +33,8 @@
                 "Name": "do the hw",
                 "Time": "march.8.8pm.10mins"
             }
+=======
+>>>>>>> 0d22f736cbf1d20f33818bd46fefb41c410ca78b
         ]
     ]
 }
