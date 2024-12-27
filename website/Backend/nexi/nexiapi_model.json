@@ -417,6 +417,13 @@
             "content": "Understood",
             "who": "AI: ",
             "timestamp": 59
+        },
+        {
+            "id": "",
+            "role": "user",
+            "content": "If i dont provide full date meaning the months , day , hour Ask me to provide the full time (In any command) all months names are full even if i say smth like dec you have to you reply with  december",
+            "who": "user: ",
+            "timestamp": 58
         }
     ],
     "newMessage": "good boy now remember all the commands!",
