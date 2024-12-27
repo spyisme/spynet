@@ -892,7 +892,7 @@
                         "folder": "https://drive.google.com/drive/folders/142TCiyG-oCmkpgeLpEnHmGaRSmnN6Och?usp=drive_link"
                     }
                 ],
-                "description": "Old Sessions"
+                "description": "Statics and Calculus"
             }
         ]
     },
@@ -904,7 +904,7 @@
                 "courses": [
                     {
                         "name": "Calculus 1",
-                        "description": "1st Semester",
+                        "description": "2024",
                         "videos": [
                             {
                                 "id": "NWbXHg7BnKA",
@@ -965,7 +965,7 @@
                         "folder": ""
                     }
                 ],
-                "description": "ECU"
+                "description": ""
             }
         ]
     },
