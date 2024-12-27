@@ -5240,3 +5240,28 @@ Traceback (most recent call last):
   File "/usr/lib/python3.10/json/decoder.py", line 353, in raw_decode
     obj, end = self.scan_once(s, idx)
 json.decoder.JSONDecodeError: Expecting ',' delimiter: line 16 column 1 (char 361)
+Traceback (most recent call last):
+  File "/root/spysnet/website/ecu.py", line 812, in parse_time
+    raise ValueError(f"Unsupported time format: {time_str}")
+ValueError: Unsupported time format: march.7.7pm
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/root/spysnet/website/ecu.py", line 828, in nexi
+    reminder['ParsedTime'] = parse_time(reminder['Time'])
+  File "/root/spysnet/website/ecu.py", line 814, in parse_time
+    raise ValueError(f"Error parsing time: {time_str}. {e}")
+ValueError: Error parsing time: march.7.7pm. Unsupported time format: march.7.7pm
