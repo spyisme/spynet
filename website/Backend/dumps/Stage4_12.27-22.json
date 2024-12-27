@@ -977,51 +977,8 @@
                 "courses": [
                     {
                         "name": "Freshman",
-                        "description": "Revisions",
-                        "videos": [
-                            {
-                                "id": "Vt2N404CL0c",
-                                "title": "S3",
-                                "duration": "00:15:23",
-                                "jsid": 0
-                            },
-                            {
-                                "id": "149EUpFi0HM",
-                                "title": "S4",
-                                "duration": "00:09:05",
-                                "jsid": 1
-                            },
-                            {
-                                "id": "3mi4q2-gW0Q",
-                                "title": "S5",
-                                "duration": "00:07:23",
-                                "jsid": 2
-                            },
-                            {
-                                "id": "4f9F715iCrs",
-                                "title": "S6",
-                                "duration": "00:08:25",
-                                "jsid": 3
-                            },
-                            {
-                                "id": "EJOdXSqbuZI",
-                                "title": "S7 | Part 1",
-                                "duration": "00:05:11",
-                                "jsid": 4
-                            },
-                            {
-                                "id": "c98mHULem5A",
-                                "title": "S7 | Part 2",
-                                "duration": "00:04:28",
-                                "jsid": 5
-                            },
-                            {
-                                "id": "NnezqJ3eAls",
-                                "title": "S8",
-                                "duration": "00:05:37",
-                                "jsid": 6
-                            }
-                        ],
+                        "description": "",
+                        "videos": "",
                         "playlist_id": "PLM-GVlebsoPULRNcYCfCbzd2J12eowzS2",
                         "folder": ""
                     }
