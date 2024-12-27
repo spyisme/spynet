@@ -14,6 +14,13 @@
 }
         /* Form Container */
         .form {
+            position: absolute; /* Use absolute positioning */
+            top: 50%; /* Move to the vertical center */
+            left: 50%; /* Move to the horizontal center */
+            transform: translate(-50%, -50%); /* Center the element */
+
+
+
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             border-radius: 12px;
@@ -22,7 +29,6 @@
             max-width: 400px;
             text-align: center;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            position: relative;
             z-index: 1;
         }
 
@@ -78,7 +84,8 @@
 <body onload="startCountdown()">
     <section class="banner">
         <canvas id="canvas"></canvas>
-        <div class="center">
+
+
         <div class="form">
             <h1 class="title">Sanawya Sessions</h1>
 
@@ -90,7 +97,7 @@
             <a href="/login"> <button class="submit">Login</button> </a>
         </div>
 
-        </div>
+  
         <br><br>
         <div class="footer">
             <p id="countdown">Loading...</p>
