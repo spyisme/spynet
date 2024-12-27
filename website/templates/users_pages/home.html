@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sanawya Sessions</title>
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/home.csss') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/home.css') }}">
     <style>
         /* General Reset */
         * {
@@ -13,6 +13,18 @@
             padding: 0;
             box-sizing: border-box;
         }
+        html , body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    zoom: 85%;
+
+    align-items: center;
+    background-color: black;
+    height:100%;
+    width:100%;
+}
 
         html, body {
             font-family: 'Roboto', Arial, sans-serif;
