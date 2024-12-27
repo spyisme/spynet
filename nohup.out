@@ -5215,3 +5215,4 @@ UnboundLocalError: local variable 'max_search' referenced before assignment
 209.38.69.203 - - [27/Dec/2024 16:10:28] code 400, message Bad request version ('À\x14À')
 80.82.77.202 - - [27/Dec/2024 16:47:29] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
 174.138.61.44 - - [27/Dec/2024 18:39:29] code 400, message Bad request version ("x64|'|'|No|'|'|S17|'|'|..|'|'|SW5ib3ggLSBPdXRsb29rIERhdGEgRmlsZSAtIE1pY3Jvc29mdCBPdXRsb29rAA==|'|'|")
+167.94.138.63 - - [27/Dec/2024 21:01:43] code 505, message Invalid HTTP version (2.0)
