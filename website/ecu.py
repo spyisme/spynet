@@ -799,27 +799,26 @@ def parse_time(time_str):
 def nexi():
 
     if request.method == "GET":
-        if current_user.is_authenticated : 
 
-            with open('website/Backend/nexi/nexiapi_data.json', 'r') as file:
-                backend_data = json.load(file)
 
-            flattened_reminders = [reminder[0] for reminder in backend_data['reminders']]
-            try :
-                for reminder in flattened_reminders:
-                    reminder['ParsedTime'] = parse_time(reminder['Time'])
+        with open('website/Backend/nexi/nexiapi_data.json', 'r') as file:
+            backend_data = json.load(file)
 
-                sorted_reminders = sorted(flattened_reminders, key=lambda r: r['ParsedTime'])
+        flattened_reminders = [reminder[0] for reminder in backend_data['reminders']]
+        try :
+            for reminder in flattened_reminders:
+                reminder['ParsedTime'] = parse_time(reminder['Time'])
 
-                with open('website/Backend/nexi/nexiapi_data.json', 'w') as file:
-                    json.dump({"reminders": [[reminder] for reminder in sorted_reminders]}, file, indent=4, default=str)
-            except :
-                sorted_reminders = flattened_reminders
-            with open('website/Backend/nexi/nexiapi_login.json', 'r') as file:
-                accs = json.load(file)
-            return render_template('ecu/test_pages/nexi.html', reminders=sorted_reminders , accs = accs)
-        else :
-            return "Login"
+            sorted_reminders = sorted(flattened_reminders, key=lambda r: r['ParsedTime'])
+
+            with open('website/Backend/nexi/nexiapi_data.json', 'w') as file:
+                json.dump({"reminders": [[reminder] for reminder in sorted_reminders]}, file, indent=4, default=str)
+        except :
+            sorted_reminders = flattened_reminders
+        with open('website/Backend/nexi/nexiapi_login.json', 'r') as file:
+            accs = json.load(file)
+        return render_template('ecu/test_pages/nexi.html', reminders=sorted_reminders , accs = accs)
+
 
     token = request.headers.get('token')
 
@@ -1117,33 +1116,37 @@ def nexi_login():
 
 @ecu.route('/nexi-register', methods=['POST'])
 def nexi_register():
-    # Load existing accounts from the JSON file
-    with open('website/Backend/nexi/nexiapi_login.json', 'r') as file:
-        accs = json.load(file)
+    if current_user.is_authenticated:
+        # Load existing accounts from the JSON file
+        with open('website/Backend/nexi/nexiapi_login.json', 'r') as file:
+            accs = json.load(file)
 
-    # Get email and password from the request
-    email = request.json.get('email')
-    password = request.json.get('password')
+        # Get email and password from the request
+        email = request.json.get('email')
+        password = request.json.get('password')
 
-    # Check if the email already exists in the accounts
-    for account in accs:
-        if account['email'] == email:
-            return jsonify({"message": "Username already registered", "status": "error"}), 200
+        # Check if the email already exists in the accounts
+        for account in accs:
+            if account['email'] == email:
+                return jsonify({"message": "Username already registered", "status": "error"}), 200
 
-    # Create a new account dictionary
-    new_account = {
-        "email": email,
-        "password": password
-    }
+        # Create a new account dictionary
+        new_account = {
+            "email": email,
+            "password": password
+        }
 
-    # Add the new account to the accounts list
-    accs.append(new_account)
+        # Add the new account to the accounts list
+        accs.append(new_account)
 
-    # Save the updated accounts list back to the JSON file
-    with open('website/Backend/nexi/nexiapi_login.json', 'w') as file:
-        json.dump(accs, file)
+        # Save the updated accounts list back to the JSON file
+        with open('website/Backend/nexi/nexiapi_login.json', 'w') as file:
+            json.dump(accs, file)
 
-    return jsonify({"message": "Registration successful", "status": "success"}), 200
+        return jsonify({"message": "Registration successful", "status": "success"}), 200
+    else :
+        
+        return jsonify({"message": "Please login", "status": "fail"}), 403
 
 
 #Ecu database ----------------------------------------------------------------------------------------------------------------
