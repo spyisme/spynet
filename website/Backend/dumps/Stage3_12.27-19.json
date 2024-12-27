@@ -10792,15 +10792,8 @@
                     },
                     {
                         "name": "Chapter 2",
-                        "description": "Chapter 2",
-                        "videos": [
-                            {
-                                "id": "mhFNyM7jbiI",
-                                "title": "S6",
-                                "duration": "02:21:21",
-                                "jsid": 0
-                            }
-                        ],
+                        "description": "",
+                        "videos": "",
                         "playlist_id": "PLM-GVlebsoPVga2U2mzGnM9e1GA5WqdVm",
                         "folder": ""
                     }
