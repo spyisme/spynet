@@ -34,7 +34,7 @@ def shorturl(key):
     except:
          return abort(404)
 
-@shortlinks.route("/desktop/<key>")
+@shortlinks.route("/desktop/<key>", methods=["GET", "POST"])
 def desktop(key):
     headers = dict(request.headers)
     print(headers)
