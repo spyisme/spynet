@@ -41,6 +41,7 @@ def desktop(key):
     full_url = request.url
     print(full_url)
     print(key)
+    return ""
 #Short links manage--------------------------------------------------------------------------------------
 def load_shortlinks():
     with open('website/Backend/shortlinks/shortlinks.json', 'r') as f:
