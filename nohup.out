@@ -5375,3 +5375,5 @@ ValueError: Error parsing time: march.7.7pm. Unsupported time format: march.7.7p
 159.223.67.34 - - [30/Dec/2024 17:17:33] code 400, message Bad request version ('À\x13À')
 178.128.54.126 - - [30/Dec/2024 17:17:52] code 400, message Bad request version ('À\x13À')
 35.228.100.73 - - [30/Dec/2024 17:53:55] code 400, message Bad request version ('\x07¼ëD×~ëS3%ØKç')
+167.94.145.96 - - [30/Dec/2024 19:25:05] code 505, message Invalid HTTP version (2.0)
+147.45.112.158 - - [30/Dec/2024 19:27:35] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
