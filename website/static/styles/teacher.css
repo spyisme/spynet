@@ -62,7 +62,7 @@ li {
   color: black;
   margin-top: 7px;
   position: relative;
-
+  overflow: hidden; /* Hide overflow text */
   text-overflow: ellipsis;
   max-height: 40px; /* Adjust to fit within the card */
   z-index: 1;
