@@ -1377,6 +1377,10 @@ def manage_courses(subject, teachername):
         (teacher['courses']
          for teacher in teachers if teacher['link'] == teachername), None)
 
+    teacher_name = next(
+        (teacher['name']  # Extract 'name' instead of 'courses'
+        for teacher in teachers if teacher['link'] == teachername), None)
+
     course_names = [course['name']
                     for course in teacher_courses]  
 
@@ -1463,8 +1467,8 @@ def manage_courses(subject, teachername):
 
     return render_template('data/courses.html',
                            data=course_names,
-                           teachername=teachername,
-                           desc=teacherinfo['description'])
+                           teachername=teacher_name,
+                           desc=teacherinfo['description'] )
 
 
 #Edit a course info
