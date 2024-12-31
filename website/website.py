@@ -573,6 +573,8 @@ def teacher(subject, teacher_name):
                     # Get the last video for each course (if available)
                     if item.get("videos"):
                         lastvideo = item["videos"][-1]['title']  # Get the last video in the list
+                        if len(lastvideo) > 15 :
+                            lastvideo = lastvideo[:15] 
                         item['last_video'] = lastvideo  # Add last_video to the course info
                 
                 break
