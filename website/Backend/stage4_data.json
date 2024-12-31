@@ -1,5 +1,5 @@
 {
-    "maths": {
+    "statics": {
         "teachers": [
             {
                 "name": "Mr. Omar Sherbeny",
@@ -444,7 +444,88 @@
                         ],
                         "playlist_id": "PLM-GVlebsoPX_3mlaOeWIjCPY8jH8MpfJ",
                         "folder": "https://drive.google.com/drive/folders/192Zd0BMB0-ohwV2dYsSJvFB651d7qXAS?usp=drive_link"
-                    },
+                    }
+                ],
+                "description": ""
+            }
+        ]
+    },
+    "Calculus": {
+        "teachers": [
+            {
+                "name": "Dr. Emad",
+                "link": "dremad",
+                "courses": [
+                    {
+                        "name": "Calculus 1",
+                        "description": "2024",
+                        "videos": [
+                            {
+                                "id": "NWbXHg7BnKA",
+                                "title": "Calculus 1 | Lecture 1 Dr. Emad",
+                                "duration": "00:52:34",
+                                "jsid": 0
+                            },
+                            {
+                                "id": "z1kqQjsUx_Y",
+                                "title": "Calculus 1 | Lecture 2 Dr. Emad",
+                                "duration": "00:40:38",
+                                "jsid": 1
+                            },
+                            {
+                                "id": "3KULASS6lKI",
+                                "title": "Calculus 1 | Lecture 3 Dr. Emad",
+                                "duration": "00:53:38",
+                                "jsid": 2
+                            },
+                            {
+                                "id": "IA6BH5id43w",
+                                "title": "Calculus 1 | Lecture 4 Dr. Emad",
+                                "duration": "01:10:46",
+                                "jsid": 3
+                            },
+                            {
+                                "id": "e-GDKmsAcLI",
+                                "title": "Calculus 1 | Lecture 5 Dr. Emad",
+                                "duration": "00:45:28",
+                                "jsid": 4
+                            },
+                            {
+                                "id": "yZJwi6Fob7Q",
+                                "title": "Calculus 1 | Lecture 6 Dr. Emad",
+                                "duration": "00:36:16",
+                                "jsid": 5
+                            },
+                            {
+                                "id": "lnMw1TD7x9A",
+                                "title": "Calculus 1 | Lecture 7 Dr. Emad",
+                                "duration": "00:21:19",
+                                "jsid": 6
+                            },
+                            {
+                                "id": "oSVLhE4DtCI",
+                                "title": "Calculus 1 | Lecture 8 Dr. Emad",
+                                "duration": "00:35:53",
+                                "jsid": 7
+                            },
+                            {
+                                "id": "9ZdF_H1U_HA",
+                                "title": "Calculus 1 | Lecture 9 Dr. Emad",
+                                "duration": "00:36:20",
+                                "jsid": 8
+                            }
+                        ],
+                        "playlist_id": "PLM-GVlebsoPVNw5BEZy-mLNn0ZiCtiEhR",
+                        "folder": ""
+                    }
+                ],
+                "description": ""
+            },
+            {
+                "name": "Mr. Omar Sherbeny",
+                "link": "sherbo",
+                "courses": [
+        
                     {
                         "name": "Calculus",
                         "description": "10 Sessions + Revision",
@@ -890,79 +971,6 @@
                         ],
                         "playlist_id": "PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq",
                         "folder": "https://drive.google.com/drive/folders/142TCiyG-oCmkpgeLpEnHmGaRSmnN6Och?usp=drive_link"
-                    }
-                ],
-                "description": "Statics and Calculus"
-            }
-        ]
-    },
-    "Calculus": {
-        "teachers": [
-            {
-                "name": "Dr. Emad",
-                "link": "dremad",
-                "courses": [
-                    {
-                        "name": "Calculus 1",
-                        "description": "2024",
-                        "videos": [
-                            {
-                                "id": "NWbXHg7BnKA",
-                                "title": "Calculus 1 | Lecture 1 Dr. Emad",
-                                "duration": "00:52:34",
-                                "jsid": 0
-                            },
-                            {
-                                "id": "z1kqQjsUx_Y",
-                                "title": "Calculus 1 | Lecture 2 Dr. Emad",
-                                "duration": "00:40:38",
-                                "jsid": 1
-                            },
-                            {
-                                "id": "3KULASS6lKI",
-                                "title": "Calculus 1 | Lecture 3 Dr. Emad",
-                                "duration": "00:53:38",
-                                "jsid": 2
-                            },
-                            {
-                                "id": "IA6BH5id43w",
-                                "title": "Calculus 1 | Lecture 4 Dr. Emad",
-                                "duration": "01:10:46",
-                                "jsid": 3
-                            },
-                            {
-                                "id": "e-GDKmsAcLI",
-                                "title": "Calculus 1 | Lecture 5 Dr. Emad",
-                                "duration": "00:45:28",
-                                "jsid": 4
-                            },
-                            {
-                                "id": "yZJwi6Fob7Q",
-                                "title": "Calculus 1 | Lecture 6 Dr. Emad",
-                                "duration": "00:36:16",
-                                "jsid": 5
-                            },
-                            {
-                                "id": "lnMw1TD7x9A",
-                                "title": "Calculus 1 | Lecture 7 Dr. Emad",
-                                "duration": "00:21:19",
-                                "jsid": 6
-                            },
-                            {
-                                "id": "oSVLhE4DtCI",
-                                "title": "Calculus 1 | Lecture 8 Dr. Emad",
-                                "duration": "00:35:53",
-                                "jsid": 7
-                            },
-                            {
-                                "id": "9ZdF_H1U_HA",
-                                "title": "Calculus 1 | Lecture 9 Dr. Emad",
-                                "duration": "00:36:20",
-                                "jsid": 8
-                            }
-                        ],
-                        "playlist_id": "PLM-GVlebsoPVNw5BEZy-mLNn0ZiCtiEhR",
-                        "folder": ""
                     }
                 ],
                 "description": ""
