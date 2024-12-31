@@ -1467,7 +1467,7 @@ def manage_courses(subject, teachername):
 
     return render_template('data/courses.html',
                            data=course_names,
-                           teachername=teacher_name,
+                           teachername=teacher_name,teacherlink = teachername,
                            desc=teacherinfo['description'] )
 
 
