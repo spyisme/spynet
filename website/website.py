@@ -543,14 +543,10 @@ def subjects(subject):
     #     data = json.load(f)
     if subject in data:
         teachers = [{
-            "name":
-            teacher["name"],
-            "badge":
-        teacher.get("badge", ""),
-            "link":
-            teacher["link"],
-            "description":
-            teacher.get("description", "")
+            "name": teacher["name"],
+            "badge": teacher.get("badge", ""),
+            "link": teacher["link"],
+            "description":teacher.get("description", "")
             or f"{len(teacher['courses'])} courses"
         } for teacher in data[subject]["teachers"]]
     else:
@@ -588,6 +584,9 @@ def teacher(subject, teacher_name):
                         item['last_video'] = lastvideo  # Add last_video to the course info
                     else : 
                         item['last_video'] = "N/A"
+                    badge = teacher.get('badge', '')
+                    if badge :
+                        item['badge'] = badge
                 break
 
     if courses == None:  

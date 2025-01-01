@@ -91,7 +91,9 @@
                    
                     <img class="img" src="{{ url_for('static', filename='assets/Stage' +current_user.stage|string  + '/' + teachername +'/' + teacher_name +'/' + x.link +'.jpg') }}" alt="{{x.link}}" loading="lazy">
 
-       
+                    {%if x.badge%}
+                    <div class="card-new-badge">{{x.badge}}</div>
+             {%endif%}
                       <p>{{ x.name }}</p>
 
                       {%if "2023" in x.description%}
