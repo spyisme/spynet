@@ -529,6 +529,13 @@ def subjectspage():
 #Subject (It show teachers)
 @website.route("/subjects/<subject>")
 def subjects(subject):
+    if " " in subject :
+        subject = subject.replace(' ', '-')
+        return redirect(f'/subjects/{subject}')
+
+    if "-" in subject:
+        subject = subject.replace('-', ' ')
+
     teachers = None
     data = load_stage_data(current_user.stage)
 
