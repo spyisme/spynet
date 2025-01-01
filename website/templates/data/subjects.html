@@ -39,10 +39,23 @@
                             <option value="{{ x }}">{{ x }}</option>
                             {% endfor %}
                         </select><br><br>
-                        <input type="submit" name="action" value="Remove" onclick="return confirmRemoval()">
+                        <input type="submit" name="action" value="Remove" onclick="return confirmRemoval({{ x }})">
                     </form>
                 </div>
  
+                <h2>Re-order Subjects</h2>
+                <form action="" method="post">
+                    <select name="reorder">
+                        {% for x in data %}
+                        <option value="{{ x }}">{{ x }}</option>
+                        {% endfor %}
+                    </select><br><br>
+                    <input type="submit" name="action" value="reorder" onclick="return confirmreorder({{ x }})">
+                </form>
+            </div>
+
+
+
                 <div class="content-container">
                     <div class="subjects-container">
                         <h2>Current Subjects</h2>
@@ -52,8 +65,8 @@
                     </div>
                     </div>
         </div>
-<br>><br><br>
-<br>><br><br>   
+<br><br><br>
+<br><br><br>   
 
 <div class="footer">
     <p id="countdown">Loading...</p>
@@ -62,8 +75,11 @@
 </body>
 
 <script>
-    function confirmRemoval() {
-        return confirm("Are you sure you want to remove this subject?");
+    function confirmRemoval(name) {
+        return confirm(`Are you sure you want to remove this subject? (${name})`);
+    }
+    function confirmreorder(name) {
+        return confirm(`Are you sure you want to (${name}) the first subject ?`);
     }
 </script>
 <script src="{{ url_for('static', filename='java/snow.js') }}"></script>

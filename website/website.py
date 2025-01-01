@@ -2,6 +2,7 @@
 
 import json , os , random , re , requests , zipfile
 from datetime import  datetime 
+from collections import OrderedDict
 import shutil # Delete folder(Delete assets folder)
 from google.auth.exceptions import GoogleAuthError
 from google.oauth2.credentials import Credentials
@@ -1285,6 +1286,20 @@ def manage_subjects():
             else:
                 return jsonify(
                     {"message": f"Subject '{subject}' does not exist!"}), 400
+            
+        if request.form['action'] == 'Reorder':
+            item_to_move = request.form['reorder']
+
+            if item_to_move in data:
+                reordered_data = OrderedDict([(item_to_move, data[item_to_move])])
+                reordered_data.update({k: v for k, v in data.items() if k != item_to_move})
+
+            else:
+                reordered_data = data 
+
+            save_data(data, current_user.stage)
+            return redirect(url_for('website.manage_subjects'))
+
 
     return render_template('data/subjects.html', data=list(data.keys()))
 
