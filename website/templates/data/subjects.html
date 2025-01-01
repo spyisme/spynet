@@ -76,10 +76,10 @@
 
 <script>
     function confirmRemoval(name) {
-        return confirm(`Are you sure you want to remove this subject? (${name})`);
+        return confirm(`Are you sure you want to remove this ""${name}"" ?`);
     }
     function confirmreorder(name) {
-        return confirm(`Are you sure you want to (${name}) the first subject ?`);
+        return confirm(`Are you sure you want ""${name}"" to be the first subject ?`);
     }
 </script>
 <script src="{{ url_for('static', filename='java/snow.js') }}"></script>
