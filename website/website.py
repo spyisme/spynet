@@ -580,7 +580,7 @@ def teacher(subject, teacher_name):
             subject =  subject.lower()
         return redirect(f'/subjects/{subject}')
     
-    subject = subject.capitalize()
+    subject = subject.title()
 
     if "-" in subject:
         subject = subject.replace('-', ' ')
@@ -652,7 +652,7 @@ def videos(subject, teacher_name, course_name):
         course_name = course_name.replace('-', ' ')
 
     course_name = course_name.capitalize()
-    subject = subject.capitalize()
+    subject = subject.title()
 
     data = load_stage_data(current_user.stage)
 
