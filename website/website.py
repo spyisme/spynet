@@ -1335,9 +1335,11 @@ def manage_teachers(subject):
                 except :
                     pass
 
-                data[subject] = new_name
-                save_data(data, current_user.stage)
-                
+                if subject in data:
+                    data[new_name] = data.pop(subject)  # Move the value to the new key and remove the old key
+
+                    save_data(data, current_user.stage)
+
             except Exception as e :
                 return f"Error while renameing {subject} to {new_name} : {e}"
             
