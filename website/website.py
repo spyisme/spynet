@@ -1078,6 +1078,9 @@ def manage_user(user_id):
 
 @website.route('/approve/<user_id>', methods=['GET', 'POST'])
 def approve(user_id):
+    if user.type != 'admin' :
+        return "User is not an admin"
+
     if user_id == -1:
         return "You cant edit"
     user = User.query.filter_by(id=user_id).first()
@@ -1190,64 +1193,7 @@ def delete_user(user_id):
 
 
 
-@website.route('/edit_active_sessions/<user_id>', methods=['POST'])
-def edit_active_sessions(user_id):
-    if current_user.type != 'admin':
-        return "User is not an admin"
-    if request.method == 'POST':
-        if current_user.username not in ['spy', 'skailler', 'behary']:
-            return "..."
-        new_active_sessions = request.form.get('value')
-
-        if not new_active_sessions:
-            return jsonify(
-                {'error': 'New value for active_sessions is required'}), 400
-
-        user = User.query.get(user_id)
-
-        if user:
-            user.active_sessions = new_active_sessions
-
-            db.session.commit()
-            if current_user.username != "spy":
-                discord_send( backend_webhook ,"<@709799648143081483> " +
-                                    current_user.username +
-                                    " edited sessions for " + user.username)
-
-            return redirect("/admin")
-        else:
-            return jsonify({'error': 'User not found'}), 404
-
-    return jsonify({'error': 'Method not allowed'}), 405
-
-
-@website.route('/edit_email/<user_id>', methods=['POST'])
-def edit_email(user_id):
-    if current_user.type != 'admin':
-        return "User is not an admin"
-
-    if request.method == 'POST':
-        new_email = request.form.get('value')
-
-        user = User.query.get(user_id)
-
-        if user:
-            user.email = new_email
-
-            db.session.commit()
-            if current_user.username != "spy":
-                discord_send( backend_webhook ,"<@709799648143081483> " +
-                                    current_user.username +
-                                    " edited email for " + user.username)
-
-            return redirect("/admin")
-        else:
-            return jsonify({'error': 'User not found'}), 404
-
-    return jsonify({'error': 'Method not allowed'}), 405
-
-
-#Edit pages-----------------------------------------------------------------------
+#Edit pages--------------------------------------------------------------------------------------------------------
 
 def load_data():
     with open('website/Backend/data.json', 'r') as file:
@@ -1272,8 +1218,6 @@ def save_data(data, stage):
 #Add/remove a subject
 @website.route('/subjects/edit', methods=['POST', 'GET'])
 def manage_subjects():
-
-
 
     if current_user.type != 'admin':
         return "User is not an admin"
