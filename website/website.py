@@ -512,6 +512,7 @@ def change_password():
 
 #Website (5) Pages--------------------------------------------------------------------------------------------------------
 
+#Home (It show the subjects)
 @website.route("/subjects")
 def subjectspage():
 
@@ -527,7 +528,7 @@ def subjectspage():
                            teachername="All",
                            password=password )
 
-#Subject (It show teachers)
+#Subject (It show teachers for the subject)
 @website.route("/subjects/<subject>")
 def subjects(subject):
     
@@ -563,7 +564,6 @@ def subjects(subject):
     return render_template('used_pages/subjects.html',
                            teachername=subject.lower(),
                            teacher_links=teachers)
-
 
 #Teacher (It show courses) (Teacher_name is teacher link)
 @website.route("/subjects/<subject>/<teacher_name>")
@@ -625,7 +625,6 @@ def teacher(subject, teacher_name):
                            teacher_name=teacher_name,
                            description=description, 
                            lastvideo=lastvideo)
-
 
 #Videos (It show videos , google drive)
 @website.route("/subjects/<subject>/<teacher_name>/<course_name>")
@@ -691,7 +690,6 @@ def videos(subject, teacher_name, course_name):
                            teachername=teachername,
                            folder=folder,
                            description=description)
-
 
 #Update videos
 @website.route("/subjects/<subject>/<teacher_name>/<course_name>/update")  
