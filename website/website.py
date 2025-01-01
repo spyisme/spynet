@@ -1457,8 +1457,9 @@ def manage_courses(subject, teachername):
 
         if request.form['action'] == 'Update':
             name = request.form['name']
-            link = request.form['description']
-            description = request.form['link']
+            link = request.form['link']
+            description = request.form['description']
+
             if description :
                 teacherinfo['description'] = description
             if name : 
