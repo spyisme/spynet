@@ -5897,3 +5897,5 @@ googleapiclient.errors.HttpError: <HttpError 400 when requesting https://youtube
 185.100.87.136 - - [01/Jan/2025 23:34:24] code 400, message Bad HTTP/0.9 request type ('\x10')
  * Serving Flask app 'website'
  * Debug mode: on
+88.130.154.200 - - [02/Jan/2025 01:30:03] code 400, message Bad HTTP/0.9 request type ('\x04\x01\x00P\x17ï')
+88.130.154.200 - - [02/Jan/2025 01:30:03] code 400, message Bad request syntax ('\x05\x01\x00')
