@@ -43,11 +43,15 @@
     {% if teachername in valid_subjects %}
         <img class="img" src="{{ url_for('static', filename='assets/subjects/' + teachername + '.png') }}" alt="Subject Image">
     {% else %}
-    <div style="display: flex; align-items: center; justify-content: center;">
-      <img style="height: 172px;" src="{{ url_for('static', filename='assets/Alphabet/' + teachername[0].lower() + '.png') }}" alt="Subject Image">
-      <h1 style="margin: 0;">{{ teachername[1:] }}</h1>
+    <div style="position: relative; display: inline-block; height: 172px;">
+      <!-- Image -->
+      <img style="height: 100%; width: auto;" src="{{ url_for('static', filename='assets/Alphabet/' + teachername[0].lower() + '.png') }}" alt="Subject Image">
+      
+      <!-- Text -->
+      <h1 style="position: absolute; bottom: 0; left: 0; margin: 0; padding: 5px; background: rgba(0, 0, 0, 0.6); color: white; font-size: 16px;">
+          {{ teachername[1:] }}
+      </h1>
   </div>
-
     
     {% endif %}
 
