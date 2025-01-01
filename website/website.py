@@ -1546,7 +1546,11 @@ def manage_courses(subject, teachername):
             if link :
                 link = link.lower()
                 teacherinfo['link'] = link
-                os.rename(f"website/static/assets/Stage{current_user.stage}/{subject.replace(' ' , '-')}/{teachername}" , f"website/static/assets/Stage{current_user.stage}/{subject.replace(' ' , '-')}/{link}" )
+                os.rename(f"website/static/assets/Stage{current_user.stage}/{subject.replace(' ' , '-')}/{teachername}.jpg" , f"website/static/assets/Stage{current_user.stage}/{subject.replace(' ' , '-')}/{link}.jpg" )
+                try:
+                    os.rename(f"website/static/assets/Stage{current_user.stage}/{subject.replace(' ' , '-')}/{teachername}" , f"website/static/assets/Stage{current_user.stage}/{subject.replace(' ' , '-')}/{link}" )
+                except :
+                    pass
                 teachername = link
 
 
