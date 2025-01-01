@@ -1286,6 +1286,8 @@ def manage_subjects():
 
             subject = request.form['newSubject']
 
+            subject = subject.title()
+            
             file = request.files['file']
 
             if file:
