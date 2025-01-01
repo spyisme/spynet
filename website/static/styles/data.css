@@ -86,17 +86,32 @@ a:hover {
 form {
     margin: 20px 0;
 }
-input[type="file"]{
-color :white;
+.file-upload {
+    display: inline-block;
+    text-align: center;
+    font-family: Arial, sans-serif;
 }
-input[type="text"], input[type="file"], select {
-    width: 40%;
-    padding: 10px;
-    font-size:20px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
+
+.custom-file-upload {
+    display: inline-block;
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #4CAF50; /* Modern green */
+    color: white;
+    font-size: 16px;
+    border: none;
     border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
+
+.custom-file-upload:hover {
+    background-color: #45a049;
+}
+
+#file-upload {
+    display: none; /* Hide the actual file input */
+}
+
 
 input[type="submit"] {
     background-color: #17364f;

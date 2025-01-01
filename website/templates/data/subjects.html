@@ -28,7 +28,12 @@
                     <h2>Add Subject</h2>
                     <form action="" method="post" enctype="multipart/form-data">
                         <input type="text" name="newSubject" placeholder="New subject" required><br><br>
-                        <input type="file" name="file" required><br><br>
+                        <div class="file-upload">
+                            <label for="file-upload" class="custom-file-upload">
+                                Choose File
+                            </label>
+                            <input id="file-upload" type="file" name="file" required>
+                        </div><br><br>
                         <input style="background-color: green;" type="submit" name="action" value="Add">
                     </form>
 
