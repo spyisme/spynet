@@ -1542,7 +1542,7 @@ def manage_courses(subject, teachername):
     return render_template('data/courses.html',
                            data=course_names,
                            teachername=teacher_name,teacherlink = teachername,
-                           description= description )
+                           descriptionn= description )
 
 
 #Edit a course info
