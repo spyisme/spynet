@@ -112,6 +112,14 @@ form {
     display: none; /* Hide the actual file input */
 }
 
+input[type="text"], input[type="file"], select {
+    width: 40%;
+    padding: 10px;
+    font-size:20px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
 
 input[type="submit"] {
     background-color: #17364f;
