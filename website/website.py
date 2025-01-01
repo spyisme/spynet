@@ -1330,7 +1330,10 @@ def manage_teachers(subject):
             #Rename in the json , Rename the Course image (/homepage) , Rename the Course folder (/)
             try:
                 os.rename(f"website/static/assets/Stage{current_user.stage}/homepage/{subject}.jpg", f"website/static/assets/Stage{current_user.stage}/homepage/{new_name}.jpg")
-                os.rename(f"website/static/assets/Stage{current_user.stage}/{subject}", f"website/static/assets/Stage{current_user.stage}/{new_name}")
+                try :
+                    os.rename(f"website/static/assets/Stage{current_user.stage}/{subject}", f"website/static/assets/Stage{current_user.stage}/{new_name}")
+                except :
+                    pass
                 data[subject] = new_name
                 save_data(data, current_user.stage)
             except Exception as e :
