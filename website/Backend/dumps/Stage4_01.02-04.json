@@ -1,14 +1,6 @@
 {
     "Engineering Drawing": {
-        "teachers": [
-            {
-                "name": "Dr. Abdelrahman",
-                "link": "ecu",
-                "badge": "",
-                "courses": [],
-                "description": ""
-            }
-        ]
+        "teachers": []
     },
     "Calculus": {
         "teachers": [
@@ -91,6 +83,14 @@
                         "videos": "",
                         "playlist_id": "PLM-GVlebsoPXrU733HavPf8k-P5h_aFFq",
                         "folder": "https://drive.google.com/drive/folders/142TCiyG-oCmkpgeLpEnHmGaRSmnN6Och?usp=drive_link"
+                    },
+                    {
+                        "name": "Testt",
+                        "description": "",
+                        "badge": "",
+                        "videos": "",
+                        "playlist_id": "",
+                        "folder": ""
                     }
                 ],
                 "description": ""

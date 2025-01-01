@@ -1,14 +1,6 @@
 {
     "Engineering Drawing": {
-        "teachers": [
-            {
-                "name": "Dr. Abdelrahman",
-                "link": "ecu",
-                "badge": "",
-                "courses": [],
-                "description": ""
-            }
-        ]
+        "teachers": []
     },
     "Calculus": {
         "teachers": [
