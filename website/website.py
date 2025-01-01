@@ -614,6 +614,8 @@ def videos(subject, teacher_name, course_name):
 
     data = load_stage_data(current_user.stage)
 
+
+
     # with open('website/Backend/data.json') as f:
     #     data = json.load(f)
     if subject in data:
@@ -623,6 +625,10 @@ def videos(subject, teacher_name, course_name):
                     description = teacher.get("description")
 
                     if course.get("name") == course_name:
+                        redirect_link = course.get('redirect', '')
+                        if redirect_link :
+                            return redirect(redirect_link)
+                        
                         videos = course.get('videos', '')
                         playlist_id = course.get('playlist_id', '')
                         folder = course.get('folder', '')
