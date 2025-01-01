@@ -450,6 +450,7 @@
             },
             {
                 "name": "Dr. Hussien El sayed",
+                "redirect" : "https://google.com", 
                 "link": "ecu",
                 "courses": [
                     {
