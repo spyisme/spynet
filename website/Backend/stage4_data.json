@@ -1,7 +1,5 @@
 {
-    "Engineering Drawing": {
-        "teachers": []
-    },
+    "Engineering Drawing": "Drawing",
     "Calculus": {
         "teachers": [
             {

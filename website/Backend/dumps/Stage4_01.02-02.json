@@ -1,4 +1,7 @@
 {
+    "Engineering Drawing": {
+        "teachers": []
+    },
     "Calculus": {
         "teachers": [
             {
@@ -1105,8 +1108,5 @@
                 "description": ""
             }
         ]
-    },
-    "Engineering Drawing": {
-        "teachers": []
     }
 }
