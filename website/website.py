@@ -902,7 +902,7 @@ def theleaderfinal(type , id):
 
     elif type == 'document':
         json_file_path = 'website/Backend/theleader.json'
-            
+        return "ok"
         if os.path.exists(json_file_path):
             with open(json_file_path, 'r') as json_file:
                 data = json.load(json_file)
