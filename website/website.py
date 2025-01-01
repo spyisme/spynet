@@ -530,12 +530,17 @@ def subjectspage():
 #Subject (It show teachers)
 @website.route("/subjects/<subject>")
 def subjects(subject):
-    if " " in subject :
-        subject = subject.replace(' ', '-')
+    
+    if " " in subject or any(char.isupper() for char in subject): 
+        try :
+            subject = subject.replace(' ', '-')
+            subject =  subject.lower()
+        except :
+            subject =  subject.lower()
         return redirect(f'/subjects/{subject}')
 
     if "-" in subject:
-        subject = subject.replace('-', ' ')
+        subject = subject.replace('-', ' ').capitalize()
 
     teachers = None
     data = load_stage_data(current_user.stage)
