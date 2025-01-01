@@ -1535,7 +1535,7 @@ def manage_courses(subject, teachername):
                         teachername=teachername))
 
 
-    if teacherinfo['description'] == " " :
+    if teacherinfo['description'] == " "  or teacherinfo['description'] =="":
         teacherinfo['description'] = "Number of courses"
 
     return render_template('data/courses.html',
