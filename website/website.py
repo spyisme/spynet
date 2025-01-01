@@ -1546,7 +1546,7 @@ def manage_courses(subject, teachername):
             if link :
                 link = link.lower()
                 teacherinfo['link'] = link
-                os.rename(f'website/static/assets/Stage{current_user.stage}/{subject}/{teachername}' , f'website/static/assets/Stage{current_user.stage}/{subject}/{link}' )
+                os.rename(f'website/static/assets/Stage{current_user.stage}/{subject.replace(' ' , '-')}/{teachername}' , f'website/static/assets/Stage{current_user.stage}/{subject.replace(' ' , '-')}/{link}' )
                 teachername = link
 
 
