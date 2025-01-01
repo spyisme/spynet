@@ -631,18 +631,25 @@ def videos(subject, teacher_name, course_name):
     playlist_id = None
     folder = None
     
-    subject = subject.capitalize()
 
     if "-" in subject:
         subject = subject.replace('-', ' ')
 
 
-    if " " in course_name :
-        course_name = course_name.replace(' ', '-')
+    if " " in course_name or any(char.isupper() for char in course_name): 
+        try :
+            course_name = course_name.replace(' ', '-')
+            course_name = course_name.lower()
+
+        except :
+            course_name = course_name.lower()
         return redirect(f'/subjects/{subject}/{teacher_name}/{course_name}')
 
     if "-" in course_name:
         course_name = course_name.replace('-', ' ')
+
+    course_name = course_name.capitalize()
+    subject = subject.capitalize()
 
     data = load_stage_data(current_user.stage)
 
