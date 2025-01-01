@@ -50,7 +50,10 @@
     {% if teachername in valid_subjects %}
         <img class="img" src="{{ url_for('static', filename='assets/subjects/' + teachername + '.png') }}" alt="Subjects Image">
     {% else %}
-        <h1>✰ {{ teachername }} ✰</h1>
+    <div style="display: flex; align-items: center; justify-content: center;">
+      <img style="height: 172px;" src="{{ url_for('static', filename='assets/Alphabet/' + teachername[0].lower() + '.png') }}" alt="Subject Image">
+      <h1 style="margin: 0;">{{ teachername[1:] }}</h1>
+  </div>  
         <hr>
     {% endif %}
 
