@@ -1334,10 +1334,13 @@ def manage_teachers(subject):
                     os.rename(f"website/static/assets/Stage{current_user.stage}/{subject}", f"website/static/assets/Stage{current_user.stage}/{new_name}")
                 except :
                     pass
+
                 data[subject] = new_name
                 save_data(data, current_user.stage)
+                
             except Exception as e :
                 return f"Error while renameing {subject} to {new_name} : {e}"
+            
             return redirect(url_for('website.manage_teachers', subject=subject))
 
         if request.form['action'] == 'Add':
