@@ -1533,11 +1533,10 @@ def manage_courses(subject, teachername):
                 url_for('website.manage_courses',
                         subject=subject,
                         teachername=teachername))
-        
-        description = teacherinfo['description']
 
-        if description == "" :
-            description = "Number of courses"
+
+        if teacherinfo['description'] == "" :
+            teacherinfo['description'] = "Number of courses"
 
     return render_template('data/courses.html',
                            data=course_names,
