@@ -565,19 +565,22 @@ def subjects(subject):
                            teacher_links=teachers)
 
 
-#Teacher (It show courses)
+#Teacher (It show courses) (Teacher_name is teacher link)
 @website.route("/subjects/<subject>/<teacher_name>")
 def teacher(subject, teacher_name):
     courses = None
     data = load_stage_data(current_user.stage)
     lastvideo = None  # Initialize lastvideo
 
-    if " " in subject or any(char.isupper() for char in subject): 
+    if " " in subject or any(char.isupper() for char in subject) or any(char.isupper() for char in teacher_name): 
         try :
             subject = subject.replace(' ', '-')
             subject =  subject.lower()
+            teacher_name = teacher_name.lower()
         except :
             subject =  subject.lower()
+            teacher_name = teacher_name.lower()
+
         return redirect(f'/subjects/{subject}')
     
     subject = subject.title()
@@ -636,15 +639,17 @@ def videos(subject, teacher_name, course_name):
        subject = subject.replace(' ', '-')
 
 
-    if " " in course_name or any(char.isupper() for char in course_name) or any(char.isupper() for char in subject): 
+    if " " in course_name or any(char.isupper() for char in course_name) or any(char.isupper() for char in subject) or any(char.isupper() for char in teacher_name): 
         try :
             course_name = course_name.replace(' ', '-')
             course_name = course_name.lower()
             subject = subject.lower()
+            teacher_name = teacher_name.lower()
 
         except :
             course_name = course_name.lower()
             subject = subject.lower()
+            teacher_name = teacher_name.lower()
 
         return redirect(f'/subjects/{subject}/{teacher_name}/{course_name}')
 
@@ -696,7 +701,9 @@ def update(subject, teacher_name, course_name):
 
         course_name = course_name.replace('-', ' ')
 
-    #Needs a solution
+    course_name = course_name.capitalize()
+    subject = subject.title()
+    #Needs a solution (Not really)
     data = load_stage_data(current_user.stage)
 
     if subject in data:
@@ -1357,7 +1364,7 @@ def manage_teachers(subject):
             subject =  subject.lower()
         return redirect(f'/subjects/{subject}/edit')
     
-    subject = subject.capitalize()
+    subject = subject.title()
 
     if "-" in subject:
         subject = subject.replace('-', ' ')
@@ -1488,7 +1495,7 @@ def manage_courses(subject, teachername):
             subject =  subject.lower()
         return redirect(f'/subjects/{subject}/edit')
     
-    subject = subject.capitalize()
+    subject = subject.title()
 
     if "-" in subject:
         subject = subject.replace('-', ' ')
@@ -1638,7 +1645,7 @@ def edit_course(subject, teachername, course_name):
             subject =  subject.lower()
         return redirect(f'/subjects/{subject}/edit')
     
-    subject = subject.capitalize()
+    subject = subject.title()
 
     if "-" in subject:
         subject = subject.replace('-', ' ')
