@@ -30,7 +30,7 @@ function startCountdown() {
         if (currentIndex >= countdownDates.length) {
             clearInterval(x);
             console.log("hereeeeeeeee")
-            document.getElementById("countdown").innerHTML = "&copy; 2024 Sanawya sessions (Sc : amrayman_n)";
+            document.getElementById("countdown").innerHTML = "&copy; 2025 Sanawya sessions (Sc : amrayman_n)";
             document.getElementById("date").innerHTML = "";
             return;
         }
