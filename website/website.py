@@ -632,8 +632,13 @@ def videos(subject, teacher_name, course_name):
     folder = None
     
 
-    if "-" in subject:
-        subject = subject.replace('-', ' ')
+    if "-" in subject or any(char.isupper() for char in subject) :
+        try :
+            subject = subject.replace(' ', '-')
+            subject = subject.lower()
+
+        except :
+            subject = subject.lower()
 
 
     if " " in course_name or any(char.isupper() for char in course_name): 
