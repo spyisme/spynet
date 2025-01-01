@@ -581,7 +581,7 @@ def teacher(subject, teacher_name):
             subject =  subject.lower()
             teacher_name = teacher_name.lower()
 
-        return redirect(f'/subjects/{subject}')
+        return redirect(f'/subjects/{subject}/{teacher_name}')
     
     subject = subject.title()
 
