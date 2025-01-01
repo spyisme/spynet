@@ -1650,10 +1650,6 @@ def edit_course(subject, teachername, course_name):
     
     course_name = course_name.title()
 
-    if "-" in course_name:
-        course_name = course_name.replace('-', ' ')
-
-
     data = load_stage_data(current_user.stage)
     current_course = None
     if "-" in course_name:
