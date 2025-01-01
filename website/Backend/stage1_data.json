@@ -1,5 +1,5 @@
 {
-    "maths": {
+    "Maths": {
         "teachers": [
             {
                 "name": "sherbo",
@@ -260,7 +260,7 @@
             }
         ]
     },
-    "arabic": {
+    "Arabic": {
         "teachers": [
             {
                 "name": "Mr. Reda el farouk",

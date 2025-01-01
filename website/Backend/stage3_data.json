@@ -1,5 +1,5 @@
 {
-    "chemistry": {
+    "Chemistry": {
         "teachers": [
             {
                 "name": "Dr. Nasser el batal",
@@ -2180,7 +2180,7 @@
             }
         ]
     },
-    "maths": {
+    "Maths": {
         "teachers": [
             {
                 "name": "Mr. Omar Sherbiny",
@@ -4282,7 +4282,7 @@
             }
         ]
     },
-    "physics": {
+    "Physics": {
         "teachers": [
             {
                 "name": "Dr. Mohamed Adel",
@@ -5814,7 +5814,7 @@
             }
         ]
     },
-    "english": {
+    "English": {
         "teachers": [
             {
                 "name": "Mr. Mohamed Salah",
@@ -6319,7 +6319,7 @@
             }
         ]
     },
-    "arabic": {
+    "Arabic": {
         "teachers": [
             {
                 "name": "Mr. Mohamed Tarek",
@@ -8778,7 +8778,7 @@
             }
         ]
     },
-    "biology": {
+    "Biology": {
         "teachers": [
             {
                 "name": "Dr. Mohamed Daif",
@@ -10764,7 +10764,7 @@
             }
         ]
     },
-    "geology": {
+    "Geology": {
         "teachers": [
             {
                 "name": "Sameh Nash2t",
@@ -10845,7 +10845,7 @@
             }
         ]
     },
-    "german": {
+    "German": {
         "teachers": [
             {
                 "name": "Herr Abd el moez",
