@@ -630,6 +630,12 @@ def videos(subject, teacher_name, course_name):
     videos = None
     playlist_id = None
     folder = None
+    
+    subject = subject.capitalize()
+
+    if "-" in subject:
+        subject = subject.replace('-', ' ')
+
 
     if " " in course_name :
         course_name = course_name.replace(' ', '-')
