@@ -914,6 +914,8 @@ def theleaderfinal(type , id):
                     document = document.json()
                     link = document["data"]["uri"]
                     add_to_json(id, link, content_type='document')
+    else : 
+        return "type not here"
   
 
     return f"{link}"
