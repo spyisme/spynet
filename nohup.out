@@ -5934,3 +5934,4 @@ Traceback (most recent call last):
     course_names = [course['name']
 TypeError: 'NoneType' object is not iterable
 185.147.124.171 - - [02/Jan/2025 05:20:41] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+47.237.115.100 - - [02/Jan/2025 05:25:36] code 400, message Bad request version ('À\x14À')

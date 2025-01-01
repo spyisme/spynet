@@ -1,14 +1,6 @@
 {
     "Engineering Drawing": {
-        "teachers": [
-            {
-                "name": "Dr. Abdelrahman",
-                "link": "ecc",
-                "badge": "",
-                "courses": [],
-                "description": ""
-            }
-        ]
+        "teachers": []
     },
     "Calculus": {
         "teachers": [
@@ -532,6 +524,13 @@
                         "folder": "https://drive.google.com/drive/folders/142TCiyG-oCmkpgeLpEnHmGaRSmnN6Och?usp=drive_link"
                     }
                 ],
+                "description": ""
+            },
+            {
+                "name": "amrr",
+                "link": "amrr",
+                "badge": "",
+                "courses": [],
                 "description": ""
             }
         ]
