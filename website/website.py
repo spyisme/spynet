@@ -1231,6 +1231,8 @@ def save_data(data, stage):
 @website.route('/subjects/edit', methods=['POST', 'GET'])
 def manage_subjects():
 
+
+
     if current_user.type != 'admin':
         return "User is not an admin"
 
@@ -1306,6 +1308,13 @@ def manage_subjects():
 #Add/remove a teacher
 @website.route('/subjects/<subject>/edit', methods=['POST', 'GET'])
 def manage_teachers(subject):
+    if " " in subject :
+        subject = subject.replace(' ', '-')
+        return redirect(f'/subjects/{subject}')
+
+    if "-" in subject:
+        subject = subject.replace('-', ' ')
+        
     if current_user.type != 'admin':
         return "User is not an admin"
     data = load_stage_data(current_user.stage)
