@@ -1505,11 +1505,16 @@ def manage_courses(subject, teachername):
                 if description == "null" :
                     description =" "
                 teacherinfo['description'] = description
+
             if name : 
                 teacherinfo['name'] = name
+
             if link :
+                link = link.lower()
                 teacherinfo['link'] = link
+                os.rename(f'website/static/assets/Stage{current_user.stage}/{subject}/{teachername}' , f'website/static/assets/Stage{current_user.stage}/{subject}/{link}' )
                 teachername = link
+
 
             data[subject]['teachers'] = teachers
 
@@ -1529,9 +1534,8 @@ def manage_courses(subject, teachername):
 
             if file:
                 os.makedirs(os.path.dirname(
-                    f'website/static/assets/Stage{current_user.stage}/{subject}/{teachername}/'
-                    + course_name + '.jpg'),
-                            exist_ok=True)
+                    f'website/static/assets/Stage{current_user.stage}/{subject}/{teachername}/'+ course_name + '.jpg'),
+                      exist_ok=True)
 
                 file.save(
                     f'website/static/assets/Stage{current_user.stage}/{subject}/{teachername}/'
@@ -1545,6 +1549,7 @@ def manage_courses(subject, teachername):
             new_course = {
                 "name": course_name,
                 "description": "",
+                "badge" : "",
                 "videos": "",
                 "playlist_id": "",
                 "folder": ""
