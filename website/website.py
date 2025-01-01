@@ -1347,9 +1347,17 @@ def manage_subjects():
 #Add/remove a teacher
 @website.route('/subjects/<subject>/edit', methods=['POST', 'GET'])
 def manage_teachers(subject):
-    if " " in subject :
-        subject = subject.replace(' ', '-')
+
+    
+    if " " in subject or any(char.isupper() for char in subject): 
+        try :
+            subject = subject.replace(' ', '-')
+            subject =  subject.lower()
+        except :
+            subject =  subject.lower()
         return redirect(f'/subjects/{subject}/edit')
+    
+    subject = subject.capitalize()
 
     if "-" in subject:
         subject = subject.replace('-', ' ')
@@ -1471,6 +1479,22 @@ def manage_teachers(subject):
 def manage_courses(subject, teachername):
     if current_user.type != 'admin':
         return "User is not an admin"
+    
+    if " " in subject or any(char.isupper() for char in subject): 
+        try :
+            subject = subject.replace(' ', '-')
+            subject =  subject.lower()
+        except :
+            subject =  subject.lower()
+        return redirect(f'/subjects/{subject}/edit')
+    
+    subject = subject.capitalize()
+
+    if "-" in subject:
+        subject = subject.replace('-', ' ')
+
+
+
     data = load_stage_data(current_user.stage)
 
     teachers = data.get(subject, {}).get('teachers', [])
@@ -1605,6 +1629,21 @@ def manage_courses(subject, teachername):
 def edit_course(subject, teachername, course_name):
     if current_user.type != 'admin':
         return "User is not an admin"
+    
+    if " " in subject or any(char.isupper() for char in subject): 
+        try :
+            subject = subject.replace(' ', '-')
+            subject =  subject.lower()
+        except :
+            subject =  subject.lower()
+        return redirect(f'/subjects/{subject}/edit')
+    
+    subject = subject.capitalize()
+
+    if "-" in subject:
+        subject = subject.replace('-', ' ')
+
+
     data = load_stage_data(current_user.stage)
     current_course = None
     if "-" in course_name:
