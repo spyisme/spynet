@@ -38,30 +38,18 @@
   <section class="banner">
     <canvas id="canvas"> </canvas>
   <div class="nav">
-    {% set valid_subjects = ["arabic", "english", "biology", "chemistry", "geology", "german", "maths", "physics"] %}
-
-    {% if teachername in valid_subjects %}
-        <img class="img" src="{{ url_for('static', filename='assets/subjects/' + teachername + '.png') }}" alt="Subject Image">
-    {% else %}
     <div style="display: flex; align-items: center; justify-content: center;">
       <img style="height: 172px; user-select: none; pointer-events: none;" src="{{ url_for('static', filename='assets/Alphabet/' + teachername[0].lower() + '.png') }}" alt="Subject Image">
       <h1 style="margin: 0; color:#1dc05c;">{{ teachername[1:] }}</h1>
+  </div>  
+    <hr>
 
-  </div>    
-    {% endif %}
     <hr>
 
     {%if "2023" in description %}
 <h1>Old content</h1>
 {%endif%}
 
-
-
-{% if link %}
-    {% for key, value in link.items() %}
-        <p><a href="{{ value }}" target="_blank" style="color: white;"><u>{{ key }}</u></a></p>
-    {% endfor %}
-{% endif %}
 
 {%if current_user.type == 'admin'%}
 <u>
