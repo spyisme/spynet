@@ -538,10 +538,11 @@ def subjects(subject):
         except :
             subject =  subject.lower()
         return redirect(f'/subjects/{subject}')
+    
+    subject = subject.capitalize()
 
     if "-" in subject:
         subject = subject.replace('-', ' ')
-        subject = subject.capitalize()
 
     teachers = None
     data = load_stage_data(current_user.stage)
