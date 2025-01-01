@@ -34,23 +34,23 @@
 
                     <h2>Remove Subject</h2>
                     <form action="" method="post">
-                        <select name="removeSubject">
+                        <select name="removeSubject" id="delete">
                             {% for x in data %}
                             <option value="{{ x }}">{{ x }}</option>
                             {% endfor %}
                         </select><br><br>
-                        <input type="submit" name="action" value="Remove" onclick="return confirmRemoval({{ x }})">
+                        <input type="submit" name="action" value="Remove" onclick="return confirmRemoval(document.getElementById('delete').value)">
                     </form>
                 </div>
  
                 <h2>Re-order Subjects</h2>
                 <form action="" method="post">
-                    <select name="reorder">
+                    <select name="reorder" id="reorder">
                         {% for x in data %}
                         <option value="{{ x }}">{{ x }}</option>
                         {% endfor %}
                     </select><br><br>
-                    <input type="submit" name="action" value="reorder" onclick="return confirmreorder({{ x }})">
+                    <input type="submit" name="action" value="Reorder" onclick="return confirmreorder(document.getElementById('reorder').value)">
                 </form>
             </div>
 

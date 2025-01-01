@@ -1293,12 +1293,10 @@ def manage_subjects():
             if item_to_move in data:
                 reordered_data = OrderedDict([(item_to_move, data[item_to_move])])
                 reordered_data.update({k: v for k, v in data.items() if k != item_to_move})
-
             else:
-                return "elsee"
                 reordered_data = data 
 
-            save_data(data, current_user.stage)
+            save_data(reordered_data, current_user.stage)
             return redirect(url_for('website.manage_subjects'))
 
 
