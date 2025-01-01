@@ -1310,11 +1310,11 @@ def manage_subjects():
 def manage_teachers(subject):
     if " " in subject :
         subject = subject.replace(' ', '-')
-        return redirect(f'/subjects/{subject}')
+        return redirect(f'/subjects/{subject}/edit')
 
     if "-" in subject:
         subject = subject.replace('-', ' ')
-        
+
     if current_user.type != 'admin':
         return "User is not an admin"
     data = load_stage_data(current_user.stage)
