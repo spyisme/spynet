@@ -34,7 +34,15 @@
                             </label>
                             <input id="file-upload" type="file" name="file" required>
                         </div><br><br>
+                        <p id="file-name">No file chosen</p><br><br>
+                        <script>
+                        document.getElementById('file-upload').addEventListener('change', function() {
+                            const fileName = this.files[0] ? this.files[0].name : 'No file chosen';
+                            document.getElementById('file-name').textContent = fileName;
+                        });
+                        </script>
                         <input style="background-color: green;" type="submit" name="action" value="Add">
+
                     </form>
 
                     <h2>Remove Subject</h2>
