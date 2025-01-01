@@ -916,7 +916,7 @@ def theleaderfinal(type , id):
                     add_to_json(id, link, content_type='document')
   
 
-    return link
+    return f"{link}"
 
 
 #Admin pages===================================================================================================================
