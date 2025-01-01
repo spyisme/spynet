@@ -451,10 +451,12 @@
             {
                 "name": "Dr. Hussien El sayed",
                 "link": "ecu",
+                "badge" : "ss" , 
                 "courses": [
                     {
                         "name": "Chapter 3",
                         "description": "Equilibrium of a Particle",
+                        "badge" : "ss" , 
 
                         "videos": [
                             {
@@ -488,6 +490,8 @@
                     {
                         "name": "Chapter 6",
                         "description": "Structural Analysis (Trusses)",
+                "badge" : "ss2" , 
+
                         "videos": "",
                         "playlist_id": "",
                         "folder": "https://drive.google.com/drive/folders/1WaMuOJXLZZ7lIvKpDtwu5MHcnHMfU1rh?usp=drive_link"
