@@ -35,8 +35,20 @@
                     
                     <h2 style="color: white; text-align: center;">Add Course</h2>
                     <form action="" method="post" enctype="multipart/form-data">
-                        <input type="text" name="new" placeholder="New Course" required><br><br>
-                        <input type="file" name="file" required><br><br>
+                        <input type="text" name="new" placeholder="New Course" required>                        
+                        <div class="file-upload">
+                            <label for="file-upload" class="custom-file-upload">
+                                Choose Image
+                            </label>
+                            <input id="file-upload" type="file" name="file"  accept=".jpg, .jpeg, .png" required>
+                        </div>
+                        <p id="file-name" style="color: white;">No file chosen</p>
+                        <script>
+                        document.getElementById('file-upload').addEventListener('change', function() {
+                            const fileName = this.files[0] ? this.files[0].name : 'No file chosen';
+                            document.getElementById('file-name').textContent = fileName;
+                        });
+                        </script>
                         <input style="background-color: green;" type="submit" name="action" value="Add">
                     </form>
                     
