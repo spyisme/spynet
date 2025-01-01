@@ -5899,3 +5899,38 @@ googleapiclient.errors.HttpError: <HttpError 400 when requesting https://youtube
  * Debug mode: on
 88.130.154.200 - - [02/Jan/2025 01:30:03] code 400, message Bad HTTP/0.9 request type ('\x04\x01\x00P\x17ï')
 88.130.154.200 - - [02/Jan/2025 01:30:03] code 400, message Bad request syntax ('\x05\x01\x00')
+ * Serving Flask app 'website'
+ * Debug mode: on
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/root/spysnet/website/website.py", line 1549, in manage_courses
+    os.rename(f"website/static/assets/Stage{current_user.stage}/{subject.replace(' ' , '-')}/{teachername}" , f"website/static/assets/Stage{current_user.stage}/{subject.replace(' ' , '-')}/{link}" )
+FileNotFoundError: [Errno 2] No such file or directory: 'website/static/assets/Stage4/Engineering-Drawing/ecu' -> 'website/static/assets/Stage4/Engineering-Drawing/ecuu'
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/root/spysnet/website/website.py", line 1520, in manage_courses
+    course_names = [course['name']
+TypeError: 'NoneType' object is not iterable
+185.147.124.171 - - [02/Jan/2025 05:20:41] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
