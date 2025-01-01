@@ -859,6 +859,7 @@ def theleadersessions():
 
 @website.route("/subjects/english/theleader/session/<type>/<id>")
 def theleaderfinal(type , id):
+    link = None
     if type == 'video':
         json_file_path = 'website/Backend/theleader/theleader.json'
             
