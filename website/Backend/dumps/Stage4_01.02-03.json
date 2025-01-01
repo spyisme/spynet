@@ -1,19 +1,11 @@
 {
     "Engineering Drawing": {
-        "teachers": [
-            {
-                "name": "Test",
-                "link": "tst",
-                "badge": "",
-                "courses": [],
-                "description": ""
-            }
-        ]
+        "teachers": []
     },
     "Calculus": {
         "teachers": [
             {
-                "name": "Dr. Emad",
+                "name": "Dr. Emaddd",
                 "link": "dremad",
                 "courses": [
                     {
