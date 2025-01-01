@@ -655,7 +655,7 @@ def videos(subject, teacher_name, course_name):
     if "-" in course_name:
         course_name = course_name.replace('-', ' ')
 
-    course_name = course_name.capitalize()
+    course_name = course_name.title()
     subject = subject.title()
 
     data = load_stage_data(current_user.stage)
@@ -699,7 +699,7 @@ def update(subject, teacher_name, course_name):
 
         course_name = course_name.replace('-', ' ')
 
-    course_name = course_name.capitalize()
+    course_name = course_name.title()
     subject = subject.title()
     #Needs a solution (Not really)
     data = load_stage_data(current_user.stage)
@@ -1287,7 +1287,7 @@ def manage_subjects():
             subject = request.form['newSubject']
 
             subject = subject.title()
-            
+
             file = request.files['file']
 
             if file:
@@ -1379,8 +1379,9 @@ def manage_teachers(subject):
     } for teacher in teachers]
 
     if request.method == 'POST':
-        if request.form['action'] == 'Rename':
+        if request.form['action'] == 'Rename': #Rename the subject 
             new_name = request.form['new_name']
+            new_name = new_name.title() # Important
             try:
                 os.rename(f"website/static/assets/Stage{current_user.stage}/homepage/{subject}.jpg", f"website/static/assets/Stage{current_user.stage}/homepage/{new_name}.jpg")
                 try :
@@ -1406,6 +1407,8 @@ def manage_teachers(subject):
             teacher_name = request.form['new']
             teacher_link = request.form['new2']
 
+            teacher_link = teacher_link.lower() #Important
+            
             file = request.files['file']
             if teacher_name == "":
                 return "Teacher name is none "
@@ -1562,7 +1565,7 @@ def manage_courses(subject, teachername):
         if request.form['action'] == 'Add':
             course_name = request.form['new']
             file = request.files['file']
-
+            course_name = course_name.title() #Important
             if file:
                 os.makedirs(os.path.dirname(
                     f'website/static/assets/Stage{current_user.stage}/{subject}/{teachername}/'+ course_name + '.jpg'),
