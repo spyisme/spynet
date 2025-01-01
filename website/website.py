@@ -561,7 +561,7 @@ def subjects(subject):
         abort(404)
 
     return render_template('used_pages/subjects.html',
-                           teachername=subject,
+                           teachername=subject.lower(),
                            teacher_links=teachers)
 
 
@@ -571,6 +571,22 @@ def teacher(subject, teacher_name):
     courses = None
     data = load_stage_data(current_user.stage)
     lastvideo = None  # Initialize lastvideo
+
+    if " " in subject or any(char.isupper() for char in subject): 
+        try :
+            subject = subject.replace(' ', '-')
+            subject =  subject.lower()
+        except :
+            subject =  subject.lower()
+        return redirect(f'/subjects/{subject}')
+    
+    subject = subject.capitalize()
+
+    if "-" in subject:
+        subject = subject.replace('-', ' ')
+
+
+
 
     if subject in data:
         for teacher in data[subject]["teachers"]:
