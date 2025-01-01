@@ -1327,7 +1327,6 @@ def manage_teachers(subject):
     if request.method == 'POST':
         if request.form['action'] == 'Rename':
             new_name = request.form['new_name']
-            #Rename in the json , Rename the Course image (/homepage) , Rename the Course folder (/)
             try:
                 os.rename(f"website/static/assets/Stage{current_user.stage}/homepage/{subject}.jpg", f"website/static/assets/Stage{current_user.stage}/homepage/{new_name}.jpg")
                 try :
@@ -1338,11 +1337,9 @@ def manage_teachers(subject):
                 renamed_data = {}
                 for key, value in data.items():
                     if key == subject:
-                        renamed_data[new_name] = value  # Use the new key
+                        renamed_data[new_name] = value 
                     else:
-                        renamed_data[key] = value  # Keep other keys as they are
-
-
+                        renamed_data[key] = value  
 
                     save_data(renamed_data, current_user.stage)
 
