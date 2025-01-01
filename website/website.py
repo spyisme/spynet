@@ -1325,6 +1325,18 @@ def manage_teachers(subject):
     } for teacher in teachers]
 
     if request.method == 'POST':
+        if request.form['action'] == 'Rename':
+            new_name = request.form['new_name']
+            #Rename in the json , Rename the Course image (/homepage) , Rename the Course folder (/)
+            try:
+                os.rename(f"website/static/assets/Stage{current_user.stage}/homepage/{subject}.jpg", f"website/static/assets/Stage{current_user.stage}/homepage/{new_name}.jpg")
+                os.rename(f"website/static/assets/Stage{current_user.stage}/{subject}", f"website/static/assets/Stage{current_user.stage}/{new_name}")
+                data[subject] = new_name
+                save_data(data, current_user.stage)
+            except Exception as e :
+                return f"Error while renameing {subject} to {new_name} : {e}"
+            return redirect(url_for('website.manage_teachers', subject=subject))
+
         if request.form['action'] == 'Add':
             teacher_name = request.form['new']
             teacher_link = request.form['new2']
@@ -1353,6 +1365,7 @@ def manage_teachers(subject):
                 new_teacher = {
                     "name": teacher_name,
                     "link": teacher_link,
+                    "badge": "",
                     "courses": [],
                     "description": ""
                 }
@@ -1368,9 +1381,7 @@ def manage_teachers(subject):
         if request.form['action'] == 'Remove':
             teacher_name = request.form['remove']
             try:
-                os.remove(
-                    f'website/static/assets/Stage{current_user.stage}/{subject}/'
-                    + teacher_name + '.jpg')
+                os.remove(f'website/static/assets/Stage{current_user.stage}/{subject}/'+ teacher_name + '.jpg')
                 shutil.rmtree(f"website/static/assets/Stage{current_user.stage}/{subject}/{teacher_name}")
                        
             except:
