@@ -571,6 +571,9 @@ def teacher(subject, teacher_name):
     if subject in data:
         for teacher in data[subject]["teachers"]:
             if teacher["link"] == teacher_name:
+                redirect_link = teacher.get('redirect', '')
+                if redirect_link :
+                    return redirect(redirect_link)
                 courses = teacher.get("courses")
                 description = teacher.get("description")
 
