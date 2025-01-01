@@ -1663,23 +1663,26 @@ def edit_course(subject, teachername, course_name):
             if teacher['link'] == teachername:
                 for course in teacher['courses']:
                     if course['name'] == course_name:
-                        if request.form['action'] == 'apply':
-                            
-                            course['playlist_id'] = request.form['playlist'].split('?list=')[1]
-                            
-                        elif request.form['action'] == 'Apply':
-                            course['folder'] = request.form['folder']
-                        elif request.form['action'] == 'set':
-                            course['description'] = request.form['description']
+                        if request.form['action'] == 'Update':
+                            playlist_id = request.form['playlist'].split('?list=')[1]
+                            folder = request.form['folder']
+                            description = request.form['description']
+
+                            if playlist_id :
+                                course['playlist_id'] = playlist_id
+                            if folder :
+                                course['folder'] = folder
+                            if description :
+                                course['description'] = description
+
                         elif request.form['action'] == 'Clear videos':
                             course['videos'] = ""
+
                         save_data(data, current_user.stage)
+
                         course_name = course_name.replace(' ', '-')
                         return redirect(
-                            url_for('website.edit_course',
-                                    subject=subject,
-                                    teachername=teachername,
-                                    course_name=course_name))
+                            url_for('website.edit_course',subject=subject,teachername=teachername,course_name=course_name))
 
     # Find the current course to display its details
     for teacher in data.get(subject, {}).get('teachers', []):

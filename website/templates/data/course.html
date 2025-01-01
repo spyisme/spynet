@@ -42,7 +42,16 @@
 
 
     <h1>Edit {{course_name}}</h1>
- 
+    <form action="" method="post">
+
+        <input type="text" name="playlist" placeholder="Playlist Link"><br><br>
+        <input type="text" name="folder" placeholder="Folder"><br><br>
+        <input type="text" name="description" placeholder="{{ current_course.description }} (Description)"><br><br>
+
+        <input type ="submit"  name="action" value="Update">
+
+        </form>
+        
         <h2>Current info</h2>
 
 
@@ -59,34 +68,8 @@
    
 
     </div>
-    <div>
-        
-        <h2>Playlist Link</h2>
-        <form action="" method="post">
-
-        <input type="text" name="playlist" placeholder="Playlist Link"><br><br>
-        <input type ="submit"  name="action" value="apply">
-    </div>
-</form>
-<form action="" method="post">
-
-<div>
-        <h2>Google Drive Folder</h2>
-        <input type="text" name="folder" placeholder="Folder"><br><br>
-        <input type ="submit"  name="action" value="Apply">
-    </div>
-    </form>
-    <form action="" method="post">
-
-    <div>
-        <h2>Course Description</h2>
-        <input type="text" name="description" placeholder="Description"><br><br>
-        <input type ="submit"  name="action" value="set">
-    </div>
 
 
-</form>
-</div>
 <br><br><br>
 <br>
 
