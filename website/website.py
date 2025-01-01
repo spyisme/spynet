@@ -1640,18 +1640,18 @@ def edit_course(subject, teachername, course_name):
     if current_user.type != 'admin':
         return "User is not an admin"
     
-    if " " in subject or any(char.isupper() for char in subject): 
+    if " " in course_name or any(char.isupper() for char in course_name): 
         try :
-            subject = subject.replace(' ', '-')
-            subject =  subject.lower()
+            course_name = course_name.replace(' ', '-')
+            course_name =  course_name.lower()
         except :
-            subject =  subject.lower()
-        return redirect(f'/subjects/{subject}/edit')
+            course_name =  course_name.lower()
+        return redirect(f'/subjects/{subject}/{teachername}/{course_name}/edit')
     
-    subject = subject.title()
+    course_name = course_name.title()
 
-    if "-" in subject:
-        subject = subject.replace('-', ' ')
+    if "-" in course_name:
+        course_name = course_name.replace('-', ' ')
 
 
     data = load_stage_data(current_user.stage)
