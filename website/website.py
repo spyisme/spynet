@@ -633,6 +633,7 @@ def videos(subject, teacher_name, course_name):
     
 
     if "-" in subject or any(char.isupper() for char in subject) :
+        return "space or dash"
         try :
             subject = subject.replace(' ', '-')
             subject = subject.lower()
