@@ -33,8 +33,8 @@
                                 Choose Image
                             </label>
                             <input id="file-upload" type="file" name="file" required>
-                        </div><br><br>
-                        <p id="file-name">No file chosen</p><br><br>
+                        </div>
+                        <p id="file-name" style="color: white;">No file chosen</p><br><br>
                         <script>
                         document.getElementById('file-upload').addEventListener('change', function() {
                             const fileName = this.files[0] ? this.files[0].name : 'No file chosen';
