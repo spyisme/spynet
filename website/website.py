@@ -632,23 +632,20 @@ def videos(subject, teacher_name, course_name):
     folder = None
     
 
-    if "-" in subject or any(char.isupper() for char in subject) :
-        return "space or dash"
-        try :
-            subject = subject.replace(' ', '-')
-            subject = subject.lower()
-
-        except :
-            subject = subject.lower()
+    if "-" in subject:
+       subject = subject.replace(' ', '-')
 
 
-    if " " in course_name or any(char.isupper() for char in course_name): 
+    if " " in course_name or any(char.isupper() for char in course_name) or any(char.isupper() for char in subject): 
         try :
             course_name = course_name.replace(' ', '-')
             course_name = course_name.lower()
+            subject = subject.lower()
 
         except :
             course_name = course_name.lower()
+            subject = subject.lower()
+
         return redirect(f'/subjects/{subject}/{teacher_name}/{course_name}')
 
     if "-" in course_name:
