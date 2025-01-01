@@ -1335,15 +1335,21 @@ def manage_teachers(subject):
                 except :
                     pass
 
-                if subject in data:
-                    data[new_name] = data.pop(subject)  # Move the value to the new key and remove the old key
+                renamed_data = {}
+                for key, value in data.items():
+                    if key == subject:
+                        renamed_data[new_name] = value  # Use the new key
+                    else:
+                        renamed_data[key] = value  # Keep other keys as they are
 
-                    save_data(data, current_user.stage)
+
+
+                    save_data(renamed_data, current_user.stage)
 
             except Exception as e :
                 return f"Error while renameing {subject} to {new_name} : {e}"
             
-            return redirect(url_for('website.manage_teachers', subject=subject))
+            return redirect(url_for('website.manage_teachers', subject=new_name))
 
         if request.form['action'] == 'Add':
             teacher_name = request.form['new']
