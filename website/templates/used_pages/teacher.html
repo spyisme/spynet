@@ -43,8 +43,23 @@
     {% if teachername in valid_subjects %}
         <img class="img" src="{{ url_for('static', filename='assets/subjects/' + teachername + '.png') }}" alt="Subject Image">
     {% else %}
-    <img class="img" style="height: 172px;" src="{{ url_for('static', filename='assets/Alphabet/' + teachername[0].lower() + '.png') }}" alt="Subject Image">
-        <h1>{{teachername[1:]}}</h1>
+    <div class="teacher-info">
+      <img class="img" style="height: 172px;" src="{{ url_for('static', filename='assets/Alphabet/' + teachername[0].lower() + '.png') }}" alt="Subject Image">
+      <h1>{{ teachername[1:] }}</h1>
+  </div>
+  <style>
+    .teacher-info {
+        display: flex;
+        align-items: center; /* Aligns image and text vertically */
+        gap: 10px; /* Space between the image and text */
+    }
+    
+    .teacher-info .img {
+        height: 172px;
+        width: auto;
+    }
+    </style>
+    
     {% endif %}
 
     {%if "2023" in description %}
