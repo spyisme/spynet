@@ -43,7 +43,7 @@
     {% if teachername in valid_subjects %}
         <img class="img" src="{{ url_for('static', filename='assets/subjects/' + teachername + '.png') }}" alt="Subjects Image">
     {% else %}
-        <h1>✰ {{ teachername[0] }} ✰</h1>
+        <h1>✰ {{ teachername[:1] }} ✰</h1>
     {% endif %}
 
     {%if "2023" in description %}
