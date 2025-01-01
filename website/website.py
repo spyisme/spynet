@@ -1408,7 +1408,7 @@ def manage_teachers(subject):
             teacher_link = request.form['new2']
 
             teacher_link = teacher_link.lower() #Important
-            
+
             file = request.files['file']
             if teacher_name == "":
                 return "Teacher name is none "
@@ -1418,7 +1418,7 @@ def manage_teachers(subject):
                     return "Link is taken already"
                 
             if file:
-                directory = f"website/static/assets/Stage{current_user.stage}/{subject}"
+                directory = f"website/static/assets/Stage{current_user.stage}/{subject.replace(' ' , '-')}"
                 if not os.path.exists(directory):
                     os.makedirs(directory)
                     
@@ -1450,7 +1450,7 @@ def manage_teachers(subject):
             teacher_name = request.form['remove']
             try:
                 os.remove(f'website/static/assets/Stage{current_user.stage}/{subject}/'+ teacher_name + '.jpg')
-                shutil.rmtree(f"website/static/assets/Stage{current_user.stage}/{subject}/{teacher_name}")
+                shutil.rmtree(f"website/static/assets/Stage{current_user.stage}/{subject.replace(' ' , '-')}/{teacher_name}")
                        
             except:
                 pass
