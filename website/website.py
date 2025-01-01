@@ -1455,16 +1455,22 @@ def manage_courses(subject, teachername):
 
     if request.method == 'POST':
 
-        if request.form['action'] == 'Set':
+        if request.form['action'] == 'Update':
             description = request.form['description']
+
             teacherinfo['description'] = description
+
             data[subject]['teachers'] = teachers
+
             save_data(data, current_user.stage)
 
             return redirect(
                 url_for('website.manage_courses',
                         subject=subject,
                         teachername=teachername))
+        
+
+
 
         if request.form['action'] == 'Add':
             course_name = request.form['new']
@@ -1527,11 +1533,16 @@ def manage_courses(subject, teachername):
                 url_for('website.manage_courses',
                         subject=subject,
                         teachername=teachername))
+        
+        description = teacherinfo['description']
+
+        if description == "" :
+            description = "Number of courses"
 
     return render_template('data/courses.html',
                            data=course_names,
                            teachername=teacher_name,teacherlink = teachername,
-                           desc=teacherinfo['description'] )
+                           description= description )
 
 
 #Edit a course info
