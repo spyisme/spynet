@@ -539,7 +539,7 @@ def subjects(subject):
             subject =  subject.lower()
         return redirect(f'/subjects/{subject}')
     
-    subject = subject.capitalize()
+    subject = subject.title()
 
     if "-" in subject:
         subject = subject.replace('-', ' ')
