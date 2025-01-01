@@ -584,7 +584,7 @@ def teacher(subject, teacher_name):
                         item['last_video'] = lastvideo  # Add last_video to the course info
                     else : 
                         item['last_video'] = "N/A"
-                    badge = courses.get('badge', '')
+                    badge = item.get('badge', '')
                     if badge :
                         item['badge'] = badge
                 break
