@@ -1496,7 +1496,7 @@ def manage_courses(subject, teachername):
             subject =  subject.lower()
         except :
             subject =  subject.lower()
-        return redirect(f'/subjects/{subject}/edit')
+        return redirect(f'/subjects/{subject}/{teachername}/edit')
     
     subject = subject.title()
 
