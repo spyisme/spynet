@@ -52,7 +52,7 @@
         <hr>
         {% else %}
     <div style="display: flex; align-items: center; justify-content: center;">
-      <img class="img" style="height: 172px;" src="{{ url_for('static', filename='assets/Alphabet/' + teachername[0].lower() + '.png') }}" alt="Subject Image">
+      <img style="height: 172px; user-select: none; pointer-events: none;" src="{{ url_for('static', filename='assets/Alphabet/' + teachername[0].lower() + '.png') }}" alt="Subject Image">
       <h1 style="margin: 0; color:#1dc05c;">{{ teachername[1:] }}</h1>
   </div>  
         <hr>
