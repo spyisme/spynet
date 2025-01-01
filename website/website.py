@@ -1466,6 +1466,7 @@ def manage_courses(subject, teachername):
                 teacherinfo['name'] = name
             if link :
                 teacherinfo['link'] = link
+                teachername = link
 
             data[subject]['teachers'] = teachers
 
