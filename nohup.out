@@ -5848,3 +5848,52 @@ AttributeError: 'NoneType' object has no attribute 'type'
 185.7.214.89 - - [31/Dec/2024 19:29:24] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
 80.82.77.202 - - [31/Dec/2024 19:48:49] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
 52.189.74.196 - - [31/Dec/2024 22:53:25] code 400, message Bad request syntax ('MGLNDD_47.250.51.78_80')
+172.104.11.34 - - [31/Dec/2024 23:50:57] code 400, message Bad request version ('À\x13À')
+185.7.214.89 - - [31/Dec/2024 23:51:01] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/root/spysnet/website/website.py", line 654, in update
+    videos = get_playlist_videos(playlist_id)
+  File "/root/spysnet/website/website.py", line 76, in get_playlist_videos
+    playlist_response = playlist_request.execute()
+  File "/usr/local/lib/python3.10/dist-packages/googleapiclient/_helpers.py", line 130, in positional_wrapper
+    return wrapped(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/googleapiclient/http.py", line 938, in execute
+    raise HttpError(resp, content, uri=self.uri)
+googleapiclient.errors.HttpError: <HttpError 400 when requesting https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=&maxResults=50&alt=json returned "No filter selected. Expected one of: {0}". Details: "[{'message': 'No filter selected. Expected one of: {0}', 'domain': 'youtube.parameter', 'reason': 'missingRequiredParameter', 'location': 'parameters.', 'locationType': 'other'}]">
+161.35.238.241 - - [31/Dec/2024 23:59:31] code 400, message Bad request syntax ('\x00\x0e8ÎA«gâV')
+93.174.93.12 - - [01/Jan/2025 02:46:20] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+159.223.67.34 - - [01/Jan/2025 08:03:32] code 400, message Bad request version ('À\x13À')
+152.42.247.210 - - [01/Jan/2025 08:03:46] code 400, message Bad request version ('À\x13À')
+13.203.154.127 - - [01/Jan/2025 10:37:13] code 400, message Bad request syntax ("\x16\x03\x01\x00ê\x01\x00\x00æ\x03\x03I\x00ÒÿÆ\x1b+'\x05ïó>\x9dl")
+13.203.154.127 - - [01/Jan/2025 10:37:50] code 400, message Bad request version ('À\x13À')
+13.203.154.127 - - [01/Jan/2025 10:38:39] code 400, message Bad request syntax ('\x16\x03\x01\x00ê\x01\x00\x00æ\x03\x03K')
+167.94.145.103 - - [01/Jan/2025 13:32:27] code 505, message Invalid HTTP version (2.0)
+206.168.34.69 - - [01/Jan/2025 14:06:22] code 505, message Invalid HTTP version (2.0)
+147.45.112.177 - - [01/Jan/2025 15:50:28] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+152.42.219.47 - - [01/Jan/2025 16:50:31] code 400, message Bad request version ('À\x13À')
+178.128.54.126 - - [01/Jan/2025 16:50:57] code 400, message Bad request version ('À\x13À')
+205.210.31.20 - - [01/Jan/2025 17:34:09] code 400, message Bad request version ('À\x13À')
+205.210.31.20 - - [01/Jan/2025 17:34:10] code 400, message Bad request version ('À(À$À\x14À')
+205.210.31.163 - - [01/Jan/2025 18:36:09] code 400, message Bad request version ('À\x13À')
+205.210.31.163 - - [01/Jan/2025 18:36:10] code 400, message Bad request version ('À(À$À\x14À')
+134.209.109.20 - - [01/Jan/2025 20:42:55] code 400, message Bad request version ('À\x13À')
+64.62.197.72 - - [01/Jan/2025 21:11:36] code 400, message Bad request version ('À\x14À')
+45.79.181.94 - - [01/Jan/2025 21:46:09] code 400, message Bad request syntax ('\x16\x03\x01\x00î\x01\x00\x00ê\x03\x03\x9dbD±¶xcy£+`NVÛ\x87E\x8fj\x86/\\vòx°î')
+35.216.251.227 - - [01/Jan/2025 22:38:46] code 400, message Bad request version ('À\x13À')
+199.45.154.149 - - [01/Jan/2025 22:44:57] code 505, message Invalid HTTP version (2.0)
+185.100.87.136 - - [01/Jan/2025 23:34:14] code 400, message Bad request version ('Ý%d1\x17¦%nÅ')
+185.100.87.136 - - [01/Jan/2025 23:34:24] code 400, message Bad HTTP/0.9 request type ('\x10')
+ * Serving Flask app 'website'
+ * Debug mode: on

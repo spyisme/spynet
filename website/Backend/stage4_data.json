@@ -451,7 +451,61 @@
             {
                 "name": "Dr. Hussien El sayed",
                 "link": "ecu",
-                "courses": [],
+                "courses": [
+                    {
+                        "name": "Chapter 3",
+                        "description": "Equilibrium of a Particle",
+                        "videos": [
+                            {
+                                "id": "F5oqJ5t-pa4",
+                                "title": "Tension Force Physics Problems",
+                                "duration": "00:17:17",
+                                "jsid": 0
+                            },
+                            {
+                                "id": "qGvFAl5CK_c",
+                                "title": "Static Equilibrium - Tension, Torque, Lever, Beam, & Ladder Problem - Physics",
+                                "duration": "01:04:54",
+                                "jsid": 1
+                            },
+                            {
+                                "id": "4AoDLsrYSDo",
+                                "title": "[PHM031s] Statics - Lec. (5) - Dr. Hussein Elsayed - Fall 2020",
+                                "duration": "01:30:18",
+                                "jsid": 2
+                            },
+                            {
+                                "id": "1rMum6kEKx4",
+                                "title": "[PHM031s] Statics - Lec. (6) - Dr. Hussein Elsayed - Fall 2020",
+                                "duration": "01:51:54",
+                                "jsid": 3
+                            }
+                        ],
+                        "playlist_id": "PLM-GVlebsoPUpk6QO4_X5j-tU0VhF4TFF",
+                        "folder": "https://drive.google.com/drive/folders/1lDMoJDbycLvVRQg7jyCdgeWnwO8ghof6?usp=drive_link"
+                    },
+                    {
+                        "name": "Chapter 6",
+                        "description": "Structural Analysis (Trusses)",
+                        "videos": "",
+                        "playlist_id": "",
+                        "folder": "https://drive.google.com/drive/folders/1WaMuOJXLZZ7lIvKpDtwu5MHcnHMfU1rh?usp=drive_link"
+                    },
+                    {
+                        "name": "Chapter 8",
+                        "description": "Friction",
+                        "videos": "",
+                        "playlist_id": "",
+                        "folder": "https://drive.google.com/drive/folders/1CiLV_A_U2cEXAGn2-_wMFJJabQs1feFK?usp=drive_link"
+                    },
+                    {
+                        "name": "Chapter 9",
+                        "description": "Center of Gravity",
+                        "videos": "",
+                        "playlist_id": "",
+                        "folder": "https://drive.google.com/drive/folders/1KVMIJNyR_5dhe8zXTkCZHOF1e7dK41E1?usp=drive_link"
+                    }
+                ],
                 "description": ""
             }
         ]

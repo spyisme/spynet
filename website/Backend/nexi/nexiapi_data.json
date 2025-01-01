@@ -2,23 +2,23 @@
     "reminders": [
         [
             {
+                "Name": "School hw",
+                "Time": "today.7pm",
+                "ParsedTime": "2025-01-01 19:00:00"
+            }
+        ],
+        [
+            {
                 "Name": "Birthday",
                 "Time": "march.7.7pm",
-                "ParsedTime": "2024-03-07 19:00:00"
+                "ParsedTime": "2025-03-07 19:00:00"
             }
         ],
         [
             {
                 "Name": "do the hw",
                 "Time": "march.8.8pm.10mins",
-                "ParsedTime": "2024-03-08 20:10:00"
-            }
-        ],
-        [
-            {
-                "Name": "School hw",
-                "Time": "today.7pm",
-                "ParsedTime": "2024-12-30 19:00:00"
+                "ParsedTime": "2025-03-08 20:10:00"
             }
         ]
     ]
