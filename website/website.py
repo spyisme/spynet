@@ -1651,8 +1651,8 @@ def edit_course(subject, teachername, course_name):
         return redirect(f'/subjects/{subject}/{teachername}/{course_name}/edit')
     
     course_name = course_name.title()
-    subject = course_name.title()
-    teachername = course_name.lower()
+    subject = subject.title()
+    teachername = teachername.lower()
 
     data = load_stage_data(current_user.stage)
     current_course = None
