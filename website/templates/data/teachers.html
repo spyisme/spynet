@@ -22,6 +22,12 @@
             <h1>Edit {{ subject }}</h1>
                 
                 <div class="form-container">
+                    <h2>Rename Course</h2>
+                    <input type="text" name="new_name" placeholder="{{subject}}" required><br><br>
+                        <input type="submit" name="action" value="Rename">
+                    </form>
+
+
                     <h2>Add Teacher</h2>
                     <form action="" method="post" enctype="multipart/form-data">
                         <input type="text" name="new" placeholder="New Teacher" required><br><br>
