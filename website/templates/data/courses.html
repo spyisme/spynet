@@ -37,7 +37,7 @@
                     <form action="" method="post" enctype="multipart/form-data">
                         <input type="text" name="new" placeholder="New Course" required><br><br>
                         <input type="file" name="file" required><br><br>
-                        <input type="submit" name="action" value="Add">
+                        <input style="background-color: green;" type="submit" name="action" value="Add">
                     </form>
                     
                     <h2 style="color: white; text-align: center;">Remove Course</h2>
@@ -51,7 +51,7 @@
                             {% endfor %}
                         </select><br><br>
 
-                        <input type="submit" name="action" value="Remove" onclick="return confirmRemoval()">
+                        <input style="background-color: red;" type="submit" name="action" value="Remove" onclick="return confirmRemoval()">
                     </form>
                 </div>
 
