@@ -859,9 +859,9 @@ def theleadersessions():
 
 @website.route("/subjects/english/theleader/session/<type>/<id>")
 def theleaderfinal(type , id):
-    link = None
+    json_file_path = 'website/Backend/theleader/theleader.json'
+
     if type == 'video':
-        json_file_path = 'website/Backend/theleader/theleader.json'
             
         if os.path.exists(json_file_path):
             with open(json_file_path, 'r') as json_file:
@@ -880,10 +880,7 @@ def theleaderfinal(type , id):
                         link = match.group(1)
                         add_to_json(id, link, content_type='video')
 
-    elif type == 'webcontent':
-
-        json_file_path = 'website/Backend/theleader.json'
-            
+    elif type == 'webcontent':           
         if os.path.exists(json_file_path):
             with open(json_file_path, 'r') as json_file:
                 data = json.load(json_file)
@@ -901,8 +898,6 @@ def theleaderfinal(type , id):
                         # print(link)
 
     elif type == 'document':
-        json_file_path = 'website/Backend/theleader.json'
-        return "ok"
         if os.path.exists(json_file_path):
             with open(json_file_path, 'r') as json_file:
                 data = json.load(json_file)
@@ -918,7 +913,7 @@ def theleaderfinal(type , id):
         return "type not here"
   
 
-    return f"{link}"
+    return redirect(link)
 
 
 #Admin pages===================================================================================================================
