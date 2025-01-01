@@ -1461,6 +1461,8 @@ def manage_courses(subject, teachername):
             description = request.form['description']
 
             if description :
+                if description == " " :
+                    description = ""
                 teacherinfo['description'] = description
             if name : 
                 teacherinfo['name'] = name
