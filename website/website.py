@@ -1295,6 +1295,7 @@ def manage_subjects():
                 reordered_data.update({k: v for k, v in data.items() if k != item_to_move})
 
             else:
+                return "elsee"
                 reordered_data = data 
 
             save_data(data, current_user.stage)
