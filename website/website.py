@@ -540,7 +540,8 @@ def subjects(subject):
         return redirect(f'/subjects/{subject}')
 
     if "-" in subject:
-        subject = subject.replace('-', ' ').capitalize()
+        subject = subject.replace('-', ' ')
+        subject = subject.capitalize()
 
     teachers = None
     data = load_stage_data(current_user.stage)
