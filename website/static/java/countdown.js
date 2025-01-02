@@ -1,12 +1,12 @@
 function startCountdown() {
     // List of countdown dates with titles
     var countdownDates = [
-        { date: new Date("January 4, 2025 08:00:00 GMT+1200").getTime(), title: "Calculus 1" },
-        { date: new Date("January 6, 2025 08:00:00 GMT+1200").getTime(), title: "English" },
-        { date: new Date("January 11, 2025 08:00:00 GMT+1200").getTime(), title: "Statics" },
-        { date: new Date("January 15, 2025 08:00:00 GMT+1200").getTime(), title: "Computer" },
-        { date: new Date("January 18, 2025 08:00:00 GMT+1200").getTime(), title: "Physics" },
-        { date: new Date("January 22, 2025 08:00:00 GMT+1200").getTime(), title: "Chinese" }
+        { date: new Date("January 4, 2025 12:00:00 GMT+0200").getTime(), title: "Calculus 1" },
+        { date: new Date("January 6, 2025 12:00:00 GMT+0200").getTime(), title: "English" },
+        { date: new Date("January 11, 2025 12:00:00 GMT+0200").getTime(), title: "Statics" },
+        { date: new Date("January 15, 2025 12:00:00 GMT+0200").getTime(), title: "Computer" },
+        { date: new Date("January 18, 2025 12:00:00 GMT+0200").getTime(), title: "Physics" },
+        { date: new Date("January 22, 2025 12:00:00 GMT+0200").getTime(), title: "Chinese" }
     ];
 
     // Index to keep track of the current countdown date
@@ -46,7 +46,7 @@ function startCountdown() {
         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
         // Output the result in an element with id="countdown"
-        document.getElementById("countdown").innerHTML = "(Sc : amrayman_n) Days till next exam: " + days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+        document.getElementById("countdown").innerHTML = "Days till next exam: " + days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
 
         // Update the date element with title
         var currentTargetDate = new Date(countDownDate);
