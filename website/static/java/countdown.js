@@ -46,7 +46,7 @@ function startCountdown() {
         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
         // Output the result in an element with id="countdown"
-        document.getElementById("countdown").innerHTML = "Time till "+ countdownDates[currentIndex].title + " exam : " + days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+        document.getElementById("countdown").innerHTML = "Timee till "+ countdownDates[currentIndex].title + " exam : " + days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
 
         // Update the date element with title
         var currentTargetDate = new Date(countDownDate);
