@@ -5935,3 +5935,101 @@ Traceback (most recent call last):
 TypeError: 'NoneType' object is not iterable
 185.147.124.171 - - [02/Jan/2025 05:20:41] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
 47.237.115.100 - - [02/Jan/2025 05:25:36] code 400, message Bad request version ('À\x14À')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/root/spysnet/website/website.py", line 918, in theleaderfinal
+    return redirect(link)
+UnboundLocalError: local variable 'link' referenced before assignment
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/root/spysnet/website/website.py", line 918, in theleaderfinal
+    return redirect(link)
+UnboundLocalError: local variable 'link' referenced before assignment
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/root/spysnet/website/website.py", line 918, in theleaderfinal
+    return redirect(link)
+UnboundLocalError: local variable 'link' referenced before assignment
+172.105.128.12 - - [02/Jan/2025 05:45:32] code 400, message Bad request version ('À\x13À')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 883, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 902, in finalize_request
+    response = self.make_response(rv)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1174, in make_response
+    raise TypeError(
+TypeError: The view function for 'website.theleaderfinal' did not return a valid response. The function either returned None or ended without a return statement.
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 883, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 902, in finalize_request
+    response = self.make_response(rv)
+  File "/usr/local/lib/python3.10/dist-packages/flask/app.py", line 1174, in make_response
+    raise TypeError(
+TypeError: The view function for 'website.theleaderfinal' did not return a valid response. The function either returned None or ended without a return statement.
+185.147.124.171 - - [02/Jan/2025 07:05:03] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+185.147.124.171 - - [02/Jan/2025 08:27:25] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+93.174.93.12 - - [02/Jan/2025 08:40:30] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+185.147.124.171 - - [02/Jan/2025 10:10:20] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+18.218.10.228 - - [02/Jan/2025 11:39:55] code 400, message Bad request version ('À\x14À')
+198.235.24.27 - - [02/Jan/2025 11:52:33] code 400, message Bad request version ('À\x13À')
+198.235.24.27 - - [02/Jan/2025 11:52:33] code 400, message Bad request version ('À(À$À\x14À')
+147.185.132.213 - - [02/Jan/2025 12:24:46] code 400, message Bad request version ('À\x13À')
+147.185.132.213 - - [02/Jan/2025 12:24:46] code 400, message Bad HTTP/0.9 request type ("\x16\x03\x01\x00Ê\x01\x00\x00Æ\x03\x03Å:vñz\xadÓ\x14ÎD¡Ùæð\x04tÌÊ<«Î\x89Àè'¾_°sù%c\x00\x00hÌ\x14Ì\x13À/À+À0À,À\x11À\x07À'À#À\x13À")
+91.238.181.34 - - [02/Jan/2025 14:10:11] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+80.82.77.202 - - [02/Jan/2025 14:36:03] code 400, message Bad request version ("¯nãY»bhlÿ(=':©\x82ÙoÈ¢×\x93\x98´ï\x80å¹\x90\x00(À")
+159.223.67.34 - - [02/Jan/2025 16:04:02] code 400, message Bad request version ('À\x13À')
+152.42.219.47 - - [02/Jan/2025 16:04:21] code 400, message Bad request version ('À\x13À')
+57.152.78.225 - - [02/Jan/2025 18:31:36] code 400, message Bad request syntax ('MGLNDD_47.250.51.78_80')
+64.62.156.107 - - [02/Jan/2025 19:30:23] code 400, message Bad request version ('À\x14À')
+80.66.83.49 - - [02/Jan/2025 19:37:50] code 400, message Bad HTTP/0.9 request type ('\x04\x01\x00\x194e')
+80.66.83.49 - - [02/Jan/2025 19:38:50] code 400, message Bad request syntax ('\x05\x01\x00')
+167.71.42.160 - - [02/Jan/2025 19:59:05] code 400, message Bad request version ('À\x13À')
+167.71.42.160 - - [02/Jan/2025 19:59:06] code 400, message Bad request version ('À\x13À')
+207.154.235.180 - - [02/Jan/2025 20:40:45] code 400, message Bad request version ('S')
+185.100.87.136 - - [02/Jan/2025 22:35:34] code 400, message Bad HTTP/0.9 request type ('\x83F\x02\x00\x15\x00\x00\x00R%}gI\\m')
