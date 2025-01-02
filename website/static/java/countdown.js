@@ -51,7 +51,13 @@ function startCountdown() {
         // Update the date element with title
         var currentTargetDate = new Date(countDownDate);
         var options = { year: 'numeric', month: 'long', day: 'numeric' };
+        try {
         document.getElementById("date").innerHTML = countdownDates[currentIndex].title + " on " + currentTargetDate.toLocaleDateString(undefined, options);
+        throw new TypeError("oops");
+    } catch ({ name, message }) {
+      console.log(name); // "TypeError"
+      console.log(message); // "oops"
+    }
     }
 }
 
