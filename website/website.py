@@ -1643,3 +1643,14 @@ def edit_course(subject, teachername, course_name):
                            teachername=teachername,
                            current_course=current_course)
 
+#Countdown
+@website.route("/static/java/countdown.js")
+def countdown():
+    try :
+        if current_user.stage == "4" :
+            return redirect("static/java/countdown_ecu.js")
+        else :
+            return redirect("static/java/countdown_all.js")
+    except :
+            return redirect("static/java/countdown_all.js")
+        
