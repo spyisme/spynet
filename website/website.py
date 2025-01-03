@@ -1648,9 +1648,9 @@ def edit_course(subject, teachername, course_name):
 def countdown():
     try :
         if current_user.stage == "4" :
-            return redirect("static/java/countdown_ecu.js")
+            return redirect("/static/java/countdown_ecu.js")
         else :
-            return redirect("static/java/countdown_all.js")
+            return redirect("/static/java/countdown_all.js")
     except :
-            return redirect("static/java/countdown_all.js")
+            return redirect("/static/java/countdown_all.js")
         
