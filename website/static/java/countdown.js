@@ -11,7 +11,6 @@ function startCountdown() {
 
     // Index to keep track of the current countdown date
     var currentIndex = 0;
-    console.log({{current_user.username}})
     // Initial call to update countdown
     updateCountdown();
 
